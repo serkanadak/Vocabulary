@@ -32,7 +32,13 @@ npm start          # Expo geliştirici aracı
 npm run android    # Android emülatör/cihaz
 npm run ios        # iOS simülatör (macOS)
 npm run web        # Tarayıcı
+npm run build:data # data-source/ → gömülü kelime havuzu üret
+npm run gen:assets # ikon / splash / favicon görsellerini üret
 ```
+
+**Kart etkileşimi:** Karta dokun → 3B çevirme animasyonuyla anlamı görünür.
+Kartı **sağa kaydır = "biliyorum"**, **sola kaydır = "bilmiyorum"** olarak işaretler
+ve sıradaki karta geçer (kaydırma + döndürme animasyonlu).
 
 > Expo SDK 51 kullanır. Telefonda **Expo Go** ile QR okutarak da çalıştırabilirsin.
 
@@ -40,9 +46,11 @@ npm run web        # Tarayıcı
 
 ## Kelime havuzu ve 10.000'e ölçekleme
 
-Bugünkü depo **doğruluğu elle kontrol edilmiş (curated)** bir çekirdek setle gelir:
-işletme/ekonomi/iletişim kelimeleri + deyim/argo + örnek hikâyeler. Her kayıtta
-Türkçe & İngilizce anlam, eş/zıt anlamlılar ve örnek cümleler vardır.
+Bugünkü depo **~500+ gömülü kelime** ile gelir: `src/data/*` altındaki elle
+yazılmış çekirdek (curated) set + `data-source/*.csv` kaynaklarından `build:data`
+ile üretilen genişletilmiş set. Tümü işletme/ekonomi/iletişim odaklı; deyim/argo
+ve örnek hikâyeler dahil. Her kayıtta Türkçe & İngilizce anlam, eş/zıt anlamlılar
+ve örnek cümleler vardır; seviyeler A1–C2 aralığına yayılır.
 
 **Neden tamamı elle yazılmadı?** 10.000 kelimenin tamamını *doğru* çeviri, eş/zıt
 anlam ve örnek cümleyle elle üretmek tek seferde mümkün değildir; uydurma içerik bir
@@ -108,11 +116,14 @@ data-source/                # CSV/JSON kaynakları (10k'ya ölçekleme)
 ## Mağazaya yayın notları
 
 - `app.json` içinde `ios.bundleIdentifier` ve `android.package` ayarlı.
-- Yayın için EAS kullanılır:
+- Yayın profilleri `eas.json` içinde tanımlı (development / preview / production):
   ```bash
   npm install -g eas-cli
+  eas login
   eas build --platform all       # iOS + Android derleme
-  eas submit                     # mağazalara gönderim
+  eas submit -p ios              # App Store'a gönderim
+  eas submit -p android          # Google Play'e gönderim
   ```
-- Yayından önce gerçek `assets/icon.png`, `splash.png` ve mağaza görselleri eklenmeli;
-  şu an varsayılan Expo görselleri kullanılır.
+- İkon, adaptive-icon, splash ve favicon görselleri `assets/` altında hazırdır ve
+  `npm run gen:assets` ile koddan yeniden üretilebilir. Mağaza vitrin görselleri
+  (ekran görüntüleri vb.) yayından önce ayrıca eklenmelidir.

@@ -6,7 +6,9 @@
     "orientation": "portrait",
     "scheme": "kelimeharitasi",
     "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
     "splash": {
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#0f172a"
     },
@@ -20,11 +22,13 @@
       "package": "com.kelimeharitasi.app",
       "versionCode": 1,
       "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0f172a"
       }
     },
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
     },
     "extra": {
       "description": "İşletme/ekonomi/iletişim odaklı CEFR A1-C2 İngilizce kelime kartları."
