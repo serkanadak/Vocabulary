@@ -9,6 +9,7 @@ import FlashcardScreen from '../screens/FlashcardScreen';
 import TestScreen from '../screens/TestScreen';
 import GraphScreen from '../screens/GraphScreen';
 import ReaderScreen from '../screens/ReaderScreen';
+import WordlistScreen from '../screens/WordlistScreen';
 import WordDetailScreen from '../screens/WordDetailScreen';
 import { colors } from '../theme';
 
@@ -27,7 +28,7 @@ const navTheme = {
   },
 };
 
-const TAB_ICONS = { Ana: '🏠', Kartlar: '📇', Test: '📝', Ağ: '🕸️', Oku: '📖' };
+const TAB_ICONS = { Ana: '🏠', Kartlar: '📇', Test: '📝', Ağ: '🕸️', Oku: '📖', Liste: '📚' };
 
 function icon(routeName) {
   return ({ color }) => <Text style={{ fontSize: 18, color }}>{TAB_ICONS[routeName]}</Text>;
@@ -51,6 +52,7 @@ function Tabs() {
       <Tab.Screen name="Test" component={TestScreen} />
       <Tab.Screen name="Ağ" component={GraphScreen} />
       <Tab.Screen name="Oku" component={ReaderScreen} />
+      <Tab.Screen name="Liste" component={WordlistScreen} />
     </Tab.Navigator>
   );
 }

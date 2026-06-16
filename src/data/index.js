@@ -8,6 +8,7 @@ import general from './words.general';
 import idioms from './idioms';
 import generated from './generated';
 import storiesData from './stories';
+import wordlistRaw from './wordlist.generated';
 import { validateEntry } from './schema';
 
 // Curated (elle hazırlanmış) + generated (içe aktarılan/üretilen) havuz.
@@ -78,3 +79,41 @@ export const STATS = {
   curated: WORDS.length - generated.length,
   generated: generated.length,
 };
+
+// ---------------------------------------------------------------------------
+// CEFR Kelime Listesi katmanı (referans/çalışma listesi).
+// Kaynak: The CEFR-J Wordlist Version 1.6 (Yukio Tono, TUFS) — atıf şartıyla.
+// Yalnızca kelime + tür + CEFR seviyesi içerir; tam flashcard verisi DEĞİLDİR.
+// Tam (Türkçe anlamlı) kayıtla eşleşen kelimeler, o kaydın detayına bağlanır.
+// ---------------------------------------------------------------------------
+
+const headwordToWordId = new Map();
+for (const w of WORDS) headwordToWordId.set(w.headword.toLowerCase(), w.id);
+
+export const WORDLIST = wordlistRaw.map((e) => {
+  const wordId = headwordToWordId.get(e.h.toLowerCase()) || null;
+  return {
+    id: wordId || `wl_${e.h.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`,
+    headword: e.h,
+    pos: e.p,
+    level: e.l,
+    wordId, // tam kayıt varsa onun id'si (detaya gidilebilir)
+  };
+});
+
+export const WORDLIST_LICENSE =
+  'The CEFR-J Wordlist Version 1.6. Yukio Tono tarafından derlenmiştir, ' +
+  'Tokyo University of Foreign Studies (TUFS). Atıf şartıyla kullanılır.';
+
+export function filterWordlist({ levels, query } = {}) {
+  const q = (query || '').trim().toLowerCase();
+  return WORDLIST.filter((w) => {
+    if (levels && levels.length && !levels.includes(w.level)) return false;
+    if (q && !w.headword.toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+const wlDist = {};
+WORDLIST.forEach((w) => (wlDist[w.level] = (wlDist[w.level] || 0) + 1));
+export const WORDLIST_STATS = { total: WORDLIST.length, byLevel: wlDist };

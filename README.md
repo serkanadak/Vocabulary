@@ -81,6 +81,27 @@ headword,pos,level,domains,type,root,pronunciation,tr,en,exampleEn,exampleTr,syn
 
 Böylece 10.000+ kelimeye, içeriğin kalitesini koruyarak ulaşırsın.
 
+### CEFR Kelime Listesi katmanı (≈6.860 kelime, A1–B2)
+
+Uygulamada ayrı bir **"Liste"** sekmesi, seviyeye göre gezilip işaretlenebilen
+geniş bir referans havuzu sunar. Bu katmanın kaynağı açık lisanslı **CEFR-J
+Wordlist**'tir:
+
+- Kaynak: *The CEFR-J Wordlist Version 1.6*, Yukio Tono (TUFS). Araştırma ve
+  ticari kullanıma **kaynak gösterme şartıyla** açıktır (bkz. `LICENSES.md` ve
+  uygulama içi atıf).
+- Yalnızca **kelime + tür + CEFR seviyesi** içerir; tanım/örnek/çeviri **içermez**
+  ve bu kaynaktan alınmaz. Tam Türkçe anlamlı kayıtla eşleşen kelimeler, o kaydın
+  detayına bağlanır.
+- Üretim: ham CSV `data-source/licensed/` altındadır; gömülü liste şununla üretilir:
+  ```bash
+  npm run build:wordlist   # → src/data/wordlist.generated.js
+  ```
+
+> **Oxford 3000/5000 neden yok?** Oxford listeleri © Oxford University Press olup
+> tescilli ve ticari kullanımı izne tabidir; **açık lisanslı değildir**, bu yüzden
+> dahil edilmemiştir. CEFR seviyelendirmesi için CEFR-J yeterli kapsamı sağlar.
+
 ---
 
 ## Proje yapısı
@@ -98,6 +119,7 @@ src/
     idioms.js               # deyim / argo / günlük ifade (Özellik 7)
     stories.js              # bağlamsal okuma içeriği (Özellik 8)
     generated.js            # içe aktarılan/üretilen havuz (build:data yazar)
+    wordlist.generated.js   # CEFR-J referans listesi (build:wordlist yazar)
     index.js                # birleştirme + sorgu API'si
   logic/
     srs.js                  # test önceliklendirme + Leitner (Özellik 4)
@@ -105,10 +127,14 @@ src/
   state/
     ProgressContext.js      # kategoriler + istatistik (kalıcı, Özellik 3)
   components/common.js      # StatusPicker, rozetler
-  screens/                  # Ana, Kartlar, Test, Ağ, Oku, Detay
+  screens/                  # Ana, Kartlar, Test, Ağ, Oku, Liste, Detay
   navigation/RootNavigator.js
-scripts/build-dataset.js    # veri üretim hattı
+scripts/build-dataset.js    # tam kayıt üretim hattı (CSV/JSON → generated.js)
+scripts/build-wordlist.js   # CEFR-J → wordlist.generated.js
+scripts/gen-assets.js       # ikon/splash/favicon üretimi
 data-source/                # CSV/JSON kaynakları (10k'ya ölçekleme)
+data-source/licensed/       # açık lisanslı ham kaynaklar (CEFR-J)
+LICENSES.md                 # üçüncü taraf içerik atıfları
 ```
 
 ---

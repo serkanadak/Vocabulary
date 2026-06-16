@@ -9,6 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build:data": "node scripts/build-dataset.js",
+    "build:wordlist": "node scripts/build-wordlist.js",
     "import:data": "node scripts/import-csv.js",
     "gen:assets": "node scripts/gen-assets.js"
   },
