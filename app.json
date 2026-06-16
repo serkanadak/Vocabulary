@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Kelime Haritası",
+    "slug": "kelime-haritasi",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "kelimeharitasi",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0f172a"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kelimeharitasi.app",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.kelimeharitasi.app",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#0f172a"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "extra": {
+      "description": "İşletme/ekonomi/iletişim odaklı CEFR A1-C2 İngilizce kelime kartları."
+    }
+  }
+}

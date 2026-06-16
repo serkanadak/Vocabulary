@@ -1,0 +1,100 @@
+// Kelime ilişki ağı (Özellik 6).
+// Kelimeleri ortak kök, eş/zıt anlam ve açık ilişkilere göre bir ağ olarak modeller.
+
+import { WORDS, WORD_MAP, getWord } from '../data';
+
+// Headword metnini var olan bir kayda eşlemek için indeks.
+const headwordIndex = new Map();
+for (const w of WORDS) {
+  headwordIndex.set(w.headword.toLowerCase(), w.id);
+}
+
+function resolveToId(text) {
+  return headwordIndex.get((text || '').toLowerCase()) || null;
+}
+
+// Verilen kelimenin komşuluğunu (1. derece ilişkiler) çıkarır.
+// Dönen yapı: { nodes, edges } — GraphScreen bunu görselleştirir.
+export function buildNeighborhood(wordId) {
+  const center = getWord(wordId);
+  if (!center) return { nodes: [], edges: [] };
+
+  const nodes = new Map();
+  const edges = [];
+  nodes.set(center.id, { ...nodeOf(center), relation: 'center' });
+
+  const addEdge = (toId, kind) => {
+    const target = getWord(toId);
+    if (!target || target.id === center.id) return;
+    if (!nodes.has(target.id)) nodes.set(target.id, { ...nodeOf(target), relation: kind });
+    if (!edges.some((e) => e.to === toId && e.kind === kind)) {
+      edges.push({ from: center.id, to: toId, kind });
+    }
+  };
+
+  // Açık ilişkiler
+  (center.related || []).forEach((id) => addEdge(id, 'related'));
+  // Eş anlamlılar
+  (center.synonyms || []).forEach((s) => {
+    const id = resolveToId(s);
+    if (id) addEdge(id, 'synonym');
+  });
+  // Zıt anlamlılar
+  (center.antonyms || []).forEach((a) => {
+    const id = resolveToId(a);
+    if (id) addEdge(id, 'antonym');
+  });
+  // Aynı kök
+  if (center.root) {
+    WORDS.forEach((w) => {
+      if (w.id !== center.id && w.root && w.root === center.root) addEdge(w.id, 'root');
+    });
+  }
+
+  return { nodes: Array.from(nodes.values()), edges };
+}
+
+function nodeOf(w) {
+  return {
+    id: w.id,
+    headword: w.headword,
+    level: w.level,
+    type: w.type,
+    domains: w.domains,
+  };
+}
+
+// Düğümleri merkez etrafında dairesel (radyal) yerleştirir.
+// width/height: çizim alanı boyutu. Dönen: id -> {x, y}
+export function radialLayout(graph, width, height) {
+  const positions = {};
+  const cx = width / 2;
+  const cy = height / 2;
+  const others = graph.nodes.filter((n) => n.relation !== 'center');
+  positions[graph.nodes.find((n) => n.relation === 'center')?.id] = { x: cx, y: cy };
+  const radius = Math.min(width, height) * 0.36;
+  others.forEach((n, i) => {
+    const angle = (2 * Math.PI * i) / Math.max(others.length, 1) - Math.PI / 2;
+    positions[n.id] = {
+      x: cx + radius * Math.cos(angle),
+      y: cy + radius * Math.sin(angle),
+    };
+  });
+  return positions;
+}
+
+export const RELATION_COLORS = {
+  center: '#f59e0b',
+  synonym: '#22c55e',
+  antonym: '#ef4444',
+  root: '#3b82f6',
+  related: '#a855f7',
+};
+
+export const RELATION_LABELS = {
+  synonym: 'Eş anlam',
+  antonym: 'Zıt anlam',
+  root: 'Aynı kök',
+  related: 'İlişkili',
+  center: 'Merkez',
+};
