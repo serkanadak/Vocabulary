@@ -153,7 +153,20 @@ function main() {
     console.error(`Kaynak klasörü yok: ${SRC_DIR}`);
     process.exit(1);
   }
-  const files = fs.readdirSync(SRC_DIR).filter((f) => /\.(csv|json)$/i.test(f));
+  // data-source/ kökü (CSV/JSON) + data-source/enriched/ (LLM ile üretilen JSON).
+  // Not: data-source/licensed/ bilinçli olarak HARİÇ — orası ham CEFR-J kaynağıdır.
+  const rootFiles = fs
+    .readdirSync(SRC_DIR)
+    .filter((f) => /\.(csv|json)$/i.test(f))
+    .map((f) => path.join(SRC_DIR, f));
+  const enrichedDir = path.join(SRC_DIR, 'enriched');
+  const enrichedFiles = fs.existsSync(enrichedDir)
+    ? fs
+        .readdirSync(enrichedDir)
+        .filter((f) => /\.json$/i.test(f))
+        .map((f) => path.join(enrichedDir, f))
+    : [];
+  const files = [...rootFiles, ...enrichedFiles];
   if (!files.length) {
     console.log('data-source/ içinde .csv veya .json bulunamadı. Çıkılıyor.');
     return;
@@ -161,11 +174,11 @@ function main() {
 
   const curatedIds = loadCuratedIds();
   let all = [];
-  for (const f of files) {
-    const full = path.join(SRC_DIR, f);
+  for (const full of files) {
+    const f = path.relative(SRC_DIR, full);
     const text = fs.readFileSync(full, 'utf8');
     let entries = [];
-    if (/\.csv$/i.test(f)) entries = rowsToEntries(parseCsv(text));
+    if (/\.csv$/i.test(full)) entries = rowsToEntries(parseCsv(text));
     else entries = JSON.parse(text);
     console.log(`+ ${f}: ${entries.length} kayıt`);
     all = all.concat(entries);

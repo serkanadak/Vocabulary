@@ -27,3 +27,6 @@ yarn-error.*
 # editor
 .idea/
 .vscode/
+
+# zenginleştirme hattının yerel durum/inceleme dosyaları
+scripts/.enrich-state/

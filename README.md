@@ -102,6 +102,38 @@ Wordlist**'tir:
 > tescilli ve ticari kullanımı izne tabidir; **açık lisanslı değildir**, bu yüzden
 > dahil edilmemiştir. CEFR seviyelendirmesi için CEFR-J yeterli kapsamı sağlar.
 
+### Liste kelimelerini TAM karta dönüştürme (LLM zenginleştirme hattı)
+
+CEFR-J listesi yalnızca kelime + seviye içerir. Bu kelimeleri Türkçe anlam, örnek
+cümle ve eş/zıt anlamlılarla **tam flashcard'a** dönüştürmek için Claude (Anthropic
+API) tabanlı toplu bir hat vardır. Doğruluk için iki koruma:
+
+1. **Structured outputs** (`output_config.format`) → çıktı her zaman şemaya uyar.
+2. **Doğrulama (verification) adımı** → her kayıt kontrol edilir (boş alan yok, örnek
+   cümle kelimeyi içeriyor, model "düşük güven" demediyse). Geçmeyenler kabul
+   edilmez; `scripts/.enrich-state/review-*.json` dosyasına ayrılır.
+
+Maliyet için **Message Batches API** kullanılır (standart fiyatın %50'si). Varsayılan
+model `claude-opus-4-8`; `--model claude-haiku-4-5` ile daha ucuza alınabilir.
+
+```bash
+# Gerekenler: ANTHROPIC_API_KEY + (yalnızca bu araç için) SDK
+export ANTHROPIC_API_KEY=sk-ant-...
+npm install --no-save @anthropic-ai/sdk
+
+npm run enrich -- candidates --level A1            # kaç aday var?
+npm run enrich -- run --level A1 --limit 100       # gönder + bekle + doğrula + yaz
+npm run build:data                                 # kabul edilenleri uygulamaya göm
+```
+
+Kabul edilen kayıtlar `data-source/enriched/accepted-<batchId>.json`'a yazılır;
+`build:data` bunları otomatik gömer. Ağ olmadan mantığı test etmek için:
+`npm run enrich -- selftest`.
+
+> **Dürüst not:** LLM çıktısı doğrulamadan geçse de %100 hatasız değildir.
+> İnceleme (review) dosyasını gözden geçirmek ve örnek bir kabul partisini elle
+> denetlemek önerilir — özellikle mağaza yayını öncesi.
+
 ---
 
 ## Proje yapısı
@@ -132,8 +164,11 @@ src/
 scripts/build-dataset.js    # tam kayıt üretim hattı (CSV/JSON → generated.js)
 scripts/build-wordlist.js   # CEFR-J → wordlist.generated.js
 scripts/gen-assets.js       # ikon/splash/favicon üretimi
+scripts/enrich.js           # Claude ile liste→tam kart zenginleştirme (Batches)
+scripts/lib/enrich-core.js  # aday seçimi + şema + doğrulama (API'siz, test edilebilir)
 data-source/                # CSV/JSON kaynakları (10k'ya ölçekleme)
 data-source/licensed/       # açık lisanslı ham kaynaklar (CEFR-J)
+data-source/enriched/       # LLM ile üretilen doğrulanmış tam kayıtlar (build:data gömer)
 LICENSES.md                 # üçüncü taraf içerik atıfları
 ```
 

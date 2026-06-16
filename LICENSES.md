@@ -32,3 +32,8 @@ kaynağını kullanır. Lisans gereği kaynak gösterimi burada ve uygulama içi
 `src/data/words.*.js`, `src/data/idioms.js`, `src/data/stories.js` ve
 `data-source/*.csv` dosyalarındaki Türkçe/İngilizce anlamlar, örnek cümleler,
 eş/zıt anlamlılar bu proje için özgün olarak hazırlanmıştır.
+
+`data-source/enriched/*.json` kayıtları, CEFR-J başlık listesinden seçilen
+kelimeler için Claude (Anthropic API) ile üretilip doğrulama adımından geçirilerek
+oluşturulur (bkz. `scripts/enrich.js`). Başlık seçimi CEFR-J'e dayanır (yukarıda
+atıf yapıldı); anlam/örnek metinleri model tarafından üretilmiştir.
