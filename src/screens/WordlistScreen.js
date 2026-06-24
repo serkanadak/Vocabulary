@@ -84,13 +84,19 @@ export default function WordlistScreen({ navigation }) {
               <TouchableOpacity
                 style={styles.rowMain}
                 onPress={() =>
-                  item.wordId ? navigation.navigate('WordDetail', { id: item.wordId }) : cycleStatus(item)
+                  navigation.navigate('WordDetail', {
+                    id: item.wordId || item.id,
+                    // Tam kartı olmayan liste kelimesi için yedek bilgi
+                    fallback: item.wordId
+                      ? undefined
+                      : { headword: item.headword, level: item.level, pos: item.pos },
+                  })
                 }
               >
                 <Text style={styles.word}>{item.headword}</Text>
                 <Text style={styles.pos}>{item.pos}</Text>
               </TouchableOpacity>
-              {item.wordId && <Text style={styles.hasDetail}>anlamlı ›</Text>}
+              <Text style={styles.hasDetail}>{item.wordId ? 'anlamlı ›' : '›'}</Text>
               <LevelBadge level={item.level} />
               <TouchableOpacity
                 style={[styles.statusDot, { borderColor: meta?.color || colors.border, backgroundColor: meta?.color || 'transparent' }]}

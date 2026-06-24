@@ -8,11 +8,33 @@ import { colors } from '../theme';
 import { TYPES } from '../data/schema';
 
 export default function WordDetailScreen({ route, navigation }) {
-  const { id } = route.params;
+  const { id, fallback } = route.params;
   const word = getWord(id);
   const { getProgress, setStatus } = useProgress();
 
+  // Tam Türkçe kartı olmayan (CEFR liste) kelime: yine de başlık/seviye + işaretleme göster.
   if (!word) {
+    if (fallback) {
+      const fbStatus = getProgress(id)?.status || STATUS.UNKNOWN;
+      return (
+        <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
+          <Text style={styles.headword}>{fallback.headword}</Text>
+          {!!fallback.pos && <Text style={styles.pos}>{fallback.pos}</Text>}
+          <View style={styles.row}>
+            <LevelBadge level={fallback.level} />
+            <Badge label="CEFR listesi" color={colors.primary} />
+          </View>
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Durumun</Text>
+            <StatusPicker value={fbStatus} onChange={(s) => setStatus(id, s)} />
+          </View>
+          <Text style={styles.note}>
+            Bu kelime CEFR seviye listesinden geliyor; Türkçe anlam ve örnek cümle içeren tam kart
+            içeriği henüz hazır değil. Yine de durumunu işaretleyebilir, ilerlemene katabilirsin.
+          </Text>
+        </ScrollView>
+      );
+    }
     return (
       <View style={styles.center}>
         <Text style={styles.muted}>Kelime bulunamadı.</Text>
@@ -90,6 +112,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg },
   center: { flex: 1, backgroundColor: colors.bg, alignItems: 'center', justifyContent: 'center' },
   muted: { color: colors.textMuted },
+  note: { color: colors.textMuted, fontSize: 13, lineHeight: 20, marginTop: 14, fontStyle: 'italic' },
   headword: { color: colors.text, fontSize: 30, fontWeight: '800' },
   pron: { color: colors.primary, fontSize: 16, marginTop: 4 },
   pos: { color: colors.textMuted, fontStyle: 'italic', marginTop: 2, marginBottom: 10 },
