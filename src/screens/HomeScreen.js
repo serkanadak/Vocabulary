@@ -3,13 +3,16 @@ import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'r
 import { searchWords, WORDS } from '../data';
 import { useProgress } from '../state/ProgressContext';
 import { LevelBadge, Badge } from '../components/common';
-import { colors, STATUS_META } from '../theme';
+import { colors, STATUS_META, LEVEL_COLORS } from '../theme';
+
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
 export default function HomeScreen({ navigation }) {
   const { byId } = useProgress();
   const [query, setQuery] = useState('');
   // Üstteki istatistik hücreleriyle alttaki listeyi süzme.
   const [statusFilter, setStatusFilter] = useState(null); // null | 'unknown' | 'passive' | 'active'
+  const [levelFilter, setLevelFilter] = useState(null); // null | 'A1'..'C2'
 
   // İşaretlenmemiş tüm kelimeler varsayılan olarak "Bilmiyorum" sayılır.
   const stat = useMemo(() => {
@@ -25,6 +28,7 @@ export default function HomeScreen({ navigation }) {
 
   const results = useMemo(() => {
     let base = searchWords(query);
+    if (levelFilter) base = base.filter((w) => w.level === levelFilter);
     if (statusFilter === 'unknown') {
       // İşaretsiz + açıkça bilmiyorum işaretli olanların hepsi
       base = base.filter((w) => (byId[w.id]?.status || 'unknown') === 'unknown');
@@ -32,7 +36,7 @@ export default function HomeScreen({ navigation }) {
       base = base.filter((w) => byId[w.id]?.status === statusFilter);
     }
     return base.slice(0, 80);
-  }, [query, statusFilter, byId]);
+  }, [query, statusFilter, levelFilter, byId]);
 
   const toggle = (key) => setStatusFilter((f) => (f === key ? null : key));
 
@@ -95,6 +99,23 @@ export default function HomeScreen({ navigation }) {
               onChangeText={setQuery}
               autoCorrect={false}
             />
+
+            {/* Seviye filtresi (A1-C2) */}
+            <View style={styles.levelRow}>
+              {LEVELS.map((lvl) => {
+                const on = levelFilter === lvl;
+                return (
+                  <TouchableOpacity
+                    key={lvl}
+                    style={[styles.levelChip, on && { backgroundColor: LEVEL_COLORS[lvl], borderColor: LEVEL_COLORS[lvl] }]}
+                    onPress={() => setLevelFilter((f) => (f === lvl ? null : lvl))}
+                  >
+                    <Text style={[styles.levelChipText, on && { color: '#0f172a' }]}>{lvl}</Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+
             <Text style={styles.resultsLabel}>
               {statusFilter
                 ? `${STATUS_META[statusFilter].label}: ${results.length} kelime` +
@@ -189,6 +210,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
   },
+  levelRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 10 },
+  levelChip: {
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  levelChipText: { color: colors.textMuted, fontWeight: '700', fontSize: 12 },
   resultsLabel: { color: colors.textMuted, marginTop: 12, marginBottom: 6, fontSize: 12 },
   empty: { color: colors.textMuted, fontSize: 13, lineHeight: 20, paddingVertical: 12 },
   wordRow: {

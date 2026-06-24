@@ -12,15 +12,27 @@ const CYCLE = [null, STATUS.UNKNOWN, STATUS.PASSIVE, STATUS.ACTIVE];
 
 // CEFR Kelime Listesi (Özellik: geniş referans havuzu, seviyeye göre çalışma).
 // Kaynak: CEFR-J Wordlist (atıf aşağıda gösterilir).
+const STATUS_FILTERS = [
+  { key: 'unknown', label: 'Bilmiyorum' },
+  { key: 'passive', label: 'Pasif' },
+  { key: 'active', label: 'Aktif' },
+];
+
 export default function WordlistScreen({ navigation }) {
-  const { getProgress, setStatus, mergeProgress } = useProgress();
+  const { getProgress, setStatus, mergeProgress, byId } = useProgress();
   const [query, setQuery] = useState('');
   const [levels, setLevels] = useState([]); // boş = tümü
+  const [statusFilter, setStatusFilter] = useState(null); // null | 'unknown' | 'passive' | 'active'
 
-  const data = useMemo(
-    () => filterWordlist({ levels: levels.length ? levels : null, query }),
-    [levels, query]
-  );
+  const data = useMemo(() => {
+    let d = filterWordlist({ levels: levels.length ? levels : null, query });
+    if (statusFilter === 'unknown') {
+      d = d.filter((w) => (byId[w.id]?.status || 'unknown') === 'unknown');
+    } else if (statusFilter) {
+      d = d.filter((w) => byId[w.id]?.status === statusFilter);
+    }
+    return d;
+  }, [levels, query, statusFilter, byId]);
 
   const toggleLevel = (lvl) =>
     setLevels((prev) => (prev.includes(lvl) ? prev.filter((l) => l !== lvl) : [...prev, lvl]));
@@ -66,6 +78,24 @@ export default function WordlistScreen({ navigation }) {
             );
           })}
         </View>
+
+        {/* Durum filtresi: bilmiyorum / pasif / aktif */}
+        <View style={styles.chips}>
+          {STATUS_FILTERS.map((s) => {
+            const on = statusFilter === s.key;
+            const c = STATUS_META[s.key].color;
+            return (
+              <TouchableOpacity
+                key={s.key}
+                style={[styles.chip, on && { backgroundColor: c, borderColor: c }]}
+                onPress={() => setStatusFilter((f) => (f === s.key ? null : s.key))}
+              >
+                <Text style={[styles.chipText, on && { color: '#0f172a' }]}>{s.label}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+
         <Text style={styles.resultCount}>{data.length.toLocaleString('tr-TR')} sonuç</Text>
       </View>
 
