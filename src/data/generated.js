@@ -12024,6 +12024,3049 @@ export default [
     "related": []
   },
   {
+    "id": "w_spill_the_beans",
+    "headword": "spill the beans",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "bean",
+    "meanings": [
+      {
+        "tr": "sırrı ağzından kaçırmak; gizliyi açık etmek",
+        "en": "to reveal a secret",
+        "exampleEn": "Come on — spill the beans about the new job.",
+        "exampleTr": "Hadi ama — şu yeni iş hakkındaki sırrı söyle."
+      }
+    ],
+    "synonyms": [
+      "let it slip",
+      "reveal"
+    ],
+    "antonyms": [
+      "keep quiet"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_piece_of_cake",
+    "headword": "piece of cake",
+    "pos": "idiom",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "cake",
+    "meanings": [
+      {
+        "tr": "çocuk oyuncağı; çok kolay iş",
+        "en": "something very easy to do",
+        "exampleEn": "The exam was a piece of cake.",
+        "exampleTr": "Sınav çocuk oyuncağıydı."
+      }
+    ],
+    "synonyms": [
+      "a breeze",
+      "child's play"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_break_a_leg",
+    "headword": "break a leg",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "leg",
+    "meanings": [
+      {
+        "tr": "bol şans (sahne öncesi);şans dileme",
+        "en": "a way to wish someone good luck",
+        "exampleEn": "Break a leg in your presentation today.",
+        "exampleTr": "Bugünkü sunumunda bol şans."
+      }
+    ],
+    "synonyms": [
+      "good luck"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_under_the_weather",
+    "headword": "under the weather",
+    "pos": "idiom",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "weather",
+    "meanings": [
+      {
+        "tr": "keyifsiz; biraz hasta",
+        "en": "feeling slightly ill",
+        "exampleEn": "I'm a bit under the weather today.",
+        "exampleTr": "Bugün biraz keyifsizim."
+      }
+    ],
+    "synonyms": [
+      "unwell",
+      "poorly"
+    ],
+    "antonyms": [
+      "healthy"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_hit_the_sack",
+    "headword": "hit the sack",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "sack",
+    "meanings": [
+      {
+        "tr": "kafayı vurup yatmak; uyumaya gitmek",
+        "en": "to go to bed",
+        "exampleEn": "I'm exhausted so I'll hit the sack.",
+        "exampleTr": "Çok yorgunum o yüzden yatmaya gidiyorum."
+      }
+    ],
+    "synonyms": [
+      "turn in"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_cost_an_arm_and_a_leg",
+    "headword": "cost an arm and a leg",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "arm",
+    "meanings": [
+      {
+        "tr": "çok pahalıya patlamak",
+        "en": "to be very expensive",
+        "exampleEn": "That phone costs an arm and a leg.",
+        "exampleTr": "O telefon çok pahalıya patlıyor."
+      }
+    ],
+    "synonyms": [
+      "cost a fortune"
+    ],
+    "antonyms": [
+      "dirt cheap"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_once_in_a_blue_moon",
+    "headword": "once in a blue moon",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "moon",
+    "meanings": [
+      {
+        "tr": "kırk yılda bir; çok nadiren",
+        "en": "very rarely",
+        "exampleEn": "We meet once in a blue moon now.",
+        "exampleTr": "Artık kırk yılda bir görüşüyoruz."
+      }
+    ],
+    "synonyms": [
+      "rarely",
+      "seldom"
+    ],
+    "antonyms": [
+      "often"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_bite_the_bullet",
+    "headword": "bite the bullet",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "bullet",
+    "meanings": [
+      {
+        "tr": "dişini sıkmak; zoru göze almak",
+        "en": "to face a hard situation bravely",
+        "exampleEn": "Just bite the bullet and apologize.",
+        "exampleTr": "Dişini sık ve özür dile."
+      }
+    ],
+    "synonyms": [
+      "grin and bear it"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_hit_the_nail_on_the_head",
+    "headword": "hit the nail on the head",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "nail",
+    "meanings": [
+      {
+        "tr": "tam isabet; tam üstüne basmak",
+        "en": "to describe something exactly right",
+        "exampleEn": "You hit the nail on the head with that point.",
+        "exampleTr": "O noktada tam üstüne bastın."
+      }
+    ],
+    "synonyms": [
+      "be spot on"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_let_the_cat_out_of_the_bag",
+    "headword": "let the cat out of the bag",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "cat",
+    "meanings": [
+      {
+        "tr": "baklayı ağzından çıkarmak; sırrı açık etmek",
+        "en": "to reveal a secret by accident",
+        "exampleEn": "He let the cat out of the bag about the party.",
+        "exampleTr": "Parti konusunda baklayı ağzından çıkardı."
+      }
+    ],
+    "synonyms": [
+      "spill the beans"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_pull_someone_s_leg",
+    "headword": "pull someone's leg",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "leg",
+    "meanings": [
+      {
+        "tr": "birine takılmak; şaka yapmak",
+        "en": "to joke with someone",
+        "exampleEn": "Relax I'm just pulling your leg.",
+        "exampleTr": "Sakin ol sadece takılıyorum."
+      }
+    ],
+    "synonyms": [
+      "tease",
+      "kid"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_get_cold_feet",
+    "headword": "get cold feet",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "foot",
+    "meanings": [
+      {
+        "tr": "son anda korkup vazgeçmek",
+        "en": "to suddenly become too scared to do something",
+        "exampleEn": "He got cold feet before the wedding.",
+        "exampleTr": "Düğünden önce son anda korktu."
+      }
+    ],
+    "synonyms": [
+      "chicken out"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_a_blessing_in_disguise",
+    "headword": "a blessing in disguise",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "bless",
+    "meanings": [
+      {
+        "tr": "kılık değiştirmiş nimet; sonradan iyi çıkan kötü olay",
+        "en": "a misfortune that turns out well",
+        "exampleEn": "Losing that job was a blessing in disguise.",
+        "exampleTr": "O işi kaybetmek aslında hayırlı oldu."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "curse"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_speak_of_the_devil",
+    "headword": "speak of the devil",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "devil",
+    "meanings": [
+      {
+        "tr": "iti an çomağı hazırla; lafı edilen kişi gelince denir",
+        "en": "said when a person you were talking about appears",
+        "exampleEn": "Speak of the devil — here she comes.",
+        "exampleTr": "İti andık çomağı hazırla — işte geliyor."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_the_last_straw",
+    "headword": "the last straw",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "straw",
+    "meanings": [
+      {
+        "tr": "bardağı taşıran son damla",
+        "en": "the final problem that makes you give up",
+        "exampleEn": "His rudeness was the last straw.",
+        "exampleTr": "Kabalığı bardağı taşıran son damla oldu."
+      }
+    ],
+    "synonyms": [
+      "final straw"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_the_ball_is_in_your_court",
+    "headword": "the ball is in your court",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "idiom",
+    "root": "ball",
+    "meanings": [
+      {
+        "tr": "top sende; karar/sıra artık sende",
+        "en": "it is your turn to act or decide",
+        "exampleEn": "I made my offer so the ball is in your court.",
+        "exampleTr": "Teklifimi yaptım artık top sende."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_butterflies_in_your_stomach",
+    "headword": "butterflies in your stomach",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "butterfly",
+    "meanings": [
+      {
+        "tr": "içi içine sığmamak; heyecandan kelebekler",
+        "en": "a nervous excited feeling",
+        "exampleEn": "I had butterflies in my stomach before the talk.",
+        "exampleTr": "Konuşmadan önce heyecandan içim içime sığmıyordu."
+      }
+    ],
+    "synonyms": [
+      "nervous",
+      "jittery"
+    ],
+    "antonyms": [
+      "calm"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_when_pigs_fly",
+    "headword": "when pigs fly",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "pig",
+    "meanings": [
+      {
+        "tr": "balık kavağa çıkınca; asla olmayacak",
+        "en": "something that will never happen",
+        "exampleEn": "He'll apologize when pigs fly.",
+        "exampleTr": "O özür dilerse balık kavağa çıkar."
+      }
+    ],
+    "synonyms": [
+      "never"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_spill_the_tea",
+    "headword": "spill the tea",
+    "pos": "slang",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "tea",
+    "meanings": [
+      {
+        "tr": "dedikoduyu anlatmak; olayı dök",
+        "en": "to share the latest gossip",
+        "exampleEn": "Okay spill the tea — what happened?",
+        "exampleTr": "Tamam anlat bakalım — ne oldu?"
+      }
+    ],
+    "synonyms": [
+      "dish",
+      "gossip"
+    ],
+    "antonyms": [],
+    "collocations": [
+      "spill the tea"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_throw_shade",
+    "headword": "throw shade",
+    "pos": "slang",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "shade",
+    "meanings": [
+      {
+        "tr": "laf sokmak; üstü kapalı aşağılamak",
+        "en": "to publicly criticize or insult subtly",
+        "exampleEn": "She threw shade at her rival online.",
+        "exampleTr": "Rakibine internette laf soktu."
+      }
+    ],
+    "synonyms": [
+      "diss"
+    ],
+    "antonyms": [
+      "compliment"
+    ],
+    "collocations": [],
+    "related": [
+      "shade"
+    ]
+  },
+  {
+    "id": "w_vibe",
+    "headword": "vibe",
+    "pos": "noun",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "meanings": [
+      {
+        "tr": "hava; ortamın enerjisi/atmosferi",
+        "en": "the mood or feeling of a place or person",
+        "exampleEn": "This cafe has a really chill vibe.",
+        "exampleTr": "Bu kafenin gerçekten sakin bir havası var."
+      },
+      {
+        "tr": "takılmak; uyum yakalamak",
+        "en": "to relax or get along well",
+        "exampleEn": "We just vibed all evening.",
+        "exampleTr": "Bütün akşam keyifle takıldık."
+      }
+    ],
+    "synonyms": [
+      "mood",
+      "atmosphere"
+    ],
+    "antonyms": [],
+    "collocations": [
+      "good vibes",
+      "vibe check"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_fomo",
+    "headword": "FOMO",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "meanings": [
+      {
+        "tr": "bir şeyi kaçırma korkusu (fear of missing out)",
+        "en": "anxiety that an exciting event is happening elsewhere",
+        "exampleEn": "I checked my phone all night out of FOMO.",
+        "exampleTr": "Bir şey kaçırma korkusuyla bütün gece telefona baktım."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_flex",
+    "headword": "flex",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "meanings": [
+      {
+        "tr": "hava atmak; gösteriş yapmak",
+        "en": "to show off something proudly",
+        "exampleEn": "He keeps flexing his new watch.",
+        "exampleTr": "Yeni saatiyle sürekli hava atıyor."
+      }
+    ],
+    "synonyms": [
+      "show off",
+      "boast"
+    ],
+    "antonyms": [],
+    "collocations": [
+      "flex on"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_low_key",
+    "headword": "low-key",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "key",
+    "meanings": [
+      {
+        "tr": "hafiften; çaktırmadan",
+        "en": "quietly or to a small degree",
+        "exampleEn": "I'm low-key excited about it.",
+        "exampleTr": "Açıkçası hafiften heyecanlıyım."
+      }
+    ],
+    "synonyms": [
+      "subtly"
+    ],
+    "antonyms": [
+      "openly"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_salty",
+    "headword": "salty",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "salt",
+    "meanings": [
+      {
+        "tr": "alınmış; bozulmuş ve huysuz",
+        "en": "bitter or annoyed about something",
+        "exampleEn": "He got salty after losing the game.",
+        "exampleTr": "Oyunu kaybedince bozuldu."
+      }
+    ],
+    "synonyms": [
+      "bitter",
+      "sour"
+    ],
+    "antonyms": [
+      "chill"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_cringe",
+    "headword": "cringe",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "meanings": [
+      {
+        "tr": "utanç verici; içini kaldıran",
+        "en": "causing embarrassment",
+        "exampleEn": "That joke was so cringe.",
+        "exampleTr": "O şaka çok utanç vericiydi."
+      },
+      {
+        "tr": "utançtan büzülmek",
+        "en": "to feel embarrassed",
+        "exampleEn": "I cringed at my old photos.",
+        "exampleTr": "Eski fotoğraflarıma utançtan büzüldüm."
+      }
+    ],
+    "synonyms": [
+      "embarrassing"
+    ],
+    "antonyms": [
+      "cool"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_salvage",
+    "headword": "salvage",
+    "pos": "verb",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "kurtarmak; kötü durumdan bir şey çıkarmak",
+        "en": "to save something from loss",
+        "exampleEn": "They salvaged the deal at the last minute.",
+        "exampleTr": "Anlaşmayı son anda kurtardılar."
+      }
+    ],
+    "synonyms": [
+      "rescue",
+      "recover"
+    ],
+    "antonyms": [
+      "lose"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_binge_watch",
+    "headword": "binge-watch",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "binge",
+    "meanings": [
+      {
+        "tr": "arka arkaya izlemek; dizi maratonu yapmak",
+        "en": "to watch many episodes in one sitting",
+        "exampleEn": "We binge-watched the whole season.",
+        "exampleTr": "Bütün sezonu arka arkaya izledik."
+      }
+    ],
+    "synonyms": [
+      "marathon"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_spoiler",
+    "headword": "spoiler",
+    "pos": "noun",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "spoil",
+    "meanings": [
+      {
+        "tr": "sürpriz bozan; olay örgüsünü ifşa eden bilgi",
+        "en": "information that reveals the plot",
+        "exampleEn": "No spoilers please I haven't seen it.",
+        "exampleTr": "Lütfen sürpriz bozma henüz izlemedim."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [
+      "spoiler alert"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_plot_twist",
+    "headword": "plot twist",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "phrase",
+    "root": "plot",
+    "meanings": [
+      {
+        "tr": "olay örgüsünde beklenmedik dönüş",
+        "en": "an unexpected turn in a story",
+        "exampleEn": "The plot twist shocked everyone.",
+        "exampleTr": "Olaydaki beklenmedik dönüş herkesi şaşırttı."
+      }
+    ],
+    "synonyms": [
+      "twist"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_cliffhanger",
+    "headword": "cliffhanger",
+    "pos": "noun",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "cliff",
+    "meanings": [
+      {
+        "tr": "merak uyandıran final; askıda bırakan son",
+        "en": "a tense unresolved ending",
+        "exampleEn": "The episode ended on a cliffhanger.",
+        "exampleTr": "Bölüm merak uyandıran bir finalle bitti."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_binge",
+    "headword": "binge",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "aşırıya kaçma; tıkınma/maraton",
+        "en": "a short period of excessive activity",
+        "exampleEn": "a Netflix binge|a shopping binge",
+        "exampleTr": "Bir Netflix maratonu|bir alışveriş çılgınlığı"
+      }
+    ],
+    "synonyms": [
+      "spree"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_streaming",
+    "headword": "streaming",
+    "pos": "noun",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "stream",
+    "meanings": [
+      {
+        "tr": "çevrim içi yayın; akış",
+        "en": "watching or listening online in real time",
+        "exampleEn": "Most people use streaming now.",
+        "exampleTr": "Çoğu insan artık çevrim içi yayın kullanıyor."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [
+      "streaming service"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_headline",
+    "headword": "headline",
+    "pos": "noun",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "head",
+    "meanings": [
+      {
+        "tr": "manşet; haber başlığı",
+        "en": "the title of a news story",
+        "exampleEn": "The scandal made every headline.",
+        "exampleTr": "Skandal bütün manşetlere çıktı."
+      }
+    ],
+    "synonyms": [
+      "title"
+    ],
+    "antonyms": [],
+    "collocations": [
+      "make headlines"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_breaking_news",
+    "headword": "breaking news",
+    "pos": "noun",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "phrase",
+    "root": "break",
+    "meanings": [
+      {
+        "tr": "son dakika haberi",
+        "en": "important news reported as it happens",
+        "exampleEn": "Breaking news interrupted the show.",
+        "exampleTr": "Son dakika haberi programı böldü."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_clickbait",
+    "headword": "clickbait",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "click",
+    "meanings": [
+      {
+        "tr": "tık tuzağı; merak uyandıran aldatıcı başlık",
+        "en": "a misleading title made to get clicks",
+        "exampleEn": "The article was pure clickbait.",
+        "exampleTr": "Yazı tam bir tık tuzağıydı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_viral",
+    "headword": "viral",
+    "pos": "adj",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "virus",
+    "meanings": [
+      {
+        "tr": "viral; internette hızla yayılan",
+        "en": "spreading quickly online",
+        "exampleEn": "Her video went viral overnight.",
+        "exampleTr": "Videosu bir gecede viral oldu."
+      }
+    ],
+    "synonyms": [
+      "trending"
+    ],
+    "antonyms": [],
+    "collocations": [
+      "go viral"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_trending",
+    "headword": "trending",
+    "pos": "adj",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "trend",
+    "meanings": [
+      {
+        "tr": "gündemde; o an popüler",
+        "en": "currently popular online",
+        "exampleEn": "That song is trending right now.",
+        "exampleTr": "O şarkı şu an gündemde."
+      }
+    ],
+    "synonyms": [
+      "popular",
+      "hot"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_influencer",
+    "headword": "influencer",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "word",
+    "root": "influence",
+    "meanings": [
+      {
+        "tr": "fenomen; sosyal medya etkileyicisi",
+        "en": "a person who shapes opinions online",
+        "exampleEn": "The brand hired a popular influencer.",
+        "exampleTr": "Marka popüler bir fenomenle anlaştı."
+      }
+    ],
+    "synonyms": [
+      "content creator"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_tabloid",
+    "headword": "tabloid",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "bulvar gazetesi; magazin basını",
+        "en": "a sensational popular newspaper",
+        "exampleEn": "The story first ran in a tabloid.",
+        "exampleTr": "Haber ilk bir bulvar gazetesinde çıktı."
+      }
+    ],
+    "synonyms": [
+      "gossip press"
+    ],
+    "antonyms": [
+      "broadsheet"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_scoop",
+    "headword": "scoop",
+    "pos": "noun",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "atlatma haber; ilk yakalanan özel haber",
+        "en": "an exclusive news story",
+        "exampleEn": "The reporter got a major scoop.",
+        "exampleTr": "Muhabir büyük bir atlatma haber yakaladı."
+      }
+    ],
+    "synonyms": [
+      "exclusive"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_soundbite",
+    "headword": "soundbite",
+    "pos": "noun",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "sound",
+    "meanings": [
+      {
+        "tr": "çarpıcı kısa alıntı; akılda kalan cümle",
+        "en": "a short striking quote",
+        "exampleEn": "The speech was reduced to a soundbite.",
+        "exampleTr": "Konuşma çarpıcı bir cümleye indirgendi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_coverage",
+    "headword": "coverage",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "cover",
+    "meanings": [
+      {
+        "tr": "haber kapsamı; bir konunun işlenmesi",
+        "en": "the reporting of an event",
+        "exampleEn": "The election got heavy coverage.",
+        "exampleTr": "Seçim yoğun şekilde haber oldu."
+      }
+    ],
+    "synonyms": [
+      "reporting"
+    ],
+    "antonyms": [],
+    "collocations": [
+      "media coverage"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_blockbuster",
+    "headword": "blockbuster",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "gişe rekortmeni; çok tutan film",
+        "en": "a very successful film",
+        "exampleEn": "The blockbuster broke box-office records.",
+        "exampleTr": "Gişe rekortmeni film hasılat rekorları kırdı."
+      }
+    ],
+    "synonyms": [
+      "hit"
+    ],
+    "antonyms": [
+      "flop"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_box_office",
+    "headword": "box office",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "phrase",
+    "root": "box",
+    "meanings": [
+      {
+        "tr": "gişe; film hasılatı",
+        "en": "money earned from ticket sales",
+        "exampleEn": "The film topped the box office.",
+        "exampleTr": "Film gişede zirveye çıktı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [
+      "box-office hit"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_trailer",
+    "headword": "trailer",
+    "pos": "noun",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "trail",
+    "meanings": [
+      {
+        "tr": "fragman; tanıtım videosu",
+        "en": "a short preview of a film",
+        "exampleEn": "The trailer looks amazing.",
+        "exampleTr": "Fragman harika görünüyor."
+      }
+    ],
+    "synonyms": [
+      "preview"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_sequel",
+    "headword": "sequel",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "devam filmi; süren yapım",
+        "en": "a film that continues a story",
+        "exampleEn": "The sequel was better than the original.",
+        "exampleTr": "Devam filmi ilkinden iyiydi."
+      }
+    ],
+    "synonyms": [
+      "follow-up"
+    ],
+    "antonyms": [
+      "prequel"
+    ],
+    "collocations": [],
+    "related": [
+      "prequel"
+    ]
+  },
+  {
+    "id": "w_prequel",
+    "headword": "prequel",
+    "pos": "noun",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "öncül film; öncesini anlatan yapım",
+        "en": "a film about events before the original",
+        "exampleEn": "The prequel explains his origin.",
+        "exampleTr": "Öncül film onun başlangıcını anlatır."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "sequel"
+    ],
+    "collocations": [],
+    "related": [
+      "sequel"
+    ]
+  },
+  {
+    "id": "w_cameo",
+    "headword": "cameo",
+    "pos": "noun",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "kısa konuk rol",
+        "en": "a brief appearance by a famous person",
+        "exampleEn": "The director made a cameo.",
+        "exampleTr": "Yönetmen kısa bir konuk rolde göründü."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_protagonist",
+    "headword": "protagonist",
+    "pos": "noun",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "baş kahraman; ana karakter",
+        "en": "the main character of a story",
+        "exampleEn": "The protagonist faces a hard choice.",
+        "exampleTr": "Baş kahraman zor bir seçimle yüzleşir."
+      }
+    ],
+    "synonyms": [
+      "hero",
+      "lead"
+    ],
+    "antonyms": [
+      "antagonist"
+    ],
+    "collocations": [],
+    "related": [
+      "antagonist"
+    ]
+  },
+  {
+    "id": "w_antagonist",
+    "headword": "antagonist",
+    "pos": "noun",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "karşıt karakter; kötü adam",
+        "en": "the main opponent in a story",
+        "exampleEn": "The antagonist drives the conflict.",
+        "exampleTr": "Karşıt karakter çatışmayı körükler."
+      }
+    ],
+    "synonyms": [
+      "villain"
+    ],
+    "antonyms": [
+      "protagonist"
+    ],
+    "collocations": [],
+    "related": [
+      "protagonist"
+    ]
+  },
+  {
+    "id": "w_subtitle",
+    "headword": "subtitle",
+    "pos": "noun",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "title",
+    "meanings": [
+      {
+        "tr": "altyazı",
+        "en": "translated text at the bottom of the screen",
+        "exampleEn": "I watch films with English subtitles.",
+        "exampleTr": "Filmleri İngilizce altyazıyla izlerim."
+      }
+    ],
+    "synonyms": [
+      "caption"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_dub",
+    "headword": "dub",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "dublaj yapmak; seslendirmek",
+        "en": "to replace the original voices in another language",
+        "exampleEn": "The series was dubbed into Turkish.",
+        "exampleTr": "Dizi Türkçeye dublajlandı."
+      }
+    ],
+    "synonyms": [
+      "voice over"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_figure_out",
+    "headword": "figure out",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "figure",
+    "meanings": [
+      {
+        "tr": "çözmek; anlamak",
+        "en": "to understand or solve something",
+        "exampleEn": "I can't figure out this problem.",
+        "exampleTr": "Bu problemi çözemiyorum."
+      }
+    ],
+    "synonyms": [
+      "work out",
+      "solve"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_work_out",
+    "headword": "work out",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "work",
+    "meanings": [
+      {
+        "tr": "çözmek; iyi sonuçlanmak",
+        "en": "to solve or to end well",
+        "exampleEn": "Don't worry it'll work out.",
+        "exampleTr": "Merak etme yoluna girer."
+      }
+    ],
+    "synonyms": [
+      "turn out"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_give_up",
+    "headword": "give up",
+    "pos": "verb",
+    "level": "A2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "give",
+    "meanings": [
+      {
+        "tr": "vazgeçmek; pes etmek",
+        "en": "to stop trying",
+        "exampleEn": "Never give up on your goals.",
+        "exampleTr": "Hedeflerinden asla vazgeçme."
+      }
+    ],
+    "synonyms": [
+      "quit"
+    ],
+    "antonyms": [
+      "persevere"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_run_into",
+    "headword": "run into",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "run",
+    "meanings": [
+      {
+        "tr": "tesadüfen karşılaşmak",
+        "en": "to meet by chance",
+        "exampleEn": "I ran into an old friend today.",
+        "exampleTr": "Bugün eski bir arkadaşa rastladım."
+      }
+    ],
+    "synonyms": [
+      "bump into"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_look_forward_to",
+    "headword": "look forward to",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "look",
+    "meanings": [
+      {
+        "tr": "dört gözle beklemek",
+        "en": "to feel excited about a future event",
+        "exampleEn": "I look forward to the weekend.",
+        "exampleTr": "Hafta sonunu dört gözle bekliyorum."
+      }
+    ],
+    "synonyms": [
+      "anticipate"
+    ],
+    "antonyms": [
+      "dread"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_put_off",
+    "headword": "put off",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "idiom",
+    "root": "put",
+    "meanings": [
+      {
+        "tr": "ertelemek",
+        "en": "to postpone something",
+        "exampleEn": "They put off the meeting until Friday.",
+        "exampleTr": "Toplantıyı cumaya ertelediler."
+      }
+    ],
+    "synonyms": [
+      "postpone",
+      "delay"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_come_across",
+    "headword": "come across",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "come",
+    "meanings": [
+      {
+        "tr": "rastlamak; izlenim bırakmak",
+        "en": "to find by chance or to seem",
+        "exampleEn": "I came across an old letter.",
+        "exampleTr": "Eski bir mektuba rastladım."
+      }
+    ],
+    "synonyms": [
+      "stumble upon"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_get_along",
+    "headword": "get along",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "get",
+    "meanings": [
+      {
+        "tr": "iyi geçinmek",
+        "en": "to have a friendly relationship",
+        "exampleEn": "The team gets along well.",
+        "exampleTr": "Ekip iyi geçiniyor."
+      }
+    ],
+    "synonyms": [
+      "click"
+    ],
+    "antonyms": [
+      "clash"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_turn_down",
+    "headword": "turn down",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "idiom",
+    "root": "turn",
+    "meanings": [
+      {
+        "tr": "reddetmek; geri çevirmek",
+        "en": "to refuse an offer",
+        "exampleEn": "She turned down the job.",
+        "exampleTr": "İşi geri çevirdi."
+      }
+    ],
+    "synonyms": [
+      "reject",
+      "decline"
+    ],
+    "antonyms": [
+      "accept"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_bring_up",
+    "headword": "bring up",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "bring",
+    "meanings": [
+      {
+        "tr": "konuyu açmak; gündeme getirmek",
+        "en": "to mention a topic",
+        "exampleEn": "Don't bring up politics at dinner.",
+        "exampleTr": "Yemekte siyaset konusunu açma."
+      }
+    ],
+    "synonyms": [
+      "raise",
+      "mention"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_show_up",
+    "headword": "show up",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "show",
+    "meanings": [
+      {
+        "tr": "çıkagelmek; gelmek",
+        "en": "to arrive or appear",
+        "exampleEn": "He showed up an hour late.",
+        "exampleTr": "Bir saat geç geldi."
+      }
+    ],
+    "synonyms": [
+      "turn up"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_hang_out",
+    "headword": "hang out",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "hang",
+    "meanings": [
+      {
+        "tr": "takılmak; vakit geçirmek",
+        "en": "to spend time relaxing with others",
+        "exampleEn": "We hung out at the mall.",
+        "exampleTr": "Alışveriş merkezinde takıldık."
+      }
+    ],
+    "synonyms": [
+      "chill"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_chill_out",
+    "headword": "chill out",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "chill",
+    "meanings": [
+      {
+        "tr": "sakinleşmek; rahatlamak",
+        "en": "to relax and calm down",
+        "exampleEn": "Just chill out it's fine.",
+        "exampleTr": "Sakin ol her şey yolunda."
+      }
+    ],
+    "synonyms": [
+      "relax"
+    ],
+    "antonyms": [
+      "stress out"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_freak_out",
+    "headword": "freak out",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "freak",
+    "meanings": [
+      {
+        "tr": "çıldırmak; paniğe kapılmak",
+        "en": "to react with strong fear or anger",
+        "exampleEn": "She freaked out over the deadline.",
+        "exampleTr": "Teslim tarihi yüzünden paniğe kapıldı."
+      }
+    ],
+    "synonyms": [
+      "panic"
+    ],
+    "antonyms": [
+      "stay calm"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_mess_up",
+    "headword": "mess up",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "mess",
+    "meanings": [
+      {
+        "tr": "batırmak; eline yüzüne bulaştırmak",
+        "en": "to do something badly",
+        "exampleEn": "I messed up the interview.",
+        "exampleTr": "Mülakatı batırdım."
+      }
+    ],
+    "synonyms": [
+      "botch",
+      "blow it"
+    ],
+    "antonyms": [
+      "nail it"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_catch_up",
+    "headword": "catch up",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "catch",
+    "meanings": [
+      {
+        "tr": "yetişmek; hasret gidermek",
+        "en": "to reach the same level or share news",
+        "exampleEn": "Let's catch up over coffee.",
+        "exampleTr": "Bir kahve eşliğinde hasret giderelim."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "fall behind"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_end_up",
+    "headword": "end up",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "end",
+    "meanings": [
+      {
+        "tr": "sonunda olmak; bir yerde son bulmak",
+        "en": "to reach a final situation",
+        "exampleEn": "We ended up staying home.",
+        "exampleTr": "Sonunda evde kaldık."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_run_out",
+    "headword": "run out",
+    "pos": "verb",
+    "level": "A2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "run",
+    "meanings": [
+      {
+        "tr": "tükenmek; bitmek",
+        "en": "to have no more of something",
+        "exampleEn": "We ran out of milk.",
+        "exampleTr": "Sütümüz bitti."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [
+      "run out of"
+    ],
+    "related": []
+  },
+  {
+    "id": "w_sort_out",
+    "headword": "sort out",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "idiom",
+    "root": "sort",
+    "meanings": [
+      {
+        "tr": "halletmek; düzene koymak",
+        "en": "to resolve or organize",
+        "exampleEn": "I'll sort out the schedule.",
+        "exampleTr": "Programı ben hallederim."
+      }
+    ],
+    "synonyms": [
+      "resolve"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_broke",
+    "headword": "broke",
+    "pos": "adj",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "break",
+    "meanings": [
+      {
+        "tr": "meteliksiz; parasız",
+        "en": "having no money",
+        "exampleEn": "I'm broke until payday.",
+        "exampleTr": "Maaş gününe kadar meteliksizim."
+      }
+    ],
+    "synonyms": [
+      "penniless"
+    ],
+    "antonyms": [
+      "loaded"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_loaded",
+    "headword": "loaded",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "load",
+    "meanings": [
+      {
+        "tr": "paralı; çok zengin",
+        "en": "very rich",
+        "exampleEn": "Their family is loaded.",
+        "exampleTr": "Aileleri çok paralı."
+      }
+    ],
+    "synonyms": [
+      "wealthy"
+    ],
+    "antonyms": [
+      "broke"
+    ],
+    "collocations": [],
+    "related": [
+      "broke"
+    ]
+  },
+  {
+    "id": "w_hangover",
+    "headword": "hangover",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "akşamdan kalmalık",
+        "en": "the sick feeling after drinking too much",
+        "exampleEn": "He had a terrible hangover.",
+        "exampleTr": "Berbat bir akşamdan kalmalığı vardı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_awesome",
+    "headword": "awesome",
+    "pos": "adj",
+    "level": "A2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "harika; müthiş",
+        "en": "extremely good",
+        "exampleEn": "The concert was awesome.",
+        "exampleTr": "Konser harikaydı."
+      }
+    ],
+    "synonyms": [
+      "amazing",
+      "great"
+    ],
+    "antonyms": [
+      "awful"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_awkward",
+    "headword": "awkward",
+    "pos": "adj",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "garip; utandırıcı/beceriksiz",
+        "en": "causing embarrassment or not graceful",
+        "exampleEn": "There was an awkward silence.",
+        "exampleTr": "Garip bir sessizlik oldu."
+      }
+    ],
+    "synonyms": [
+      "clumsy",
+      "uneasy"
+    ],
+    "antonyms": [
+      "smooth"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_cheesy",
+    "headword": "cheesy",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "cheese",
+    "meanings": [
+      {
+        "tr": "bayağı; basmakalıp duygusal",
+        "en": "too sentimental or corny",
+        "exampleEn": "The movie's ending was cheesy.",
+        "exampleTr": "Filmin sonu fazla bayağıydı."
+      }
+    ],
+    "synonyms": [
+      "corny"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_creepy",
+    "headword": "creepy",
+    "pos": "adj",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "creep",
+    "meanings": [
+      {
+        "tr": "ürkütücü; tüyler ürpertici",
+        "en": "causing an uneasy fear",
+        "exampleEn": "That old house is creepy.",
+        "exampleTr": "O eski ev ürkütücü."
+      }
+    ],
+    "synonyms": [
+      "eerie"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_fancy",
+    "headword": "fancy",
+    "pos": "adj",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "şık; lüks",
+        "en": "expensive and stylish",
+        "exampleEn": "We went to a fancy restaurant.",
+        "exampleTr": "Şık bir restorana gittik."
+      }
+    ],
+    "synonyms": [
+      "posh",
+      "upscale"
+    ],
+    "antonyms": [
+      "plain"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_weird",
+    "headword": "weird",
+    "pos": "adj",
+    "level": "A2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "meanings": [
+      {
+        "tr": "tuhaf; acayip",
+        "en": "strange or unusual",
+        "exampleEn": "That's a weird coincidence.",
+        "exampleTr": "Bu tuhaf bir tesadüf."
+      }
+    ],
+    "synonyms": [
+      "strange",
+      "odd"
+    ],
+    "antonyms": [
+      "normal"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_handy",
+    "headword": "handy",
+    "pos": "adj",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "hand",
+    "meanings": [
+      {
+        "tr": "kullanışlı; işe yarar",
+        "en": "useful and convenient",
+        "exampleEn": "This app is really handy.",
+        "exampleTr": "Bu uygulama gerçekten kullanışlı."
+      }
+    ],
+    "synonyms": [
+      "useful",
+      "practical"
+    ],
+    "antonyms": [
+      "useless"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_overrated",
+    "headword": "overrated",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "rate",
+    "meanings": [
+      {
+        "tr": "abartılan; hak ettiğinden çok övülen",
+        "en": "rated more highly than deserved",
+        "exampleEn": "That show is totally overrated.",
+        "exampleTr": "O dizi tamamen abartılıyor."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "underrated"
+    ],
+    "collocations": [],
+    "related": [
+      "underrated"
+    ]
+  },
+  {
+    "id": "w_underrated",
+    "headword": "underrated",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "rate",
+    "meanings": [
+      {
+        "tr": "hak ettiği değeri görmeyen",
+        "en": "not rated as highly as deserved",
+        "exampleEn": "This actor is underrated.",
+        "exampleTr": "Bu oyuncu hak ettiği değeri görmüyor."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "overrated"
+    ],
+    "collocations": [],
+    "related": [
+      "overrated"
+    ]
+  },
+  {
+    "id": "w_hyped",
+    "headword": "hyped",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "hype",
+    "meanings": [
+      {
+        "tr": "abartılı beklenti yaratılan",
+        "en": "heavily promoted and anticipated",
+        "exampleEn": "The game was over-hyped.",
+        "exampleTr": "Oyun fazla abartıldı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_spot_on",
+    "headword": "spot on",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "spot",
+    "meanings": [
+      {
+        "tr": "tam isabet; çok doğru",
+        "en": "exactly right",
+        "exampleEn": "Your guess was spot on.",
+        "exampleTr": "Tahminin tam isabetti."
+      }
+    ],
+    "synonyms": [
+      "accurate"
+    ],
+    "antonyms": [
+      "off"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_rule_of_thumb",
+    "headword": "rule of thumb",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "idiom",
+    "root": "thumb",
+    "meanings": [
+      {
+        "tr": "genel kural; pratik ölçüt",
+        "en": "a general practical principle",
+        "exampleEn": "As a rule of thumb save ten percent.",
+        "exampleTr": "Genel kural olarak yüzde on biriktir."
+      }
+    ],
+    "synonyms": [
+      "guideline"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_back_to_square_one",
+    "headword": "back to square one",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "square",
+    "meanings": [
+      {
+        "tr": "başa dönmek; sıfırdan başlamak",
+        "en": "back to the starting point",
+        "exampleEn": "The plan failed so we're back to square one.",
+        "exampleTr": "Plan tutmadı yani başa döndük."
+      }
+    ],
+    "synonyms": [
+      "start over"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_a_long_shot",
+    "headword": "a long shot",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "shot",
+    "meanings": [
+      {
+        "tr": "zayıf ihtimal; uzak olasılık",
+        "en": "something with little chance of success",
+        "exampleEn": "It's a long shot but worth trying.",
+        "exampleTr": "Zayıf bir ihtimal ama denemeye değer."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "sure thing"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_go_viral",
+    "headword": "go viral",
+    "pos": "verb",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "phrase",
+    "root": "viral",
+    "meanings": [
+      {
+        "tr": "viral olmak; hızla yayılmak",
+        "en": "to spread rapidly online",
+        "exampleEn": "The clip went viral in hours.",
+        "exampleTr": "Klip saatler içinde viral oldu."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_clickbaity",
+    "headword": "clickbaity",
+    "pos": "adj",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "click",
+    "meanings": [
+      {
+        "tr": "tık tuzağı tarzı; aldatıcı başlık gibi",
+        "en": "using misleading sensational style",
+        "exampleEn": "The headline felt clickbaity.",
+        "exampleTr": "Başlık tık tuzağı gibiydi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_binge_eating",
+    "headword": "binge eating",
+    "pos": "noun",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "phrase",
+    "root": "binge",
+    "meanings": [
+      {
+        "tr": "tıkınırcasına yeme",
+        "en": "eating large amounts uncontrollably",
+        "exampleEn": "Stress can trigger binge eating.",
+        "exampleTr": "Stres tıkınırcasına yemeyi tetikleyebilir."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_catch_feelings",
+    "headword": "catch feelings",
+    "pos": "slang",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "feel",
+    "meanings": [
+      {
+        "tr": "(birine) takılmak; duygulanmaya başlamak",
+        "en": "to start developing romantic feelings",
+        "exampleEn": "He caught feelings after a few dates.",
+        "exampleTr": "Birkaç buluşmadan sonra ona takıldı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_ghost",
+    "headword": "ghost",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "meanings": [
+      {
+        "tr": "aniden iletişimi kesip ortadan kaybolmak",
+        "en": "to suddenly stop all contact with someone",
+        "exampleEn": "She ghosted him after one date.",
+        "exampleTr": "Bir buluşmadan sonra onu görmezden gelip kayboldu."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_red_flag",
+    "headword": "red flag",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "flag",
+    "meanings": [
+      {
+        "tr": "tehlike işareti; uyarı niteliğinde belirti",
+        "en": "a warning sign of a problem",
+        "exampleEn": "His jealousy was a red flag.",
+        "exampleTr": "Kıskançlığı bir tehlike işaretiydi."
+      }
+    ],
+    "synonyms": [
+      "warning sign"
+    ],
+    "antonyms": [
+      "green flag"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_green_flag",
+    "headword": "green flag",
+    "pos": "slang",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "flag",
+    "meanings": [
+      {
+        "tr": "olumlu işaret; iyiye alamet özellik",
+        "en": "a sign that something is positive",
+        "exampleEn": "Kindness is a green flag.",
+        "exampleTr": "Nezaket olumlu bir işarettir."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "red flag"
+    ],
+    "collocations": [],
+    "related": [
+      "red flag"
+    ]
+  },
+  {
+    "id": "w_sugarcoat",
+    "headword": "sugarcoat",
+    "pos": "verb",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "word",
+    "root": "sugar",
+    "meanings": [
+      {
+        "tr": "yumuşatarak söylemek; tatlandırıp gerçeği örtmek",
+        "en": "to make something seem better than it is",
+        "exampleEn": "Don't sugarcoat the bad news.",
+        "exampleTr": "Kötü haberi yumuşatarak söyleme."
+      }
+    ],
+    "synonyms": [
+      "gloss over"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_blow_it",
+    "headword": "blow it",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "slang",
+    "root": "blow",
+    "meanings": [
+      {
+        "tr": "fırsatı kaçırmak; eline yüzüne bulaştırmak",
+        "en": "to fail or waste a chance",
+        "exampleEn": "Don't blow it this time.",
+        "exampleTr": "Bu sefer fırsatı kaçırma."
+      }
+    ],
+    "synonyms": [
+      "mess up"
+    ],
+    "antonyms": [
+      "nail it"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_chip_in",
+    "headword": "chip in",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "chip",
+    "meanings": [
+      {
+        "tr": "katkıda bulunmak; üzerine düşeni vermek",
+        "en": "to contribute money or help",
+        "exampleEn": "Everyone chipped in for the gift.",
+        "exampleTr": "Herkes hediye için katkıda bulundu."
+      }
+    ],
+    "synonyms": [
+      "pitch in"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_wrap_one_s_head_around",
+    "headword": "wrap one's head around",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "head",
+    "meanings": [
+      {
+        "tr": "kafasında oturtmak; kavramak",
+        "en": "to manage to understand something hard",
+        "exampleEn": "I can't wrap my head around this rule.",
+        "exampleTr": "Bu kuralı bir türlü kavrayamıyorum."
+      }
+    ],
+    "synonyms": [
+      "grasp"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_take_it_with_a_pinch_of_salt",
+    "headword": "take it with a pinch of salt",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "salt",
+    "meanings": [
+      {
+        "tr": "ihtiyatla karşılamak; tam güvenmemek",
+        "en": "to not fully believe something",
+        "exampleEn": "Take online reviews with a pinch of salt.",
+        "exampleTr": "İnternet yorumlarına ihtiyatla yaklaş."
+      }
+    ],
+    "synonyms": [
+      "be skeptical"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_the_bottom_line",
+    "headword": "the bottom line",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "idiom",
+    "root": "line",
+    "meanings": [
+      {
+        "tr": "sonuç olarak; en önemli nokta",
+        "en": "the most important point",
+        "exampleEn": "The bottom line is we need more time.",
+        "exampleTr": "Sonuç olarak daha çok zamana ihtiyacımız var."
+      }
+    ],
+    "synonyms": [
+      "key point"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_food_for_thought",
+    "headword": "food for thought",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "food",
+    "meanings": [
+      {
+        "tr": "üzerinde düşünülecek şey",
+        "en": "something worth thinking about",
+        "exampleEn": "Her question gave me food for thought.",
+        "exampleTr": "Sorusu bana düşünecek bir şey verdi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_a_game_changer",
+    "headword": "a game changer",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "slang",
+    "root": "game",
+    "meanings": [
+      {
+        "tr": "oyunu değiştiren şey",
+        "en": "something that changes everything",
+        "exampleEn": "This tool is a real game changer.",
+        "exampleTr": "Bu araç gerçek bir oyun değiştirici."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_walk_on_eggshells",
+    "headword": "walk on eggshells",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "egg",
+    "meanings": [
+      {
+        "tr": "çok dikkatli davranmak; tedirgin biçimde idare etmek",
+        "en": "to be very careful not to upset someone",
+        "exampleEn": "We walk on eggshells around the boss.",
+        "exampleTr": "Patronun yanında çok dikkatli davranıyoruz."
+      }
+    ],
+    "synonyms": [
+      "tread carefully"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_on_cloud_nine",
+    "headword": "on cloud nine",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "cloud",
+    "meanings": [
+      {
+        "tr": "çok mutlu; bulutların üstünde",
+        "en": "extremely happy",
+        "exampleEn": "She was on cloud nine after the news.",
+        "exampleTr": "Haberden sonra çok mutluydu."
+      }
+    ],
+    "synonyms": [
+      "overjoyed"
+    ],
+    "antonyms": [
+      "down"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_down_to_earth",
+    "headword": "down to earth",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "earth",
+    "meanings": [
+      {
+        "tr": "ayağı yere basan; mütevazı ve gerçekçi",
+        "en": "practical and modest",
+        "exampleEn": "He's famous but down to earth.",
+        "exampleTr": "Ünlü ama ayağı yere basıyor."
+      }
+    ],
+    "synonyms": [
+      "grounded"
+    ],
+    "antonyms": [
+      "arrogant"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_hit_it_off",
+    "headword": "hit it off",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "hit",
+    "meanings": [
+      {
+        "tr": "hemen kaynaşmak; çabuk anlaşmak",
+        "en": "to like each other immediately",
+        "exampleEn": "We hit it off right away.",
+        "exampleTr": "Hemen kaynaştık."
+      }
+    ],
+    "synonyms": [
+      "click"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_catch_someone_off_guard",
+    "headword": "catch someone off guard",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "guard",
+    "meanings": [
+      {
+        "tr": "gafil avlamak; hazırlıksız yakalamak",
+        "en": "to surprise someone unprepared",
+        "exampleEn": "The question caught me off guard.",
+        "exampleTr": "Soru beni gafil avladı."
+      }
+    ],
+    "synonyms": [
+      "blindside"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_keep_an_eye_on",
+    "headword": "keep an eye on",
+    "pos": "idiom",
+    "level": "B1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "eye",
+    "meanings": [
+      {
+        "tr": "göz kulak olmak; takip etmek",
+        "en": "to watch carefully",
+        "exampleEn": "Keep an eye on the kids.",
+        "exampleTr": "Çocuklara göz kulak ol."
+      }
+    ],
+    "synonyms": [
+      "watch"
+    ],
+    "antonyms": [
+      "ignore"
+    ],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_get_the_hang_of",
+    "headword": "get the hang of",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "hang",
+    "meanings": [
+      {
+        "tr": "el alışkanlığı kazanmak; ustalaşmak",
+        "en": "to learn how to do something",
+        "exampleEn": "You'll get the hang of it soon.",
+        "exampleTr": "Yakında alışırsın."
+      }
+    ],
+    "synonyms": [
+      "master"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_call_the_shots",
+    "headword": "call the shots",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "idiom",
+    "root": "shot",
+    "meanings": [
+      {
+        "tr": "kararları vermek; sözü geçmek",
+        "en": "to be in control",
+        "exampleEn": "The new manager calls the shots now.",
+        "exampleTr": "Kararları artık yeni müdür veriyor."
+      }
+    ],
+    "synonyms": [
+      "be in charge"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_in_the_long_run",
+    "headword": "in the long run",
+    "pos": "idiom",
+    "level": "B2",
+    "domains": [
+      "communication",
+      "business"
+    ],
+    "type": "idiom",
+    "root": "run",
+    "meanings": [
+      {
+        "tr": "uzun vadede",
+        "en": "over a long period",
+        "exampleEn": "It pays off in the long run.",
+        "exampleTr": "Uzun vadede işe yarar."
+      }
+    ],
+    "synonyms": [
+      "eventually"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
+    "id": "w_jump_on_the_bandwagon",
+    "headword": "jump on the bandwagon",
+    "pos": "idiom",
+    "level": "C1",
+    "domains": [
+      "communication",
+      "general"
+    ],
+    "type": "idiom",
+    "root": "wagon",
+    "meanings": [
+      {
+        "tr": "modaya uymak; popüler akıma katılmak",
+        "en": "to join a popular trend",
+        "exampleEn": "Brands jumped on the bandwagon.",
+        "exampleTr": "Markalar popüler akıma katıldı."
+      }
+    ],
+    "synonyms": [
+      "follow the trend"
+    ],
+    "antonyms": [],
+    "collocations": [],
+    "related": []
+  },
+  {
     "id": "w_liquidity",
     "headword": "liquidity",
     "pos": "noun",

@@ -73,6 +73,7 @@ const OUTPUT_SCHEMA = {
   properties: {
     tr: { type: 'string' },
     en: { type: 'string' },
+    pronunciation: { type: 'string' },
     exampleEn: { type: 'string' },
     exampleTr: { type: 'string' },
     synonyms: { type: 'array', items: { type: 'string' } },
@@ -80,14 +81,15 @@ const OUTPUT_SCHEMA = {
     domains: { type: 'array', items: { type: 'string', enum: DOMAINS } },
     confidence: { type: 'string', enum: ['high', 'medium', 'low'] },
   },
-  required: ['tr', 'en', 'exampleEn', 'exampleTr', 'synonyms', 'antonyms', 'domains', 'confidence'],
+  required: ['tr', 'en', 'pronunciation', 'exampleEn', 'exampleTr', 'synonyms', 'antonyms', 'domains', 'confidence'],
 };
 
 const SYSTEM_PROMPT =
   'You are a careful English–Turkish lexicographer producing flashcard data for ' +
   'a CEFR-leveled vocabulary app focused on business, economics and communication. ' +
   'For the given English headword, produce: an accurate Turkish meaning (tr), a short ' +
-  'English definition (en), one natural English example sentence that USES the headword ' +
+  'English definition (en), the IPA pronunciation (pronunciation, e.g. /ˈbʌdʒɪt/), ' +
+  'one natural English example sentence that USES the headword ' +
   '(exampleEn), its Turkish translation (exampleTr), a few real synonyms and antonyms ' +
   '(English; empty arrays if none), and the relevant domains. Translations must be ' +
   'accurate and idiomatic. If you are not confident the data is correct (rare/ambiguous ' +
@@ -145,6 +147,7 @@ function validateAndBuild(candidate, raw) {
     domains,
     type: 'word',
     source: 'cefrj+llm', // izlenebilirlik
+    pronunciation: (raw.pronunciation || '').trim() || undefined,
     meanings: [{ tr, en: (raw.en || '').trim(), exampleEn, exampleTr }],
     synonyms: Array.isArray(raw.synonyms) ? raw.synonyms : [],
     antonyms: Array.isArray(raw.antonyms) ? raw.antonyms : [],

@@ -134,18 +134,31 @@ function rowsToEntries(rows) {
   return Array.from(byHeadword.values());
 }
 
-function loadCuratedIds() {
-  // generated dışındaki kaynak dosyalardaki id'leri toplayıp çakışmayı önler.
-  const ids = new Set();
-  const files = ['words.business.js', 'words.economics.js', 'words.communication.js', 'words.general.js', 'idioms.js'];
-  for (const f of files) {
+const CURATED_FILES = [
+  'words.business.js', 'words.economics.js', 'words.communication.js', 'words.general.js', 'idioms.js',
+];
+
+function loadCuratedField(re) {
+  const out = new Set();
+  for (const f of CURATED_FILES) {
     const p = path.join(ROOT, 'src', 'data', f);
     if (!fs.existsSync(p)) continue;
     const content = fs.readFileSync(p, 'utf8');
-    const matches = content.matchAll(/id:\s*'([^']+)'/g);
-    for (const m of matches) ids.add(m[1]);
+    for (const m of content.matchAll(re)) out.add(m[1]);
   }
-  return ids;
+  return out;
+}
+
+function loadCuratedIds() {
+  // generated dışındaki kaynak dosyalardaki id'leri toplayıp çakışmayı önler.
+  return loadCuratedField(/id:\s*'([^']+)'/g);
+}
+
+function loadCuratedHeadwords() {
+  // Aynı kelimenin curated + generated'da iki kez görünmesini önlemek için başlıklar.
+  const out = new Set();
+  for (const h of loadCuratedField(/headword:\s*'([^']+)'/g)) out.add(h.toLowerCase());
+  return out;
 }
 
 function main() {
@@ -184,16 +197,20 @@ function main() {
     all = all.concat(entries);
   }
 
-  // Curated ile çakışan ve kendi içinde tekrar eden id'leri ele.
+  // Curated ile çakışan ve kendi içinde tekrar eden id/başlıkları ele.
+  const curatedHeadwords = loadCuratedHeadwords();
   const seen = new Set();
+  const seenHw = new Set(curatedHeadwords);
   const result = [];
   let skipped = 0;
   for (const e of all) {
-    if (curatedIds.has(e.id) || seen.has(e.id)) {
+    const hw = (e.headword || '').toLowerCase();
+    if (curatedIds.has(e.id) || seen.has(e.id) || seenHw.has(hw)) {
       skipped++;
       continue;
     }
     seen.add(e.id);
+    seenHw.add(hw);
     result.push(e);
   }
 
