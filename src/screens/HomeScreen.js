@@ -1,19 +1,36 @@
 import React, { useState, useMemo } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
-import { searchWords, STATS } from '../data';
+import { searchWords, WORDS } from '../data';
 import { useProgress } from '../state/ProgressContext';
 import { LevelBadge, Badge } from '../components/common';
 import { colors, STATUS_META } from '../theme';
 
 export default function HomeScreen({ navigation }) {
-  const { counts, byId } = useProgress();
+  const { byId } = useProgress();
   const [query, setQuery] = useState('');
   // Üstteki istatistik hücreleriyle alttaki listeyi süzme.
   const [statusFilter, setStatusFilter] = useState(null); // null | 'unknown' | 'passive' | 'active'
 
+  // İşaretlenmemiş tüm kelimeler varsayılan olarak "Bilmiyorum" sayılır.
+  const stat = useMemo(() => {
+    let passive = 0;
+    let active = 0;
+    for (const w of WORDS) {
+      const s = byId[w.id]?.status;
+      if (s === 'passive') passive++;
+      else if (s === 'active') active++;
+    }
+    return { total: WORDS.length, passive, active, unknown: WORDS.length - passive - active };
+  }, [byId]);
+
   const results = useMemo(() => {
     let base = searchWords(query);
-    if (statusFilter) base = base.filter((w) => byId[w.id]?.status === statusFilter);
+    if (statusFilter === 'unknown') {
+      // İşaretsiz + açıkça bilmiyorum işaretli olanların hepsi
+      base = base.filter((w) => (byId[w.id]?.status || 'unknown') === 'unknown');
+    } else if (statusFilter) {
+      base = base.filter((w) => byId[w.id]?.status === statusFilter);
+    }
     return base.slice(0, 80);
   }, [query, statusFilter, byId]);
 
@@ -35,28 +52,28 @@ export default function HomeScreen({ navigation }) {
             <View style={styles.statsRow}>
               <Stat
                 label="Toplam kelime"
-                value={STATS.total}
+                value={stat.total}
                 color={colors.primary}
                 selected={!statusFilter}
                 onPress={() => setStatusFilter(null)}
               />
               <Stat
                 label="Bilmiyorum"
-                value={counts.unknown}
+                value={stat.unknown}
                 color={STATUS_META.unknown.color}
                 selected={statusFilter === 'unknown'}
                 onPress={() => toggle('unknown')}
               />
               <Stat
                 label="Pasif"
-                value={counts.passive}
+                value={stat.passive}
                 color={STATUS_META.passive.color}
                 selected={statusFilter === 'passive'}
                 onPress={() => toggle('passive')}
               />
               <Stat
                 label="Aktif"
-                value={counts.active}
+                value={stat.active}
                 color={STATUS_META.active.color}
                 selected={statusFilter === 'active'}
                 onPress={() => toggle('active')}

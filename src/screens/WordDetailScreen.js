@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { getWord } from '../data';
 import { useProgress } from '../state/ProgressContext';
+import { STATUS } from '../logic/srs';
 import { StatusPicker, LevelBadge, Badge } from '../components/common';
 import { colors } from '../theme';
 import { TYPES } from '../data/schema';
@@ -19,7 +20,8 @@ export default function WordDetailScreen({ route, navigation }) {
     );
   }
 
-  const status = getProgress(word.id)?.status;
+  // İşaretsiz kelimeler varsayılan olarak "Bilmiyorum" kabul edilir.
+  const status = getProgress(word.id)?.status || STATUS.UNKNOWN;
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>

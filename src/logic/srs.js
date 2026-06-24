@@ -13,7 +13,7 @@ const STATUS_WEIGHT = {
   [STATUS.UNKNOWN]: 10,
   [STATUS.PASSIVE]: 4,
   [STATUS.ACTIVE]: 0.4,
-  unseen: 7, // henüz kategorize edilmemiş
+  unseen: 10, // işaretsiz kelimeler varsayılan olarak "bilmiyorum" sayılır
 };
 
 // Bir kelimenin seçilme ağırlığını hesaplar.

@@ -95,7 +95,8 @@ export default function FlashcardScreen({ navigation }) {
     );
   }
 
-  const status = getProgress(word.id)?.status;
+  // İşaretsiz kelimeler varsayılan olarak "Bilmiyorum" kabul edilir.
+  const status = getProgress(word.id)?.status || STATUS.UNKNOWN;
 
   const rotate = position.x.interpolate({
     inputRange: [-width, 0, width],
