@@ -6,9 +6,18 @@ import { LevelBadge, Badge } from '../components/common';
 import { colors, STATUS_META } from '../theme';
 
 export default function HomeScreen({ navigation }) {
-  const { counts } = useProgress();
+  const { counts, byId } = useProgress();
   const [query, setQuery] = useState('');
-  const results = useMemo(() => searchWords(query).slice(0, 60), [query]);
+  // Üstteki istatistik hücreleriyle alttaki listeyi süzme.
+  const [statusFilter, setStatusFilter] = useState(null); // null | 'unknown' | 'passive' | 'active'
+
+  const results = useMemo(() => {
+    let base = searchWords(query);
+    if (statusFilter) base = base.filter((w) => byId[w.id]?.status === statusFilter);
+    return base.slice(0, 80);
+  }, [query, statusFilter, byId]);
+
+  const toggle = (key) => setStatusFilter((f) => (f === key ? null : key));
 
   return (
     <View style={styles.container}>
@@ -24,10 +33,34 @@ export default function HomeScreen({ navigation }) {
             </Text>
 
             <View style={styles.statsRow}>
-              <Stat label="Toplam kelime" value={STATS.total} color={colors.primary} />
-              <Stat label="Bilmiyorum" value={counts.unknown} color={STATUS_META.unknown.color} />
-              <Stat label="Pasif" value={counts.passive} color={STATUS_META.passive.color} />
-              <Stat label="Aktif" value={counts.active} color={STATUS_META.active.color} />
+              <Stat
+                label="Toplam kelime"
+                value={STATS.total}
+                color={colors.primary}
+                selected={!statusFilter}
+                onPress={() => setStatusFilter(null)}
+              />
+              <Stat
+                label="Bilmiyorum"
+                value={counts.unknown}
+                color={STATUS_META.unknown.color}
+                selected={statusFilter === 'unknown'}
+                onPress={() => toggle('unknown')}
+              />
+              <Stat
+                label="Pasif"
+                value={counts.passive}
+                color={STATUS_META.passive.color}
+                selected={statusFilter === 'passive'}
+                onPress={() => toggle('passive')}
+              />
+              <Stat
+                label="Aktif"
+                value={counts.active}
+                color={STATUS_META.active.color}
+                selected={statusFilter === 'active'}
+                onPress={() => toggle('active')}
+              />
             </View>
 
             <View style={styles.quickRow}>
@@ -46,7 +79,12 @@ export default function HomeScreen({ navigation }) {
               autoCorrect={false}
             />
             <Text style={styles.resultsLabel}>
-              {query ? `${results.length} sonuç` : 'Tüm kelimeler'}
+              {statusFilter
+                ? `${STATUS_META[statusFilter].label}: ${results.length} kelime` +
+                  (results.length >= 80 ? ' (ilk 80)' : '')
+                : query
+                ? `${results.length} sonuç`
+                : 'Tüm kelimeler — bir kategoriye dokunup süzebilirsin'}
             </Text>
           </View>
         }
@@ -66,18 +104,29 @@ export default function HomeScreen({ navigation }) {
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={
+          <Text style={styles.empty}>
+            {statusFilter
+              ? `Bu kategoride henüz kelime yok. Kartlar'da kelimeleri "${STATUS_META[statusFilter].label}" olarak işaretledikçe burada görünür.`
+              : 'Sonuç yok.'}
+          </Text>
+        }
         contentContainerStyle={{ padding: 16, paddingBottom: 32 }}
       />
     </View>
   );
 }
 
-function Stat({ label, value, color }) {
+function Stat({ label, value, color, selected, onPress }) {
   return (
-    <View style={styles.stat}>
+    <TouchableOpacity
+      style={[styles.stat, selected && { borderColor: color, backgroundColor: color + '22' }]}
+      onPress={onPress}
+      activeOpacity={0.7}
+    >
       <Text style={[styles.statValue, { color }]}>{value}</Text>
       <Text style={styles.statLabel}>{label}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -124,6 +173,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   resultsLabel: { color: colors.textMuted, marginTop: 12, marginBottom: 6, fontSize: 12 },
+  empty: { color: colors.textMuted, fontSize: 13, lineHeight: 20, paddingVertical: 12 },
   wordRow: {
     flexDirection: 'row',
     alignItems: 'center',
