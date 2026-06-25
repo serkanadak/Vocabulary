@@ -52,16 +52,18 @@ export default function GraphScreen({ route, navigation }) {
             const p = positions[n.id];
             if (!p) return null;
             const isCenter = n.relation === 'center';
+            const onTap = () => { if (!n.isLabel) setCenterId(n.id); };
             return (
               <React.Fragment key={n.id}>
                 <Circle
                   cx={p.x}
                   cy={p.y}
                   r={isCenter ? 26 : 20}
-                  fill={isCenter ? colors.primary : colors.surfaceAlt}
+                  fill={isCenter ? colors.primary : n.isLabel ? colors.surface : colors.surfaceAlt}
                   stroke={RELATION_COLORS[n.relation] || colors.border}
                   strokeWidth={2.5}
-                  onPress={() => setCenterId(n.id)}
+                  strokeDasharray={n.isLabel ? '3,3' : undefined}
+                  onPress={onTap}
                 />
                 <SvgText
                   x={p.x}
@@ -70,7 +72,7 @@ export default function GraphScreen({ route, navigation }) {
                   fontSize="11"
                   fontWeight="600"
                   textAnchor="middle"
-                  onPress={() => setCenterId(n.id)}
+                  onPress={onTap}
                 >
                   {clip(n.headword)}
                 </SvgText>
@@ -105,10 +107,17 @@ export default function GraphScreen({ route, navigation }) {
         {graph.nodes
           .filter((n) => n.relation !== 'center')
           .map((n) => (
-            <TouchableOpacity key={n.id} style={styles.relRow} onPress={() => setCenterId(n.id)}>
+            <TouchableOpacity
+              key={n.id}
+              style={styles.relRow}
+              onPress={() => { if (!n.isLabel) setCenterId(n.id); }}
+              activeOpacity={n.isLabel ? 1 : 0.5}
+            >
               <View style={[styles.dot, { backgroundColor: RELATION_COLORS[n.relation] }]} />
               <Text style={styles.relWord}>{n.headword}</Text>
-              <Text style={styles.relKind}>{RELATION_LABELS[n.relation]}</Text>
+              <Text style={styles.relKind}>
+                {RELATION_LABELS[n.relation]}{n.isLabel ? ' (kart yok)' : ''}
+              </Text>
             </TouchableOpacity>
           ))}
         {graph.nodes.length <= 1 && (

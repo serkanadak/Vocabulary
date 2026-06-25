@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
-import { filterWordlist, WORDLIST_STATS, WORDLIST_LICENSE } from '../data';
+import { filterWordlist, WORDLIST, WORDLIST_STATS, WORDLIST_LICENSE } from '../data';
 import { useProgress } from '../state/ProgressContext';
 import { STATUS } from '../logic/srs';
 import { colors, STATUS_META, LEVEL_COLORS } from '../theme';
@@ -33,6 +33,18 @@ export default function WordlistScreen({ navigation }) {
     }
     return d;
   }, [levels, query, statusFilter, byId]);
+
+  // Durum adetleri (işaretsiz = bilmiyorum).
+  const statusCounts = useMemo(() => {
+    let passive = 0;
+    let active = 0;
+    for (const w of WORDLIST) {
+      const s = byId[w.id]?.status;
+      if (s === 'passive') passive++;
+      else if (s === 'active') active++;
+    }
+    return { unknown: WORDLIST.length - passive - active, passive, active };
+  }, [byId]);
 
   const toggleLevel = (lvl) =>
     setLevels((prev) => (prev.includes(lvl) ? prev.filter((l) => l !== lvl) : [...prev, lvl]));
@@ -90,7 +102,9 @@ export default function WordlistScreen({ navigation }) {
                 style={[styles.chip, on && { backgroundColor: c, borderColor: c }]}
                 onPress={() => setStatusFilter((f) => (f === s.key ? null : s.key))}
               >
-                <Text style={[styles.chipText, on && { color: '#0f172a' }]}>{s.label}</Text>
+                <Text style={[styles.chipText, on && { color: '#0f172a' }]}>
+                  {s.label} ({(statusCounts[s.key] || 0).toLocaleString('tr-TR')})
+                </Text>
               </TouchableOpacity>
             );
           })}

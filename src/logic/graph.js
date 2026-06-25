@@ -32,17 +32,28 @@ export function buildNeighborhood(wordId) {
     }
   };
 
+  // Kartı olmayan eş/zıt anlamları da ağda etiket düğümü olarak göster.
+  const addLeaf = (label, kind) => {
+    const id = `lbl_${kind}_${label.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`;
+    if (!nodes.has(id)) nodes.set(id, { id, headword: label, relation: kind, isLabel: true });
+    if (!edges.some((e) => e.to === id && e.kind === kind)) {
+      edges.push({ from: center.id, to: id, kind });
+    }
+  };
+
   // Açık ilişkiler
   (center.related || []).forEach((id) => addEdge(id, 'related'));
-  // Eş anlamlılar
+  // Eş anlamlılar — kart varsa düğüm, yoksa etiket
   (center.synonyms || []).forEach((s) => {
     const id = resolveToId(s);
     if (id) addEdge(id, 'synonym');
+    else addLeaf(s, 'synonym');
   });
-  // Zıt anlamlılar
+  // Zıt anlamlılar — kart varsa düğüm, yoksa etiket
   (center.antonyms || []).forEach((a) => {
     const id = resolveToId(a);
     if (id) addEdge(id, 'antonym');
+    else addLeaf(a, 'antonym');
   });
   // Aynı kök
   if (center.root) {
