@@ -127139,5 +127139,9094 @@ export default [
       "competition",
       "conflict"
     ]
+  },
+  {
+    "id": "w_cooperative",
+    "headword": "cooperative",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kəʊˈɒpərətɪv/",
+    "meanings": [
+      {
+        "tr": "işbirlikçi, yardımsever",
+        "en": "willing to help and work with others",
+        "exampleEn": "The students were cooperative and finished the project quickly.",
+        "exampleTr": "Öğrenciler işbirlikçiydi ve projeyi çabucak bitirdiler."
+      }
+    ],
+    "synonyms": [
+      "helpful",
+      "collaborative"
+    ],
+    "antonyms": [
+      "uncooperative"
+    ]
+  },
+  {
+    "id": "w_cope",
+    "headword": "cope",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kəʊp/",
+    "meanings": [
+      {
+        "tr": "başa çıkmak, üstesinden gelmek",
+        "en": "to deal successfully with a difficult situation",
+        "exampleEn": "She found it hard to cope with the stress of her new job.",
+        "exampleTr": "Yeni işinin stresiyle başa çıkmakta zorlandı."
+      }
+    ],
+    "synonyms": [
+      "manage",
+      "handle"
+    ],
+    "antonyms": [
+      "surrender"
+    ]
+  },
+  {
+    "id": "w_copper",
+    "headword": "copper",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɒpə/",
+    "meanings": [
+      {
+        "tr": "bakır",
+        "en": "a reddish-brown metal",
+        "exampleEn": "The old pipes were made of copper.",
+        "exampleTr": "Eski borular bakırdan yapılmıştı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_coral",
+    "headword": "coral",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɒrəl/",
+    "meanings": [
+      {
+        "tr": "mercan",
+        "en": "a hard substance formed by sea creatures in warm waters",
+        "exampleEn": "Divers admired the colorful coral beneath the waves.",
+        "exampleTr": "Dalgıçlar dalgaların altındaki renkli mercanlara hayran kaldı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_core",
+    "headword": "core",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kɔː/",
+    "meanings": [
+      {
+        "tr": "çekirdek, öz, merkez",
+        "en": "the central or most important part of something",
+        "exampleEn": "Honesty is at the core of our company's values.",
+        "exampleTr": "Dürüstlük, şirketimizin değerlerinin özünde yer alır."
+      }
+    ],
+    "synonyms": [
+      "center",
+      "heart"
+    ],
+    "antonyms": [
+      "surface",
+      "periphery"
+    ]
+  },
+  {
+    "id": "w_cornerstone",
+    "headword": "cornerstone",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɔːnəstəʊn/",
+    "meanings": [
+      {
+        "tr": "temel taşı, köşe taşı",
+        "en": "the most important part on which everything else depends",
+        "exampleEn": "Trust is the cornerstone of a good relationship.",
+        "exampleTr": "Güven, iyi bir ilişkinin temel taşıdır."
+      }
+    ],
+    "synonyms": [
+      "foundation",
+      "basis"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_cornet",
+    "headword": "cornet",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɔːnɪt/",
+    "meanings": [
+      {
+        "tr": "kornet (bir tür borazan)",
+        "en": "a small brass musical instrument like a trumpet",
+        "exampleEn": "He played the cornet in the school band.",
+        "exampleTr": "Okul orkestrasında kornet çaldı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_corona",
+    "headword": "corona",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kəˈrəʊnə/",
+    "meanings": [
+      {
+        "tr": "hale, korona (taç şeklinde ışık halkası)",
+        "en": "a ring of light seen around the sun or moon",
+        "exampleEn": "During the eclipse, the sun's corona was clearly visible.",
+        "exampleTr": "Tutulma sırasında güneşin koronası açıkça görülüyordu."
+      }
+    ],
+    "synonyms": [
+      "halo",
+      "aureole"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_corporal",
+    "headword": "corporal",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɔːpərəl/",
+    "meanings": [
+      {
+        "tr": "bedensel, fiziksel",
+        "en": "relating to the human body",
+        "exampleEn": "Corporal punishment is banned in most schools.",
+        "exampleTr": "Bedensel ceza çoğu okulda yasaklanmıştır."
+      }
+    ],
+    "synonyms": [
+      "bodily",
+      "physical"
+    ],
+    "antonyms": [
+      "spiritual",
+      "mental"
+    ]
+  },
+  {
+    "id": "w_corporate",
+    "headword": "corporate",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɔːpərət/",
+    "meanings": [
+      {
+        "tr": "kurumsal, şirkete ait",
+        "en": "relating to a large company or business",
+        "exampleEn": "The company has a strong corporate culture.",
+        "exampleTr": "Şirketin güçlü bir kurumsal kültürü var."
+      }
+    ],
+    "synonyms": [
+      "business",
+      "commercial"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_corporation",
+    "headword": "corporation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌkɔːpəˈreɪʃən/",
+    "meanings": [
+      {
+        "tr": "şirket, kurum",
+        "en": "a large business or company",
+        "exampleEn": "She works for a multinational corporation.",
+        "exampleTr": "Çok uluslu bir şirkette çalışıyor."
+      }
+    ],
+    "synonyms": [
+      "company",
+      "firm"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_correctness",
+    "headword": "correctness",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kəˈrektnəs/",
+    "meanings": [
+      {
+        "tr": "doğruluk, isabetlilik",
+        "en": "the quality of being right or accurate",
+        "exampleEn": "The teacher checked the correctness of every answer.",
+        "exampleTr": "Öğretmen her cevabın doğruluğunu kontrol etti."
+      }
+    ],
+    "synonyms": [
+      "accuracy",
+      "precision"
+    ],
+    "antonyms": [
+      "incorrectness",
+      "inaccuracy"
+    ]
+  },
+  {
+    "id": "w_correspond",
+    "headword": "correspond",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌkɒrɪˈspɒnd/",
+    "meanings": [
+      {
+        "tr": "uymak, denk gelmek, yazışmak",
+        "en": "to match or be similar to something",
+        "exampleEn": "The numbers on the map correspond to places in the list.",
+        "exampleTr": "Haritadaki sayılar listedeki yerlere denk gelir."
+      }
+    ],
+    "synonyms": [
+      "match",
+      "agree"
+    ],
+    "antonyms": [
+      "differ"
+    ]
+  },
+  {
+    "id": "w_correspondent",
+    "headword": "correspondent",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌkɒrɪˈspɒndənt/",
+    "meanings": [
+      {
+        "tr": "muhabir",
+        "en": "a journalist who reports from a particular place",
+        "exampleEn": "She is a foreign correspondent for a major newspaper.",
+        "exampleTr": "Büyük bir gazetenin dış muhabiridir."
+      }
+    ],
+    "synonyms": [
+      "reporter",
+      "journalist"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_corresponding",
+    "headword": "corresponding",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌkɒrɪˈspɒndɪŋ/",
+    "meanings": [
+      {
+        "tr": "karşılık gelen, ilgili",
+        "en": "matching or related to something else",
+        "exampleEn": "Sales rose, and there was a corresponding increase in profit.",
+        "exampleTr": "Satışlar arttı ve kârda buna karşılık gelen bir artış oldu."
+      }
+    ],
+    "synonyms": [
+      "matching",
+      "equivalent"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_corridor",
+    "headword": "corridor",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɒrɪdɔː/",
+    "meanings": [
+      {
+        "tr": "koridor",
+        "en": "a long passage in a building with rooms on each side",
+        "exampleEn": "Her office is at the end of the corridor.",
+        "exampleTr": "Ofisi koridorun sonundadır."
+      }
+    ],
+    "synonyms": [
+      "hallway",
+      "passage"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_corrupt",
+    "headword": "corrupt",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kəˈrʌpt/",
+    "meanings": [
+      {
+        "tr": "yozlaşmış, ahlaksız, rüşvetçi",
+        "en": "dishonest and willing to use power for personal gain",
+        "exampleEn": "The corrupt official accepted bribes from companies.",
+        "exampleTr": "Yozlaşmış yetkili şirketlerden rüşvet aldı."
+      }
+    ],
+    "synonyms": [
+      "dishonest",
+      "crooked"
+    ],
+    "antonyms": [
+      "honest",
+      "upright"
+    ]
+  },
+  {
+    "id": "w_corruption",
+    "headword": "corruption",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kəˈrʌpʃən/",
+    "meanings": [
+      {
+        "tr": "yolsuzluk, yozlaşma",
+        "en": "dishonest behavior by people in power",
+        "exampleEn": "The government promised to fight corruption.",
+        "exampleTr": "Hükümet yolsuzlukla mücadele edeceğine söz verdi."
+      }
+    ],
+    "synonyms": [
+      "dishonesty",
+      "fraud"
+    ],
+    "antonyms": [
+      "honesty",
+      "integrity"
+    ]
+  },
+  {
+    "id": "w_costly",
+    "headword": "costly",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɒstli/",
+    "meanings": [
+      {
+        "tr": "pahalı, masraflı",
+        "en": "expensive or causing a lot of damage",
+        "exampleEn": "Repairing the old car proved to be costly.",
+        "exampleTr": "Eski arabayı tamir etmek pahalıya mal oldu."
+      }
+    ],
+    "synonyms": [
+      "expensive",
+      "pricey"
+    ],
+    "antonyms": [
+      "cheap",
+      "inexpensive"
+    ]
+  },
+  {
+    "id": "w_costume",
+    "headword": "costume",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɒstjuːm/",
+    "meanings": [
+      {
+        "tr": "kostüm, kıyafet",
+        "en": "a set of clothes worn for a special occasion or play",
+        "exampleEn": "She wore a witch costume to the party.",
+        "exampleTr": "Partiye cadı kostümü giydi."
+      }
+    ],
+    "synonyms": [
+      "outfit",
+      "attire"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_cottage",
+    "headword": "cottage",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɒtɪdʒ/",
+    "meanings": [
+      {
+        "tr": "kulübe, küçük kır evi",
+        "en": "a small house, usually in the countryside",
+        "exampleEn": "They spent the weekend in a cottage by the lake.",
+        "exampleTr": "Hafta sonunu göl kenarındaki bir kulübede geçirdiler."
+      }
+    ],
+    "synonyms": [
+      "cabin",
+      "bungalow"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_cough",
+    "headword": "cough",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kɒf/",
+    "meanings": [
+      {
+        "tr": "öksürük",
+        "en": "the act of forcing air from the throat with a sudden sound",
+        "exampleEn": "He has had a bad cough for a week.",
+        "exampleTr": "Bir haftadır kötü bir öksürüğü var."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_counter",
+    "headword": "counter",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkaʊntə/",
+    "meanings": [
+      {
+        "tr": "tezgah, satış bankosu",
+        "en": "a flat surface where customers are served in a shop",
+        "exampleEn": "The clerk placed the goods on the counter.",
+        "exampleTr": "Tezgahtar malları tezgaha koydu."
+      }
+    ],
+    "synonyms": [
+      "desk",
+      "bar"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_countryman",
+    "headword": "countryman",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkʌntrimən/",
+    "meanings": [
+      {
+        "tr": "vatandaş, hemşeri, taşralı",
+        "en": "a person from the same country as oneself",
+        "exampleEn": "He met a fellow countryman while traveling abroad.",
+        "exampleTr": "Yurt dışında seyahat ederken bir hemşerisiyle karşılaştı."
+      }
+    ],
+    "synonyms": [
+      "compatriot"
+    ],
+    "antonyms": [
+      "foreigner"
+    ]
+  },
+  {
+    "id": "w_countrywide",
+    "headword": "countrywide",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌkʌntriˈwaɪd/",
+    "meanings": [
+      {
+        "tr": "ülke çapında, ülke genelinde",
+        "en": "happening across the whole country",
+        "exampleEn": "The company launched a countrywide advertising campaign.",
+        "exampleTr": "Şirket ülke çapında bir reklam kampanyası başlattı."
+      }
+    ],
+    "synonyms": [
+      "nationwide"
+    ],
+    "antonyms": [
+      "local"
+    ]
+  },
+  {
+    "id": "w_courtesy",
+    "headword": "courtesy",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɜːtəsi/",
+    "meanings": [
+      {
+        "tr": "nezaket, kibarlık",
+        "en": "polite behavior and respect for others",
+        "exampleEn": "He always treats guests with great courtesy.",
+        "exampleTr": "Misafirlere her zaman büyük bir nezaketle davranır."
+      }
+    ],
+    "synonyms": [
+      "politeness",
+      "civility"
+    ],
+    "antonyms": [
+      "rudeness",
+      "discourtesy"
+    ]
+  },
+  {
+    "id": "w_coward",
+    "headword": "coward",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkaʊəd/",
+    "meanings": [
+      {
+        "tr": "korkak, ödlek",
+        "en": "a person who is too afraid to do difficult things",
+        "exampleEn": "He called me a coward for not jumping into the water.",
+        "exampleTr": "Suya atlamadığım için bana korkak dedi."
+      }
+    ],
+    "synonyms": [
+      "wimp"
+    ],
+    "antonyms": [
+      "hero",
+      "brave"
+    ]
+  },
+  {
+    "id": "w_cowardly",
+    "headword": "cowardly",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkaʊədli/",
+    "meanings": [
+      {
+        "tr": "korkakça, ödlekçe",
+        "en": "lacking courage; behaving in a fearful way",
+        "exampleEn": "It was a cowardly act to run away and leave his friends.",
+        "exampleTr": "Kaçıp arkadaşlarını terk etmek korkakça bir davranıştı."
+      }
+    ],
+    "synonyms": [
+      "timid",
+      "fearful"
+    ],
+    "antonyms": [
+      "brave",
+      "courageous"
+    ]
+  },
+  {
+    "id": "w_coziness",
+    "headword": "coziness",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkəʊzinəs/",
+    "meanings": [
+      {
+        "tr": "rahatlık, sıcaklık (huzur veren ortam)",
+        "en": "the quality of being warm and comfortable",
+        "exampleEn": "The coziness of the cabin made us feel relaxed.",
+        "exampleTr": "Kulübenin rahatlığı bizi huzurlu hissettirdi."
+      }
+    ],
+    "synonyms": [
+      "comfort",
+      "warmth"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_cozy",
+    "headword": "cozy",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkəʊzi/",
+    "meanings": [
+      {
+        "tr": "rahat, sıcak ve konforlu",
+        "en": "warm, comfortable, and inviting",
+        "exampleEn": "We sat in a cozy little café by the fire.",
+        "exampleTr": "Şöminenin yanındaki rahat, küçük bir kafede oturduk."
+      }
+    ],
+    "synonyms": [
+      "comfortable",
+      "snug"
+    ],
+    "antonyms": [
+      "uncomfortable"
+    ]
+  },
+  {
+    "id": "w_crab",
+    "headword": "crab",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kræb/",
+    "meanings": [
+      {
+        "tr": "yengeç",
+        "en": "a sea creature with a hard shell and two claws",
+        "exampleEn": "We caught a crab in the rock pool.",
+        "exampleTr": "Kaya havuzunda bir yengeç yakaladık."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_crack",
+    "headword": "crack",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kræk/",
+    "meanings": [
+      {
+        "tr": "çatlak",
+        "en": "a thin line or break in a surface",
+        "exampleEn": "There is a crack in the kitchen window.",
+        "exampleTr": "Mutfak penceresinde bir çatlak var."
+      }
+    ],
+    "synonyms": [
+      "fracture",
+      "split"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_craftsman",
+    "headword": "craftsman",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkrɑːftsmən/",
+    "meanings": [
+      {
+        "tr": "zanaatkâr, usta",
+        "en": "a skilled person who makes things by hand",
+        "exampleEn": "The furniture was made by a local craftsman.",
+        "exampleTr": "Mobilyalar yerel bir zanaatkâr tarafından yapılmıştı."
+      }
+    ],
+    "synonyms": [
+      "artisan"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_crater",
+    "headword": "crater",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkreɪtə/",
+    "meanings": [
+      {
+        "tr": "krater",
+        "en": "a large bowl-shaped hole, as on a volcano or the moon",
+        "exampleEn": "The meteor left a huge crater in the desert.",
+        "exampleTr": "Göktaşı çölde kocaman bir krater bıraktı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_crawl",
+    "headword": "crawl",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/krɔːl/",
+    "meanings": [
+      {
+        "tr": "emeklemek, sürünmek",
+        "en": "to move forward on hands and knees",
+        "exampleEn": "The baby began to crawl across the floor.",
+        "exampleTr": "Bebek yerde emeklemeye başladı."
+      }
+    ],
+    "synonyms": [
+      "creep"
+    ],
+    "antonyms": [
+      "run"
+    ]
+  },
+  {
+    "id": "w_crease",
+    "headword": "crease",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kriːs/",
+    "meanings": [
+      {
+        "tr": "kırışık, kıvrım, ütü çizgisi",
+        "en": "a line made on cloth or paper by folding it",
+        "exampleEn": "He ironed a sharp crease into his trousers.",
+        "exampleTr": "Pantolonuna keskin bir ütü çizgisi yaptı."
+      }
+    ],
+    "synonyms": [
+      "fold",
+      "wrinkle"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_creation",
+    "headword": "creation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kriˈeɪʃən/",
+    "meanings": [
+      {
+        "tr": "yaratma, oluşturma, eser",
+        "en": "the act of making something new",
+        "exampleEn": "The creation of new jobs helped the local economy.",
+        "exampleTr": "Yeni iş olanaklarının yaratılması yerel ekonomiye yardımcı oldu."
+      }
+    ],
+    "synonyms": [
+      "formation",
+      "production"
+    ],
+    "antonyms": [
+      "destruction"
+    ]
+  },
+  {
+    "id": "w_creatively",
+    "headword": "creatively",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kriˈeɪtɪvli/",
+    "meanings": [
+      {
+        "tr": "yaratıcı bir şekilde",
+        "en": "in a way that shows imagination and new ideas",
+        "exampleEn": "The students solved the problem creatively.",
+        "exampleTr": "Öğrenciler sorunu yaratıcı bir şekilde çözdüler."
+      }
+    ],
+    "synonyms": [
+      "imaginatively",
+      "inventively"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_creek",
+    "headword": "creek",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kriːk/",
+    "meanings": [
+      {
+        "tr": "dere, çay",
+        "en": "a small narrow stream of water",
+        "exampleEn": "The children waded across the shallow creek.",
+        "exampleTr": "Çocuklar sığ dereden yürüyerek geçtiler."
+      }
+    ],
+    "synonyms": [
+      "stream",
+      "brook"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_crew",
+    "headword": "crew",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kruː/",
+    "meanings": [
+      {
+        "tr": "mürettebat, ekip",
+        "en": "the people who work on a ship, plane, or project",
+        "exampleEn": "The ship's crew worked hard during the storm.",
+        "exampleTr": "Geminin mürettebatı fırtına sırasında çok çalıştı."
+      }
+    ],
+    "synonyms": [
+      "team",
+      "staff"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_criminal",
+    "headword": "criminal",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkrɪmɪnəl/",
+    "meanings": [
+      {
+        "tr": "suçla ilgili, cezai",
+        "en": "relating to crime or illegal acts",
+        "exampleEn": "He faced criminal charges for the robbery.",
+        "exampleTr": "Soygun nedeniyle cezai suçlamalarla karşı karşıya kaldı."
+      }
+    ],
+    "synonyms": [
+      "illegal",
+      "unlawful"
+    ],
+    "antonyms": [
+      "lawful",
+      "legal"
+    ]
+  },
+  {
+    "id": "w_cripple",
+    "headword": "cripple",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkrɪpəl/",
+    "meanings": [
+      {
+        "tr": "sakat, kötürüm (eski/incitici kullanım)",
+        "en": "a person who cannot walk properly (now considered offensive)",
+        "exampleEn": "In the old story, the cripple was healed by a kind doctor.",
+        "exampleTr": "Eski hikayede, kötürüm adam iyi kalpli bir doktor tarafından iyileştirildi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_critically",
+    "headword": "critically",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkrɪtɪkli/",
+    "meanings": [
+      {
+        "tr": "eleştirel olarak, ciddi şekilde",
+        "en": "in a serious way or by analyzing carefully",
+        "exampleEn": "She was critically injured in the accident.",
+        "exampleTr": "Kazada ciddi şekilde yaralandı."
+      }
+    ],
+    "synonyms": [
+      "seriously",
+      "severely"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_crocodile",
+    "headword": "crocodile",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkrɒkədaɪl/",
+    "meanings": [
+      {
+        "tr": "timsah",
+        "en": "a large reptile with a long body that lives in rivers",
+        "exampleEn": "A crocodile lay still on the muddy riverbank.",
+        "exampleTr": "Çamurlu nehir kıyısında bir timsah hareketsiz yatıyordu."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_crossly",
+    "headword": "crossly",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkrɒsli/",
+    "meanings": [
+      {
+        "tr": "öfkeyle, ters bir şekilde",
+        "en": "in an angry or annoyed manner",
+        "exampleEn": "\"Be quiet!\" she said crossly.",
+        "exampleTr": "\"Sessiz ol!\" dedi öfkeyle."
+      }
+    ],
+    "synonyms": [
+      "angrily",
+      "irritably"
+    ],
+    "antonyms": [
+      "calmly",
+      "cheerfully"
+    ]
+  },
+  {
+    "id": "w_crucial",
+    "headword": "crucial",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkruːʃəl/",
+    "meanings": [
+      {
+        "tr": "hayati, çok önemli",
+        "en": "extremely important or essential",
+        "exampleEn": "Practice is crucial if you want to improve.",
+        "exampleTr": "Gelişmek istiyorsan pratik yapmak çok önemlidir."
+      }
+    ],
+    "synonyms": [
+      "essential",
+      "vital"
+    ],
+    "antonyms": [
+      "unimportant",
+      "trivial"
+    ]
+  },
+  {
+    "id": "w_cruelly",
+    "headword": "cruelly",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkruːəli/",
+    "meanings": [
+      {
+        "tr": "zalimce, acımasızca",
+        "en": "in a way that causes pain or suffering",
+        "exampleEn": "The prisoners were treated cruelly by the guards.",
+        "exampleTr": "Mahkumlara gardiyanlar tarafından zalimce davranıldı."
+      }
+    ],
+    "synonyms": [
+      "brutally",
+      "harshly"
+    ],
+    "antonyms": [
+      "kindly",
+      "gently"
+    ]
+  },
+  {
+    "id": "w_cruelty",
+    "headword": "cruelty",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkruːəlti/",
+    "meanings": [
+      {
+        "tr": "zalimlik, gaddarlık",
+        "en": "behavior that causes pain or suffering to others",
+        "exampleEn": "The charity fights against cruelty to animals.",
+        "exampleTr": "Bu hayır kurumu hayvanlara yönelik zalimliğe karşı mücadele eder."
+      }
+    ],
+    "synonyms": [
+      "brutality",
+      "harshness"
+    ],
+    "antonyms": [
+      "kindness",
+      "compassion"
+    ]
+  },
+  {
+    "id": "w_crystallize",
+    "headword": "crystallize",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkrɪstəlaɪz/",
+    "meanings": [
+      {
+        "tr": "billurlaşmak, netleşmek (fikir)",
+        "en": "to become clear and definite, or to form crystals",
+        "exampleEn": "Her ideas began to crystallize after the discussion.",
+        "exampleTr": "Tartışmadan sonra fikirleri netleşmeye başladı."
+      }
+    ],
+    "synonyms": [
+      "clarify",
+      "solidify"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_cube",
+    "headword": "cube",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kjuːb/",
+    "meanings": [
+      {
+        "tr": "küp",
+        "en": "a solid shape with six equal square sides",
+        "exampleEn": "She dropped a cube of ice into her drink.",
+        "exampleTr": "İçeceğine bir buz küpü attı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_cubism",
+    "headword": "cubism",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkjuːbɪzəm/",
+    "meanings": [
+      {
+        "tr": "kübizm (sanat akımı)",
+        "en": "a style of art using geometric shapes",
+        "exampleEn": "Picasso was a leading figure in cubism.",
+        "exampleTr": "Picasso, kübizmin önde gelen isimlerinden biriydi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_cuff",
+    "headword": "cuff",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kʌf/",
+    "meanings": [
+      {
+        "tr": "manşet, kol ağzı",
+        "en": "the end part of a sleeve at the wrist",
+        "exampleEn": "He rolled up the cuff of his shirt.",
+        "exampleTr": "Gömleğinin manşetini kıvırdı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_culmination",
+    "headword": "culmination",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌkʌlmɪˈneɪʃən/",
+    "meanings": [
+      {
+        "tr": "doruk noktası, zirve",
+        "en": "the highest or final point of something",
+        "exampleEn": "The award was the culmination of years of hard work.",
+        "exampleTr": "Bu ödül, yıllarca süren sıkı çalışmanın doruk noktasıydı."
+      }
+    ],
+    "synonyms": [
+      "climax",
+      "peak"
+    ],
+    "antonyms": [
+      "beginning",
+      "start"
+    ]
+  },
+  {
+    "id": "w_culturally",
+    "headword": "culturally",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkʌltʃərəli/",
+    "meanings": [
+      {
+        "tr": "kültürel olarak",
+        "en": "in a way relating to culture or society",
+        "exampleEn": "The city is culturally very diverse.",
+        "exampleTr": "Şehir kültürel olarak çok çeşitlidir."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_curl",
+    "headword": "curl",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/kɜːl/",
+    "meanings": [
+      {
+        "tr": "bukle, lüle (saç)",
+        "en": "a curved or twisted piece of hair",
+        "exampleEn": "A loose curl fell across her forehead.",
+        "exampleTr": "Gevşek bir bukle alnına düştü."
+      }
+    ],
+    "synonyms": [
+      "coil",
+      "ringlet"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_cursor",
+    "headword": "cursor",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈkɜːsə/",
+    "meanings": [
+      {
+        "tr": "imleç",
+        "en": "a moving marker on a computer screen",
+        "exampleEn": "Move the cursor to the top of the page.",
+        "exampleTr": "İmleci sayfanın en üstüne taşıyın."
+      }
+    ],
+    "synonyms": [
+      "pointer"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_cyberaddict",
+    "headword": "cyberaddict",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈsaɪbərædɪkt/",
+    "meanings": [
+      {
+        "tr": "internet bağımlısı",
+        "en": "a person who is addicted to using the internet",
+        "exampleEn": "He became a cyberaddict who spent all night online.",
+        "exampleTr": "Bütün geceyi internette geçiren bir internet bağımlısı oldu."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_cybercafe",
+    "headword": "cybercafe",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈsaɪbəkæfeɪ/",
+    "meanings": [
+      {
+        "tr": "internet kafe",
+        "en": "a café where people can use the internet",
+        "exampleEn": "We checked our emails at a cybercafe in the city.",
+        "exampleTr": "Şehirdeki bir internet kafede e-postalarımıza baktık."
+      }
+    ],
+    "synonyms": [
+      "internet cafe"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_cybercrime",
+    "headword": "cybercrime",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈsaɪbəkraɪm/",
+    "meanings": [
+      {
+        "tr": "siber suç",
+        "en": "illegal activity carried out using computers or the internet",
+        "exampleEn": "The police set up a new unit to fight cybercrime.",
+        "exampleTr": "Polis, siber suçlarla mücadele etmek için yeni bir birim kurdu."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_cyberpet",
+    "headword": "cyberpet",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈsaɪbəpet/",
+    "meanings": [
+      {
+        "tr": "sanal evcil hayvan",
+        "en": "an electronic toy that you look after like a pet",
+        "exampleEn": "The child fed her cyberpet every morning.",
+        "exampleTr": "Çocuk her sabah sanal evcil hayvanını besledi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_cyberschool",
+    "headword": "cyberschool",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈsaɪbəskuːl/",
+    "meanings": [
+      {
+        "tr": "sanal okul, çevrimiçi okul",
+        "en": "a school where students learn over the internet",
+        "exampleEn": "During the lockdown, many children attended a cyberschool.",
+        "exampleTr": "Karantina sırasında birçok çocuk sanal okula devam etti."
+      }
+    ],
+    "synonyms": [
+      "online school"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_cyberspace",
+    "headword": "cyberspace",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈsaɪbəspeɪs/",
+    "meanings": [
+      {
+        "tr": "siber uzay, sanal dünya",
+        "en": "the imaginary world of computer networks and the internet",
+        "exampleEn": "Information travels through cyberspace in seconds.",
+        "exampleTr": "Bilgi, siber uzayda saniyeler içinde dolaşır."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_cyclist",
+    "headword": "cyclist",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈsaɪklɪst/",
+    "meanings": [
+      {
+        "tr": "bisikletçi",
+        "en": "a person who rides a bicycle",
+        "exampleEn": "The cyclist stopped at the red light.",
+        "exampleTr": "Bisikletçi kırmızı ışıkta durdu."
+      }
+    ],
+    "synonyms": [
+      "biker"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_daft",
+    "headword": "daft",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɑːft/",
+    "meanings": [
+      {
+        "tr": "aptalca, saçma (İngiliz İngilizcesi, gayriresmi)",
+        "en": "silly or foolish (informal British English)",
+        "exampleEn": "That's a daft idea; it will never work.",
+        "exampleTr": "Bu saçma bir fikir; asla işe yaramaz."
+      }
+    ],
+    "synonyms": [
+      "silly",
+      "foolish"
+    ],
+    "antonyms": [
+      "sensible",
+      "wise"
+    ]
+  },
+  {
+    "id": "w_damn",
+    "headword": "damn",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dæm/",
+    "meanings": [
+      {
+        "tr": "lanet, kahrolası (öfke belirten gayriresmi söz)",
+        "en": "used to express anger or annoyance (informal)",
+        "exampleEn": "I can't find my damn keys anywhere.",
+        "exampleTr": "O lanet anahtarlarımı hiçbir yerde bulamıyorum."
+      }
+    ],
+    "synonyms": [
+      "darn"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dandelion",
+    "headword": "dandelion",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdændɪlaɪən/",
+    "meanings": [
+      {
+        "tr": "karahindiba",
+        "en": "a wild plant with bright yellow flowers",
+        "exampleEn": "The field was covered with yellow dandelions.",
+        "exampleTr": "Tarla sarı karahindibalarla kaplıydı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_darling",
+    "headword": "darling",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɑːlɪŋ/",
+    "meanings": [
+      {
+        "tr": "sevgili, cici, tatlı",
+        "en": "much loved or very charming",
+        "exampleEn": "What a darling little puppy you have!",
+        "exampleTr": "Ne kadar tatlı, küçük bir köpeğin var!"
+      }
+    ],
+    "synonyms": [
+      "dear",
+      "sweet"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dash",
+    "headword": "dash",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dæʃ/",
+    "meanings": [
+      {
+        "tr": "tire (-), az miktar, ani koşu",
+        "en": "a small amount of something, or a short quick run",
+        "exampleEn": "Add a dash of salt to the soup.",
+        "exampleTr": "Çorbaya bir tutam tuz ekleyin."
+      }
+    ],
+    "synonyms": [
+      "pinch",
+      "touch"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_data",
+    "headword": "data",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdeɪtə/",
+    "meanings": [
+      {
+        "tr": "veri, bilgi",
+        "en": "facts or information used for analysis",
+        "exampleEn": "The scientists collected data over many years.",
+        "exampleTr": "Bilim insanları yıllar boyunca veri topladılar."
+      }
+    ],
+    "synonyms": [
+      "information",
+      "facts"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_database",
+    "headword": "database",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdeɪtəbeɪs/",
+    "meanings": [
+      {
+        "tr": "veri tabanı",
+        "en": "an organized collection of information on a computer",
+        "exampleEn": "All customer records are stored in the database.",
+        "exampleTr": "Tüm müşteri kayıtları veri tabanında saklanır."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_dated",
+    "headword": "dated",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdeɪtɪd/",
+    "meanings": [
+      {
+        "tr": "modası geçmiş, eskimiş",
+        "en": "old-fashioned or no longer modern",
+        "exampleEn": "His clothes looked rather dated compared to current styles.",
+        "exampleTr": "Kıyafetleri güncel tarzlara kıyasla oldukça modası geçmiş görünüyordu."
+      }
+    ],
+    "synonyms": [
+      "old-fashioned",
+      "outdated"
+    ],
+    "antonyms": [
+      "modern",
+      "current"
+    ]
+  },
+  {
+    "id": "w_daughter-in-law",
+    "headword": "daughter-in-law",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɔːtər ɪn lɔː/",
+    "meanings": [
+      {
+        "tr": "gelin (oğlun eşi)",
+        "en": "the wife of one's son",
+        "exampleEn": "My daughter-in-law cooked a wonderful dinner for the family.",
+        "exampleTr": "Gelinim aile için harika bir akşam yemeği pişirdi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "son-in-law"
+    ]
+  },
+  {
+    "id": "w_dawn",
+    "headword": "dawn",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɔːn/",
+    "meanings": [
+      {
+        "tr": "şafak, gün doğumu",
+        "en": "the first light of day",
+        "exampleEn": "We set off at dawn to avoid the heat.",
+        "exampleTr": "Sıcaktan kaçınmak için şafakta yola çıktık."
+      }
+    ],
+    "synonyms": [
+      "daybreak",
+      "sunrise"
+    ],
+    "antonyms": [
+      "dusk",
+      "sunset"
+    ]
+  },
+  {
+    "id": "w_daytime",
+    "headword": "daytime",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdeɪtaɪm/",
+    "meanings": [
+      {
+        "tr": "gündüz",
+        "en": "the part of the day when it is light",
+        "exampleEn": "The shop is only open during the daytime.",
+        "exampleTr": "Dükkân sadece gündüz açık."
+      }
+    ],
+    "synonyms": [
+      "day"
+    ],
+    "antonyms": [
+      "nighttime"
+    ]
+  },
+  {
+    "id": "w_de-facto",
+    "headword": "de facto",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/deɪ ˈfæktoʊ/",
+    "meanings": [
+      {
+        "tr": "fiili, gerçekte var olan",
+        "en": "existing in fact, though not officially",
+        "exampleEn": "He became the de facto leader of the group.",
+        "exampleTr": "Grubun fiili lideri haline geldi."
+      }
+    ],
+    "synonyms": [
+      "actual",
+      "effective"
+    ],
+    "antonyms": [
+      "de jure",
+      "official"
+    ]
+  },
+  {
+    "id": "w_dearly",
+    "headword": "dearly",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɪərli/",
+    "meanings": [
+      {
+        "tr": "çok, candan, pahalıya",
+        "en": "very much or at great cost",
+        "exampleEn": "She loved her grandmother dearly.",
+        "exampleTr": "Büyükannesini çok severdi."
+      }
+    ],
+    "synonyms": [
+      "deeply",
+      "greatly"
+    ],
+    "antonyms": [
+      "slightly"
+    ]
+  },
+  {
+    "id": "w_debit-card",
+    "headword": "debit card",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdebɪt kɑːrd/",
+    "meanings": [
+      {
+        "tr": "banka kartı, debit kart",
+        "en": "a card used to pay directly from a bank account",
+        "exampleEn": "I paid for the groceries with my debit card.",
+        "exampleTr": "Market alışverişini banka kartımla ödedim."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "credit card"
+    ]
+  },
+  {
+    "id": "w_decade",
+    "headword": "decade",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdekeɪd/",
+    "meanings": [
+      {
+        "tr": "on yıl, dekat",
+        "en": "a period of ten years",
+        "exampleEn": "The city has changed enormously over the past decade.",
+        "exampleTr": "Şehir son on yılda muazzam şekilde değişti."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_decay",
+    "headword": "decay",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈkeɪ/",
+    "meanings": [
+      {
+        "tr": "çürümek, bozulmak",
+        "en": "to rot or break down gradually",
+        "exampleEn": "Sugar can cause your teeth to decay.",
+        "exampleTr": "Şeker dişlerinin çürümesine neden olabilir."
+      }
+    ],
+    "synonyms": [
+      "rot",
+      "decompose"
+    ],
+    "antonyms": [
+      "grow",
+      "flourish"
+    ]
+  },
+  {
+    "id": "w_deceive",
+    "headword": "deceive",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈsiːv/",
+    "meanings": [
+      {
+        "tr": "aldatmak, kandırmak",
+        "en": "to make someone believe something untrue",
+        "exampleEn": "He tried to deceive his colleagues about the results.",
+        "exampleTr": "Meslektaşlarını sonuçlar konusunda aldatmaya çalıştı."
+      }
+    ],
+    "synonyms": [
+      "mislead",
+      "trick"
+    ],
+    "antonyms": [
+      "enlighten"
+    ]
+  },
+  {
+    "id": "w_decent",
+    "headword": "decent",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdiːsnt/",
+    "meanings": [
+      {
+        "tr": "düzgün, iyi, namuslu",
+        "en": "good enough or socially acceptable",
+        "exampleEn": "They paid him a decent salary for the work.",
+        "exampleTr": "İş için ona düzgün bir maaş ödediler."
+      }
+    ],
+    "synonyms": [
+      "respectable",
+      "adequate"
+    ],
+    "antonyms": [
+      "indecent",
+      "poor"
+    ]
+  },
+  {
+    "id": "w_deceptive",
+    "headword": "deceptive",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈseptɪv/",
+    "meanings": [
+      {
+        "tr": "aldatıcı, yanıltıcı",
+        "en": "likely to make you believe something untrue",
+        "exampleEn": "The calm sea was deceptive and quite dangerous.",
+        "exampleTr": "Sakin deniz aldatıcıydı ve oldukça tehlikeliydi."
+      }
+    ],
+    "synonyms": [
+      "misleading",
+      "false"
+    ],
+    "antonyms": [
+      "honest",
+      "genuine"
+    ]
+  },
+  {
+    "id": "w_decisive",
+    "headword": "decisive",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈsaɪsɪv/",
+    "meanings": [
+      {
+        "tr": "kesin, belirleyici, kararlı",
+        "en": "settling something or showing determination",
+        "exampleEn": "Her decisive action saved the project.",
+        "exampleTr": "Kararlı eylemi projeyi kurtardı."
+      }
+    ],
+    "synonyms": [
+      "conclusive",
+      "resolute"
+    ],
+    "antonyms": [
+      "indecisive",
+      "hesitant"
+    ]
+  },
+  {
+    "id": "w_deck",
+    "headword": "deck",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dek/",
+    "meanings": [
+      {
+        "tr": "güverte",
+        "en": "the floor or level of a ship",
+        "exampleEn": "The passengers stood on the deck watching the waves.",
+        "exampleTr": "Yolcular güvertede durup dalgaları izledi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_decomposition",
+    "headword": "decomposition",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdiːkɒmpəˈzɪʃn/",
+    "meanings": [
+      {
+        "tr": "ayrışma, çürüme",
+        "en": "the process of rotting or breaking apart",
+        "exampleEn": "Decomposition of the leaves enriches the soil.",
+        "exampleTr": "Yaprakların ayrışması toprağı zenginleştirir."
+      }
+    ],
+    "synonyms": [
+      "decay",
+      "rotting"
+    ],
+    "antonyms": [
+      "composition"
+    ]
+  },
+  {
+    "id": "w_decorate",
+    "headword": "decorate",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdekəreɪt/",
+    "meanings": [
+      {
+        "tr": "süslemek, dekore etmek",
+        "en": "to make something more attractive by adding things",
+        "exampleEn": "They decorated the hall with balloons and flowers.",
+        "exampleTr": "Salonu balonlar ve çiçeklerle süslediler."
+      }
+    ],
+    "synonyms": [
+      "adorn",
+      "embellish"
+    ],
+    "antonyms": [
+      "strip"
+    ]
+  },
+  {
+    "id": "w_decoration",
+    "headword": "decoration",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdekəˈreɪʃn/",
+    "meanings": [
+      {
+        "tr": "süs, dekorasyon",
+        "en": "something added to make a place look nicer",
+        "exampleEn": "The Christmas decorations brightened the room.",
+        "exampleTr": "Noel süsleri odayı aydınlattı."
+      }
+    ],
+    "synonyms": [
+      "ornament",
+      "adornment"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_decorative",
+    "headword": "decorative",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdekərətɪv/",
+    "meanings": [
+      {
+        "tr": "süsleyici, dekoratif",
+        "en": "intended to look attractive rather than useful",
+        "exampleEn": "The vase is purely decorative and not for use.",
+        "exampleTr": "Vazo tamamen dekoratiftir, kullanım için değil."
+      }
+    ],
+    "synonyms": [
+      "ornamental"
+    ],
+    "antonyms": [
+      "functional",
+      "plain"
+    ]
+  },
+  {
+    "id": "w_dedication",
+    "headword": "dedication",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdedɪˈkeɪʃn/",
+    "meanings": [
+      {
+        "tr": "adanmışlık, bağlılık",
+        "en": "the quality of working hard at something you care about",
+        "exampleEn": "Her dedication to teaching inspired her students.",
+        "exampleTr": "Öğretmenliğe olan adanmışlığı öğrencilerine ilham verdi."
+      }
+    ],
+    "synonyms": [
+      "commitment",
+      "devotion"
+    ],
+    "antonyms": [
+      "indifference"
+    ]
+  },
+  {
+    "id": "w_deduce",
+    "headword": "deduce",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈdjuːs/",
+    "meanings": [
+      {
+        "tr": "çıkarımda bulunmak, sonuç çıkarmak",
+        "en": "to reach a conclusion from available facts",
+        "exampleEn": "From the clues, she could deduce who the thief was.",
+        "exampleTr": "İpuçlarından hırsızın kim olduğunu çıkarabildi."
+      }
+    ],
+    "synonyms": [
+      "infer",
+      "conclude"
+    ],
+    "antonyms": [
+      "guess"
+    ]
+  },
+  {
+    "id": "w_deduction",
+    "headword": "deduction",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈdʌkʃn/",
+    "meanings": [
+      {
+        "tr": "çıkarım; kesinti",
+        "en": "a conclusion reached, or an amount taken away",
+        "exampleEn": "After deductions, his net pay was much lower.",
+        "exampleTr": "Kesintilerden sonra net maaşı çok daha düşüktü."
+      }
+    ],
+    "synonyms": [
+      "inference",
+      "subtraction"
+    ],
+    "antonyms": [
+      "addition"
+    ]
+  },
+  {
+    "id": "w_deem",
+    "headword": "deem",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/diːm/",
+    "meanings": [
+      {
+        "tr": "saymak, addetmek, görmek",
+        "en": "to consider or judge something to be true",
+        "exampleEn": "The court deemed the evidence insufficient.",
+        "exampleTr": "Mahkeme kanıtları yetersiz saydı."
+      }
+    ],
+    "synonyms": [
+      "consider",
+      "regard"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_deep",
+    "headword": "deep",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/diːp/",
+    "meanings": [
+      {
+        "tr": "derin",
+        "en": "going far down from the surface",
+        "exampleEn": "The lake is very deep in the middle.",
+        "exampleTr": "Göl ortasında çok derindir."
+      }
+    ],
+    "synonyms": [
+      "profound"
+    ],
+    "antonyms": [
+      "shallow"
+    ]
+  },
+  {
+    "id": "w_deer",
+    "headword": "deer",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪər/",
+    "meanings": [
+      {
+        "tr": "geyik",
+        "en": "a wild animal with hooves, often with antlers",
+        "exampleEn": "A deer ran across the road in front of the car.",
+        "exampleTr": "Bir geyik arabanın önünden yolu geçti."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_defeat",
+    "headword": "defeat",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈfiːt/",
+    "meanings": [
+      {
+        "tr": "yenilgi, mağlubiyet",
+        "en": "the act of losing or being beaten",
+        "exampleEn": "The team suffered a heavy defeat in the final.",
+        "exampleTr": "Takım finalde ağır bir yenilgi aldı."
+      }
+    ],
+    "synonyms": [
+      "loss"
+    ],
+    "antonyms": [
+      "victory",
+      "win"
+    ]
+  },
+  {
+    "id": "w_deforestation",
+    "headword": "deforestation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/diːˌfɒrɪˈsteɪʃn/",
+    "meanings": [
+      {
+        "tr": "ormansızlaşma, orman tahribi",
+        "en": "the cutting down of forests over a large area",
+        "exampleEn": "Deforestation threatens many animal species.",
+        "exampleTr": "Ormansızlaşma birçok hayvan türünü tehdit ediyor."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "reforestation"
+    ]
+  },
+  {
+    "id": "w_defy",
+    "headword": "defy",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈfaɪ/",
+    "meanings": [
+      {
+        "tr": "karşı gelmek, meydan okumak",
+        "en": "to refuse to obey a rule or authority",
+        "exampleEn": "The protesters chose to defy the ban.",
+        "exampleTr": "Protestocular yasağa karşı gelmeyi seçtiler."
+      }
+    ],
+    "synonyms": [
+      "disobey",
+      "resist"
+    ],
+    "antonyms": [
+      "obey",
+      "comply"
+    ]
+  },
+  {
+    "id": "w_dehumanize",
+    "headword": "dehumanize",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/diːˈhjuːmənaɪz/",
+    "meanings": [
+      {
+        "tr": "insanlıktan çıkarmak, insani değerini yok etmek",
+        "en": "to treat people as if they are not human",
+        "exampleEn": "War can dehumanize both soldiers and civilians.",
+        "exampleTr": "Savaş hem askerleri hem de sivilleri insanlıktan çıkarabilir."
+      }
+    ],
+    "synonyms": [
+      "degrade"
+    ],
+    "antonyms": [
+      "humanize"
+    ]
+  },
+  {
+    "id": "w_deliberate",
+    "headword": "deliberate",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈlɪbərət/",
+    "meanings": [
+      {
+        "tr": "kasıtlı, bilerek yapılan",
+        "en": "done on purpose and intentionally",
+        "exampleEn": "The damage was clearly a deliberate act.",
+        "exampleTr": "Hasar açıkça kasıtlı bir eylemdi."
+      }
+    ],
+    "synonyms": [
+      "intentional",
+      "planned"
+    ],
+    "antonyms": [
+      "accidental",
+      "unintentional"
+    ]
+  },
+  {
+    "id": "w_deliberately",
+    "headword": "deliberately",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈlɪbərətli/",
+    "meanings": [
+      {
+        "tr": "kasıtlı olarak, bilerek",
+        "en": "in an intentional way, on purpose",
+        "exampleEn": "She deliberately ignored his question.",
+        "exampleTr": "Onun sorusunu kasıtlı olarak görmezden geldi."
+      }
+    ],
+    "synonyms": [
+      "intentionally",
+      "purposely"
+    ],
+    "antonyms": [
+      "accidentally"
+    ]
+  },
+  {
+    "id": "w_delicacy",
+    "headword": "delicacy",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdelɪkəsi/",
+    "meanings": [
+      {
+        "tr": "incelik; lezzetli özel yiyecek",
+        "en": "a fine quality, or a rare tasty food",
+        "exampleEn": "Snails are considered a delicacy in France.",
+        "exampleTr": "Salyangoz Fransa'da bir lezzet olarak kabul edilir."
+      }
+    ],
+    "synonyms": [
+      "treat",
+      "refinement"
+    ],
+    "antonyms": [
+      "coarseness"
+    ]
+  },
+  {
+    "id": "w_delicately",
+    "headword": "delicately",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdelɪkətli/",
+    "meanings": [
+      {
+        "tr": "nazikçe, hassasça",
+        "en": "in a careful, gentle or sensitive way",
+        "exampleEn": "She delicately placed the glass on the shelf.",
+        "exampleTr": "Bardağı nazikçe rafa yerleştirdi."
+      }
+    ],
+    "synonyms": [
+      "gently",
+      "carefully"
+    ],
+    "antonyms": [
+      "roughly"
+    ]
+  },
+  {
+    "id": "w_demanding",
+    "headword": "demanding",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈmɑːndɪŋ/",
+    "meanings": [
+      {
+        "tr": "zorlu, çok şey isteyen",
+        "en": "requiring a lot of effort, skill or attention",
+        "exampleEn": "Nursing is a physically demanding job.",
+        "exampleTr": "Hemşirelik fiziksel olarak zorlu bir iştir."
+      }
+    ],
+    "synonyms": [
+      "challenging",
+      "tough"
+    ],
+    "antonyms": [
+      "easy",
+      "undemanding"
+    ]
+  },
+  {
+    "id": "w_demolish",
+    "headword": "demolish",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈmɒlɪʃ/",
+    "meanings": [
+      {
+        "tr": "yıkmak, yerle bir etmek",
+        "en": "to deliberately destroy a building",
+        "exampleEn": "They plan to demolish the old factory next month.",
+        "exampleTr": "Eski fabrikayı gelecek ay yıkmayı planlıyorlar."
+      }
+    ],
+    "synonyms": [
+      "destroy",
+      "raze"
+    ],
+    "antonyms": [
+      "build",
+      "construct"
+    ]
+  },
+  {
+    "id": "w_denim",
+    "headword": "denim",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdenɪm/",
+    "meanings": [
+      {
+        "tr": "kot kumaşı, denim",
+        "en": "a strong cotton cloth used for jeans",
+        "exampleEn": "He wore a denim jacket over his shirt.",
+        "exampleTr": "Gömleğinin üzerine kot bir ceket giydi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_dense",
+    "headword": "dense",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dens/",
+    "meanings": [
+      {
+        "tr": "yoğun, sık",
+        "en": "containing a lot of things close together",
+        "exampleEn": "The hikers got lost in the dense forest.",
+        "exampleTr": "Yürüyüşçüler sık ormanda kayboldu."
+      }
+    ],
+    "synonyms": [
+      "thick",
+      "compact"
+    ],
+    "antonyms": [
+      "sparse",
+      "thin"
+    ]
+  },
+  {
+    "id": "w_densely",
+    "headword": "densely",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdensli/",
+    "meanings": [
+      {
+        "tr": "yoğun bir şekilde, sıkça",
+        "en": "in a way that is closely packed together",
+        "exampleEn": "Tokyo is a densely populated city.",
+        "exampleTr": "Tokyo yoğun nüfuslu bir şehirdir."
+      }
+    ],
+    "synonyms": [
+      "thickly"
+    ],
+    "antonyms": [
+      "sparsely"
+    ]
+  },
+  {
+    "id": "w_dental",
+    "headword": "dental",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdentl/",
+    "meanings": [
+      {
+        "tr": "diş ile ilgili, dişe ait",
+        "en": "relating to the teeth",
+        "exampleEn": "You should have a dental check-up twice a year.",
+        "exampleTr": "Yılda iki kez diş kontrolü yaptırmalısın."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_dependable",
+    "headword": "dependable",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈpendəbl/",
+    "meanings": [
+      {
+        "tr": "güvenilir",
+        "en": "able to be trusted or relied on",
+        "exampleEn": "She is a dependable friend who always keeps her word.",
+        "exampleTr": "O, sözünü hep tutan güvenilir bir arkadaştır."
+      }
+    ],
+    "synonyms": [
+      "reliable",
+      "trustworthy"
+    ],
+    "antonyms": [
+      "unreliable"
+    ]
+  },
+  {
+    "id": "w_deputy",
+    "headword": "deputy",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdepjuti/",
+    "meanings": [
+      {
+        "tr": "yardımcı, vekil",
+        "en": "a person second in rank, acting for a superior",
+        "exampleEn": "The deputy manager ran the office while she was away.",
+        "exampleTr": "O yokken müdür yardımcısı ofisi yönetti."
+      }
+    ],
+    "synonyms": [
+      "assistant",
+      "second-in-command"
+    ],
+    "antonyms": [
+      "chief",
+      "head"
+    ]
+  },
+  {
+    "id": "w_descend",
+    "headword": "descend",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈsend/",
+    "meanings": [
+      {
+        "tr": "inmek, alçalmak",
+        "en": "to move down to a lower level",
+        "exampleEn": "The plane began to descend towards the airport.",
+        "exampleTr": "Uçak havalimanına doğru inmeye başladı."
+      }
+    ],
+    "synonyms": [
+      "drop",
+      "go down"
+    ],
+    "antonyms": [
+      "ascend",
+      "climb"
+    ]
+  },
+  {
+    "id": "w_descriptive",
+    "headword": "descriptive",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈskrɪptɪv/",
+    "meanings": [
+      {
+        "tr": "betimleyici, tasvir edici",
+        "en": "giving a detailed account of something",
+        "exampleEn": "The author's descriptive style brings the scene to life.",
+        "exampleTr": "Yazarın betimleyici üslubu sahneyi canlandırıyor."
+      }
+    ],
+    "synonyms": [
+      "detailed",
+      "vivid"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_designer",
+    "headword": "designer",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈzaɪnər/",
+    "meanings": [
+      {
+        "tr": "tasarımcı markalı, lüks markalı",
+        "en": "made by a famous fashion designer and expensive",
+        "exampleEn": "She only wears designer clothes from top brands.",
+        "exampleTr": "Sadece üst markaların tasarımcı kıyafetlerini giyer."
+      }
+    ],
+    "synonyms": [
+      "luxury",
+      "branded"
+    ],
+    "antonyms": [
+      "generic"
+    ]
+  },
+  {
+    "id": "w_desirable",
+    "headword": "desirable",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈzaɪərəbl/",
+    "meanings": [
+      {
+        "tr": "arzu edilir, istenir",
+        "en": "worth having or wanting",
+        "exampleEn": "A quiet location is a desirable feature in a home.",
+        "exampleTr": "Sessiz bir konum bir evde arzu edilir bir özelliktir."
+      }
+    ],
+    "synonyms": [
+      "appealing",
+      "attractive"
+    ],
+    "antonyms": [
+      "undesirable"
+    ]
+  },
+  {
+    "id": "w_desktop",
+    "headword": "desktop",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdesktɒp/",
+    "meanings": [
+      {
+        "tr": "masaüstü (bilgisayar/ekran)",
+        "en": "a computer for use on a desk, or the screen background",
+        "exampleEn": "He saved the file directly to his desktop.",
+        "exampleTr": "Dosyayı doğrudan masaüstüne kaydetti."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "laptop"
+    ]
+  },
+  {
+    "id": "w_desolation",
+    "headword": "desolation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdesəˈleɪʃn/",
+    "meanings": [
+      {
+        "tr": "ıssızlık, viranlık; derin keder",
+        "en": "a state of emptiness or great unhappiness",
+        "exampleEn": "After the storm, the village was a scene of desolation.",
+        "exampleTr": "Fırtınadan sonra köy bir ıssızlık manzarasıydı."
+      }
+    ],
+    "synonyms": [
+      "bleakness",
+      "despair"
+    ],
+    "antonyms": [
+      "comfort"
+    ]
+  },
+  {
+    "id": "w_desperately",
+    "headword": "desperately",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdespərətli/",
+    "meanings": [
+      {
+        "tr": "çaresizce, umutsuzca",
+        "en": "in a way that shows great need or hopelessness",
+        "exampleEn": "They desperately searched for the missing child.",
+        "exampleTr": "Kayıp çocuğu çaresizce aradılar."
+      }
+    ],
+    "synonyms": [
+      "frantically",
+      "urgently"
+    ],
+    "antonyms": [
+      "calmly"
+    ]
+  },
+  {
+    "id": "w_desperation",
+    "headword": "desperation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdespəˈreɪʃn/",
+    "meanings": [
+      {
+        "tr": "çaresizlik, umutsuzluk",
+        "en": "a feeling of hopelessness leading to rash action",
+        "exampleEn": "In desperation, he borrowed money from a stranger.",
+        "exampleTr": "Çaresizlik içinde bir yabancıdan borç aldı."
+      }
+    ],
+    "synonyms": [
+      "despair",
+      "hopelessness"
+    ],
+    "antonyms": [
+      "hope"
+    ]
+  },
+  {
+    "id": "w_despise",
+    "headword": "despise",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈspaɪz/",
+    "meanings": [
+      {
+        "tr": "hor görmek, nefret etmek",
+        "en": "to strongly dislike and feel contempt for",
+        "exampleEn": "He despises people who lie to get ahead.",
+        "exampleTr": "Öne geçmek için yalan söyleyen insanları hor görür."
+      }
+    ],
+    "synonyms": [
+      "loathe",
+      "scorn"
+    ],
+    "antonyms": [
+      "admire",
+      "respect"
+    ]
+  },
+  {
+    "id": "w_destiny",
+    "headword": "destiny",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdestɪni/",
+    "meanings": [
+      {
+        "tr": "kader, kısmet",
+        "en": "the things that will happen in the future, fate",
+        "exampleEn": "She believed it was her destiny to become a doctor.",
+        "exampleTr": "Doktor olmanın kaderi olduğuna inanıyordu."
+      }
+    ],
+    "synonyms": [
+      "fate",
+      "fortune"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_detach",
+    "headword": "detach",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈtætʃ/",
+    "meanings": [
+      {
+        "tr": "ayırmak, sökmek, çıkarmak",
+        "en": "to separate or remove one thing from another",
+        "exampleEn": "You can detach the hood from this coat.",
+        "exampleTr": "Bu paltodan başlığı ayırabilirsin."
+      }
+    ],
+    "synonyms": [
+      "separate",
+      "disconnect"
+    ],
+    "antonyms": [
+      "attach",
+      "connect"
+    ]
+  },
+  {
+    "id": "w_detachment",
+    "headword": "detachment",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈtætʃmənt/",
+    "meanings": [
+      {
+        "tr": "ayrılma; ilgisizlik, mesafe",
+        "en": "the state of being separate or emotionally distant",
+        "exampleEn": "She described the events with cool detachment.",
+        "exampleTr": "Olayları soğuk bir mesafeyle anlattı."
+      }
+    ],
+    "synonyms": [
+      "aloofness",
+      "indifference"
+    ],
+    "antonyms": [
+      "involvement",
+      "attachment"
+    ]
+  },
+  {
+    "id": "w_detailed",
+    "headword": "detailed",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdiːteɪld/",
+    "meanings": [
+      {
+        "tr": "ayrıntılı, detaylı",
+        "en": "containing many facts or particulars",
+        "exampleEn": "She gave a detailed account of the accident.",
+        "exampleTr": "Kazayı ayrıntılı bir şekilde anlattı."
+      }
+    ],
+    "synonyms": [
+      "thorough",
+      "comprehensive"
+    ],
+    "antonyms": [
+      "vague",
+      "general"
+    ]
+  },
+  {
+    "id": "w_detect",
+    "headword": "detect",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈtekt/",
+    "meanings": [
+      {
+        "tr": "saptamak, tespit etmek, fark etmek",
+        "en": "to discover or notice something hidden",
+        "exampleEn": "The sensor can detect even a small amount of smoke.",
+        "exampleTr": "Sensör az miktarda dumanı bile saptayabilir."
+      }
+    ],
+    "synonyms": [
+      "discover",
+      "notice"
+    ],
+    "antonyms": [
+      "overlook",
+      "miss"
+    ]
+  },
+  {
+    "id": "w_determined",
+    "headword": "determined",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈtɜːmɪnd/",
+    "meanings": [
+      {
+        "tr": "kararlı, azimli",
+        "en": "having a firm decision to do something",
+        "exampleEn": "She was determined to finish the race.",
+        "exampleTr": "Yarışı bitirmeye kararlıydı."
+      }
+    ],
+    "synonyms": [
+      "resolute",
+      "firm"
+    ],
+    "antonyms": [
+      "irresolute",
+      "hesitant"
+    ]
+  },
+  {
+    "id": "w_determiner",
+    "headword": "determiner",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈtɜːmɪnər/",
+    "meanings": [
+      {
+        "tr": "belirleyici (dilbilgisi)",
+        "en": "a word like 'the' or 'some' used before a noun",
+        "exampleEn": "In grammar, 'this' is a determiner before a noun.",
+        "exampleTr": "Dilbilgisinde 'this', bir isimden önce gelen bir belirleyicidir."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_developing",
+    "headword": "developing",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈveləpɪŋ/",
+    "meanings": [
+      {
+        "tr": "gelişmekte olan",
+        "en": "in the process of growing or becoming more advanced",
+        "exampleEn": "Many developing countries face water shortages.",
+        "exampleTr": "Birçok gelişmekte olan ülke su kıtlığıyla karşı karşıya."
+      }
+    ],
+    "synonyms": [
+      "emerging"
+    ],
+    "antonyms": [
+      "developed"
+    ]
+  },
+  {
+    "id": "w_devil",
+    "headword": "devil",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdevl/",
+    "meanings": [
+      {
+        "tr": "şeytan",
+        "en": "an evil spirit or the embodiment of evil",
+        "exampleEn": "In the story, the devil tempts the hero.",
+        "exampleTr": "Hikâyede şeytan kahramanı ayartır."
+      }
+    ],
+    "synonyms": [
+      "demon",
+      "fiend"
+    ],
+    "antonyms": [
+      "angel"
+    ]
+  },
+  {
+    "id": "w_devote",
+    "headword": "devote",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈvoʊt/",
+    "meanings": [
+      {
+        "tr": "adamak, ayırmak",
+        "en": "to give time or effort entirely to something",
+        "exampleEn": "He decided to devote his life to medicine.",
+        "exampleTr": "Hayatını tıbba adamaya karar verdi."
+      }
+    ],
+    "synonyms": [
+      "dedicate",
+      "commit"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "id": "w_devoted",
+    "headword": "devoted",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈvoʊtɪd/",
+    "meanings": [
+      {
+        "tr": "sadık, kendini adamış",
+        "en": "very loving or loyal to someone or something",
+        "exampleEn": "She is a devoted mother of three children.",
+        "exampleTr": "Üç çocuğa kendini adamış bir annedir."
+      }
+    ],
+    "synonyms": [
+      "loyal",
+      "dedicated"
+    ],
+    "antonyms": [
+      "disloyal",
+      "indifferent"
+    ]
+  },
+  {
+    "id": "w_diarrhea",
+    "headword": "diarrhea",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdaɪəˈriːə/",
+    "meanings": [
+      {
+        "tr": "ishal",
+        "en": "an illness with frequent, watery bowel movements",
+        "exampleEn": "He got diarrhea after eating the spoiled food.",
+        "exampleTr": "Bozuk yemeği yedikten sonra ishal oldu."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "constipation"
+    ]
+  },
+  {
+    "id": "w_dictator",
+    "headword": "dictator",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪkˈteɪtər/",
+    "meanings": [
+      {
+        "tr": "diktatör",
+        "en": "a ruler with total power, often by force",
+        "exampleEn": "The dictator banned all opposition parties.",
+        "exampleTr": "Diktatör tüm muhalefet partilerini yasakladı."
+      }
+    ],
+    "synonyms": [
+      "tyrant",
+      "despot"
+    ],
+    "antonyms": [
+      "democrat"
+    ]
+  },
+  {
+    "id": "w_digest",
+    "headword": "digest",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdaɪdʒest/",
+    "meanings": [
+      {
+        "tr": "özet, derleme",
+        "en": "a short summary of longer pieces of writing",
+        "exampleEn": "The newsletter includes a digest of the week's events.",
+        "exampleTr": "Bülten haftanın olaylarının bir özetini içerir."
+      }
+    ],
+    "synonyms": [
+      "summary",
+      "abstract"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dignify",
+    "headword": "dignify",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɪɡnɪfaɪ/",
+    "meanings": [
+      {
+        "tr": "onurlandırmak, değer kazandırmak",
+        "en": "to make something seem worthy or honourable",
+        "exampleEn": "He refused to dignify the rumour with a reply.",
+        "exampleTr": "Söylentiyi bir cevapla onurlandırmayı reddetti."
+      }
+    ],
+    "synonyms": [
+      "honour",
+      "ennoble"
+    ],
+    "antonyms": [
+      "degrade",
+      "demean"
+    ]
+  },
+  {
+    "id": "w_dignity",
+    "headword": "dignity",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɪɡnəti/",
+    "meanings": [
+      {
+        "tr": "onur, vakar, saygınlık",
+        "en": "a calm, serious manner deserving respect",
+        "exampleEn": "She faced her illness with great dignity.",
+        "exampleTr": "Hastalığıyla büyük bir onurla yüzleşti."
+      }
+    ],
+    "synonyms": [
+      "honour",
+      "self-respect"
+    ],
+    "antonyms": [
+      "humiliation"
+    ]
+  },
+  {
+    "id": "w_dilemma",
+    "headword": "dilemma",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈlemə/",
+    "meanings": [
+      {
+        "tr": "ikilem, çıkmaz",
+        "en": "a difficult choice between two options",
+        "exampleEn": "She faced the dilemma of staying or leaving.",
+        "exampleTr": "Kalmak ya da gitmek ikilemiyle karşı karşıyaydı."
+      }
+    ],
+    "synonyms": [
+      "predicament",
+      "quandary"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dim",
+    "headword": "dim",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪm/",
+    "meanings": [
+      {
+        "tr": "loş, sönük",
+        "en": "not bright; giving little light",
+        "exampleEn": "The room was lit by a single dim lamp.",
+        "exampleTr": "Oda tek bir loş lambayla aydınlatılmıştı."
+      }
+    ],
+    "synonyms": [
+      "faint",
+      "gloomy"
+    ],
+    "antonyms": [
+      "bright",
+      "brilliant"
+    ]
+  },
+  {
+    "id": "w_dime",
+    "headword": "dime",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/daɪm/",
+    "meanings": [
+      {
+        "tr": "on sentlik bozuk para (ABD)",
+        "en": "a US coin worth ten cents",
+        "exampleEn": "He found a dime on the sidewalk.",
+        "exampleTr": "Kaldırımda on sentlik bir bozuk para buldu."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_dimension",
+    "headword": "dimension",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈmenʃn/",
+    "meanings": [
+      {
+        "tr": "boyut",
+        "en": "a measurement such as length, or an aspect of something",
+        "exampleEn": "The problem has an ethical dimension as well.",
+        "exampleTr": "Sorunun etik bir boyutu da var."
+      }
+    ],
+    "synonyms": [
+      "aspect",
+      "measurement"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dip",
+    "headword": "dip",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪp/",
+    "meanings": [
+      {
+        "tr": "daldırmak, batırmak",
+        "en": "to put something quickly into a liquid",
+        "exampleEn": "She dipped the bread into the soup.",
+        "exampleTr": "Ekmeği çorbaya daldırdı."
+      }
+    ],
+    "synonyms": [
+      "dunk",
+      "immerse"
+    ],
+    "antonyms": [
+      "raise"
+    ]
+  },
+  {
+    "id": "w_diphtheria",
+    "headword": "diphtheria",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪfˈθɪəriə/",
+    "meanings": [
+      {
+        "tr": "difteri (kuşpalazı)",
+        "en": "a serious infectious disease affecting the throat",
+        "exampleEn": "Vaccination has nearly eliminated diphtheria in many countries.",
+        "exampleTr": "Aşılama, birçok ülkede difteriyi neredeyse ortadan kaldırmıştır."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_diploma",
+    "headword": "diploma",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈpləʊmə/",
+    "meanings": [
+      {
+        "tr": "diploma",
+        "en": "an official document showing completion of a course of study",
+        "exampleEn": "She proudly framed her university diploma.",
+        "exampleTr": "Üniversite diplomasını gururla çerçeveletti."
+      }
+    ],
+    "synonyms": [
+      "certificate",
+      "degree"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_diplomat",
+    "headword": "diplomat",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɪpləmæt/",
+    "meanings": [
+      {
+        "tr": "diplomat",
+        "en": "an official who represents their country abroad",
+        "exampleEn": "The diplomat negotiated a peace agreement between the two nations.",
+        "exampleTr": "Diplomat, iki ulus arasında bir barış anlaşması müzakere etti."
+      }
+    ],
+    "synonyms": [
+      "envoy",
+      "ambassador"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_disappearance",
+    "headword": "disappearance",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdɪsəˈpɪərəns/",
+    "meanings": [
+      {
+        "tr": "kaybolma, ortadan kayboluş",
+        "en": "the act of becoming impossible to see or find",
+        "exampleEn": "The sudden disappearance of the hiker worried the rescue team.",
+        "exampleTr": "Yürüyüşçünün aniden kaybolması, kurtarma ekibini endişelendirdi."
+      }
+    ],
+    "synonyms": [
+      "vanishing"
+    ],
+    "antonyms": [
+      "appearance"
+    ]
+  },
+  {
+    "id": "w_disapproval",
+    "headword": "disapproval",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdɪsəˈpruːvəl/",
+    "meanings": [
+      {
+        "tr": "onaylamama, hoşnutsuzluk",
+        "en": "the feeling that something is wrong or bad",
+        "exampleEn": "She frowned in disapproval at his rude behavior.",
+        "exampleTr": "Onun kaba davranışını onaylamayarak kaşlarını çattı."
+      }
+    ],
+    "synonyms": [
+      "objection",
+      "criticism"
+    ],
+    "antonyms": [
+      "approval"
+    ]
+  },
+  {
+    "id": "w_disapprove",
+    "headword": "disapprove",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdɪsəˈpruːv/",
+    "meanings": [
+      {
+        "tr": "onaylamamak, uygun bulmamak",
+        "en": "to think that something is wrong or bad",
+        "exampleEn": "My parents disapprove of staying out late on weekdays.",
+        "exampleTr": "Ailem, hafta içi geç saatlere kadar dışarıda kalmayı onaylamıyor."
+      }
+    ],
+    "synonyms": [
+      "object",
+      "condemn"
+    ],
+    "antonyms": [
+      "approve"
+    ]
+  },
+  {
+    "id": "w_discharge",
+    "headword": "discharge",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɪstʃɑːdʒ/",
+    "meanings": [
+      {
+        "tr": "taburcu etme; salıverme; akıntı",
+        "en": "the act of releasing someone or something",
+        "exampleEn": "The patient's discharge from the hospital was delayed by a day.",
+        "exampleTr": "Hastanın hastaneden taburcu edilmesi bir gün gecikti."
+      }
+    ],
+    "synonyms": [
+      "release"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_disciple",
+    "headword": "disciple",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈsaɪpl/",
+    "meanings": [
+      {
+        "tr": "havari, öğrenci, mürit",
+        "en": "a follower of a teacher, leader, or belief",
+        "exampleEn": "He became a devoted disciple of the famous philosopher.",
+        "exampleTr": "Ünlü filozofun sadık bir müridi oldu."
+      }
+    ],
+    "synonyms": [
+      "follower",
+      "adherent"
+    ],
+    "antonyms": [
+      "leader"
+    ]
+  },
+  {
+    "id": "w_discipline",
+    "headword": "discipline",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɪsəplɪn/",
+    "meanings": [
+      {
+        "tr": "disiplin, özdenetim",
+        "en": "controlled behavior or training to obey rules",
+        "exampleEn": "Learning a language requires patience and discipline.",
+        "exampleTr": "Bir dil öğrenmek sabır ve disiplin gerektirir."
+      }
+    ],
+    "synonyms": [
+      "self-control",
+      "order"
+    ],
+    "antonyms": [
+      "chaos"
+    ]
+  },
+  {
+    "id": "w_disconnect",
+    "headword": "disconnect",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdɪskəˈnekt/",
+    "meanings": [
+      {
+        "tr": "bağlantıyı kesmek",
+        "en": "to break the connection between things",
+        "exampleEn": "Please disconnect the charger before cleaning the device.",
+        "exampleTr": "Cihazı temizlemeden önce lütfen şarj aletinin bağlantısını kesin."
+      }
+    ],
+    "synonyms": [
+      "detach",
+      "unplug"
+    ],
+    "antonyms": [
+      "connect"
+    ]
+  },
+  {
+    "id": "w_discredit",
+    "headword": "discredit",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈkredɪt/",
+    "meanings": [
+      {
+        "tr": "itibarını sarsmak, gözden düşürmek",
+        "en": "to make someone or something seem unreliable",
+        "exampleEn": "The rival tried to discredit her research with false claims.",
+        "exampleTr": "Rakip, asılsız iddialarla onun araştırmasını gözden düşürmeye çalıştı."
+      }
+    ],
+    "synonyms": [
+      "disgrace",
+      "undermine"
+    ],
+    "antonyms": [
+      "credit"
+    ]
+  },
+  {
+    "id": "w_discriminate",
+    "headword": "discriminate",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈskrɪmɪneɪt/",
+    "meanings": [
+      {
+        "tr": "ayrım yapmak, ayrımcılık yapmak",
+        "en": "to treat people unfairly based on group differences",
+        "exampleEn": "It is illegal to discriminate against employees because of their age.",
+        "exampleTr": "Çalışanlara yaşları nedeniyle ayrımcılık yapmak yasadışıdır."
+      }
+    ],
+    "synonyms": [
+      "differentiate",
+      "distinguish"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_disgrace",
+    "headword": "disgrace",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈɡreɪs/",
+    "meanings": [
+      {
+        "tr": "rezalet, utanç, yüz karası",
+        "en": "loss of respect because of bad behavior",
+        "exampleEn": "His cheating brought disgrace upon the whole team.",
+        "exampleTr": "Onun hile yapması tüm takıma utanç getirdi."
+      }
+    ],
+    "synonyms": [
+      "shame",
+      "dishonor"
+    ],
+    "antonyms": [
+      "honor"
+    ]
+  },
+  {
+    "id": "w_disguise",
+    "headword": "disguise",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈɡaɪz/",
+    "meanings": [
+      {
+        "tr": "kılık değiştirme, tebdili kıyafet",
+        "en": "a change of appearance to hide one's identity",
+        "exampleEn": "The spy wore a clever disguise to avoid being recognized.",
+        "exampleTr": "Casus, tanınmamak için akıllıca bir kılık değiştirme kullandı."
+      }
+    ],
+    "synonyms": [
+      "costume",
+      "camouflage"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dishonesty",
+    "headword": "dishonesty",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈɒnɪsti/",
+    "meanings": [
+      {
+        "tr": "dürüst olmama, sahtekarlık",
+        "en": "the quality of not being truthful or honest",
+        "exampleEn": "His dishonesty cost him the trust of his friends.",
+        "exampleTr": "Sahtekarlığı, ona arkadaşlarının güvenine mal oldu."
+      }
+    ],
+    "synonyms": [
+      "deceit",
+      "fraud"
+    ],
+    "antonyms": [
+      "honesty"
+    ]
+  },
+  {
+    "id": "w_disillusion",
+    "headword": "disillusion",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdɪsɪˈluːʒn/",
+    "meanings": [
+      {
+        "tr": "hayal kırıklığına uğratmak, gözünü açmak",
+        "en": "to free someone from a mistaken belief",
+        "exampleEn": "The harsh reality of the job soon disillusioned the new recruits.",
+        "exampleTr": "İşin acı gerçeği, yeni çalışanları kısa sürede hayal kırıklığına uğrattı."
+      }
+    ],
+    "synonyms": [
+      "disenchant"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_disorder",
+    "headword": "disorder",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈɔːdə/",
+    "meanings": [
+      {
+        "tr": "düzensizlik; rahatsızlık, bozukluk",
+        "en": "a lack of order or a medical condition",
+        "exampleEn": "The doctor diagnosed her with a sleep disorder.",
+        "exampleTr": "Doktor, ona bir uyku bozukluğu teşhisi koydu."
+      }
+    ],
+    "synonyms": [
+      "chaos",
+      "disease"
+    ],
+    "antonyms": [
+      "order"
+    ]
+  },
+  {
+    "id": "w_disorderly",
+    "headword": "disorderly",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈɔːdəli/",
+    "meanings": [
+      {
+        "tr": "düzensiz, dağınık; uygunsuz",
+        "en": "untidy or behaving in an uncontrolled way",
+        "exampleEn": "The police arrested him for disorderly conduct in public.",
+        "exampleTr": "Polis, onu halka açık alanda uygunsuz davranıştan tutukladı."
+      }
+    ],
+    "synonyms": [
+      "unruly",
+      "messy"
+    ],
+    "antonyms": [
+      "orderly"
+    ]
+  },
+  {
+    "id": "w_disorganized",
+    "headword": "disorganized",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈɔːɡənaɪzd/",
+    "meanings": [
+      {
+        "tr": "düzensiz, organizasyonsuz",
+        "en": "not planned or arranged in an orderly way",
+        "exampleEn": "The event felt chaotic because it was so disorganized.",
+        "exampleTr": "Etkinlik çok düzensiz olduğu için kaotik hissettirdi."
+      }
+    ],
+    "synonyms": [
+      "messy",
+      "chaotic"
+    ],
+    "antonyms": [
+      "organized"
+    ]
+  },
+  {
+    "id": "w_dispensable",
+    "headword": "dispensable",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈspensəbl/",
+    "meanings": [
+      {
+        "tr": "vazgeçilebilir, gereksiz",
+        "en": "not necessary and able to be done without",
+        "exampleEn": "In a crisis, such luxuries are entirely dispensable.",
+        "exampleTr": "Bir kriz anında, bu tür lükslerden tamamen vazgeçilebilir."
+      }
+    ],
+    "synonyms": [
+      "unnecessary",
+      "expendable"
+    ],
+    "antonyms": [
+      "indispensable"
+    ]
+  },
+  {
+    "id": "w_displace",
+    "headword": "displace",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈpleɪs/",
+    "meanings": [
+      {
+        "tr": "yerinden etmek, yerini almak",
+        "en": "to force something or someone out of its place",
+        "exampleEn": "The flood displaced thousands of families from their homes.",
+        "exampleTr": "Sel, binlerce aileyi evlerinden etti."
+      }
+    ],
+    "synonyms": [
+      "replace",
+      "relocate"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_displeasure",
+    "headword": "displeasure",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈpleʒə/",
+    "meanings": [
+      {
+        "tr": "hoşnutsuzluk, memnuniyetsizlik",
+        "en": "a feeling of annoyance or dissatisfaction",
+        "exampleEn": "The manager expressed his displeasure at the late delivery.",
+        "exampleTr": "Müdür, geç teslimattan duyduğu hoşnutsuzluğu dile getirdi."
+      }
+    ],
+    "synonyms": [
+      "annoyance",
+      "dissatisfaction"
+    ],
+    "antonyms": [
+      "pleasure"
+    ]
+  },
+  {
+    "id": "w_disposal",
+    "headword": "disposal",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈspəʊzl/",
+    "meanings": [
+      {
+        "tr": "bertaraf etme, atma; tasarruf",
+        "en": "the act of getting rid of something",
+        "exampleEn": "Proper disposal of chemical waste protects the environment.",
+        "exampleTr": "Kimyasal atıkların düzgün bertaraf edilmesi çevreyi korur."
+      }
+    ],
+    "synonyms": [
+      "removal",
+      "elimination"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_disposition",
+    "headword": "disposition",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdɪspəˈzɪʃn/",
+    "meanings": [
+      {
+        "tr": "mizaç, huy, eğilim",
+        "en": "a person's natural character or tendency",
+        "exampleEn": "She has a cheerful disposition that makes her easy to like.",
+        "exampleTr": "Onu sevmeyi kolaylaştıran neşeli bir mizacı var."
+      }
+    ],
+    "synonyms": [
+      "temperament",
+      "nature"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dispute",
+    "headword": "dispute",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈspjuːt/",
+    "meanings": [
+      {
+        "tr": "anlaşmazlık, uyuşmazlık",
+        "en": "a serious argument or disagreement",
+        "exampleEn": "The two countries had a long dispute over the border.",
+        "exampleTr": "İki ülke, sınır konusunda uzun bir anlaşmazlık yaşadı."
+      }
+    ],
+    "synonyms": [
+      "argument",
+      "conflict"
+    ],
+    "antonyms": [
+      "agreement"
+    ]
+  },
+  {
+    "id": "w_disqualify",
+    "headword": "disqualify",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈkwɒlɪfaɪ/",
+    "meanings": [
+      {
+        "tr": "diskalifiye etmek, hak tanımamak",
+        "en": "to officially stop someone from taking part",
+        "exampleEn": "The runner was disqualified for a false start.",
+        "exampleTr": "Koşucu, hatalı çıkış nedeniyle diskalifiye edildi."
+      }
+    ],
+    "synonyms": [
+      "ban",
+      "exclude"
+    ],
+    "antonyms": [
+      "qualify"
+    ]
+  },
+  {
+    "id": "w_disregard",
+    "headword": "disregard",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdɪsrɪˈɡɑːd/",
+    "meanings": [
+      {
+        "tr": "aldırmama, umursamama, dikkate almama",
+        "en": "the act of paying no attention to something",
+        "exampleEn": "His complete disregard for safety rules caused the accident.",
+        "exampleTr": "Güvenlik kurallarını tamamen umursamaması kazaya neden oldu."
+      }
+    ],
+    "synonyms": [
+      "neglect",
+      "indifference"
+    ],
+    "antonyms": [
+      "regard"
+    ]
+  },
+  {
+    "id": "w_dissatisfaction",
+    "headword": "dissatisfaction",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdɪsˌsætɪsˈfækʃn/",
+    "meanings": [
+      {
+        "tr": "memnuniyetsizlik, hoşnutsuzluk",
+        "en": "a feeling of not being satisfied or happy",
+        "exampleEn": "Customers expressed dissatisfaction with the slow service.",
+        "exampleTr": "Müşteriler, yavaş hizmetten duydukları memnuniyetsizliği dile getirdi."
+      }
+    ],
+    "synonyms": [
+      "discontent",
+      "displeasure"
+    ],
+    "antonyms": [
+      "satisfaction"
+    ]
+  },
+  {
+    "id": "w_dissatisfied",
+    "headword": "dissatisfied",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪsˈsætɪsfaɪd/",
+    "meanings": [
+      {
+        "tr": "memnun olmayan, hoşnutsuz",
+        "en": "not happy or content with something",
+        "exampleEn": "She was dissatisfied with the quality of the product.",
+        "exampleTr": "Ürünün kalitesinden memnun değildi."
+      }
+    ],
+    "synonyms": [
+      "discontented",
+      "unhappy"
+    ],
+    "antonyms": [
+      "satisfied"
+    ]
+  },
+  {
+    "id": "w_dissident",
+    "headword": "dissident",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɪsɪdənt/",
+    "meanings": [
+      {
+        "tr": "muhalif",
+        "en": "a person who opposes official policy, especially of a government",
+        "exampleEn": "The dissident was imprisoned for criticizing the government.",
+        "exampleTr": "Muhalif, hükümeti eleştirdiği için hapse atıldı."
+      }
+    ],
+    "synonyms": [
+      "rebel",
+      "protester"
+    ],
+    "antonyms": [
+      "loyalist"
+    ]
+  },
+  {
+    "id": "w_distinguished",
+    "headword": "distinguished",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈstɪŋɡwɪʃt/",
+    "meanings": [
+      {
+        "tr": "seçkin, saygın, kıdemli",
+        "en": "very respected and successful",
+        "exampleEn": "The award was presented by a distinguished professor.",
+        "exampleTr": "Ödül, seçkin bir profesör tarafından takdim edildi."
+      }
+    ],
+    "synonyms": [
+      "eminent",
+      "renowned"
+    ],
+    "antonyms": [
+      "ordinary"
+    ]
+  },
+  {
+    "id": "w_distortion",
+    "headword": "distortion",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈstɔːʃn/",
+    "meanings": [
+      {
+        "tr": "çarpıtma, bozulma",
+        "en": "a change that makes something inaccurate or unclear",
+        "exampleEn": "The article was a complete distortion of the facts.",
+        "exampleTr": "Makale, gerçeklerin tam bir çarpıtmasıydı."
+      }
+    ],
+    "synonyms": [
+      "misrepresentation",
+      "warping"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_distract",
+    "headword": "distract",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈstrækt/",
+    "meanings": [
+      {
+        "tr": "dikkatini dağıtmak",
+        "en": "to take someone's attention away from something",
+        "exampleEn": "Loud music can distract you while you are studying.",
+        "exampleTr": "Yüksek müzik, ders çalışırken dikkatinizi dağıtabilir."
+      }
+    ],
+    "synonyms": [
+      "divert",
+      "sidetrack"
+    ],
+    "antonyms": [
+      "focus"
+    ]
+  },
+  {
+    "id": "w_distraction",
+    "headword": "distraction",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈstrækʃn/",
+    "meanings": [
+      {
+        "tr": "dikkat dağıtan şey, oyalanma",
+        "en": "something that takes your attention away",
+        "exampleEn": "Turn off your phone to avoid distraction during the exam.",
+        "exampleTr": "Sınav sırasında dikkat dağınıklığını önlemek için telefonunuzu kapatın."
+      }
+    ],
+    "synonyms": [
+      "interruption",
+      "diversion"
+    ],
+    "antonyms": [
+      "focus"
+    ]
+  },
+  {
+    "id": "w_distressing",
+    "headword": "distressing",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈstresɪŋ/",
+    "meanings": [
+      {
+        "tr": "üzücü, sıkıntı verici",
+        "en": "causing worry, sadness, or suffering",
+        "exampleEn": "The news of the disaster was deeply distressing.",
+        "exampleTr": "Felaket haberi son derece üzücüydü."
+      }
+    ],
+    "synonyms": [
+      "upsetting",
+      "disturbing"
+    ],
+    "antonyms": [
+      "comforting"
+    ]
+  },
+  {
+    "id": "w_distributor",
+    "headword": "distributor",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈstrɪbjətə/",
+    "meanings": [
+      {
+        "tr": "dağıtıcı, distribütör",
+        "en": "a person or company that supplies goods to stores",
+        "exampleEn": "The company is the main distributor of these products in Europe.",
+        "exampleTr": "Şirket, bu ürünlerin Avrupa'daki ana distribütörüdür."
+      }
+    ],
+    "synonyms": [
+      "supplier",
+      "dealer"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_diversion",
+    "headword": "diversion",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/daɪˈvɜːʃn/",
+    "meanings": [
+      {
+        "tr": "sapma, yön değiştirme; oyalama",
+        "en": "a change of direction or something that distracts attention",
+        "exampleEn": "There was a diversion on the highway due to roadwork.",
+        "exampleTr": "Yol çalışması nedeniyle otoyolda bir güzergah değişikliği vardı."
+      }
+    ],
+    "synonyms": [
+      "detour",
+      "distraction"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_divert",
+    "headword": "divert",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/daɪˈvɜːt/",
+    "meanings": [
+      {
+        "tr": "yönünü değiştirmek, başka yöne çevirmek",
+        "en": "to change the direction or use of something",
+        "exampleEn": "Police had to divert traffic away from the accident.",
+        "exampleTr": "Polis, trafiği kazadan uzağa yönlendirmek zorunda kaldı."
+      }
+    ],
+    "synonyms": [
+      "redirect",
+      "reroute"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_divided",
+    "headword": "divided",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈvaɪdɪd/",
+    "meanings": [
+      {
+        "tr": "bölünmüş, ayrılmış",
+        "en": "separated into parts or in disagreement",
+        "exampleEn": "The committee was divided over the new proposal.",
+        "exampleTr": "Komite, yeni öneri konusunda bölünmüştü."
+      }
+    ],
+    "synonyms": [
+      "split",
+      "separated"
+    ],
+    "antonyms": [
+      "united"
+    ]
+  },
+  {
+    "id": "w_division",
+    "headword": "division",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈvɪʒn/",
+    "meanings": [
+      {
+        "tr": "bölme, bölünme; bölüm",
+        "en": "the act of separating into parts, or a department",
+        "exampleEn": "The sales division reported strong profits this year.",
+        "exampleTr": "Satış bölümü bu yıl güçlü kârlar bildirdi."
+      }
+    ],
+    "synonyms": [
+      "section",
+      "separation"
+    ],
+    "antonyms": [
+      "unity"
+    ]
+  },
+  {
+    "id": "w_divorce",
+    "headword": "divorce",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɪˈvɔːs/",
+    "meanings": [
+      {
+        "tr": "boşanma",
+        "en": "the legal ending of a marriage",
+        "exampleEn": "After years of conflict, they finally decided on a divorce.",
+        "exampleTr": "Yıllarca süren çatışmadan sonra sonunda boşanmaya karar verdiler."
+      }
+    ],
+    "synonyms": [
+      "separation",
+      "split"
+    ],
+    "antonyms": [
+      "marriage"
+    ]
+  },
+  {
+    "id": "w_dna",
+    "headword": "DNA",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdiː en ˈeɪ/",
+    "meanings": [
+      {
+        "tr": "DNA (deoksiribonükleik asit)",
+        "en": "the substance that carries genetic information in cells",
+        "exampleEn": "Scientists used DNA to identify the suspect.",
+        "exampleTr": "Bilim insanları, şüpheliyi belirlemek için DNA kullandı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_dock",
+    "headword": "dock",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɒk/",
+    "meanings": [
+      {
+        "tr": "rıhtım, iskele, dok",
+        "en": "a place where ships are loaded, unloaded, or repaired",
+        "exampleEn": "The ship was tied securely to the dock overnight.",
+        "exampleTr": "Gemi, gece boyunca rıhtıma sağlamca bağlandı."
+      }
+    ],
+    "synonyms": [
+      "wharf",
+      "pier"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_domestic",
+    "headword": "domestic",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dəˈmestɪk/",
+    "meanings": [
+      {
+        "tr": "yerli, iç; evcil; ev ile ilgili",
+        "en": "relating to home, family, or one's own country",
+        "exampleEn": "Domestic flights are usually cheaper than international ones.",
+        "exampleTr": "İç hat uçuşları genellikle uluslararası uçuşlardan daha ucuzdur."
+      }
+    ],
+    "synonyms": [
+      "national",
+      "household"
+    ],
+    "antonyms": [
+      "foreign",
+      "international"
+    ]
+  },
+  {
+    "id": "w_dominate",
+    "headword": "dominate",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɒmɪneɪt/",
+    "meanings": [
+      {
+        "tr": "hakim olmak, egemen olmak",
+        "en": "to have power and control over something",
+        "exampleEn": "That company dominates the smartphone market.",
+        "exampleTr": "O şirket, akıllı telefon pazarına hakim."
+      }
+    ],
+    "synonyms": [
+      "control",
+      "rule"
+    ],
+    "antonyms": [
+      "submit"
+    ]
+  },
+  {
+    "id": "w_donate",
+    "headword": "donate",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dəʊˈneɪt/",
+    "meanings": [
+      {
+        "tr": "bağışlamak, bağışta bulunmak",
+        "en": "to give money or goods to help others",
+        "exampleEn": "Many people donate blood to save lives.",
+        "exampleTr": "Birçok insan, hayat kurtarmak için kan bağışlar."
+      }
+    ],
+    "synonyms": [
+      "contribute",
+      "give"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_donation",
+    "headword": "donation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dəʊˈneɪʃn/",
+    "meanings": [
+      {
+        "tr": "bağış",
+        "en": "something given to help a person or organization",
+        "exampleEn": "The charity received a generous donation from a local business.",
+        "exampleTr": "Hayır kurumu, yerel bir işletmeden cömert bir bağış aldı."
+      }
+    ],
+    "synonyms": [
+      "contribution",
+      "gift"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_donkey",
+    "headword": "donkey",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɒŋki/",
+    "meanings": [
+      {
+        "tr": "eşek",
+        "en": "an animal like a small horse with long ears",
+        "exampleEn": "The farmer used a donkey to carry the heavy sacks.",
+        "exampleTr": "Çiftçi, ağır çuvalları taşımak için bir eşek kullandı."
+      }
+    ],
+    "synonyms": [
+      "ass",
+      "mule"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_doom",
+    "headword": "doom",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/duːm/",
+    "meanings": [
+      {
+        "tr": "kıyamet, felaket, kötü kader",
+        "en": "death, destruction, or a terrible fate",
+        "exampleEn": "A sense of doom filled the room before the storm hit.",
+        "exampleTr": "Fırtına vurmadan önce odayı bir felaket hissi kapladı."
+      }
+    ],
+    "synonyms": [
+      "ruin",
+      "destruction"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_doorkeeper",
+    "headword": "doorkeeper",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɔːkiːpə/",
+    "meanings": [
+      {
+        "tr": "kapıcı",
+        "en": "a person who guards the entrance of a building",
+        "exampleEn": "The doorkeeper checked everyone's tickets at the entrance.",
+        "exampleTr": "Kapıcı, girişte herkesin biletlerini kontrol etti."
+      }
+    ],
+    "synonyms": [
+      "doorman",
+      "porter"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_doorway",
+    "headword": "doorway",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɔːweɪ/",
+    "meanings": [
+      {
+        "tr": "kapı aralığı, kapı eşiği",
+        "en": "the opening or space filled by a door",
+        "exampleEn": "She stood in the doorway, waiting to be invited in.",
+        "exampleTr": "İçeri davet edilmeyi bekleyerek kapı aralığında durdu."
+      }
+    ],
+    "synonyms": [
+      "entrance",
+      "threshold"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dorm",
+    "headword": "dorm",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dɔːm/",
+    "meanings": [
+      {
+        "tr": "yurt (öğrenci yurdu)",
+        "en": "a building where students live at a school or college",
+        "exampleEn": "She shares a dorm with three other students.",
+        "exampleTr": "Diğer üç öğrenciyle bir yurtta kalıyor."
+      }
+    ],
+    "synonyms": [
+      "dormitory",
+      "hall"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dormitory",
+    "headword": "dormitory",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdɔːmətri/",
+    "meanings": [
+      {
+        "tr": "yatakhane, öğrenci yurdu",
+        "en": "a large bedroom or building for students to sleep in",
+        "exampleEn": "The university built a new dormitory for first-year students.",
+        "exampleTr": "Üniversite, birinci sınıf öğrencileri için yeni bir yurt inşa etti."
+      }
+    ],
+    "synonyms": [
+      "dorm",
+      "hall"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dose",
+    "headword": "dose",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dəʊs/",
+    "meanings": [
+      {
+        "tr": "doz",
+        "en": "a measured amount of medicine to be taken",
+        "exampleEn": "Take one dose of this medicine every six hours.",
+        "exampleTr": "Bu ilaçtan altı saatte bir doz alın."
+      }
+    ],
+    "synonyms": [
+      "amount",
+      "measure"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_doubly",
+    "headword": "doubly",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdʌbli/",
+    "meanings": [
+      {
+        "tr": "iki kat, iki misli, bir kat daha",
+        "en": "to twice the degree; even more so",
+        "exampleEn": "We must be doubly careful when handling these chemicals.",
+        "exampleTr": "Bu kimyasalları kullanırken bir kat daha dikkatli olmalıyız."
+      }
+    ],
+    "synonyms": [
+      "twice"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_doubtful",
+    "headword": "doubtful",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdaʊtfl/",
+    "meanings": [
+      {
+        "tr": "şüpheli, kuşkulu, belirsiz",
+        "en": "feeling uncertain or unlikely to happen",
+        "exampleEn": "It is doubtful whether the project will finish on time.",
+        "exampleTr": "Projenin zamanında bitip bitmeyeceği şüpheli."
+      }
+    ],
+    "synonyms": [
+      "uncertain",
+      "unsure"
+    ],
+    "antonyms": [
+      "certain"
+    ]
+  },
+  {
+    "id": "w_dove",
+    "headword": "dove",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dʌv/",
+    "meanings": [
+      {
+        "tr": "güvercin",
+        "en": "a white or grey bird often used as a symbol of peace",
+        "exampleEn": "A white dove is a traditional symbol of peace.",
+        "exampleTr": "Beyaz bir güvercin, geleneksel bir barış simgesidir."
+      }
+    ],
+    "synonyms": [
+      "pigeon"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_down",
+    "headword": "down",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/daʊn/",
+    "meanings": [
+      {
+        "tr": "keyifsiz, üzgün, morali bozuk",
+        "en": "feeling sad or depressed",
+        "exampleEn": "She felt a little down after hearing the bad news.",
+        "exampleTr": "Kötü haberi duyduktan sonra biraz keyifsiz hissetti."
+      }
+    ],
+    "synonyms": [
+      "sad",
+      "depressed"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "id": "w_downfall",
+    "headword": "downfall",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdaʊnfɔːl/",
+    "meanings": [
+      {
+        "tr": "çöküş, yıkılış, düşüş",
+        "en": "a loss of power, success, or status",
+        "exampleEn": "His greed eventually led to his downfall.",
+        "exampleTr": "Açgözlülüğü, sonunda onun çöküşüne yol açtı."
+      }
+    ],
+    "synonyms": [
+      "ruin",
+      "collapse"
+    ],
+    "antonyms": [
+      "rise"
+    ]
+  },
+  {
+    "id": "w_download",
+    "headword": "download",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdaʊnləʊd/",
+    "meanings": [
+      {
+        "tr": "indirme, yükleme (dosya)",
+        "en": "a file copied from the internet to a device",
+        "exampleEn": "The download took several minutes because of the large file.",
+        "exampleTr": "Büyük dosya nedeniyle indirme birkaç dakika sürdü."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "upload"
+    ]
+  },
+  {
+    "id": "w_dowry",
+    "headword": "dowry",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdaʊri/",
+    "meanings": [
+      {
+        "tr": "çeyiz, drahoma",
+        "en": "property or money a bride brings to her marriage",
+        "exampleEn": "In some cultures, a bride's family provides a dowry.",
+        "exampleTr": "Bazı kültürlerde, gelinin ailesi bir çeyiz sağlar."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_draft",
+    "headword": "draft",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/drɑːft/",
+    "meanings": [
+      {
+        "tr": "taslak, müsvedde",
+        "en": "an early version of a piece of writing",
+        "exampleEn": "She wrote a rough draft of the essay before editing it.",
+        "exampleTr": "Makaleyi düzenlemeden önce kaba bir taslağını yazdı."
+      }
+    ],
+    "synonyms": [
+      "outline",
+      "sketch"
+    ],
+    "antonyms": [
+      "final"
+    ]
+  },
+  {
+    "id": "w_drain",
+    "headword": "drain",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dreɪn/",
+    "meanings": [
+      {
+        "tr": "gider, kanalizasyon, su tahliye borusu",
+        "en": "a pipe or channel that carries away water or waste",
+        "exampleEn": "The water slowly went down the drain in the sink.",
+        "exampleTr": "Su, lavabodaki giderden yavaşça aktı."
+      }
+    ],
+    "synonyms": [
+      "pipe",
+      "channel"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dramatically",
+    "headword": "dramatically",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/drəˈmætɪkli/",
+    "meanings": [
+      {
+        "tr": "çarpıcı biçimde, büyük ölçüde, dramatik şekilde",
+        "en": "in a sudden, noticeable, or striking way",
+        "exampleEn": "Prices have risen dramatically over the past year.",
+        "exampleTr": "Fiyatlar geçen yıl içinde çarpıcı biçimde arttı."
+      }
+    ],
+    "synonyms": [
+      "sharply",
+      "drastically"
+    ],
+    "antonyms": [
+      "slightly"
+    ]
+  },
+  {
+    "id": "w_drapery",
+    "headword": "drapery",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdreɪpəri/",
+    "meanings": [
+      {
+        "tr": "perdelik kumaş, drape kumaş",
+        "en": "cloth or curtains arranged in loose folds",
+        "exampleEn": "Heavy drapery covered the tall windows of the old mansion.",
+        "exampleTr": "Ağır perdelik kumaş, eski konağın uzun pencerelerini örtüyordu."
+      }
+    ],
+    "synonyms": [
+      "curtains",
+      "drapes"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dread",
+    "headword": "dread",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dred/",
+    "meanings": [
+      {
+        "tr": "korkmak, ödü kopmak, çekinmek",
+        "en": "to feel great fear about something in the future",
+        "exampleEn": "I dread having to speak in front of a large audience.",
+        "exampleTr": "Büyük bir kalabalığın önünde konuşmaktan ödüm kopuyor."
+      }
+    ],
+    "synonyms": [
+      "fear",
+      "fret"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dreadful",
+    "headword": "dreadful",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdredfl/",
+    "meanings": [
+      {
+        "tr": "korkunç, berbat, dehşet verici",
+        "en": "extremely bad or unpleasant",
+        "exampleEn": "The weather was dreadful during our entire holiday.",
+        "exampleTr": "Tüm tatilimiz boyunca hava berbattı."
+      }
+    ],
+    "synonyms": [
+      "terrible",
+      "awful"
+    ],
+    "antonyms": [
+      "wonderful"
+    ]
+  },
+  {
+    "id": "w_dreamy",
+    "headword": "dreamy",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdriːmi/",
+    "meanings": [
+      {
+        "tr": "hayalperest, dalgın; rüya gibi",
+        "en": "as if in a dream; gentle and pleasant",
+        "exampleEn": "She had a dreamy look on her face as she gazed out the window.",
+        "exampleTr": "Pencereden dışarı bakarken yüzünde dalgın bir ifade vardı."
+      }
+    ],
+    "synonyms": [
+      "pensive",
+      "peaceful"
+    ],
+    "antonyms": [
+      "alert"
+    ]
+  },
+  {
+    "id": "w_drinkable",
+    "headword": "drinkable",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdrɪŋkəbl/",
+    "meanings": [
+      {
+        "tr": "içilebilir, içmeye uygun",
+        "en": "safe or pleasant enough to drink",
+        "exampleEn": "The campers boiled the water to make it drinkable.",
+        "exampleTr": "Kampçılar, içilebilir hale getirmek için suyu kaynattı."
+      }
+    ],
+    "synonyms": [
+      "potable"
+    ],
+    "antonyms": [
+      "undrinkable"
+    ]
+  },
+  {
+    "id": "w_droop",
+    "headword": "droop",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/druːp/",
+    "meanings": [
+      {
+        "tr": "sarkma, bükülme, pörsüme",
+        "en": "a downward bend or hanging caused by weakness",
+        "exampleEn": "There was a sad droop in the old flag on the pole.",
+        "exampleTr": "Direkteki eski bayrakta hüzünlü bir sarkma vardı."
+      }
+    ],
+    "synonyms": [
+      "sag",
+      "slump"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dropout",
+    "headword": "dropout",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdrɒpaʊt/",
+    "meanings": [
+      {
+        "tr": "okulu terk eden kişi, okul terki",
+        "en": "a person who leaves school or a course before finishing",
+        "exampleEn": "He became a high school dropout but later earned his degree.",
+        "exampleTr": "Lise terkiydi ama daha sonra diplomasını aldı."
+      }
+    ],
+    "synonyms": [
+      "quitter"
+    ],
+    "antonyms": [
+      "graduate"
+    ]
+  },
+  {
+    "id": "w_drought",
+    "headword": "drought",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/draʊt/",
+    "meanings": [
+      {
+        "tr": "kuraklık",
+        "en": "a long period without rain",
+        "exampleEn": "The severe drought destroyed most of the crops.",
+        "exampleTr": "Şiddetli kuraklık ekinlerin çoğunu mahvetti."
+      }
+    ],
+    "synonyms": [
+      "dry spell"
+    ],
+    "antonyms": [
+      "flood"
+    ]
+  },
+  {
+    "id": "w_duel",
+    "headword": "duel",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdjuːəl/",
+    "meanings": [
+      {
+        "tr": "düello",
+        "en": "a formal fight between two people, often with weapons",
+        "exampleEn": "The two men fought a duel at dawn.",
+        "exampleTr": "İki adam şafakta bir düello yaptı."
+      }
+    ],
+    "synonyms": [
+      "combat"
+    ],
+    "antonyms": [
+      "truce"
+    ]
+  },
+  {
+    "id": "w_dumb",
+    "headword": "dumb",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dʌm/",
+    "meanings": [
+      {
+        "tr": "aptal, dilsiz",
+        "en": "stupid, or unable to speak",
+        "exampleEn": "It was a dumb mistake that cost us the game.",
+        "exampleTr": "Bize maçı kaybettiren aptalca bir hataydı."
+      }
+    ],
+    "synonyms": [
+      "stupid",
+      "foolish"
+    ],
+    "antonyms": [
+      "smart",
+      "clever"
+    ]
+  },
+  {
+    "id": "w_duplicate",
+    "headword": "duplicate",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈdjuːplɪkət/",
+    "meanings": [
+      {
+        "tr": "kopya, suret, çift",
+        "en": "an exact copy of something",
+        "exampleEn": "Please make a duplicate of this document for the files.",
+        "exampleTr": "Lütfen bu belgenin dosyalar için bir kopyasını çıkarın."
+      }
+    ],
+    "synonyms": [
+      "copy",
+      "replica"
+    ],
+    "antonyms": [
+      "original"
+    ]
+  },
+  {
+    "id": "w_duplication",
+    "headword": "duplication",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌdjuːplɪˈkeɪʃən/",
+    "meanings": [
+      {
+        "tr": "çoğaltma, tekrarlama, kopyalama",
+        "en": "the act of copying or repeating something",
+        "exampleEn": "The duplication of effort wasted a lot of time.",
+        "exampleTr": "Çabaların tekrarlanması çok zaman kaybettirdi."
+      }
+    ],
+    "synonyms": [
+      "repetition",
+      "copying"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dwarf",
+    "headword": "dwarf",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/dwɔːf/",
+    "meanings": [
+      {
+        "tr": "cüce",
+        "en": "a mythical creature or person of very small height",
+        "exampleEn": "In the story, a friendly dwarf guided the travelers through the mountains.",
+        "exampleTr": "Hikâyede dost canlısı bir cüce yolcuları dağlardan geçirdi."
+      }
+    ],
+    "synonyms": [
+      "midget"
+    ],
+    "antonyms": [
+      "giant"
+    ]
+  },
+  {
+    "id": "w_dye",
+    "headword": "dye",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/daɪ/",
+    "meanings": [
+      {
+        "tr": "boya (kumaş/saç için)",
+        "en": "a substance used to change the color of something",
+        "exampleEn": "She used a red dye to color the fabric.",
+        "exampleTr": "Kumaşı boyamak için kırmızı bir boya kullandı."
+      }
+    ],
+    "synonyms": [
+      "colorant",
+      "tint"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_dynamic",
+    "headword": "dynamic",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/daɪˈnæmɪk/",
+    "meanings": [
+      {
+        "tr": "dinamik, enerjik, hareketli",
+        "en": "full of energy and new ideas; constantly changing",
+        "exampleEn": "She is a dynamic leader who inspires her team.",
+        "exampleTr": "O, ekibine ilham veren dinamik bir liderdir."
+      }
+    ],
+    "synonyms": [
+      "energetic",
+      "active"
+    ],
+    "antonyms": [
+      "static",
+      "passive"
+    ]
+  },
+  {
+    "id": "w_eagerly",
+    "headword": "eagerly",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈiːɡəli/",
+    "meanings": [
+      {
+        "tr": "hevesle, istekle",
+        "en": "in a way that shows strong interest or enthusiasm",
+        "exampleEn": "The children eagerly opened their presents.",
+        "exampleTr": "Çocuklar hediyelerini hevesle açtılar."
+      }
+    ],
+    "synonyms": [
+      "enthusiastically",
+      "keenly"
+    ],
+    "antonyms": [
+      "reluctantly"
+    ]
+  },
+  {
+    "id": "w_eagle",
+    "headword": "eagle",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈiːɡəl/",
+    "meanings": [
+      {
+        "tr": "kartal",
+        "en": "a large bird of prey with strong eyesight",
+        "exampleEn": "An eagle soared high above the mountains.",
+        "exampleTr": "Bir kartal dağların yükseğinde süzüldü."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_earnings",
+    "headword": "earnings",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈɜːnɪŋz/",
+    "meanings": [
+      {
+        "tr": "kazanç, gelir",
+        "en": "money earned from work or investments",
+        "exampleEn": "The company's earnings increased by ten percent this year.",
+        "exampleTr": "Şirketin kazançları bu yıl yüzde on arttı."
+      }
+    ],
+    "synonyms": [
+      "income",
+      "wages"
+    ],
+    "antonyms": [
+      "expenses"
+    ]
+  },
+  {
+    "id": "w_ease",
+    "headword": "ease",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/iːz/",
+    "meanings": [
+      {
+        "tr": "kolaylık, rahatlık",
+        "en": "the state of being comfortable or without difficulty",
+        "exampleEn": "She solved the problem with great ease.",
+        "exampleTr": "Sorunu büyük bir kolaylıkla çözdü."
+      }
+    ],
+    "synonyms": [
+      "simplicity",
+      "comfort"
+    ],
+    "antonyms": [
+      "difficulty"
+    ]
+  },
+  {
+    "id": "w_eastward",
+    "headword": "eastward",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈiːstwəd/",
+    "meanings": [
+      {
+        "tr": "doğuya doğru",
+        "en": "toward the east",
+        "exampleEn": "The ship sailed eastward across the ocean.",
+        "exampleTr": "Gemi okyanus boyunca doğuya doğru yol aldı."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": [
+      "westward"
+    ]
+  },
+  {
+    "id": "w_ecologically",
+    "headword": "ecologically",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌiːkəˈlɒdʒɪkli/",
+    "meanings": [
+      {
+        "tr": "ekolojik olarak, çevresel açıdan",
+        "en": "in a way relating to the environment and living things",
+        "exampleEn": "This product is ecologically friendly and safe to use.",
+        "exampleTr": "Bu ürün ekolojik açıdan dosttur ve kullanımı güvenlidir."
+      }
+    ],
+    "synonyms": [
+      "environmentally"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_ecologist",
+    "headword": "ecologist",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/iˈkɒlədʒɪst/",
+    "meanings": [
+      {
+        "tr": "ekolojist, çevre bilimci",
+        "en": "a scientist who studies the relationship between living things and their environment",
+        "exampleEn": "The ecologist warned about the loss of natural habitats.",
+        "exampleTr": "Ekolojist doğal yaşam alanlarının kaybı konusunda uyardı."
+      }
+    ],
+    "synonyms": [
+      "environmentalist"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_economical",
+    "headword": "economical",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌiːkəˈnɒmɪkəl/",
+    "meanings": [
+      {
+        "tr": "ekonomik, tutumlu, hesaplı",
+        "en": "using money, time, or resources carefully without waste",
+        "exampleEn": "A small car is more economical to run than a large one.",
+        "exampleTr": "Küçük bir araba büyük olandan daha ekonomiktir."
+      }
+    ],
+    "synonyms": [
+      "thrifty",
+      "frugal"
+    ],
+    "antonyms": [
+      "wasteful",
+      "extravagant"
+    ]
+  },
+  {
+    "id": "w_economist",
+    "headword": "economist",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/iˈkɒnəmɪst/",
+    "meanings": [
+      {
+        "tr": "ekonomist, iktisatçı",
+        "en": "an expert who studies the economy",
+        "exampleEn": "The economist predicted a rise in inflation next year.",
+        "exampleTr": "Ekonomist gelecek yıl enflasyonda bir artış öngördü."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_ecstatic",
+    "headword": "ecstatic",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈstætɪk/",
+    "meanings": [
+      {
+        "tr": "kendinden geçmiş, çok mutlu, coşkulu",
+        "en": "extremely happy and excited",
+        "exampleEn": "She was ecstatic when she heard she had won the prize.",
+        "exampleTr": "Ödülü kazandığını duyunca çok mutlu oldu."
+      }
+    ],
+    "synonyms": [
+      "overjoyed",
+      "elated"
+    ],
+    "antonyms": [
+      "miserable",
+      "depressed"
+    ]
+  },
+  {
+    "id": "w_edit",
+    "headword": "edit",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈedɪt/",
+    "meanings": [
+      {
+        "tr": "düzenleme, düzeltme",
+        "en": "a change made to a text, film, or recording",
+        "exampleEn": "The article needs one more edit before it is published.",
+        "exampleTr": "Makalenin yayımlanmadan önce bir düzenlemeye daha ihtiyacı var."
+      }
+    ],
+    "synonyms": [
+      "revision",
+      "correction"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_editorial",
+    "headword": "editorial",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌedɪˈtɔːriəl/",
+    "meanings": [
+      {
+        "tr": "başyazı, başmakale",
+        "en": "an article giving the opinion of a newspaper's editors",
+        "exampleEn": "The newspaper's editorial criticized the new policy.",
+        "exampleTr": "Gazetenin başyazısı yeni politikayı eleştirdi."
+      }
+    ],
+    "synonyms": [
+      "opinion piece",
+      "commentary"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_educated",
+    "headword": "educated",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈedʒʊkeɪtɪd/",
+    "meanings": [
+      {
+        "tr": "eğitimli, kültürlü",
+        "en": "having received a good education",
+        "exampleEn": "She is a well-educated woman with two degrees.",
+        "exampleTr": "O, iki diplomaya sahip, iyi eğitimli bir kadındır."
+      }
+    ],
+    "synonyms": [
+      "learned",
+      "knowledgeable"
+    ],
+    "antonyms": [
+      "uneducated",
+      "ignorant"
+    ]
+  },
+  {
+    "id": "w_educator",
+    "headword": "educator",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈedʒʊkeɪtə/",
+    "meanings": [
+      {
+        "tr": "eğitimci, öğretmen",
+        "en": "a person who teaches or works in education",
+        "exampleEn": "As an educator, she dedicated her life to teaching children.",
+        "exampleTr": "Bir eğitimci olarak, hayatını çocukları öğretmeye adadı."
+      }
+    ],
+    "synonyms": [
+      "teacher",
+      "instructor"
+    ],
+    "antonyms": [
+      "student"
+    ]
+  },
+  {
+    "id": "w_effectively",
+    "headword": "effectively",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈfektɪvli/",
+    "meanings": [
+      {
+        "tr": "etkili bir şekilde, fiilen",
+        "en": "in a way that produces a successful result",
+        "exampleEn": "The new method allows us to work more effectively.",
+        "exampleTr": "Yeni yöntem daha etkili çalışmamızı sağlıyor."
+      }
+    ],
+    "synonyms": [
+      "efficiently",
+      "successfully"
+    ],
+    "antonyms": [
+      "ineffectively"
+    ]
+  },
+  {
+    "id": "w_effectiveness",
+    "headword": "effectiveness",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈfektɪvnəs/",
+    "meanings": [
+      {
+        "tr": "etkililik, etkinlik",
+        "en": "the degree to which something is successful in producing a result",
+        "exampleEn": "Studies confirmed the effectiveness of the new drug.",
+        "exampleTr": "Çalışmalar yeni ilacın etkililiğini doğruladı."
+      }
+    ],
+    "synonyms": [
+      "efficiency"
+    ],
+    "antonyms": [
+      "ineffectiveness"
+    ]
+  },
+  {
+    "id": "w_elect",
+    "headword": "elect",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈlekt/",
+    "meanings": [
+      {
+        "tr": "seçmek (oyla)",
+        "en": "to choose someone for a position by voting",
+        "exampleEn": "The citizens will elect a new president next month.",
+        "exampleTr": "Vatandaşlar gelecek ay yeni bir başkan seçecekler."
+      }
+    ],
+    "synonyms": [
+      "choose",
+      "vote for"
+    ],
+    "antonyms": [
+      "dismiss"
+    ]
+  },
+  {
+    "id": "w_elective",
+    "headword": "elective",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈlektɪv/",
+    "meanings": [
+      {
+        "tr": "seçmeli, isteğe bağlı",
+        "en": "chosen rather than required; optional",
+        "exampleEn": "Students can take an elective course in art or music.",
+        "exampleTr": "Öğrenciler sanat ya da müzikte seçmeli bir ders alabilirler."
+      }
+    ],
+    "synonyms": [
+      "optional"
+    ],
+    "antonyms": [
+      "compulsory",
+      "mandatory"
+    ]
+  },
+  {
+    "id": "w_electrician",
+    "headword": "electrician",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪlekˈtrɪʃən/",
+    "meanings": [
+      {
+        "tr": "elektrikçi",
+        "en": "a person whose job is to install or repair electrical equipment",
+        "exampleEn": "We called an electrician to fix the broken wiring.",
+        "exampleTr": "Bozuk kabloları tamir etmesi için bir elektrikçi çağırdık."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_electronically",
+    "headword": "electronically",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪlekˈtrɒnɪkli/",
+    "meanings": [
+      {
+        "tr": "elektronik olarak",
+        "en": "by means of electronic devices or computers",
+        "exampleEn": "You can submit the form electronically through our website.",
+        "exampleTr": "Formu web sitemiz aracılığıyla elektronik olarak gönderebilirsiniz."
+      }
+    ],
+    "synonyms": [
+      "digitally"
+    ],
+    "antonyms": [
+      "manually"
+    ]
+  },
+  {
+    "id": "w_electronics",
+    "headword": "electronics",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪlekˈtrɒnɪks/",
+    "meanings": [
+      {
+        "tr": "elektronik (cihazlar/bilim dalı)",
+        "en": "electronic devices, or the study of them",
+        "exampleEn": "He works in a shop that sells electronics like phones and laptops.",
+        "exampleTr": "Telefon ve dizüstü bilgisayar gibi elektronik ürünler satan bir dükkanda çalışıyor."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_elegance",
+    "headword": "elegance",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈelɪɡəns/",
+    "meanings": [
+      {
+        "tr": "zarafet, şıklık",
+        "en": "the quality of being graceful and stylish",
+        "exampleEn": "The dress was admired for its simple elegance.",
+        "exampleTr": "Elbise sade zarafeti nedeniyle beğenildi."
+      }
+    ],
+    "synonyms": [
+      "grace",
+      "style"
+    ],
+    "antonyms": [
+      "clumsiness"
+    ]
+  },
+  {
+    "id": "w_elegant",
+    "headword": "elegant",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈelɪɡənt/",
+    "meanings": [
+      {
+        "tr": "zarif, şık",
+        "en": "graceful and stylish in appearance or manner",
+        "exampleEn": "She wore an elegant black dress to the party.",
+        "exampleTr": "Partiye zarif siyah bir elbise giydi."
+      }
+    ],
+    "synonyms": [
+      "graceful",
+      "stylish"
+    ],
+    "antonyms": [
+      "clumsy",
+      "inelegant"
+    ]
+  },
+  {
+    "id": "w_elegantly",
+    "headword": "elegantly",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈelɪɡəntli/",
+    "meanings": [
+      {
+        "tr": "zarif bir şekilde, şık biçimde",
+        "en": "in a graceful and stylish way",
+        "exampleEn": "The room was elegantly decorated with fresh flowers.",
+        "exampleTr": "Oda taze çiçeklerle zarif bir şekilde süslenmişti."
+      }
+    ],
+    "synonyms": [
+      "gracefully",
+      "stylishly"
+    ],
+    "antonyms": [
+      "clumsily"
+    ]
+  },
+  {
+    "id": "w_elemental",
+    "headword": "elemental",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌelɪˈmentəl/",
+    "meanings": [
+      {
+        "tr": "temel, esas, doğal güçlere ait",
+        "en": "basic and fundamental, or relating to the forces of nature",
+        "exampleEn": "The story explores elemental human emotions like fear and love.",
+        "exampleTr": "Hikâye korku ve sevgi gibi temel insani duyguları inceliyor."
+      }
+    ],
+    "synonyms": [
+      "fundamental",
+      "basic"
+    ],
+    "antonyms": [
+      "complex"
+    ]
+  },
+  {
+    "id": "w_eligible",
+    "headword": "eligible",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈelɪdʒəbəl/",
+    "meanings": [
+      {
+        "tr": "uygun, hak sahibi, ehil",
+        "en": "having the right qualifications to do or receive something",
+        "exampleEn": "Only citizens over eighteen are eligible to vote.",
+        "exampleTr": "Yalnızca on sekiz yaşından büyük vatandaşlar oy kullanmaya uygundur."
+      }
+    ],
+    "synonyms": [
+      "qualified",
+      "entitled"
+    ],
+    "antonyms": [
+      "ineligible"
+    ]
+  },
+  {
+    "id": "w_elite",
+    "headword": "elite",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈliːt/",
+    "meanings": [
+      {
+        "tr": "seçkinler, elit kesim",
+        "en": "a small group of the most powerful or talented people",
+        "exampleEn": "Only the elite could afford such expensive cars.",
+        "exampleTr": "Bu kadar pahalı arabaları yalnızca seçkinler karşılayabilirdi."
+      }
+    ],
+    "synonyms": [
+      "upper class",
+      "aristocracy"
+    ],
+    "antonyms": [
+      "masses"
+    ]
+  },
+  {
+    "id": "w_eloquence",
+    "headword": "eloquence",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈeləkwəns/",
+    "meanings": [
+      {
+        "tr": "belagat, güzel konuşma yeteneği",
+        "en": "the skill of speaking or writing well and persuasively",
+        "exampleEn": "The speaker moved the audience with his eloquence.",
+        "exampleTr": "Konuşmacı belagatiyle dinleyicileri etkiledi."
+      }
+    ],
+    "synonyms": [
+      "fluency",
+      "articulacy"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_embassy",
+    "headword": "embassy",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈembəsi/",
+    "meanings": [
+      {
+        "tr": "büyükelçilik",
+        "en": "the official offices of an ambassador in a foreign country",
+        "exampleEn": "She applied for a visa at the American embassy.",
+        "exampleTr": "Amerikan büyükelçiliğinde vize başvurusu yaptı."
+      }
+    ],
+    "synonyms": [
+      "consulate"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_embrace",
+    "headword": "embrace",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪmˈbreɪs/",
+    "meanings": [
+      {
+        "tr": "kucaklama, sarılma",
+        "en": "the act of holding someone closely in your arms",
+        "exampleEn": "They greeted each other with a warm embrace.",
+        "exampleTr": "Birbirlerini sıcak bir kucaklamayla selamladılar."
+      }
+    ],
+    "synonyms": [
+      "hug"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_emergence",
+    "headword": "emergence",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈmɜːdʒəns/",
+    "meanings": [
+      {
+        "tr": "ortaya çıkma, doğuş",
+        "en": "the process of appearing or becoming known",
+        "exampleEn": "The emergence of new technology changed the industry.",
+        "exampleTr": "Yeni teknolojinin ortaya çıkması sektörü değiştirdi."
+      }
+    ],
+    "synonyms": [
+      "appearance",
+      "rise"
+    ],
+    "antonyms": [
+      "disappearance"
+    ]
+  },
+  {
+    "id": "w_emphatically",
+    "headword": "emphatically",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪmˈfætɪkli/",
+    "meanings": [
+      {
+        "tr": "kesin bir şekilde, vurgulayarak",
+        "en": "in a forceful and definite way",
+        "exampleEn": "She emphatically denied all the accusations.",
+        "exampleTr": "Tüm suçlamaları kesin bir şekilde reddetti."
+      }
+    ],
+    "synonyms": [
+      "firmly",
+      "strongly"
+    ],
+    "antonyms": [
+      "weakly"
+    ]
+  },
+  {
+    "id": "w_employ",
+    "headword": "employ",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪmˈplɔɪ/",
+    "meanings": [
+      {
+        "tr": "istihdam etmek, çalıştırmak, kullanmak",
+        "en": "to give someone a job, or to use something",
+        "exampleEn": "The factory employs over five hundred workers.",
+        "exampleTr": "Fabrika beş yüzden fazla işçi çalıştırıyor."
+      }
+    ],
+    "synonyms": [
+      "hire",
+      "use"
+    ],
+    "antonyms": [
+      "dismiss",
+      "fire"
+    ]
+  },
+  {
+    "id": "w_employee",
+    "headword": "employee",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪmˈplɔɪiː/",
+    "meanings": [
+      {
+        "tr": "çalışan, işçi",
+        "en": "a person who is paid to work for someone",
+        "exampleEn": "Every employee receives a bonus at the end of the year.",
+        "exampleTr": "Her çalışan yıl sonunda bir ikramiye alır."
+      }
+    ],
+    "synonyms": [
+      "worker",
+      "staff member"
+    ],
+    "antonyms": [
+      "employer"
+    ]
+  },
+  {
+    "id": "w_employer",
+    "headword": "employer",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪmˈplɔɪə/",
+    "meanings": [
+      {
+        "tr": "işveren, patron",
+        "en": "a person or company that pays people to work",
+        "exampleEn": "Her employer gave her two weeks of paid holiday.",
+        "exampleTr": "İşvereni ona iki hafta ücretli izin verdi."
+      }
+    ],
+    "synonyms": [
+      "boss"
+    ],
+    "antonyms": [
+      "employee"
+    ]
+  },
+  {
+    "id": "w_endeavor",
+    "headword": "endeavor",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈdevə/",
+    "meanings": [
+      {
+        "tr": "çaba, girişim, uğraş",
+        "en": "a serious effort to do or achieve something",
+        "exampleEn": "Their endeavor to climb the mountain finally succeeded.",
+        "exampleTr": "Dağa tırmanma çabaları sonunda başarıya ulaştı."
+      }
+    ],
+    "synonyms": [
+      "effort",
+      "attempt"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_endlessly",
+    "headword": "endlessly",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈendləsli/",
+    "meanings": [
+      {
+        "tr": "sonsuzca, durmadan, bitmek bilmeden",
+        "en": "continuing for a very long time without stopping",
+        "exampleEn": "They argued endlessly about the same problem.",
+        "exampleTr": "Aynı sorun hakkında durmadan tartıştılar."
+      }
+    ],
+    "synonyms": [
+      "continuously",
+      "ceaselessly"
+    ],
+    "antonyms": [
+      "briefly"
+    ]
+  },
+  {
+    "id": "w_endurance",
+    "headword": "endurance",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈdjʊərəns/",
+    "meanings": [
+      {
+        "tr": "dayanıklılık, dayanma gücü",
+        "en": "the ability to keep going through difficulty or pain",
+        "exampleEn": "Running a marathon requires great physical endurance.",
+        "exampleTr": "Maraton koşmak büyük fiziksel dayanıklılık gerektirir."
+      }
+    ],
+    "synonyms": [
+      "stamina",
+      "perseverance"
+    ],
+    "antonyms": [
+      "weakness"
+    ]
+  },
+  {
+    "id": "w_enduring",
+    "headword": "enduring",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈdjʊərɪŋ/",
+    "meanings": [
+      {
+        "tr": "kalıcı, sürekli, uzun süren",
+        "en": "continuing or lasting for a long time",
+        "exampleEn": "They formed an enduring friendship that lasted decades.",
+        "exampleTr": "On yıllar süren kalıcı bir dostluk kurdular."
+      }
+    ],
+    "synonyms": [
+      "lasting",
+      "permanent"
+    ],
+    "antonyms": [
+      "temporary",
+      "fleeting"
+    ]
+  },
+  {
+    "id": "w_energy",
+    "headword": "energy",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈenədʒi/",
+    "meanings": [
+      {
+        "tr": "enerji, güç",
+        "en": "the strength and power needed to be active, or power from a fuel source",
+        "exampleEn": "Solar panels turn sunlight into clean energy.",
+        "exampleTr": "Güneş panelleri güneş ışığını temiz enerjiye dönüştürür."
+      }
+    ],
+    "synonyms": [
+      "power",
+      "vigor"
+    ],
+    "antonyms": [
+      "fatigue"
+    ]
+  },
+  {
+    "id": "w_enforce",
+    "headword": "enforce",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈfɔːs/",
+    "meanings": [
+      {
+        "tr": "uygulamak, yürürlüğe koymak, zorla kabul ettirmek",
+        "en": "to make people obey a law or rule",
+        "exampleEn": "The police enforce the speed limit on the highway.",
+        "exampleTr": "Polis otoyolda hız sınırını uyguluyor."
+      }
+    ],
+    "synonyms": [
+      "impose",
+      "apply"
+    ],
+    "antonyms": [
+      "neglect"
+    ]
+  },
+  {
+    "id": "w_engagement",
+    "headword": "engagement",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈɡeɪdʒmənt/",
+    "meanings": [
+      {
+        "tr": "nişan, sözleşme, katılım, randevu",
+        "en": "an agreement to marry, or an arrangement to do something",
+        "exampleEn": "They announced their engagement at the family dinner.",
+        "exampleTr": "Aile yemeğinde nişanlandıklarını açıkladılar."
+      }
+    ],
+    "synonyms": [
+      "betrothal",
+      "appointment"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_engulf",
+    "headword": "engulf",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈɡʌlf/",
+    "meanings": [
+      {
+        "tr": "sarmak, yutmak, kaplamak",
+        "en": "to surround and cover something completely",
+        "exampleEn": "Flames quickly engulfed the entire building.",
+        "exampleTr": "Alevler kısa sürede tüm binayı sardı."
+      }
+    ],
+    "synonyms": [
+      "swallow",
+      "overwhelm"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_enhance",
+    "headword": "enhance",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈhɑːns/",
+    "meanings": [
+      {
+        "tr": "artırmak, geliştirmek, iyileştirmek",
+        "en": "to improve the quality or value of something",
+        "exampleEn": "Good lighting can enhance the beauty of a room.",
+        "exampleTr": "İyi aydınlatma bir odanın güzelliğini artırabilir."
+      }
+    ],
+    "synonyms": [
+      "improve",
+      "boost"
+    ],
+    "antonyms": [
+      "diminish",
+      "reduce"
+    ]
+  },
+  {
+    "id": "w_enroll",
+    "headword": "enroll",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈrəʊl/",
+    "meanings": [
+      {
+        "tr": "kaydolmak, kaydetmek",
+        "en": "to officially join a course, school, or organization",
+        "exampleEn": "She decided to enroll in a Spanish language course.",
+        "exampleTr": "İspanyolca diline kaydolmaya karar verdi."
+      }
+    ],
+    "synonyms": [
+      "register",
+      "sign up"
+    ],
+    "antonyms": [
+      "withdraw"
+    ]
+  },
+  {
+    "id": "w_enterprise",
+    "headword": "enterprise",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈentəpraɪz/",
+    "meanings": [
+      {
+        "tr": "girişim, işletme, teşebbüs",
+        "en": "a business or a difficult project, especially a bold one",
+        "exampleEn": "Starting a new restaurant is a risky enterprise.",
+        "exampleTr": "Yeni bir restoran açmak riskli bir girişimdir."
+      }
+    ],
+    "synonyms": [
+      "business",
+      "venture"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_entertaining",
+    "headword": "entertaining",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌentəˈteɪnɪŋ/",
+    "meanings": [
+      {
+        "tr": "eğlenceli, hoş vakit geçirten",
+        "en": "amusing and enjoyable",
+        "exampleEn": "The movie was both funny and entertaining.",
+        "exampleTr": "Film hem komik hem de eğlenceliydi."
+      }
+    ],
+    "synonyms": [
+      "amusing",
+      "enjoyable"
+    ],
+    "antonyms": [
+      "boring",
+      "dull"
+    ]
+  },
+  {
+    "id": "w_enthusiastically",
+    "headword": "enthusiastically",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˌθjuːziˈæstɪkli/",
+    "meanings": [
+      {
+        "tr": "hevesle, coşkuyla",
+        "en": "in a way showing great excitement and interest",
+        "exampleEn": "The crowd cheered enthusiastically for the team.",
+        "exampleTr": "Kalabalık takımı coşkuyla tezahürat ile destekledi."
+      }
+    ],
+    "synonyms": [
+      "eagerly",
+      "keenly"
+    ],
+    "antonyms": [
+      "unenthusiastically"
+    ]
+  },
+  {
+    "id": "w_entitle",
+    "headword": "entitle",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈtaɪtəl/",
+    "meanings": [
+      {
+        "tr": "hak vermek, yetki vermek, adlandırmak",
+        "en": "to give someone the right to do or have something",
+        "exampleEn": "This ticket will entitle you to a free meal.",
+        "exampleTr": "Bu bilet size ücretsiz bir yemek hakkı verecek."
+      }
+    ],
+    "synonyms": [
+      "authorize",
+      "permit"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_environment",
+    "headword": "environment",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˈvaɪrənmənt/",
+    "meanings": [
+      {
+        "tr": "çevre, ortam",
+        "en": "the natural world, or the surroundings in which one lives",
+        "exampleEn": "We must protect the environment from pollution.",
+        "exampleTr": "Çevreyi kirlilikten korumalıyız."
+      }
+    ],
+    "synonyms": [
+      "surroundings",
+      "setting"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_environmentally",
+    "headword": "environmentally",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˌvaɪrənˈmentəli/",
+    "meanings": [
+      {
+        "tr": "çevresel açıdan, çevre bakımından",
+        "en": "in a way relating to the natural environment",
+        "exampleEn": "The company tries to be environmentally responsible.",
+        "exampleTr": "Şirket çevresel açıdan sorumlu olmaya çalışıyor."
+      }
+    ],
+    "synonyms": [
+      "ecologically"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_environmentally-friendly",
+    "headword": "environmentally friendly",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪnˌvaɪrənˈmentəli ˈfrendli/",
+    "meanings": [
+      {
+        "tr": "çevre dostu",
+        "en": "not harmful to the environment",
+        "exampleEn": "They use environmentally friendly packaging for their products.",
+        "exampleTr": "Ürünleri için çevre dostu ambalaj kullanıyorlar."
+      }
+    ],
+    "synonyms": [
+      "eco-friendly",
+      "green"
+    ],
+    "antonyms": [
+      "polluting"
+    ]
+  },
+  {
+    "id": "w_equation",
+    "headword": "equation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈkweɪʒən/",
+    "meanings": [
+      {
+        "tr": "denklem, eşitlik",
+        "en": "a mathematical statement that two amounts are equal",
+        "exampleEn": "The student solved the equation to find the value of x.",
+        "exampleTr": "Öğrenci x'in değerini bulmak için denklemi çözdü."
+      }
+    ],
+    "synonyms": [
+      "formula"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_equip",
+    "headword": "equip",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈkwɪp/",
+    "meanings": [
+      {
+        "tr": "donatmak, teçhiz etmek",
+        "en": "to provide someone or something with what is needed",
+        "exampleEn": "The school will equip every classroom with computers.",
+        "exampleTr": "Okul her sınıfı bilgisayarlarla donatacak."
+      }
+    ],
+    "synonyms": [
+      "provide",
+      "furnish"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_erect",
+    "headword": "erect",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈrekt/",
+    "meanings": [
+      {
+        "tr": "dik, dimdik, ayakta",
+        "en": "standing straight up; in an upright position",
+        "exampleEn": "The soldiers stood erect during the ceremony.",
+        "exampleTr": "Askerler tören boyunca dimdik durdular."
+      }
+    ],
+    "synonyms": [
+      "upright",
+      "vertical"
+    ],
+    "antonyms": [
+      "bent",
+      "slumped"
+    ]
+  },
+  {
+    "id": "w_erupt",
+    "headword": "erupt",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈrʌpt/",
+    "meanings": [
+      {
+        "tr": "püskürmek, patlamak, aniden başlamak",
+        "en": "to burst out suddenly, as a volcano or violence",
+        "exampleEn": "The volcano could erupt at any moment.",
+        "exampleTr": "Yanardağ her an püskürebilir."
+      }
+    ],
+    "synonyms": [
+      "explode",
+      "burst"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_eruption",
+    "headword": "eruption",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈrʌpʃən/",
+    "meanings": [
+      {
+        "tr": "püskürme, patlama",
+        "en": "a sudden bursting out, especially of a volcano",
+        "exampleEn": "The volcanic eruption forced thousands to leave their homes.",
+        "exampleTr": "Volkanik patlama binlerce kişiyi evlerini terk etmeye zorladı."
+      }
+    ],
+    "synonyms": [
+      "explosion",
+      "outburst"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_essayist",
+    "headword": "essayist",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈeseɪɪst/",
+    "meanings": [
+      {
+        "tr": "deneme yazarı, denemeci",
+        "en": "a person who writes essays",
+        "exampleEn": "He is a famous essayist known for his sharp opinions.",
+        "exampleTr": "Keskin görüşleriyle tanınan ünlü bir deneme yazarıdır."
+      }
+    ],
+    "synonyms": [
+      "writer"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_essentially",
+    "headword": "essentially",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈsenʃəli/",
+    "meanings": [
+      {
+        "tr": "esasen, temelde, aslında",
+        "en": "basically; in the most important way",
+        "exampleEn": "The two plans are essentially the same.",
+        "exampleTr": "İki plan esasen aynıdır."
+      }
+    ],
+    "synonyms": [
+      "basically",
+      "fundamentally"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_estate",
+    "headword": "estate",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈsteɪt/",
+    "meanings": [
+      {
+        "tr": "mülk, malikâne, emlak",
+        "en": "a large area of land with a house, or property someone owns",
+        "exampleEn": "The family owned a huge country estate.",
+        "exampleTr": "Aile, kırsalda devasa bir malikâneye sahipti."
+      }
+    ],
+    "synonyms": [
+      "property",
+      "manor"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_estimate",
+    "headword": "estimate",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈestɪmət/",
+    "meanings": [
+      {
+        "tr": "tahmin, kestirim",
+        "en": "an approximate calculation of value or amount",
+        "exampleEn": "The builder gave us an estimate for the repairs.",
+        "exampleTr": "Müteahhit bize onarımlar için bir tahmin verdi."
+      }
+    ],
+    "synonyms": [
+      "approximation",
+      "guess"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_estimated",
+    "headword": "estimated",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈestɪmeɪtɪd/",
+    "meanings": [
+      {
+        "tr": "tahmini, tahmin edilen",
+        "en": "calculated or judged approximately",
+        "exampleEn": "The estimated cost of the project was two million dollars.",
+        "exampleTr": "Projenin tahmini maliyeti iki milyon dolardı."
+      }
+    ],
+    "synonyms": [
+      "approximate",
+      "projected"
+    ],
+    "antonyms": [
+      "exact",
+      "actual"
+    ]
+  },
+  {
+    "id": "w_eternally",
+    "headword": "eternally",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈtɜːnəli/",
+    "meanings": [
+      {
+        "tr": "sonsuza dek, ebediyen",
+        "en": "forever; without end",
+        "exampleEn": "She will be eternally grateful for his help.",
+        "exampleTr": "Onun yardımı için sonsuza dek minnettar olacak."
+      }
+    ],
+    "synonyms": [
+      "forever",
+      "perpetually"
+    ],
+    "antonyms": [
+      "temporarily",
+      "briefly"
+    ]
+  },
+  {
+    "id": "w_ethic",
+    "headword": "ethic",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈeθɪk/",
+    "meanings": [
+      {
+        "tr": "ahlak ilkesi, etik",
+        "en": "a moral principle that governs behaviour",
+        "exampleEn": "A strong work ethic is essential for success.",
+        "exampleTr": "Başarı için güçlü bir çalışma ahlakı şarttır."
+      }
+    ],
+    "synonyms": [
+      "principle",
+      "morality"
+    ],
+    "antonyms": [
+      "immorality"
+    ]
+  },
+  {
+    "id": "w_ethnic",
+    "headword": "ethnic",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈeθnɪk/",
+    "meanings": [
+      {
+        "tr": "etnik, kavmî",
+        "en": "relating to a group with a common cultural tradition",
+        "exampleEn": "The city is home to many ethnic communities.",
+        "exampleTr": "Şehir birçok etnik topluluğa ev sahipliği yapıyor."
+      }
+    ],
+    "synonyms": [
+      "cultural",
+      "racial"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_evacuate",
+    "headword": "evacuate",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈvækjueɪt/",
+    "meanings": [
+      {
+        "tr": "tahliye etmek, boşaltmak",
+        "en": "to move people from a dangerous place to safety",
+        "exampleEn": "Police had to evacuate the building after the bomb threat.",
+        "exampleTr": "Polis, bomba tehdidinin ardından binayı tahliye etmek zorunda kaldı."
+      }
+    ],
+    "synonyms": [
+      "clear",
+      "vacate"
+    ],
+    "antonyms": [
+      "occupy"
+    ]
+  },
+  {
+    "id": "w_evacuation",
+    "headword": "evacuation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˌvækjuˈeɪʃn/",
+    "meanings": [
+      {
+        "tr": "tahliye, boşaltma",
+        "en": "the act of moving people away from danger",
+        "exampleEn": "The evacuation of the village took several hours.",
+        "exampleTr": "Köyün tahliyesi birkaç saat sürdü."
+      }
+    ],
+    "synonyms": [
+      "removal",
+      "withdrawal"
+    ],
+    "antonyms": [
+      "occupation"
+    ]
+  },
+  {
+    "id": "w_evaluate",
+    "headword": "evaluate",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈvæljueɪt/",
+    "meanings": [
+      {
+        "tr": "değerlendirmek",
+        "en": "to judge the value or quality of something",
+        "exampleEn": "Teachers evaluate students' progress at the end of each term.",
+        "exampleTr": "Öğretmenler her dönemin sonunda öğrencilerin ilerlemesini değerlendirir."
+      }
+    ],
+    "synonyms": [
+      "assess",
+      "appraise"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_evaluation",
+    "headword": "evaluation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˌvæljuˈeɪʃn/",
+    "meanings": [
+      {
+        "tr": "değerlendirme",
+        "en": "the process of judging the value of something",
+        "exampleEn": "The evaluation of the new program showed positive results.",
+        "exampleTr": "Yeni programın değerlendirmesi olumlu sonuçlar gösterdi."
+      }
+    ],
+    "synonyms": [
+      "assessment",
+      "appraisal"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_everlasting",
+    "headword": "everlasting",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌevəˈlɑːstɪŋ/",
+    "meanings": [
+      {
+        "tr": "sonsuz, kalıcı, ebedi",
+        "en": "lasting forever or for a very long time",
+        "exampleEn": "They promised each other everlasting love.",
+        "exampleTr": "Birbirlerine sonsuz bir aşk sözü verdiler."
+      }
+    ],
+    "synonyms": [
+      "eternal",
+      "endless"
+    ],
+    "antonyms": [
+      "temporary",
+      "fleeting"
+    ]
+  },
+  {
+    "id": "w_evidently",
+    "headword": "evidently",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈevɪdəntli/",
+    "meanings": [
+      {
+        "tr": "belli ki, açıkça",
+        "en": "in a way that is clear or obvious",
+        "exampleEn": "She was evidently upset by the news.",
+        "exampleTr": "Haberden belli ki üzülmüştü."
+      }
+    ],
+    "synonyms": [
+      "clearly",
+      "obviously"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_evil",
+    "headword": "evil",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈiːvl/",
+    "meanings": [
+      {
+        "tr": "kötü, şeytani",
+        "en": "morally bad or wicked",
+        "exampleEn": "The story features an evil villain who terrorizes the town.",
+        "exampleTr": "Hikâyede kasabayı terörize eden kötü bir kötü adam yer alıyor."
+      }
+    ],
+    "synonyms": [
+      "wicked",
+      "malevolent"
+    ],
+    "antonyms": [
+      "good",
+      "virtuous"
+    ]
+  },
+  {
+    "id": "w_evolution",
+    "headword": "evolution",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌiːvəˈluːʃn/",
+    "meanings": [
+      {
+        "tr": "evrim, gelişim",
+        "en": "the gradual process of development or change",
+        "exampleEn": "Darwin's theory of evolution changed how we view life.",
+        "exampleTr": "Darwin'in evrim teorisi yaşamı görüşümüzü değiştirdi."
+      }
+    ],
+    "synonyms": [
+      "development",
+      "progression"
+    ],
+    "antonyms": [
+      "stagnation"
+    ]
+  },
+  {
+    "id": "w_evolve",
+    "headword": "evolve",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪˈvɒlv/",
+    "meanings": [
+      {
+        "tr": "evrilmek, gelişmek",
+        "en": "to develop gradually over time",
+        "exampleEn": "Languages evolve constantly as people use them.",
+        "exampleTr": "Diller, insanlar onları kullandıkça sürekli evrilir."
+      }
+    ],
+    "synonyms": [
+      "develop",
+      "progress"
+    ],
+    "antonyms": [
+      "regress"
+    ]
+  },
+  {
+    "id": "w_exactness",
+    "headword": "exactness",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzæktnəs/",
+    "meanings": [
+      {
+        "tr": "kesinlik, tamlık",
+        "en": "the quality of being precise and accurate",
+        "exampleEn": "The exactness of his measurements impressed the engineers.",
+        "exampleTr": "Ölçümlerinin kesinliği mühendisleri etkiledi."
+      }
+    ],
+    "synonyms": [
+      "precision",
+      "accuracy"
+    ],
+    "antonyms": [
+      "inaccuracy"
+    ]
+  },
+  {
+    "id": "w_exaggerate",
+    "headword": "exaggerate",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzædʒəreɪt/",
+    "meanings": [
+      {
+        "tr": "abartmak",
+        "en": "to make something seem larger or more important than it is",
+        "exampleEn": "Don't exaggerate; the fish wasn't that big.",
+        "exampleTr": "Abartma; balık o kadar büyük değildi."
+      }
+    ],
+    "synonyms": [
+      "overstate",
+      "embellish"
+    ],
+    "antonyms": [
+      "understate",
+      "minimize"
+    ]
+  },
+  {
+    "id": "w_exaggeration",
+    "headword": "exaggeration",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˌzædʒəˈreɪʃn/",
+    "meanings": [
+      {
+        "tr": "abartı, mübalağa",
+        "en": "a statement that makes something seem more than it is",
+        "exampleEn": "It is no exaggeration to say this was the best day of my life.",
+        "exampleTr": "Bunun hayatımın en güzel günü olduğunu söylemek abartı değil."
+      }
+    ],
+    "synonyms": [
+      "overstatement",
+      "hyperbole"
+    ],
+    "antonyms": [
+      "understatement"
+    ]
+  },
+  {
+    "id": "w_exalt",
+    "headword": "exalt",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzɔːlt/",
+    "meanings": [
+      {
+        "tr": "yüceltmek, göklere çıkarmak",
+        "en": "to praise or honour someone highly",
+        "exampleEn": "The poem exalts the courage of the soldiers.",
+        "exampleTr": "Şiir, askerlerin cesaretini yüceltir."
+      }
+    ],
+    "synonyms": [
+      "glorify",
+      "praise"
+    ],
+    "antonyms": [
+      "belittle",
+      "demean"
+    ]
+  },
+  {
+    "id": "w_examinee",
+    "headword": "examinee",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˌzæmɪˈniː/",
+    "meanings": [
+      {
+        "tr": "sınava giren kişi, aday",
+        "en": "a person who takes an examination",
+        "exampleEn": "Each examinee was given two hours to finish the test.",
+        "exampleTr": "Sınava giren her adaya testi bitirmesi için iki saat verildi."
+      }
+    ],
+    "synonyms": [
+      "candidate",
+      "testee"
+    ],
+    "antonyms": [
+      "examiner"
+    ]
+  },
+  {
+    "id": "w_exceed",
+    "headword": "exceed",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈsiːd/",
+    "meanings": [
+      {
+        "tr": "aşmak, geçmek",
+        "en": "to be greater than a particular number or amount",
+        "exampleEn": "Do not exceed the speed limit on this road.",
+        "exampleTr": "Bu yolda hız sınırını aşmayın."
+      }
+    ],
+    "synonyms": [
+      "surpass",
+      "outdo"
+    ],
+    "antonyms": [
+      "fall short"
+    ]
+  },
+  {
+    "id": "w_excel",
+    "headword": "excel",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈsel/",
+    "meanings": [
+      {
+        "tr": "üstün olmak, sivrilmek",
+        "en": "to be very good at doing something",
+        "exampleEn": "She continues to excel in mathematics.",
+        "exampleTr": "Matematikte üstün olmaya devam ediyor."
+      }
+    ],
+    "synonyms": [
+      "shine",
+      "surpass"
+    ],
+    "antonyms": [
+      "fail"
+    ]
+  },
+  {
+    "id": "w_exception",
+    "headword": "exception",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈsepʃn/",
+    "meanings": [
+      {
+        "tr": "istisna",
+        "en": "something that is not included in a general rule",
+        "exampleEn": "Everyone must follow the rules, with no exception.",
+        "exampleTr": "Herkes kurallara uymalı, istisnası yok."
+      }
+    ],
+    "synonyms": [
+      "exemption",
+      "anomaly"
+    ],
+    "antonyms": [
+      "rule",
+      "norm"
+    ]
+  },
+  {
+    "id": "w_exceptional",
+    "headword": "exceptional",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈsepʃənl/",
+    "meanings": [
+      {
+        "tr": "olağanüstü, istisnai",
+        "en": "unusually good or remarkable",
+        "exampleEn": "She has an exceptional talent for painting.",
+        "exampleTr": "Resim için olağanüstü bir yeteneği var."
+      }
+    ],
+    "synonyms": [
+      "outstanding",
+      "remarkable"
+    ],
+    "antonyms": [
+      "ordinary",
+      "average"
+    ]
+  },
+  {
+    "id": "w_exceptionally",
+    "headword": "exceptionally",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈsepʃənəli/",
+    "meanings": [
+      {
+        "tr": "olağanüstü derecede, son derece",
+        "en": "to an unusually high degree",
+        "exampleEn": "The weather was exceptionally warm for winter.",
+        "exampleTr": "Hava, kış için olağanüstü derecede sıcaktı."
+      }
+    ],
+    "synonyms": [
+      "extremely",
+      "remarkably"
+    ],
+    "antonyms": [
+      "ordinarily"
+    ]
+  },
+  {
+    "id": "w_excessive",
+    "headword": "excessive",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈsesɪv/",
+    "meanings": [
+      {
+        "tr": "aşırı, fazla",
+        "en": "much more than is reasonable or necessary",
+        "exampleEn": "Excessive drinking can damage your health.",
+        "exampleTr": "Aşırı içki içmek sağlığınıza zarar verebilir."
+      }
+    ],
+    "synonyms": [
+      "extreme",
+      "immoderate"
+    ],
+    "antonyms": [
+      "moderate",
+      "insufficient"
+    ]
+  },
+  {
+    "id": "w_exclaim",
+    "headword": "exclaim",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈskleɪm/",
+    "meanings": [
+      {
+        "tr": "haykırmak, ünlemek",
+        "en": "to say something suddenly and loudly, often from emotion",
+        "exampleEn": "\"What a beautiful view!\" she exclaimed.",
+        "exampleTr": "\"Ne güzel bir manzara!\" diye haykırdı."
+      }
+    ],
+    "synonyms": [
+      "cry out",
+      "shout"
+    ],
+    "antonyms": [
+      "whisper"
+    ]
+  },
+  {
+    "id": "w_exclamation_mark",
+    "headword": "exclamation mark",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌekskləˈmeɪʃn mɑːk/",
+    "meanings": [
+      {
+        "tr": "ünlem işareti",
+        "en": "the punctuation mark (!) used to show strong feeling",
+        "exampleEn": "He ended the sentence with an exclamation mark to show excitement.",
+        "exampleTr": "Heyecanı göstermek için cümleyi bir ünlem işaretiyle bitirdi."
+      }
+    ],
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": "w_exclude",
+    "headword": "exclude",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈskluːd/",
+    "meanings": [
+      {
+        "tr": "hariç tutmak, dışlamak",
+        "en": "to deliberately keep someone or something out",
+        "exampleEn": "The price does not exclude tax.",
+        "exampleTr": "Fiyat vergiyi hariç tutmaz."
+      }
+    ],
+    "synonyms": [
+      "omit",
+      "bar"
+    ],
+    "antonyms": [
+      "include",
+      "admit"
+    ]
+  },
+  {
+    "id": "w_exclusion",
+    "headword": "exclusion",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈskluːʒn/",
+    "meanings": [
+      {
+        "tr": "hariç tutma, dışlama",
+        "en": "the act of keeping someone or something out",
+        "exampleEn": "The exclusion of certain groups from the meeting caused anger.",
+        "exampleTr": "Belli grupların toplantıdan dışlanması öfkeye yol açtı."
+      }
+    ],
+    "synonyms": [
+      "omission",
+      "barring"
+    ],
+    "antonyms": [
+      "inclusion"
+    ]
+  },
+  {
+    "id": "w_exclusively",
+    "headword": "exclusively",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈskluːsɪvli/",
+    "meanings": [
+      {
+        "tr": "yalnızca, münhasıran",
+        "en": "only; not involving anyone or anything else",
+        "exampleEn": "This offer is available exclusively to members.",
+        "exampleTr": "Bu teklif yalnızca üyelere sunulmaktadır."
+      }
+    ],
+    "synonyms": [
+      "solely",
+      "only"
+    ],
+    "antonyms": [
+      "inclusively"
+    ]
+  },
+  {
+    "id": "w_excursion",
+    "headword": "excursion",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈskɜːʃn/",
+    "meanings": [
+      {
+        "tr": "gezi, kısa seyahat",
+        "en": "a short trip made for pleasure",
+        "exampleEn": "We went on a day excursion to the mountains.",
+        "exampleTr": "Dağlara günübirlik bir geziye gittik."
+      }
+    ],
+    "synonyms": [
+      "outing",
+      "trip"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_execution",
+    "headword": "execution",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌeksɪˈkjuːʃn/",
+    "meanings": [
+      {
+        "tr": "uygulama, yerine getirme; idam",
+        "en": "the act of carrying out a plan or order",
+        "exampleEn": "The execution of the plan required careful preparation.",
+        "exampleTr": "Planın uygulanması dikkatli bir hazırlık gerektirdi."
+      }
+    ],
+    "synonyms": [
+      "implementation",
+      "performance"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_exhaust",
+    "headword": "exhaust",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzɔːst/",
+    "meanings": [
+      {
+        "tr": "egzoz, egzoz gazı",
+        "en": "the waste gases produced by an engine",
+        "exampleEn": "The exhaust from the old bus filled the street with smoke.",
+        "exampleTr": "Eski otobüsün egzozu sokağı dumanla doldurdu."
+      }
+    ],
+    "synonyms": [
+      "emissions",
+      "fumes"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_exhausting",
+    "headword": "exhausting",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzɔːstɪŋ/",
+    "meanings": [
+      {
+        "tr": "yorucu, bitkin düşüren",
+        "en": "making you feel extremely tired",
+        "exampleEn": "The long hike was absolutely exhausting.",
+        "exampleTr": "Uzun yürüyüş kesinlikle yorucuydu."
+      }
+    ],
+    "synonyms": [
+      "tiring",
+      "draining"
+    ],
+    "antonyms": [
+      "refreshing",
+      "invigorating"
+    ]
+  },
+  {
+    "id": "w_exhaustion",
+    "headword": "exhaustion",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzɔːstʃən/",
+    "meanings": [
+      {
+        "tr": "bitkinlik, aşırı yorgunluk",
+        "en": "the state of being extremely tired",
+        "exampleEn": "She collapsed from exhaustion after the marathon.",
+        "exampleTr": "Maratondan sonra bitkinlikten yere yığıldı."
+      }
+    ],
+    "synonyms": [
+      "fatigue",
+      "tiredness"
+    ],
+    "antonyms": [
+      "energy",
+      "vigour"
+    ]
+  },
+  {
+    "id": "w_exhibit",
+    "headword": "exhibit",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzɪbɪt/",
+    "meanings": [
+      {
+        "tr": "sergilemek, göstermek",
+        "en": "to show something publicly or to display a quality",
+        "exampleEn": "The museum will exhibit the paintings next month.",
+        "exampleTr": "Müze, tabloları gelecek ay sergileyecek."
+      }
+    ],
+    "synonyms": [
+      "display",
+      "show"
+    ],
+    "antonyms": [
+      "conceal",
+      "hide"
+    ]
+  },
+  {
+    "id": "w_exile",
+    "headword": "exile",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈeksaɪl/",
+    "meanings": [
+      {
+        "tr": "sürgün",
+        "en": "the state of being forced to live away from one's country",
+        "exampleEn": "The writer spent twenty years in exile.",
+        "exampleTr": "Yazar yirmi yılını sürgünde geçirdi."
+      }
+    ],
+    "synonyms": [
+      "banishment",
+      "expulsion"
+    ],
+    "antonyms": [
+      "repatriation"
+    ]
+  },
+  {
+    "id": "w_existing",
+    "headword": "existing",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzɪstɪŋ/",
+    "meanings": [
+      {
+        "tr": "mevcut, var olan",
+        "en": "present or in use now",
+        "exampleEn": "We need to improve the existing system before adding new features.",
+        "exampleTr": "Yeni özellikler eklemeden önce mevcut sistemi iyileştirmemiz gerekiyor."
+      }
+    ],
+    "synonyms": [
+      "current",
+      "present"
+    ],
+    "antonyms": [
+      "future",
+      "former"
+    ]
+  },
+  {
+    "id": "w_exotic",
+    "headword": "exotic",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzɒtɪk/",
+    "meanings": [
+      {
+        "tr": "egzotik, yabancı ve ilginç",
+        "en": "unusual and exciting, often from a distant country",
+        "exampleEn": "The market sold many exotic fruits from the tropics.",
+        "exampleTr": "Pazar, tropik bölgelerden gelen birçok egzotik meyve satıyordu."
+      }
+    ],
+    "synonyms": [
+      "unusual",
+      "foreign"
+    ],
+    "antonyms": [
+      "ordinary",
+      "familiar"
+    ]
+  },
+  {
+    "id": "w_expansion",
+    "headword": "expansion",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈspænʃn/",
+    "meanings": [
+      {
+        "tr": "genişleme, büyüme",
+        "en": "the process of becoming larger",
+        "exampleEn": "The company's rapid expansion created many new jobs.",
+        "exampleTr": "Şirketin hızlı genişlemesi birçok yeni iş yarattı."
+      }
+    ],
+    "synonyms": [
+      "growth",
+      "enlargement"
+    ],
+    "antonyms": [
+      "contraction",
+      "reduction"
+    ]
+  },
+  {
+    "id": "w_expectation",
+    "headword": "expectation",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌekspekˈteɪʃn/",
+    "meanings": [
+      {
+        "tr": "beklenti",
+        "en": "a strong belief that something will happen",
+        "exampleEn": "The film exceeded all my expectations.",
+        "exampleTr": "Film tüm beklentilerimi aştı."
+      }
+    ],
+    "synonyms": [
+      "anticipation",
+      "hope"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_expected",
+    "headword": "expected",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈspektɪd/",
+    "meanings": [
+      {
+        "tr": "beklenen",
+        "en": "thought likely to happen or arrive",
+        "exampleEn": "The expected results did not match what we found.",
+        "exampleTr": "Beklenen sonuçlar bulduğumuzla örtüşmedi."
+      }
+    ],
+    "synonyms": [
+      "anticipated",
+      "predicted"
+    ],
+    "antonyms": [
+      "unexpected",
+      "surprising"
+    ]
+  },
+  {
+    "id": "w_expedition",
+    "headword": "expedition",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌekspəˈdɪʃn/",
+    "meanings": [
+      {
+        "tr": "sefer, keşif gezisi",
+        "en": "an organized journey with a particular purpose",
+        "exampleEn": "They led an expedition to the South Pole.",
+        "exampleTr": "Güney Kutbu'na bir keşif gezisine öncülük ettiler."
+      }
+    ],
+    "synonyms": [
+      "journey",
+      "voyage"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_expert",
+    "headword": "expert",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈekspɜːt/",
+    "meanings": [
+      {
+        "tr": "uzman, usta",
+        "en": "having great skill or knowledge in a subject",
+        "exampleEn": "We received expert advice from a financial consultant.",
+        "exampleTr": "Bir mali danışmandan uzman tavsiyesi aldık."
+      }
+    ],
+    "synonyms": [
+      "skilled",
+      "proficient"
+    ],
+    "antonyms": [
+      "amateur",
+      "inexpert"
+    ]
+  },
+  {
+    "id": "w_explode",
+    "headword": "explode",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈspləʊd/",
+    "meanings": [
+      {
+        "tr": "patlamak",
+        "en": "to burst suddenly with great force and noise",
+        "exampleEn": "The bomb could explode at any moment.",
+        "exampleTr": "Bomba her an patlayabilir."
+      }
+    ],
+    "synonyms": [
+      "burst",
+      "detonate"
+    ],
+    "antonyms": [
+      "implode"
+    ]
+  },
+  {
+    "id": "w_exploit",
+    "headword": "exploit",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈsplɔɪt/",
+    "meanings": [
+      {
+        "tr": "sömürmek; iyi kullanmak",
+        "en": "to use someone or something unfairly for one's own benefit",
+        "exampleEn": "Some companies exploit their workers by paying very low wages.",
+        "exampleTr": "Bazı şirketler çok düşük ücret ödeyerek işçilerini sömürür."
+      }
+    ],
+    "synonyms": [
+      "take advantage of",
+      "misuse"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_explorer",
+    "headword": "explorer",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈsplɔːrə/",
+    "meanings": [
+      {
+        "tr": "kâşif",
+        "en": "a person who travels to unknown places to discover them",
+        "exampleEn": "The explorer mapped large parts of the Amazon.",
+        "exampleTr": "Kâşif, Amazon'un büyük bölümlerinin haritasını çıkardı."
+      }
+    ],
+    "synonyms": [
+      "adventurer",
+      "pioneer"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_explosive",
+    "headword": "explosive",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈspləʊsɪv/",
+    "meanings": [
+      {
+        "tr": "patlayıcı; patlamaya hazır",
+        "en": "able or likely to explode",
+        "exampleEn": "The workers handled the explosive material with great care.",
+        "exampleTr": "İşçiler patlayıcı maddeyi büyük dikkatle taşıdılar."
+      }
+    ],
+    "synonyms": [
+      "volatile",
+      "unstable"
+    ],
+    "antonyms": [
+      "stable",
+      "inert"
+    ]
+  },
+  {
+    "id": "w_expressive",
+    "headword": "expressive",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈspresɪv/",
+    "meanings": [
+      {
+        "tr": "anlamlı, ifade gücü yüksek",
+        "en": "clearly showing thoughts or feelings",
+        "exampleEn": "She has a very expressive face that reveals her emotions.",
+        "exampleTr": "Duygularını ele veren çok anlamlı bir yüzü var."
+      }
+    ],
+    "synonyms": [
+      "eloquent",
+      "emotive"
+    ],
+    "antonyms": [
+      "expressionless",
+      "blank"
+    ]
+  },
+  {
+    "id": "w_exquisite",
+    "headword": "exquisite",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈskwɪzɪt/",
+    "meanings": [
+      {
+        "tr": "enfes, nefis, kusursuz",
+        "en": "extremely beautiful and delicately made",
+        "exampleEn": "The jeweller created an exquisite diamond ring.",
+        "exampleTr": "Kuyumcu enfes bir pırlanta yüzük yaptı."
+      }
+    ],
+    "synonyms": [
+      "beautiful",
+      "delicate"
+    ],
+    "antonyms": [
+      "crude",
+      "ugly"
+    ]
+  },
+  {
+    "id": "w_extension",
+    "headword": "extension",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈstenʃn/",
+    "meanings": [
+      {
+        "tr": "uzatma, ek süre; ek bina",
+        "en": "an additional period of time or an added part",
+        "exampleEn": "She asked for an extension to finish her essay.",
+        "exampleTr": "Denemesini bitirmek için ek süre istedi."
+      }
+    ],
+    "synonyms": [
+      "addition",
+      "prolongation"
+    ],
+    "antonyms": [
+      "reduction"
+    ]
+  },
+  {
+    "id": "w_extensive",
+    "headword": "extensive",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈstensɪv/",
+    "meanings": [
+      {
+        "tr": "geniş kapsamlı, yaygın",
+        "en": "covering a large area or amount",
+        "exampleEn": "The report required extensive research.",
+        "exampleTr": "Rapor geniş kapsamlı bir araştırma gerektirdi."
+      }
+    ],
+    "synonyms": [
+      "broad",
+      "comprehensive"
+    ],
+    "antonyms": [
+      "limited",
+      "narrow"
+    ]
+  },
+  {
+    "id": "w_external",
+    "headword": "external",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈstɜːnl/",
+    "meanings": [
+      {
+        "tr": "dış, harici",
+        "en": "relating to the outside of something",
+        "exampleEn": "The external walls of the house need painting.",
+        "exampleTr": "Evin dış duvarlarının boyanması gerekiyor."
+      }
+    ],
+    "synonyms": [
+      "outer",
+      "outside"
+    ],
+    "antonyms": [
+      "internal",
+      "inner"
+    ]
+  },
+  {
+    "id": "w_extract",
+    "headword": "extract",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈekstrækt/",
+    "meanings": [
+      {
+        "tr": "alıntı, parça; öz, hülasa",
+        "en": "a short passage taken from a text, or a concentrated substance",
+        "exampleEn": "The teacher read an extract from the novel.",
+        "exampleTr": "Öğretmen romandan bir alıntı okudu."
+      }
+    ],
+    "synonyms": [
+      "excerpt",
+      "passage"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_extraordinarily",
+    "headword": "extraordinarily",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪkˈstrɔːdnrəli/",
+    "meanings": [
+      {
+        "tr": "olağanüstü derecede, son derece",
+        "en": "to a very unusual or remarkable degree",
+        "exampleEn": "The cake was extraordinarily delicious.",
+        "exampleTr": "Pasta olağanüstü derecede lezzetliydi."
+      }
+    ],
+    "synonyms": [
+      "remarkably",
+      "exceptionally"
+    ],
+    "antonyms": [
+      "ordinarily"
+    ]
+  },
+  {
+    "id": "w_exultant",
+    "headword": "exultant",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ɪɡˈzʌltənt/",
+    "meanings": [
+      {
+        "tr": "sevinçten coşmuş, zafer sarhoşu",
+        "en": "very happy and triumphant, especially after success",
+        "exampleEn": "The exultant fans celebrated their team's victory.",
+        "exampleTr": "Sevinçten coşmuş taraftarlar takımlarının zaferini kutladı."
+      }
+    ],
+    "synonyms": [
+      "jubilant",
+      "triumphant"
+    ],
+    "antonyms": [
+      "dejected",
+      "despondent"
+    ]
+  },
+  {
+    "id": "w_eyebrow",
+    "headword": "eyebrow",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈaɪbraʊ/",
+    "meanings": [
+      {
+        "tr": "kaş",
+        "en": "the line of hair above each eye",
+        "exampleEn": "She raised an eyebrow in surprise.",
+        "exampleTr": "Şaşkınlıkla bir kaşını kaldırdı."
+      }
+    ],
+    "synonyms": [
+      "brow"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_eyelash",
+    "headword": "eyelash",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈaɪlæʃ/",
+    "meanings": [
+      {
+        "tr": "kirpik",
+        "en": "one of the short hairs growing on the edge of the eyelid",
+        "exampleEn": "An eyelash fell into her eye and made it water.",
+        "exampleTr": "Bir kirpik gözüne kaçtı ve gözünü sulandırdı."
+      }
+    ],
+    "synonyms": [
+      "lash"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_eyelid",
+    "headword": "eyelid",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈaɪlɪd/",
+    "meanings": [
+      {
+        "tr": "göz kapağı",
+        "en": "the piece of skin that covers the eye when closed",
+        "exampleEn": "His eyelids grew heavy as he became sleepy.",
+        "exampleTr": "Uykusu gelince göz kapakları ağırlaştı."
+      }
+    ],
+    "synonyms": [
+      "lid"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_fabric",
+    "headword": "fabric",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈfæbrɪk/",
+    "meanings": [
+      {
+        "tr": "kumaş, dokuma",
+        "en": "cloth or material made by weaving threads",
+        "exampleEn": "This dress is made from a soft cotton fabric.",
+        "exampleTr": "Bu elbise yumuşak bir pamuklu kumaştan yapılmış."
+      }
+    ],
+    "synonyms": [
+      "cloth",
+      "textile"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_fabulous",
+    "headword": "fabulous",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈfæbjələs/",
+    "meanings": [
+      {
+        "tr": "harika, muhteşem",
+        "en": "extremely good or wonderful",
+        "exampleEn": "We had a fabulous time at the party.",
+        "exampleTr": "Partide harika vakit geçirdik."
+      }
+    ],
+    "synonyms": [
+      "wonderful",
+      "marvellous"
+    ],
+    "antonyms": [
+      "terrible",
+      "awful"
+    ]
+  },
+  {
+    "id": "w_facilities",
+    "headword": "facilities",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/fəˈsɪlətiz/",
+    "meanings": [
+      {
+        "tr": "olanaklar, tesisler",
+        "en": "buildings, equipment or services provided for a purpose",
+        "exampleEn": "The hotel offers excellent sports facilities.",
+        "exampleTr": "Otel mükemmel spor olanakları sunuyor."
+      }
+    ],
+    "synonyms": [
+      "amenities",
+      "resources"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_factor",
+    "headword": "factor",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈfæktə/",
+    "meanings": [
+      {
+        "tr": "etken, faktör",
+        "en": "one of the things that influences a result",
+        "exampleEn": "Cost was an important factor in our decision.",
+        "exampleTr": "Maliyet, kararımızda önemli bir etkendi."
+      }
+    ],
+    "synonyms": [
+      "element",
+      "cause"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_faculty",
+    "headword": "faculty",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈfæklti/",
+    "meanings": [
+      {
+        "tr": "fakülte; yeti, kabiliyet",
+        "en": "a department in a university, or a natural mental ability",
+        "exampleEn": "She studied law at the faculty of law.",
+        "exampleTr": "Hukuk fakültesinde hukuk okudu."
+      }
+    ],
+    "synonyms": [
+      "department",
+      "ability"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_faith",
+    "headword": "faith",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/feɪθ/",
+    "meanings": [
+      {
+        "tr": "inanç, güven, iman",
+        "en": "strong belief or trust in someone or something",
+        "exampleEn": "She has great faith in her team's abilities.",
+        "exampleTr": "Takımının yeteneklerine büyük inancı var."
+      }
+    ],
+    "synonyms": [
+      "belief",
+      "trust"
+    ],
+    "antonyms": [
+      "doubt",
+      "disbelief"
+    ]
+  },
+  {
+    "id": "w_falter",
+    "headword": "falter",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈfɔːltə/",
+    "meanings": [
+      {
+        "tr": "sendelemek, duraksamak, bocalamak",
+        "en": "to lose strength or confidence and become weak",
+        "exampleEn": "His voice began to falter as he gave the speech.",
+        "exampleTr": "Konuşmayı yaparken sesi duraksamaya başladı."
+      }
+    ],
+    "synonyms": [
+      "waver",
+      "hesitate"
+    ],
+    "antonyms": [
+      "persist",
+      "steady"
+    ]
+  },
+  {
+    "id": "w_fame",
+    "headword": "fame",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/feɪm/",
+    "meanings": [
+      {
+        "tr": "şöhret, ün",
+        "en": "the state of being known by many people",
+        "exampleEn": "The young singer rose to fame overnight.",
+        "exampleTr": "Genç şarkıcı bir gecede şöhrete kavuştu."
+      }
+    ],
+    "synonyms": [
+      "renown",
+      "celebrity"
+    ],
+    "antonyms": [
+      "obscurity"
+    ]
+  },
+  {
+    "id": "w_familiarize",
+    "headword": "familiarize",
+    "pos": "verb",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/fəˈmɪliəraɪz/",
+    "meanings": [
+      {
+        "tr": "alıştırmak, aşina kılmak",
+        "en": "to make oneself or someone know something well",
+        "exampleEn": "Please familiarize yourself with the safety rules.",
+        "exampleTr": "Lütfen güvenlik kurallarına aşina olun."
+      }
+    ],
+    "synonyms": [
+      "acquaint",
+      "accustom"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": "w_fantastically",
+    "headword": "fantastically",
+    "pos": "adv",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/fænˈtæstɪkli/",
+    "meanings": [
+      {
+        "tr": "fevkalade, son derece",
+        "en": "extremely or remarkably",
+        "exampleEn": "The plan worked out fantastically well.",
+        "exampleTr": "Plan fevkalade iyi sonuçlandı."
+      }
+    ],
+    "synonyms": [
+      "extremely",
+      "wonderfully"
+    ],
+    "antonyms": [
+      "terribly"
+    ]
+  },
+  {
+    "id": "w_fascinated",
+    "headword": "fascinated",
+    "pos": "adj",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˈfæsɪneɪtɪd/",
+    "meanings": [
+      {
+        "tr": "büyülenmiş, hayran kalmış",
+        "en": "extremely interested in something",
+        "exampleEn": "The children were fascinated by the magician's tricks.",
+        "exampleTr": "Çocuklar sihirbazın numaralarına hayran kalmıştı."
+      }
+    ],
+    "synonyms": [
+      "captivated",
+      "intrigued"
+    ],
+    "antonyms": [
+      "bored",
+      "indifferent"
+    ]
+  },
+  {
+    "id": "w_fascination",
+    "headword": "fascination",
+    "pos": "noun",
+    "level": "B2",
+    "domains": [
+      "general"
+    ],
+    "type": "word",
+    "source": "cefrj+claude",
+    "pronunciation": "/ˌfæsɪˈneɪʃn/",
+    "meanings": [
+      {
+        "tr": "hayranlık, büyülenme, merak",
+        "en": "a strong attraction or interest in something",
+        "exampleEn": "He has a lifelong fascination with space travel.",
+        "exampleTr": "Uzay yolculuğuna karşı ömür boyu süren bir hayranlığı var."
+      }
+    ],
+    "synonyms": [
+      "captivation",
+      "interest"
+    ],
+    "antonyms": [
+      "indifference"
+    ]
   }
 ];
