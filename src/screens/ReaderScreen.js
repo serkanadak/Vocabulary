@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { STORIES, getWord } from '../data';
+import { useProgress } from '../state/ProgressContext';
+import { STATUS } from '../logic/srs';
 import { LevelBadge, Badge } from '../components/common';
-import { colors } from '../theme';
+import { colors, STATUS_META } from '../theme';
+
+// Okuma içinde kelimeyi sınıflandırma: işaretsiz → bilmiyorum → pasif → aktif → işaretsiz
+const CYCLE = [null, STATUS.UNKNOWN, STATUS.PASSIVE, STATUS.ACTIVE];
 
 // Bağlamsal okuma (Özellik 8): makale/hikâyeler içinde kelimeleri tıklanabilir sunar.
 export default function ReaderScreen({ navigation }) {
   const [storyId, setStoryId] = useState(null);
+  const { getProgress, setStatus, mergeProgress } = useProgress();
   const story = STORIES.find((s) => s.id === storyId);
+
+  const cycleStatus = (id) => {
+    const cur = getProgress(id)?.status || null;
+    const next = CYCLE[(CYCLE.indexOf(cur) + 1) % CYCLE.length];
+    if (next) setStatus(id, next);
+    else mergeProgress(id, { status: undefined });
+  };
 
   if (!story) {
     return (
@@ -50,18 +63,32 @@ export default function ReaderScreen({ navigation }) {
         </View>
       ))}
 
-      <Text style={styles.vocabHeader}>Bu metindeki kelimeler</Text>
-      <View style={styles.row}>
-        {vocab.map((w) => (
-          <TouchableOpacity
-            key={w.id}
-            style={styles.chip}
-            onPress={() => navigation.navigate('WordDetail', { id: w.id })}
-          >
-            <Text style={styles.chipText}>{w.headword}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+      <Text style={styles.vocabHeader}>Bu metindeki kelimeler — dokunup işaretle</Text>
+      {vocab.map((w) => {
+        const status = getProgress(w.id)?.status || null;
+        const meta = status ? STATUS_META[status] : null;
+        return (
+          <View key={w.id} style={styles.vocabRow}>
+            <TouchableOpacity
+              style={{ flex: 1 }}
+              onPress={() => navigation.navigate('WordDetail', { id: w.id })}
+            >
+              <Text style={styles.vocabWord}>{w.headword}</Text>
+              <Text style={styles.vocabMeaning} numberOfLines={1}>
+                {w.meanings[0].tr}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.statusBtn, { borderColor: meta?.color || colors.border, backgroundColor: meta?.color || 'transparent' }]}
+              onPress={() => cycleStatus(w.id)}
+            >
+              <Text style={[styles.statusBtnText, { color: meta ? '#0f172a' : colors.textMuted }]}>
+                {status ? meta.label : 'İşaretle'}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        );
+      })}
     </ScrollView>
   );
 }
@@ -133,6 +160,21 @@ const styles = StyleSheet.create({
   tr: { color: colors.textMuted, marginTop: 6, lineHeight: 22 },
   token: { color: colors.primary, fontWeight: '700', textDecorationLine: 'underline' },
   vocabHeader: { color: colors.textMuted, fontWeight: '700', marginTop: 10, marginBottom: 8 },
+  vocabRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.surface,
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: colors.border,
+    gap: 8,
+  },
+  vocabWord: { color: colors.text, fontSize: 15, fontWeight: '700' },
+  vocabMeaning: { color: colors.textMuted, fontSize: 12, marginTop: 2 },
+  statusBtn: { borderWidth: 1.5, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6 },
+  statusBtnText: { fontSize: 12, fontWeight: '700' },
   chip: {
     backgroundColor: colors.surfaceAlt,
     borderRadius: 999,
