@@ -93,25 +93,40 @@ export const STATS = {
 };
 
 // ---------------------------------------------------------------------------
-// CEFR Kelime Listesi katmanı (referans/çalışma listesi).
-// Kaynak: The CEFR-J Wordlist Version 1.6 (Yukio Tono, TUFS) — atıf şartıyla.
-// Yalnızca kelime + tür + CEFR seviyesi içerir; tam flashcard verisi DEĞİLDİR.
-// Tam (Türkçe anlamlı) kayıtla eşleşen kelimeler, o kaydın detayına bağlanır.
+// BİRLEŞİK Kelime Listesi (Liste sekmesi).
+// Artık tüm kart havuzu (A1–C2 + deyimler) + CEFR-J'de olup henüz kartı olmayan
+// kelimeler birlikte gösterilir. Böylece Liste ile Ana sayfa aynı evreni paylaşır.
+// CEFR-J kaynağı (atıf): The CEFR-J Wordlist Version 1.6 (Yukio Tono, TUFS).
 // ---------------------------------------------------------------------------
 
-const headwordToWordId = new Map();
-for (const w of WORDS) headwordToWordId.set(w.headword.toLowerCase(), w.id);
+const coveredHeadwords = new Set(WORDS.map((w) => w.headword.toLowerCase()));
 
-export const WORDLIST = wordlistRaw.map((e) => {
-  const wordId = headwordToWordId.get(e.h.toLowerCase()) || null;
-  return {
-    id: wordId || `wl_${e.h.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`,
+// 1) Tüm tam kartlar (kart detayına bağlanır)
+const fromWords = WORDS.map((w) => ({
+  id: w.id,
+  headword: w.headword,
+  pos: w.pos,
+  level: w.level,
+  type: w.type,
+  wordId: w.id,
+}));
+
+// 2) CEFR-J'de olup henüz kartı olmayanlar (varsa)
+const listOnly = wordlistRaw
+  .filter((e) => !coveredHeadwords.has(e.h.toLowerCase()))
+  .map((e) => ({
+    id: `wl_${e.h.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`,
     headword: e.h,
     pos: e.p,
     level: e.l,
-    wordId, // tam kayıt varsa onun id'si (detaya gidilebilir)
-  };
-});
+    type: 'word',
+    wordId: null,
+  }));
+
+const LEVEL_ORDER = { A1: 0, A2: 1, B1: 2, B2: 3, C1: 4, C2: 5 };
+export const WORDLIST = [...fromWords, ...listOnly].sort(
+  (a, b) => (LEVEL_ORDER[a.level] ?? 9) - (LEVEL_ORDER[b.level] ?? 9) || a.headword.localeCompare(b.headword)
+);
 
 export const WORDLIST_LICENSE =
   'The CEFR-J Wordlist Version 1.6. Yukio Tono tarafından derlenmiştir, ' +

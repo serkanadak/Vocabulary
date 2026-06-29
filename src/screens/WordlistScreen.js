@@ -6,7 +6,7 @@ import { STATUS } from '../logic/srs';
 import { colors, STATUS_META, LEVEL_COLORS } from '../theme';
 import { LevelBadge } from '../components/common';
 
-const LEVELS = ['A1', 'A2', 'B1', 'B2'];
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 // Durum döngüsü: işaretsiz → bilmiyorum → pasif → aktif → işaretsiz
 const CYCLE = [null, STATUS.UNKNOWN, STATUS.PASSIVE, STATUS.ACTIVE];
 
@@ -61,7 +61,7 @@ export default function WordlistScreen({ navigation }) {
       <View style={styles.header}>
         <Text style={styles.title}>CEFR Kelime Listesi</Text>
         <Text style={styles.subtitle}>
-          {WORDLIST_STATS.total.toLocaleString('tr-TR')} kelime · seviyeye göre çalış ve işaretle
+          {WORDLIST_STATS.total.toLocaleString('tr-TR')} kelime (A1–C2 + deyimler) · seviyeye göre çalış ve işaretle
         </Text>
 
         <TextInput
