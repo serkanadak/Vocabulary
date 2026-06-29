@@ -10,7 +10,7 @@ import {
   Dimensions,
   StyleSheet,
 } from 'react-native';
-import { WORDS } from '../data';
+import { WORDS, applyEdits } from '../data';
 import { useProgress } from '../state/ProgressContext';
 import { selectForQuiz, STATUS } from '../logic/srs';
 import { StatusPicker, LevelBadge, Badge } from '../components/common';
@@ -37,7 +37,8 @@ export default function FlashcardScreen({ navigation }) {
   const flip = useRef(new Animated.Value(0)).current;
   const flipValue = useRef(0);
 
-  const word = deck[index];
+  const baseWord = deck[index];
+  const word = baseWord ? applyEdits(baseWord, getProgress(baseWord.id)?.edits) : null;
 
   const doFlip = () => {
     const to = flipValue.current === 0 ? 180 : 0;

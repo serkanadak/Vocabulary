@@ -36,6 +36,18 @@ export function getWord(id) {
   return WORD_MAP.get(id) || null;
 }
 
+// Kullanıcının yerel düzenlemelerini temel kelimeyle birleştirir (manuel ekleme).
+// edits: { pronunciation?, synonyms?, antonyms?, meanings? }
+export function applyEdits(word, edits) {
+  if (!word || !edits) return word;
+  const merged = { ...word, edited: true };
+  if (edits.pronunciation != null) merged.pronunciation = edits.pronunciation;
+  if (Array.isArray(edits.synonyms)) merged.synonyms = edits.synonyms;
+  if (Array.isArray(edits.antonyms)) merged.antonyms = edits.antonyms;
+  if (Array.isArray(edits.meanings) && edits.meanings.length) merged.meanings = edits.meanings;
+  return merged;
+}
+
 export function searchWords(query) {
   const q = (query || '').trim().toLowerCase();
   if (!q) return WORDS;

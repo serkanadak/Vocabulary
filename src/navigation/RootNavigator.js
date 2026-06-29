@@ -11,6 +11,7 @@ import GraphScreen from '../screens/GraphScreen';
 import ReaderScreen from '../screens/ReaderScreen';
 import WordlistScreen from '../screens/WordlistScreen';
 import WordDetailScreen from '../screens/WordDetailScreen';
+import EditWordScreen from '../screens/EditWordScreen';
 import { colors } from '../theme';
 
 const Tab = createBottomTabNavigator();
@@ -69,6 +70,7 @@ export default function RootNavigator() {
       >
         <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
         <Stack.Screen name="WordDetail" component={WordDetailScreen} options={{ title: 'Kelime' }} />
+        <Stack.Screen name="EditWord" component={EditWordScreen} options={{ title: 'Kartı Düzenle' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

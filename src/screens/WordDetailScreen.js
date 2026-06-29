@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
-import { getWord } from '../data';
+import { getWord, applyEdits } from '../data';
 import { useProgress } from '../state/ProgressContext';
 import { STATUS } from '../logic/srs';
 import { StatusPicker, LevelBadge, Badge } from '../components/common';
@@ -9,8 +9,8 @@ import { TYPES } from '../data/schema';
 
 export default function WordDetailScreen({ route, navigation }) {
   const { id, fallback } = route.params;
-  const word = getWord(id);
   const { getProgress, setStatus } = useProgress();
+  const word = applyEdits(getWord(id), getProgress(id)?.edits);
 
   // Tam Türkçe kartı olmayan (CEFR liste) kelime: yine de başlık/seviye + işaretleme göster.
   if (!word) {
@@ -95,6 +95,14 @@ export default function WordDetailScreen({ route, navigation }) {
       >
         <Text style={styles.graphBtnText}>İlişki ağında göster →</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.editBtn}
+        onPress={() => navigation.navigate('EditWord', { id })}
+      >
+        <Text style={styles.editBtnText}>✏️ Bu kartı düzenle / ekle</Text>
+      </TouchableOpacity>
+      {!!word.edited && <Text style={styles.editedNote}>Bu kartta senin düzenlemelerin var.</Text>}
     </ScrollView>
   );
 }
@@ -140,4 +148,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   graphBtnText: { color: '#0f172a', fontWeight: '800' },
+  editBtn: {
+    marginTop: 12,
+    borderRadius: 14,
+    padding: 14,
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderColor: colors.primary,
+  },
+  editBtnText: { color: colors.primary, fontWeight: '800' },
+  editedNote: { color: colors.textMuted, fontSize: 12, marginTop: 8, textAlign: 'center', fontStyle: 'italic' },
 });
