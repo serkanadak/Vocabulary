@@ -113,6 +113,12 @@ export default [
         "en": "a prediction of future trends",
         "exampleEn": "Their sales forecast was too optimistic.",
         "exampleTr": "Satış tahminleri fazla iyimserdi."
+      },
+      {
+        "tr": "tahmin etmek, öngörmek",
+        "en": "to predict a future event or condition",
+        "exampleEn": "Economists forecast that inflation will fall next year.",
+        "exampleTr": "Ekonomistler enflasyonun gelecek yıl düşeceğini tahmin ediyor."
       }
     ],
     "synonyms": [
@@ -168,6 +174,12 @@ export default [
         "en": "ongoing business costs not tied to production",
         "exampleEn": "High rent increased their overhead.",
         "exampleTr": "Yüksek kira genel giderlerini artırdı."
+      },
+      {
+        "tr": "tepede, yukarıda, baş üstünde",
+        "en": "above your head, in the sky",
+        "exampleEn": "A helicopter flew overhead as we walked.",
+        "exampleTr": "Biz yürürken tepemizden bir helikopter geçti."
       }
     ],
     "synonyms": [
@@ -1172,6 +1184,12 @@ export default [
         "en": "a standard used for comparison",
         "exampleEn": "The index is the industry benchmark.",
         "exampleTr": "Endeks sektörün kıyaslama ölçütüdür."
+      },
+      {
+        "tr": "kıyaslamak, ölçüt olarak karşılaştırmak",
+        "en": "to measure something against a standard",
+        "exampleEn": "We benchmark our products against the best in the market.",
+        "exampleTr": "Ürünlerimizi piyasadaki en iyilerle kıyaslıyoruz."
       }
     ],
     "synonyms": [
@@ -1311,6 +1329,12 @@ export default [
         "en": "acting according to rules and laws",
         "exampleEn": "The bank passed the compliance check.",
         "exampleTr": "Banka uyum denetimini geçti."
+      },
+      {
+        "tr": "uysallık, itaat, boyun eğme",
+        "en": "the tendency to obey or agree with others too readily",
+        "exampleEn": "Her quiet compliance made her an easy target for bullies.",
+        "exampleTr": "Sessiz uysallığı, onu zorbalar için kolay bir hedef yapıyordu."
       }
     ],
     "synonyms": [
@@ -1397,6 +1421,12 @@ export default [
         "en": "a legal right protecting an invention",
         "exampleEn": "They filed a patent for the design.",
         "exampleTr": "Tasarım için patent başvurusu yaptılar."
+      },
+      {
+        "tr": "apaçık, aşikâr, besbelli",
+        "en": "obvious or clear",
+        "exampleEn": "His explanation was a patent lie.",
+        "exampleTr": "Açıklaması apaçık bir yalandı."
       }
     ],
     "synonyms": [],
@@ -1422,6 +1452,12 @@ export default [
         "en": "a registered sign identifying a brand",
         "exampleEn": "The logo is a registered trademark.",
         "exampleTr": "Logo tescilli bir markadır."
+      },
+      {
+        "tr": "ayırt edici özellik, alâmet-i farika",
+        "en": "a distinctive feature typical of a particular person",
+        "exampleEn": "His trademark grin appeared as he walked on stage.",
+        "exampleTr": "Sahneye çıkarken o alâmet-i farika gülümsemesi belirdi."
       }
     ],
     "synonyms": [
@@ -1450,6 +1486,12 @@ export default [
         "en": "a license to run a branch of a brand",
         "exampleEn": "She bought a coffee franchise.",
         "exampleTr": "Bir kahve bayiliği satın aldı."
+      },
+      {
+        "tr": "oy hakkı, seçme hakkı",
+        "en": "the right to vote in elections",
+        "exampleEn": "Women were granted the franchise in the early twentieth century.",
+        "exampleTr": "Kadınlara yirminci yüzyılın başında oy hakkı tanındı."
       }
     ],
     "synonyms": [],
@@ -1475,6 +1517,12 @@ export default [
         "en": "a company controlled by a larger one",
         "exampleEn": "The bank sold its foreign subsidiary.",
         "exampleTr": "Banka yurt dışı bağlı ortaklığını sattı."
+      },
+      {
+        "tr": "yardımcı, tali, ikincil (sıfat)",
+        "en": "less important than something else; supplementary",
+        "exampleEn": "The subsidiary aim of the project is to train local staff.",
+        "exampleTr": "Projenin ikincil amacı yerel personeli eğitmektir."
       }
     ],
     "synonyms": [
@@ -1559,6 +1607,12 @@ export default [
         "en": "to sell assets and close a business",
         "exampleEn": "They had to liquidate the company.",
         "exampleTr": "Şirketi tasfiye etmek zorunda kaldılar."
+      },
+      {
+        "tr": "ortadan kaldırmak, öldürmek (özellikle siyasi nedenlerle)",
+        "en": "to kill someone, especially for political reasons",
+        "exampleEn": "The regime liquidated anyone suspected of dissent.",
+        "exampleTr": "Rejim, muhalif olduğundan şüphelenilen herkesi ortadan kaldırdı."
       }
     ],
     "synonyms": [
@@ -1619,6 +1673,12 @@ export default [
         "en": "able to pay all debts",
         "exampleEn": "The company is now solvent again.",
         "exampleTr": "Şirket artık yeniden ödeme gücüne sahip."
+      },
+      {
+        "tr": "çözücü, eritici madde (isim)",
+        "en": "a liquid that can dissolve another substance",
+        "exampleEn": "Acetone is a powerful solvent used to remove nail polish.",
+        "exampleTr": "Aseton, oje çıkarmakta kullanılan güçlü bir çözücüdür."
       }
     ],
     "synonyms": [],
@@ -1676,6 +1736,12 @@ export default [
         "en": "to fail to repay a debt",
         "exampleEn": "The borrower defaulted on the loan.",
         "exampleTr": "Borçlu krediyi ödeyemedi."
+      },
+      {
+        "tr": "varsayılan ayar, standart seçenek",
+        "en": "a preset option that is used automatically unless changed",
+        "exampleEn": "The software uses English as the default language.",
+        "exampleTr": "Yazılım varsayılan dil olarak İngilizceyi kullanır."
       }
     ],
     "synonyms": [],
@@ -2020,6 +2086,12 @@ export default [
         "en": "to make a process more efficient",
         "exampleEn": "They streamlined the approval steps.",
         "exampleTr": "Onay adımlarını sadeleştirdiler."
+      },
+      {
+        "tr": "aerodinamik hale getirmek, akış çizgili biçim vermek",
+        "en": "to design something so that it moves easily through air or water",
+        "exampleEn": "Engineers streamlined the car's body to reduce wind resistance.",
+        "exampleTr": "Mühendisler, hava direncini azaltmak için arabanın gövdesini aerodinamik hale getirdi."
       }
     ],
     "synonyms": [
@@ -2399,6 +2471,12 @@ export default [
         "en": "still owed and not yet paid",
         "exampleEn": "They cleared all outstanding debts.",
         "exampleTr": "Tüm ödenmemiş borçları kapattılar."
+      },
+      {
+        "tr": "olağanüstü, mükemmel, seçkin",
+        "en": "extremely good; excellent",
+        "exampleEn": "She gave an outstanding performance in the play.",
+        "exampleTr": "Oyunda olağanüstü bir performans sergiledi."
       }
     ],
     "synonyms": [
@@ -3019,6 +3097,12 @@ export default [
         "en": "a tax or charge imposed by authority",
         "exampleEn": "A new levy was added to imports.",
         "exampleTr": "İthalata yeni bir vergi eklendi."
+      },
+      {
+        "tr": "(vergi vb.) koymak, salmak, tahsil etmek (fiil)",
+        "en": "to officially impose or collect a tax, fee, or fine",
+        "exampleEn": "The government plans to levy a new tax on sugary drinks.",
+        "exampleTr": "Hükümet, şekerli içeceklere yeni bir vergi koymayı planlıyor."
       }
     ],
     "synonyms": [
@@ -3161,6 +3245,18 @@ export default [
         "en": "a sudden economic collapse",
         "exampleEn": "The boom was followed by a bust.",
         "exampleTr": "Patlamayı bir çöküş izledi."
+      },
+      {
+        "tr": "büst, göğüs heykeli",
+        "en": "a sculpture of a person's head and shoulders",
+        "exampleEn": "A marble bust of the composer stood in the entrance hall.",
+        "exampleTr": "Giriş holünde bestecinin mermerden bir büstü duruyordu."
+      },
+      {
+        "tr": "göğüs, kadın göğsü çevresi",
+        "en": "a woman's chest, or its measurement around the breasts",
+        "exampleEn": "The dress was a little too tight around the bust.",
+        "exampleTr": "Elbise göğüs kısmında biraz fazla dardı."
       }
     ],
     "synonyms": [
@@ -3329,6 +3425,18 @@ export default [
         "en": "a rise in the value of an asset or currency",
         "exampleEn": "Currency appreciation hurt exporters.",
         "exampleTr": "Paranın değer kazanması ihracatçılara zarar verdi."
+      },
+      {
+        "tr": "takdir, minnettarlık, şükran",
+        "en": "the feeling of being grateful for something",
+        "exampleEn": "He showed his appreciation with a small gift.",
+        "exampleTr": "Küçük bir hediyeyle minnettarlığını gösterdi."
+      },
+      {
+        "tr": "anlayış, kavrayış, değerini bilme",
+        "en": "an understanding of the importance or value of something",
+        "exampleEn": "The trip gave me a deeper appreciation of nature.",
+        "exampleTr": "Gezi bana doğanın değerini daha derin biçimde kavrattı."
       }
     ],
     "synonyms": [
@@ -3476,6 +3584,18 @@ export default [
         "en": "action taken to encourage growth",
         "exampleEn": "The government launched a stimulus package.",
         "exampleTr": "Hükümet bir teşvik paketi başlattı."
+      },
+      {
+        "tr": "uyarıcı, dürtü (tepkiye yol açan şey)",
+        "en": "something that causes a reaction or response",
+        "exampleEn": "Light is a stimulus that causes the pupils to contract.",
+        "exampleTr": "Işık, göz bebeklerinin küçülmesine neden olan bir uyarıcıdır."
+      },
+      {
+        "tr": "teşvik, itici güç (gelişmeyi hızlandıran şey)",
+        "en": "something that encourages activity or growth",
+        "exampleEn": "The prize money was a great stimulus to young researchers.",
+        "exampleTr": "Ödül parası genç araştırmacılar için büyük bir teşvikti."
       }
     ],
     "synonyms": [
@@ -3721,6 +3841,12 @@ export default [
         "en": "total before deductions",
         "exampleEn": "Gross income is higher than net.",
         "exampleTr": "Brüt gelir nettan yüksektir."
+      },
+      {
+        "tr": "iğrenç, mide bulandırıcı",
+        "en": "very unpleasant or disgusting",
+        "exampleEn": "There was a gross smell coming from the bin.",
+        "exampleTr": "Çöp kutusundan iğrenç bir koku geliyordu."
       }
     ],
     "synonyms": [
@@ -3752,6 +3878,18 @@ export default [
         "en": "remaining after deductions",
         "exampleEn": "Net profit fell despite high sales.",
         "exampleTr": "Yüksek satışa rağmen net kâr düştü."
+      },
+      {
+        "tr": "ağ (balık, spor vb.)",
+        "en": "a material made of crossed threads with holes between",
+        "exampleEn": "The fisherman pulled the net full of fish onto the boat.",
+        "exampleTr": "Balıkçı balık dolu ağı tekneye çekti."
+      },
+      {
+        "tr": "kazanmak, elde etmek (net kâr olarak)",
+        "en": "to gain something as a profit",
+        "exampleEn": "The company netted a huge profit last year.",
+        "exampleTr": "Şirket geçen yıl büyük bir kâr elde etti."
       }
     ],
     "synonyms": [],
@@ -3884,6 +4022,12 @@ export default [
         "en": "to sell off an investment",
         "exampleEn": "The fund divested from coal.",
         "exampleTr": "Fon kömürden çıktı."
+      },
+      {
+        "tr": "soymak, çıkarmak (giysi vb.); yoksun bırakmak",
+        "en": "to remove clothing, or to take something away from someone",
+        "exampleEn": "He divested himself of his coat before entering the warm room.",
+        "exampleTr": "Sıcak odaya girmeden önce paltosunu çıkardı."
       }
     ],
     "synonyms": [
@@ -3914,6 +4058,12 @@ export default [
         "en": "the return earned on an investment",
         "exampleEn": "Bond yields rose this week.",
         "exampleTr": "Tahvil getirileri bu hafta yükseldi."
+      },
+      {
+        "tr": "ürün, verim (tarımsal üretim miktarı)",
+        "en": "the amount of something, such as crops, that is produced",
+        "exampleEn": "This year's crop yield was much higher than expected.",
+        "exampleTr": "Bu yılki ürün verimi beklenenden çok daha yüksekti."
       }
     ],
     "synonyms": [
@@ -4255,6 +4405,12 @@ export default [
         "en": "an official ban on trade",
         "exampleEn": "An embargo was placed on exports.",
         "exampleTr": "İhracata ambargo konuldu."
+      },
+      {
+        "tr": "yayın yasağı, ambargo (haberin belirli bir tarihe kadar yayınlanmaması)",
+        "en": "an official ban on publishing information before a set time",
+        "exampleEn": "The report is under embargo until Monday morning.",
+        "exampleTr": "Rapor pazartesi sabahına kadar yayın yasağı altında."
       }
     ],
     "synonyms": [
@@ -4282,6 +4438,18 @@ export default [
         "en": "a penalty imposed to force compliance",
         "exampleEn": "New sanctions hit the oil sector.",
         "exampleTr": "Yeni yaptırımlar petrol sektörünü vurdu."
+      },
+      {
+        "tr": "resmi izin, onay",
+        "en": "official permission or approval for an action",
+        "exampleEn": "The project went ahead without the sanction of the local council.",
+        "exampleTr": "Proje yerel meclisin onayı olmadan devam etti."
+      },
+      {
+        "tr": "onaylamak, izin vermek (fiil)",
+        "en": "to give official permission or approval for something",
+        "exampleEn": "The government refused to sanction the construction of the dam.",
+        "exampleTr": "Hükümet barajın inşasına izin vermeyi reddetti."
       }
     ],
     "synonyms": [
@@ -4797,6 +4965,18 @@ export default [
         "en": "to protect against possible loss",
         "exampleEn": "They hedge against currency risk.",
         "exampleTr": "Kur riskine karşı korunuyorlar."
+      },
+      {
+        "tr": "çit, çalı çit (isim)",
+        "en": "a row of bushes forming a boundary",
+        "exampleEn": "A tall hedge separated the two gardens.",
+        "exampleTr": "Yüksek bir çit iki bahçeyi birbirinden ayırıyordu."
+      },
+      {
+        "tr": "kaçamak cevap vermek, lafı dolandırmak",
+        "en": "to avoid giving a direct answer or commitment",
+        "exampleEn": "He hedged when asked about his future plans.",
+        "exampleTr": "Gelecek planları sorulduğunda kaçamak cevap verdi."
       }
     ],
     "synonyms": [
@@ -4924,6 +5104,18 @@ export default [
         "en": "a level that must be reached",
         "exampleEn": "Income above the threshold is taxed.",
         "exampleTr": "Eşiğin üstündeki gelir vergilendirilir."
+      },
+      {
+        "tr": "kapı eşiği, giriş",
+        "en": "the floor of a doorway; the entrance to a building",
+        "exampleEn": "He carried his bride across the threshold.",
+        "exampleTr": "Gelinini kucağında eşikten geçirdi."
+      },
+      {
+        "tr": "başlangıç noktası, arifesi",
+        "en": "the point just before a new situation begins",
+        "exampleEn": "They are on the threshold of a major discovery.",
+        "exampleTr": "Büyük bir keşfin eşiğindeler."
       }
     ],
     "synonyms": [
@@ -5602,6 +5794,12 @@ export default [
         "en": "stated clearly and directly",
         "exampleEn": "She gave explicit instructions.",
         "exampleTr": "Açık ve net talimatlar verdi."
+      },
+      {
+        "tr": "müstehcen, cinsel içerikli (açık)",
+        "en": "showing or describing sex or violence in a very detailed way",
+        "exampleEn": "The film contains sexually explicit scenes.",
+        "exampleTr": "Film cinsel açıdan müstehcen sahneler içeriyor."
       }
     ],
     "synonyms": [
@@ -6028,6 +6226,12 @@ export default [
         "en": "to lead and control a discussion",
         "exampleEn": "She moderated the panel skillfully.",
         "exampleTr": "Paneli ustaca yönetti."
+      },
+      {
+        "tr": "hafifletmek, azaltmak, dengelemek",
+        "en": "to make something less extreme or intense",
+        "exampleEn": "The government tried to moderate the effects of the crisis.",
+        "exampleTr": "Hükümet krizin etkilerini hafifletmeye çalıştı."
       }
     ],
     "synonyms": [
@@ -6169,6 +6373,12 @@ export default [
         "en": "to publicly support a cause",
         "exampleEn": "She advocates for fair pay.",
         "exampleTr": "Adil ücreti savunuyor."
+      },
+      {
+        "tr": "savunucu, taraftar, hami",
+        "en": "a person who supports or speaks in favor of something",
+        "exampleEn": "She is a strong advocate of children's rights.",
+        "exampleTr": "O, çocuk haklarının güçlü bir savunucusudur."
       }
     ],
     "synonyms": [
@@ -6198,6 +6408,18 @@ export default [
         "en": "to express opposition",
         "exampleEn": "He objected to the new rule.",
         "exampleTr": "Yeni kurala itiraz etti."
+      },
+      {
+        "tr": "nesne, cisim, şey",
+        "en": "a thing that you can see and touch (as a noun)",
+        "exampleEn": "There was a strange metal object on the table.",
+        "exampleTr": "Masanın üzerinde tuhaf bir metal cisim vardı."
+      },
+      {
+        "tr": "amaç, hedef",
+        "en": "a purpose or aim",
+        "exampleEn": "The object of the game is to score as many points as possible.",
+        "exampleTr": "Oyunun amacı mümkün olduğunca çok puan toplamaktır."
       }
     ],
     "synonyms": [
@@ -6227,6 +6449,12 @@ export default [
         "en": "to admit something is true",
         "exampleEn": "She conceded the point gracefully.",
         "exampleTr": "Noktayı zarafetle kabul etti."
+      },
+      {
+        "tr": "yenilgiyi kabul etmek, mağlubiyeti kabullenmek",
+        "en": "to admit defeat in a contest or election",
+        "exampleEn": "The candidate conceded the election late that night.",
+        "exampleTr": "Aday o gece geç saatte seçim yenilgisini kabul etti."
       }
     ],
     "synonyms": [
@@ -6919,6 +7147,12 @@ export default [
         "en": "skill in handling people without offense",
         "exampleEn": "The deal needed real diplomacy.",
         "exampleTr": "Anlaşma gerçek bir diplomasi gerektirdi."
+      },
+      {
+        "tr": "(devletlerarası) diplomasi, dış ilişkiler yönetimi",
+        "en": "the management of relationships between countries by their governments",
+        "exampleEn": "The crisis was resolved through skillful diplomacy rather than force.",
+        "exampleTr": "Kriz, güç yerine ustaca yürütülen diplomasi ile çözüldü."
       }
     ],
     "synonyms": [
@@ -6976,6 +7210,12 @@ export default [
         "en": "communication between groups",
         "exampleEn": "She acts as a liaison with vendors.",
         "exampleTr": "Tedarikçilerle irtibatı o sağlıyor."
+      },
+      {
+        "tr": "gizli aşk ilişkisi, gönül ilişkisi",
+        "en": "a secret sexual relationship between two people",
+        "exampleEn": "The novel describes a secret liaison between the countess and a young officer.",
+        "exampleTr": "Roman, kontes ile genç bir subay arasındaki gizli bir aşk ilişkisini anlatır."
       }
     ],
     "synonyms": [
@@ -7647,6 +7887,12 @@ export default [
         "en": "an approximate range",
         "exampleEn": "Give me a ballpark for the cost.",
         "exampleTr": "Maliyet için kabaca bir rakam ver."
+      },
+      {
+        "tr": "beysbol sahası, stat",
+        "en": "a stadium where baseball is played",
+        "exampleEn": "Thousands of fans filled the ballpark for the game.",
+        "exampleTr": "Binlerce taraftar maç için beysbol sahasını doldurdu."
       }
     ],
     "synonyms": [
@@ -9538,6 +9784,12 @@ export default [
         "en": "a new effort started independently",
         "exampleEn": "She showed great initiative.",
         "exampleTr": "Büyük bir girişkenlik gösterdi."
+      },
+      {
+        "tr": "inisiyatif; harekete geçme yeteneği ve isteği",
+        "en": "the ability to act and make decisions on your own without being told",
+        "exampleEn": "She showed great initiative by solving the problem before anyone asked.",
+        "exampleTr": "Kimse istemeden sorunu çözerek büyük inisiyatif gösterdi."
       }
     ],
     "synonyms": [
@@ -9622,6 +9874,12 @@ export default [
         "en": "to put a plan into action",
         "exampleEn": "They implemented the new policy.",
         "exampleTr": "Yeni politikayı hayata geçirdiler."
+      },
+      {
+        "tr": "alet, araç, gereç",
+        "en": "a tool or instrument used for a particular task",
+        "exampleEn": "The farmer kept his gardening implements in the old shed.",
+        "exampleTr": "Çiftçi bahçe aletlerini eski kulübede saklardı."
       }
     ],
     "synonyms": [
@@ -9649,6 +9907,12 @@ export default [
         "en": "to carry out a plan precisely",
         "exampleEn": "The team executed flawlessly.",
         "exampleTr": "Ekip kusursuz biçimde uyguladı."
+      },
+      {
+        "tr": "idam etmek, ölüm cezasını uygulamak",
+        "en": "to kill someone as a legal punishment",
+        "exampleEn": "He was executed for treason after a lengthy trial.",
+        "exampleTr": "Uzun bir yargılamanın ardından vatana ihanetten idam edildi."
       }
     ],
     "synonyms": [
@@ -9676,6 +9940,12 @@ export default [
         "en": "to put resources or systems into use",
         "exampleEn": "They deployed the update overnight.",
         "exampleTr": "Güncellemeyi bir gecede devreye aldılar."
+      },
+      {
+        "tr": "(askeri birlik/silah) konuşlandırmak, mevzilendirmek",
+        "en": "to move soldiers or military equipment into position ready for action",
+        "exampleEn": "The general decided to deploy troops along the border.",
+        "exampleTr": "General, sınır boyunca birlikleri konuşlandırmaya karar verdi."
       }
     ],
     "synonyms": [
@@ -9758,6 +10028,12 @@ export default [
         "en": "a series of upcoming deals or steps",
         "exampleEn": "The sales pipeline looks strong.",
         "exampleTr": "Satış hattı güçlü görünüyor."
+      },
+      {
+        "tr": "boru hattı, petrol/gaz nakil hattı",
+        "en": "a long pipe used to carry oil, gas, or water over a long distance",
+        "exampleEn": "The new pipeline will transport natural gas across three countries.",
+        "exampleTr": "Yeni boru hattı doğal gazı üç ülke boyunca taşıyacak."
       }
     ],
     "synonyms": [],
@@ -10476,6 +10752,12 @@ export default [
         "en": "a person of equal standing",
         "exampleEn": "He earned respect from his peers.",
         "exampleTr": "Akranlarının saygısını kazandı."
+      },
+      {
+        "tr": "dikkatle bakmak, gözlerini kısarak bakmak",
+        "en": "to look carefully or with difficulty",
+        "exampleEn": "He peered at the tiny print through his glasses.",
+        "exampleTr": "Gözlüğüyle küçük yazıya dikkatle baktı."
       }
     ],
     "synonyms": [
@@ -10794,6 +11076,12 @@ export default [
         "en": "the art of persuasive speaking",
         "exampleEn": "His rhetoric stirred the crowd.",
         "exampleTr": "Retoriği kalabalığı coşturdu."
+      },
+      {
+        "tr": "boş laf, içi boş söylem, gösterişli ama samimiyetsiz konuşma",
+        "en": "speech or writing that sounds impressive but is insincere or empty",
+        "exampleEn": "Voters are tired of empty political rhetoric with no real action behind it.",
+        "exampleTr": "Seçmenler, arkasında gerçek eylem olmayan boş siyasi lafları duymaktan bıktı."
       }
     ],
     "synonyms": [
@@ -10883,6 +11171,12 @@ export default [
         "en": "formal discussion of a topic",
         "exampleEn": "Public discourse shifted online.",
         "exampleTr": "Kamusal söylem internete kaydı."
+      },
+      {
+        "tr": "söylev vermek, uzun uzun konuşmak (fiil)",
+        "en": "to speak or write at length about a subject",
+        "exampleEn": "He would discourse for hours on the history of jazz.",
+        "exampleTr": "Caz tarihi üzerine saatlerce söylev verirdi."
       }
     ],
     "synonyms": [
@@ -11579,6 +11873,18 @@ export default [
         "en": "to refer an issue to a higher level",
         "exampleEn": "Please escalate this to support.",
         "exampleTr": "Lütfen bunu desteğe iletin."
+      },
+      {
+        "tr": "tırmanmak, giderek şiddetlenmek",
+        "en": "to become or make something more serious or intense",
+        "exampleEn": "The conflict quickly escalated into a full-scale war.",
+        "exampleTr": "Çatışma hızla tam ölçekli bir savaşa dönüştü."
+      },
+      {
+        "tr": "artmak, yükselmek (fiyat, maliyet)",
+        "en": "to increase in amount or level",
+        "exampleEn": "Housing costs have escalated over the past decade.",
+        "exampleTr": "Konut maliyetleri son on yılda hızla arttı."
       }
     ],
     "synonyms": [
@@ -12048,6 +12354,12 @@ export default [
         "en": "to combine into a total",
         "exampleEn": "The site aggregates price data.",
         "exampleTr": "Site fiyat verilerini toplar."
+      },
+      {
+        "tr": "(spor) toplam skor, kümülatif sonuç",
+        "en": "a total made up of smaller amounts, especially of scores",
+        "exampleEn": "The team won 4-2 on aggregate over the two matches.",
+        "exampleTr": "Takım iki maçın toplamında 4-2 kazandı."
       }
     ],
     "synonyms": [
@@ -12936,6 +13248,12 @@ export default [
         "en": "to show off something proudly",
         "exampleEn": "He keeps flexing his new watch.",
         "exampleTr": "Yeni saatiyle sürekli hava atıyor."
+      },
+      {
+        "tr": "(kas) germek, kasmak, bükmek",
+        "en": "to tighten a muscle or bend a part of the body",
+        "exampleEn": "The bodybuilder flexed his muscles for the crowd.",
+        "exampleTr": "Vücut geliştirmeci kalabalık için kaslarını kastı."
       }
     ],
     "synonyms": [
@@ -13054,6 +13372,12 @@ export default [
         "en": "to save something from loss",
         "exampleEn": "They salvaged the deal at the last minute.",
         "exampleTr": "Anlaşmayı son anda kurtardılar."
+      },
+      {
+        "tr": "kurtarma işlemi; kurtarılan mal (isim)",
+        "en": "the act of saving goods or property, or the things that are saved",
+        "exampleEn": "The salvage of the sunken ship took several months.",
+        "exampleTr": "Batık geminin kurtarılması birkaç ay sürdü."
       }
     ],
     "synonyms": [
@@ -13419,6 +13743,18 @@ export default [
         "en": "an exclusive news story",
         "exampleEn": "The reporter got a major scoop.",
         "exampleTr": "Muhabir büyük bir atlatma haber yakaladı."
+      },
+      {
+        "tr": "kepçe, kürek (dondurma vb. için)",
+        "en": "a tool like a deep spoon used for serving food such as ice cream",
+        "exampleEn": "She used a scoop to serve the ice cream into bowls.",
+        "exampleTr": "Dondurmayı kaselere koymak için bir kepçe kullandı."
+      },
+      {
+        "tr": "kepçeyle almak, kaşıklamak (fiil)",
+        "en": "to pick something up or remove it with a scoop or a scooping movement",
+        "exampleEn": "He scooped the flour into the bowl with his hands.",
+        "exampleTr": "Unu elleriyle kaseye doldurdu."
       }
     ],
     "synonyms": [
@@ -97225,6 +97561,12 @@ export default [
         "en": "having very strong feelings or serious in manner",
         "exampleEn": "He is an intense young man who takes everything seriously.",
         "exampleTr": "Her şeyi ciddiye alan, yoğun duygulu genç bir adam."
+      },
+      {
+        "tr": "ciddi ve derin duygularla, tutkulu biçimde",
+        "en": "in a very serious and deeply emotional way",
+        "exampleEn": "He looked at her intensely, as if trying to read her thoughts.",
+        "exampleTr": "Sanki düşüncelerini okumaya çalışırcasına ona tutkuyla/derin bir yoğunlukla baktı."
       }
     ],
     "synonyms": [],
@@ -139515,6 +139857,12 @@ export default [
         "en": "a computer for use on a desk, or the screen background",
         "exampleEn": "He saved the file directly to his desktop.",
         "exampleTr": "Dosyayı doğrudan masaüstüne kaydetti."
+      },
+      {
+        "tr": "masaüstü bilgisayarı (dizüstü olmayan)",
+        "en": "a computer designed to be used on a desk, not portable",
+        "exampleEn": "She prefers working on a desktop rather than a laptop.",
+        "exampleTr": "Dizüstü yerine bir masaüstü bilgisayarda çalışmayı tercih ediyor."
       }
     ],
     "synonyms": [],
@@ -139701,6 +140049,12 @@ export default [
         "en": "the state of being separate or emotionally distant",
         "exampleEn": "She described the events with cool detachment.",
         "exampleTr": "Olayları soğuk bir mesafeyle anlattı."
+      },
+      {
+        "tr": "müfreze (askeri birlik)",
+        "en": "a group of soldiers sent away on a special task",
+        "exampleEn": "A small detachment was sent to guard the bridge.",
+        "exampleTr": "Köprüyü korumak için küçük bir müfreze gönderildi."
       }
     ],
     "synonyms": [
@@ -139757,6 +140111,12 @@ export default [
         "en": "to discover or notice something hidden",
         "exampleEn": "The sensor can detect even a small amount of smoke.",
         "exampleTr": "Sensör az miktarda dumanı bile saptayabilir."
+      },
+      {
+        "tr": "(ses/ifade/duygu) sezmek, hissetmek",
+        "en": "to notice something, especially a feeling or quality",
+        "exampleEn": "I detected a note of sadness in her voice.",
+        "exampleTr": "Sesinde bir hüzün tonu sezdim."
       }
     ],
     "synonyms": [
@@ -140019,6 +140379,12 @@ export default [
         "en": "to make something seem worthy or honourable",
         "exampleEn": "He refused to dignify the rumour with a reply.",
         "exampleTr": "Söylentiyi bir cevapla onurlandırmayı reddetti."
+      },
+      {
+        "tr": "(hak etmediği bir şeye) değer/önem atfetmek, ciddiye almak",
+        "en": "to make something seem more important than it is",
+        "exampleEn": "I won't dignify that accusation with a response.",
+        "exampleTr": "O suçlamayı yanıt vererek ciddiye almayacağım."
       }
     ],
     "synonyms": [
@@ -140099,6 +140465,18 @@ export default [
         "en": "not bright; giving little light",
         "exampleEn": "The room was lit by a single dim lamp.",
         "exampleTr": "Oda tek bir loş lambayla aydınlatılmıştı."
+      },
+      {
+        "tr": "kısmak, karartmak; sönükleşmek (fiil)",
+        "en": "to make or become less bright",
+        "exampleEn": "They dimmed the lights before the movie started.",
+        "exampleTr": "Film başlamadan önce ışıkları kıstılar."
+      },
+      {
+        "tr": "kalın kafalı, aptal (konuşma dili)",
+        "en": "not intelligent, slow to understand",
+        "exampleEn": "He's a bit dim and never gets the joke.",
+        "exampleTr": "Biraz kalın kafalıdır, şakayı hiç anlamaz."
       }
     ],
     "synonyms": [
@@ -140174,6 +140552,18 @@ export default [
         "en": "to put something quickly into a liquid",
         "exampleEn": "She dipped the bread into the soup.",
         "exampleTr": "Ekmeği çorbaya daldırdı."
+      },
+      {
+        "tr": "düşüş, azalma (isim)",
+        "en": "a small or temporary fall in amount or level",
+        "exampleEn": "There was a dip in sales during the summer.",
+        "exampleTr": "Yaz boyunca satışlarda bir düşüş oldu."
+      },
+      {
+        "tr": "(sos türü) meze sosu, batırılacak sos (isim)",
+        "en": "a thick sauce for dipping food into",
+        "exampleEn": "She served chips with a garlic dip.",
+        "exampleTr": "Cipsleri sarımsaklı bir sosla ikram etti."
       }
     ],
     "synonyms": [
@@ -140223,6 +140613,12 @@ export default [
         "en": "an official document showing completion of a course of study",
         "exampleEn": "She proudly framed her university diploma.",
         "exampleTr": "Üniversite diplomasını gururla çerçeveletti."
+      },
+      {
+        "tr": "(kısa süreli, üniversite altı) meslek/kurs sertifikası, ön lisans belgesi",
+        "en": "a qualification from a course of study, often below degree level",
+        "exampleEn": "She earned a diploma in graphic design.",
+        "exampleTr": "Grafik tasarımı alanında bir sertifika programını bitirdi."
       }
     ],
     "synonyms": [
@@ -140353,6 +140749,12 @@ export default [
         "en": "the act of releasing someone or something",
         "exampleEn": "The patient's discharge from the hospital was delayed by a day.",
         "exampleTr": "Hastanın hastaneden taburcu edilmesi bir gün gecikti."
+      },
+      {
+        "tr": "taburcu etmek, salıvermek (fiil)",
+        "en": "to officially allow someone to leave (hospital, army, etc.)",
+        "exampleEn": "The patient was discharged from the hospital after a week.",
+        "exampleTr": "Hasta bir hafta sonra hastaneden taburcu edildi."
       }
     ],
     "synonyms": [
@@ -140404,6 +140806,18 @@ export default [
         "en": "controlled behavior or training to obey rules",
         "exampleEn": "Learning a language requires patience and discipline.",
         "exampleTr": "Bir dil öğrenmek sabır ve disiplin gerektirir."
+      },
+      {
+        "tr": "bilim dalı, disiplin (akademik alan)",
+        "en": "a subject or area of academic study",
+        "exampleEn": "Economics is a discipline that combines maths and social science.",
+        "exampleTr": "Ekonomi, matematik ile sosyal bilimi birleştiren bir bilim dalıdır."
+      },
+      {
+        "tr": "cezalandırmak, disipline etmek (fiil)",
+        "en": "to punish someone in order to keep control",
+        "exampleEn": "The teacher had to discipline the students for their behavior.",
+        "exampleTr": "Öğretmen, davranışları yüzünden öğrencileri cezalandırmak zorunda kaldı."
       }
     ],
     "synonyms": [
@@ -140510,6 +140924,12 @@ export default [
         "en": "loss of respect because of bad behavior",
         "exampleEn": "His cheating brought disgrace upon the whole team.",
         "exampleTr": "Onun hile yapması tüm takıma utanç getirdi."
+      },
+      {
+        "tr": "gözden düşürmek, utanç kaynağı olmak (fiil)",
+        "en": "to bring shame on someone or something",
+        "exampleEn": "He disgraced his family with his dishonest actions.",
+        "exampleTr": "Dürüst olmayan davranışlarıyla ailesini gözden düşürdü."
       }
     ],
     "synonyms": [
@@ -140537,6 +140957,12 @@ export default [
         "en": "a change of appearance to hide one's identity",
         "exampleEn": "The spy wore a clever disguise to avoid being recognized.",
         "exampleTr": "Casus, tanınmamak için akıllıca bir kılık değiştirme kullandı."
+      },
+      {
+        "tr": "gizlemek, saklamak; kılık değiştirmek (fiil)",
+        "en": "to hide something or change appearance to avoid recognition",
+        "exampleEn": "She could not disguise her disappointment at the news.",
+        "exampleTr": "Haber karşısındaki hayal kırıklığını gizleyemedi."
       }
     ],
     "synonyms": [
@@ -140613,6 +141039,12 @@ export default [
         "en": "a lack of order or a medical condition",
         "exampleEn": "The doctor diagnosed her with a sleep disorder.",
         "exampleTr": "Doktor, ona bir uyku bozukluğu teşhisi koydu."
+      },
+      {
+        "tr": "kargaşa, karışıklık, düzensizlik (toplumsal)",
+        "en": "a situation of confusion and lack of control, unrest",
+        "exampleEn": "The riot caused widespread disorder in the city.",
+        "exampleTr": "Ayaklanma şehirde yaygın bir kargaşaya yol açtı."
       }
     ],
     "synonyms": [
@@ -140773,6 +141205,12 @@ export default [
         "en": "the act of getting rid of something",
         "exampleEn": "Proper disposal of chemical waste protects the environment.",
         "exampleTr": "Kimyasal atıkların düzgün bertaraf edilmesi çevreyi korur."
+      },
+      {
+        "tr": "emre amade olma, tasarrufunda olma (at someone's disposal)",
+        "en": "being available for someone to use as they wish",
+        "exampleEn": "A car and driver were put at his disposal during the visit.",
+        "exampleTr": "Ziyaret boyunca bir araba ve şoför onun emrine amade edildi."
       }
     ],
     "synonyms": [
@@ -140823,6 +141261,12 @@ export default [
         "en": "a serious argument or disagreement",
         "exampleEn": "The two countries had a long dispute over the border.",
         "exampleTr": "İki ülke, sınır konusunda uzun bir anlaşmazlık yaşadı."
+      },
+      {
+        "tr": "itiraz etmek, tartışmak, karşı çıkmak (fiil)",
+        "en": "to argue about or question the truth of something",
+        "exampleEn": "Nobody disputed the fact that she was the best candidate.",
+        "exampleTr": "Onun en iyi aday olduğu gerçeğine kimse itiraz etmedi."
       }
     ],
     "synonyms": [
@@ -140877,6 +141321,12 @@ export default [
         "en": "the act of paying no attention to something",
         "exampleEn": "His complete disregard for safety rules caused the accident.",
         "exampleTr": "Güvenlik kurallarını tamamen umursamaması kazaya neden oldu."
+      },
+      {
+        "tr": "dikkate almamak, görmezden gelmek (fiil)",
+        "en": "to ignore or pay no attention to something",
+        "exampleEn": "He disregarded my advice and did it his own way.",
+        "exampleTr": "Tavsiyemi dikkate almayıp kendi bildiğince yaptı."
       }
     ],
     "synonyms": [
@@ -141143,6 +141593,12 @@ export default [
         "en": "a change of direction or something that distracts attention",
         "exampleEn": "There was a diversion on the highway due to roadwork.",
         "exampleTr": "Yol çalışması nedeniyle otoyolda bir güzergah değişikliği vardı."
+      },
+      {
+        "tr": "geçici alternatif yol, tali yol (trafikte)",
+        "en": "a route used when the usual road is closed",
+        "exampleEn": "There was a diversion because of roadworks ahead.",
+        "exampleTr": "İleride yol çalışması olduğu için tali bir yol vardı."
       }
     ],
     "synonyms": [
@@ -141168,6 +141624,12 @@ export default [
         "en": "to change the direction or use of something",
         "exampleEn": "Police had to divert traffic away from the accident.",
         "exampleTr": "Polis, trafiği kazadan uzağa yönlendirmek zorunda kaldı."
+      },
+      {
+        "tr": "dikkatini başka yöne çekmek, oyalamak (fiil)",
+        "en": "to take attention away from something",
+        "exampleEn": "He told a joke to divert attention from his mistake.",
+        "exampleTr": "Hatasından dikkati başka yöne çekmek için bir şaka yaptı."
       }
     ],
     "synonyms": [
@@ -141220,6 +141682,18 @@ export default [
         "en": "the act of separating into parts, or a department",
         "exampleEn": "The sales division reported strong profits this year.",
         "exampleTr": "Satış bölümü bu yıl güçlü kârlar bildirdi."
+      },
+      {
+        "tr": "ayrılık, anlaşmazlık, bölünmüşlük",
+        "en": "a disagreement or difference between groups of people",
+        "exampleEn": "There were deep divisions within the party over the issue.",
+        "exampleTr": "Konu hakkında parti içinde derin ayrılıklar vardı."
+      },
+      {
+        "tr": "tümen (büyük askeri birlik); (sporda) lig, kategori",
+        "en": "a large military unit; a competition category in sport",
+        "exampleEn": "The team was promoted to the first division.",
+        "exampleTr": "Takım birinci lige yükseldi."
       }
     ],
     "synonyms": [
@@ -141247,6 +141721,12 @@ export default [
         "en": "the legal ending of a marriage",
         "exampleEn": "After years of conflict, they finally decided on a divorce.",
         "exampleTr": "Yıllarca süren çatışmadan sonra sonunda boşanmaya karar verdiler."
+      },
+      {
+        "tr": "boşanmak (fiil)",
+        "en": "to legally end a marriage",
+        "exampleEn": "They divorced after ten years of marriage.",
+        "exampleTr": "On yıllık evliliğin ardından boşandılar."
       }
     ],
     "synonyms": [
@@ -141296,6 +141776,18 @@ export default [
         "en": "a place where ships are loaded, unloaded, or repaired",
         "exampleEn": "The ship was tied securely to the dock overnight.",
         "exampleTr": "Gemi, gece boyunca rıhtıma sağlamca bağlandı."
+      },
+      {
+        "tr": "(gemi) yanaşmak, rıhtıma yanaşmak (fiil)",
+        "en": "to bring a ship into a dock or harbor",
+        "exampleEn": "The ship docked at the port early in the morning.",
+        "exampleTr": "Gemi sabahın erken saatlerinde limana yanaştı."
+      },
+      {
+        "tr": "sanık kürsüsü (mahkemede)",
+        "en": "the place in a court where the accused person stands",
+        "exampleEn": "The defendant stood silently in the dock.",
+        "exampleTr": "Sanık, sanık kürsüsünde sessizce durdu."
       }
     ],
     "synonyms": [
@@ -141321,6 +141813,12 @@ export default [
         "en": "relating to home, family, or one's own country",
         "exampleEn": "Domestic flights are usually cheaper than international ones.",
         "exampleTr": "İç hat uçuşları genellikle uluslararası uçuşlardan daha ucuzdur."
+      },
+      {
+        "tr": "ev işlerini seven, ev hayatına düşkün (kişi)",
+        "en": "enjoying home life and household activities",
+        "exampleEn": "He's very domestic and loves cooking for the family.",
+        "exampleTr": "Çok ev hayatına düşkündür ve aile için yemek yapmayı sever."
       }
     ],
     "synonyms": [
@@ -141349,6 +141847,12 @@ export default [
         "en": "to have power and control over something",
         "exampleEn": "That company dominates the smartphone market.",
         "exampleTr": "O şirket, akıllı telefon pazarına hakim."
+      },
+      {
+        "tr": "(bir yere) tepeden bakmak, hakim konumda olmak (coğrafi)",
+        "en": "to be the most noticeable feature in a place, tower over",
+        "exampleEn": "The cathedral dominates the city skyline.",
+        "exampleTr": "Katedral, şehrin siluetine tepeden bakar."
       }
     ],
     "synonyms": [
@@ -141451,6 +141955,12 @@ export default [
         "en": "death, destruction, or a terrible fate",
         "exampleEn": "A sense of doom filled the room before the storm hit.",
         "exampleTr": "Fırtına vurmadan önce odayı bir felaket hissi kapladı."
+      },
+      {
+        "tr": "mahkum etmek (kötü bir sona), yazgılamak (fiil)",
+        "en": "to make certain someone will fail or suffer",
+        "exampleEn": "The plan was doomed to failure from the start.",
+        "exampleTr": "Plan en baştan başarısızlığa mahkumdu."
       }
     ],
     "synonyms": [
@@ -141576,6 +142086,12 @@ export default [
         "en": "a measured amount of medicine to be taken",
         "exampleEn": "Take one dose of this medicine every six hours.",
         "exampleTr": "Bu ilaçtan altı saatte bir doz alın."
+      },
+      {
+        "tr": "miktar, ölçü (mecazi; bir tutam, biraz)",
+        "en": "an amount of something, especially unpleasant",
+        "exampleEn": "He needs a dose of common sense.",
+        "exampleTr": "Ona biraz sağduyu lazım."
       }
     ],
     "synonyms": [
@@ -141652,6 +142168,12 @@ export default [
         "en": "a white or grey bird often used as a symbol of peace",
         "exampleEn": "A white dove is a traditional symbol of peace.",
         "exampleTr": "Beyaz bir güvercin, geleneksel bir barış simgesidir."
+      },
+      {
+        "tr": "barış yanlısı, uzlaşmacı (siyasette; şahin karşıtı)",
+        "en": "a person who favors peace and negotiation over conflict",
+        "exampleEn": "The doves in the government argued against military action.",
+        "exampleTr": "Hükümetteki barış yanlıları askeri harekata karşı çıktı."
       }
     ],
     "synonyms": [
@@ -141730,6 +142252,12 @@ export default [
         "en": "a file copied from the internet to a device",
         "exampleEn": "The download took several minutes because of the large file.",
         "exampleTr": "Büyük dosya nedeniyle indirme birkaç dakika sürdü."
+      },
+      {
+        "tr": "indirmek, yüklemek (fiil)",
+        "en": "to copy data from the internet onto a device",
+        "exampleEn": "You can download the app for free.",
+        "exampleTr": "Uygulamayı ücretsiz indirebilirsin."
       }
     ],
     "synonyms": [],
@@ -141776,6 +142304,18 @@ export default [
         "en": "an early version of a piece of writing",
         "exampleEn": "She wrote a rough draft of the essay before editing it.",
         "exampleTr": "Makaleyi düzenlemeden önce kaba bir taslağını yazdı."
+      },
+      {
+        "tr": "cereyan, hava akımı (odaya giren soğuk hava)",
+        "en": "a current of cool air in a room",
+        "exampleEn": "Close the window; there's a cold draft coming in.",
+        "exampleTr": "Pencereyi kapat; içeri soğuk bir cereyan geliyor."
+      },
+      {
+        "tr": "askere alma, celp (zorunlu askerlik)",
+        "en": "the system of ordering people to join the armed forces",
+        "exampleEn": "He was called up in the draft during the war.",
+        "exampleTr": "Savaş sırasında askere celp edildi."
       }
     ],
     "synonyms": [
@@ -141803,6 +142343,12 @@ export default [
         "en": "a pipe or channel that carries away water or waste",
         "exampleEn": "The water slowly went down the drain in the sink.",
         "exampleTr": "Su, lavabodaki giderden yavaşça aktı."
+      },
+      {
+        "tr": "suyunu boşaltmak, akıtmak; tüketmek (fiil)",
+        "en": "to remove liquid; to use up strength or resources",
+        "exampleEn": "Drain the pasta before adding the sauce.",
+        "exampleTr": "Sos eklemeden önce makarnanın suyunu süz."
       }
     ],
     "synonyms": [
@@ -141880,6 +142426,12 @@ export default [
         "en": "to feel great fear about something in the future",
         "exampleEn": "I dread having to speak in front of a large audience.",
         "exampleTr": "Büyük bir kalabalığın önünde konuşmaktan ödüm kopuyor."
+      },
+      {
+        "tr": "korku, dehşet, endişe (isim)",
+        "en": "a strong feeling of fear about something in the future",
+        "exampleEn": "She was filled with dread as the exam approached.",
+        "exampleTr": "Sınav yaklaştıkça içini bir korku kapladı."
       }
     ],
     "synonyms": [
@@ -144833,6 +145385,12 @@ export default [
         "en": "to show something publicly or to display a quality",
         "exampleEn": "The museum will exhibit the paintings next month.",
         "exampleTr": "Müze, tabloları gelecek ay sergileyecek."
+      },
+      {
+        "tr": "(bir duygu veya niteliği) sergilemek, göstermek",
+        "en": "to show a feeling, quality, or type of behaviour",
+        "exampleEn": "The patient exhibited all the classic symptoms of the disease.",
+        "exampleTr": "Hasta, hastalığın tüm klasik belirtilerini gösteriyordu."
       }
     ],
     "synonyms": [
@@ -144861,6 +145419,18 @@ export default [
         "en": "the state of being forced to live away from one's country",
         "exampleEn": "The writer spent twenty years in exile.",
         "exampleTr": "Yazar yirmi yılını sürgünde geçirdi."
+      },
+      {
+        "tr": "sürgün etmek, sürgüne göndermek",
+        "en": "to force someone to leave their country and live elsewhere",
+        "exampleEn": "The government exiled several political opponents after the coup.",
+        "exampleTr": "Hükümet, darbeden sonra birçok siyasi muhalifi sürgüne gönderdi."
+      },
+      {
+        "tr": "sürgündeki kişi, vatanından uzaktaki kimse",
+        "en": "a person who is forced to live away from their own country",
+        "exampleEn": "The poet lived as an exile in Paris for twenty years.",
+        "exampleTr": "Şair yirmi yıl boyunca Paris'te bir sürgün olarak yaşadı."
       }
     ],
     "synonyms": [
@@ -145105,6 +145675,12 @@ export default [
         "en": "to use someone or something unfairly for one's own benefit",
         "exampleEn": "Some companies exploit their workers by paying very low wages.",
         "exampleTr": "Bazı şirketler çok düşük ücret ödeyerek işçilerini sömürür."
+      },
+      {
+        "tr": "kahramanlık, macera, hüner (isim, genellikle çoğul)",
+        "en": "an exciting or brave act or achievement",
+        "exampleEn": "The children loved hearing about their grandfather's wartime exploits.",
+        "exampleTr": "Çocuklar, büyükbabalarının savaş zamanı kahramanlıklarını dinlemeye bayılırdı."
       }
     ],
     "synonyms": [
@@ -145322,6 +145898,12 @@ export default [
         "en": "a short passage taken from a text, or a concentrated substance",
         "exampleEn": "The teacher read an extract from the novel.",
         "exampleTr": "Öğretmen romandan bir alıntı okudu."
+      },
+      {
+        "tr": "çıkarmak, sökmek, söküp almak (fiil)",
+        "en": "to remove or take out something, often with effort",
+        "exampleEn": "The dentist had to extract two of her teeth.",
+        "exampleTr": "Diş hekimi onun iki dişini çekmek zorunda kaldı."
       }
     ],
     "synonyms": [
@@ -145577,6 +146159,12 @@ export default [
         "en": "a department in a university, or a natural mental ability",
         "exampleEn": "She studied law at the faculty of law.",
         "exampleTr": "Hukuk fakültesinde hukuk okudu."
+      },
+      {
+        "tr": "öğretim üyeleri, akademik kadro (özellikle ABD)",
+        "en": "the teaching staff of a university or college",
+        "exampleEn": "The faculty voted to change the graduation requirements.",
+        "exampleTr": "Öğretim üyeleri mezuniyet koşullarını değiştirmek için oy kullandı."
       }
     ],
     "synonyms": [
@@ -145602,6 +146190,12 @@ export default [
         "en": "strong belief or trust in someone or something",
         "exampleEn": "She has great faith in her team's abilities.",
         "exampleTr": "Takımının yeteneklerine büyük inancı var."
+      },
+      {
+        "tr": "din, dini inanç sistemi",
+        "en": "a religion or religious belief system",
+        "exampleEn": "People of all faiths were welcome at the ceremony.",
+        "exampleTr": "Törende her dinden insan hoş karşılanıyordu."
       }
     ],
     "synonyms": [
@@ -145765,6 +146359,12 @@ export default [
         "en": "a strong attraction or interest in something",
         "exampleEn": "He has a lifelong fascination with space travel.",
         "exampleTr": "Uzay yolculuğuna karşı ömür boyu süren bir hayranlığı var."
+      },
+      {
+        "tr": "insanı büyüleyen çekicilik, cazibe",
+        "en": "the quality of being very interesting or attractive",
+        "exampleEn": "The old castle held a special fascination for tourists.",
+        "exampleTr": "Eski şato turistler için özel bir cazibeye sahipti."
       }
     ],
     "synonyms": [
@@ -146002,6 +146602,12 @@ export default [
         "en": "sharing the same situation, work, or group",
         "exampleEn": "She helped her fellow students prepare for the exam.",
         "exampleTr": "Sınava hazırlanmaları için diğer öğrenci arkadaşlarına yardım etti."
+      },
+      {
+        "tr": "adam, herif, kişi (isim)",
+        "en": "a man or boy",
+        "exampleEn": "He seemed like a decent fellow when I met him.",
+        "exampleTr": "Onunla tanıştığımda düzgün bir adama benziyordu."
       }
     ],
     "synonyms": [
@@ -146512,6 +147118,12 @@ export default [
         "en": "the bright burning gas seen when something is on fire",
         "exampleEn": "The candle's flame flickered in the draught.",
         "exampleTr": "Mumun alevi hava akımında titreşti."
+      },
+      {
+        "tr": "(internette) sert/saldırgan mesaj göndermek, hakaret yağdırmak",
+        "en": "to send someone an angry or insulting message online",
+        "exampleEn": "Users flamed him in the comments for his controversial post.",
+        "exampleTr": "Kullanıcılar tartışmalı paylaşımı yüzünden yorumlarda ona ateş püskürdü."
       }
     ],
     "synonyms": [
@@ -146537,6 +147149,12 @@ export default [
         "en": "to move wings or pieces of cloth up and down",
         "exampleEn": "The bird began to flap its wings and flew away.",
         "exampleTr": "Kuş kanatlarını çırpmaya başladı ve uçup gitti."
+      },
+      {
+        "tr": "kapak, sarkan parça (zarf kapağı, cep kapağı vb.)",
+        "en": "a flat piece of material fixed on one side that covers an opening",
+        "exampleEn": "She sealed the envelope by licking the flap.",
+        "exampleTr": "Zarfın kapağını yalayarak yapıştırdı."
       }
     ],
     "synonyms": [
@@ -146802,6 +147420,12 @@ export default [
         "en": "to turn something over quickly",
         "exampleEn": "Flip the pancake when it turns golden brown.",
         "exampleTr": "Altın rengine döndüğünde gözlemeyi çevirin."
+      },
+      {
+        "tr": "birdenbire öfkelenmek, çıldırmak, kontrolü kaybetmek",
+        "en": "to suddenly become very angry or lose control",
+        "exampleEn": "My dad flipped when he saw the damage to the car.",
+        "exampleTr": "Babam arabadaki hasarı görünce çıldırdı."
       }
     ],
     "synonyms": [
@@ -146880,6 +147504,12 @@ export default [
         "en": "a quick, light movement back and forth",
         "exampleEn": "There was a flutter of wings as the birds took off.",
         "exampleTr": "Kuşlar havalanırken bir kanat çırpışı oldu."
+      },
+      {
+        "tr": "(kalp) küt küt atma, heyecan, telaş",
+        "en": "a state of nervous or excited feeling",
+        "exampleEn": "She felt a flutter of excitement as the plane took off.",
+        "exampleTr": "Uçak havalanırken içinde bir heyecan telaşı hissetti."
       }
     ],
     "synonyms": [
@@ -146905,6 +147535,18 @@ export default [
         "en": "the center of attention or activity",
         "exampleEn": "The main focus of the meeting was the new budget.",
         "exampleTr": "Toplantının ana odağı yeni bütçeydi."
+      },
+      {
+        "tr": "odaklanmak, dikkatini yoğunlaştırmak (fiil)",
+        "en": "to give attention, effort, or thought to a particular thing",
+        "exampleEn": "You need to focus on your studies if you want to pass.",
+        "exampleTr": "Geçmek istiyorsan derslerine odaklanman gerekiyor."
+      },
+      {
+        "tr": "(kamera/mercek) netlemek, odağı ayarlamak",
+        "en": "to adjust a lens so that an image is sharp and clear",
+        "exampleEn": "He focused the camera before taking the shot.",
+        "exampleTr": "Fotoğrafı çekmeden önce kamerayı netledi."
       }
     ],
     "synonyms": [
@@ -146930,6 +147572,12 @@ export default [
         "en": "a person who supports or follows someone or something",
         "exampleEn": "The singer has millions of followers on social media.",
         "exampleTr": "Şarkıcının sosyal medyada milyonlarca takipçisi var."
+      },
+      {
+        "tr": "(sosyal medya) takipçi, hesabı takip eden kişi",
+        "en": "a person who subscribes to someone's account on social media",
+        "exampleEn": "The influencer gained a million followers in a single month.",
+        "exampleTr": "Fenomen tek bir ayda bir milyon takipçi kazandı."
       }
     ],
     "synonyms": [
@@ -147269,6 +147917,12 @@ export default [
         "en": "very unpleasant, dirty, or offensive",
         "exampleEn": "A foul smell came from the drain.",
         "exampleTr": "Giderden pis bir koku geliyordu."
+      },
+      {
+        "tr": "faul (spor)",
+        "en": "an action against the rules in a sport",
+        "exampleEn": "The referee gave a free kick after the foul.",
+        "exampleTr": "Hakem, fauldan sonra serbest vuruş verdi."
       }
     ],
     "synonyms": [
@@ -147528,6 +148182,12 @@ export default [
         "en": "a border between countries, or the edge of what is known",
         "exampleEn": "Space remains the final frontier for human exploration.",
         "exampleTr": "Uzay, insanlığın keşfi için son sınır olmaya devam ediyor."
+      },
+      {
+        "tr": "bilinmeyen alan, keşfedilmemiş sınır (bilgi/teknoloji)",
+        "en": "the furthest limit of knowledge in a field",
+        "exampleEn": "Artificial intelligence is the new frontier of research.",
+        "exampleTr": "Yapay zeka, araştırmanın yeni sınırıdır."
       }
     ],
     "synonyms": [
@@ -147583,6 +148243,12 @@ export default [
         "en": "to achieve or carry out something promised or hoped for",
         "exampleEn": "She worked hard to fulfill her dream of becoming a doctor.",
         "exampleTr": "Doktor olma hayalini gerçekleştirmek için çok çalıştı."
+      },
+      {
+        "tr": "tatmin etmek, doyum sağlamak (kişiyi)",
+        "en": "to make someone feel satisfied and happy",
+        "exampleEn": "Her job as a teacher truly fulfills her.",
+        "exampleTr": "Öğretmenlik işi onu gerçekten tatmin ediyor."
       }
     ],
     "synonyms": [
@@ -148073,6 +148739,12 @@ export default [
         "en": "a long, steady look at someone or something",
         "exampleEn": "She felt his gaze on her as she walked away.",
         "exampleTr": "Uzaklaşırken onun bakışını üzerinde hissetti."
+      },
+      {
+        "tr": "gözünü dikmek, uzun uzun bakmak",
+        "en": "to look steadily at something for a long time",
+        "exampleEn": "She gazed out of the window at the sea.",
+        "exampleTr": "Pencereden denize uzun uzun baktı."
       }
     ],
     "synonyms": [
@@ -148100,6 +148772,12 @@ export default [
         "en": "equipment, or a part of a machine controlling speed",
         "exampleEn": "He changed gear as the car went uphill.",
         "exampleTr": "Araba yokuş çıkarken vites değiştirdi."
+      },
+      {
+        "tr": "uyarlamak, ayarlamak (bir amaca yönelik)",
+        "en": "to design or organize something for a particular purpose",
+        "exampleEn": "The course is geared toward beginners.",
+        "exampleTr": "Kurs, yeni başlayanlara göre uyarlanmıştır."
       }
     ],
     "synonyms": [
@@ -148237,6 +148915,12 @@ export default [
         "en": "a very intelligent or talented person; great ability",
         "exampleEn": "Einstein was a genius in physics.",
         "exampleTr": "Einstein fizikte bir dâhiydi."
+      },
+      {
+        "tr": "olağanüstü yetenek, dâhilik (özellik olarak)",
+        "en": "exceptional natural ability or brilliance",
+        "exampleEn": "It took real genius to solve that problem.",
+        "exampleTr": "O sorunu çözmek gerçek bir deha gerektirdi."
       }
     ],
     "synonyms": [
@@ -148506,6 +149190,12 @@ export default [
         "en": "an angry stare, or a strong, harsh light",
         "exampleEn": "She gave him an angry glare across the room.",
         "exampleTr": "Odanın öbür ucundan ona öfkeli bir bakış attı."
+      },
+      {
+        "tr": "öfkeyle bakmak, dik dik bakmak",
+        "en": "to stare angrily at someone or something",
+        "exampleEn": "She glared at him and left the room.",
+        "exampleTr": "Ona dik dik baktı ve odadan çıktı."
       }
     ],
     "synonyms": [
@@ -148532,6 +149222,12 @@ export default [
         "en": "a soft or brief flash of light",
         "exampleEn": "There was a gleam of sunlight on the water.",
         "exampleTr": "Suyun üzerinde bir güneş ışıltısı vardı."
+      },
+      {
+        "tr": "parıldamak, ışıldamak",
+        "en": "to shine with a soft, steady light",
+        "exampleEn": "The polished floor gleamed in the sunlight.",
+        "exampleTr": "Cilalı zemin güneş ışığında parıldıyordu."
       }
     ],
     "synonyms": [
@@ -148698,6 +149394,12 @@ export default [
         "en": "a soft, steady light or warm color",
         "exampleEn": "The candle gave a warm glow to the room.",
         "exampleTr": "Mum odaya sıcak bir ışıltı verdi."
+      },
+      {
+        "tr": "ışıldamak, parlamak; (duyguyla) parlamak",
+        "en": "to produce a steady light or a warm feeling",
+        "exampleEn": "Her cheeks glowed with excitement.",
+        "exampleTr": "Yanakları heyecandan parlıyordu."
       }
     ],
     "synonyms": [
@@ -148748,6 +149450,12 @@ export default [
         "en": "a supernatural being worshipped as having power",
         "exampleEn": "The ancient Greeks worshipped many a god.",
         "exampleTr": "Eski Yunanlar birçok tanrıya tapardı."
+      },
+      {
+        "tr": "putlaştırılan kişi/şey, çok önem verilen şey",
+        "en": "a person or thing that is greatly admired or worshipped",
+        "exampleEn": "For him, money became a god.",
+        "exampleTr": "Onun için para bir tanrıya dönüştü."
       }
     ],
     "synonyms": [
@@ -148833,6 +149541,12 @@ export default [
         "en": "a deep, narrow valley with steep sides",
         "exampleEn": "The river flows through a deep gorge.",
         "exampleTr": "Nehir derin bir boğazdan akıyor."
+      },
+      {
+        "tr": "tıka basa yemek, tıkınmak (oneself)",
+        "en": "to eat a large amount greedily",
+        "exampleEn": "They gorged themselves on cake at the party.",
+        "exampleTr": "Partide pastayla tıka basa doydular."
       }
     ],
     "synonyms": [
@@ -148946,6 +149660,18 @@ export default [
         "en": "the seeds of cereal plants, or a tiny piece",
         "exampleEn": "Farmers store the grain in large barns.",
         "exampleTr": "Çiftçiler tahılı büyük ambarlarda depolar."
+      },
+      {
+        "tr": "damar, doku yönü (ahşap vb.)",
+        "en": "the direction of fibres in wood or fabric",
+        "exampleEn": "Sand the wood along the grain, not across it.",
+        "exampleTr": "Ahşabı damarına ters değil, damar yönünde zımparalayın."
+      },
+      {
+        "tr": "zerre, azıcık (miktar)",
+        "en": "a very small amount of something",
+        "exampleEn": "There isn't a grain of truth in what he said.",
+        "exampleTr": "Söylediklerinde bir zerre gerçeklik yok."
       }
     ],
     "synonyms": [
@@ -148972,6 +149698,12 @@ export default [
         "en": "large, impressive, and splendid",
         "exampleEn": "They stayed in a grand hotel by the lake.",
         "exampleTr": "Göl kenarındaki görkemli bir otelde kaldılar."
+      },
+      {
+        "tr": "bin (dolar/sterlin) (argo)",
+        "en": "a thousand dollars or pounds",
+        "exampleEn": "The car cost me twenty grand.",
+        "exampleTr": "Araba bana yirmi bin (dolar) mal oldu."
       }
     ],
     "synonyms": [
@@ -149029,6 +149761,18 @@ export default [
         "en": "an understanding of something, or a firm hold",
         "exampleEn": "She has a good grasp of the subject.",
         "exampleTr": "Konu hakkında iyi bir kavrayışı var."
+      },
+      {
+        "tr": "kavramak, anlamak",
+        "en": "to understand something fully",
+        "exampleEn": "She quickly grasped the main idea of the lesson.",
+        "exampleTr": "Dersin ana fikrini hemen kavradı."
+      },
+      {
+        "tr": "sıkıca tutmak, kavramak",
+        "en": "to hold something firmly with your hand",
+        "exampleEn": "He grasped the rope and pulled himself up.",
+        "exampleTr": "İpi sıkıca kavradı ve kendini yukarı çekti."
       }
     ],
     "synonyms": [
@@ -149222,6 +149966,12 @@ export default [
         "en": "a wide smile showing happiness or amusement",
         "exampleEn": "He had a big grin on his face when he won.",
         "exampleTr": "Kazandığında yüzünde kocaman bir sırıtış vardı."
+      },
+      {
+        "tr": "sırıtmak, geniş gülümsemek",
+        "en": "to smile broadly showing your teeth",
+        "exampleEn": "He grinned when he heard the good news.",
+        "exampleTr": "İyi haberi duyunca sırıttı."
       }
     ],
     "synonyms": [
@@ -149250,6 +150000,18 @@ export default [
         "en": "a firm hold on something",
         "exampleEn": "He kept a tight grip on the rope.",
         "exampleTr": "İpi sıkıca tuttu."
+      },
+      {
+        "tr": "sıkıca tutmak, kavramak",
+        "en": "to hold something very tightly",
+        "exampleEn": "She gripped the railing as the boat rocked.",
+        "exampleTr": "Tekne sallanırken korkuluğu sıkıca tuttu."
+      },
+      {
+        "tr": "esir almak, sarmak (dikkat/ilgi)",
+        "en": "to hold someone's attention completely",
+        "exampleEn": "The movie gripped the audience from start to finish.",
+        "exampleTr": "Film, izleyiciyi başından sonuna kadar esir aldı."
       }
     ],
     "synonyms": [
@@ -149388,6 +150150,12 @@ export default [
         "en": "a large mouthful of liquid swallowed at once",
         "exampleEn": "He drank the water in one big gulp.",
         "exampleTr": "Suyu tek bir büyük yudumda içti."
+      },
+      {
+        "tr": "yutkunma (korku/heyecandan)",
+        "en": "a sudden swallow caused by fear or surprise",
+        "exampleEn": "She gave a nervous gulp before stepping onto the stage.",
+        "exampleTr": "Sahneye çıkmadan önce gergin bir şekilde yutkundu."
       }
     ],
     "synonyms": [
@@ -149544,6 +150312,18 @@ export default [
         "en": "to call out to or signal someone, especially to stop a vehicle",
         "exampleEn": "She stepped onto the street to hail a taxi.",
         "exampleTr": "Bir taksi çağırmak için caddeye çıktı."
+      },
+      {
+        "tr": "dolu yağmak; dolu",
+        "en": "frozen rain / to fall as frozen rain",
+        "exampleEn": "It began to hail as we drove through the mountains.",
+        "exampleTr": "Dağlardan geçerken dolu yağmaya başladı."
+      },
+      {
+        "tr": "-den gelmek, memleketi olmak (from)",
+        "en": "to come from a particular place",
+        "exampleEn": "The famous author hails from a small town in Ireland.",
+        "exampleTr": "Ünlü yazar İrlanda'da küçük bir kasabadan gelmektedir."
       }
     ],
     "synonyms": [
@@ -149599,6 +150379,12 @@ export default [
         "en": "a condition or circumstance that makes progress difficult",
         "exampleEn": "His lack of experience was a serious handicap in the negotiations.",
         "exampleTr": "Deneyim eksikliği müzakerelerde ciddi bir engeldi."
+      },
+      {
+        "tr": "(spor) handikap, avantaj puanı",
+        "en": "an advantage given in a sport to make competition fairer",
+        "exampleEn": "He plays golf off a handicap of ten.",
+        "exampleTr": "On handikapla golf oynuyor."
       }
     ],
     "synonyms": [
@@ -149704,6 +150490,12 @@ export default [
         "en": "the way something works or is done (as in 'get the hang of')",
         "exampleEn": "After a few tries, she finally got the hang of riding a bicycle.",
         "exampleTr": "Birkaç denemeden sonra sonunda bisiklet sürmenin püf noktasını kaptı."
+      },
+      {
+        "tr": "asmak, sarkmak (fiil)",
+        "en": "to fasten something so it is supported from above",
+        "exampleEn": "Please hang your coat on the hook by the door.",
+        "exampleTr": "Lütfen paltonu kapının yanındaki askıya as."
       }
     ],
     "synonyms": [
@@ -149781,6 +150573,12 @@ export default [
         "en": "physical or other injury or damage",
         "exampleEn": "Smoking can cause serious harm to your health.",
         "exampleTr": "Sigara içmek sağlığınıza ciddi zarar verebilir."
+      },
+      {
+        "tr": "zarar vermek, incitmek (fiil)",
+        "en": "to cause damage or injury to someone or something",
+        "exampleEn": "Smoking can seriously harm your health.",
+        "exampleTr": "Sigara içmek sağlığınıza ciddi şekilde zarar verebilir."
       }
     ],
     "synonyms": [
@@ -149973,6 +150771,12 @@ export default [
         "en": "grass that has been cut and dried for animal feed",
         "exampleEn": "The farmer stored bales of hay in the barn for winter.",
         "exampleTr": "Çiftçi kış için ambara balya balya kuru ot depoladı."
+      },
+      {
+        "tr": "fırsattan yararlanmak (make hay)",
+        "en": "to make good use of an opportunity while it lasts",
+        "exampleEn": "The team made hay while their main rivals were injured.",
+        "exampleTr": "Takım, başlıca rakipleri sakatken fırsattan yararlandı."
       }
     ],
     "synonyms": [
@@ -150052,6 +150856,18 @@ export default [
         "en": "an untidy pile of things",
         "exampleEn": "He left his dirty clothes in a heap on the floor.",
         "exampleTr": "Kirli kıyafetlerini yerde bir yığın halinde bıraktı."
+      },
+      {
+        "tr": "yığmak, doldurmak (fiil)",
+        "en": "to put things in a large untidy pile",
+        "exampleEn": "She heaped food onto his plate.",
+        "exampleTr": "Tabağına bir sürü yemek yığdı."
+      },
+      {
+        "tr": "bir sürü, yığınla (heaps)",
+        "en": "a large amount of something",
+        "exampleEn": "We have heaps of time before the train leaves.",
+        "exampleTr": "Tren kalkmadan önce bir sürü vaktimiz var."
       }
     ],
     "synonyms": [
@@ -150160,6 +150976,12 @@ export default [
         "en": "a place of suffering or great difficulty",
         "exampleEn": "The long, painful journey through the desert was sheer hell.",
         "exampleTr": "Çölde geçen uzun, acılı yolculuk tam bir cehennemdi."
+      },
+      {
+        "tr": "çok zor/kötü durum, işkence gibi durum",
+        "en": "a very unpleasant or difficult experience",
+        "exampleEn": "The last few months at work have been hell.",
+        "exampleTr": "İşteki son birkaç ay tam bir cehennemdi."
       }
     ],
     "synonyms": [
@@ -150237,6 +151059,12 @@ export default [
         "en": "a plant used for flavoring, medicine, or scent",
         "exampleEn": "She added a fresh herb to the soup to improve the flavor.",
         "exampleTr": "Tadını güzelleştirmek için çorbaya taze bir ot ekledi."
+      },
+      {
+        "tr": "(mutfakta) yeşillik, aromatik ot",
+        "en": "a plant used to add flavour to food",
+        "exampleEn": "She sprinkled fresh herbs over the pasta.",
+        "exampleTr": "Makarnanın üzerine taze yeşillikler serpti."
       }
     ],
     "synonyms": [
@@ -150399,6 +151227,18 @@ export default [
         "en": "a slight or indirect indication or suggestion",
         "exampleEn": "Can you give me a hint about the answer to the puzzle?",
         "exampleTr": "Bulmacanın cevabı hakkında bana bir ipucu verebilir misin?"
+      },
+      {
+        "tr": "az miktar, eser, hafif iz",
+        "en": "a very small amount of something",
+        "exampleEn": "There was a hint of garlic in the sauce.",
+        "exampleTr": "Sosta hafif bir sarımsak tadı vardı."
+      },
+      {
+        "tr": "ipucu vermek, ima etmek (fiil)",
+        "en": "to suggest something indirectly",
+        "exampleEn": "She hinted that she might resign.",
+        "exampleTr": "İstifa edebileceğini ima etti."
       }
     ],
     "synonyms": [
@@ -150451,6 +151291,18 @@ export default [
         "en": "having an empty space inside",
         "exampleEn": "The squirrel hid its nuts inside a hollow tree.",
         "exampleTr": "Sincap fındıklarını içi boş bir ağacın içine sakladı."
+      },
+      {
+        "tr": "içi boş, anlamsız, sahte (mecazi)",
+        "en": "without real value or sincerity",
+        "exampleEn": "Their promises turned out to be hollow.",
+        "exampleTr": "Vaatlerinin içi boş çıktı."
+      },
+      {
+        "tr": "çukur, oyuk (isim)",
+        "en": "a hole or empty space in something",
+        "exampleEn": "The rabbit hid in a hollow beneath the tree.",
+        "exampleTr": "Tavşan ağacın altındaki bir oyuğa saklandı."
       }
     ],
     "synonyms": [
@@ -150585,6 +151437,12 @@ export default [
         "en": "a covering for the head, or the cover over a car engine",
         "exampleEn": "She pulled up her hood to protect herself from the rain.",
         "exampleTr": "Kendini yağmurdan korumak için kapüşonunu kaldırdı."
+      },
+      {
+        "tr": "(mahalle) semt, mahalle (argo)",
+        "en": "the neighbourhood where someone lives (informal)",
+        "exampleEn": "He grew up in a tough hood on the east side.",
+        "exampleTr": "Doğu yakasında zorlu bir mahallede büyüdü."
       }
     ],
     "synonyms": [
@@ -150610,6 +151468,18 @@ export default [
         "en": "a curved piece of metal or plastic used for hanging or catching things",
         "exampleEn": "He hung his coat on a hook behind the door.",
         "exampleTr": "Paltosunu kapının arkasındaki bir kancaya astı."
+      },
+      {
+        "tr": "kancaya takmak, tutturmak (fiil)",
+        "en": "to fasten or catch something with a hook",
+        "exampleEn": "He hooked the fish and reeled it in.",
+        "exampleTr": "Balığı oltaya taktı ve makarayı sararak çekti."
+      },
+      {
+        "tr": "(müzikte) akılda kalan nakarat, çengel",
+        "en": "a catchy part of a song",
+        "exampleEn": "The song has a great hook that stays in your head.",
+        "exampleTr": "Şarkının aklından çıkmayan harika bir nakaratı var."
       }
     ],
     "synonyms": [
@@ -151137,6 +152007,12 @@ export default [
         "en": "to make someone or something quiet",
         "exampleEn": "She tried to hush the crying baby with a soft lullaby.",
         "exampleTr": "Ağlayan bebeği yumuşak bir ninniyle susturmaya çalıştı."
+      },
+      {
+        "tr": "sessizlik, sükût (isim)",
+        "en": "a period of silence",
+        "exampleEn": "A hush fell over the crowd as the singer walked on.",
+        "exampleTr": "Şarkıcı sahneye çıkınca kalabalığı bir sessizlik kapladı."
       }
     ],
     "synonyms": [
@@ -151163,6 +152039,12 @@ export default [
         "en": "made by combining two different things",
         "exampleEn": "They bought a hybrid car that uses both petrol and electricity.",
         "exampleTr": "Hem benzin hem de elektrik kullanan melez bir araba aldılar."
+      },
+      {
+        "tr": "melez, karışım, hibrit (isim)",
+        "en": "something made by combining two different things",
+        "exampleEn": "This car is a hybrid that runs on both petrol and electricity.",
+        "exampleTr": "Bu araba hem benzinle hem elektrikle çalışan bir hibrittir."
       }
     ],
     "synonyms": [
@@ -151290,6 +152172,12 @@ export default [
         "en": "a famous person or thing seen as representing an idea or era",
         "exampleEn": "She became a fashion icon in the 1960s.",
         "exampleTr": "1960'larda bir moda ikonu hâline geldi."
+      },
+      {
+        "tr": "efsane, simge kişi, ikon",
+        "en": "a famous person regarded as a symbol",
+        "exampleEn": "She became a fashion icon in the 1960s.",
+        "exampleTr": "1960'larda bir moda ikonu oldu."
       }
     ],
     "synonyms": [
@@ -151315,6 +152203,12 @@ export default [
         "en": "very cold or covered with ice",
         "exampleEn": "The icy road made driving dangerous.",
         "exampleTr": "Buzlu yol araba kullanmayı tehlikeli hâle getirdi."
+      },
+      {
+        "tr": "buz gibi soğuk, düşmanca (tavır)",
+        "en": "very unfriendly or hostile",
+        "exampleEn": "She gave me an icy stare and left the room.",
+        "exampleTr": "Bana buz gibi bir bakış attı ve odadan çıktı."
       }
     ],
     "synonyms": [
@@ -151419,6 +152313,12 @@ export default [
         "en": "to recognize and name someone or something",
         "exampleEn": "Can you identify the man in this photograph?",
         "exampleTr": "Bu fotoğraftaki adamı teşhis edebilir misin?"
+      },
+      {
+        "tr": "kendini özdeşleştirmek, bağ kurmak (with)",
+        "en": "to feel that you understand and share someone's feelings",
+        "exampleEn": "Many readers identify with the novel's main character.",
+        "exampleTr": "Birçok okur romanın ana karakteriyle özdeşleşiyor."
       }
     ],
     "synonyms": [
@@ -151469,6 +152369,12 @@ export default [
         "en": "a stupid or foolish person",
         "exampleEn": "I felt like an idiot for forgetting my keys again.",
         "exampleTr": "Anahtarlarımı yine unuttuğum için kendimi bir aptal gibi hissettim."
+      },
+      {
+        "tr": "(sevgiyle) aptal, ahmak, salak",
+        "en": "a foolish person (said affectionately)",
+        "exampleEn": "You idiot, you forgot to lock the door again!",
+        "exampleTr": "Seni salak, kapıyı yine kilitlemeyi unutmuşsun!"
       }
     ],
     "synonyms": [
@@ -151496,6 +152402,18 @@ export default [
         "en": "not working or being used; lazy",
         "exampleEn": "The machines stood idle during the strike.",
         "exampleTr": "Grev sırasında makineler atıl durumda kaldı."
+      },
+      {
+        "tr": "(makine) boşta çalışmak, rölantide dönmek (fiil)",
+        "en": "(of an engine) to run slowly while not in gear",
+        "exampleEn": "He left the car idling outside the shop.",
+        "exampleTr": "Arabayı dükkânın önünde rölantide bıraktı."
+      },
+      {
+        "tr": "boş, asılsız, temelsiz (söz)",
+        "en": "without purpose or good reason",
+        "exampleEn": "These are just idle threats; he won't do anything.",
+        "exampleTr": "Bunlar sadece boş tehditler; hiçbir şey yapmayacak."
       }
     ],
     "synonyms": [
@@ -151894,6 +152812,12 @@ export default [
         "en": "something that is essential, or the verb form used for commands",
         "exampleEn": "Reducing pollution is an environmental imperative.",
         "exampleTr": "Kirliliği azaltmak çevresel bir zorunluluktur."
+      },
+      {
+        "tr": "çok önemli, kaçınılmaz, şart",
+        "en": "extremely important or necessary",
+        "exampleEn": "It is imperative that we act quickly before the situation gets worse.",
+        "exampleTr": "Durum daha kötüye gitmeden hızlı hareket etmemiz şarttır."
       }
     ],
     "synonyms": [
@@ -152025,6 +152949,12 @@ export default [
         "en": "to officially force a rule, tax, or punishment on someone",
         "exampleEn": "The government decided to impose a new tax on imports.",
         "exampleTr": "Hükûmet, ithalata yeni bir vergi koymaya karar verdi."
+      },
+      {
+        "tr": "külfet olmak, rahatsızlık vermek, yük olmak",
+        "en": "to unfairly force someone to do something or take advantage of them",
+        "exampleEn": "I don't want to impose on you, but could I stay for one more night?",
+        "exampleTr": "Sana yük olmak istemiyorum ama bir gece daha kalabilir miyim?"
       }
     ],
     "synonyms": [
@@ -152152,6 +153082,12 @@ export default [
         "en": "an artist who paints in the impressionist style",
         "exampleEn": "The museum displays works by famous impressionists.",
         "exampleTr": "Müze, ünlü izlenimcilerin eserlerini sergiliyor."
+      },
+      {
+        "tr": "taklit sanatçısı, ünlüleri taklit eden komedyen",
+        "en": "an entertainer who imitates the voices and behavior of famous people",
+        "exampleEn": "The impressionist did a hilarious version of the president's speech.",
+        "exampleTr": "Taklit sanatçısı başkanın konuşmasının çok komik bir versiyonunu yaptı."
       }
     ],
     "synonyms": [],
@@ -152312,6 +153248,12 @@ export default [
         "en": "a sudden strong urge to do something",
         "exampleEn": "She bought the dress on impulse.",
         "exampleTr": "Elbiseyi ani bir dürtüyle satın aldı."
+      },
+      {
+        "tr": "(elektrik/sinir) uyarı, itki, darbe",
+        "en": "a short signal or wave of energy passing along a nerve or wire",
+        "exampleEn": "Nerve cells carry electrical impulses to the brain.",
+        "exampleTr": "Sinir hücreleri beyne elektriksel uyarılar taşır."
       }
     ],
     "synonyms": [
@@ -152649,6 +153591,12 @@ export default [
         "en": "an alphabetical list at the end of a book, or a measure of something",
         "exampleEn": "Look up the topic in the index at the back of the book.",
         "exampleTr": "Konuyu kitabın arkasındaki dizinden arayın."
+      },
+      {
+        "tr": "endeks (borsa/ekonomik gösterge)",
+        "en": "a system of numbers used to compare values or measure economic change",
+        "exampleEn": "The stock market index fell sharply after the announcement.",
+        "exampleTr": "Borsa endeksi açıklamadan sonra keskin bir şekilde düştü."
       }
     ],
     "synonyms": [
@@ -152943,6 +153891,12 @@ export default [
         "en": "to give someone a disease or to contaminate something",
         "exampleEn": "The virus can infect people through close contact.",
         "exampleTr": "Virüs, yakın temas yoluyla insanlara hastalık bulaştırabilir."
+      },
+      {
+        "tr": "(duygu/coşku) bulaştırmak, yaymak",
+        "en": "to spread a feeling or attitude to other people",
+        "exampleEn": "Her enthusiasm quickly infected the whole team.",
+        "exampleTr": "Onun coşkusu tüm takıma hızla bulaştı."
       }
     ],
     "synonyms": [
@@ -153099,6 +154053,12 @@ export default [
         "en": "to fill with air or gas, or to increase in amount",
         "exampleEn": "He used a pump to inflate the tires.",
         "exampleTr": "Lastikleri şişirmek için bir pompa kullandı."
+      },
+      {
+        "tr": "abartmak, olduğundan büyük göstermek",
+        "en": "to make something seem larger or more important than it really is",
+        "exampleEn": "He tends to inflate his own achievements when talking to strangers.",
+        "exampleTr": "Yabancılarla konuşurken kendi başarılarını abartma eğilimindedir."
       }
     ],
     "synonyms": [
@@ -153289,6 +154249,12 @@ export default [
         "en": "to receive money, property, or traits from someone",
         "exampleEn": "She inherited the house from her grandmother.",
         "exampleTr": "Evi büyükannesinden miras aldı."
+      },
+      {
+        "tr": "(bir sorunu/durumu) devralmak",
+        "en": "to receive a situation or problem from a previous person or period",
+        "exampleEn": "The new government inherited a huge national debt.",
+        "exampleTr": "Yeni hükümet büyük bir ulusal borç devraldı."
       }
     ],
     "synonyms": [
@@ -153315,6 +154281,12 @@ export default [
         "en": "happening at the beginning; first",
         "exampleEn": "My initial reaction was one of surprise.",
         "exampleTr": "İlk tepkim şaşkınlık oldu."
+      },
+      {
+        "tr": "baş harf (isim/soyadının ilk harfi)",
+        "en": "the first letter of a person's name",
+        "exampleEn": "Please sign your initials at the bottom of each page.",
+        "exampleTr": "Lütfen her sayfanın altına baş harflerinizi atın."
       }
     ],
     "synonyms": [
@@ -153560,6 +154532,18 @@ export default [
         "en": "located on or in the inner part of something",
         "exampleEn": "The inside pages of the book were torn.",
         "exampleTr": "Kitabın iç sayfaları yırtılmıştı."
+      },
+      {
+        "tr": "iç kısım, iç taraf",
+        "en": "the inner part or surface of something",
+        "exampleEn": "The inside of the box was lined with soft velvet.",
+        "exampleTr": "Kutunun içi yumuşak kadifeyle kaplıydı."
+      },
+      {
+        "tr": "içeride, içeri (zarf)",
+        "en": "in or into a building or enclosed space",
+        "exampleEn": "It started to rain, so we went inside.",
+        "exampleTr": "Yağmur başladı, biz de içeri girdik."
       }
     ],
     "synonyms": [
@@ -153829,6 +154813,12 @@ export default [
         "en": "a rude remark that offends someone",
         "exampleEn": "He took her comment as a personal insult.",
         "exampleTr": "Onun yorumunu kişisel bir hakaret olarak aldı."
+      },
+      {
+        "tr": "hakaret etmek, aşağılamak",
+        "en": "to say or do something offensive to someone",
+        "exampleEn": "He insulted her by calling her lazy in front of everyone.",
+        "exampleTr": "Herkesin önünde ona tembel diyerek onu aşağıladı."
       }
     ],
     "synonyms": [
@@ -153912,6 +154902,12 @@ export default [
         "en": "determined to do something, or concentrating hard",
         "exampleEn": "She was intent on finishing the project by Friday.",
         "exampleTr": "Projeyi cuma gününe kadar bitirmeye kararlıydı."
+      },
+      {
+        "tr": "niyet, maksat, kasıt",
+        "en": "the intention to do something (noun)",
+        "exampleEn": "She was charged with wounding with intent to kill.",
+        "exampleTr": "Öldürme kastıyla yaralamaktan suçlandı."
       }
     ],
     "synonyms": [
@@ -154044,6 +155040,12 @@ export default [
         "en": "to explain the meaning of something",
         "exampleEn": "How do you interpret these test results?",
         "exampleTr": "Bu test sonuçlarını nasıl yorumluyorsun?"
+      },
+      {
+        "tr": "(müziği/rolü) yorumlamak, icra etmek",
+        "en": "to perform a piece of music or a role in your own way",
+        "exampleEn": "The pianist interpreted the sonata with great emotion.",
+        "exampleTr": "Piyanist sonatı büyük bir duyguyla yorumladı."
       }
     ],
     "synonyms": [
@@ -154172,6 +155174,12 @@ export default [
         "en": "having a close and friendly relationship",
         "exampleEn": "They shared an intimate dinner for two.",
         "exampleTr": "İki kişilik samimi bir akşam yemeği yediler."
+      },
+      {
+        "tr": "ima etmek, üstü kapalı belirtmek",
+        "en": "to suggest or make something known indirectly (verb)",
+        "exampleEn": "He intimated that he might resign if things did not change.",
+        "exampleTr": "İşler değişmezse istifa edebileceğini ima etti."
       }
     ],
     "synonyms": [
@@ -155023,6 +156031,18 @@ export default [
         "en": "a slow steady run for exercise",
         "exampleEn": "She went for a jog in the park before breakfast.",
         "exampleTr": "Kahvaltıdan önce parkta hafif bir koşuya çıktı."
+      },
+      {
+        "tr": "hafif tempoda koşmak (fiil)",
+        "en": "to run slowly and steadily for exercise (verb)",
+        "exampleEn": "She jogs in the park every morning.",
+        "exampleTr": "Her sabah parkta hafif tempoda koşar."
+      },
+      {
+        "tr": "(hafızayı) canlandırmak, dürtmek",
+        "en": "to make someone remember something (jog someone's memory)",
+        "exampleEn": "This old photo might jog your memory.",
+        "exampleTr": "Bu eski fotoğraf hafızanı canlandırabilir."
       }
     ],
     "synonyms": [
@@ -155244,6 +156264,12 @@ export default [
         "en": "very interested or eager",
         "exampleEn": "She is keen to learn how to play the guitar.",
         "exampleTr": "Gitar çalmayı öğrenmeye çok hevesli."
+      },
+      {
+        "tr": "keskin, güçlü (algı/zeka için)",
+        "en": "very good, quick, or well developed (of senses or mind)",
+        "exampleEn": "Dogs have a keen sense of smell.",
+        "exampleTr": "Köpeklerin keskin bir koku alma duyusu vardır."
       }
     ],
     "synonyms": [
@@ -155272,6 +156298,12 @@ export default [
         "en": "a person who looks after something or someone",
         "exampleEn": "The zoo keeper fed the lions every morning.",
         "exampleTr": "Hayvanat bahçesi bakıcısı her sabah aslanları besledi."
+      },
+      {
+        "tr": "kaleci (futbolda, gayri resmi)",
+        "en": "a goalkeeper in football (informal)",
+        "exampleEn": "The keeper made a brilliant save in the last minute.",
+        "exampleTr": "Kaleci son dakikada muhteşem bir kurtarış yaptı."
       }
     ],
     "synonyms": [
@@ -155371,6 +156403,12 @@ export default [
         "en": "a fastening made by tying rope or string",
         "exampleEn": "He tied a tight knot in the rope.",
         "exampleTr": "İpe sıkı bir düğüm attı."
+      },
+      {
+        "tr": "deniz mili/saat (hız birimi)",
+        "en": "a unit of speed used by ships and aircraft",
+        "exampleEn": "The ship was travelling at twenty knots.",
+        "exampleTr": "Gemi yirmi deniz mili/saat hızla ilerliyordu."
       }
     ],
     "synonyms": [
@@ -155451,6 +156489,18 @@ export default [
         "en": "a piece of paper or tag giving information about something",
         "exampleEn": "Read the label before taking the medicine.",
         "exampleTr": "İlacı almadan önce etiketi okuyun."
+      },
+      {
+        "tr": "etiketlemek; damgalamak, nitelendirmek",
+        "en": "to attach a label to, or to describe someone in a particular way",
+        "exampleEn": "The media unfairly labelled him a troublemaker.",
+        "exampleTr": "Medya haksız yere onu bela çıkaran biri olarak damgaladı."
+      },
+      {
+        "tr": "plak/müzik şirketi",
+        "en": "a company that produces and sells recorded music",
+        "exampleEn": "The band signed with a major record label.",
+        "exampleTr": "Grup büyük bir plak şirketiyle anlaşma imzaladı."
       }
     ],
     "synonyms": [
@@ -155501,6 +156551,12 @@ export default [
         "en": "unable to walk normally because of an injured leg",
         "exampleEn": "The horse was lame after the long race.",
         "exampleTr": "At uzun yarıştan sonra topal kaldı."
+      },
+      {
+        "tr": "yetersiz, ikna edici olmayan, zayıf (bahane vb.)",
+        "en": "weak and unconvincing (of an excuse, argument or joke)",
+        "exampleEn": "He gave a lame excuse for being late again.",
+        "exampleTr": "Yine geç kalması için zayıf/inandırıcı olmayan bir bahane uydurdu."
       }
     ],
     "synonyms": [
@@ -155626,6 +156682,12 @@ export default [
         "en": "the flat area formed by the thighs when sitting",
         "exampleEn": "The cat curled up on her lap.",
         "exampleTr": "Kedi onun kucağında kıvrıldı."
+      },
+      {
+        "tr": "tur (yarış pistinde bir tam devir)",
+        "en": "one complete circuit of a racetrack",
+        "exampleEn": "He overtook two cars on the final lap.",
+        "exampleTr": "Son turda iki arabayı geçti."
       }
     ],
     "synonyms": [],
@@ -155674,6 +156736,12 @@ export default [
         "en": "a small singing bird that flies high in the sky",
         "exampleEn": "A lark sang sweetly above the meadow.",
         "exampleTr": "Çayırın üzerinde bir tarla kuşu tatlı tatlı şakıdı."
+      },
+      {
+        "tr": "eğlence, cümbüş, muziplik (gayri resmi)",
+        "en": "something done for fun or amusement (informal)",
+        "exampleEn": "We climbed the wall just for a lark.",
+        "exampleTr": "Duvara sırf eğlence olsun diye tırmandık."
       }
     ],
     "synonyms": [
@@ -155766,6 +156834,12 @@ export default [
         "en": "used to introduce the final point",
         "exampleEn": "Lastly, I would like to thank my family.",
         "exampleTr": "Son olarak, aileme teşekkür etmek isterim."
+      },
+      {
+        "tr": "son olarak, nihayet (bir dizinin sonu)",
+        "en": "used to introduce the final point in a list",
+        "exampleEn": "Lastly, I would like to thank my family for their support.",
+        "exampleTr": "Son olarak, desteklerinden dolayı aileme teşekkür etmek isterim."
       }
     ],
     "synonyms": [
@@ -155792,6 +156866,12 @@ export default [
         "en": "coming after something else in time",
         "exampleEn": "We will discuss this in a later chapter.",
         "exampleTr": "Bunu daha sonraki bir bölümde tartışacağız."
+      },
+      {
+        "tr": "sonra, daha sonra (zarf)",
+        "en": "at a time after now or after a particular time (adverb)",
+        "exampleEn": "I will call you later this evening.",
+        "exampleTr": "Sana bu akşam daha sonra telefon ederim."
       }
     ],
     "synonyms": [
@@ -156019,6 +157099,12 @@ export default [
         "en": "a hole or crack through which liquid or gas escapes",
         "exampleEn": "There is a leak in the roof that lets in rain.",
         "exampleTr": "Çatıda yağmuru içeri sızdıran bir kaçak var."
+      },
+      {
+        "tr": "sızmak, sızdırmak; (bilgiyi) sızdırmak",
+        "en": "to let liquid or gas escape, or to give secret information to the public (verb)",
+        "exampleEn": "Someone leaked the report to the press before it was official.",
+        "exampleTr": "Biri rapor resmi olmadan önce onu basına sızdırdı."
       }
     ],
     "synonyms": [
@@ -156044,6 +157130,12 @@ export default [
         "en": "a big jump",
         "exampleEn": "With one leap, the cat reached the top of the wall.",
         "exampleTr": "Bir sıçrayışta kedi duvarın tepesine ulaştı."
+      },
+      {
+        "tr": "sıçramak, atlamak (fiil)",
+        "en": "to jump high or a long distance (verb)",
+        "exampleEn": "The cat leaped onto the table.",
+        "exampleTr": "Kedi masanın üstüne sıçradı."
       }
     ],
     "synonyms": [
@@ -156094,6 +157186,12 @@ export default [
         "en": "a legal agreement to rent property for a period",
         "exampleEn": "We signed a one-year lease on the apartment.",
         "exampleTr": "Daire için bir yıllık kira sözleşmesi imzaladık."
+      },
+      {
+        "tr": "kiralamak, kiraya vermek (fiil)",
+        "en": "to rent property or equipment under a lease (verb)",
+        "exampleEn": "They leased the office space for five years.",
+        "exampleTr": "Ofis alanını beş yıllığına kiraladılar."
       }
     ],
     "synonyms": [
@@ -156192,6 +157290,12 @@ export default [
         "en": "an old story that may not be true",
         "exampleEn": "The legend of King Arthur is famous worldwide.",
         "exampleTr": "Kral Arthur efsanesi dünya çapında ünlüdür."
+      },
+      {
+        "tr": "(harita, tablo) açıklama, lejant",
+        "en": "an explanation of symbols on a map or chart",
+        "exampleEn": "Check the legend to find out what the coloured lines on the map mean.",
+        "exampleTr": "Haritadaki renkli çizgilerin ne anlama geldiğini öğrenmek için lejanta bak."
       }
     ],
     "synonyms": [
@@ -156503,6 +157607,12 @@ export default [
         "en": "open to new ideas and respecting freedom",
         "exampleEn": "He has very liberal views on social issues.",
         "exampleTr": "Sosyal konularda çok liberal görüşleri var."
+      },
+      {
+        "tr": "bol, cömert, bol miktarda",
+        "en": "generous, or given in large amounts",
+        "exampleEn": "She added a liberal amount of cream to the sauce.",
+        "exampleTr": "Sosa bol miktarda krema ekledi."
       }
     ],
     "synonyms": [
@@ -156531,6 +157641,12 @@ export default [
         "en": "to move your tongue over something",
         "exampleEn": "The child began to lick the ice cream.",
         "exampleTr": "Çocuk dondurmayı yalamaya başladı."
+      },
+      {
+        "tr": "(alev) yalayıp geçmek, sarmak",
+        "en": "(of flames or waves) to touch or move lightly over something",
+        "exampleEn": "Flames were already licking the roof of the building.",
+        "exampleTr": "Alevler çoktan binanın çatısını yalıyordu."
       }
     ],
     "synonyms": [],
@@ -156553,6 +157669,12 @@ export default [
         "en": "a cover for a container such as a pot or jar",
         "exampleEn": "She put the lid back on the jar.",
         "exampleTr": "Kavanozun kapağını geri kapattı."
+      },
+      {
+        "tr": "göz kapağı",
+        "en": "eyelid, the fold of skin covering the eye",
+        "exampleEn": "Her lids were heavy and she could barely stay awake.",
+        "exampleTr": "Göz kapakları ağırlaşmıştı ve zar zor uyanık kalabiliyordu."
       }
     ],
     "synonyms": [
@@ -156631,6 +157753,12 @@ export default [
         "en": "to make something lighter in weight or color",
         "exampleEn": "We can lighten the load by leaving some bags behind.",
         "exampleTr": "Bazı çantaları geride bırakarak yükü hafifletebiliriz."
+      },
+      {
+        "tr": "rengi açılmak, açmak (renk)",
+        "en": "to make or become lighter in colour",
+        "exampleEn": "Her hair lightens in the summer sun.",
+        "exampleTr": "Saçları yaz güneşinde açılır."
       }
     ],
     "synonyms": [
@@ -156759,6 +157887,12 @@ export default [
         "en": "a large passenger ship; a lining",
         "exampleEn": "The ocean liner departed for New York.",
         "exampleTr": "Okyanus yolcu gemisi New York'a doğru yola çıktı."
+      },
+      {
+        "tr": "eyeliner, göz kalemi",
+        "en": "a cosmetic used to draw a line around the eyes or lips",
+        "exampleEn": "She applied a thin line of black liner along her eyelids.",
+        "exampleTr": "Göz kapaklarına ince bir siyah eyeliner çizgisi çekti."
       }
     ],
     "synonyms": [
@@ -156970,6 +158104,12 @@ export default [
         "en": "an entrance hall of a building",
         "exampleEn": "We waited in the hotel lobby for our taxi.",
         "exampleTr": "Taksimizi otelin lobisinde bekledik."
+      },
+      {
+        "tr": "lobi yapmak, baskı yapmak",
+        "en": "to try to persuade officials to support a cause",
+        "exampleEn": "Campaigners lobbied Congress to change the law.",
+        "exampleTr": "Eylemciler yasayı değiştirmesi için Kongre'ye baskı yaptı."
       }
     ],
     "synonyms": [
@@ -157108,6 +158248,12 @@ export default [
         "en": "to move something down or reduce it",
         "exampleEn": "They decided to lower the price of the house.",
         "exampleTr": "Evin fiyatını indirmeye karar verdiler."
+      },
+      {
+        "tr": "alt, aşağı (konum olarak)",
+        "en": "located below something else; at the bottom",
+        "exampleEn": "He felt a sharp pain in his lower back.",
+        "exampleTr": "Belinin alt kısmında keskin bir ağrı hissetti."
       }
     ],
     "synonyms": [
@@ -157165,6 +158311,12 @@ export default [
         "en": "growing thickly and healthily; green and abundant",
         "exampleEn": "The valley was covered in lush green vegetation.",
         "exampleTr": "Vadi, gür ve yemyeşil bir bitki örtüsüyle kaplıydı."
+      },
+      {
+        "tr": "lüks, gösterişli, zengin (dekor/ses)",
+        "en": "luxurious, rich, and pleasing to the senses",
+        "exampleEn": "The film has a lush orchestral soundtrack.",
+        "exampleTr": "Filmin zengin, gösterişli bir orkestra müziği var."
       }
     ],
     "synonyms": [
@@ -157224,6 +158376,12 @@ export default [
         "en": "of a high quality and expensive kind",
         "exampleEn": "He bought a luxury car last month.",
         "exampleTr": "Geçen ay lüks bir araba aldı."
+      },
+      {
+        "tr": "lüks, konfor; nadir bulunan keyif",
+        "en": "great comfort, or something expensive that is not necessary",
+        "exampleEn": "After years of saving, they could finally afford a little luxury.",
+        "exampleTr": "Yıllarca biriktirdikten sonra nihayet biraz lükse güçleri yetiyordu."
       }
     ],
     "synonyms": [
@@ -157736,6 +158894,12 @@ export default [
         "en": "a covering worn over the face",
         "exampleEn": "The surgeon put on a mask before the operation.",
         "exampleTr": "Cerrah ameliyattan önce bir maske taktı."
+      },
+      {
+        "tr": "gizlemek, örtbas etmek, maskelemek",
+        "en": "to hide a feeling, smell, or fact",
+        "exampleEn": "He tried to mask his disappointment with a smile.",
+        "exampleTr": "Hayal kırıklığını bir gülümsemeyle gizlemeye çalıştı."
       }
     ],
     "synonyms": [
@@ -157788,6 +158952,12 @@ export default [
         "en": "the rubbing of the body to relax muscles",
         "exampleEn": "A relaxing massage helped ease her back pain.",
         "exampleTr": "Rahatlatıcı bir masaj, sırt ağrısını hafifletti."
+      },
+      {
+        "tr": "(rakamları) tahrif etmek, göze hoş göstermek",
+        "en": "to change figures dishonestly to make them look better",
+        "exampleEn": "The company was accused of massaging its profit figures.",
+        "exampleTr": "Şirket kâr rakamlarını tahrif etmekle suçlandı."
       }
     ],
     "synonyms": [
@@ -157839,6 +159009,12 @@ export default [
         "en": "a person skilled at something or in control",
         "exampleEn": "He is a master of the violin.",
         "exampleTr": "O, kemanın bir ustasıdır."
+      },
+      {
+        "tr": "hâkim olmak, ustalaşmak, iyice öğrenmek",
+        "en": "to learn how to do something well",
+        "exampleEn": "It took her years to master the piano.",
+        "exampleTr": "Piyanoda ustalaşması yıllarını aldı."
       }
     ],
     "synonyms": [
@@ -157921,6 +159097,12 @@ export default [
         "en": "a friend; or an animal's breeding partner",
         "exampleEn": "He went to the pub with his mates.",
         "exampleTr": "Arkadaşlarıyla birlikte bara gitti."
+      },
+      {
+        "tr": "çiftleşmek",
+        "en": "(of animals) to breed or have sex",
+        "exampleEn": "Many birds mate in the spring.",
+        "exampleTr": "Birçok kuş ilkbaharda çiftleşir."
       }
     ],
     "synonyms": [
@@ -157975,6 +159157,18 @@ export default [
         "en": "fully grown or developed; sensible",
         "exampleEn": "She is very mature for her age.",
         "exampleTr": "Yaşına göre çok olgun biri."
+      },
+      {
+        "tr": "olgunlaşmak, gelişmek",
+        "en": "to become fully developed or grown",
+        "exampleEn": "The plan will take time to mature.",
+        "exampleTr": "Planın olgunlaşması zaman alacak."
+      },
+      {
+        "tr": "(peynir, şarap) olgunlaşmış, dinlenmiş",
+        "en": "(of cheese or wine) fully developed in flavour",
+        "exampleEn": "This is a mature cheddar with a strong flavour.",
+        "exampleTr": "Bu, güçlü aromalı olgunlaşmış bir çedar peyniridir."
       }
     ],
     "synonyms": [
@@ -158030,6 +159224,12 @@ export default [
         "en": "a method or way of achieving something",
         "exampleEn": "The internet is an effective means of communication.",
         "exampleTr": "İnternet, etkili bir iletişim aracıdır."
+      },
+      {
+        "tr": "maddi imkânlar, servet, gelir",
+        "en": "money or income available to a person",
+        "exampleEn": "They live well beyond their means.",
+        "exampleTr": "Maddi imkânlarının çok üzerinde bir hayat yaşıyorlar."
       }
     ],
     "synonyms": [
@@ -158081,6 +159281,12 @@ export default [
         "en": "the means of mass communication, such as TV and press",
         "exampleEn": "The story was reported by all the major media.",
         "exampleTr": "Haber, tüm büyük medya kuruluşları tarafından duyuruldu."
+      },
+      {
+        "tr": "medium'un çoğulu; ortamlar, araçlar",
+        "en": "plural of medium; materials or means used",
+        "exampleEn": "The artist works in a variety of media, including oil and clay.",
+        "exampleTr": "Sanatçı yağlı boya ve kil dahil çeşitli ortamlarla çalışır."
       }
     ],
     "synonyms": [
@@ -158214,6 +159420,12 @@ export default [
         "en": "something built to remember a person or event",
         "exampleEn": "A memorial was built to honour the fallen soldiers.",
         "exampleTr": "Şehit askerleri onurlandırmak için bir anıt inşa edildi."
+      },
+      {
+        "tr": "anma ile ilgili, anma amaçlı",
+        "en": "intended to honour or remember a person or event",
+        "exampleEn": "A memorial service was held for the victims.",
+        "exampleTr": "Kurbanlar için bir anma töreni düzenlendi."
       }
     ],
     "synonyms": [
@@ -158656,6 +159868,12 @@ export default [
         "en": "very strong or powerful",
         "exampleEn": "The mighty river carved a deep canyon through the rock.",
         "exampleTr": "Güçlü nehir kayanın içinden derin bir kanyon oydu."
+      },
+      {
+        "tr": "çok, son derece (vurgu için)",
+        "en": "very, extremely (informal intensifier)",
+        "exampleEn": "That was mighty kind of you to help us.",
+        "exampleTr": "Bize yardım etmen çok nazikti."
       }
     ],
     "synonyms": [
@@ -158709,6 +159927,12 @@ export default [
         "en": "a building with machinery for grinding grain or producing goods",
         "exampleEn": "The old flour mill by the river is now a museum.",
         "exampleTr": "Nehir kenarındaki eski un değirmeni artık bir müze."
+      },
+      {
+        "tr": "dolaşmak, bir arada dolanmak (mill around/about)",
+        "en": "to move around in a confused mass (mill around)",
+        "exampleEn": "Crowds of people were milling around the entrance.",
+        "exampleTr": "Girişin çevresinde kalabalıklar amaçsızca dolanıyordu."
       }
     ],
     "synonyms": [
@@ -158782,6 +160006,12 @@ export default [
         "en": "a person or animal that copies others",
         "exampleEn": "The parrot is a clever mimic of human speech.",
         "exampleTr": "Papağan insan konuşmasının zeki bir taklitçisidir."
+      },
+      {
+        "tr": "taklit etmek",
+        "en": "to copy the way someone speaks or behaves",
+        "exampleEn": "She can mimic the teacher's accent perfectly.",
+        "exampleTr": "Öğretmenin aksanını mükemmel şekilde taklit edebiliyor."
       }
     ],
     "synonyms": [
@@ -158807,6 +160037,18 @@ export default [
         "en": "a place where minerals are dug out of the ground",
         "exampleEn": "Workers descended into the coal mine before dawn.",
         "exampleTr": "İşçiler şafaktan önce kömür madenine indiler."
+      },
+      {
+        "tr": "benimki (iyelik zamiri)",
+        "en": "the one that belongs to me",
+        "exampleEn": "That book is mine, not yours.",
+        "exampleTr": "O kitap benimki, senin değil."
+      },
+      {
+        "tr": "mayın (patlayıcı)",
+        "en": "a bomb hidden under the ground or in the water",
+        "exampleEn": "The soldiers were careful not to step on a mine.",
+        "exampleTr": "Askerler bir mayına basmamak için dikkatliydi."
       }
     ],
     "synonyms": [
@@ -158885,6 +160127,18 @@ export default [
         "en": "an aromatic herb used for flavoring",
         "exampleEn": "She added fresh mint to the iced tea.",
         "exampleTr": "Buzlu çaya taze nane ekledi."
+      },
+      {
+        "tr": "nane şekeri, nane şekerlemesi",
+        "en": "a candy flavored with mint",
+        "exampleEn": "She offered me a mint after dinner.",
+        "exampleTr": "Yemekten sonra bana bir nane şekeri ikram etti."
+      },
+      {
+        "tr": "darphane; para basmak",
+        "en": "a place where coins are made; to produce money",
+        "exampleEn": "The coins were struck at the royal mint.",
+        "exampleTr": "Madeni paralar kraliyet darphanesinde basıldı."
       }
     ],
     "synonyms": [
@@ -159202,6 +160456,12 @@ export default [
         "en": "not real, done for practice or imitation",
         "exampleEn": "The students sat a mock exam before the real test.",
         "exampleTr": "Öğrenciler gerçek sınavdan önce bir deneme sınavına girdiler."
+      },
+      {
+        "tr": "alay etmek, dalga geçmek",
+        "en": "to laugh at someone in an unkind way",
+        "exampleEn": "The other kids mocked him for his old clothes.",
+        "exampleTr": "Diğer çocuklar eski kıyafetleri yüzünden onunla alay etti."
       }
     ],
     "synonyms": [
@@ -159358,6 +160618,12 @@ export default [
         "en": "a hollow container used to shape material; or fungus growth",
         "exampleEn": "The chef poured the chocolate into a heart-shaped mold.",
         "exampleTr": "Aşçı çikolatayı kalp şeklindeki bir kalıba döktü."
+      },
+      {
+        "tr": "biçimlendirmek, şekil vermek",
+        "en": "to shape a soft material; to influence someone's character",
+        "exampleEn": "The teacher helped mold the young students into responsible adults.",
+        "exampleTr": "Öğretmen genç öğrencileri sorumluluk sahibi yetişkinler olacak şekilde biçimlendirmeye yardım etti."
       }
     ],
     "synonyms": [
@@ -159538,6 +160804,12 @@ export default [
         "en": "relating to principles of right and wrong behavior",
         "exampleEn": "She faced a difficult moral decision.",
         "exampleTr": "Zor bir ahlaki kararla karşı karşıya kaldı."
+      },
+      {
+        "tr": "kıssadan hisse, ders (bir hikâyenin verdiği ders)",
+        "en": "a lesson taught by a story or event",
+        "exampleEn": "The moral of the story is that honesty pays off.",
+        "exampleTr": "Hikâyenin kıssadan hissesi, dürüstlüğün karşılığını verdiğidir."
       }
     ],
     "synonyms": [
@@ -159644,6 +160916,12 @@ export default [
         "en": "a mixture used to bind bricks or stones together",
         "exampleEn": "The bricklayer spread mortar between the bricks.",
         "exampleTr": "Duvarcı tuğlaların arasına harç sürdü."
+      },
+      {
+        "tr": "havan topu",
+        "en": "a short cannon that fires shells high into the air",
+        "exampleEn": "The base came under heavy mortar fire.",
+        "exampleTr": "Üs yoğun havan topu ateşine maruz kaldı."
       }
     ],
     "synonyms": [
@@ -159715,6 +160993,18 @@ export default [
         "en": "the act or process of moving",
         "exampleEn": "The gentle motion of the boat made her sleepy.",
         "exampleTr": "Teknenin yumuşak hareketi onu uykuya daldırdı."
+      },
+      {
+        "tr": "önerge (toplantıda oylanan teklif)",
+        "en": "a formal proposal put to a vote at a meeting",
+        "exampleEn": "The motion was passed by a large majority.",
+        "exampleTr": "Önerge büyük bir çoğunlukla kabul edildi."
+      },
+      {
+        "tr": "işaret etmek, el kol hareketiyle göstermek",
+        "en": "to signal to someone with a gesture",
+        "exampleEn": "She motioned for me to sit down.",
+        "exampleTr": "Oturmam için bana işaret etti."
       }
     ],
     "synonyms": [
@@ -159897,6 +161187,12 @@ export default [
         "en": "having or involving many parts or elements",
         "exampleEn": "The accident caused multiple injuries.",
         "exampleTr": "Kaza birden fazla yaralanmaya neden oldu."
+      },
+      {
+        "tr": "kat (matematik: bir sayının katı)",
+        "en": "a number that contains another an exact number of times",
+        "exampleEn": "Twelve is a multiple of three.",
+        "exampleTr": "On iki, üçün bir katıdır."
       }
     ],
     "synonyms": [
@@ -160004,6 +161300,12 @@ export default [
         "en": "to think about something carefully and at length",
         "exampleEn": "She liked to muse about her future while walking.",
         "exampleTr": "Yürürken geleceği hakkında düşünceye dalmayı severdi."
+      },
+      {
+        "tr": "ilham perisi, ilham kaynağı",
+        "en": "a person or thing that inspires an artist",
+        "exampleEn": "The painter said his wife was his greatest muse.",
+        "exampleTr": "Ressam, karısının en büyük ilham kaynağı olduğunu söyledi."
       }
     ],
     "synonyms": [
@@ -160387,6 +161689,12 @@ export default [
         "en": "to find the way or direct the course of a journey",
         "exampleEn": "Sailors used the stars to navigate across the ocean.",
         "exampleTr": "Denizciler okyanusu geçmek için yön bulmada yıldızları kullandı."
+      },
+      {
+        "tr": "(zor bir durumla) başa çıkmak, üstesinden gelmek",
+        "en": "to deal successfully with a complicated situation",
+        "exampleEn": "It can be hard to navigate the complex tax system.",
+        "exampleTr": "Karmaşık vergi sistemiyle başa çıkmak zor olabilir."
       }
     ],
     "synonyms": [
@@ -160461,6 +161769,18 @@ export default [
         "en": "tidy and carefully arranged",
         "exampleEn": "Her desk is always neat and well organized.",
         "exampleTr": "Masası her zaman düzenli ve iyi organize edilmiştir."
+      },
+      {
+        "tr": "harika, süper (beğeni ifadesi)",
+        "en": "very good, pleasing (informal)",
+        "exampleEn": "That's a really neat idea!",
+        "exampleTr": "Bu gerçekten harika bir fikir!"
+      },
+      {
+        "tr": "sek (içki: karıştırılmamış)",
+        "en": "(of an alcoholic drink) served without ice or water",
+        "exampleEn": "He ordered a whiskey, neat.",
+        "exampleTr": "Sek bir viski söyledi."
       }
     ],
     "synonyms": [
@@ -160624,6 +161944,18 @@ export default [
         "en": "failure to give proper care or attention to something",
         "exampleEn": "The old house had fallen into ruin through years of neglect.",
         "exampleTr": "Eski ev, yıllarca süren ihmal yüzünden harabeye dönmüştü."
+      },
+      {
+        "tr": "ihmal etmek, savsaklamak",
+        "en": "to fail to care for or give attention to something",
+        "exampleEn": "He neglected his health while working long hours.",
+        "exampleTr": "Uzun saatler çalışırken sağlığını ihmal etti."
+      },
+      {
+        "tr": "yapmayı ihmal etmek, unutmak",
+        "en": "to fail to do something (neglect to do)",
+        "exampleEn": "She neglected to mention that she would be late.",
+        "exampleTr": "Geç kalacağını söylemeyi ihmal etti."
       }
     ],
     "synonyms": [
@@ -160704,6 +162036,18 @@ export default [
         "en": "a fiber that carries messages between the brain and the body",
         "exampleEn": "The injury damaged a nerve in his arm.",
         "exampleTr": "Yaralanma, kolundaki bir siniri zedeledi."
+      },
+      {
+        "tr": "cesaret, yüreklilik",
+        "en": "courage or confidence",
+        "exampleEn": "He didn't have the nerve to ask her out.",
+        "exampleTr": "Ona çıkma teklif edecek cesareti yoktu."
+      },
+      {
+        "tr": "küstahlık, yüzsüzlük (the nerve to)",
+        "en": "rude behavior showing a lack of respect",
+        "exampleEn": "She had the nerve to blame me for her own mistake.",
+        "exampleTr": "Kendi hatası için beni suçlayacak yüzsüzlüğü gösterdi."
       }
     ],
     "synonyms": [
@@ -161986,6 +163330,12 @@ export default [
         "en": "a person who operates equipment or connects telephone calls",
         "exampleEn": "The machine operator checked the controls carefully.",
         "exampleTr": "Makine operatörü kumandaları dikkatlice kontrol etti."
+      },
+      {
+        "tr": "işletmeci firma, işleten kuruluş",
+        "en": "a company that runs a particular business or service",
+        "exampleEn": "The tour operator arranged all our hotels and flights.",
+        "exampleTr": "Tur işletmecisi bütün otellerimizi ve uçuşlarımızı ayarladı."
       }
     ],
     "synonyms": [
@@ -162530,6 +163880,12 @@ export default [
         "en": "a set of clothes worn together",
         "exampleEn": "She bought a new outfit for the wedding.",
         "exampleTr": "Düğün için yeni bir kıyafet aldı."
+      },
+      {
+        "tr": "ekip, grup, firma (gayriresmi)",
+        "en": "a group of people working together as an organization or team",
+        "exampleEn": "He runs a small outfit that installs solar panels.",
+        "exampleTr": "Güneş paneli kuran küçük bir ekip işletiyor."
       }
     ],
     "synonyms": [
@@ -162602,6 +163958,18 @@ export default [
         "en": "a means of expression, a place that sells goods, or an electrical socket",
         "exampleEn": "Painting is a good outlet for her emotions.",
         "exampleTr": "Resim, duyguları için iyi bir çıkış yoludur."
+      },
+      {
+        "tr": "(duygu için) boşalma yolu, kendini ifade yolu",
+        "en": "a way of expressing strong feelings or energy",
+        "exampleEn": "Painting became an outlet for her stress.",
+        "exampleTr": "Resim yapmak onun için stresini boşaltacak bir yol oldu."
+      },
+      {
+        "tr": "yayın organı, haber kuruluşu",
+        "en": "a newspaper, TV channel, or website that publishes news",
+        "exampleEn": "The story was covered by every major news outlet.",
+        "exampleTr": "Haber, bütün büyük yayın organları tarafından işlendi."
       }
     ],
     "synonyms": [
@@ -162627,6 +163995,12 @@ export default [
         "en": "a general description or plan showing the main features",
         "exampleEn": "She gave us a brief outline of her new project.",
         "exampleTr": "Bize yeni projesinin kısa bir taslağını verdi."
+      },
+      {
+        "tr": "dış çizgi, siluet, hat",
+        "en": "the line showing the outer edge or shape of something",
+        "exampleEn": "We could see the outline of the mountains against the sky.",
+        "exampleTr": "Dağların gökyüzüne karşı hatlarını görebiliyorduk."
       }
     ],
     "synonyms": [
@@ -162806,6 +164180,12 @@ export default [
         "en": "situated on or near the outer part of something",
         "exampleEn": "The outside walls of the house need repainting.",
         "exampleTr": "Evin dış duvarlarının yeniden boyanması gerekiyor."
+      },
+      {
+        "tr": "çok düşük, uzak (ihtimal)",
+        "en": "very small or unlikely (chance/possibility)",
+        "exampleEn": "There is only an outside chance that we will win.",
+        "exampleTr": "Kazanmamızın çok düşük bir ihtimali var."
       }
     ],
     "synonyms": [
@@ -162943,6 +164323,18 @@ export default [
         "en": "considering everything; total",
         "exampleEn": "The overall cost of the project was higher than expected.",
         "exampleTr": "Projenin genel maliyeti beklenenden yüksekti."
+      },
+      {
+        "tr": "iş önlüğü, tulum (giysi)",
+        "en": "a loose garment worn over clothes to protect them",
+        "exampleEn": "The mechanic wore a pair of blue overalls.",
+        "exampleTr": "Tamirci mavi bir tulum giymişti."
+      },
+      {
+        "tr": "genel olarak, toplamda (zarf)",
+        "en": "in general; considering everything",
+        "exampleEn": "Overall, the trip was a great success.",
+        "exampleTr": "Genel olarak, gezi büyük bir başarıydı."
       }
     ],
     "synonyms": [
@@ -163297,6 +164689,12 @@ export default [
         "en": "to move past someone or something by going faster",
         "exampleEn": "The red car tried to overtake the truck on the highway.",
         "exampleTr": "Kırmızı araba otoyolda kamyonu sollamaya çalıştı."
+      },
+      {
+        "tr": "gelip çatmak, aniden gelmek (kötü bir durum)",
+        "en": "(of something bad) to happen to someone suddenly",
+        "exampleEn": "A feeling of dread overtook her as she opened the letter.",
+        "exampleTr": "Mektubu açarken içini bir korku kapladı."
       }
     ],
     "synonyms": [
@@ -163347,6 +164745,12 @@ export default [
         "en": "to turn over, or to officially change a decision",
         "exampleEn": "The court decided to overturn the earlier ruling.",
         "exampleTr": "Mahkeme önceki kararı bozmaya karar verdi."
+      },
+      {
+        "tr": "devrilmek, alabora olmak",
+        "en": "to turn over or capsize",
+        "exampleEn": "The boat overturned in the rough sea.",
+        "exampleTr": "Tekne dalgalı denizde alabora oldu."
       }
     ],
     "synonyms": [
@@ -163493,6 +164897,12 @@ export default [
         "en": "a thick piece of soft material used for protection or comfort",
         "exampleEn": "The player wore a knee pad to protect his leg.",
         "exampleTr": "Oyuncu bacağını korumak için bir dizlik ped taktı."
+      },
+      {
+        "tr": "yumuşak adımlarla yürümek, sessizce yürümek",
+        "en": "to walk softly and quietly",
+        "exampleEn": "The cat padded across the room without a sound.",
+        "exampleTr": "Kedi ses çıkarmadan odanın öbür ucuna yürüdü."
       }
     ],
     "synonyms": [
@@ -163635,6 +165045,12 @@ export default [
         "en": "a group of people who discuss or decide something, or a flat board",
         "exampleEn": "A panel of experts answered questions from the audience.",
         "exampleTr": "Bir uzmanlar paneli izleyicilerin sorularını yanıtladı."
+      },
+      {
+        "tr": "gösterge paneli, kontrol paneli",
+        "en": "a flat surface with controls or instruments on it",
+        "exampleEn": "The pilot checked the instruments on the control panel.",
+        "exampleTr": "Pilot kontrol panelindeki göstergeleri kontrol etti."
       }
     ],
     "synonyms": [
@@ -163922,6 +165338,12 @@ export default [
         "en": "specific; this one and not any other",
         "exampleEn": "Is there a particular restaurant you would like to go to?",
         "exampleTr": "Gitmek istediğin belirli bir restoran var mı?"
+      },
+      {
+        "tr": "titiz, müşkülpesent, zor beğenen",
+        "en": "very careful and demanding about details or standards",
+        "exampleEn": "She is very particular about how her coffee is made.",
+        "exampleTr": "Kahvesinin nasıl yapıldığı konusunda çok titizdir."
       }
     ],
     "synonyms": [
@@ -164109,6 +165531,18 @@ export default [
         "en": "a small piece of material or area different from its surroundings",
         "exampleEn": "She sewed a patch over the hole in his jeans.",
         "exampleTr": "Kotunun deliğinin üzerine bir yama dikti."
+      },
+      {
+        "tr": "yamamak, onarmak; (yazılım) düzeltme eki uygulamak",
+        "en": "to mend or repair, or fix software with a patch",
+        "exampleEn": "He patched the hole in his jeans.",
+        "exampleTr": "Kot pantolonundaki deliği yamadı."
+      },
+      {
+        "tr": "dönem, evre (zor/iyi bir süreç)",
+        "en": "a period of time, especially a difficult one",
+        "exampleEn": "They went through a rough patch in their marriage.",
+        "exampleTr": "Evliliklerinde zor bir dönem geçirdiler."
       }
     ],
     "synonyms": [
@@ -164240,6 +165674,12 @@ export default [
         "en": "a person who supports or regularly uses a place",
         "exampleEn": "The wealthy patron donated money to support young artists.",
         "exampleTr": "Varlıklı hami, genç sanatçılara destek olmak için para bağışladı."
+      },
+      {
+        "tr": "müşteri, düzenli ziyaretçi (dükkân, restoran vb.)",
+        "en": "a customer of a shop, restaurant, or hotel",
+        "exampleEn": "The restaurant's regular patrons all know the owner by name.",
+        "exampleTr": "Restoranın düzenli müşterileri sahibini adıyla tanır."
       }
     ],
     "synonyms": [
@@ -164265,6 +165705,12 @@ export default [
         "en": "to cover a surface with a hard material",
         "exampleEn": "The workers will pave the road with new asphalt.",
         "exampleTr": "İşçiler yolu yeni asfaltla kaplayacak."
+      },
+      {
+        "tr": "yol açmak, zemin hazırlamak (pave the way)",
+        "en": "to make something possible or easier to happen",
+        "exampleEn": "This discovery paved the way for further research.",
+        "exampleTr": "Bu keşif, daha ileri araştırmalara zemin hazırladı."
       }
     ],
     "synonyms": [
@@ -164315,6 +165761,12 @@ export default [
         "en": "the foot of an animal that has claws or nails",
         "exampleEn": "The dog hurt its paw on a sharp stone.",
         "exampleTr": "Köpek pençesini keskin bir taşta yaraladı."
+      },
+      {
+        "tr": "pençeyle eşelemek; sarkıntılık etmek, ellemek",
+        "en": "to touch or scrape with a paw, or to touch someone in an unwanted way",
+        "exampleEn": "The dog pawed at the door, wanting to go out.",
+        "exampleTr": "Köpek dışarı çıkmak isteyerek kapıyı pençeledi."
       }
     ],
     "synonyms": [
@@ -164461,6 +165913,18 @@ export default [
         "en": "the highest point of something",
         "exampleEn": "They reached the peak of the mountain at dawn.",
         "exampleTr": "Dağın zirvesine şafakta ulaştılar."
+      },
+      {
+        "tr": "en yüksek seviyeye ulaşmak, zirve yapmak",
+        "en": "to reach the highest point or level",
+        "exampleEn": "Sales peaked in December and then declined.",
+        "exampleTr": "Satışlar aralıkta zirve yaptı, sonra düştü."
+      },
+      {
+        "tr": "en yoğun, doruk (zaman/dönem)",
+        "en": "at the highest or busiest level",
+        "exampleEn": "Traffic is heaviest during peak hours.",
+        "exampleTr": "Trafik en yoğun saatlerde çok ağırdır."
       }
     ],
     "synonyms": [
@@ -164635,6 +166099,12 @@ export default [
         "en": "the outer skin of a fruit or vegetable",
         "exampleEn": "She grated some lemon peel into the cake mixture.",
         "exampleTr": "Kek karışımına biraz limon kabuğu rendeledi."
+      },
+      {
+        "tr": "soymak (kabuğunu); soyulmak, kabuk kabuk dökülmek",
+        "en": "to remove the skin, or to come off in strips",
+        "exampleEn": "She peeled an orange for the children.",
+        "exampleTr": "Çocuklar için bir portakal soydu."
       }
     ],
     "synonyms": [
@@ -164660,6 +166130,12 @@ export default [
         "en": "a quick or secret look at something",
         "exampleEn": "She took a peep at the present hidden in the closet.",
         "exampleTr": "Dolapta saklı hediyeye kısa bir göz attı."
+      },
+      {
+        "tr": "gizlice bakmak, dikizlemek",
+        "en": "to look quickly or secretly",
+        "exampleEn": "She peeped through the curtains to see who was outside.",
+        "exampleTr": "Dışarıda kimin olduğunu görmek için perdenin arasından baktı."
       }
     ],
     "synonyms": [
@@ -164685,6 +166161,12 @@ export default [
         "en": "a short pin used to hang things or fasten them",
         "exampleEn": "He hung his coat on a peg by the door.",
         "exampleTr": "Paltosunu kapının yanındaki askıya astı."
+      },
+      {
+        "tr": "sabitlemek, bağlamak (fiyat/değeri bir şeye)",
+        "en": "to fix or limit something at a particular level",
+        "exampleEn": "The currency is pegged to the US dollar.",
+        "exampleTr": "Para birimi ABD dolarına sabitlenmiştir."
       }
     ],
     "synonyms": [
@@ -164764,6 +166246,12 @@ export default [
         "en": "to enter or pass through something",
         "exampleEn": "The light could not penetrate the thick fog.",
         "exampleTr": "Işık yoğun sisin içine giremedi."
+      },
+      {
+        "tr": "(pazara) girmek, sızmak; içine işlemek (anlaşılmak)",
+        "en": "to succeed in entering a market or organization",
+        "exampleEn": "The company struggled to penetrate the Asian market.",
+        "exampleTr": "Şirket Asya pazarına girmekte zorlandı."
       }
     ],
     "synonyms": [
@@ -164881,6 +166369,12 @@ export default [
         "en": "to notice or become aware of something",
         "exampleEn": "Many people perceive him as a strong leader.",
         "exampleTr": "Birçok kişi onu güçlü bir lider olarak algılıyor."
+      },
+      {
+        "tr": "bir şekilde görmek, addetmek, saymak",
+        "en": "to regard or think of someone or something in a particular way",
+        "exampleEn": "He is often perceived as arrogant by his colleagues.",
+        "exampleTr": "Meslektaşları onu genellikle kibirli olarak görür."
       }
     ],
     "synonyms": [
@@ -165035,6 +166529,12 @@ export default [
         "en": "to continue to do something despite difficulty",
         "exampleEn": "If the pain persists, you should see a doctor.",
         "exampleTr": "Ağrı devam ederse bir doktora görünmelisin."
+      },
+      {
+        "tr": "sürüp gitmek, varlığını sürdürmek",
+        "en": "to continue to exist or happen",
+        "exampleEn": "If the symptoms persist, you should see a doctor.",
+        "exampleTr": "Belirtiler sürerse bir doktora görünmelisiniz."
       }
     ],
     "synonyms": [
@@ -165344,6 +166844,12 @@ export default [
         "en": "small and unimportant; concerned with trivial matters",
         "exampleEn": "They argued over petty details that did not matter.",
         "exampleTr": "Önemli olmayan önemsiz ayrıntılar üzerine tartıştılar."
+      },
+      {
+        "tr": "küçük şeylere takılan, dar görüşlü, kıl",
+        "en": "caring too much about small, unimportant things",
+        "exampleEn": "Don't be so petty about who paid for lunch.",
+        "exampleTr": "Öğle yemeğini kimin ödediği konusunda bu kadar küçük olma."
       }
     ],
     "synonyms": [
@@ -165418,6 +166924,12 @@ export default [
         "en": "a stage in a process of change or development",
         "exampleEn": "The project is now entering its final phase.",
         "exampleTr": "Proje şimdi son aşamasına giriyor."
+      },
+      {
+        "tr": "aşamalı olarak uygulamak/kaldırmak (phase in/out)",
+        "en": "to introduce or remove gradually in stages",
+        "exampleEn": "The government plans to phase out the old currency.",
+        "exampleTr": "Hükümet eski para birimini aşamalı olarak kaldırmayı planlıyor."
       }
     ],
     "synonyms": [
@@ -165617,6 +167129,18 @@ export default [
         "en": "a thin pointed piece of metal used to fasten things",
         "exampleEn": "She used a pin to hold the two pieces of fabric together.",
         "exampleTr": "İki kumaş parçasını bir arada tutmak için bir iğne kullandı."
+      },
+      {
+        "tr": "iğnelemek, tutturmak; bir yere sıkıştırıp kımıldatmamak",
+        "en": "to fasten with a pin, or to hold someone firmly so they cannot move",
+        "exampleEn": "She pinned the notice to the board.",
+        "exampleTr": "Duyuruyu panoya iğneledi."
+      },
+      {
+        "tr": "(suç, sorumluluk) yıkmak, atmak (pin on)",
+        "en": "to blame someone for something, often unfairly",
+        "exampleEn": "They tried to pin the blame on the new employee.",
+        "exampleTr": "Suçu yeni çalışanın üstüne yıkmaya çalıştılar."
       }
     ],
     "synonyms": [
@@ -165642,6 +167166,12 @@ export default [
         "en": "a tall evergreen tree with needle-shaped leaves",
         "exampleEn": "The air smelled fresh among the tall pine trees.",
         "exampleTr": "Uzun çam ağaçları arasında hava taze kokuyordu."
+      },
+      {
+        "tr": "özlem çekmek, hasretle içi gitmek (pine for)",
+        "en": "to feel a strong longing for someone or something",
+        "exampleEn": "He pined for his homeland after moving abroad.",
+        "exampleTr": "Yurt dışına taşındıktan sonra memleketinin hasretini çekti."
       }
     ],
     "synonyms": [],
@@ -165710,6 +167240,12 @@ export default [
         "en": "a person who attacks ships or copies things illegally",
         "exampleEn": "The pirate buried his treasure on a remote island.",
         "exampleTr": "Korsan hazinesini ıssız bir adaya gömdü."
+      },
+      {
+        "tr": "korsan kopyasını yapmak, izinsiz çoğaltmak",
+        "en": "to illegally copy and sell a product",
+        "exampleEn": "The film was pirated and shared online before its release.",
+        "exampleTr": "Film vizyona girmeden önce korsan olarak çoğaltılıp internette paylaşıldı."
       }
     ],
     "synonyms": [
@@ -165734,6 +167270,12 @@ export default [
         "en": "a deadly contagious disease or widespread affliction",
         "exampleEn": "The plague killed millions of people in the Middle Ages.",
         "exampleTr": "Veba Orta Çağ'da milyonlarca insanı öldürdü."
+      },
+      {
+        "tr": "başına bela olmak, rahat vermemek, sürekli sıkıntı vermek",
+        "en": "to cause continual trouble or distress to someone",
+        "exampleEn": "Money problems plagued him for years.",
+        "exampleTr": "Para sorunları yıllarca başına bela oldu."
       }
     ],
     "synonyms": [
@@ -165856,6 +167398,12 @@ export default [
         "en": "the storyline of a book or film, or a secret plan",
         "exampleEn": "The plot of the novel was full of unexpected twists.",
         "exampleTr": "Romanın olay örgüsü beklenmedik dönüşlerle doluydu."
+      },
+      {
+        "tr": "arsa, parsel, arazi parçası",
+        "en": "a small piece of land marked out for a purpose",
+        "exampleEn": "They bought a small plot of land to build their house.",
+        "exampleTr": "Ev yapmak için küçük bir arsa satın aldılar."
       }
     ],
     "synonyms": [
@@ -165881,6 +167429,12 @@ export default [
         "en": "to pull something quickly to remove it",
         "exampleEn": "She reached up to pluck an apple from the tree.",
         "exampleTr": "Ağaçtan bir elma koparmak için uzandı."
+      },
+      {
+        "tr": "cesaret, yüreklilik (isim)",
+        "en": "courage and determination",
+        "exampleEn": "It took a lot of pluck to stand up to the bully.",
+        "exampleTr": "Zorbaya karşı durmak epey cesaret istedi."
       }
     ],
     "synonyms": [
@@ -166071,6 +167625,18 @@ export default [
         "en": "a substance used to make surfaces shine",
         "exampleEn": "She applied a coat of polish to the wooden table.",
         "exampleTr": "Ahşap masaya bir kat cila sürdü."
+      },
+      {
+        "tr": "cilalamak, parlatmak",
+        "en": "to make something smooth and shiny by rubbing",
+        "exampleEn": "He polished his shoes until they shone.",
+        "exampleTr": "Ayakkabılarını parlayana kadar cilaladı."
+      },
+      {
+        "tr": "(bir işi) geliştirmek, ince ayar yapmak",
+        "en": "to improve a skill or piece of work",
+        "exampleEn": "She spent the evening polishing her presentation.",
+        "exampleTr": "Akşamı sunumunu geliştirerek geçirdi."
       }
     ],
     "synonyms": [
@@ -166289,6 +167855,12 @@ export default [
         "en": "a part or share of something",
         "exampleEn": "A large portion of the budget went to education.",
         "exampleTr": "Bütçenin büyük bir kısmı eğitime ayrıldı."
+      },
+      {
+        "tr": "pay etmek, bölüştürmek",
+        "en": "to divide something into parts and share it out",
+        "exampleEn": "The nurse portioned out the medicine carefully.",
+        "exampleTr": "Hemşire ilacı dikkatlice pay etti."
       }
     ],
     "synonyms": [
@@ -166316,6 +167888,18 @@ export default [
         "en": "a particular position of the body, especially for a photo",
         "exampleEn": "The model held a graceful pose for the camera.",
         "exampleTr": "Manken kamera için zarif bir poz verdi."
+      },
+      {
+        "tr": "(sorun, tehlike) oluşturmak, yol açmak",
+        "en": "to cause a problem or danger",
+        "exampleEn": "The chemical waste poses a serious threat to the river.",
+        "exampleTr": "Kimyasal atık nehir için ciddi bir tehlike oluşturuyor."
+      },
+      {
+        "tr": "poz vermek, poz kesmek",
+        "en": "to sit or stand in a particular position to be photographed",
+        "exampleEn": "The models posed for the photographers.",
+        "exampleTr": "Mankenler fotoğrafçılara poz verdi."
       }
     ],
     "synonyms": [
@@ -167205,6 +168789,12 @@ export default [
         "en": "not real but imagined, especially in play",
         "exampleEn": "The children served pretend tea to their dolls.",
         "exampleTr": "Çocuklar bebeklerine sahte çay ikram etti."
+      },
+      {
+        "tr": "-mış gibi yapmak, numara yapmak (fiil)",
+        "en": "to behave as if something is true when it is not",
+        "exampleEn": "The children pretended to be asleep.",
+        "exampleTr": "Çocuklar uyuyormuş gibi yaptı."
       }
     ],
     "synonyms": [
@@ -167358,6 +168948,12 @@ export default [
         "en": "a small sharp pain caused by a pointed object",
         "exampleEn": "She felt a sudden prick as the needle went in.",
         "exampleTr": "İğne batarken ani bir batma hissetti."
+      },
+      {
+        "tr": "delmek, batırmak, iğnelemek",
+        "en": "to make a small hole in something with a sharp point",
+        "exampleEn": "She pricked her finger on a needle.",
+        "exampleTr": "Parmağını bir iğneye batırdı."
       }
     ],
     "synonyms": [
@@ -167412,6 +169008,12 @@ export default [
         "en": "main or most important; of the best quality",
         "exampleEn": "The house is in a prime location near the city centre.",
         "exampleTr": "Ev, şehir merkezine yakın gözde bir konumda."
+      },
+      {
+        "tr": "hazırlamak, önceden bilgilendirmek",
+        "en": "to prepare someone for a situation, especially by giving them information",
+        "exampleEn": "The lawyer primed the witness before the trial.",
+        "exampleTr": "Avukat, duruşmadan önce tanığı hazırladı."
       }
     ],
     "synonyms": [
@@ -167578,6 +169180,12 @@ export default [
         "en": "a thorough investigation; a device used to explore something",
         "exampleEn": "The police launched a probe into the corruption scandal.",
         "exampleTr": "Polis, yolsuzluk skandalına yönelik bir soruşturma başlattı."
+      },
+      {
+        "tr": "araştırmak, soruşturmak; deşmek",
+        "en": "to investigate or examine something closely",
+        "exampleEn": "Journalists began to probe into the company's finances.",
+        "exampleTr": "Gazeteciler şirketin mali durumunu araştırmaya başladı."
       }
     ],
     "synonyms": [
@@ -167760,6 +169368,18 @@ export default [
         "en": "a planned piece of work with a particular aim",
         "exampleEn": "We are working on a new research project.",
         "exampleTr": "Yeni bir araştırma projesi üzerinde çalışıyoruz."
+      },
+      {
+        "tr": "yansıtmak, (görüntü) düşürmek",
+        "en": "to make light, an image, or a shadow fall on a surface",
+        "exampleEn": "The film was projected onto a large screen.",
+        "exampleTr": "Film büyük bir ekrana yansıtıldı."
+      },
+      {
+        "tr": "öngörmek, tahmin etmek",
+        "en": "to estimate or forecast something based on current data",
+        "exampleEn": "Experts project that the population will double by 2050.",
+        "exampleTr": "Uzmanlar nüfusun 2050'ye kadar iki katına çıkacağını öngörüyor."
       }
     ],
     "synonyms": [
@@ -167839,6 +169459,18 @@ export default [
         "en": "done quickly and without delay",
         "exampleEn": "Thank you for your prompt reply to my email.",
         "exampleTr": "E-postama hızlı yanıt verdiğiniz için teşekkürler."
+      },
+      {
+        "tr": "yol açmak, neden olmak, yöneltmek",
+        "en": "to make someone decide to do something",
+        "exampleEn": "The bad reviews prompted the company to change its policy.",
+        "exampleTr": "Kötü eleştiriler şirketi politikasını değiştirmeye yöneltti."
+      },
+      {
+        "tr": "(unutan oyuncuya) suflörlük yapmak, hatırlatmak",
+        "en": "to help someone by suggesting words they have forgotten",
+        "exampleEn": "When the actor forgot his lines, someone prompted him from offstage.",
+        "exampleTr": "Oyuncu repliklerini unutunca biri kulisten ona suflörlük yaptı."
       }
     ],
     "synonyms": [
@@ -168006,6 +169638,12 @@ export default [
         "en": "the possibility that something will happen in the future",
         "exampleEn": "There is little prospect of finding a job there.",
         "exampleTr": "Orada iş bulma olasılığı çok az."
+      },
+      {
+        "tr": "(maden, altın vb.) aramak",
+        "en": "to search an area for gold, oil, or other valuable substances",
+        "exampleEn": "Miners came west to prospect for gold.",
+        "exampleTr": "Madenciler altın aramak için batıya geldi."
       }
     ],
     "synonyms": [
@@ -168321,6 +169959,12 @@ export default [
         "en": "the regular beating of the heart felt in the body",
         "exampleEn": "The nurse checked the patient's pulse.",
         "exampleTr": "Hemşire hastanın nabzını kontrol etti."
+      },
+      {
+        "tr": "baklagil (mercimek, nohut, fasulye vb.)",
+        "en": "the edible seeds of certain plants such as lentils, beans, and peas",
+        "exampleEn": "Lentils, beans, and chickpeas are all types of pulse rich in protein.",
+        "exampleTr": "Mercimek, fasulye ve nohut hepsi protein açısından zengin baklagil türleridir."
       }
     ],
     "synonyms": [
@@ -168372,6 +170016,18 @@ export default [
         "en": "a hard hit made with a closed fist",
         "exampleEn": "He threw a punch and knocked his opponent down.",
         "exampleTr": "Bir yumruk attı ve rakibini yere serdi."
+      },
+      {
+        "tr": "meyveli içki, punç",
+        "en": "a cold or hot drink made from fruit juices, often with alcohol",
+        "exampleEn": "She served a fruit punch at the party.",
+        "exampleTr": "Partide meyveli bir içki (punç) ikram etti."
+      },
+      {
+        "tr": "delgeç, zımba (delik açma aleti)",
+        "en": "a tool for making holes",
+        "exampleEn": "He used a punch to make holes in the leather belt.",
+        "exampleTr": "Deri kemerde delik açmak için bir delgeç kullandı."
       }
     ],
     "synonyms": [
@@ -168426,6 +170082,12 @@ export default [
         "en": "something that has been bought; the act of buying",
         "exampleEn": "Keep the receipt as proof of purchase.",
         "exampleTr": "Satın alma kanıtı olarak fişi saklayın."
+      },
+      {
+        "tr": "tutuş, tutunacak yer, tutunma",
+        "en": "a firm hold or grip on something",
+        "exampleEn": "He couldn't get any purchase on the slippery rock.",
+        "exampleTr": "Kaygan kayada tutunacak bir yer bulamadı."
       }
     ],
     "synonyms": [
@@ -168670,6 +170332,12 @@ export default [
         "en": "strange or unusual",
         "exampleEn": "There was a queer smell coming from the kitchen.",
         "exampleTr": "Mutfaktan tuhaf bir koku geliyordu."
+      },
+      {
+        "tr": "eşcinsel, kuir (bir cinsel kimlik terimi)",
+        "en": "relating to a sexual or gender identity that is not heterosexual or cisgender",
+        "exampleEn": "She is a proud member of the queer community.",
+        "exampleTr": "Kuir topluluğunun gururlu bir üyesidir."
       }
     ],
     "synonyms": [
@@ -168699,6 +170367,12 @@ export default [
         "en": "a question, especially one asking for information",
         "exampleEn": "If you have any queries, please contact our support team.",
         "exampleTr": "Herhangi bir sorunuz varsa lütfen destek ekibimizle iletişime geçin."
+      },
+      {
+        "tr": "sorgu (veritabanı/bilgisayar sorgusu)",
+        "en": "a request for information from a database or search system",
+        "exampleEn": "The database returned no results for that query.",
+        "exampleTr": "Veritabanı o sorgu için hiçbir sonuç döndürmedi."
       }
     ],
     "synonyms": [
@@ -168776,6 +170450,12 @@ export default [
         "en": "a phrase taken from a text; a stated price for a job",
         "exampleEn": "He included a famous quote at the end of his letter.",
         "exampleTr": "Mektubunun sonuna ünlü bir alıntı ekledi."
+      },
+      {
+        "tr": "alıntı yapmak, aktarmak (fiil)",
+        "en": "to repeat words that someone else has said or written",
+        "exampleEn": "She often quotes Shakespeare in her essays.",
+        "exampleTr": "Makalelerinde sık sık Shakespeare'den alıntı yapar."
       }
     ],
     "synonyms": [
@@ -168853,6 +170533,12 @@ export default [
         "en": "a framework for holding or storing things",
         "exampleEn": "Please put your coat on the rack by the door.",
         "exampleTr": "Lütfen ceketinizi kapının yanındaki askılığa asın."
+      },
+      {
+        "tr": "kasıp kavurmak, acı vermek, kıvrandırmak (fiil)",
+        "en": "to cause someone great physical or mental suffering",
+        "exampleEn": "He was racked with guilt after the accident.",
+        "exampleTr": "Kazadan sonra suçluluk duygusuyla kıvrandı."
       }
     ],
     "synonyms": [
@@ -168929,6 +170615,12 @@ export default [
         "en": "a person who supports complete political or social change",
         "exampleEn": "He was considered a radical for his revolutionary ideas.",
         "exampleTr": "Devrimci fikirleri yüzünden bir radikal olarak görülüyordu."
+      },
+      {
+        "tr": "köklü, kökten, radikal (sıfat)",
+        "en": "far-reaching or thorough; affecting the fundamental nature of something",
+        "exampleEn": "The company made radical changes to its business model.",
+        "exampleTr": "Şirket iş modelinde köklü değişiklikler yaptı."
       }
     ],
     "synonyms": [
@@ -169107,6 +170799,18 @@ export default [
         "en": "a large public meeting to support a cause",
         "exampleEn": "Thousands of people attended the political rally.",
         "exampleTr": "Binlerce kişi siyasi mitinge katıldı."
+      },
+      {
+        "tr": "toparlanmak, kendine gelmek; (piyasa) yükselmek (fiil)",
+        "en": "to recover or improve after a difficult period",
+        "exampleEn": "The stock market rallied after the announcement.",
+        "exampleTr": "Borsa açıklamanın ardından toparlandı."
+      },
+      {
+        "tr": "ralli (araba yarışı)",
+        "en": "a car-racing competition on public roads",
+        "exampleEn": "He won the international car rally last year.",
+        "exampleTr": "Geçen yıl uluslararası araba rallisini kazandı."
       }
     ],
     "synonyms": [
@@ -169133,6 +170837,12 @@ export default [
         "en": "an adult male sheep",
         "exampleEn": "The farmer kept one ram with the flock of sheep.",
         "exampleTr": "Çiftçi, koyun sürüsünün yanında bir koç tutuyordu."
+      },
+      {
+        "tr": "toslamak, çarpmak, bindirmek (fiil)",
+        "en": "to hit or push something with great force",
+        "exampleEn": "The truck rammed into the wall.",
+        "exampleTr": "Kamyon duvara toslayarak çarptı."
       }
     ],
     "synonyms": [],
@@ -169157,6 +170867,12 @@ export default [
         "en": "a sloping surface connecting two different levels",
         "exampleEn": "There is a ramp for wheelchairs at the entrance.",
         "exampleTr": "Girişte tekerlekli sandalyeler için bir rampa var."
+      },
+      {
+        "tr": "otoyol giriş/çıkış yolu, bağlantı yolu",
+        "en": "a road for entering or leaving a highway",
+        "exampleEn": "Take the exit ramp toward the city center.",
+        "exampleTr": "Şehir merkezine giden çıkış yolunu kullan."
       }
     ],
     "synonyms": [
@@ -169308,6 +171024,12 @@ export default [
         "en": "something you do or feel in response to an event or situation",
         "exampleEn": "Her first reaction to the news was shock.",
         "exampleTr": "Haberlere ilk tepkisi şok oldu."
+      },
+      {
+        "tr": "kimyasal tepkime, reaksiyon",
+        "en": "a chemical process in which substances change",
+        "exampleEn": "The reaction between the two chemicals produced heat.",
+        "exampleTr": "İki kimyasal arasındaki tepkime ısı üretti."
       }
     ],
     "synonyms": [
@@ -169408,6 +171130,18 @@ export default [
         "en": "at the back of something",
         "exampleEn": "Passengers should use the rear door of the bus.",
         "exampleTr": "Yolcular otobüsün arka kapısını kullanmalıdır."
+      },
+      {
+        "tr": "yetiştirmek, büyütmek (çocuk/hayvan) (fiil)",
+        "en": "to care for and raise a child or animal until it is grown",
+        "exampleEn": "They reared four children on a small farm.",
+        "exampleTr": "Küçük bir çiftlikte dört çocuk büyüttüler."
+      },
+      {
+        "tr": "arka taraf, arka bölüm (isim)",
+        "en": "the back part of something",
+        "exampleEn": "The kitchen is at the rear of the house.",
+        "exampleTr": "Mutfak evin arka tarafındadır."
       }
     ],
     "synonyms": [
@@ -169841,6 +171575,12 @@ export default [
         "en": "a mention of something, or a source of information",
         "exampleEn": "She made a brief reference to her previous job.",
         "exampleTr": "Önceki işine kısa bir atıfta bulundu."
+      },
+      {
+        "tr": "referans, bonservis (iş için tavsiye mektubu/kişi)",
+        "en": "a letter or person that provides information about someone's character or abilities",
+        "exampleEn": "Her former boss agreed to act as a reference.",
+        "exampleTr": "Eski patronu referans olmayı kabul etti."
       }
     ],
     "synonyms": [
@@ -169937,6 +171677,12 @@ export default [
         "en": "a change made to improve a system or institution",
         "exampleEn": "The government promised major reform of the education system.",
         "exampleTr": "Hükümet eğitim sisteminde büyük bir reform sözü verdi."
+      },
+      {
+        "tr": "reform yapmak, ıslah etmek, düzeltmek (fiil)",
+        "en": "to improve a system, law, or institution by making changes",
+        "exampleEn": "The government promised to reform the tax system.",
+        "exampleTr": "Hükümet vergi sistemini reform etmeyi (düzeltmeyi) vaat etti."
       }
     ],
     "synonyms": [
@@ -169986,6 +171732,18 @@ export default [
         "en": "the act of updating or reloading something",
         "exampleEn": "A quick refresh of the page showed the new messages.",
         "exampleTr": "Sayfanın hızlı bir yenilemesi yeni mesajları gösterdi."
+      },
+      {
+        "tr": "tazelemek, canlandırmak, dinçleştirmek (fiil)",
+        "en": "to make someone feel less tired or hot",
+        "exampleEn": "A cold shower will refresh you after the long walk.",
+        "exampleTr": "Uzun yürüyüşten sonra soğuk bir duş seni tazeleyecek."
+      },
+      {
+        "tr": "(sayfayı/ekranı) yenilemek (fiil)",
+        "en": "to update a web page or screen with the latest information",
+        "exampleEn": "Refresh the page to see the new comments.",
+        "exampleTr": "Yeni yorumları görmek için sayfayı yenile."
       }
     ],
     "synonyms": [
@@ -170011,6 +171769,12 @@ export default [
         "en": "a safe place where you are protected from danger",
         "exampleEn": "They sought refuge from the storm in a nearby cave.",
         "exampleTr": "Fırtınadan korunmak için yakındaki bir mağaraya sığındılar."
+      },
+      {
+        "tr": "sığınma, barınma (soyut: koruma bulma hali)",
+        "en": "protection or shelter from danger or trouble",
+        "exampleEn": "They sought refuge from the storm in a nearby cave.",
+        "exampleTr": "Fırtınadan yakındaki bir mağarada sığınma aradılar."
       }
     ],
     "synonyms": [
@@ -170088,6 +171852,12 @@ export default [
         "en": "respect or admiration for someone, or a particular aspect",
         "exampleEn": "She is held in high regard by her colleagues.",
         "exampleTr": "Meslektaşları tarafından büyük saygı görüyor."
+      },
+      {
+        "tr": "saymak, görmek, addetmek (fiil)",
+        "en": "to consider or think of someone or something in a particular way",
+        "exampleEn": "Many people regard him as a genius.",
+        "exampleTr": "Birçok insan onu bir dahi olarak görür."
       }
     ],
     "synonyms": [
@@ -170187,6 +171957,12 @@ export default [
         "en": "a feeling of sadness about something you wish had been different",
         "exampleEn": "She expressed deep regret for her past mistakes.",
         "exampleTr": "Geçmiş hatalarından dolayı derin bir pişmanlık dile getirdi."
+      },
+      {
+        "tr": "pişman olmak, üzülmek (fiil)",
+        "en": "to feel sorry about something you did or failed to do",
+        "exampleEn": "I regret not telling her the truth.",
+        "exampleTr": "Ona gerçeği söylemediğim için pişmanım."
       }
     ],
     "synonyms": [
@@ -170471,6 +172247,12 @@ export default [
         "en": "a race in which team members take turns, or a device passing on signals",
         "exampleEn": "Our team won the 400-metre relay at the championship.",
         "exampleTr": "Takımımız şampiyonada 400 metre bayrak yarışını kazandı."
+      },
+      {
+        "tr": "iletmek, aktarmak (mesaj/bilgi) (fiil)",
+        "en": "to pass on information or a message to someone else",
+        "exampleEn": "Please relay this message to your team.",
+        "exampleTr": "Lütfen bu mesajı ekibine ilet."
       }
     ],
     "synonyms": [],
@@ -170704,6 +172486,12 @@ export default [
         "en": "something that you say, giving an opinion or comment",
         "exampleEn": "He made a rude remark about her appearance.",
         "exampleTr": "Onun görünümü hakkında kaba bir söz söyledi."
+      },
+      {
+        "tr": "belirtmek, söylemek, dile getirmek (fiil)",
+        "en": "to say something as a comment",
+        "exampleEn": "She remarked that the weather was unusually warm.",
+        "exampleTr": "Havanın alışılmadık derecede sıcak olduğunu söyledi."
       }
     ],
     "synonyms": [
@@ -171112,6 +172900,12 @@ export default [
         "en": "the act of opposing or fighting against something",
         "exampleEn": "There was strong resistance to the new tax law.",
         "exampleTr": "Yeni vergi yasasına karşı güçlü bir direniş vardı."
+      },
+      {
+        "tr": "direnç (elektrik veya vücudun hastalığa karşı direnci)",
+        "en": "the ability to not be affected by something, or opposition in an electrical circuit",
+        "exampleEn": "Regular exercise builds up the body's resistance to disease.",
+        "exampleTr": "Düzenli egzersiz vücudun hastalığa karşı direncini artırır."
       }
     ],
     "synonyms": [
@@ -171140,6 +172934,18 @@ export default [
         "en": "a firm decision or the solving of a problem",
         "exampleEn": "Her New Year's resolution was to exercise more.",
         "exampleTr": "Yeni yıl kararı daha çok egzersiz yapmaktı."
+      },
+      {
+        "tr": "çözünürlük (ekran, görüntü netliği)",
+        "en": "the level of detail in an image or screen",
+        "exampleEn": "The new monitor has a much higher resolution than the old one.",
+        "exampleTr": "Yeni monitörün çözünürlüğü eskisinden çok daha yüksek."
+      },
+      {
+        "tr": "kararlılık, azim",
+        "en": "firm determination to do something",
+        "exampleEn": "She faced the challenge with great resolution.",
+        "exampleTr": "Zorlukla büyük bir kararlılıkla yüzleşti."
       }
     ],
     "synonyms": [
@@ -171324,6 +173130,12 @@ export default [
         "en": "to begin again after a pause",
         "exampleEn": "They will resume the meeting after lunch.",
         "exampleTr": "Öğle yemeğinden sonra toplantıya yeniden başlayacaklar."
+      },
+      {
+        "tr": "özgeçmiş, CV",
+        "en": "a short account of one's education and work experience",
+        "exampleEn": "Please send us your resume and a cover letter.",
+        "exampleTr": "Lütfen bize özgeçmişinizi ve bir ön yazı gönderin."
       }
     ],
     "synonyms": [
@@ -171455,6 +173267,12 @@ export default [
         "en": "the act of withdrawing, or a quiet place for rest",
         "exampleEn": "The army was forced into a hasty retreat.",
         "exampleTr": "Ordu aceleyle geri çekilmeye zorlandı."
+      },
+      {
+        "tr": "geri çekilmek (fiil), vazgeçmek",
+        "en": "to move back or withdraw from a position or decision",
+        "exampleEn": "The army was forced to retreat from the city.",
+        "exampleTr": "Ordu şehirden geri çekilmek zorunda kaldı."
       }
     ],
     "synonyms": [
@@ -171563,6 +173381,12 @@ export default [
         "en": "deep respect and admiration",
         "exampleEn": "They spoke of their teacher with great reverence.",
         "exampleTr": "Öğretmenlerinden büyük bir saygıyla söz ettiler."
+      },
+      {
+        "tr": "derin saygıyla anmak/görmek (fiil)",
+        "en": "to regard or treat with deep respect",
+        "exampleEn": "The elders are reverenced in this community.",
+        "exampleTr": "Bu toplulukta yaşlılara derin saygı gösterilir."
       }
     ],
     "synonyms": [
@@ -171591,6 +173415,18 @@ export default [
         "en": "to change something to the opposite or move backward",
         "exampleEn": "The court decided to reverse the earlier decision.",
         "exampleTr": "Mahkeme önceki kararı tersine çevirmeye karar verdi."
+      },
+      {
+        "tr": "tersi, karşıtı; arka yüz",
+        "en": "the opposite of something, or the back side",
+        "exampleEn": "The instructions are printed on the reverse of the page.",
+        "exampleTr": "Talimatlar sayfanın arka yüzüne basılmıştır."
+      },
+      {
+        "tr": "geri vites",
+        "en": "the gear that makes a vehicle move backwards",
+        "exampleEn": "He put the car into reverse and backed out of the driveway.",
+        "exampleTr": "Arabayı geri vitese takıp garaj yolundan geri çıktı."
       }
     ],
     "synonyms": [
@@ -171674,6 +173510,12 @@ export default [
         "en": "a great change, often involving the overthrow of a government",
         "exampleEn": "The French Revolution changed the country forever.",
         "exampleTr": "Fransız Devrimi ülkeyi sonsuza dek değiştirdi."
+      },
+      {
+        "tr": "devir, tam dönüş (bir eksen etrafında)",
+        "en": "one complete turn around a central point",
+        "exampleEn": "The engine runs at three thousand revolutions per minute.",
+        "exampleTr": "Motor dakikada üç bin devir yapıyor."
       }
     ],
     "synonyms": [
@@ -171755,6 +173597,12 @@ export default [
         "en": "to move in a circle around a central point",
         "exampleEn": "The planets revolve around the sun.",
         "exampleTr": "Gezegenler güneşin etrafında döner."
+      },
+      {
+        "tr": "etrafında dönmek, merkezinde olmak (konu, hayat)",
+        "en": "to have something as the main subject or focus",
+        "exampleEn": "Her whole life revolves around her children.",
+        "exampleTr": "Bütün hayatı çocuklarının etrafında dönüyor."
       }
     ],
     "synonyms": [
@@ -171877,6 +173725,12 @@ export default [
         "en": "a clever question or puzzle that is hard to answer",
         "exampleEn": "The children tried to solve the difficult riddle.",
         "exampleTr": "Çocuklar zor bilmeceyi çözmeye çalıştı."
+      },
+      {
+        "tr": "muamma, çözülmesi zor gizem",
+        "en": "something that is hard to understand or explain",
+        "exampleEn": "The cause of the disease remains a riddle to scientists.",
+        "exampleTr": "Hastalığın nedeni bilim insanları için bir muamma olmaya devam ediyor."
       }
     ],
     "synonyms": [
@@ -171902,6 +173756,12 @@ export default [
         "en": "a person who rides a horse, bicycle, or motorcycle",
         "exampleEn": "The rider guided the horse over the fence.",
         "exampleTr": "Binici atı çitin üzerinden geçirdi."
+      },
+      {
+        "tr": "ek madde, ek şart (sözleşme, yasa)",
+        "en": "an additional clause or condition added to a document",
+        "exampleEn": "The senator attached a rider to the bill.",
+        "exampleTr": "Senatör yasa tasarısına bir ek madde iliştirdi."
       }
     ],
     "synonyms": [
@@ -172035,6 +173895,12 @@ export default [
         "en": "to tear something quickly and forcefully",
         "exampleEn": "He ripped the letter into pieces.",
         "exampleTr": "Mektubu parçalara ayırarak yırttı."
+      },
+      {
+        "tr": "yırtık, yarık (isim)",
+        "en": "a torn place in cloth or paper",
+        "exampleEn": "There was a large rip in his jeans.",
+        "exampleTr": "Kotunda büyük bir yırtık vardı."
       }
     ],
     "synonyms": [
@@ -172091,6 +173957,12 @@ export default [
         "en": "a formal religious or social ceremony",
         "exampleEn": "The wedding followed an ancient rite.",
         "exampleTr": "Düğün eski bir ayine göre yapıldı."
+      },
+      {
+        "tr": "gelenek, alışkanlık haline gelmiş davranış",
+        "en": "an established custom or traditional practice",
+        "exampleEn": "Getting a driver's license is a rite of passage for many teenagers.",
+        "exampleTr": "Ehliyet almak birçok genç için bir geçiş töreni niteliğindedir."
       }
     ],
     "synonyms": [
@@ -172116,6 +173988,12 @@ export default [
         "en": "a set of actions performed regularly in a fixed way",
         "exampleEn": "Drinking tea in the morning is a daily ritual for her.",
         "exampleTr": "Sabahları çay içmek onun için günlük bir ritüeldir."
+      },
+      {
+        "tr": "her zaman yapılan alışkanlık, rutin",
+        "en": "something done regularly and in the same way",
+        "exampleEn": "A cup of coffee in the morning is part of my daily ritual.",
+        "exampleTr": "Sabahları bir fincan kahve günlük rutinimin bir parçası."
       }
     ],
     "synonyms": [
@@ -172141,6 +174019,12 @@ export default [
         "en": "a person or group competing against another",
         "exampleEn": "The two companies have been rivals for years.",
         "exampleTr": "İki şirket yıllardır rakip durumda."
+      },
+      {
+        "tr": "boy ölçüşmek, denk olmak",
+        "en": "to be as good as someone or something else",
+        "exampleEn": "Few cities can rival Paris for its beauty.",
+        "exampleTr": "Çok az şehir güzellik açısından Paris'le boy ölçüşebilir."
       }
     ],
     "synonyms": [
@@ -172194,6 +174078,12 @@ export default [
         "en": "to make a loud, deep sound",
         "exampleEn": "The lion began to roar in the distance.",
         "exampleTr": "Aslan uzakta kükremeye başladı."
+      },
+      {
+        "tr": "kahkahayla gülmek, gürültüyle gülmek",
+        "en": "to laugh very loudly",
+        "exampleEn": "The audience roared with laughter at his jokes.",
+        "exampleTr": "Seyirci şakalarına kahkahalarla güldü."
       }
     ],
     "synonyms": [
@@ -172248,6 +174138,12 @@ export default [
         "en": "a vehicle or device propelled by burning fuel, used in space travel",
         "exampleEn": "The rocket was launched into space successfully.",
         "exampleTr": "Roket başarıyla uzaya fırlatıldı."
+      },
+      {
+        "tr": "roka (salata bitkisi)",
+        "en": "a green salad leaf with a peppery taste",
+        "exampleEn": "The salad had rocket, tomatoes and parmesan.",
+        "exampleTr": "Salatada roka, domates ve parmesan vardı."
       }
     ],
     "synonyms": [
@@ -172273,6 +174169,12 @@ export default [
         "en": "full of rocks or made of rock",
         "exampleEn": "The path to the beach was steep and rocky.",
         "exampleTr": "Plaja giden yol dik ve kayalıktı."
+      },
+      {
+        "tr": "sarsıntılı, istikrarsız, çalkantılı",
+        "en": "difficult and likely to fail; unstable",
+        "exampleEn": "Their marriage went through a rocky period.",
+        "exampleTr": "Evlilikleri çalkantılı bir dönemden geçti."
       }
     ],
     "synonyms": [
@@ -172378,6 +174280,12 @@ export default [
         "en": "members of a royal family, or money paid to an author or artist",
         "exampleEn": "The crowd cheered as the royalty passed by.",
         "exampleTr": "Kraliyet ailesi geçerken kalabalık tezahürat yaptı."
+      },
+      {
+        "tr": "telif ücreti (yazar, sanatçıya ödenen)",
+        "en": "a payment made to an author or artist for use of their work",
+        "exampleEn": "The author earns royalties on every book sold.",
+        "exampleTr": "Yazar satılan her kitaptan telif ücreti kazanıyor."
       }
     ],
     "synonyms": [
@@ -172455,6 +174363,12 @@ export default [
         "en": "a thick piece of fabric used to cover part of a floor",
         "exampleEn": "A colorful rug lay in front of the fireplace.",
         "exampleTr": "Şöminenin önünde renkli bir kilim seriliydi."
+      },
+      {
+        "tr": "battaniye, örtü (dizlere veya at üzerine)",
+        "en": "a thick blanket used for warmth",
+        "exampleEn": "She wrapped a rug around her legs to keep warm.",
+        "exampleTr": "Sıcak kalmak için bacaklarına bir battaniye sardı."
       }
     ],
     "synonyms": [
@@ -172585,6 +174499,12 @@ export default [
         "en": "to dismiss someone from their job",
         "exampleEn": "The manager threatened to sack him for being late again.",
         "exampleTr": "Müdür tekrar geç kaldığı için onu işten kovmakla tehdit etti."
+      },
+      {
+        "tr": "çuval, torba",
+        "en": "a large bag made of strong material",
+        "exampleEn": "He carried a sack of potatoes on his shoulder.",
+        "exampleTr": "Omzunda bir çuval patates taşıyordu."
       }
     ],
     "synonyms": [
@@ -172638,6 +174558,12 @@ export default [
         "en": "a very wise person, or a herb used in cooking",
         "exampleEn": "The old sage gave the young man valuable advice.",
         "exampleTr": "Yaşlı bilge, genç adama değerli öğütler verdi."
+      },
+      {
+        "tr": "bilge, akıllıca (sıfat)",
+        "en": "wise, especially as a result of experience",
+        "exampleEn": "She gave me some sage advice about my career.",
+        "exampleTr": "Bana kariyerim hakkında akıllıca bir öğüt verdi."
       }
     ],
     "synonyms": [
@@ -172665,6 +174591,12 @@ export default [
         "en": "to travel on water in a boat or ship",
         "exampleEn": "They will sail across the ocean next summer.",
         "exampleTr": "Gelecek yaz okyanusu yelkenle geçecekler."
+      },
+      {
+        "tr": "yelken (tekne yelkeni)",
+        "en": "a sheet of fabric that catches the wind to move a boat",
+        "exampleEn": "They raised the sail as the wind picked up.",
+        "exampleTr": "Rüzgar sertleşince yelkeni açtılar."
       }
     ],
     "synonyms": [
@@ -172769,6 +174701,12 @@ export default [
         "en": "a shop where hair or beauty treatments are given",
         "exampleEn": "She went to the salon to have her hair cut.",
         "exampleTr": "Saçını kestirmek için kuaföre gitti."
+      },
+      {
+        "tr": "sanat/edebiyat toplantısı, sohbet salonu",
+        "en": "a gathering of intellectuals or artists at someone's home",
+        "exampleEn": "She hosted a literary salon every Friday evening.",
+        "exampleTr": "Her cuma akşamı edebi bir sohbet toplantısı düzenlerdi."
       }
     ],
     "synonyms": [
@@ -172949,6 +174887,12 @@ export default [
         "en": "the right or chance to influence a decision",
         "exampleEn": "Employees should have a say in how the company is run.",
         "exampleTr": "Çalışanların şirketin nasıl yönetildiği konusunda söz hakkı olmalıdır."
+      },
+      {
+        "tr": "diyelim ki, örneğin, yaklaşık",
+        "en": "used to give an example or approximate figure",
+        "exampleEn": "Let's meet again in, say, two weeks.",
+        "exampleTr": "Diyelim ki iki hafta sonra tekrar buluşalım."
       }
     ],
     "synonyms": [
@@ -172999,6 +174943,12 @@ export default [
         "en": "a mark left on the skin after a wound has healed",
         "exampleEn": "He has a scar on his arm from the accident.",
         "exampleTr": "Kazadan kalma kolunda bir yara izi var."
+      },
+      {
+        "tr": "ruhsal yara, kalıcı etki",
+        "en": "a lasting emotional or psychological effect from a bad experience",
+        "exampleEn": "The war left deep scars on the whole generation.",
+        "exampleTr": "Savaş bütün nesilde derin ruhsal yaralar bıraktı."
       }
     ],
     "synonyms": [
@@ -173077,6 +175027,12 @@ export default [
         "en": "a pleasant smell",
         "exampleEn": "The scent of roses filled the room.",
         "exampleTr": "Güllerin kokusu odayı doldurdu."
+      },
+      {
+        "tr": "iz, koku izi (av hayvanının bıraktığı)",
+        "en": "the smell trail left by an animal or person",
+        "exampleEn": "The dogs picked up the fox's scent.",
+        "exampleTr": "Köpekler tilkinin iz kokusunu aldı."
       }
     ],
     "synonyms": [
@@ -173131,6 +175087,12 @@ export default [
         "en": "an official plan or system for doing something",
         "exampleEn": "The government launched a new scheme to help young people find work.",
         "exampleTr": "Hükümet gençlerin iş bulmasına yardımcı olmak için yeni bir plan başlattı."
+      },
+      {
+        "tr": "dolap, entrika, hile",
+        "en": "a secret and dishonest plan",
+        "exampleEn": "They devised a scheme to defraud the elderly.",
+        "exampleTr": "Yaşlıları dolandırmak için bir dolap çevirdiler."
       }
     ],
     "synonyms": [
@@ -173374,6 +175336,12 @@ export default [
         "en": "a sea mammal, or a device that closes something tightly",
         "exampleEn": "A seal basked on the rocks near the shore.",
         "exampleTr": "Bir fok kıyıya yakın kayaların üzerinde güneşleniyordu."
+      },
+      {
+        "tr": "sızdırmaz biçimde kapatmak; kesinleştirmek",
+        "en": "to close tightly, or to make something final",
+        "exampleEn": "She sealed the envelope and posted it.",
+        "exampleTr": "Zarfı kapatıp postaladı."
       }
     ],
     "synonyms": [],
@@ -173494,6 +175462,12 @@ export default [
         "en": "a part of a country's economy or activity",
         "exampleEn": "The technology sector has grown rapidly in recent years.",
         "exampleTr": "Teknoloji sektörü son yıllarda hızla büyüdü."
+      },
+      {
+        "tr": "kesim, bölge (askeri/coğrafi)",
+        "en": "a distinct area or part of a place, often under specific control",
+        "exampleEn": "The city was divided into four sectors after the war.",
+        "exampleTr": "Şehir savaştan sonra dört bölgeye ayrıldı."
       }
     ],
     "synonyms": [
@@ -173543,6 +175517,12 @@ export default [
         "en": "one of the parts into which something is divided",
         "exampleEn": "She peeled the orange and ate a segment.",
         "exampleTr": "Portakalı soydu ve bir dilim yedi."
+      },
+      {
+        "tr": "dilim (portakal vb. narenciyenin)",
+        "en": "one of the parts into which a citrus fruit divides naturally",
+        "exampleEn": "She peeled the orange and ate it segment by segment.",
+        "exampleTr": "Portakalı soydu ve dilim dilim yedi."
       }
     ],
     "synonyms": [
@@ -173913,6 +175893,12 @@ export default [
         "en": "happening in a series; repeating the same action",
         "exampleEn": "The police caught a serial offender.",
         "exampleTr": "Polis seri bir suçluyu yakaladı."
+      },
+      {
+        "tr": "dizi, tefrika (isim)",
+        "en": "a story broadcast or published in separate regular parts",
+        "exampleEn": "The radio serial had millions of listeners.",
+        "exampleTr": "Radyo dizisinin milyonlarca dinleyicisi vardı."
       }
     ],
     "synonyms": [
@@ -174203,6 +176189,12 @@ export default [
         "en": "to break suddenly into many small pieces",
         "exampleEn": "The glass fell and shattered on the floor.",
         "exampleTr": "Bardak düştü ve yerde paramparça oldu."
+      },
+      {
+        "tr": "yıkmak, alt üst etmek (umut, hayal, güven)",
+        "en": "to destroy or severely damage something such as hopes or beliefs",
+        "exampleEn": "The accident shattered all his dreams of becoming an athlete.",
+        "exampleTr": "Kaza, onun atlet olma hayallerini yıktı."
       }
     ],
     "synonyms": [
@@ -174231,6 +176223,12 @@ export default [
         "en": "a small building used for storing tools or other things",
         "exampleEn": "He keeps his gardening tools in the shed.",
         "exampleTr": "Bahçe aletlerini kulübede saklıyor."
+      },
+      {
+        "tr": "dökmek, akıtmak (gözyaşı, kan); (deri/tüy) dökmek",
+        "en": "to get rid of something or let something fall off",
+        "exampleEn": "Snakes shed their skin as they grow.",
+        "exampleTr": "Yılanlar büyürken derilerini döker."
       }
     ],
     "synonyms": [
@@ -174256,6 +176254,12 @@ export default [
         "en": "something used to protect against danger or attack",
         "exampleEn": "The knight raised his shield to block the blow.",
         "exampleTr": "Şövalye darbeyi engellemek için kalkanını kaldırdı."
+      },
+      {
+        "tr": "korumak, siper olmak",
+        "en": "to protect someone or something from danger or harm",
+        "exampleEn": "She raised her hand to shield her eyes from the sun.",
+        "exampleTr": "Güneşten gözlerini korumak için elini kaldırdı."
       }
     ],
     "synonyms": [
@@ -174281,6 +176285,12 @@ export default [
         "en": "a period of work, or a change in position or direction",
         "exampleEn": "She works the night shift at the hospital.",
         "exampleTr": "Hastanede gece vardiyasında çalışıyor."
+      },
+      {
+        "tr": "kaydırmak, yer değiştirmek, taşımak",
+        "en": "to move or change from one position or direction to another",
+        "exampleEn": "He shifted his weight from one foot to the other.",
+        "exampleTr": "Ağırlığını bir ayağından diğerine kaydırdı."
       }
     ],
     "synonyms": [
@@ -174551,6 +176561,12 @@ export default [
         "en": "an informal word for a psychiatrist or psychologist",
         "exampleEn": "He started seeing a shrink to deal with his anxiety.",
         "exampleTr": "Kaygısıyla başa çıkmak için bir psikiyatra görünmeye başladı."
+      },
+      {
+        "tr": "küçülmek, çekmek, büzülmek",
+        "en": "to become smaller in size or amount",
+        "exampleEn": "My sweater shrank in the wash.",
+        "exampleTr": "Kazağım yıkamada çekti."
       }
     ],
     "synonyms": [
@@ -174576,6 +176592,12 @@ export default [
         "en": "to raise your shoulders to show you do not know or care",
         "exampleEn": "He just shrugged and walked away.",
         "exampleTr": "Sadece omuz silkti ve uzaklaştı."
+      },
+      {
+        "tr": "omuz silkme (isim)",
+        "en": "the act of raising your shoulders to show you do not know or care",
+        "exampleEn": "He answered my question with a shrug.",
+        "exampleTr": "Soruma bir omuz silkmeyle cevap verdi."
       }
     ],
     "synonyms": [],
@@ -174729,6 +176751,12 @@ export default [
         "en": "from a time in the past until now or until a later time",
         "exampleEn": "He left home in 2010 and we have not seen him since.",
         "exampleTr": "2010'da evden ayrıldı ve o zamandan beri onu görmedik."
+      },
+      {
+        "tr": "-dığı için, madem ki (bağlaç)",
+        "en": "because; for the reason that",
+        "exampleEn": "Since you're here, you might as well help.",
+        "exampleTr": "Madem buradasın, bari yardım et."
       }
     ],
     "synonyms": [
@@ -174847,6 +176875,12 @@ export default [
         "en": "to make a quick rough drawing of something",
         "exampleEn": "She sketched the old castle while sitting in the park.",
         "exampleTr": "Parkta otururken eski kalenin taslağını çizdi."
+      },
+      {
+        "tr": "skeç, kısa komik oyun (isim)",
+        "en": "a short, usually funny scene performed by actors",
+        "exampleEn": "The show opened with a comedy sketch.",
+        "exampleTr": "Gösteri bir komedi skeciyle başladı."
       }
     ],
     "synonyms": [
@@ -174980,6 +177014,12 @@ export default [
         "en": "to not do something or leave it out",
         "exampleEn": "He decided to skip breakfast because he was late.",
         "exampleTr": "Geç kaldığı için kahvaltıyı atlamaya karar verdi."
+      },
+      {
+        "tr": "sekerek/hoplayarak yürümek, sıçramak",
+        "en": "to move forward with light jumping steps",
+        "exampleEn": "The children skipped happily down the road.",
+        "exampleTr": "Çocuklar yolda neşeyle sekerek gittiler."
       }
     ],
     "synonyms": [
@@ -175056,6 +177096,12 @@ export default [
         "en": "to shut something with force and a loud noise",
         "exampleEn": "She slammed the door angrily as she left.",
         "exampleTr": "Çıkarken kapıyı öfkeyle çarptı."
+      },
+      {
+        "tr": "sert eleştirmek, yerden yere vurmak",
+        "en": "to criticize someone or something very strongly",
+        "exampleEn": "The critics slammed her latest film.",
+        "exampleTr": "Eleştirmenler onun son filmini yerden yere vurdu."
       }
     ],
     "synonyms": [
@@ -175104,6 +177150,12 @@ export default [
         "en": "a hit with the flat part of the hand",
         "exampleEn": "She gave him a slap across the face.",
         "exampleTr": "Yüzüne bir tokat attı."
+      },
+      {
+        "tr": "tokat atmak, şaplak vurmak (fiil)",
+        "en": "to hit someone with the flat part of your hand",
+        "exampleEn": "She slapped him across the face.",
+        "exampleTr": "Suratına bir tokat attı."
       }
     ],
     "synonyms": [
@@ -175128,6 +177180,12 @@ export default [
         "en": "a mark (/) used in writing, or a long cut",
         "exampleEn": "Put a slash between the two dates.",
         "exampleTr": "İki tarihin arasına bir eğik çizgi koy."
+      },
+      {
+        "tr": "büyük ölçüde kısmak, indirmek (fiyat, bütçe)",
+        "en": "to reduce something such as prices or costs by a large amount",
+        "exampleEn": "The store slashed its prices by 50 percent.",
+        "exampleTr": "Mağaza fiyatlarını yüzde 50 indirdi."
       }
     ],
     "synonyms": [
@@ -175152,6 +177210,12 @@ export default [
         "en": "the killing of many people, or of animals for food",
         "exampleEn": "The war led to the slaughter of thousands of civilians.",
         "exampleTr": "Savaş, binlerce sivilin katliamına yol açtı."
+      },
+      {
+        "tr": "hayvan kesmek; katletmek (fiil)",
+        "en": "to kill animals for food, or to kill people brutally",
+        "exampleEn": "Thousands of animals are slaughtered here every day.",
+        "exampleTr": "Burada her gün binlerce hayvan kesiliyor."
       }
     ],
     "synonyms": [
@@ -175177,6 +177241,12 @@ export default [
         "en": "small in degree; not important",
         "exampleEn": "There was a slight change in the weather.",
         "exampleTr": "Havada hafif bir değişiklik vardı."
+      },
+      {
+        "tr": "ince, narin (yapılı)",
+        "en": "thin and delicate in build",
+        "exampleEn": "She was a slight woman with short brown hair.",
+        "exampleTr": "Kısa kahverengi saçlı, narin yapılı bir kadındı."
       }
     ],
     "synonyms": [
@@ -175258,6 +177328,12 @@ export default [
         "en": "to break something violently into pieces",
         "exampleEn": "The ball smashed the window into tiny pieces.",
         "exampleTr": "Top, pencereyi paramparça etti."
+      },
+      {
+        "tr": "çarpmak, toslamak (araç vb.)",
+        "en": "to hit something violently, often causing a crash",
+        "exampleEn": "The car smashed into a wall.",
+        "exampleTr": "Araba bir duvara çarptı."
       }
     ],
     "synonyms": [
@@ -175310,6 +177386,18 @@ export default [
         "en": "to break suddenly with a sharp sound",
         "exampleEn": "The dry branch snapped under his foot.",
         "exampleTr": "Kuru dal ayağının altında şak diye kırıldı."
+      },
+      {
+        "tr": "ters ters konuşmak, terslemek",
+        "en": "to speak to someone quickly in an angry way",
+        "exampleEn": "\"Leave me alone!\" she snapped.",
+        "exampleTr": "\"Beni rahat bırak!\" diye tersledi."
+      },
+      {
+        "tr": "fotoğraf çekmek",
+        "en": "to take a quick photograph",
+        "exampleEn": "Tourists were snapping pictures of the castle.",
+        "exampleTr": "Turistler kalenin fotoğraflarını çekiyordu."
       }
     ],
     "synonyms": [
@@ -175335,6 +177423,12 @@ export default [
         "en": "to go somewhere quietly and secretly",
         "exampleEn": "He tried to sneak out of the house without being seen.",
         "exampleTr": "Görünmeden evden gizlice çıkmaya çalıştı."
+      },
+      {
+        "tr": "gizlice almak/sokmak/vermek",
+        "en": "to take, put, or do something secretly",
+        "exampleEn": "He sneaked a chocolate bar into his pocket.",
+        "exampleTr": "Cebine gizlice bir çikolata soktu."
       }
     ],
     "synonyms": [
@@ -175360,6 +177454,12 @@ export default [
         "en": "a scornful expression or remark showing contempt",
         "exampleEn": "There was a cruel sneer on his face as he spoke.",
         "exampleTr": "Konuşurken yüzünde acımasız bir alaycı gülümseme vardı."
+      },
+      {
+        "tr": "alay etmek, küçümsemek (fiil)",
+        "en": "to smile or speak in a way that shows contempt",
+        "exampleEn": "He sneered at my attempt to help.",
+        "exampleTr": "Yardım etme çabamla alay etti."
       }
     ],
     "synonyms": [
@@ -175385,6 +177485,12 @@ export default [
         "en": "to breathe air in through the nose in a way that makes a sound",
         "exampleEn": "The dog sniffed the ground looking for food.",
         "exampleTr": "Köpek yiyecek ararken yeri kokladı."
+      },
+      {
+        "tr": "koklama, burun çekme (isim)",
+        "en": "the act of smelling or drawing air in through the nose",
+        "exampleEn": "The dog gave the ground a quick sniff.",
+        "exampleTr": "Köpek yeri hızlıca kokladı."
       }
     ],
     "synonyms": [
@@ -175409,6 +177515,12 @@ export default [
         "en": "a snorting sound made by a sleeping person while breathing",
         "exampleEn": "His loud snore kept the whole family awake.",
         "exampleTr": "Yüksek horultusu bütün aileyi uyanık tuttu."
+      },
+      {
+        "tr": "horlamak (fiil)",
+        "en": "to breathe noisily while sleeping",
+        "exampleEn": "He snores so loudly that I can't sleep.",
+        "exampleTr": "O kadar yüksek sesle horluyor ki uyuyamıyorum."
       }
     ],
     "synonyms": [],
@@ -175431,6 +177543,12 @@ export default [
         "en": "a ball of snow pressed together, often thrown for fun",
         "exampleEn": "The children threw a snowball at each other in the park.",
         "exampleTr": "Çocuklar parkta birbirlerine kartopu attılar."
+      },
+      {
+        "tr": "hızla büyümek, çığ gibi büyümek",
+        "en": "to grow quickly in size or importance",
+        "exampleEn": "The small protest snowballed into a nationwide movement.",
+        "exampleTr": "Küçük protesto çığ gibi büyüyerek ülke çapında bir harekete dönüştü."
       }
     ],
     "synonyms": [],
@@ -175478,6 +177596,12 @@ export default [
         "en": "a period of lying in or being left in water",
         "exampleEn": "After the long hike, she enjoyed a hot soak in the bath.",
         "exampleTr": "Uzun yürüyüşten sonra küvette sıcak bir banyonun keyfini çıkardı."
+      },
+      {
+        "tr": "ıslatmak, suda bekletmek (fiil)",
+        "en": "to make something completely wet or leave it in liquid",
+        "exampleEn": "Soak the beans overnight before cooking them.",
+        "exampleTr": "Fasulyeleri pişirmeden önce bir gece suda beklet."
       }
     ],
     "synonyms": [
@@ -175556,6 +177680,12 @@ export default [
         "en": "to rise high in the air, or to increase quickly",
         "exampleEn": "The eagle soared high above the mountains.",
         "exampleTr": "Kartal dağların çok yukarısında süzülerek uçtu."
+      },
+      {
+        "tr": "yükselmek, göğe uzanmak (bina/dağ vb.)",
+        "en": "to rise high into the air (of a tall structure)",
+        "exampleEn": "The cathedral's towers soar above the city.",
+        "exampleTr": "Katedralin kuleleri şehrin üzerinde göğe uzanır."
       }
     ],
     "synonyms": [
@@ -175584,6 +177714,12 @@ export default [
         "en": "to cry noisily while taking sudden breaths",
         "exampleEn": "The little girl sobbed when she lost her toy.",
         "exampleTr": "Küçük kız oyuncağını kaybedince hıçkıra hıçkıra ağladı."
+      },
+      {
+        "tr": "hıçkırık (isim)",
+        "en": "the act or sound of crying with short breaths",
+        "exampleEn": "She spoke between sobs.",
+        "exampleTr": "Hıçkırıklar arasında konuştu."
       }
     ],
     "synonyms": [
@@ -175691,6 +177827,12 @@ export default [
         "en": "the top layer of earth in which plants grow",
         "exampleEn": "This rich soil is perfect for growing vegetables.",
         "exampleTr": "Bu verimli toprak sebze yetiştirmek için mükemmel."
+      },
+      {
+        "tr": "kirletmek, lekelemek (fiil)",
+        "en": "to make something dirty",
+        "exampleEn": "His clothes were soiled with mud.",
+        "exampleTr": "Kıyafetleri çamurla kirlenmişti."
       }
     ],
     "synonyms": [
@@ -175793,6 +177935,12 @@ export default [
         "en": "done by one person alone",
         "exampleEn": "She made her first solo flight at the age of eighteen.",
         "exampleTr": "İlk solo uçuşunu on sekiz yaşında yaptı."
+      },
+      {
+        "tr": "solo (müzikte tek kişilik bölüm)",
+        "en": "a piece of music performed by one person",
+        "exampleEn": "She played a beautiful guitar solo during the concert.",
+        "exampleTr": "Konser sırasında güzel bir gitar solosu çaldı."
       }
     ],
     "synonyms": [
@@ -176065,6 +178213,12 @@ export default [
         "en": "to extend across a period of time or an area",
         "exampleEn": "Her career spanned more than forty years.",
         "exampleTr": "Kariyeri kırk yıldan fazla bir süreyi kapsadı."
+      },
+      {
+        "tr": "süre, zaman aralığı; açıklık, genişlik",
+        "en": "a period of time or the width of something",
+        "exampleEn": "The project was completed within a span of two years.",
+        "exampleTr": "Proje iki yıllık bir süre içinde tamamlandı."
       }
     ],
     "synonyms": [
@@ -176090,6 +178244,18 @@ export default [
         "en": "extra and available to use when needed",
         "exampleEn": "Always keep a spare tire in the trunk of your car.",
         "exampleTr": "Arabanın bagajında her zaman yedek bir lastik bulundur."
+      },
+      {
+        "tr": "esirgemek, bağışlamak (birini bir şeyden korumak)",
+        "en": "to save someone from having to experience something unpleasant",
+        "exampleEn": "I'll spare you the boring details of the meeting.",
+        "exampleTr": "Seni toplantının sıkıcı ayrıntılarından esirgeyeceğim."
+      },
+      {
+        "tr": "ayırmak (zaman, para vb. vermek)",
+        "en": "to give time or money that you can afford",
+        "exampleEn": "Can you spare a few minutes to help me?",
+        "exampleTr": "Bana yardım etmek için birkaç dakika ayırabilir misin?"
       }
     ],
     "synonyms": [
@@ -176137,6 +178303,12 @@ export default [
         "en": "a small flash of fire or light",
         "exampleEn": "A single spark from the fire started the forest blaze.",
         "exampleTr": "Ateşten çıkan tek bir kıvılcım orman yangınını başlattı."
+      },
+      {
+        "tr": "ateşlemek, tetiklemek, yol açmak",
+        "en": "to cause something to start or happen",
+        "exampleEn": "The new law sparked a wave of protests across the country.",
+        "exampleTr": "Yeni yasa ülke genelinde bir protesto dalgasını tetikledi."
       }
     ],
     "synonyms": [
@@ -176390,6 +178562,12 @@ export default [
         "en": "to turn round and round quickly",
         "exampleEn": "The dancer began to spin gracefully across the stage.",
         "exampleTr": "Dansçı sahnede zarif bir şekilde dönmeye başladı."
+      },
+      {
+        "tr": "eğirmek (iplik yapmak); ağ örmek",
+        "en": "to make thread or a web by twisting fibres",
+        "exampleEn": "The spider spins a web to catch insects.",
+        "exampleTr": "Örümcek böcekleri yakalamak için ağ örer."
       }
     ],
     "synonyms": [
@@ -176448,6 +178626,12 @@ export default [
         "en": "the sound or act of liquid hitting a surface",
         "exampleEn": "The stone landed in the pond with a loud splash.",
         "exampleTr": "Taş yüksek bir şıpırtıyla gölete düştü."
+      },
+      {
+        "tr": "su birikintisi, sıçrayan sıvı; ışık/renk lekesi",
+        "en": "a small amount of liquid or a bright patch of colour",
+        "exampleEn": "There was a splash of red paint on the wall.",
+        "exampleTr": "Duvarda bir kırmızı boya lekesi vardı."
       }
     ],
     "synonyms": [
@@ -176548,6 +178732,12 @@ export default [
         "en": "liquid sent through the air in tiny drops",
         "exampleEn": "A fine spray of water cooled the garden.",
         "exampleTr": "İnce bir su püskürtmesi bahçeyi serinletti."
+      },
+      {
+        "tr": "püskürtmek, serpmek, sıkmak (fiil)",
+        "en": "to force liquid out in small drops over an area",
+        "exampleEn": "She sprayed perfume on her wrists before leaving.",
+        "exampleTr": "Çıkmadan önce bileklerine parfüm sıktı."
       }
     ],
     "synonyms": [
@@ -176680,6 +178870,12 @@ export default [
         "en": "a racket sport played in an enclosed court",
         "exampleEn": "They play squash together every weekend.",
         "exampleTr": "Her hafta sonu birlikte squash oynuyorlar."
+      },
+      {
+        "tr": "ezmek, sıkıştırmak, bastırmak",
+        "en": "to crush something or press it into a smaller space",
+        "exampleEn": "He squashed the empty can with his foot.",
+        "exampleTr": "Boş kutuyu ayağıyla ezdi."
       }
     ],
     "synonyms": [],
@@ -176702,6 +178898,12 @@ export default [
         "en": "to press something firmly, especially with the hands",
         "exampleEn": "She had to squeeze the lemon to get the juice.",
         "exampleTr": "Suyunu çıkarmak için limonu sıkmak zorunda kaldı."
+      },
+      {
+        "tr": "sıkıştırıp geçmek, güçlükle sığmak",
+        "en": "to fit into a small space with difficulty",
+        "exampleEn": "We managed to squeeze into the crowded elevator.",
+        "exampleTr": "Kalabalık asansöre zar zor sığmayı başardık."
       }
     ],
     "synonyms": [
@@ -176731,6 +178933,12 @@ export default [
         "en": "to push a sharp object into someone or something",
         "exampleEn": "The attacker tried to stab him with a knife.",
         "exampleTr": "Saldırgan onu bir bıçakla bıçaklamaya çalıştı."
+      },
+      {
+        "tr": "deneme, girişim (a stab at)",
+        "en": "an attempt to do something",
+        "exampleEn": "I've never cooked this before, but I'll have a stab at it.",
+        "exampleTr": "Bunu daha önce hiç pişirmedim ama bir deneyeceğim."
       }
     ],
     "synonyms": [
@@ -176757,6 +178965,18 @@ export default [
         "en": "a pile of things placed one on top of another",
         "exampleEn": "There was a stack of books on the desk.",
         "exampleTr": "Masanın üzerinde bir kitap yığını vardı."
+      },
+      {
+        "tr": "istiflemek, üst üste yığmak (fiil)",
+        "en": "to arrange things in a pile",
+        "exampleEn": "Please stack the chairs against the wall after the meeting.",
+        "exampleTr": "Toplantıdan sonra lütfen sandalyeleri duvara dayayıp istifleyin."
+      },
+      {
+        "tr": "bir sürü, çok miktarda (stacks of)",
+        "en": "a large amount of something",
+        "exampleEn": "I've got stacks of work to finish before Friday.",
+        "exampleTr": "Cumaya kadar bitirmem gereken bir sürü işim var."
       }
     ],
     "synonyms": [
@@ -176783,6 +179003,18 @@ export default [
         "en": "an unsteady walking movement",
         "exampleEn": "He walked with a stagger after the long climb.",
         "exampleTr": "Uzun tırmanıştan sonra sendeleyerek yürüdü."
+      },
+      {
+        "tr": "sendelemek, yalpalayarak yürümek (fiil)",
+        "en": "to walk unsteadily as if about to fall",
+        "exampleEn": "He staggered home after the long, exhausting journey.",
+        "exampleTr": "Uzun ve yorucu yolculuktan sonra sendeleyerek eve gitti."
+      },
+      {
+        "tr": "hayrete düşürmek, şaşkına çevirmek",
+        "en": "to shock or amaze someone greatly",
+        "exampleEn": "The size of the debt staggered the whole team.",
+        "exampleTr": "Borcun büyüklüğü tüm ekibi hayrete düşürdü."
       }
     ],
     "synonyms": [
@@ -176809,6 +179041,12 @@ export default [
         "en": "a mark that is difficult to remove",
         "exampleEn": "There was a coffee stain on his shirt.",
         "exampleTr": "Gömleğinde bir kahve lekesi vardı."
+      },
+      {
+        "tr": "lekelemek, leke bırakmak (fiil)",
+        "en": "to leave a mark that is difficult to remove",
+        "exampleEn": "The red wine stained the white tablecloth.",
+        "exampleTr": "Kırmızı şarap beyaz masa örtüsünü lekeledi."
       }
     ],
     "synonyms": [
@@ -176835,6 +179073,12 @@ export default [
         "en": "a share or financial interest in something",
         "exampleEn": "She holds a large stake in the company.",
         "exampleTr": "Şirkette büyük bir paya sahip."
+      },
+      {
+        "tr": "kazık, direk",
+        "en": "a strong pointed stick pushed into the ground",
+        "exampleEn": "They drove a wooden stake into the ground to mark the spot.",
+        "exampleTr": "Yeri işaretlemek için toprağa tahta bir kazık çaktılar."
       }
     ],
     "synonyms": [
@@ -176886,6 +179130,12 @@ export default [
         "en": "usual or normal rather than special",
         "exampleEn": "This is the standard procedure for new employees.",
         "exampleTr": "Bu, yeni çalışanlar için standart prosedürdür."
+      },
+      {
+        "tr": "standart, ölçüt, düzey (isim)",
+        "en": "a level of quality that is considered acceptable",
+        "exampleEn": "The hotel maintains a very high standard of service.",
+        "exampleTr": "Otel çok yüksek bir hizmet standardını korur."
       }
     ],
     "synonyms": [
@@ -177107,6 +179357,18 @@ export default [
         "en": "relating to or controlled by the government",
         "exampleEn": "He attended a state school in his hometown.",
         "exampleTr": "Memleketinde bir devlet okuluna gitti."
+      },
+      {
+        "tr": "belirtmek, ifade etmek, beyan etmek (fiil)",
+        "en": "to say or write something clearly and formally",
+        "exampleEn": "Please state your name and address on the form.",
+        "exampleTr": "Lütfen formda adınızı ve adresinizi belirtin."
+      },
+      {
+        "tr": "durum, hal (isim)",
+        "en": "the condition that someone or something is in",
+        "exampleEn": "The car was in a terrible state after the accident.",
+        "exampleTr": "Araba kazadan sonra berbat bir durumdaydı."
       }
     ],
     "synonyms": [
@@ -177239,6 +179501,12 @@ export default [
         "en": "to control the direction of a vehicle",
         "exampleEn": "He learned to steer the boat through the narrow channel.",
         "exampleTr": "Tekneyi dar kanaldan geçirmeyi öğrendi."
+      },
+      {
+        "tr": "yönlendirmek, sevk etmek (bir kişiyi/durumu)",
+        "en": "to guide someone or something in a particular direction",
+        "exampleEn": "The teacher tried to steer the discussion back to the main topic.",
+        "exampleTr": "Öğretmen tartışmayı ana konuya geri yönlendirmeye çalıştı."
       }
     ],
     "synonyms": [
@@ -177388,6 +179656,12 @@ export default [
         "en": "a dish of meat and vegetables cooked slowly in liquid",
         "exampleEn": "She made a hearty beef stew for dinner.",
         "exampleTr": "Akşam yemeği için doyurucu bir et yahnisi yaptı."
+      },
+      {
+        "tr": "ağır ağır pişirmek, yahni yapmak; kaygıdan içi içini yemek",
+        "en": "to cook slowly in liquid, or to worry about something",
+        "exampleEn": "Let the meat stew for two hours until it is tender.",
+        "exampleTr": "Eti yumuşayana kadar iki saat ağır ağır pişir."
       }
     ],
     "synonyms": [
@@ -177413,6 +179687,18 @@ export default [
         "en": "a thin piece of wood from a tree",
         "exampleEn": "The dog ran to fetch the stick.",
         "exampleTr": "Köpek sopayı getirmek için koştu."
+      },
+      {
+        "tr": "yapışmak, yapıştırmak; saplanmak (fiil)",
+        "en": "to attach or become fixed to something",
+        "exampleEn": "The stamp wouldn't stick to the envelope.",
+        "exampleTr": "Pul zarfa yapışmıyordu."
+      },
+      {
+        "tr": "koymak, sokmak (bir yere hızlıca koymak)",
+        "en": "to put something somewhere, often casually",
+        "exampleEn": "Just stick your coat on the chair.",
+        "exampleTr": "Ceketini sandalyeye bırakıver."
       }
     ],
     "synonyms": [
@@ -177439,6 +179725,18 @@ export default [
         "en": "firm and difficult to bend or move",
         "exampleEn": "My neck felt stiff after the long flight.",
         "exampleTr": "Uzun uçuştan sonra boynum tutulmuştu."
+      },
+      {
+        "tr": "tutulmuş, kasılmış (kas/eklem)",
+        "en": "painful and difficult to move (of muscles or joints)",
+        "exampleEn": "My neck feels stiff after sleeping in a strange position.",
+        "exampleTr": "Tuhaf bir pozisyonda uyuduktan sonra boynum tutuldu."
+      },
+      {
+        "tr": "resmi, soğuk, ölçülü (davranış)",
+        "en": "formal and not relaxed or friendly",
+        "exampleEn": "His manner was rather stiff and unfriendly.",
+        "exampleTr": "Tavrı oldukça soğuk ve mesafeliydi."
       }
     ],
     "synonyms": [
@@ -177583,6 +179881,12 @@ export default [
         "en": "to have a strong, unpleasant smell",
         "exampleEn": "The rubbish began to stink in the hot weather.",
         "exampleTr": "Çöp, sıcak havada pis kokmaya başladı."
+      },
+      {
+        "tr": "berbat olmak, iğrenç olmak, hoş olmamak",
+        "en": "to be very bad or unpleasant",
+        "exampleEn": "The whole plan stinks and I don't want to be part of it.",
+        "exampleTr": "Bütün plan berbat ve ben bunun parçası olmak istemiyorum."
       }
     ],
     "synonyms": [
@@ -177608,6 +179912,12 @@ export default [
         "en": "a single loop of thread made by a needle in sewing",
         "exampleEn": "The doctor put three stitches in the wound.",
         "exampleTr": "Doktor yaraya üç dikiş attı."
+      },
+      {
+        "tr": "böğür ağrısı, yan ağrısı (koşarken)",
+        "en": "a sudden sharp pain in the side of the body",
+        "exampleEn": "I got a stitch in my side halfway through the run.",
+        "exampleTr": "Koşunun ortasında böğrüme bir ağrı saplandı."
       }
     ],
     "synonyms": [
@@ -178032,6 +180342,18 @@ export default [
         "en": "a sudden illness caused by a blocked or burst blood vessel in the brain",
         "exampleEn": "Her grandfather suffered a stroke last year.",
         "exampleTr": "Büyükbabası geçen yıl felç geçirdi."
+      },
+      {
+        "tr": "okşamak, sıvazlamak (fiil)",
+        "en": "to move your hand gently over a surface",
+        "exampleEn": "She gently stroked the cat's soft fur.",
+        "exampleTr": "Kedinin yumuşak tüylerini nazikçe okşadı."
+      },
+      {
+        "tr": "vuruş, darbe; fırça darbesi",
+        "en": "a single movement, hit, or mark",
+        "exampleEn": "He painted the wall with long, even strokes.",
+        "exampleTr": "Duvarı uzun ve düzgün fırça darbeleriyle boyadı."
       }
     ],
     "synonyms": [
@@ -178286,6 +180608,12 @@ export default [
         "en": "a particular kind of matter with definite properties",
         "exampleEn": "This substance dissolves quickly in water.",
         "exampleTr": "Bu madde suda hızlıca çözünür."
+      },
+      {
+        "tr": "öz, esas, önem",
+        "en": "the most important or main part of something",
+        "exampleEn": "The substance of his argument was that we need more funding.",
+        "exampleTr": "Argümanının özü daha fazla fona ihtiyacımız olduğuydu."
       }
     ],
     "synonyms": [
@@ -178419,6 +180747,12 @@ export default [
         "en": "to draw liquid or air into the mouth using the lips",
         "exampleEn": "The baby began to suck its thumb.",
         "exampleTr": "Bebek başparmağını emmeye başladı."
+      },
+      {
+        "tr": "berbat olmak, iğrenç olmak (argo)",
+        "en": "to be very bad or unpleasant",
+        "exampleEn": "This weather really sucks; it's been raining all week.",
+        "exampleTr": "Bu hava gerçekten berbat; bütün hafta yağmur yağıyor."
       }
     ],
     "synonyms": [
@@ -178817,6 +181151,12 @@ export default [
         "en": "a sudden powerful increase or movement",
         "exampleEn": "There was a sudden surge in demand for the product.",
         "exampleTr": "Ürüne olan talepte ani bir artış yaşandı."
+      },
+      {
+        "tr": "aniden ileri atılmak, akın etmek",
+        "en": "to move forward quickly and suddenly in a large group",
+        "exampleEn": "The crowd surged toward the stage when the singer appeared.",
+        "exampleTr": "Şarkıcı göründüğünde kalabalık sahneye doğru akın etti."
       }
     ],
     "synonyms": [
@@ -178845,6 +181185,12 @@ export default [
         "en": "to stop fighting and admit defeat to an enemy",
         "exampleEn": "The soldiers refused to surrender to the enemy.",
         "exampleTr": "Askerler düşmana teslim olmayı reddetti."
+      },
+      {
+        "tr": "teslim etmek, vermek (bir şeyi)",
+        "en": "to give up something or hand it over, often officially",
+        "exampleEn": "He had to surrender his passport to the police.",
+        "exampleTr": "Pasaportunu polise teslim etmek zorunda kaldı."
       }
     ],
     "synonyms": [
@@ -178923,6 +181269,18 @@ export default [
         "en": "to stop something temporarily",
         "exampleEn": "The match was suspended because of heavy rain.",
         "exampleTr": "Maç şiddetli yağmur yüzünden askıya alındı."
+      },
+      {
+        "tr": "asmak, sarkıtmak",
+        "en": "to hang something from above",
+        "exampleEn": "A lamp was suspended from the ceiling.",
+        "exampleTr": "Tavandan bir lamba asılmıştı."
+      },
+      {
+        "tr": "(okuldan/işten) uzaklaştırmak, geçici olarak men etmek",
+        "en": "to officially prevent someone from doing their job or attending for a period",
+        "exampleEn": "The student was suspended from school for a week.",
+        "exampleTr": "Öğrenci bir haftalığına okuldan uzaklaştırıldı."
       }
     ],
     "synonyms": [
@@ -179054,6 +181412,12 @@ export default [
         "en": "to clean a surface using a brush or broom",
         "exampleEn": "Please sweep the floor after the party.",
         "exampleTr": "Lütfen partiden sonra yeri süpürün."
+      },
+      {
+        "tr": "hızla yayılmak, kaplamak (bir bölgeyi)",
+        "en": "to spread quickly across an area",
+        "exampleEn": "A wave of panic swept through the city.",
+        "exampleTr": "Şehri bir panik dalgası kapladı."
       }
     ],
     "synonyms": [
@@ -179106,6 +181470,12 @@ export default [
         "en": "a seat hung from above on which someone can sway back and forth",
         "exampleEn": "The children played happily on the swing.",
         "exampleTr": "Çocuklar salıncakta mutlu mutlu oynadılar."
+      },
+      {
+        "tr": "ani değişim, kayma (görüş/ruh hali)",
+        "en": "a sudden or big change in opinion, mood, or amount",
+        "exampleEn": "There was a big swing in public opinion before the election.",
+        "exampleTr": "Seçimden önce kamuoyunda büyük bir görüş değişimi oldu."
       }
     ],
     "synonyms": [
@@ -179358,6 +181728,12 @@ export default [
         "en": "a small label attached to an object giving information",
         "exampleEn": "The price tag was still on the new shirt.",
         "exampleTr": "Yeni gömleğin üzerinde hâlâ fiyat etiketi vardı."
+      },
+      {
+        "tr": "etiketlemek, işaretlemek (özellikle sosyal medyada)",
+        "en": "to attach a label to something or mark someone in a post",
+        "exampleEn": "She tagged me in the photo she posted online.",
+        "exampleTr": "İnternette paylaştığı fotoğrafta beni etiketledi."
       }
     ],
     "synonyms": [
@@ -179383,6 +181759,12 @@ export default [
         "en": "the part at the rear of an animal's body",
         "exampleEn": "The dog wagged its tail happily.",
         "exampleTr": "Köpek kuyruğunu mutlu mutlu salladı."
+      },
+      {
+        "tr": "takip etmek, gizlice izlemek",
+        "en": "to follow someone secretly to watch what they do",
+        "exampleEn": "The detective tailed the suspect for hours.",
+        "exampleTr": "Dedektif şüpheliyi saatlerce takip etti."
       }
     ],
     "synonyms": [],
@@ -179742,6 +182124,18 @@ export default [
         "en": "gentle, kind, and loving",
         "exampleEn": "She gave the baby a tender kiss on the forehead.",
         "exampleTr": "Bebeğin alnına şefkatli bir öpücük kondurdu."
+      },
+      {
+        "tr": "(et için) yumuşak, kolay çiğnenen",
+        "en": "(of food, especially meat) easy to cut or chew, not tough",
+        "exampleEn": "The steak was so tender it melted in my mouth.",
+        "exampleTr": "Biftek o kadar yumuşaktı ki ağzımda dağıldı."
+      },
+      {
+        "tr": "acıyan, hassas (dokunulduğunda)",
+        "en": "(of a part of the body) painful when touched",
+        "exampleEn": "My ankle is still tender after the fall.",
+        "exampleTr": "Düşmeden sonra bileğim hâlâ acıyor."
       }
     ],
     "synonyms": [
@@ -179826,6 +182220,12 @@ export default [
         "en": "a flat outdoor area next to a building",
         "exampleEn": "We had dinner on the terrace overlooking the sea.",
         "exampleTr": "Denize bakan terasta akşam yemeği yedik."
+      },
+      {
+        "tr": "sıra ev, bitişik nizam evler dizisi",
+        "en": "a row of houses joined together",
+        "exampleEn": "They live in a small house in a Victorian terrace.",
+        "exampleTr": "Viktorya dönemi sıra evlerinde küçük bir evde yaşıyorlar."
       }
     ],
     "synonyms": [
@@ -180302,6 +182702,12 @@ export default [
         "en": "the feeling of needing to drink something",
         "exampleEn": "After the long hike, his thirst was unbearable.",
         "exampleTr": "Uzun yürüyüşten sonra susuzluğu dayanılmazdı."
+      },
+      {
+        "tr": "güçlü istek, açlık (mecazi)",
+        "en": "a strong desire for something",
+        "exampleEn": "She has a real thirst for knowledge.",
+        "exampleTr": "Gerçek bir bilgi açlığı var onda."
       }
     ],
     "synonyms": [
@@ -180433,6 +182839,18 @@ export default [
         "en": "a thin strand of cotton or other material used for sewing",
         "exampleEn": "She used a needle and thread to fix the button.",
         "exampleTr": "Düğmeyi tamir etmek için iğne ve iplik kullandı."
+      },
+      {
+        "tr": "(iğneye) iplik geçirmek; (dar bir yerden) geçirmek",
+        "en": "to pass thread or something long through a narrow space",
+        "exampleEn": "She threaded the needle carefully.",
+        "exampleTr": "İğneye dikkatlice iplik geçirdi."
+      },
+      {
+        "tr": "(konu/anlatı için) bağlantı, gidişat",
+        "en": "a connected series of ideas or a storyline running through something",
+        "exampleEn": "I lost the thread of the conversation.",
+        "exampleTr": "Konuşmanın gidişatını kaybettim."
       }
     ],
     "synonyms": [
@@ -180485,6 +182903,12 @@ export default [
         "en": "a sudden feeling of great excitement or pleasure",
         "exampleEn": "Riding the roller coaster gave her a real thrill.",
         "exampleTr": "Hız trenine binmek ona gerçek bir heyecan verdi."
+      },
+      {
+        "tr": "çok heyecanlandırmak, mutlu etmek",
+        "en": "to make someone feel very excited and pleased",
+        "exampleEn": "It thrilled her to see her name in the newspaper.",
+        "exampleTr": "Adını gazetede görmek onu çok heyecanlandırdı."
       }
     ],
     "synonyms": [
@@ -180566,6 +182990,12 @@ export default [
         "en": "the passage from the back of the mouth to the stomach and lungs",
         "exampleEn": "I have a sore throat and can barely speak.",
         "exampleTr": "Boğazım ağrıyor ve neredeyse konuşamıyorum."
+      },
+      {
+        "tr": "dar geçit, boğaz (bir şeyin daralan kısmı)",
+        "en": "a narrow passage or opening resembling a throat",
+        "exampleEn": "The ship entered the narrow throat of the harbour.",
+        "exampleTr": "Gemi limanın dar boğazından içeri girdi."
       }
     ],
     "synonyms": [],
@@ -180588,6 +183018,18 @@ export default [
         "en": "to touch someone lightly to make them laugh",
         "exampleEn": "The father loves to tickle his children until they giggle.",
         "exampleTr": "Baba çocuklarını kıkırdayana kadar gıdıklamayı çok sever."
+      },
+      {
+        "tr": "gıdıklanma hissi, karıncalanma (isim)",
+        "en": "a tickling or itchy sensation",
+        "exampleEn": "I have a tickle in my throat that makes me cough.",
+        "exampleTr": "Boğazımda öksürmeme neden olan bir gıdıklanma var."
+      },
+      {
+        "tr": "hoşuna gitmek, keyiflendirmek, güldürmek",
+        "en": "to amuse or please someone",
+        "exampleEn": "The joke really tickled the whole audience.",
+        "exampleTr": "Şaka bütün seyircinin çok hoşuna gitti."
       }
     ],
     "synonyms": [],
@@ -180890,6 +183332,18 @@ export default [
         "en": "a payment for using a road or bridge",
         "exampleEn": "We had to pay a toll to cross the bridge.",
         "exampleTr": "Köprüden geçmek için geçiş ücreti ödemek zorunda kaldık."
+      },
+      {
+        "tr": "(can) kaybı, zarar, kurban sayısı",
+        "en": "the amount of damage, deaths, or suffering caused",
+        "exampleEn": "The earthquake's death toll rose to over a thousand.",
+        "exampleTr": "Depremin ölü sayısı bini aştı."
+      },
+      {
+        "tr": "(çan) çalmak, ağır ağır çalmak (fiil)",
+        "en": "to ring a bell slowly and repeatedly",
+        "exampleEn": "The church bells tolled to mark the funeral.",
+        "exampleTr": "Cenaze için kilise çanları ağır ağır çaldı."
       }
     ],
     "synonyms": [
@@ -180964,6 +183418,18 @@ export default [
         "en": "a small electric light carried in the hand, or a burning stick",
         "exampleEn": "He shone his torch into the dark cave.",
         "exampleTr": "El fenerini karanlık mağaraya tuttu."
+      },
+      {
+        "tr": "ateşe vermek, yakmak (fiil)",
+        "en": "to set fire to something deliberately",
+        "exampleEn": "Vandals torched the abandoned car overnight.",
+        "exampleTr": "Vandallar terk edilmiş arabayı gece ateşe verdi."
+      },
+      {
+        "tr": "ateşe vermek, kundaklamak (fiil)",
+        "en": "to set fire to something deliberately",
+        "exampleEn": "The rioters torched several parked cars.",
+        "exampleTr": "İsyancılar park halindeki birkaç arabayı ateşe verdi."
       }
     ],
     "synonyms": [
@@ -181011,6 +183477,12 @@ export default [
         "en": "to cause severe pain to someone deliberately",
         "exampleEn": "The prisoners were tortured to make them confess.",
         "exampleTr": "Tutuklular itiraf etmeleri için işkence gördü."
+      },
+      {
+        "tr": "işkence; büyük acı, eziyet (isim)",
+        "en": "great physical or mental suffering",
+        "exampleEn": "Waiting for the exam results was pure torture.",
+        "exampleTr": "Sınav sonuçlarını beklemek tam bir işkenceydi."
       }
     ],
     "synonyms": [
@@ -181038,6 +183510,18 @@ export default [
         "en": "difficult to do, or strong and not easily damaged",
         "exampleEn": "Losing his job was a tough time for the whole family.",
         "exampleTr": "İşini kaybetmesi tüm aile için zor bir dönemdi."
+      },
+      {
+        "tr": "sert, katı, çiğnemesi zor (yiyecek)",
+        "en": "difficult to cut or chew (of food)",
+        "exampleEn": "The steak was so tough that I could barely eat it.",
+        "exampleTr": "Biftek o kadar sertti ki zar zor yiyebildim."
+      },
+      {
+        "tr": "acımasız, tavizsiz, sıkı (kişi/tutum)",
+        "en": "strict and not easily influenced or defeated",
+        "exampleEn": "The government promised to get tough on crime.",
+        "exampleTr": "Hükümet suçla mücadelede sert olacağına söz verdi."
       }
     ],
     "synonyms": [
@@ -181142,6 +183626,12 @@ export default [
         "en": "a person who teaches skills to people or animals",
         "exampleEn": "The personal trainer designed a workout plan for me.",
         "exampleTr": "Kişisel antrenör benim için bir antrenman planı hazırladı."
+      },
+      {
+        "tr": "spor ayakkabısı (İng.)",
+        "en": "a soft shoe worn for sports (British English)",
+        "exampleEn": "She bought a new pair of trainers for the gym.",
+        "exampleTr": "Spor salonu için yeni bir çift spor ayakkabı aldı."
       }
     ],
     "synonyms": [
@@ -181293,6 +183783,12 @@ export default [
         "en": "the act of moving someone or something to another place",
         "exampleEn": "He requested a transfer to the London office.",
         "exampleTr": "Londra ofisine transfer talebinde bulundu."
+      },
+      {
+        "tr": "aktarmak, nakletmek, transfer etmek (fiil)",
+        "en": "to move someone or something from one place to another",
+        "exampleEn": "They transferred the patient to a larger hospital.",
+        "exampleTr": "Hastayı daha büyük bir hastaneye naklettiler."
       }
     ],
     "synonyms": [
@@ -181486,6 +183982,18 @@ export default [
         "en": "the act of sending or passing something from one place to another",
         "exampleEn": "The transmission of the disease can be prevented by washing hands.",
         "exampleTr": "Hastalığın bulaşması el yıkayarak önlenebilir."
+      },
+      {
+        "tr": "şanzıman, vites kutusu (araç)",
+        "en": "the part of a vehicle that transfers power to the wheels",
+        "exampleEn": "The mechanic said the car's transmission needed replacing.",
+        "exampleTr": "Tamirci arabanın şanzımanının değişmesi gerektiğini söyledi."
+      },
+      {
+        "tr": "yayın, program (radyo/TV)",
+        "en": "a broadcast on radio or television",
+        "exampleEn": "The live transmission was interrupted by a technical fault.",
+        "exampleTr": "Canlı yayın teknik bir arıza yüzünden kesildi."
       }
     ],
     "synonyms": [
@@ -181562,6 +184070,12 @@ export default [
         "en": "a flat object used for carrying food or drinks",
         "exampleEn": "The waiter carried the drinks on a silver tray.",
         "exampleTr": "Garson içecekleri gümüş bir tepside taşıdı."
+      },
+      {
+        "tr": "(masaüstü) evrak kutusu, dosya sepeti",
+        "en": "a flat container on a desk for holding documents",
+        "exampleEn": "Put the finished forms in the out tray on my desk.",
+        "exampleTr": "Biten formları masamdaki giden evrak kutusuna koy."
       }
     ],
     "synonyms": [
@@ -181587,6 +184101,12 @@ export default [
         "en": "to put your foot down while walking or stepping",
         "exampleEn": "Be careful not to tread on the broken glass.",
         "exampleTr": "Kırık cama basmamaya dikkat et."
+      },
+      {
+        "tr": "diş, tırtıl (lastik/ayakkabı tabanı deseni)",
+        "en": "the pattern of raised lines on a tyre or shoe sole",
+        "exampleEn": "The tyres were worn and had almost no tread left.",
+        "exampleTr": "Lastikler aşınmıştı ve neredeyse hiç dişi kalmamıştı."
       }
     ],
     "synonyms": [
@@ -181714,6 +184234,12 @@ export default [
         "en": "a legal process in court, or a test of something",
         "exampleEn": "The trial lasted three weeks before the jury reached a verdict.",
         "exampleTr": "Jüri bir karara varmadan önce duruşma üç hafta sürdü."
+      },
+      {
+        "tr": "sıkıntı, dert, zorluk (genellikle çoğul)",
+        "en": "a difficult or troublesome experience",
+        "exampleEn": "She wrote about the trials of raising four children alone.",
+        "exampleTr": "Dört çocuğu tek başına büyütmenin sıkıntılarını yazdı."
       }
     ],
     "synonyms": [
@@ -181869,6 +184395,12 @@ export default [
         "en": "a cart on wheels for carrying goods",
         "exampleEn": "She pushed the trolley around the supermarket.",
         "exampleTr": "Süpermarkette market arabasını ittirdi."
+      },
+      {
+        "tr": "tramvay (ABD); troleybüs",
+        "en": "a streetcar or vehicle that runs on rails or overhead wires",
+        "exampleEn": "We took the trolley downtown to see the parade.",
+        "exampleTr": "Geçit törenini izlemek için tramvayla şehir merkezine gittik."
       }
     ],
     "synonyms": [
@@ -181894,6 +184426,18 @@ export default [
         "en": "a group of soldiers or people",
         "exampleEn": "The troop marched across the field at dawn.",
         "exampleTr": "Birlik şafakta tarlayı geçerek yürüdü."
+      },
+      {
+        "tr": "askerler, ordu birlikleri (çoğul: troops)",
+        "en": "soldiers, especially in large numbers",
+        "exampleEn": "Thousands of troops were sent to the border.",
+        "exampleTr": "Sınıra binlerce asker gönderildi."
+      },
+      {
+        "tr": "sürü halinde/grupça yürümek (fiil)",
+        "en": "to walk somewhere together as a group",
+        "exampleEn": "The children trooped into the classroom after lunch.",
+        "exampleTr": "Çocuklar öğle yemeğinden sonra sınıfa grup halinde girdi."
       }
     ],
     "synonyms": [
@@ -182002,6 +184546,12 @@ export default [
         "en": "the main woody stem of a tree",
         "exampleEn": "We carved our initials into the tree trunk.",
         "exampleTr": "Baş harflerimizi ağaç gövdesine kazıdık."
+      },
+      {
+        "tr": "gövde, beden (insan vücudu)",
+        "en": "the main part of the human body, without the head and limbs",
+        "exampleEn": "The exercise strengthens the muscles of the trunk.",
+        "exampleTr": "Bu egzersiz gövde kaslarını güçlendirir."
       }
     ],
     "synonyms": [
@@ -182029,6 +184579,18 @@ export default [
         "en": "firm belief in the reliability of someone",
         "exampleEn": "Their friendship is built on mutual trust.",
         "exampleTr": "Dostlukları karşılıklı güven üzerine kuruludur."
+      },
+      {
+        "tr": "güvenmek, itimat etmek (fiil)",
+        "en": "to believe that someone is reliable or honest",
+        "exampleEn": "I trust her completely with the money.",
+        "exampleTr": "Para konusunda ona tamamen güveniyorum."
+      },
+      {
+        "tr": "vakıf, tröst; yediemin fonu",
+        "en": "a legal arrangement for managing money or property",
+        "exampleEn": "The money was placed in a trust for the children.",
+        "exampleTr": "Para çocuklar için bir vakfa yatırıldı."
       }
     ],
     "synonyms": [
@@ -182194,6 +184756,18 @@ export default [
         "en": "a sudden strong pull",
         "exampleEn": "I felt a tug on the fishing line.",
         "exampleTr": "Olta misinasında ani bir çekiş hissettim."
+      },
+      {
+        "tr": "çekmek, asılmak (fiil)",
+        "en": "to pull something suddenly and hard",
+        "exampleEn": "The little boy tugged at his mother's sleeve.",
+        "exampleTr": "Küçük çocuk annesinin koluna asıldı."
+      },
+      {
+        "tr": "römorkör (gemi)",
+        "en": "a small powerful boat that pulls larger ships",
+        "exampleEn": "A tug guided the huge tanker into the harbour.",
+        "exampleTr": "Bir römorkör dev tankeri limana yönlendirdi."
       }
     ],
     "synonyms": [
@@ -182515,6 +185089,12 @@ export default [
         "en": "final or most extreme; the best possible",
         "exampleEn": "Their ultimate goal was to win the championship.",
         "exampleTr": "Nihai hedefleri şampiyonluğu kazanmaktı."
+      },
+      {
+        "tr": "temel, esas, asıl (neden/kaynak)",
+        "en": "most basic or fundamental",
+        "exampleEn": "The ultimate cause of the disease is still unknown.",
+        "exampleTr": "Hastalığın asıl nedeni hâlâ bilinmiyor."
       }
     ],
     "synonyms": [
@@ -183054,6 +185634,18 @@ export default [
         "en": "located or happening below the surface of the ground",
         "exampleEn": "They built an underground car park beneath the mall.",
         "exampleTr": "Alışveriş merkezinin altına bir yeraltı otoparkı yaptılar."
+      },
+      {
+        "tr": "gizli, yeraltı (siyasi/sanatsal hareket)",
+        "en": "secret and often illegal, or outside mainstream culture",
+        "exampleEn": "During the war, an underground movement fought against the occupation.",
+        "exampleTr": "Savaş sırasında bir yeraltı hareketi işgale karşı savaştı."
+      },
+      {
+        "tr": "metro (İngiliz İngilizcesi)",
+        "en": "an underground railway system in a city (British English)",
+        "exampleEn": "We took the underground to get to the city center.",
+        "exampleTr": "Şehir merkezine gitmek için metroya bindik."
       }
     ],
     "synonyms": [
@@ -183704,6 +186296,12 @@ export default [
         "en": "relating to or shared by everyone",
         "exampleEn": "Music has a universal appeal across cultures.",
         "exampleTr": "Müziğin kültürler arası evrensel bir çekiciliği vardır."
+      },
+      {
+        "tr": "tüm evrene ait, kâinatla ilgili",
+        "en": "relating to the whole universe",
+        "exampleEn": "Gravity is a universal force that acts on all objects.",
+        "exampleTr": "Yerçekimi, tüm cisimlere etki eden evrensel bir kuvvettir."
       }
     ],
     "synonyms": [
@@ -183818,6 +186416,18 @@ export default [
         "en": "to remove a load from a vehicle or container",
         "exampleEn": "The workers began to unload the boxes from the truck.",
         "exampleTr": "İşçiler kutuları kamyondan boşaltmaya başladı."
+      },
+      {
+        "tr": "içini dökmek, derdini anlatarak rahatlamak",
+        "en": "to tell someone your problems in order to feel better",
+        "exampleEn": "She called her friend to unload about her stressful day at work.",
+        "exampleTr": "İş yerindeki stresli gününü anlatıp içini dökmek için arkadaşını aradı."
+      },
+      {
+        "tr": "(silahı) boşaltmak, mermilerini çıkarmak",
+        "en": "to remove the bullets from a gun",
+        "exampleEn": "The officer unloaded the pistol before handing it over.",
+        "exampleTr": "Memur, tabancayı teslim etmeden önce içindeki mermileri boşalttı."
       }
     ],
     "synonyms": [
@@ -183846,6 +186456,12 @@ export default [
         "en": "to open something using a key or code",
         "exampleEn": "She used her phone to unlock the front door.",
         "exampleTr": "Ön kapının kilidini açmak için telefonunu kullandı."
+      },
+      {
+        "tr": "(gizli bir şeyin) önünü açmak, ortaya çıkarmak",
+        "en": "to make something available or reveal its potential",
+        "exampleEn": "A good education can unlock many opportunities for young people.",
+        "exampleTr": "İyi bir eğitim, gençler için birçok fırsatın önünü açabilir."
       }
     ],
     "synonyms": [
@@ -184601,6 +187217,12 @@ export default [
         "en": "the most recent information or a new version of something",
         "exampleEn": "The app released an update to fix several bugs.",
         "exampleTr": "Uygulama, birkaç hatayı düzeltmek için bir güncelleme yayınladı."
+      },
+      {
+        "tr": "güncellemek (fiil), en son bilgilerle yenilemek",
+        "en": "to make something more modern or add the latest information",
+        "exampleEn": "Please update your contact details on the form.",
+        "exampleTr": "Lütfen formdaki iletişim bilgilerinizi güncelleyin."
       }
     ],
     "synonyms": [
@@ -184626,6 +187248,12 @@ export default [
         "en": "an improvement to something or a better version",
         "exampleEn": "We paid extra for an upgrade to a first-class seat.",
         "exampleTr": "Birinci sınıf bir koltuğa yükseltme için fazladan ödeme yaptık."
+      },
+      {
+        "tr": "yükseltmek (fiil), daha iyisiyle değiştirmek",
+        "en": "to improve something or replace it with a better version",
+        "exampleEn": "I decided to upgrade my old laptop to a faster model.",
+        "exampleTr": "Eski dizüstü bilgisayarımı daha hızlı bir modelle yükseltmeye karar verdim."
       }
     ],
     "synonyms": [
@@ -184653,6 +187281,12 @@ export default [
         "en": "standing or positioned vertically",
         "exampleEn": "Please return your seat to an upright position before landing.",
         "exampleTr": "Lütfen inişten önce koltuğunuzu dik konuma getirin."
+      },
+      {
+        "tr": "dürüst, doğru, namuslu (kişi)",
+        "en": "honest and morally correct",
+        "exampleEn": "He was known as an upright and honest man in his community.",
+        "exampleTr": "Toplumunda dürüst ve namuslu bir adam olarak biliniyordu."
       }
     ],
     "synonyms": [
@@ -184708,6 +187342,12 @@ export default [
         "en": "relating to a town or city",
         "exampleEn": "More people are moving from rural areas to urban centers.",
         "exampleTr": "Giderek daha fazla insan kırsal bölgelerden kentsel merkezlere taşınıyor."
+      },
+      {
+        "tr": "urban (müzik türü), siyahi popüler müzikle ilgili",
+        "en": "relating to modern popular Black music such as hip-hop and R&B",
+        "exampleEn": "The radio station plays mostly urban music like hip-hop and R&B.",
+        "exampleTr": "Radyo istasyonu çoğunlukla hip-hop ve R&B gibi urban müzik çalıyor."
       }
     ],
     "synonyms": [
@@ -184813,6 +187453,12 @@ export default [
         "en": "a public service such as electricity or water; usefulness",
         "exampleEn": "The rent does not include utility bills like gas and water.",
         "exampleTr": "Kira, gaz ve su gibi kamu hizmeti faturalarını içermiyor."
+      },
+      {
+        "tr": "yardımcı program, işlevsel araç (bilgisayar)",
+        "en": "a piece of computer software with a specific useful function",
+        "exampleEn": "I downloaded a utility to clean up unused files on my computer.",
+        "exampleTr": "Bilgisayarımdaki kullanılmayan dosyaları temizlemek için bir yardımcı program indirdim."
       }
     ],
     "synonyms": [
@@ -184867,6 +187513,12 @@ export default [
         "en": "to say something or make a sound with your voice",
         "exampleEn": "She was too shocked to utter a single word.",
         "exampleTr": "Tek bir kelime söyleyemeyecek kadar şaşkındı."
+      },
+      {
+        "tr": "tam, mutlak, katıksız (sıfat)",
+        "en": "complete or total (used to emphasize)",
+        "exampleEn": "The whole event was an utter disaster.",
+        "exampleTr": "Bütün etkinlik tam bir felaketti."
       }
     ],
     "synonyms": [
@@ -184996,6 +187648,12 @@ export default [
       {
         "tr": "geçerli; haklı, sağlam (gerekçe)",
         "en": "legally or officially acceptable; based on sound reasoning",
+        "exampleEn": "Your ticket is valid for three months from the date of purchase.",
+        "exampleTr": "Biletiniz satın alma tarihinden itibaren üç ay geçerlidir."
+      },
+      {
+        "tr": "yürürlükte olan, süresi geçmemiş (bilet/belge)",
+        "en": "legally or officially acceptable and not expired",
         "exampleEn": "Your ticket is valid for three months from the date of purchase.",
         "exampleTr": "Biletiniz satın alma tarihinden itibaren üç ay geçerlidir."
       }
@@ -185217,6 +187875,12 @@ export default [
         "en": "writing arranged in lines with rhythm, or a section of a poem or song",
         "exampleEn": "She read the first verse of the poem aloud.",
         "exampleTr": "Şiirin ilk kıtasını yüksek sesle okudu."
+      },
+      {
+        "tr": "(şarkıda) kıta, bölüm (nakarat dışındaki)",
+        "en": "one of the sections of a song, as opposed to the chorus",
+        "exampleEn": "She forgot the words to the second verse of the song.",
+        "exampleTr": "Şarkının ikinci kıtasının sözlerini unuttu."
       }
     ],
     "synonyms": [
@@ -185244,6 +187908,12 @@ export default [
         "en": "a particular form of something that differs from others",
         "exampleEn": "This is the latest version of the software.",
         "exampleTr": "Bu, yazılımın en son sürümüdür."
+      },
+      {
+        "tr": "anlatım, bakış açısı (bir olaya dair)",
+        "en": "a particular account of an event from someone's point of view",
+        "exampleEn": "Her version of what happened was completely different from his.",
+        "exampleTr": "Olanlara dair onun anlatımı, adamınkinden tamamen farklıydı."
       }
     ],
     "synonyms": [
@@ -185269,6 +187939,12 @@ export default [
         "en": "used to emphasize an exact or particular thing",
         "exampleEn": "This is the very book I was looking for.",
         "exampleTr": "Bu, tam da aradığım kitap."
+      },
+      {
+        "tr": "çok, pek (zarf)",
+        "en": "to a great degree; extremely",
+        "exampleEn": "She was very tired after the long journey.",
+        "exampleTr": "Uzun yolculuktan sonra çok yorgundu."
       }
     ],
     "synonyms": [
@@ -185322,6 +187998,12 @@ export default [
         "en": "to move quickly back and forth with small movements",
         "exampleEn": "My phone began to vibrate silently in my pocket.",
         "exampleTr": "Telefonum cebimde sessizce titremeye başladı."
+      },
+      {
+        "tr": "(telefon) titreşim moduna geçmek, titremek",
+        "en": "(of a device) to shake with rapid small movements to signal something",
+        "exampleEn": "My phone vibrated in my pocket during the meeting.",
+        "exampleTr": "Toplantı sırasında telefonum cebimde titredi."
       }
     ],
     "synonyms": [
@@ -185774,6 +188456,12 @@ export default [
         "en": "a person who does work without being paid",
         "exampleEn": "Many a volunteer helped clean up the beach after the storm.",
         "exampleTr": "Fırtınadan sonra birçok gönüllü plajı temizlemeye yardım etti."
+      },
+      {
+        "tr": "gönüllü olmak, kendiliğinden üstlenmek (fiil)",
+        "en": "to offer to do something without being asked or forced",
+        "exampleEn": "She volunteered to help organize the charity event.",
+        "exampleTr": "Hayır etkinliğini düzenlemeye yardım etmek için gönüllü oldu."
       }
     ],
     "synonyms": [
@@ -185800,6 +188488,12 @@ export default [
         "en": "food brought up from the stomach through the mouth",
         "exampleEn": "The smell of vomit filled the small room.",
         "exampleTr": "Küçük odayı kusmuk kokusu kapladı."
+      },
+      {
+        "tr": "kusmak (fiil)",
+        "en": "to bring up food from the stomach through the mouth",
+        "exampleEn": "He felt sick and vomited after eating the spoiled fish.",
+        "exampleTr": "Bozuk balığı yedikten sonra midesi bulandı ve kustu."
       }
     ],
     "synonyms": [
@@ -185848,6 +188542,12 @@ export default [
         "en": "a serious promise",
         "exampleEn": "They exchanged their wedding vows in front of family and friends.",
         "exampleTr": "Aile ve arkadaşlarının önünde evlilik yeminlerini ettiler."
+      },
+      {
+        "tr": "yemin etmek, ant içmek (fiil)",
+        "en": "to make a serious promise to do something",
+        "exampleEn": "He vowed never to make the same mistake again.",
+        "exampleTr": "Aynı hatayı bir daha yapmamaya yemin etti."
       }
     ],
     "synonyms": [
@@ -185921,6 +188621,12 @@ export default [
         "en": "a period of time spent waiting",
         "exampleEn": "There was a long wait before the doctor could see us.",
         "exampleTr": "Doktor bizi görene kadar uzun bir bekleyiş oldu."
+      },
+      {
+        "tr": "beklemek (fiil)",
+        "en": "to stay in a place until something happens or someone arrives",
+        "exampleEn": "We had to wait an hour for the next train.",
+        "exampleTr": "Bir sonraki tren için bir saat beklemek zorunda kaldık."
       }
     ],
     "synonyms": [
@@ -186042,6 +188748,12 @@ export default [
         "en": "a lack or absence of something",
         "exampleEn": "The plants died for want of water.",
         "exampleTr": "Bitkiler su yokluğundan öldü."
+      },
+      {
+        "tr": "istemek, arzu etmek (fiil)",
+        "en": "to have a desire for something",
+        "exampleEn": "I want a cup of coffee before we leave.",
+        "exampleTr": "Gitmeden önce bir fincan kahve istiyorum."
       }
     ],
     "synonyms": [
@@ -186306,6 +189018,18 @@ export default [
         "en": "the pattern or way in which cloth is woven",
         "exampleEn": "The fabric had a tight, even weave.",
         "exampleTr": "Kumaşın sıkı ve düzgün bir dokuması vardı."
+      },
+      {
+        "tr": "dokumak, örmek (fiil)",
+        "en": "to make cloth by crossing threads over and under each other",
+        "exampleEn": "The women weave beautiful carpets by hand.",
+        "exampleTr": "Kadınlar el ile güzel halılar dokuyor."
+      },
+      {
+        "tr": "(kalabalık/trafik arasından) süzülerek ilerlemek (fiil)",
+        "en": "to move along by turning and changing direction to avoid obstacles",
+        "exampleEn": "The motorcyclist weaved through the heavy traffic.",
+        "exampleTr": "Motosikletli, yoğun trafiğin arasından süzülerek geçti."
       }
     ],
     "synonyms": [
@@ -186330,6 +189054,12 @@ export default [
         "en": "to marry someone",
         "exampleEn": "They plan to wed next summer in a small ceremony.",
         "exampleTr": "Gelecek yaz küçük bir törenle evlenmeyi planlıyorlar."
+      },
+      {
+        "tr": "(fikir/nitelik) birleştirmek, bağdaştırmak",
+        "en": "to combine two different things or qualities",
+        "exampleEn": "The design weds traditional style with modern technology.",
+        "exampleTr": "Tasarım, geleneksel tarzı modern teknolojiyle birleştiriyor."
       }
     ],
     "synonyms": [
@@ -186356,6 +189086,12 @@ export default [
         "en": "a wild plant growing where it is not wanted",
         "exampleEn": "The garden was full of weeds after the rainy season.",
         "exampleTr": "Yağmurlu mevsimden sonra bahçe yabani otlarla doluydu."
+      },
+      {
+        "tr": "yabani otları ayıklamak, otları temizlemek (fiil)",
+        "en": "to remove wild plants from a garden or area",
+        "exampleEn": "She spent the afternoon weeding the vegetable garden.",
+        "exampleTr": "Öğleden sonrayı sebze bahçesindeki yabani otları ayıklayarak geçirdi."
       }
     ],
     "synonyms": [],
@@ -186487,6 +189223,12 @@ export default [
         "en": "located in or coming from the west",
         "exampleEn": "The western part of the country is mostly desert.",
         "exampleTr": "Ülkenin batı kısmı çoğunlukla çöldür."
+      },
+      {
+        "tr": "kovboy filmi, western (isim)",
+        "en": "a film or book about cowboys in the American West",
+        "exampleEn": "My grandfather loves watching old westerns on TV.",
+        "exampleTr": "Büyükbabam televizyonda eski kovboy filmleri izlemeyi çok sever."
       }
     ],
     "synonyms": [
@@ -186535,6 +189277,12 @@ export default [
         "en": "to beat cream or eggs until thick, or to strike with a whip",
         "exampleEn": "Whip the cream until it forms soft peaks.",
         "exampleTr": "Kremayı yumuşak tepecikler oluşana kadar çırpın."
+      },
+      {
+        "tr": "kırbaç (isim)",
+        "en": "a long piece of leather or rope used to hit animals or people",
+        "exampleEn": "The rider cracked his whip to make the horse go faster.",
+        "exampleTr": "Binici, atı hızlandırmak için kırbacını şaklattı."
       }
     ],
     "synonyms": [
@@ -186609,6 +189357,12 @@ export default [
         "en": "a woman whose husband has died",
         "exampleEn": "The widow wore black for a year after his death.",
         "exampleTr": "Dul kadın, kocasının ölümünden sonra bir yıl boyunca siyah giydi."
+      },
+      {
+        "tr": "dul bırakmak (fiil, genelde edilgen)",
+        "en": "to cause someone to become a widow or widower",
+        "exampleEn": "She was widowed at a young age when her husband died in the war.",
+        "exampleTr": "Kocası savaşta ölünce genç yaşta dul kaldı."
       }
     ],
     "synonyms": [],
@@ -186742,6 +189496,12 @@ export default [
         "en": "a victory in a game or contest",
         "exampleEn": "The team celebrated their first win of the season.",
         "exampleTr": "Takım, sezonun ilk galibiyetini kutladı."
+      },
+      {
+        "tr": "kazanmak (fiil)",
+        "en": "to be successful or victorious in a contest or competition",
+        "exampleEn": "Our team won the match in the final minute.",
+        "exampleTr": "Takımımız maçı son dakikada kazandı."
       }
     ],
     "synonyms": [
@@ -186821,6 +189581,12 @@ export default [
         "en": "a quick closing and opening of one eye as a signal",
         "exampleEn": "He gave her a friendly wink across the room.",
         "exampleTr": "Odanın öbür ucundan ona dostça bir göz kırptı."
+      },
+      {
+        "tr": "göz kırpmak (fiil)",
+        "en": "to close and open one eye quickly, usually as a friendly signal",
+        "exampleEn": "She winked at me to show she was joking.",
+        "exampleTr": "Şaka yaptığını göstermek için bana göz kırptı."
       }
     ],
     "synonyms": [],
@@ -186843,6 +189609,12 @@ export default [
         "en": "to clean or dry something by rubbing it",
         "exampleEn": "Please wipe the table after you finish eating.",
         "exampleTr": "Yemeğini bitirdikten sonra lütfen masayı sil."
+      },
+      {
+        "tr": "silme, silme hareketi (isim)",
+        "en": "an act of cleaning something by rubbing it",
+        "exampleEn": "Give the table a quick wipe before dinner.",
+        "exampleTr": "Yemekten önce masayı hızlıca bir sil."
       }
     ],
     "synonyms": [
@@ -186870,6 +189642,12 @@ export default [
         "en": "the ability to say clever and amusing things",
         "exampleEn": "Her sharp wit made everyone at the table laugh.",
         "exampleTr": "Keskin nüktesi masadaki herkesi güldürdü."
+      },
+      {
+        "tr": "akıl, sağduyu (genelde çoğul: wits)",
+        "en": "the ability to think quickly and make good decisions",
+        "exampleEn": "She had the wit to call for help immediately.",
+        "exampleTr": "Hemen yardım çağıracak akla sahipti."
       }
     ],
     "synonyms": [
@@ -186952,6 +189730,12 @@ export default [
         "en": "a person who sees an event and can describe it",
         "exampleEn": "The witness described exactly what she had seen.",
         "exampleTr": "Tanık, tam olarak ne gördüğünü anlattı."
+      },
+      {
+        "tr": "tanık olmak, şahit olmak (fiil)",
+        "en": "to see something happen, especially an event or crime",
+        "exampleEn": "Several people witnessed the accident on the highway.",
+        "exampleTr": "Birkaç kişi otoyoldaki kazaya tanık oldu."
       }
     ],
     "synonyms": [
@@ -187283,6 +190067,12 @@ export default [
         "en": "a long, thin creature with no legs that lives in soil",
         "exampleEn": "The bird pulled a worm out of the wet ground.",
         "exampleTr": "Kuş, ıslak topraktan bir solucan çıkardı."
+      },
+      {
+        "tr": "(bilgisayar) solucan virüsü",
+        "en": "a type of malicious program that spreads through computer networks",
+        "exampleEn": "The worm spread quickly across thousands of computers.",
+        "exampleTr": "Solucan virüsü binlerce bilgisayara hızla yayıldı."
       }
     ],
     "synonyms": [],
@@ -187388,6 +190178,18 @@ export default [
         "en": "the practice of showing respect and love for a god",
         "exampleEn": "People gathered at the temple for morning worship.",
         "exampleTr": "İnsanlar sabah ibadeti için tapınakta toplandı."
+      },
+      {
+        "tr": "ibadet etmek, tapmak (fiil)",
+        "en": "to show respect and love for a god through religious activities",
+        "exampleEn": "They gather every Sunday to worship at the church.",
+        "exampleTr": "Her Pazar kilisede ibadet etmek için toplanırlar."
+      },
+      {
+        "tr": "hayran olmak, tapmak (birine)",
+        "en": "to love or admire someone very much",
+        "exampleEn": "She absolutely worships her older brother.",
+        "exampleTr": "Ağabeyine adeta tapıyor."
       }
     ],
     "synonyms": [
@@ -187443,6 +190245,12 @@ export default [
         "en": "a vehicle or ship that has been badly damaged or destroyed",
         "exampleEn": "Divers explored the wreck of the old ship at the bottom of the sea.",
         "exampleTr": "Dalgıçlar denizin dibindeki eski geminin enkazını keşfetti."
+      },
+      {
+        "tr": "mahvetmek, harap etmek (fiil)",
+        "en": "to destroy or badly damage something",
+        "exampleEn": "The storm wrecked several houses along the coast.",
+        "exampleTr": "Fırtına, kıyı boyunca birkaç evi harap etti."
       }
     ],
     "synonyms": [
@@ -187545,6 +190353,12 @@ export default [
         "en": "an act of opening the mouth wide because of tiredness or boredom",
         "exampleEn": "She tried to hide a yawn during the long meeting.",
         "exampleTr": "Uzun toplantı sırasında bir esnemeyi gizlemeye çalıştı."
+      },
+      {
+        "tr": "esnemek (fiil)",
+        "en": "to open the mouth wide and breathe in deeply because of tiredness",
+        "exampleEn": "He yawned loudly during the boring lecture.",
+        "exampleTr": "Sıkıcı ders sırasında yüksek sesle esnedi."
       }
     ],
     "synonyms": [],
@@ -187669,6 +190483,18 @@ export default [
         "en": "a fastener with two rows of teeth joined by a sliding tab",
         "exampleEn": "The zip on my jacket is broken and won't close.",
         "exampleTr": "Ceketimin fermuarı bozuk ve kapanmıyor."
+      },
+      {
+        "tr": "hızla gitmek, vınlayıp geçmek",
+        "en": "to move very fast",
+        "exampleEn": "A sports car zipped past us on the highway.",
+        "exampleTr": "Bir spor araba otoyolda vınlayıp yanımızdan geçti."
+      },
+      {
+        "tr": "sıfır, hiç",
+        "en": "nothing, zero (informal, US)",
+        "exampleEn": "We won the game three to zip.",
+        "exampleTr": "Maçı üçe sıfır kazandık."
       }
     ],
     "synonyms": [
@@ -187694,6 +190520,12 @@ export default [
         "en": "the act of making a subject appear closer using a camera lens",
         "exampleEn": "Use the zoom on your camera to capture the bird in detail.",
         "exampleTr": "Kuşu ayrıntılı yakalamak için kameranın zumunu kullan."
+      },
+      {
+        "tr": "hızla gitmek, vızır vızır gitmek",
+        "en": "to move very quickly",
+        "exampleEn": "The cars zoomed past on the motorway.",
+        "exampleTr": "Arabalar otoyolda vızır vızır geçti."
       }
     ],
     "synonyms": [],
@@ -188169,6 +191001,12 @@ export default [
         "en": "an extra benefit given with a job",
         "exampleEn": "Free gym membership is one of the perks of this job.",
         "exampleTr": "Ücretsiz spor salonu üyeliği bu işin yan haklarından biridir."
+      },
+      {
+        "tr": "canlanmak, neşelenmek (perk up)",
+        "en": "to become more cheerful or lively",
+        "exampleEn": "She perked up as soon as she heard the good news.",
+        "exampleTr": "İyi haberi duyar duymaz neşelendi."
       }
     ],
     "synonyms": [
@@ -188309,6 +191147,12 @@ export default [
         "en": "to raise to a higher level or position",
         "exampleEn": "The promotion will elevate her to a senior role.",
         "exampleTr": "Terfi onu üst düzey bir göreve yükseltecek."
+      },
+      {
+        "tr": "(seviyesini/miktarını) yükseltmek, artırmak",
+        "en": "to increase the level or amount of something",
+        "exampleEn": "Too much salt can elevate your blood pressure.",
+        "exampleTr": "Aşırı tuz tansiyonunu yükseltebilir."
       }
     ],
     "synonyms": [
@@ -188476,6 +191320,12 @@ export default [
         "en": "a company connected to a larger one",
         "exampleEn": "The bank operates through several local affiliates.",
         "exampleTr": "Banka birkaç yerel iştirak aracılığıyla faaliyet gösterir."
+      },
+      {
+        "tr": "bağlanmak, üye olmak, katılmak",
+        "en": "to officially connect or join an organization",
+        "exampleEn": "The clinic is affiliated with a major hospital.",
+        "exampleTr": "Klinik büyük bir hastaneye bağlıdır."
       }
     ],
     "synonyms": [
@@ -188557,6 +191407,18 @@ export default [
         "en": "to close down a business officially",
         "exampleEn": "They decided to wind up the failing company.",
         "exampleTr": "Zarar eden şirketi tasfiye etmeye karar verdiler."
+      },
+      {
+        "tr": "(bir yerde/durumda) bulmak kendini, sonu gelmek",
+        "en": "to end up in a particular place or situation",
+        "exampleEn": "If he keeps spending like that, he'll wind up broke.",
+        "exampleTr": "Böyle harcamaya devam ederse sonunda beş parasız kalacak."
+      },
+      {
+        "tr": "birine takılmak, birini kızdırmak (kışkırtmak)",
+        "en": "to deliberately tease or annoy someone",
+        "exampleEn": "Stop trying to wind me up, I know you're joking.",
+        "exampleTr": "Beni kızdırmaya çalışmayı bırak, şaka yaptığını biliyorum."
       }
     ],
     "synonyms": [
@@ -188967,6 +191829,18 @@ export default [
         "en": "paid in full or finally resolved",
         "exampleEn": "All the invoices are now settled.",
         "exampleTr": "Tüm faturalar artık ödenmiştir."
+      },
+      {
+        "tr": "yerleşmiş, düzene girmiş, oturmuş",
+        "en": "having a fixed, stable, and comfortable way of life",
+        "exampleEn": "After years of moving, they finally felt settled.",
+        "exampleTr": "Yıllarca taşındıktan sonra sonunda yerleşmiş hissettiler."
+      },
+      {
+        "tr": "durgun, açık (hava)",
+        "en": "calm and not likely to change (of weather)",
+        "exampleEn": "The forecast promises settled weather for the weekend.",
+        "exampleTr": "Hava tahmini hafta sonu için durgun bir hava vaat ediyor."
       }
     ],
     "synonyms": [
@@ -189022,6 +191896,12 @@ export default [
         "en": "the process of introducing someone to a new job",
         "exampleEn": "All new staff attend an induction on their first day.",
         "exampleTr": "Tüm yeni personel ilk günlerinde işe alıştırma eğitimine katılır."
+      },
+      {
+        "tr": "tümevarım (mantık yöntemi)",
+        "en": "the process of reaching a general conclusion from particular facts",
+        "exampleEn": "Scientists often use induction to form theories from repeated observations.",
+        "exampleTr": "Bilim insanları tekrarlanan gözlemlerden teori oluşturmak için sık sık tümevarımı kullanır."
       }
     ],
     "synonyms": [
@@ -189337,6 +192217,12 @@ export default [
         "en": "a sudden fall in prices, sales or activity",
         "exampleEn": "The company faced a slump in sales last quarter.",
         "exampleTr": "Şirket geçen çeyrekte satışlarda bir düşüşle karşılaştı."
+      },
+      {
+        "tr": "çökmek, yığılmak (fiil)",
+        "en": "to fall or sit down heavily because you are tired or ill",
+        "exampleEn": "He slumped into his chair, exhausted.",
+        "exampleTr": "Bitkin bir halde koltuğuna yığıldı."
       }
     ],
     "synonyms": [
@@ -189825,6 +192711,12 @@ export default [
         "en": "to balance one effect against an opposing one",
         "exampleEn": "Lower fuel prices helped offset the rise in transport costs.",
         "exampleTr": "Düşük yakıt fiyatları ulaşım maliyetlerindeki artışı dengelemeye yardımcı oldu."
+      },
+      {
+        "tr": "ofset (baskı yöntemi)",
+        "en": "a printing method that transfers ink via a rubber surface",
+        "exampleEn": "The magazine is printed using offset lithography.",
+        "exampleTr": "Dergi, ofset baskı yöntemiyle basılıyor."
       }
     ],
     "synonyms": [
@@ -189960,6 +192852,12 @@ export default [
         "en": "to summarize the main points again",
         "exampleEn": "Let me recap what we discussed in the meeting.",
         "exampleTr": "Toplantıda konuştuklarımızı kısaca özetleyeyim."
+      },
+      {
+        "tr": "özet, kısa tekrar (isim)",
+        "en": "a short summary of what has been said or done",
+        "exampleEn": "Here is a quick recap of today's main points.",
+        "exampleTr": "İşte bugünün ana noktalarının kısa bir özeti."
       }
     ],
     "synonyms": [
@@ -189987,6 +192885,12 @@ export default [
         "en": "to make something shorter or more compact",
         "exampleEn": "He condensed the report into a single page.",
         "exampleTr": "Raporu tek bir sayfaya yoğunlaştırdı."
+      },
+      {
+        "tr": "yoğunlaşmak, sıvıya dönüşmek (buhar)",
+        "en": "to change from a gas into a liquid by cooling",
+        "exampleEn": "Steam condenses into water when it touches the cold window.",
+        "exampleTr": "Buhar soğuk cama değdiğinde yoğunlaşıp suya dönüşür."
       }
     ],
     "synonyms": [
@@ -190677,6 +193581,12 @@ export default [
         "en": "a change in the pitch or tone of the voice",
         "exampleEn": "Her voice rose with an inflection of surprise.",
         "exampleTr": "Sesi, şaşkınlık vurgusuyla yükseldi."
+      },
+      {
+        "tr": "(dilbilgisi) çekim, sözcüğün ek alarak biçim değiştirmesi",
+        "en": "a change in the form of a word to show grammatical function",
+        "exampleEn": "In English, the inflection '-ed' marks the past tense of regular verbs.",
+        "exampleTr": "İngilizcede '-ed' çekimi, düzenli fiillerin geçmiş zamanını gösterir."
       }
     ],
     "synonyms": [
@@ -190831,6 +193741,12 @@ export default [
         "en": "something said or done to show respect or admiration",
         "exampleEn": "The concert was a tribute to the late singer.",
         "exampleTr": "Konser, vefat eden şarkıcıya bir saygı gösterisiydi."
+      },
+      {
+        "tr": "kanıt, göstergesi (bir şeyin başarısının)",
+        "en": "something showing the good qualities or success of a person or thing",
+        "exampleEn": "The team's victory was a tribute to years of hard training.",
+        "exampleTr": "Takımın zaferi yıllarca süren sıkı antrenmanın bir göstergesiydi."
       }
     ],
     "synonyms": [
@@ -191638,6 +194554,12 @@ export default [
         "en": "to increase the size, amount, or extent of something",
         "exampleEn": "The company plans to scale up production next year.",
         "exampleTr": "Şirket gelecek yıl üretimi büyütmeyi planlıyor."
+      },
+      {
+        "tr": "personel/üretim sayısını artırmak (işletme)",
+        "en": "to increase the size of a business or operation",
+        "exampleEn": "The startup plans to scale up its workforce next year.",
+        "exampleTr": "Girişim gelecek yıl iş gücünü artırmayı planlıyor."
       }
     ],
     "synonyms": [
@@ -192296,6 +195218,12 @@ export default [
         "en": "to move or guide skillfully and carefully",
         "exampleEn": "She maneuvered the car into the tight parking space.",
         "exampleTr": "Arabayı dar park yerine ustaca manevra yaparak soktu."
+      },
+      {
+        "tr": "manevra, hamle, taktik",
+        "en": "a clever plan or action to gain an advantage",
+        "exampleEn": "The deal was a clever political maneuver to win over voters.",
+        "exampleTr": "Anlaşma, seçmenleri kazanmak için akıllıca bir siyasi manevraydı."
       }
     ],
     "synonyms": [
@@ -192679,6 +195607,12 @@ export default [
         "en": "having a powerful attraction or charm",
         "exampleEn": "The speaker had a magnetic personality that drew the crowd.",
         "exampleTr": "Konuşmacının kalabalığı kendine çeken etkileyici bir kişiliği vardı."
+      },
+      {
+        "tr": "mıknatıslı, manyetik",
+        "en": "having the properties of a magnet",
+        "exampleEn": "The data is stored on a magnetic strip on the back of the card.",
+        "exampleTr": "Veriler kartın arkasındaki manyetik bir şeritte saklanır."
       }
     ],
     "synonyms": [
@@ -193525,6 +196459,12 @@ export default [
         "en": "to fall behind or move more slowly than others",
         "exampleEn": "Sales began to lag behind those of competitors.",
         "exampleTr": "Satışlar rakiplerinkinin gerisinde kalmaya başladı."
+      },
+      {
+        "tr": "gecikme, gerilik (isim)",
+        "en": "a delay between two events (noun)",
+        "exampleEn": "There is often a time lag between infection and symptoms.",
+        "exampleTr": "Enfeksiyon ile belirtiler arasında genellikle bir zaman gecikmesi vardır."
       }
     ],
     "synonyms": [
@@ -194924,6 +197864,12 @@ export default [
         "en": "to help with a task along with others",
         "exampleEn": "Everyone pitched in to clean up after the event.",
         "exampleTr": "Etkinlikten sonra herkes temizliğe el attı."
+      },
+      {
+        "tr": "hep birlikte (para) toplamak, ortaklaşa katkı koymak",
+        "en": "to contribute money together with others",
+        "exampleEn": "Everyone pitched in to buy her a gift.",
+        "exampleTr": "Ona hediye almak için herkes para koydu."
       }
     ],
     "synonyms": [
@@ -195168,6 +198114,12 @@ export default [
         "en": "disagreement or conflict between people",
         "exampleEn": "There was some friction between the two departments.",
         "exampleTr": "İki departman arasında bir miktar sürtüşme vardı."
+      },
+      {
+        "tr": "sürtünme (fizik)",
+        "en": "the resistance when one surface moves over another",
+        "exampleEn": "Oil reduces the friction between the moving parts.",
+        "exampleTr": "Yağ, hareketli parçalar arasındaki sürtünmeyi azaltır."
       }
     ],
     "synonyms": [
@@ -195961,6 +198913,12 @@ export default [
         "en": "given free, or expressing praise",
         "exampleEn": "The hotel offers complimentary breakfast to all guests.",
         "exampleTr": "Otel tüm misafirlere ücretsiz kahvaltı sunuyor."
+      },
+      {
+        "tr": "övgü dolu, iltifat eden",
+        "en": "expressing praise or admiration",
+        "exampleEn": "The reviews of her performance were highly complimentary.",
+        "exampleTr": "Performansıyla ilgili yorumlar oldukça övgü doluydu."
       }
     ],
     "synonyms": [
@@ -196175,6 +199133,12 @@ export default [
         "en": "to live or stay in a place",
         "exampleEn": "Many animals dwell in the forest.",
         "exampleTr": "Birçok hayvan ormanda yaşar."
+      },
+      {
+        "tr": "üzerinde durmak, takılıp kalmak (dwell on)",
+        "en": "to keep thinking or talking about something, especially something unpleasant",
+        "exampleEn": "There's no point in dwelling on your past mistakes.",
+        "exampleTr": "Geçmişteki hatalarının üzerinde durmanın bir anlamı yok."
       }
     ],
     "synonyms": [
@@ -196887,6 +199851,12 @@ export default [
         "en": "covered with clouds; dull",
         "exampleEn": "The sky was overcast and rain seemed likely.",
         "exampleTr": "Gökyüzü bulutluydu ve yağmur yağacak gibiydi."
+      },
+      {
+        "tr": "kederli, kasvetli, gölgeli (ruh hali/ifade)",
+        "en": "gloomy or troubled in mood or expression",
+        "exampleEn": "A sudden sadness overcast her face.",
+        "exampleTr": "Ani bir hüzün yüzünü kararttı."
       }
     ],
     "synonyms": [
@@ -196915,6 +199885,18 @@ export default [
         "en": "a secret code for writing messages",
         "exampleEn": "The spy sent his report in a complex cipher.",
         "exampleTr": "Casus raporunu karmaşık bir şifreyle gönderdi."
+      },
+      {
+        "tr": "sıfır (rakam)",
+        "en": "the number or symbol zero",
+        "exampleEn": "In the old accounting book, a cipher marked an empty column.",
+        "exampleTr": "Eski muhasebe defterinde bir sıfır, boş sütunu işaretliyordu."
+      },
+      {
+        "tr": "önemsiz kişi, hiç kimse, silik kişi",
+        "en": "a person or thing of no importance or influence",
+        "exampleEn": "Without real power, the mayor was merely a cipher.",
+        "exampleTr": "Gerçek gücü olmayan belediye başkanı, önemsiz bir figürden ibaretti."
       }
     ],
     "synonyms": [
@@ -197144,6 +200126,12 @@ export default [
         "en": "a dog used for hunting",
         "exampleEn": "The hunter's hound caught the scent of the fox.",
         "exampleTr": "Avcının av köpeği tilkinin kokusunu aldı."
+      },
+      {
+        "tr": "peşini bırakmamak, rahat vermemek (fiil)",
+        "en": "to chase or harass someone continually",
+        "exampleEn": "The reporters hounded her for weeks after the scandal.",
+        "exampleTr": "Muhabirler skandaldan sonra haftalarca peşini bırakmadı."
       }
     ],
     "synonyms": [
@@ -197864,6 +200852,12 @@ export default [
         "en": "not clear because of mist or vagueness",
         "exampleEn": "My memory of that day is rather hazy.",
         "exampleTr": "O güne dair hafızam oldukça belirsiz."
+      },
+      {
+        "tr": "(hatıra/fikir) belirsiz, bulanık",
+        "en": "not clear in the mind; vague",
+        "exampleEn": "My memory of that night is rather hazy.",
+        "exampleTr": "O geceye dair hatıralarım oldukça bulanık."
       }
     ],
     "synonyms": [
@@ -198616,6 +201610,12 @@ export default [
         "en": "being the only one",
         "exampleEn": "She was the sole survivor of the crash.",
         "exampleTr": "Kazanın tek hayatta kalanıydı."
+      },
+      {
+        "tr": "ayak tabanı; ayakkabı tabanı (isim)",
+        "en": "the bottom part of the foot or a shoe",
+        "exampleEn": "The soles of my shoes are worn out.",
+        "exampleTr": "Ayakkabılarımın tabanları aşınmış."
       }
     ],
     "synonyms": [
@@ -198996,6 +201996,12 @@ export default [
         "en": "a detailed analysis and assessment",
         "exampleEn": "The professor wrote a critique of the novel.",
         "exampleTr": "Profesör roman üzerine bir eleştiri yazdı."
+      },
+      {
+        "tr": "eleştirmek, değerlendirmek",
+        "en": "to analyze and judge something in detail",
+        "exampleEn": "Students were asked to critique each other's essays.",
+        "exampleTr": "Öğrencilerden birbirlerinin denemelerini eleştirmeleri istendi."
       }
     ],
     "synonyms": [
@@ -199098,6 +202104,12 @@ export default [
         "en": "a narrow horizontal surface projecting from a wall or cliff",
         "exampleEn": "A bird perched on the window ledge.",
         "exampleTr": "Bir kuş pencere çıkıntısına kondu."
+      },
+      {
+        "tr": "(pencere) denizlik, pervaz",
+        "en": "a narrow horizontal surface sticking out from a wall, especially under a window",
+        "exampleEn": "She placed the flowerpot on the window ledge.",
+        "exampleTr": "Saksıyı pencere denizliğine koydu."
       }
     ],
     "synonyms": [
@@ -199284,6 +202296,12 @@ export default [
         "en": "the side of something, such as a body or army",
         "exampleEn": "The soldiers attacked the enemy's left flank.",
         "exampleTr": "Askerler düşmanın sol yanına saldırdı."
+      },
+      {
+        "tr": "(ordu, grup) yan kanat, cenah",
+        "en": "the right or left side of an army or group",
+        "exampleEn": "The enemy attacked our left flank at dawn.",
+        "exampleTr": "Düşman şafak vakti sol kanadımıza saldırdı."
       }
     ],
     "synonyms": [
@@ -199743,6 +202761,12 @@ export default [
         "en": "to stop or cause to stop",
         "exampleEn": "The police ordered the car to halt.",
         "exampleTr": "Polis arabaya durmasını emretti."
+      },
+      {
+        "tr": "duraklama, durak, mola",
+        "en": "a stop or pause",
+        "exampleEn": "The train came to a sudden halt at the station.",
+        "exampleTr": "Tren istasyonda ani bir duraklamayla durdu."
       }
     ],
     "synonyms": [
@@ -200382,6 +203406,12 @@ export default [
         "en": "completing or adding to something else",
         "exampleEn": "The book includes supplementary exercises for practice.",
         "exampleTr": "Kitap, alıştırma için ek alıştırmalar içeriyor."
+      },
+      {
+        "tr": "bütünler (açı) (geometri)",
+        "en": "describing two angles that add up to 180 degrees",
+        "exampleEn": "Two supplementary angles together measure 180 degrees.",
+        "exampleTr": "İki bütünler açı birlikte 180 derece ölçer."
       }
     ],
     "synonyms": [
@@ -200410,6 +203440,12 @@ export default [
         "en": "respect and admiration",
         "exampleEn": "She is held in high esteem by her colleagues.",
         "exampleTr": "Meslektaşları tarafından büyük saygı görüyor."
+      },
+      {
+        "tr": "saygı duymak, değer vermek (fiil)",
+        "en": "to respect and admire someone or something",
+        "exampleEn": "She is highly esteemed by her colleagues.",
+        "exampleTr": "Meslektaşları tarafından çok saygı görmektedir."
       }
     ],
     "synonyms": [
@@ -200438,6 +203474,12 @@ export default [
         "en": "relating to young people or being childish",
         "exampleEn": "The court has a special program for juvenile offenders.",
         "exampleTr": "Mahkemenin genç suçlular için özel bir programı var."
+      },
+      {
+        "tr": "(hukuk) reşit olmayan; çocuk/ergen suçluya ilişkin",
+        "en": "relating to young people who are not yet adults, especially in law",
+        "exampleEn": "He was tried in a juvenile court because he was only fifteen.",
+        "exampleTr": "Yalnızca on beş yaşında olduğu için çocuk mahkemesinde yargılandı."
       }
     ],
     "synonyms": [
@@ -200521,6 +203563,12 @@ export default [
         "en": "a long search for something important",
         "exampleEn": "The knight set out on a quest for the holy grail.",
         "exampleTr": "Şövalye kutsal kâse arayışına çıktı."
+      },
+      {
+        "tr": "görev (oyunlarda tamamlanan görev)",
+        "en": "a task or mission in a video game",
+        "exampleEn": "You must complete this quest to unlock the next level.",
+        "exampleTr": "Bir sonraki seviyeyi açmak için bu görevi tamamlamalısın."
       }
     ],
     "synonyms": [
@@ -200571,6 +203619,12 @@ export default [
         "en": "advice, or a lawyer who advises clients",
         "exampleEn": "She sought legal counsel before signing the contract.",
         "exampleTr": "Sözleşmeyi imzalamadan önce hukuki danışmanlık aldı."
+      },
+      {
+        "tr": "öğüt vermek, danışmanlık yapmak",
+        "en": "to give someone advice, especially professionally",
+        "exampleEn": "The therapist counsels patients dealing with grief.",
+        "exampleTr": "Terapist, yas yaşayan hastalara danışmanlık verir."
       }
     ],
     "synonyms": [
@@ -201441,6 +204495,18 @@ export default [
         "en": "to escape or avoid something cleverly",
         "exampleEn": "He managed to evade his pursuers in the crowded market.",
         "exampleTr": "Kalabalık pazarda peşindekilerden sıyrılmayı başardı."
+      },
+      {
+        "tr": "(soruyu) geçiştirmek, cevaptan kaçınmak",
+        "en": "to avoid answering a question directly",
+        "exampleEn": "The minister evaded the question about tax increases.",
+        "exampleTr": "Bakan vergi artışlarıyla ilgili soruyu geçiştirdi."
+      },
+      {
+        "tr": "(vergi vb.) kaçırmak, ödememek",
+        "en": "to avoid paying money that you should pay",
+        "exampleEn": "He was accused of evading taxes for years.",
+        "exampleTr": "Yıllarca vergi kaçırmakla suçlandı."
       }
     ],
     "synonyms": [
@@ -201470,6 +204536,12 @@ export default [
         "en": "to move quickly to avoid something",
         "exampleEn": "She had to dodge the ball thrown at her.",
         "exampleTr": "Kendisine atılan toptan kaçmak için yana sıçramak zorunda kaldı."
+      },
+      {
+        "tr": "kaçamak yapmak, kaytarmak, atlatmak (sorumluluk/soru)",
+        "en": "to avoid a duty, question, or responsibility",
+        "exampleEn": "The politician dodged the reporter's question.",
+        "exampleTr": "Politikacı muhabirin sorusunu geçiştirdi."
       }
     ],
     "synonyms": [
@@ -201499,6 +204571,12 @@ export default [
         "en": "situated at the back, especially of an animal",
         "exampleEn": "The horse stood up on its hind legs.",
         "exampleTr": "At arka bacaklarının üzerinde dikildi."
+      },
+      {
+        "tr": "dişi geyik (isim)",
+        "en": "a female deer",
+        "exampleEn": "A hind and her fawn grazed at the edge of the forest.",
+        "exampleTr": "Bir dişi geyik ve yavrusu ormanın kenarında otluyordu."
       }
     ],
     "synonyms": [
@@ -201555,6 +204633,12 @@ export default [
         "en": "the part of a view nearest to the observer",
         "exampleEn": "A small boat appears in the foreground of the painting.",
         "exampleTr": "Tablonun ön planında küçük bir tekne görünüyor."
+      },
+      {
+        "tr": "ön plana çıkarmak, vurgulamak",
+        "en": "to make something the most prominent or important element",
+        "exampleEn": "The report foregrounds the needs of low-income families.",
+        "exampleTr": "Rapor, düşük gelirli ailelerin ihtiyaçlarını ön plana çıkarıyor."
       }
     ],
     "synonyms": [
@@ -201637,6 +204721,12 @@ export default [
         "en": "a large area of sea partly surrounded by land",
         "exampleEn": "They sailed across the gulf to reach the island.",
         "exampleTr": "Adaya ulaşmak için körfezi geçerek yelken açtılar."
+      },
+      {
+        "tr": "uçurum, derin fark (mecazi)",
+        "en": "a large difference between people or groups",
+        "exampleEn": "There is a widening gulf between the rich and the poor.",
+        "exampleTr": "Zenginlerle yoksullar arasında giderek büyüyen bir uçurum var."
       }
     ],
     "synonyms": [
@@ -201832,6 +204922,12 @@ export default [
         "en": "a thing with distinct and independent existence",
         "exampleEn": "The company is now a separate legal entity.",
         "exampleTr": "Şirket artık ayrı bir tüzel kişiliktir."
+      },
+      {
+        "tr": "tüzel kişilik, hukuki varlık",
+        "en": "an organization that has a legal identity separate from its members",
+        "exampleEn": "The company is registered as a separate legal entity.",
+        "exampleTr": "Şirket ayrı bir tüzel kişilik olarak kayıtlıdır."
       }
     ],
     "synonyms": [
@@ -202158,6 +205254,12 @@ export default [
         "en": "to place a dead body in a grave or tomb",
         "exampleEn": "The soldiers were interred with full honours.",
         "exampleTr": "Askerler tam bir törenle defnedildi."
+      },
+      {
+        "tr": "arasında, karşılıklı (ön ek olarak)",
+        "en": "a prefix meaning between or among",
+        "exampleEn": "The word 'international' uses the prefix inter- to mean 'between nations'.",
+        "exampleTr": "'International' kelimesi 'uluslararası' anlamında inter- ön ekini kullanır."
       }
     ],
     "synonyms": [
@@ -202535,6 +205637,12 @@ export default [
         "en": "a tall vertical structure used as support",
         "exampleEn": "The roof was held up by stone pillars.",
         "exampleTr": "Çatı taş sütunlarla ayakta tutuluyordu."
+      },
+      {
+        "tr": "temel taşı, dayanak, sütun (mecazi)",
+        "en": "a person or thing that is an important supporting part of something",
+        "exampleEn": "She was a pillar of the local community.",
+        "exampleTr": "O, yerel toplumun bir dayanağıydı."
       }
     ],
     "synonyms": [
@@ -202618,6 +205726,12 @@ export default [
         "en": "to complain in a low, discontented way",
         "exampleEn": "He grumbled about the long wait at the airport.",
         "exampleTr": "Havalimanındaki uzun bekleyiş hakkında söylendi."
+      },
+      {
+        "tr": "guruldamak (mide)",
+        "en": "to make a low continuous sound",
+        "exampleEn": "My stomach was grumbling because I hadn't eaten all day.",
+        "exampleTr": "Bütün gün yemek yemediğim için midem guruldıyordu."
       }
     ],
     "synonyms": [
@@ -203599,6 +206713,12 @@ export default [
         "en": "a magic spell or curse",
         "exampleEn": "The old woman was said to put a hex on her enemies.",
         "exampleTr": "Yaşlı kadının düşmanlarına büyü yaptığı söylenirdi."
+      },
+      {
+        "tr": "büyü yapmak, lanetlemek (fiil)",
+        "en": "to cast a spell on someone to bring bad luck",
+        "exampleEn": "The old woman was said to have hexed the whole village.",
+        "exampleTr": "Yaşlı kadının tüm köye büyü yaptığı söyleniyordu."
       }
     ],
     "synonyms": [
@@ -203681,6 +206801,12 @@ export default [
         "en": "a heavy continuous attack or rapid succession of things",
         "exampleEn": "The minister faced a barrage of questions from reporters.",
         "exampleTr": "Bakan gazetecilerin soru yağmuruyla karşılaştı."
+      },
+      {
+        "tr": "bent, baraj, su savağı",
+        "en": "a barrier built across a river to control water",
+        "exampleEn": "A barrage was built across the river to control flooding.",
+        "exampleTr": "Sel kontrolü için nehrin karşısına bir bent inşa edildi."
       }
     ],
     "synonyms": [
@@ -205208,6 +208334,18 @@ export default [
         "en": "a severe flood or overwhelming amount",
         "exampleEn": "The deluge destroyed several homes near the coast.",
         "exampleTr": "Sel, sahile yakın birkaç evi yıktı."
+      },
+      {
+        "tr": "yığın, sağanak (mektup, istek vb. sel gibi gelen şey)",
+        "en": "a large number of things arriving at the same time",
+        "exampleEn": "The office received a deluge of complaints after the announcement.",
+        "exampleTr": "Duyurunun ardından ofise bir yığın şikâyet geldi."
+      },
+      {
+        "tr": "sel/yağmura boğmak; üzerine yığmak (fiil)",
+        "en": "to flood, or to overwhelm with a large quantity",
+        "exampleEn": "They were deluged with job applications within hours.",
+        "exampleTr": "Saatler içinde iş başvurularına boğuldular."
       }
     ],
     "synonyms": [
@@ -205236,6 +208374,12 @@ export default [
         "en": "a thin mist of dust, smoke, or vapor",
         "exampleEn": "A haze hung over the city in the summer heat.",
         "exampleTr": "Yaz sıcağında şehrin üzerinde bir pus asılı kaldı."
+      },
+      {
+        "tr": "zihin bulanıklığı, sersemlik",
+        "en": "a state of mental confusion",
+        "exampleEn": "For the first few days after the operation she was in a haze.",
+        "exampleTr": "Ameliyattan sonraki ilk birkaç gün zihni bulanıktı."
       }
     ],
     "synonyms": [
@@ -205877,6 +209021,12 @@ export default [
         "en": "a calm and graceful manner",
         "exampleEn": "She handled the difficult question with great poise.",
         "exampleTr": "Zor soruyu büyük bir özgüvenle yanıtladı."
+      },
+      {
+        "tr": "(bir konumda) askıda/dengede durmak (fiil)",
+        "en": "to be balanced or held in a position ready to move",
+        "exampleEn": "The cat poised itself to leap onto the wall.",
+        "exampleTr": "Kedi duvarın üstüne sıçramak için hazır bir şekilde bekledi."
       }
     ],
     "synonyms": [
@@ -206418,6 +209568,12 @@ export default [
         "en": "an agreement or harmony",
         "exampleEn": "The two nations reached a peace accord.",
         "exampleTr": "İki ulus bir barış anlaşmasına vardı."
+      },
+      {
+        "tr": "vermek, tanımak, bahşetmek (saygı, muamele vb.)",
+        "en": "to give someone something such as respect or a right",
+        "exampleEn": "The guests were accorded a warm welcome.",
+        "exampleTr": "Konuklara sıcak bir karşılama sunuldu."
       }
     ],
     "synonyms": [
@@ -206446,6 +209602,12 @@ export default [
         "en": "disagreement or lack of harmony",
         "exampleEn": "There was discord among the team members.",
         "exampleTr": "Takım üyeleri arasında anlaşmazlık vardı."
+      },
+      {
+        "tr": "akort bozukluğu, uyumsuz ses (müzikte)",
+        "en": "a combination of musical notes that sounds harsh or unpleasant",
+        "exampleEn": "The piece ends on a jarring discord that unsettles the listener.",
+        "exampleTr": "Eser, dinleyiciyi tedirgin eden rahatsız edici bir akort bozukluğuyla biter."
       }
     ],
     "synonyms": [
@@ -207219,6 +210381,18 @@ export default [
         "en": "a joke; or something put in the mouth to prevent speech",
         "exampleEn": "The comedian opened his act with a hilarious gag.",
         "exampleTr": "Komedyen gösterisine komik bir şakayla başladı."
+      },
+      {
+        "tr": "öğürmek, kusacak gibi olmak",
+        "en": "to retch or nearly vomit",
+        "exampleEn": "The awful smell made me gag.",
+        "exampleTr": "Berbat koku beni öğürttü."
+      },
+      {
+        "tr": "ağzını tıkamak; susturmak, sansürlemek",
+        "en": "to prevent someone from speaking or expressing opinions",
+        "exampleEn": "The government tried to gag the press.",
+        "exampleTr": "Hükümet basını susturmaya çalıştı."
       }
     ],
     "synonyms": [
@@ -207272,6 +210446,12 @@ export default [
         "en": "a field of activity or a kingdom",
         "exampleEn": "Her discovery opened up a whole new realm of research.",
         "exampleTr": "Keşfi, tamamen yeni bir araştırma alanı açtı."
+      },
+      {
+        "tr": "olasılık/ihtimal alanı, çerçeve",
+        "en": "an area of possibility or a general area of activity",
+        "exampleEn": "A cure for the disease is now within the realm of possibility.",
+        "exampleTr": "Hastalığın tedavisi artık ihtimaller dahilinde."
       }
     ],
     "synonyms": [
@@ -207720,6 +210900,12 @@ export default [
         "en": "full of energy, life or bright colour",
         "exampleEn": "The city has a vibrant nightlife full of music and dancing.",
         "exampleTr": "Şehir, müzik ve dansla dolu canlı bir gece hayatına sahip."
+      },
+      {
+        "tr": "(renk) canlı, göz alıcı, parlak",
+        "en": "(of a colour) bright and strong",
+        "exampleEn": "She painted the walls in vibrant shades of orange and red.",
+        "exampleTr": "Duvarları göz alıcı turuncu ve kırmızı tonlarında boyadı."
       }
     ],
     "synonyms": [
@@ -207775,6 +210961,12 @@ export default [
         "en": "a fastening for a door or gate",
         "exampleEn": "She lifted the latch and pushed the gate open.",
         "exampleTr": "Mandalı kaldırdı ve kapıyı iterek açtı."
+      },
+      {
+        "tr": "mandalla kapatmak, sürgülemek (fiil)",
+        "en": "to fasten or close something with a latch (verb)",
+        "exampleEn": "She latched the gate behind her.",
+        "exampleTr": "Arkasından kapıyı mandalla kapattı."
       }
     ],
     "synonyms": [
@@ -207829,6 +211021,12 @@ export default [
         "en": "loose or not taut; lacking activity",
         "exampleEn": "The rope hung slack between the two posts.",
         "exampleTr": "İp iki direk arasında gevşek bir şekilde sarkıyordu."
+      },
+      {
+        "tr": "ihmalkâr, dikkatsiz, gevşek davranan",
+        "en": "not taking enough care or making enough effort",
+        "exampleEn": "The staff had become slack about security.",
+        "exampleTr": "Personel güvenlik konusunda ihmalkâr olmuştu."
       }
     ],
     "synonyms": [
@@ -208239,6 +211437,12 @@ export default [
         "en": "relating to medical treatment; or coldly detached",
         "exampleEn": "The new drug is currently undergoing clinical trials.",
         "exampleTr": "Yeni ilaç şu anda klinik denemelerden geçiyor."
+      },
+      {
+        "tr": "klinikle ilgili, hasta gözlemine dayalı",
+        "en": "relating to the direct observation and treatment of patients",
+        "exampleEn": "The new drug performed well in clinical trials.",
+        "exampleTr": "Yeni ilaç klinik denemelerde iyi sonuç verdi."
       }
     ],
     "synonyms": [
@@ -208340,6 +211544,12 @@ export default [
         "en": "relating to war or the armed forces",
         "exampleEn": "The country was placed under martial law during the crisis.",
         "exampleTr": "Ülke kriz sırasında sıkıyönetim (askeri yönetim) altına alındı."
+      },
+      {
+        "tr": "savaşçı, cesur, dövüşe yatkın",
+        "en": "connected with fighting or war in character",
+        "exampleEn": "The music had a strong martial rhythm that stirred the crowd.",
+        "exampleTr": "Müziğin, kalabalığı coşturan güçlü bir savaşçı ritmi vardı."
       }
     ],
     "synonyms": [
@@ -210469,6 +213679,12 @@ export default [
         "en": "to promise something solemnly",
         "exampleEn": "They pledged to support the charity every year.",
         "exampleTr": "Her yıl hayır kurumunu desteklemeye söz verdiler."
+      },
+      {
+        "tr": "söz, vaat, taahhüt (isim)",
+        "en": "a serious promise or agreement",
+        "exampleEn": "The government made a pledge to reduce carbon emissions.",
+        "exampleTr": "Hükümet karbon emisyonlarını azaltacağına dair söz verdi."
       }
     ],
     "synonyms": [
@@ -211027,6 +214243,12 @@ export default [
         "en": "to relax after stress or to undo something coiled",
         "exampleEn": "After work, I like to unwind with a good book.",
         "exampleTr": "İşten sonra iyi bir kitapla rahatlamayı severim."
+      },
+      {
+        "tr": "(sarılı bir şeyi) çözmek, açmak",
+        "en": "to undo something that is wrapped or twisted around itself",
+        "exampleEn": "She unwound the scarf from around her neck.",
+        "exampleTr": "Boynuna sardığı atkıyı çözdü."
       }
     ],
     "synonyms": [
@@ -211242,6 +214464,12 @@ export default [
         "en": "an urgent emotional request",
         "exampleEn": "She made a desperate plea for help.",
         "exampleTr": "Çaresizce yardım için yakardı."
+      },
+      {
+        "tr": "(sanığın) suçu kabul veya reddi (hukuk)",
+        "en": "a statement made by someone in a law court saying whether they are guilty or not",
+        "exampleEn": "The defendant entered a plea of not guilty.",
+        "exampleTr": "Sanık suçsuz olduğuna dair savunma yaptı."
       }
     ],
     "synonyms": [
@@ -211465,6 +214693,12 @@ export default [
         "en": "goods stolen, especially during a war or riot",
         "exampleEn": "The thieves divided the loot among themselves.",
         "exampleTr": "Hırsızlar ganimeti aralarında paylaştı."
+      },
+      {
+        "tr": "yağmalamak, talan etmek",
+        "en": "to steal things from shops or homes during a riot or war",
+        "exampleEn": "Rioters looted several stores in the city centre overnight.",
+        "exampleTr": "İsyancılar gece boyunca şehir merkezindeki birçok mağazayı yağmaladı."
       }
     ],
     "synonyms": [
@@ -211518,6 +214752,12 @@ export default [
         "en": "a cylinder on which thread, film, or line is wound",
         "exampleEn": "He wound the fishing line onto the reel.",
         "exampleTr": "Olta misinasını makaraya sardı."
+      },
+      {
+        "tr": "sendelemek, sallanmak; başı dönmek (fiil)",
+        "en": "to move unsteadily or feel shocked and confused",
+        "exampleEn": "He reeled backwards after the blow.",
+        "exampleTr": "Darbeden sonra geriye doğru sendeledi."
       }
     ],
     "synonyms": [
@@ -211947,6 +215187,12 @@ export default [
         "en": "to make a loud, high cry",
         "exampleEn": "She began to shriek when she saw the spider.",
         "exampleTr": "Örümceği görünce çığlık atmaya başladı."
+      },
+      {
+        "tr": "çığlık, feryat (isim)",
+        "en": "a loud, high cry",
+        "exampleEn": "She let out a shriek of delight.",
+        "exampleTr": "Sevinçle bir çığlık attı."
       }
     ],
     "synonyms": [
@@ -212051,6 +215297,12 @@ export default [
         "en": "to send someone or something to a destination",
         "exampleEn": "The company will dispatch your order tomorrow.",
         "exampleTr": "Şirket siparişinizi yarın gönderecek."
+      },
+      {
+        "tr": "halletmek, çabucak bitirmek (bir işi)",
+        "en": "to deal with a task or problem quickly and efficiently",
+        "exampleEn": "She dispatched the remaining paperwork in less than an hour.",
+        "exampleTr": "Kalan evrak işini bir saatten kısa sürede halletti."
       }
     ],
     "synonyms": [
@@ -212251,6 +215503,12 @@ export default [
         "en": "a sudden rough movement or shock",
         "exampleEn": "The bus stopped with a sudden jolt.",
         "exampleTr": "Otobüs ani bir sarsıntıyla durdu."
+      },
+      {
+        "tr": "(duygusal) sarsıntı, ani ve rahatsız edici uyarı, silkeleyip kendine getirme",
+        "en": "a sudden shock that makes someone act or change",
+        "exampleEn": "The bad exam result gave him the jolt he needed to start studying.",
+        "exampleTr": "Kötü sınav sonucu, ders çalışmaya başlaması için ona gereken sarsıntıyı verdi."
       }
     ],
     "synonyms": [
@@ -213527,6 +216785,12 @@ export default [
         "en": "a trap for catching animals, especially with a noose",
         "exampleEn": "The hunter set a snare to catch the rabbit.",
         "exampleTr": "Avcı tavşanı yakalamak için bir tuzak kurdu."
+      },
+      {
+        "tr": "tuzağa düşürmek, kapana kıstırmak (fiil)",
+        "en": "to catch or trap someone or something",
+        "exampleEn": "The detective set a trap to snare the thief.",
+        "exampleTr": "Dedektif hırsızı tuzağa düşürmek için bir kapan kurdu."
       }
     ],
     "synonyms": [
@@ -213605,6 +216869,12 @@ export default [
         "en": "a dangerous or difficult feat performed for effect",
         "exampleEn": "The actor performed his own dangerous stunt in the film.",
         "exampleTr": "Aktör filmdeki tehlikeli numarayı kendisi yaptı."
+      },
+      {
+        "tr": "engellemek, büyümesini durdurmak (fiil)",
+        "en": "to stop something from growing or developing properly",
+        "exampleEn": "Poor nutrition can stunt a child's growth.",
+        "exampleTr": "Kötü beslenme bir çocuğun büyümesini engelleyebilir."
       }
     ],
     "synonyms": [
@@ -214156,6 +217426,12 @@ export default [
         "en": "not well known or difficult to understand",
         "exampleEn": "He quoted from an obscure book that few people had read.",
         "exampleTr": "Çok az insanın okuduğu az bilinen bir kitaptan alıntı yaptı."
+      },
+      {
+        "tr": "gizlemek, örtmek, gözden saklamak",
+        "en": "to prevent something from being seen or understood",
+        "exampleEn": "Thick clouds obscured the top of the mountain.",
+        "exampleTr": "Kalın bulutlar dağın zirvesini gizledi."
       }
     ],
     "synonyms": [
@@ -214443,6 +217719,12 @@ export default [
         "en": "lower in quality, rank, or importance",
         "exampleEn": "The cheaper version was clearly inferior in quality.",
         "exampleTr": "Daha ucuz versiyon kalite olarak açıkça daha düşüktü."
+      },
+      {
+        "tr": "ast, alt kademedeki kişi",
+        "en": "someone who has a lower position or rank than another",
+        "exampleEn": "A good manager treats his inferiors with respect.",
+        "exampleTr": "İyi bir yönetici astlarına saygıyla davranır."
       }
     ],
     "synonyms": [
@@ -215583,6 +218865,12 @@ export default [
         "en": "to formally accuse someone of a crime",
         "exampleEn": "The grand jury voted to indict the suspect.",
         "exampleTr": "Büyük jüri şüpheliyi itham etmeye karar verdi."
+      },
+      {
+        "tr": "(bir şeyi/durumu) eleştirmek, mahkûm etmek, kınamak",
+        "en": "to criticize something strongly, to condemn",
+        "exampleEn": "The report indicts the government for failing to protect the poor.",
+        "exampleTr": "Rapor, hükümeti yoksulları koruyamadığı için mahkûm ediyor."
       }
     ],
     "synonyms": [
@@ -215755,6 +219043,12 @@ export default [
         "en": "a sudden sharp feeling of pain or emotion",
         "exampleEn": "She felt a pang of guilt for forgetting his birthday.",
         "exampleTr": "Doğum gününü unuttuğu için bir vicdan azabı hissetti."
+      },
+      {
+        "tr": "ani açlık hissi, açlık sancısı",
+        "en": "a sudden sharp feeling of hunger",
+        "exampleEn": "I felt a pang of hunger halfway through the meeting.",
+        "exampleTr": "Toplantının ortasında ani bir açlık hissi duydum."
       }
     ],
     "synonyms": [
@@ -216011,6 +219305,12 @@ export default [
         "en": "a strong feeling of contempt or disdain",
         "exampleEn": "She looked at him with scorn.",
         "exampleTr": "Ona küçümseyerek baktı."
+      },
+      {
+        "tr": "küçümsemek, hor görmek (fiil)",
+        "en": "to show that you think something or someone is worthless or ridiculous",
+        "exampleEn": "She scorned his offer of help, saying she could manage alone.",
+        "exampleTr": "Yalnız başa çıkabileceğini söyleyerek onun yardım teklifini küçümsedi."
       }
     ],
     "synonyms": [
@@ -216413,6 +219713,12 @@ export default [
         "en": "the farming of animals and crops",
         "exampleEn": "Animal husbandry has been practiced for thousands of years.",
         "exampleTr": "Hayvancılık binlerce yıldır yapılmaktadır."
+      },
+      {
+        "tr": "tutumlu yönetim, idareli kullanma (kaynakların)",
+        "en": "careful and economical management of resources",
+        "exampleEn": "Good husbandry of public funds kept the town out of debt.",
+        "exampleTr": "Kamu kaynaklarının tutumlu yönetimi kasabayı borçtan uzak tuttu."
       }
     ],
     "synonyms": [
@@ -216975,6 +220281,12 @@ export default [
         "en": "full of energy, determination, or courage",
         "exampleEn": "The team put up a spirited defense in the final.",
         "exampleTr": "Takım finalde ateşli bir savunma sergiledi."
+      },
+      {
+        "tr": "(bileşik halde) ruhlu, moralli; belli bir ruh hâlinde",
+        "en": "having a specified mood or character (in compounds)",
+        "exampleEn": "She is a kind, generous and high-spirited woman.",
+        "exampleTr": "O, nazik, cömert ve neşeli bir kadındır."
       }
     ],
     "synonyms": [
@@ -217115,6 +220427,12 @@ export default [
         "en": "to propose someone for a position or award",
         "exampleEn": "They decided to nominate her for the award.",
         "exampleTr": "Onu ödül için aday göstermeye karar verdiler."
+      },
+      {
+        "tr": "atamak, görevlendirmek",
+        "en": "to officially appoint someone to a position or job",
+        "exampleEn": "She was nominated as the new chairperson of the committee.",
+        "exampleTr": "Komitenin yeni başkanı olarak atandı."
       }
     ],
     "synonyms": [
@@ -217509,6 +220827,12 @@ export default [
         "en": "to drive back or cause strong dislike",
         "exampleEn": "This spray will repel insects for several hours.",
         "exampleTr": "Bu sprey böcekleri birkaç saat boyunca püskürtecek."
+      },
+      {
+        "tr": "(fizik) itmek, birbirini itmek",
+        "en": "to force something away or apart, as with magnetic or electric forces",
+        "exampleEn": "Two magnets with the same poles repel each other.",
+        "exampleTr": "Aynı kutuplara sahip iki mıknatıs birbirini iter."
       }
     ],
     "synonyms": [
@@ -217538,6 +220862,12 @@ export default [
         "en": "a feeling of strong dislike, or the act of driving back",
         "exampleEn": "She felt a sense of repulsion at the sight of the wound.",
         "exampleTr": "Yarayı görünce bir tiksinti hissetti."
+      },
+      {
+        "tr": "itme kuvveti (fizik)",
+        "en": "the force by which objects tend to push each other away",
+        "exampleEn": "Like magnetic poles show repulsion when brought close together.",
+        "exampleTr": "Aynı manyetik kutuplar birbirine yaklaştırıldığında itme gösterir."
       }
     ],
     "synonyms": [
@@ -218077,6 +221407,12 @@ export default [
         "en": "reasons for something, or the land around a building",
         "exampleEn": "She was dismissed on grounds of misconduct.",
         "exampleTr": "Görevi kötüye kullanma gerekçesiyle işten çıkarıldı."
+      },
+      {
+        "tr": "tortu, telve (kahve vb.)",
+        "en": "the small solid pieces left at the bottom, especially of coffee",
+        "exampleEn": "She threw the coffee grounds into the compost.",
+        "exampleTr": "Kahve telvesini kompost yığınına attı."
       }
     ],
     "synonyms": [
@@ -218251,6 +221587,12 @@ export default [
         "en": "a firm belief, or a formal declaration of guilt",
         "exampleEn": "She spoke with great conviction about her cause.",
         "exampleTr": "Davası hakkında büyük bir inançla konuştu."
+      },
+      {
+        "tr": "kararlılık, inandırıcılık",
+        "en": "the quality of showing firm belief or being convincing",
+        "exampleEn": "She argued her case with great conviction.",
+        "exampleTr": "Davasını büyük bir kararlılıkla savundu."
       }
     ],
     "synonyms": [
@@ -218341,6 +221683,12 @@ export default [
         "en": "a bet, an amount risked on an uncertain outcome",
         "exampleEn": "They made a wager on which horse would win the race.",
         "exampleTr": "Hangi atın yarışı kazanacağına dair bir bahis tutuştular."
+      },
+      {
+        "tr": "bahse girmek, iddiaya girmek (fiil)",
+        "en": "to bet a sum of money on the result of something",
+        "exampleEn": "He wagered fifty dollars on his favorite horse.",
+        "exampleTr": "Favori atına elli dolar bahis oynadı."
       }
     ],
     "synonyms": [
@@ -218650,6 +221998,12 @@ export default [
         "en": "to clean or empty something with a rush of water; to become red in the face",
         "exampleEn": "Remember to flush the toilet after you use it.",
         "exampleTr": "Tuvaleti kullandıktan sonra sifonu çekmeyi unutma."
+      },
+      {
+        "tr": "(yüz) kızarma, al basma (isim)",
+        "en": "a red colour that appears on your face",
+        "exampleEn": "A flush of embarrassment spread across her cheeks.",
+        "exampleTr": "Yanaklarına bir utanç kızarıklığı yayıldı."
       }
     ],
     "synonyms": [
@@ -218963,6 +222317,12 @@ export default [
         "en": "a person's chest or breast, especially a woman's",
         "exampleEn": "She held the child close to her bosom.",
         "exampleTr": "Çocuğu bağrına bastı."
+      },
+      {
+        "tr": "çok yakın, samimi (bosom friend)",
+        "en": "very close and dear (of a friend)",
+        "exampleEn": "They have been bosom friends since childhood.",
+        "exampleTr": "Çocukluklarından beri çok yakın dostturlar."
       }
     ],
     "synonyms": [
@@ -219067,6 +222427,12 @@ export default [
         "en": "the process of producing offspring; a copy of an original",
         "exampleEn": "The book explains how reproduction works in mammals.",
         "exampleTr": "Kitap memelilerde üremenin nasıl işlediğini açıklıyor."
+      },
+      {
+        "tr": "seslerin/görüntülerin yeniden verilmesi, kaydın kalitesi",
+        "en": "the way in which sound or images are reproduced",
+        "exampleEn": "This speaker system offers excellent sound reproduction.",
+        "exampleTr": "Bu hoparlör sistemi mükemmel ses kalitesi sunuyor."
       }
     ],
     "synonyms": [
@@ -219738,6 +223104,12 @@ export default [
         "en": "a sudden attack of illness; the act of taking something by force",
         "exampleEn": "The patient suffered a seizure and was rushed to hospital.",
         "exampleTr": "Hasta bir nöbet geçirdi ve hızla hastaneye kaldırıldı."
+      },
+      {
+        "tr": "ele geçirme, gasp etme (iktidar vb.)",
+        "en": "the act of taking control of something, especially by force",
+        "exampleEn": "The military's seizure of power shocked the nation.",
+        "exampleTr": "Ordunun iktidarı ele geçirmesi ulusu şoke etti."
       }
     ],
     "synonyms": [
@@ -220858,6 +224230,12 @@ export default [
         "en": "to argue or to compete for something",
         "exampleEn": "Lawyers contend that the new law is unfair.",
         "exampleTr": "Avukatlar yeni yasanın haksız olduğunu iddia ediyor."
+      },
+      {
+        "tr": "başa çıkmak, uğraşmak (with)",
+        "en": "to have to deal with a difficult situation",
+        "exampleEn": "Firefighters had to contend with strong winds as they fought the blaze.",
+        "exampleTr": "İtfaiyeciler yangınla mücadele ederken güçlü rüzgarlarla başa çıkmak zorunda kaldılar."
       }
     ],
     "synonyms": [
@@ -221079,6 +224457,12 @@ export default [
         "en": "to prove or declare something valid",
         "exampleEn": "The results of the study validate the new theory.",
         "exampleTr": "Çalışmanın sonuçları yeni teoriyi doğrular."
+      },
+      {
+        "tr": "(birinin duygularını) haklı bulmak, değerli hissettirmek",
+        "en": "to make someone feel their feelings or opinions are worthwhile",
+        "exampleEn": "It's important to validate a child's feelings rather than dismiss them.",
+        "exampleTr": "Bir çocuğun duygularını görmezden gelmek yerine haklı bulup değerli hissettirmek önemlidir."
       }
     ],
     "synonyms": [
@@ -221216,6 +224600,12 @@ export default [
         "en": "an official document granting rights or defining principles",
         "exampleEn": "The United Nations Charter sets out its core principles.",
         "exampleTr": "Birleşmiş Milletler Beyannamesi temel ilkelerini ortaya koyar."
+      },
+      {
+        "tr": "kiralamak (uçak, gemi, otobüs)",
+        "en": "to hire a vehicle such as a plane, boat, or bus for private use",
+        "exampleEn": "The team chartered a plane to fly to the tournament.",
+        "exampleTr": "Takım, turnuvaya uçmak için bir uçak kiraladı."
       }
     ],
     "synonyms": [
@@ -221270,6 +224660,12 @@ export default [
         "en": "the amount of something taken in",
         "exampleEn": "Doctors recommend reducing your daily salt intake.",
         "exampleTr": "Doktorlar günlük tuz alımınızı azaltmanızı öneriyor."
+      },
+      {
+        "tr": "(hava/su) giriş açıklığı, emme deliği",
+        "en": "an opening through which air or liquid enters a machine or engine",
+        "exampleEn": "The engine's air intake was blocked by leaves.",
+        "exampleTr": "Motorun hava girişi yapraklarla tıkanmıştı."
       }
     ],
     "synonyms": [
@@ -221613,6 +225009,12 @@ export default [
         "en": "a current count or record of a number",
         "exampleEn": "They kept a running tally of the votes.",
         "exampleTr": "Oyların güncel bir sayımını tuttular."
+      },
+      {
+        "tr": "uyuşmak, tutmak, örtüşmek (fiil)",
+        "en": "to match or agree with something else",
+        "exampleEn": "Your figures don't tally with the ones in the report.",
+        "exampleTr": "Senin rakamların rapordakilerle uyuşmuyor."
       }
     ],
     "synonyms": [
@@ -222157,6 +225559,12 @@ export default [
         "en": "to arrange cloth loosely over something",
         "exampleEn": "She draped a blanket over the sleeping child.",
         "exampleTr": "Uyuyan çocuğun üzerine bir battaniye örttü."
+      },
+      {
+        "tr": "(vücudunu/kolunu) yaslamak, salıvermek",
+        "en": "to let a part of the body rest loosely on something",
+        "exampleEn": "He draped his arm over the back of the chair.",
+        "exampleTr": "Kolunu sandalyenin arkasına yasladı."
       }
     ],
     "synonyms": [
@@ -222932,6 +226340,12 @@ export default [
         "en": "a feeling of deep, thoughtful sadness",
         "exampleEn": "A sense of melancholy filled the autumn evening.",
         "exampleTr": "Sonbahar akşamını bir hüzün duygusu kapladı."
+      },
+      {
+        "tr": "hüzünlü, melankolik",
+        "en": "sad and thoughtful (as an adjective)",
+        "exampleEn": "He was in a melancholy mood after the funeral.",
+        "exampleTr": "Cenazeden sonra hüzünlü bir ruh hali içindeydi."
       }
     ],
     "synonyms": [
@@ -223136,6 +226550,12 @@ export default [
         "en": "the quality of being good and deserving praise",
         "exampleEn": "The proposal has real merit and deserves support.",
         "exampleTr": "Öneri gerçek bir değere sahip ve desteklenmeyi hak ediyor."
+      },
+      {
+        "tr": "hak etmek, layık olmak",
+        "en": "to deserve or be worthy of something",
+        "exampleEn": "The proposal merits serious consideration.",
+        "exampleTr": "Öneri ciddi bir şekilde değerlendirilmeyi hak ediyor."
       }
     ],
     "synonyms": [
@@ -223165,6 +226585,12 @@ export default [
         "en": "to justify or make something necessary",
         "exampleEn": "The situation does not warrant such a strong reaction.",
         "exampleTr": "Durum böylesine sert bir tepkiyi gerektirmiyor."
+      },
+      {
+        "tr": "müzekkere, resmî izin belgesi (arama/tutuklama emri)",
+        "en": "an official document that gives the police permission to do something",
+        "exampleEn": "The police obtained a warrant to search his house.",
+        "exampleTr": "Polis, evini aramak için bir arama emri aldı."
       }
     ],
     "synonyms": [
@@ -223675,6 +227101,12 @@ export default [
         "en": "to measure or estimate something",
         "exampleEn": "It is hard to gauge his reaction from his face.",
         "exampleTr": "Yüzünden tepkisini ölçmek zor."
+      },
+      {
+        "tr": "gösterge, ölçüm aleti",
+        "en": "an instrument for measuring amount or level",
+        "exampleEn": "The fuel gauge showed that the tank was nearly empty.",
+        "exampleTr": "Yakıt göstergesi deponun neredeyse boş olduğunu gösteriyordu."
       }
     ],
     "synonyms": [
@@ -225001,6 +228433,18 @@ export default [
         "en": "to jump or fall quickly and forcefully",
         "exampleEn": "The diver took a deep breath and plunged into the icy water.",
         "exampleTr": "Dalgıç derin bir nefes aldı ve buz gibi suya daldı."
+      },
+      {
+        "tr": "(fiyat, değer) ani düşüş göstermek, çakılmak",
+        "en": "to decrease suddenly and quickly in amount or value",
+        "exampleEn": "Share prices plunged after the announcement.",
+        "exampleTr": "Duyurunun ardından hisse fiyatları çakıldı."
+      },
+      {
+        "tr": "(bir şeyi) daldırmak, sokmak",
+        "en": "to push something suddenly and forcefully into something",
+        "exampleEn": "He plunged his hand into the cold water.",
+        "exampleTr": "Elini soğuk suya daldırdı."
       }
     ],
     "synonyms": [
@@ -225084,6 +228528,12 @@ export default [
         "en": "the state of being united or joined as a whole",
         "exampleEn": "The leader called for unity among the divided communities.",
         "exampleTr": "Lider, bölünmüş topluluklar arasında birlik çağrısında bulundu."
+      },
+      {
+        "tr": "birlik (bir bütün oluşturma), tümlük",
+        "en": "the state of forming a single whole or being in agreement",
+        "exampleEn": "The artist created a sense of unity by using the same colors throughout the painting.",
+        "exampleTr": "Sanatçı, resmin her yerinde aynı renkleri kullanarak bir bütünlük hissi yarattı."
       }
     ],
     "synonyms": [
@@ -225248,6 +228698,12 @@ export default [
         "en": "to pull or carry something with effort",
         "exampleEn": "They had to haul the heavy boat onto the beach.",
         "exampleTr": "Ağır tekneyi kumsala çekmek zorunda kaldılar."
+      },
+      {
+        "tr": "(çalınan/ele geçirilen) mal, av, vurgun",
+        "en": "a large amount of stolen or illegal goods that has been seized",
+        "exampleEn": "Police seized a huge haul of drugs at the border.",
+        "exampleTr": "Polis sınırda büyük bir uyuşturucu partisine el koydu."
       }
     ],
     "synonyms": [
@@ -225306,6 +228762,12 @@ export default [
         "en": "not affected by alcohol; serious and sensible",
         "exampleEn": "After a good night's sleep, he felt completely sober again.",
         "exampleTr": "İyi bir gece uykusundan sonra tamamen ayık hissetti."
+      },
+      {
+        "tr": "ciddi, ağırbaşlı, ölçülü",
+        "en": "serious, sensible, and not silly",
+        "exampleEn": "We need to take a sober look at the facts.",
+        "exampleTr": "Gerçeklere ciddi bir gözle bakmamız gerekiyor."
       }
     ],
     "synonyms": [
@@ -226139,6 +229601,12 @@ export default [
         "en": "a long and distinct period of time in history",
         "exampleEn": "The invention of the internet marked a new epoch in communication.",
         "exampleTr": "İnternetin icadı, iletişimde yeni bir çağın başlangıcı oldu."
+      },
+      {
+        "tr": "(jeoloji) devir, jeolojik zaman dilimi",
+        "en": "a division of geological time, a subdivision of a period",
+        "exampleEn": "Dinosaurs disappeared long before the current epoch.",
+        "exampleTr": "Dinozorlar, içinde bulunduğumuz jeolojik devirden çok önce yok oldu."
       }
     ],
     "synonyms": [
@@ -227144,6 +230612,12 @@ export default [
         "en": "made in imitation to deceive; fake",
         "exampleEn": "The police seized a large amount of counterfeit money.",
         "exampleTr": "Polis büyük miktarda sahte para ele geçirdi."
+      },
+      {
+        "tr": "taklit etmek, sahtesini yapmak",
+        "en": "to make an illegal copy of something to deceive people",
+        "exampleEn": "Gangs were counterfeiting designer handbags and selling them online.",
+        "exampleTr": "Çeteler marka çantaların taklitlerini yapıp internette satıyordu."
       }
     ],
     "synonyms": [
@@ -228153,6 +231627,18 @@ export default [
         "en": "to push suddenly and forcefully",
         "exampleEn": "She thrust the letter into his hand and left.",
         "exampleTr": "Mektubu eline tutuşturup gitti."
+      },
+      {
+        "tr": "itiş gücü, itki (isim; motor/roket)",
+        "en": "the force that pushes an engine or vehicle forward",
+        "exampleEn": "The rocket's engines produced enormous thrust at liftoff.",
+        "exampleTr": "Roketin motorları kalkışta muazzam bir itki üretti."
+      },
+      {
+        "tr": "ana fikir, öz, esas amaç",
+        "en": "the main point or essential meaning of something",
+        "exampleEn": "The main thrust of his argument was that costs must be cut.",
+        "exampleTr": "Argümanının ana fikri maliyetlerin düşürülmesi gerektiğiydi."
       }
     ],
     "synonyms": [
@@ -228737,6 +232223,12 @@ export default [
         "en": "not connected with religion or spiritual matters",
         "exampleEn": "The country has a secular system of government.",
         "exampleTr": "Ülkenin laik bir yönetim sistemi var."
+      },
+      {
+        "tr": "asırlık, uzun süreli (ekonomi/finans)",
+        "en": "continuing or lasting over a very long period of time",
+        "exampleEn": "Analysts pointed to a secular decline in newspaper sales over several decades.",
+        "exampleTr": "Analistler, gazete satışlarında onlarca yıla yayılan uzun vadeli bir düşüşe işaret etti."
       }
     ],
     "synonyms": [
@@ -229039,6 +232531,12 @@ export default [
         "en": "a lack of respect toward someone or something",
         "exampleEn": "His rude comments showed great disrespect for the teacher.",
         "exampleTr": "Kaba yorumları öğretmene büyük saygısızlık gösterdi."
+      },
+      {
+        "tr": "saygısızlık etmek, saygı göstermemek (fiil)",
+        "en": "to treat someone without respect",
+        "exampleEn": "Don't disrespect your elders like that.",
+        "exampleTr": "Büyüklerine öyle saygısızlık etme."
       }
     ],
     "synonyms": [
@@ -229265,6 +232763,12 @@ export default [
         "en": "to make changes to a document or law to improve it",
         "exampleEn": "Parliament voted to amend the existing law.",
         "exampleTr": "Parlamento mevcut yasayı değiştirmek için oy kullandı."
+      },
+      {
+        "tr": "telafi etmek, gönül almak (make amends)",
+        "en": "to make things right after doing something wrong",
+        "exampleEn": "He tried to amend for his mistake by apologizing.",
+        "exampleTr": "Özür dileyerek hatasını telafi etmeye çalıştı."
       }
     ],
     "synonyms": [
@@ -229591,6 +233095,12 @@ export default [
         "en": "showing disrespect for religion or sacred things",
         "exampleEn": "He was scolded for using profane language in church.",
         "exampleTr": "Kilisede küfürlü dil kullandığı için azarlandı."
+      },
+      {
+        "tr": "kutsala saygısızlık etmek, kirletmek (fiil)",
+        "en": "to treat something sacred with disrespect",
+        "exampleEn": "The vandals profaned the temple by scrawling graffiti on its walls.",
+        "exampleTr": "Vandallar duvarlara yazı karalayarak tapınağa saygısızlık ettiler."
       }
     ],
     "synonyms": [
@@ -229678,6 +233188,12 @@ export default [
         "en": "courage and determination, or small bits of stone",
         "exampleEn": "It took real grit to finish the marathon in the rain.",
         "exampleTr": "Yağmurda maratonu bitirmek gerçek bir azim gerektirdi."
+      },
+      {
+        "tr": "(dişlerini) sıkmak, gıcırdatmak",
+        "en": "to clench your teeth, often to show determination",
+        "exampleEn": "She gritted her teeth and kept climbing.",
+        "exampleTr": "Dişlerini sıktı ve tırmanmaya devam etti."
       }
     ],
     "synonyms": [
@@ -230321,6 +233837,12 @@ export default [
         "en": "a person who is among the first to explore or develop something",
         "exampleEn": "She was a pioneer in the field of computer science.",
         "exampleTr": "O, bilgisayar bilimi alanında bir öncüydü."
+      },
+      {
+        "tr": "öncülük etmek, ilk kez geliştirmek",
+        "en": "to be the first to develop or use something new",
+        "exampleEn": "The team pioneered a new surgical technique.",
+        "exampleTr": "Ekip yeni bir cerrahi tekniğe öncülük etti."
       }
     ],
     "synonyms": [
@@ -230625,6 +234147,12 @@ export default [
         "en": "to tremble suddenly from fear, cold, or disgust",
         "exampleEn": "She began to shudder at the thought of the accident.",
         "exampleTr": "Kaza düşüncesiyle ürpermeye başladı."
+      },
+      {
+        "tr": "titreme, ürperti (isim)",
+        "en": "a sudden shaking movement of the body from fear or cold",
+        "exampleEn": "A shudder ran through her when she heard the news.",
+        "exampleTr": "Haberi duyunca içinden bir ürperti geçti."
       }
     ],
     "synonyms": [
@@ -231260,6 +234788,12 @@ export default [
         "en": "a slope or sloping surface",
         "exampleEn": "The cyclists struggled up the steep incline.",
         "exampleTr": "Bisikletçiler dik yokuşu zorlukla çıktı."
+      },
+      {
+        "tr": "eğilimli olmak, meyletmek, yönelmek",
+        "en": "to feel or make someone feel willing to do something",
+        "exampleEn": "I'm inclined to agree with you on this matter.",
+        "exampleTr": "Bu konuda sana katılma eğilimindeyim."
       }
     ],
     "synonyms": [
@@ -232173,6 +235707,18 @@ export default [
         "en": "to strengthen a place against attack",
         "exampleEn": "They fortified the town with thick stone walls.",
         "exampleTr": "Kasabayı kalın taş duvarlarla tahkim ettiler."
+      },
+      {
+        "tr": "(besin/içecek) takviye etmek, zenginleştirmek",
+        "en": "to add vitamins or minerals to food or drink",
+        "exampleEn": "The cereal is fortified with iron and vitamins.",
+        "exampleTr": "Bu tahıl gevreği demir ve vitaminlerle takviye edilmiştir."
+      },
+      {
+        "tr": "(moral/cesaret) güçlendirmek, kuvvet vermek",
+        "en": "to make someone feel stronger or more determined",
+        "exampleEn": "She fortified herself with a cup of coffee before the meeting.",
+        "exampleTr": "Toplantıdan önce bir fincan kahveyle kendini güçlendirdi."
       }
     ],
     "synonyms": [
@@ -233228,6 +236774,12 @@ export default [
         "en": "slow to show feelings or opinions; kept for someone",
         "exampleEn": "He is a reserved man who rarely shares his feelings.",
         "exampleTr": "O, duygularını nadiren paylaşan çekingen bir adamdır."
+      },
+      {
+        "tr": "ayrılmış, rezerve edilmiş (yer, koltuk)",
+        "en": "kept for a particular person or purpose",
+        "exampleEn": "This table is reserved for a party of six.",
+        "exampleTr": "Bu masa altı kişilik bir grup için ayrılmıştır."
       }
     ],
     "synonyms": [
@@ -233578,6 +237130,12 @@ export default [
         "en": "a large tent used for outdoor events",
         "exampleEn": "The wedding reception was held in a huge white marquee.",
         "exampleTr": "Düğün resepsiyonu büyük beyaz bir çadırda yapıldı."
+      },
+      {
+        "tr": "tiyatro/sinema girişindeki ışıklı afiş panosu",
+        "en": "a large sign over a cinema or theatre showing what is on",
+        "exampleEn": "Her name was up in lights on the theatre marquee.",
+        "exampleTr": "Adı, tiyatronun ışıklı afiş panosunda yazıyordu."
       }
     ],
     "synonyms": [
@@ -233683,6 +237241,18 @@ export default [
         "en": "a person or thing that is a threat or danger",
         "exampleEn": "Speeding drivers are a menace to pedestrians.",
         "exampleTr": "Aşırı hızlı sürücüler yayalar için bir tehdittir."
+      },
+      {
+        "tr": "baş belası, sıkıntı veren kimse/şey",
+        "en": "an annoying or troublesome person or thing",
+        "exampleEn": "That dog is an absolute menace to the neighbourhood.",
+        "exampleTr": "O köpek mahalle için tam bir baş belası."
+      },
+      {
+        "tr": "tehdit etmek, gözdağı vermek",
+        "en": "to threaten or endanger someone",
+        "exampleEn": "Gangs continued to menace local shopkeepers.",
+        "exampleTr": "Çeteler yerel esnafı tehdit etmeye devam etti."
       }
     ],
     "synonyms": [
@@ -234501,6 +238071,18 @@ export default [
         "en": "to cause something to be in a particular state",
         "exampleEn": "The injury rendered him unable to walk for weeks.",
         "exampleTr": "Yaralanma onu haftalarca yürüyemez hale getirdi."
+      },
+      {
+        "tr": "(hizmet, yardım) sunmak, vermek",
+        "en": "to provide or give a service, help, or duty",
+        "exampleEn": "She was thanked for the services she had rendered to the community.",
+        "exampleTr": "Topluma sunduğu hizmetler için kendisine teşekkür edildi."
+      },
+      {
+        "tr": "(bir dilden) çevirmek; (sanat) yorumlamak/icra etmek",
+        "en": "to express or perform something in a particular way, or to translate it",
+        "exampleEn": "The poem was beautifully rendered into English by the translator.",
+        "exampleTr": "Şiir çevirmen tarafından İngilizceye güzelce çevrildi."
       }
     ],
     "synonyms": [
@@ -234527,6 +238109,12 @@ export default [
         "en": "the movement of people or goods from one place to another",
         "exampleEn": "The goods were damaged in transit.",
         "exampleTr": "Mallar nakil sırasında hasar gördü."
+      },
+      {
+        "tr": "toplu taşıma (ABD)",
+        "en": "the system of public transport (American English)",
+        "exampleEn": "The city invested heavily in its public transit network.",
+        "exampleTr": "Şehir toplu taşıma ağına büyük yatırım yaptı."
       }
     ],
     "synonyms": [
@@ -234661,6 +238249,12 @@ export default [
         "en": "to make something fall over, or to fall over",
         "exampleEn": "The strong wind toppled several trees in the park.",
         "exampleTr": "Şiddetli rüzgar parktaki birkaç ağacı devirdi."
+      },
+      {
+        "tr": "(iktidardan) düşürmek, devirmek (hükümet/lider)",
+        "en": "to remove a leader or government from power",
+        "exampleEn": "The uprising toppled the dictator within weeks.",
+        "exampleTr": "Ayaklanma diktatörü haftalar içinde devirdi."
       }
     ],
     "synonyms": [
@@ -236068,6 +239662,12 @@ export default [
         "en": "the act of transporting something, or a vehicle",
         "exampleEn": "The bus served as their main conveyance to work.",
         "exampleTr": "Otobüs, işe gitmek için ana taşıma araçlarıydı."
+      },
+      {
+        "tr": "mülkiyet devri; tapu devir işlemi (hukuk)",
+        "en": "the legal transfer of property from one owner to another",
+        "exampleEn": "The conveyance of the house took several weeks to complete.",
+        "exampleTr": "Evin mülkiyet devri tamamlanması birkaç hafta sürdü."
       }
     ],
     "synonyms": [
@@ -236284,6 +239884,12 @@ export default [
         "en": "relating to light or the sense of sight",
         "exampleEn": "The microscope uses an optical lens.",
         "exampleTr": "Mikroskop optik bir mercek kullanır."
+      },
+      {
+        "tr": "gözle ilgili, göze ait",
+        "en": "relating to the eyes or the sense of sight",
+        "exampleEn": "An optical illusion can make two identical lines look different.",
+        "exampleTr": "Bir optik yanılsama, birbirinin aynısı iki çizgiyi farklı gösterebilir."
       }
     ],
     "synonyms": [
@@ -236421,6 +240027,12 @@ export default [
         "en": "a small piece or amount of something",
         "exampleEn": "She wrote the number on a scrap of paper.",
         "exampleTr": "Numarayı bir kağıt parçasına yazdı."
+      },
+      {
+        "tr": "iptal etmek, çöpe atmak (plan, fikir)",
+        "en": "to get rid of or cancel a plan or system",
+        "exampleEn": "The government decided to scrap the new tax.",
+        "exampleTr": "Hükümet yeni vergiyi iptal etmeye karar verdi."
       }
     ],
     "synonyms": [
@@ -236675,6 +240287,12 @@ export default [
         "en": "(of a plant) to become limp and droop",
         "exampleEn": "The flowers began to wilt in the heat.",
         "exampleTr": "Çiçekler sıcakta solmaya başladı."
+      },
+      {
+        "tr": "bitkin düşmek, gücü tükenmek (kişi için)",
+        "en": "to become weak or tired, especially because of heat",
+        "exampleEn": "By the afternoon the runners were wilting in the heat.",
+        "exampleTr": "Öğleden sonra koşucular sıcaktan bitkin düşüyordu."
       }
     ],
     "synonyms": [
@@ -237064,6 +240682,12 @@ export default [
         "en": "a student who stays away from school without permission",
         "exampleEn": "The teacher reported the truant to the principal.",
         "exampleTr": "Öğretmen okul kaçağını müdüre bildirdi."
+      },
+      {
+        "tr": "okulu asmak, kaytarmak (play truant)",
+        "en": "to stay away from school without permission",
+        "exampleEn": "He was caught playing truant at the shopping mall.",
+        "exampleTr": "Alışveriş merkezinde okulu asarken yakalandı."
       }
     ],
     "synonyms": [
@@ -237582,6 +241206,12 @@ export default [
         "en": "a drug addict; an enthusiast (informal)",
         "exampleEn": "He is a complete fitness junkie.",
         "exampleTr": "O tam bir fitness müptelası."
+      },
+      {
+        "tr": "(bir şeye) düşkün kimse, tutkun, meraklı (esprili kullanım)",
+        "en": "a person who is extremely enthusiastic about something",
+        "exampleEn": "She's a real news junkie who checks headlines every hour.",
+        "exampleTr": "O, her saat başı manşetlere bakan gerçek bir haber düşkünü."
       }
     ],
     "synonyms": [
@@ -238249,6 +241879,12 @@ export default [
         "en": "to worry constantly about something",
         "exampleEn": "Don't fret about the exam; you've studied hard.",
         "exampleTr": "Sınav için endişelenme; çok çalıştın."
+      },
+      {
+        "tr": "perde (gitar vb. sap üzerindeki)",
+        "en": "a raised ridge on the neck of a stringed instrument",
+        "exampleEn": "She pressed her finger down on the second fret.",
+        "exampleTr": "Parmağını ikinci perdeye bastırdı."
       }
     ],
     "synonyms": [
@@ -238277,6 +241913,12 @@ export default [
         "en": "to cause severe suffering to someone",
         "exampleEn": "Painful memories continued to torment him for years.",
         "exampleTr": "Acı verici anılar yıllarca ona eziyet etmeye devam etti."
+      },
+      {
+        "tr": "ıstırap, azap, eziyet (isim)",
+        "en": "great mental or physical suffering",
+        "exampleEn": "She suffered years of torment after the accident.",
+        "exampleTr": "Kazadan sonra yıllarca ıstırap çekti."
       }
     ],
     "synonyms": [
@@ -238444,6 +242086,12 @@ export default [
         "en": "an exchange of things, or a road junction",
         "exampleEn": "There was a lively interchange of ideas at the meeting.",
         "exampleTr": "Toplantıda hararetli bir fikir alışverişi oldu."
+      },
+      {
+        "tr": "yer değiştirmek, birbirinin yerine kullanmak",
+        "en": "to exchange things, or to put one thing in the place of another",
+        "exampleEn": "You can interchange the two batteries without any problem.",
+        "exampleTr": "İki pili sorunsuzca birbirinin yerine kullanabilirsin."
       }
     ],
     "synonyms": [
@@ -238813,6 +242461,12 @@ export default [
         "en": "to make something less intense or sensitive",
         "exampleEn": "The medicine helped deaden the pain in his leg.",
         "exampleTr": "İlaç bacağındaki ağrıyı hafifletmeye yardımcı oldu."
+      },
+      {
+        "tr": "sesi boğmak, sesi kesmek",
+        "en": "to make a sound quieter or less resonant",
+        "exampleEn": "Thick carpets deadened the sound of footsteps.",
+        "exampleTr": "Kalın halılar ayak seslerini boğuyordu."
       }
     ],
     "synonyms": [
@@ -239005,6 +242659,12 @@ export default [
         "en": "of high quality from an earlier period",
         "exampleEn": "She wore a beautiful vintage dress to the party.",
         "exampleTr": "Partiye güzel, klasik bir elbise giydi."
+      },
+      {
+        "tr": "(şarap) bağbozumu yılı, mahsul yılı (isim)",
+        "en": "the year or place in which a particular wine was produced",
+        "exampleEn": "This bottle is from an excellent vintage.",
+        "exampleTr": "Bu şişe mükemmel bir mahsul yılına ait."
       }
     ],
     "synonyms": [
@@ -239114,6 +242774,12 @@ export default [
         "en": "a secure room or an arched roof structure",
         "exampleEn": "The bank keeps its gold in an underground vault.",
         "exampleTr": "Banka altınını yer altındaki bir kasa dairesinde saklar."
+      },
+      {
+        "tr": "atlamak, sıçrayarak aşmak (fiil)",
+        "en": "to jump over something in a single movement, using your hands or a pole",
+        "exampleEn": "He vaulted over the fence and ran into the field.",
+        "exampleTr": "Çiti atlayıp tarlaya doğru koştu."
       }
     ],
     "synonyms": [
@@ -239517,6 +243183,12 @@ export default [
         "en": "separate or emotionally uninvolved",
         "exampleEn": "They bought a detached house with a large garden.",
         "exampleTr": "Büyük bahçeli, müstakil bir ev satın aldılar."
+      },
+      {
+        "tr": "müstakil (bitişik olmayan, tek başına duran ev)",
+        "en": "of a house, not joined to another building",
+        "exampleEn": "They bought a detached house with a large garden.",
+        "exampleTr": "Büyük bahçeli müstakil bir ev satın aldılar."
       }
     ],
     "synonyms": [
@@ -240275,6 +243947,12 @@ export default [
         "en": "a long narrow pole or a vertical passage",
         "exampleEn": "The miners descended into the deep shaft to reach the coal.",
         "exampleTr": "Madenciler kömüre ulaşmak için derin kuyuya indi."
+      },
+      {
+        "tr": "ışık huzmesi, ışık demeti",
+        "en": "a narrow beam of light",
+        "exampleEn": "A shaft of sunlight came through the window.",
+        "exampleTr": "Pencereden bir güneş huzmesi süzüldü."
       }
     ],
     "synonyms": [
@@ -240521,6 +244199,12 @@ export default [
         "en": "to discuss together, or to grant something",
         "exampleEn": "The judges left the room to confer before announcing the winner.",
         "exampleTr": "Jüri üyeleri kazananı açıklamadan önce görüşmek için odadan çıktı."
+      },
+      {
+        "tr": "vermek, bahşetmek (unvan, yetki, onur)",
+        "en": "to grant a title, honour, or right on someone",
+        "exampleEn": "The university conferred an honorary degree on the scientist.",
+        "exampleTr": "Üniversite bilim insanına fahri bir unvan verdi."
       }
     ],
     "synonyms": [
@@ -240680,6 +244364,12 @@ export default [
         "en": "something presented or given, especially as a gift",
         "exampleEn": "The company's latest offering is a smartphone with a foldable screen.",
         "exampleTr": "Şirketin en son sunduğu ürün katlanabilir ekranlı bir akıllı telefon."
+      },
+      {
+        "tr": "sunulan ürün/hizmet",
+        "en": "something produced or provided for people to buy or use",
+        "exampleEn": "The company's latest offering is a smartphone with a foldable screen.",
+        "exampleTr": "Şirketin en son ürünü, katlanabilir ekranlı bir akıllı telefon."
       }
     ],
     "synonyms": [
@@ -241233,6 +244923,12 @@ export default [
         "en": "a sudden surprise attack on a place",
         "exampleEn": "The police carried out a dawn raid on the warehouse.",
         "exampleTr": "Polis depoya şafak vakti bir baskın düzenledi."
+      },
+      {
+        "tr": "baskın yapmak, akın etmek (fiil)",
+        "en": "to make a sudden attack on or search of a place",
+        "exampleEn": "Police raided the building early in the morning.",
+        "exampleTr": "Polis sabahın erken saatlerinde binaya baskın yaptı."
       }
     ],
     "synonyms": [
@@ -242222,6 +245918,12 @@ export default [
         "en": "a vigorous campaign for a cause or against an abuse",
         "exampleEn": "She led a crusade against child labor in the region.",
         "exampleTr": "Bölgede çocuk işçiliğine karşı bir mücadele yürüttü."
+      },
+      {
+        "tr": "mücadele vermek, kampanya yürütmek",
+        "en": "to campaign vigorously for a cause",
+        "exampleEn": "She has crusaded for years against animal cruelty.",
+        "exampleTr": "Yıllardır hayvanlara eziyete karşı mücadele veriyor."
       }
     ],
     "synonyms": [
@@ -242579,6 +246281,12 @@ export default [
         "en": "a strong and fast-moving stream of water or anything",
         "exampleEn": "A torrent of rain flooded the streets within minutes.",
         "exampleTr": "Sel gibi yağan yağmur dakikalar içinde sokakları su altında bıraktı."
+      },
+      {
+        "tr": "sağanak, yağmur (fiil/isim: bir sürü, yığın)",
+        "en": "a large amount of something coming quickly, e.g. words or abuse",
+        "exampleEn": "She let out a torrent of abuse at the referee.",
+        "exampleTr": "Hakeme bir sürü hakaret yağdırdı."
       }
     ],
     "synonyms": [
@@ -244130,6 +247838,12 @@ export default [
         "en": "relating to an empire or an emperor",
         "exampleEn": "The imperial palace was decorated with gold and silk.",
         "exampleTr": "İmparatorluk sarayı altın ve ipekle süslenmişti."
+      },
+      {
+        "tr": "emperyal (ölçü sistemi); İngiliz ölçü birimlerine ait",
+        "en": "relating to the non-metric system of weights and measures (inches, pounds, pints)",
+        "exampleEn": "In the US, distances are still measured in imperial units like miles and feet.",
+        "exampleTr": "ABD'de mesafeler hâlâ mil ve fit gibi emperyal birimlerle ölçülür."
       }
     ],
     "synonyms": [
@@ -244211,6 +247925,12 @@ export default [
         "en": "a person of lower rank or position than another",
         "exampleEn": "The manager delegated the task to a subordinate.",
         "exampleTr": "Yönetici görevi bir astına devretti."
+      },
+      {
+        "tr": "ikincil, tali, daha az önemli (sıfat)",
+        "en": "lower in rank or less important",
+        "exampleEn": "All other issues are subordinate to the question of safety.",
+        "exampleTr": "Diğer tüm meseleler güvenlik sorununa göre ikinci plandadır."
       }
     ],
     "synonyms": [
@@ -245025,6 +248745,12 @@ export default [
         "en": "likely to change; not constant",
         "exampleEn": "The weather in spring is highly variable.",
         "exampleTr": "İlkbaharda hava son derece değişkendir."
+      },
+      {
+        "tr": "değişken (matematik/istatistikte simge)",
+        "en": "a quantity or symbol that can represent different values",
+        "exampleEn": "In the equation, x is the variable you need to solve for.",
+        "exampleTr": "Denklemde x, çözmen gereken değişkendir."
       }
     ],
     "synonyms": [
@@ -245081,6 +248807,12 @@ export default [
         "en": "to spoil or damage the quality or reputation of something",
         "exampleEn": "The scandal threatened to taint his political career.",
         "exampleTr": "Skandal, siyasi kariyerini lekelemekle tehdit ediyordu."
+      },
+      {
+        "tr": "leke, kusur, bozucu iz (isim)",
+        "en": "a trace of a bad or undesirable quality that spoils something",
+        "exampleEn": "The scandal left a taint on the company's otherwise spotless reputation.",
+        "exampleTr": "Skandal, şirketin aksi halde tertemiz olan itibarında bir leke bıraktı."
       }
     ],
     "synonyms": [
@@ -245644,6 +249376,18 @@ export default [
         "en": "a break or crack, especially in a bone",
         "exampleEn": "The X-ray revealed a fracture in her left wrist.",
         "exampleTr": "Röntgen, sol bileğinde bir kırık olduğunu gösterdi."
+      },
+      {
+        "tr": "kırmak, çatlatmak; (grup/ilişki) parçalanmak",
+        "en": "to break or crack, or to split apart",
+        "exampleEn": "He fractured his wrist while skiing.",
+        "exampleTr": "Kayak yaparken bileğini kırdı."
+      },
+      {
+        "tr": "bölünme, ayrılık (topluluk/ilişkide)",
+        "en": "a division or split within a group",
+        "exampleEn": "The scandal caused a deep fracture within the party.",
+        "exampleTr": "Skandal, parti içinde derin bir bölünmeye yol açtı."
       }
     ],
     "synonyms": [
@@ -246753,6 +250497,12 @@ export default [
         "en": "to destroy a building completely, to the ground",
         "exampleEn": "The old factory was razed to make way for flats.",
         "exampleTr": "Eski fabrika, apartmanlara yer açmak için yerle bir edildi."
+      },
+      {
+        "tr": "(genellikle 'raze to the ground' olarak) tamamen yok etmek",
+        "en": "to completely destroy a building or town, usually to the ground",
+        "exampleEn": "The invading army razed the village to the ground.",
+        "exampleTr": "İstilacı ordu köyü yerle bir etti."
       }
     ],
     "synonyms": [
@@ -246956,6 +250706,12 @@ export default [
         "en": "not having a brand name; general",
         "exampleEn": "The pharmacy offered a cheaper generic version of the drug.",
         "exampleTr": "Eczane ilacın daha ucuz jenerik versiyonunu sundu."
+      },
+      {
+        "tr": "belirli bir özelliği olmayan, sıradan",
+        "en": "lacking distinctive features; not specific",
+        "exampleEn": "The film has a generic plot that we've all seen before.",
+        "exampleTr": "Filmin, hepimizin daha önce gördüğü sıradan bir konusu var."
       }
     ],
     "synonyms": [
@@ -248548,6 +252304,12 @@ export default [
         "en": "a shade or small amount of a color",
         "exampleEn": "The sky had a pink tint at sunrise.",
         "exampleTr": "Gün doğumunda gökyüzünün hafif pembe bir tonu vardı."
+      },
+      {
+        "tr": "hafifçe renklendirmek, renk vermek (fiil)",
+        "en": "to give something a slight colour",
+        "exampleEn": "She tinted her hair a light shade of red.",
+        "exampleTr": "Saçını açık bir kırmızı tonuna boyadı."
       }
     ],
     "synonyms": [
@@ -248574,6 +252336,12 @@ export default [
         "en": "not moving or changing",
         "exampleEn": "Sales have remained static for the last three months.",
         "exampleTr": "Satışlar son üç aydır durağan kaldı."
+      },
+      {
+        "tr": "parazit, statik elektrik (isim)",
+        "en": "noise on a radio or TV, or electricity that builds up",
+        "exampleEn": "There was too much static on the radio to hear the news.",
+        "exampleTr": "Radyoda haberleri duyamayacak kadar çok parazit vardı."
       }
     ],
     "synonyms": [
@@ -248799,6 +252567,12 @@ export default [
         "en": "having much knowledge gained through study",
         "exampleEn": "He is a learned professor of ancient history.",
         "exampleTr": "O, antik tarih konusunda bilgili bir profesördür."
+      },
+      {
+        "tr": "(davranış, tepki) sonradan öğrenilmiş, edinilmiş",
+        "en": "acquired through experience rather than being natural or instinctive",
+        "exampleEn": "Fear of certain animals is often a learned response, not an instinct.",
+        "exampleTr": "Bazı hayvanlardan korkmak, çoğu zaman içgüdü değil, öğrenilmiş bir tepkidir."
       }
     ],
     "synonyms": [
@@ -249311,6 +253085,12 @@ export default [
         "en": "extreme tiredness from exertion or illness",
         "exampleEn": "After the long hike, she felt overwhelming fatigue.",
         "exampleTr": "Uzun yürüyüşün ardından büyük bir yorgunluk hissetti."
+      },
+      {
+        "tr": "(metal) yorulma, malzeme yorgunluğu",
+        "en": "weakness in metal or other materials caused by repeated stress",
+        "exampleEn": "The crash was caused by metal fatigue in the aircraft's wing.",
+        "exampleTr": "Kaza, uçağın kanadındaki metal yorulmasından kaynaklanıyordu."
       }
     ],
     "synonyms": [
@@ -250067,6 +253847,12 @@ export default [
         "en": "a standard or usual pattern of behaviour",
         "exampleEn": "Working from home has become the norm for many companies.",
         "exampleTr": "Evden çalışmak birçok şirket için norm haline geldi."
+      },
+      {
+        "tr": "ortalama, olağan seviye",
+        "en": "the usual or average level or amount",
+        "exampleEn": "Working from home has become the norm for many employees.",
+        "exampleTr": "Evden çalışmak birçok çalışan için olağan hale geldi."
       }
     ],
     "synonyms": [
@@ -251115,6 +254901,12 @@ export default [
         "en": "one of the small hairs growing on the edge of the eyelid; a stroke with a whip",
         "exampleEn": "Her long dark lashes framed her bright eyes.",
         "exampleTr": "Uzun koyu kirpikleri parlak gözlerini çerçeveliyordu."
+      },
+      {
+        "tr": "kamçılamak, şiddetle vurmak; (rüzgar/yağmur) çarpmak",
+        "en": "to hit hard, or to beat against something violently (verb)",
+        "exampleEn": "The waves lashed against the rocks during the storm.",
+        "exampleTr": "Fırtına sırasında dalgalar kayalara şiddetle çarptı."
       }
     ],
     "synonyms": [
@@ -252196,6 +255988,12 @@ export default [
         "en": "to move or strike with a quick light movement",
         "exampleEn": "She flicked the crumbs off the table.",
         "exampleTr": "Kırıntıları masadan fiske vurarak attı."
+      },
+      {
+        "tr": "(düğme/anahtar) hızlıca çevirmek, açıp kapamak",
+        "en": "to move a switch quickly to turn something on or off",
+        "exampleEn": "She flicked the light switch and the room went dark.",
+        "exampleTr": "Işık düğmesine dokundu ve oda karardı."
       }
     ],
     "synonyms": [
@@ -252250,6 +256048,12 @@ export default [
         "en": "to shake with a slight trembling motion",
         "exampleEn": "Her lips began to quiver as she held back tears.",
         "exampleTr": "Gözyaşlarını tutarken dudakları titremeye başladı."
+      },
+      {
+        "tr": "ok kılıfı, sadak",
+        "en": "a container for carrying arrows",
+        "exampleEn": "The archer pulled an arrow from his quiver.",
+        "exampleTr": "Okçu sadağından bir ok çekip çıkardı."
       }
     ],
     "synonyms": [
@@ -252760,6 +256564,12 @@ export default [
         "en": "a long narrow cut in a surface",
         "exampleEn": "The needle slid along the groove of the record.",
         "exampleTr": "İğne, plağın oluğu boyunca kaydı."
+      },
+      {
+        "tr": "ritim, akış (müzikte); iyi giden rutin",
+        "en": "an enjoyable rhythm or a settled routine of doing something well",
+        "exampleEn": "Once the band found their groove, the crowd started dancing.",
+        "exampleTr": "Grup ritmini bulunca kalabalık dans etmeye başladı."
       }
     ],
     "synonyms": [
@@ -253205,6 +257015,12 @@ export default [
         "en": "a tooth on a gear wheel",
         "exampleEn": "A single broken cog can stop the whole machine.",
         "exampleTr": "Tek bir kırık dişli, tüm makineyi durdurabilir."
+      },
+      {
+        "tr": "sistemdeki küçük ama gerekli parça (kişi)",
+        "en": "a person who plays a small but necessary part in a large organization",
+        "exampleEn": "He felt like just a cog in the machine at the huge corporation.",
+        "exampleTr": "O dev şirkette kendini sadece çarkın bir dişlisi gibi hissediyordu."
       }
     ],
     "synonyms": [
@@ -253759,6 +257575,12 @@ export default [
         "en": "to shine with a soft, wavering light",
         "exampleEn": "The lake began to shimmer in the moonlight.",
         "exampleTr": "Göl ay ışığında parıldamaya başladı."
+      },
+      {
+        "tr": "parıltı, ışıltı (isim)",
+        "en": "a soft, wavering light or shine",
+        "exampleEn": "There was a shimmer of moonlight on the lake.",
+        "exampleTr": "Gölün üzerinde bir ay ışığı parıltısı vardı."
       }
     ],
     "synonyms": [
@@ -254240,6 +258062,12 @@ export default [
         "en": "the state of being famous and respected",
         "exampleEn": "The scientist rose to eminence in her field.",
         "exampleTr": "Bilim insanı kendi alanında seçkin bir konuma yükseldi."
+      },
+      {
+        "tr": "tepe, yüksek yer, tümsek (edebî)",
+        "en": "a piece of rising or high ground",
+        "exampleEn": "The castle stood on a grassy eminence above the river.",
+        "exampleTr": "Şato, nehrin üzerindeki çimenli bir tepede yükseliyordu."
       }
     ],
     "synonyms": [
@@ -254298,6 +258126,12 @@ export default [
         "en": "to express deep grief or regret",
         "exampleEn": "The poet wrote verses to lament his lost love.",
         "exampleTr": "Şair kaybettiği aşkına ağıt yakmak için dizeler yazdı."
+      },
+      {
+        "tr": "(bir durumdan) yakınmak, hayıflanmak, şikâyet etmek",
+        "en": "to express regret or disappointment about something",
+        "exampleEn": "Many teachers lament the decline in students' reading habits.",
+        "exampleTr": "Birçok öğretmen, öğrencilerin okuma alışkanlıklarındaki düşüşten yakınıyor."
       }
     ],
     "synonyms": [
@@ -254386,6 +258220,12 @@ export default [
         "en": "to hold or grip tightly",
         "exampleEn": "She clasped the child's hand as they crossed the street.",
         "exampleTr": "Caddeyi geçerken çocuğun elini sıkıca tuttu."
+      },
+      {
+        "tr": "toka, kopça, kilit (çanta/kolye)",
+        "en": "a small metal fastener that holds two parts together",
+        "exampleEn": "The clasp on her necklace had broken.",
+        "exampleTr": "Kolyesinin tokası kırılmıştı."
       }
     ],
     "synonyms": [
@@ -254563,6 +258403,12 @@ export default [
         "en": "a person who rebels against authority",
         "exampleEn": "The insurgents seized control of the capital.",
         "exampleTr": "İsyancılar başkentin kontrolünü ele geçirdi."
+      },
+      {
+        "tr": "isyancı, ayaklanan (sıfat)",
+        "en": "rising in active revolt; rebellious",
+        "exampleEn": "Insurgent forces seized control of the border town.",
+        "exampleTr": "İsyancı güçler sınır kasabasının kontrolünü ele geçirdi."
       }
     ],
     "synonyms": [
@@ -254730,6 +258576,12 @@ export default [
         "en": "to order someone to come or appear",
         "exampleEn": "The manager summoned her to his office.",
         "exampleTr": "Müdür onu ofisine çağırdı."
+      },
+      {
+        "tr": "(gücünü/cesaretini) toplamak, kendinde bulmak",
+        "en": "to make a great effort to produce a quality or feeling",
+        "exampleEn": "She summoned up the courage to speak in front of the crowd.",
+        "exampleTr": "Kalabalığın önünde konuşmak için cesaretini topladı."
       }
     ],
     "synonyms": [
@@ -255381,6 +259233,12 @@ export default [
         "en": "a large and dangerous fire",
         "exampleEn": "Firefighters battled the inferno through the night.",
         "exampleTr": "İtfaiyeciler gece boyunca büyük yangınla mücadele etti."
+      },
+      {
+        "tr": "cehennem gibi yer, katlanılmaz kaos ortamı",
+        "en": "a place or situation of great chaos, heat, or suffering resembling hell",
+        "exampleEn": "The overcrowded prison was described as an inferno of violence and despair.",
+        "exampleTr": "Aşırı kalabalık hapishane, şiddet ve çaresizlik dolu bir cehennem olarak tanımlandı."
       }
     ],
     "synonyms": [
@@ -255566,6 +259424,12 @@ export default [
         "en": "a person who carries or holds something",
         "exampleEn": "The bearer of the message arrived at dawn.",
         "exampleTr": "Mesajı taşıyan kişi şafak vakti geldi."
+      },
+      {
+        "tr": "getiren kişi, ileten (haber, mektup vb.)",
+        "en": "a person who brings or delivers something",
+        "exampleEn": "I'm sorry to be the bearer of bad news.",
+        "exampleTr": "Kötü haberi getiren kişi olduğum için üzgünüm."
       }
     ],
     "synonyms": [
@@ -255591,6 +259455,18 @@ export default [
         "en": "a completely empty space",
         "exampleEn": "Her death left a void in his life.",
         "exampleTr": "Onun ölümü hayatında bir boşluk bıraktı."
+      },
+      {
+        "tr": "geçersiz, hükümsüz (sıfat)",
+        "en": "not legally valid or binding",
+        "exampleEn": "The contract was declared void by the court.",
+        "exampleTr": "Sözleşme mahkeme tarafından geçersiz ilan edildi."
+      },
+      {
+        "tr": "geçersiz kılmak, iptal etmek (fiil)",
+        "en": "to officially cancel or make invalid",
+        "exampleEn": "They voided the ticket because it had already been used.",
+        "exampleTr": "Bilet zaten kullanıldığı için onu iptal ettiler."
       }
     ],
     "synonyms": [
@@ -255936,6 +259812,12 @@ export default [
         "en": "a person in charge of a place or its rules",
         "exampleEn": "The prison warden inspected the cells.",
         "exampleTr": "Hapishane müdürü hücreleri denetledi."
+      },
+      {
+        "tr": "denetçi, görevli (belirli bir kuralı uygulayan)",
+        "en": "an official who ensures rules are obeyed in a particular place",
+        "exampleEn": "The traffic warden gave me a ticket for parking on double yellow lines.",
+        "exampleTr": "Trafik memuru çift sarı çizgiye park ettiğim için bana ceza kesti."
       }
     ],
     "synonyms": [
@@ -257885,6 +261767,12 @@ export default [
         "en": "tending to stir up conflict; designed to cause fire",
         "exampleEn": "His incendiary speech sparked riots in the city.",
         "exampleTr": "Kışkırtıcı konuşması şehirde ayaklanmaları tetikledi."
+      },
+      {
+        "tr": "yangın bombası, kundakçı; kışkırtıcı kimse (isim)",
+        "en": "a bomb designed to start a fire, or a person who stirs up trouble",
+        "exampleEn": "The warehouse was destroyed by an incendiary dropped during the raid.",
+        "exampleTr": "Depo, baskın sırasında atılan bir yangın bombasıyla yok edildi."
       }
     ],
     "synonyms": [
@@ -257968,6 +261856,12 @@ export default [
         "en": "an act of breaking a law, rule, or agreement",
         "exampleEn": "The leak was a serious breach of security.",
         "exampleTr": "Sızıntı ciddi bir güvenlik ihlaliydi."
+      },
+      {
+        "tr": "ihlal etmek, çiğnemek",
+        "en": "to break a law, rule, or agreement",
+        "exampleEn": "The company breached the terms of the contract by delivering the goods late.",
+        "exampleTr": "Şirket, malları geç teslim ederek sözleşme şartlarını ihlal etti."
       }
     ],
     "synonyms": [
@@ -258024,6 +261918,12 @@ export default [
         "en": "a quick sharp poke or punch",
         "exampleEn": "He gave the punching bag a swift jab.",
         "exampleTr": "Kum torbasına hızlı bir dürtme attı."
+      },
+      {
+        "tr": "iğne, aşı (İngiliz İngilizcesi, gayri resmi)",
+        "en": "an injection or vaccination (British informal)",
+        "exampleEn": "I got my flu jab at the clinic yesterday.",
+        "exampleTr": "Dün klinikte grip aşımı oldum."
       }
     ],
     "synonyms": [
@@ -258305,6 +262205,12 @@ export default [
         "en": "to fix or set securely, especially into the body or mind",
         "exampleEn": "Surgeons will implant a pacemaker next week.",
         "exampleTr": "Cerrahlar gelecek hafta bir kalp pili yerleştirecek."
+      },
+      {
+        "tr": "(fikir, düşünce) zihne yerleştirmek, kafaya sokmak",
+        "en": "to fix an idea firmly in someone's mind",
+        "exampleEn": "The advertisement was designed to implant the brand name in viewers' minds.",
+        "exampleTr": "Reklam, marka adını izleyicilerin zihnine yerleştirmek için tasarlanmıştı."
       }
     ],
     "synonyms": [
@@ -258448,6 +262354,12 @@ export default [
         "en": "relating to the brain or intellect",
         "exampleEn": "His films have a cerebral, thought-provoking style.",
         "exampleTr": "Filmleri zihinsel, düşündürücü bir üsluba sahiptir."
+      },
+      {
+        "tr": "entelektüel, akla dayalı (duygudan çok)",
+        "en": "intellectual rather than emotional; requiring careful thought",
+        "exampleEn": "His films are too cerebral for a mainstream audience.",
+        "exampleTr": "Filmleri geniş kitleler için fazla entelektüeldir."
       }
     ],
     "synonyms": [
@@ -259252,6 +263164,12 @@ export default [
         "en": "a small sharp point or a tingling sensation",
         "exampleEn": "The cactus was covered in sharp prickles.",
         "exampleTr": "Kaktüs keskin dikenlerle kaplıydı."
+      },
+      {
+        "tr": "karıncalanmak, iğnelenmek (fiil)",
+        "en": "to have or cause an unpleasant stinging feeling on the skin",
+        "exampleEn": "Her skin prickled with fear as she entered the dark room.",
+        "exampleTr": "Karanlık odaya girerken teni korkuyla karıncalandı."
       }
     ],
     "synonyms": [
@@ -260422,6 +264340,12 @@ export default [
         "en": "a part attached to something larger",
         "exampleEn": "The insect's antennae are sensory appendages.",
         "exampleTr": "Böceğin antenleri duyusal uzantılardır."
+      },
+      {
+        "tr": "(anatomi) uzuv, organ çıkıntısı (kol, bacak, kuyruk vb.)",
+        "en": "a part of the body that sticks out, such as an arm, leg or tail",
+        "exampleEn": "The insect uses its long appendages to sense its surroundings.",
+        "exampleTr": "Böcek, uzun uzuvlarını çevresini algılamak için kullanır."
       }
     ],
     "synonyms": [
@@ -260803,6 +264727,12 @@ export default [
         "en": "large in amount and impressively rich",
         "exampleEn": "They threw a lavish party for their anniversary.",
         "exampleTr": "Yıl dönümleri için gösterişli bir parti verdiler."
+      },
+      {
+        "tr": "(sevgi, para vb.) bol bol vermek, esirgemeden sunmak",
+        "en": "to give someone a lot of something, generously or in large amounts",
+        "exampleEn": "They lavished attention and gifts on their only grandchild.",
+        "exampleTr": "Tek torunlarına bol bol ilgi ve hediye yağdırdılar."
       }
     ],
     "synonyms": [
@@ -261110,6 +265040,12 @@ export default [
         "en": "a person highly skilled in an art, especially music",
         "exampleEn": "The young pianist is a true virtuoso.",
         "exampleTr": "Genç piyanist gerçek bir virtüözdür."
+      },
+      {
+        "tr": "ustaca, olağanüstü becerikli (sıfat)",
+        "en": "showing exceptional skill or brilliance",
+        "exampleEn": "She gave a virtuoso performance that left the entire audience speechless.",
+        "exampleTr": "Tüm seyirciyi dilsiz bırakan ustaca bir performans sergiledi."
       }
     ],
     "synonyms": [
@@ -261195,6 +265131,12 @@ export default [
         "en": "something invented to deceive, or the act of manufacturing something",
         "exampleEn": "His story turned out to be a complete fabrication.",
         "exampleTr": "Hikâyesinin tamamen bir uydurma olduğu ortaya çıktı."
+      },
+      {
+        "tr": "imalat, üretim, montaj",
+        "en": "the process of making or building something",
+        "exampleEn": "The fabrication of the steel beams took several weeks.",
+        "exampleTr": "Çelik kirişlerin imalatı birkaç hafta sürdü."
       }
     ],
     "synonyms": [
@@ -262099,6 +266041,12 @@ export default [
         "en": "a place where stone or minerals are dug out of the ground",
         "exampleEn": "The marble for the statue came from a local quarry.",
         "exampleTr": "Heykelin mermeri yerel bir taş ocağından geldi."
+      },
+      {
+        "tr": "av, avlanan hayvan; kovalanan kişi",
+        "en": "an animal or person that is being hunted or chased",
+        "exampleEn": "The hunters finally cornered their quarry.",
+        "exampleTr": "Avcılar sonunda avlarını köşeye sıkıştırdı."
       }
     ],
     "synonyms": [
@@ -262503,6 +266451,12 @@ export default [
         "en": "having moods that change quickly and unpredictably",
         "exampleEn": "The temperamental actor often argued with the director.",
         "exampleTr": "Dengesiz aktör sık sık yönetmenle tartışırdı."
+      },
+      {
+        "tr": "düzensiz çalışan, kaprisli (makine/cihaz)",
+        "en": "working unpredictably or unreliably (of a machine)",
+        "exampleEn": "The old printer is temperamental and often jams.",
+        "exampleTr": "Eski yazıcı kaprisli ve sık sık kâğıt sıkıştırıyor."
       }
     ],
     "synonyms": [
@@ -262884,6 +266838,12 @@ export default [
         "en": "the quality of staying the same or being faithful",
         "exampleEn": "She admired the constancy of his support over the years.",
         "exampleTr": "Yıllar boyunca desteğinin değişmezliğine hayran kaldı."
+      },
+      {
+        "tr": "sadakat, vefa (bir kişiye/inanca bağlılık)",
+        "en": "faithfulness and loyalty to a person or belief",
+        "exampleEn": "Her constancy to her old friends never wavered.",
+        "exampleTr": "Eski dostlarına olan sadakati hiç sarsılmadı."
       }
     ],
     "synonyms": [
@@ -263745,6 +267705,12 @@ export default [
         "en": "the act of accepting the control of another",
         "exampleEn": "The rebels were forced into submission.",
         "exampleTr": "İsyancılar boyun eğmeye zorlandı."
+      },
+      {
+        "tr": "başvuru, sunulan belge/çalışma",
+        "en": "a document or proposal that is formally sent for consideration",
+        "exampleEn": "The deadline for the submission of your application is Friday.",
+        "exampleTr": "Başvurunuzun teslim tarihi cumadır."
       }
     ],
     "synonyms": [
@@ -264204,6 +268170,12 @@ export default [
         "en": "an oily substance that soothes the skin or feelings",
         "exampleEn": "The cool breeze was a balm after the hot day.",
         "exampleTr": "Serin esinti, sıcak günün ardından bir merhem gibiydi."
+      },
+      {
+        "tr": "teselli, avuntu, rahatlatan şey",
+        "en": "something that gives comfort or relief",
+        "exampleEn": "Her kind words were a balm to his troubled mind.",
+        "exampleTr": "Onun nazik sözleri, huzursuz zihnine bir teselli oldu."
       }
     ],
     "synonyms": [
@@ -264614,6 +268586,12 @@ export default [
         "en": "a group of musicians or performers who work together",
         "exampleEn": "The jazz ensemble played all evening.",
         "exampleTr": "Caz topluluğu bütün akşam çaldı."
+      },
+      {
+        "tr": "kıyafet takımı, kombin (birbirini tamamlayan giysiler)",
+        "en": "a set of clothes that are worn together to create a particular look",
+        "exampleEn": "She wore a stylish ensemble of a blazer, scarf and boots.",
+        "exampleTr": "Blazer, atkı ve botlardan oluşan şık bir kombin giymişti."
       }
     ],
     "synonyms": [
@@ -264642,6 +268620,12 @@ export default [
         "en": "to express a strong emotion freely",
         "exampleEn": "She needed to vent her frustration to a friend.",
         "exampleTr": "Hayal kırıklığını bir arkadaşına içini dökerek anlatması gerekiyordu."
+      },
+      {
+        "tr": "havalandırma deliği, menfez (isim)",
+        "en": "an opening that allows air, gas, or smoke to pass through",
+        "exampleEn": "Warm air came out of the heating vent.",
+        "exampleTr": "Isıtma menfezinden sıcak hava çıkıyordu."
       }
     ],
     "synonyms": [
@@ -264867,6 +268851,12 @@ export default [
         "en": "shaped like an ellipse; oval",
         "exampleEn": "The planet follows an elliptical orbit around the sun.",
         "exampleTr": "Gezegen, güneşin etrafında eliptik bir yörünge izler."
+      },
+      {
+        "tr": "kapalı, üstü kapalı, dolaylı (anlatım)",
+        "en": "using few words and often difficult to understand; indirect",
+        "exampleEn": "Her elliptical answers left everyone more confused than before.",
+        "exampleTr": "Üstü kapalı yanıtları herkesi eskisinden daha çok şaşırttı."
       }
     ],
     "synonyms": [
@@ -265888,6 +269878,12 @@ export default [
         "en": "to make a hole through something with a sharp object",
         "exampleEn": "The nail pierced the tyre.",
         "exampleTr": "Çivi lastiği deldi."
+      },
+      {
+        "tr": "(ses, ışık) yarıp geçmek, delip geçmek",
+        "en": "(of sound or light) to cut sharply through",
+        "exampleEn": "A scream pierced the silence of the night.",
+        "exampleTr": "Bir çığlık gecenin sessizliğini yardı."
       }
     ],
     "synonyms": [
@@ -266507,6 +270503,12 @@ export default [
         "en": "a shine on a surface; or a brief explanation of a word",
         "exampleEn": "The magazine cover had a high gloss.",
         "exampleTr": "Derginin kapağı çok parlaktı."
+      },
+      {
+        "tr": "üstünü örtmek, geçiştirmek (over ile)",
+        "en": "to avoid dealing with something by treating it briefly",
+        "exampleEn": "He glossed over the problems in his report.",
+        "exampleTr": "Raporundaki sorunların üstünü geçiştirdi."
       }
     ],
     "synonyms": [
@@ -266643,6 +270645,12 @@ export default [
         "en": "to delay something until a later time",
         "exampleEn": "They decided to defer the decision until next month.",
         "exampleTr": "Kararı gelecek aya ertelemeye karar verdiler."
+      },
+      {
+        "tr": "boyun eğmek, saygıyla uymak (to)",
+        "en": "to yield to another's opinion or wishes out of respect",
+        "exampleEn": "I defer to your greater experience in these matters.",
+        "exampleTr": "Bu konularda senin daha fazla tecrübene saygıyla uyuyorum."
       }
     ],
     "synonyms": [
@@ -266699,6 +270707,12 @@ export default [
         "en": "to walk in a proud, self-important way",
         "exampleEn": "He strutted across the stage to receive his award.",
         "exampleTr": "Ödülünü almak için sahnede çalımla yürüdü."
+      },
+      {
+        "tr": "destek çubuğu, payanda, dikme (isim)",
+        "en": "a bar or rod that supports part of a structure",
+        "exampleEn": "One of the metal struts holding up the roof had rusted through.",
+        "exampleTr": "Çatıyı tutan metal dikmelerden biri paslanıp kırılmıştı."
       }
     ],
     "synonyms": [
@@ -267219,6 +271233,12 @@ export default [
         "en": "a task or project, especially a difficult one",
         "exampleEn": "Building the bridge was a massive undertaking.",
         "exampleTr": "Köprüyü inşa etmek devasa bir girişimdi."
+      },
+      {
+        "tr": "söz, garanti, taahhütname",
+        "en": "a formal promise to do something",
+        "exampleEn": "They gave a written undertaking to repay the loan within a year.",
+        "exampleTr": "Krediyi bir yıl içinde geri ödeyeceklerine dair yazılı bir taahhüt verdiler."
       }
     ],
     "synonyms": [
@@ -267637,6 +271657,12 @@ export default [
         "en": "the state of being subjected to something",
         "exampleEn": "Long exposure to the sun can damage your skin.",
         "exampleTr": "Güneşe uzun süre maruz kalmak cildinize zarar verebilir."
+      },
+      {
+        "tr": "(fotoğrafçılıkta) poz, pozlama; filmin ışığa maruz kaldığı süre",
+        "en": "the amount of light allowed to reach the film in a camera; a single photograph",
+        "exampleEn": "This roll of film has thirty-six exposures.",
+        "exampleTr": "Bu film rulosu otuz altı pozluktur."
       }
     ],
     "synonyms": [
@@ -267690,6 +271716,12 @@ export default [
         "en": "to beat or pulse with a strong, regular rhythm",
         "exampleEn": "My head began to throb after the long meeting.",
         "exampleTr": "Uzun toplantıdan sonra başım zonklamaya başladı."
+      },
+      {
+        "tr": "zonklama, atış, çarpıntı (isim)",
+        "en": "a strong, regular beat or pulse",
+        "exampleEn": "She felt a dull throb in her injured knee.",
+        "exampleTr": "Yaralı dizinde hafif bir zonklama hissetti."
       }
     ],
     "synonyms": [
@@ -268259,6 +272291,12 @@ export default [
         "en": "to make a loud rattling sound",
         "exampleEn": "The dishes clatter whenever the train passes.",
         "exampleTr": "Tren her geçtiğinde tabaklar takırdar."
+      },
+      {
+        "tr": "takırtı, şangırtı (ses)",
+        "en": "a loud rattling noise made by hard objects hitting each other",
+        "exampleEn": "We heard the clatter of dishes coming from the kitchen.",
+        "exampleTr": "Mutfaktan gelen tabak takırtısını duyduk."
       }
     ],
     "synonyms": [
@@ -269059,6 +273097,12 @@ export default [
         "en": "a stock of plays or pieces a company can perform",
         "exampleEn": "The theatre has a wide repertory of classic plays.",
         "exampleTr": "Tiyatronun geniş bir klasik oyun repertuarı var."
+      },
+      {
+        "tr": "repertuar tiyatrosu (aynı topluluğun dönüşümlü oyunlar sahnelediği tiyatro)",
+        "en": "a theatre company that performs several plays in rotation",
+        "exampleEn": "She spent two years acting in a small repertory in the north of England.",
+        "exampleTr": "İngiltere'nin kuzeyindeki küçük bir repertuar tiyatrosunda iki yıl oyunculuk yaptı."
       }
     ],
     "synonyms": [
@@ -269907,6 +273951,12 @@ export default [
         "en": "careful, deliberate and controlled",
         "exampleEn": "He gave a measured response to the difficult question.",
         "exampleTr": "Zor soruya ölçülü bir yanıt verdi."
+      },
+      {
+        "tr": "ölçülmüş, belirlenmiş",
+        "en": "having been measured or calculated",
+        "exampleEn": "The measured distance between the two points was exactly ten metres.",
+        "exampleTr": "İki nokta arasında ölçülen mesafe tam on metreydi."
       }
     ],
     "synonyms": [
@@ -270031,6 +274081,12 @@ export default [
         "en": "to tear or cut into small pieces",
         "exampleEn": "Please shred these confidential documents.",
         "exampleTr": "Lütfen bu gizli belgeleri parçalayın."
+      },
+      {
+        "tr": "kırıntı, zerre, nebze (isim)",
+        "en": "a very small amount of something",
+        "exampleEn": "There isn't a shred of evidence against him.",
+        "exampleTr": "Ona karşı zerre kadar kanıt yok."
       }
     ],
     "synonyms": [
@@ -270139,6 +274195,12 @@ export default [
         "en": "having a rough, uneven surface; tough",
         "exampleEn": "The hikers crossed the rugged mountain terrain.",
         "exampleTr": "Yürüyüşçüler engebeli dağ arazisini geçtiler."
+      },
+      {
+        "tr": "(erkek yüzü için) sert ve çekici hatlara sahip",
+        "en": "(of a man's face) having strong, attractive features",
+        "exampleEn": "His rugged good looks made him popular with the audience.",
+        "exampleTr": "Sert ve çekici görünüşü onu izleyiciler arasında popüler yaptı."
       }
     ],
     "synonyms": [
@@ -271883,6 +275945,12 @@ export default [
         "en": "to hit sharply with an open hand",
         "exampleEn": "She smacked the table in frustration.",
         "exampleTr": "Sinirle masaya bir şaplak attı."
+      },
+      {
+        "tr": "tam, tam ortasına, dosdoğru (zarf)",
+        "en": "exactly or directly in a particular place",
+        "exampleEn": "The ball hit him smack in the middle of his forehead.",
+        "exampleTr": "Top tam alnının ortasına çarptı."
       }
     ],
     "synonyms": [
@@ -271963,6 +276031,12 @@ export default [
         "en": "a sharp broken piece of glass, pottery, or metal",
         "exampleEn": "Shards of glass covered the kitchen floor.",
         "exampleTr": "Mutfak zeminini cam kırıkları kaplamıştı."
+      },
+      {
+        "tr": "parça, kırıntı (soyut; örn. bir anı ya da bilgi)",
+        "en": "a small part or fragment of something abstract",
+        "exampleEn": "She clung to a few shards of hope after the diagnosis.",
+        "exampleTr": "Teşhisin ardından birkaç umut kırıntısına tutundu."
       }
     ],
     "synonyms": [
@@ -272012,6 +276086,12 @@ export default [
         "en": "a smug or self-satisfied smile",
         "exampleEn": "He answered with an annoying smirk on his face.",
         "exampleTr": "Yüzünde sinir bozucu bir sırıtışla cevap verdi."
+      },
+      {
+        "tr": "kendini beğenmişçe sırıtmak (fiil)",
+        "en": "to smile in an unpleasant, self-satisfied way",
+        "exampleEn": "He smirked when he heard that his rival had failed.",
+        "exampleTr": "Rakibinin başarısız olduğunu duyunca kendini beğenmişçe sırıttı."
       }
     ],
     "synonyms": [
@@ -272262,6 +276342,12 @@ export default [
         "en": "the quality of being firm or solid",
         "exampleEn": "The hardness of the steel makes it ideal for tools.",
         "exampleTr": "Çeliğin sertliği onu aletler için ideal kılar."
+      },
+      {
+        "tr": "güçlük, zorluk",
+        "en": "the quality of being difficult to do or understand",
+        "exampleEn": "The hardness of the exam surprised even the best students.",
+        "exampleTr": "Sınavın zorluğu en iyi öğrencileri bile şaşırttı."
       }
     ],
     "synonyms": [
@@ -272537,6 +276623,12 @@ export default [
         "en": "a thing at which someone excels",
         "exampleEn": "Public speaking has never been my forte.",
         "exampleTr": "Topluluk önünde konuşmak hiçbir zaman güçlü yanım olmadı."
+      },
+      {
+        "tr": "forte, kuvvetli (müzikte yüksek ses)",
+        "en": "played or sung loudly (in music)",
+        "exampleEn": "The orchestra played the final chords forte.",
+        "exampleTr": "Orkestra son akorları forte, yani yüksek sesle çaldı."
       }
     ],
     "synonyms": [
@@ -272705,6 +276797,12 @@ export default [
         "en": "to move or spin around rapidly",
         "exampleEn": "The leaves began to whirl in the strong autumn wind.",
         "exampleTr": "Yapraklar güçlü sonbahar rüzgârında dönmeye başladı."
+      },
+      {
+        "tr": "dönme, fırıl fırıl dönüş; telaş, koşuşturma (isim)",
+        "en": "a fast spinning movement, or a state of busy activity",
+        "exampleEn": "Her life was a whirl of parties and social events.",
+        "exampleTr": "Hayatı, partiler ve sosyal etkinliklerden oluşan bir koşuşturmaydı."
       }
     ],
     "synonyms": [
@@ -272907,6 +277005,12 @@ export default [
         "en": "to make a sudden, unsteady movement",
         "exampleEn": "The ship began to lurch violently in the storm.",
         "exampleTr": "Gemi fırtınada şiddetle yalpalamaya başladı."
+      },
+      {
+        "tr": "ani yalpalama, sarsıntı",
+        "en": "a sudden strong movement to one side",
+        "exampleEn": "The bus gave a sudden lurch and I nearly fell over.",
+        "exampleTr": "Otobüs aniden bir yalpaladı ve neredeyse düşüyordum."
       }
     ],
     "synonyms": [
@@ -272936,6 +277040,12 @@ export default [
         "en": "to move slowly back and forth or side to side",
         "exampleEn": "The tall trees began to sway in the gentle breeze.",
         "exampleTr": "Uzun ağaçlar hafif esintide sallanmaya başladı."
+      },
+      {
+        "tr": "etkilemek, ikna etmek (fikrini değiştirmek)",
+        "en": "to influence someone's opinion or decision",
+        "exampleEn": "Nothing you say will sway her decision.",
+        "exampleTr": "Söyleyeceğin hiçbir şey onun kararını değiştirmeyecek."
       }
     ],
     "synonyms": [
@@ -272994,6 +277104,18 @@ export default [
         "en": "a dark mark or stain, especially of ink",
         "exampleEn": "There was an ink blot in the middle of the page.",
         "exampleTr": "Sayfanın ortasında bir mürekkep lekesi vardı."
+      },
+      {
+        "tr": "kurutmak, emdirmek (sıvıyı bezle/kâğıtla)",
+        "en": "to dry a surface by pressing something absorbent on it",
+        "exampleEn": "She blotted the spilled ink with a tissue.",
+        "exampleTr": "Dökülen mürekkebi bir peçeteyle kuruladı."
+      },
+      {
+        "tr": "leke sürmek, kirletmek (itibar, isim)",
+        "en": "to spoil or damage something such as a reputation",
+        "exampleEn": "The scandal blotted his otherwise clean record.",
+        "exampleTr": "Skandal, aksi halde temiz olan sicilini lekeledi."
       }
     ],
     "synonyms": [
@@ -273407,6 +277529,12 @@ export default [
         "en": "bending easily without breaking; flexible",
         "exampleEn": "Years of yoga kept her body remarkably supple.",
         "exampleTr": "Yıllarca yapılan yoga vücudunu son derece esnek tuttu."
+      },
+      {
+        "tr": "esnek, uyumlu, kolay adapte olan (zihin/yaklaşım)",
+        "en": "able to change or adapt easily; flexible in thinking",
+        "exampleEn": "A supple mind can handle unexpected problems with ease.",
+        "exampleTr": "Esnek bir zihin, beklenmedik sorunlarla kolayca başa çıkabilir."
       }
     ],
     "synonyms": [
@@ -273551,6 +277679,12 @@ export default [
         "en": "to hinder or restrain a process or action",
         "exampleEn": "Fear can inhibit a person from speaking in public.",
         "exampleTr": "Korku bir kişinin topluluk önünde konuşmasını engelleyebilir."
+      },
+      {
+        "tr": "(kişiyi) çekingenleştirmek, sıkılganlaştırmak, rahat davranmasını engellemek",
+        "en": "to make someone feel embarrassed or unable to act naturally",
+        "exampleEn": "The presence of the camera seemed to inhibit the children.",
+        "exampleTr": "Kameranın varlığı çocukları çekingenleştirmiş gibiydi."
       }
     ],
     "synonyms": [
@@ -273697,6 +277831,12 @@ export default [
         "en": "to smell strongly and unpleasantly",
         "exampleEn": "The whole room began to reek of stale cigarette smoke.",
         "exampleTr": "Bütün oda bayat sigara dumanı kokmaya başladı."
+      },
+      {
+        "tr": "(bir şeyi) açıkça çağrıştırmak, izlerini taşımak",
+        "en": "to strongly suggest something unpleasant",
+        "exampleEn": "The whole deal reeks of corruption.",
+        "exampleTr": "Bütün bu anlaşma yolsuzluk kokuyor."
       }
     ],
     "synonyms": [
@@ -273826,6 +277966,12 @@ export default [
         "en": "to collect and store a large amount secretly",
         "exampleEn": "During the crisis, people began to hoard food and supplies.",
         "exampleTr": "Kriz sırasında insanlar yiyecek ve malzeme istiflemeye başladı."
+      },
+      {
+        "tr": "istif, birikinti, gizli hazine (isim)",
+        "en": "a store of valuable things that has been hidden away",
+        "exampleEn": "Archaeologists discovered a hoard of ancient gold coins.",
+        "exampleTr": "Arkeologlar antik altın sikkelerden oluşan bir define buldu."
       }
     ],
     "synonyms": [
@@ -274014,6 +278160,12 @@ export default [
         "en": "to attack by choking; to control or reduce flow",
         "exampleEn": "The provider may throttle your internet speed after a data limit.",
         "exampleTr": "Sağlayıcı, veri sınırından sonra internet hızınızı kısabilir."
+      },
+      {
+        "tr": "gaz kelebeği, gaz kolu (isim)",
+        "en": "a device controlling the flow of fuel to an engine",
+        "exampleEn": "He opened the throttle and the motorcycle roared forward.",
+        "exampleTr": "Gaz kolunu açtı ve motosiklet gürleyerek öne fırladı."
       }
     ],
     "synonyms": [
@@ -274072,6 +278224,12 @@ export default [
         "en": "to follow or approach stealthily",
         "exampleEn": "The lion began to stalk its prey through the tall grass.",
         "exampleTr": "Aslan avını uzun otların arasından sinsice takip etmeye başladı."
+      },
+      {
+        "tr": "sap, gövde (bitkinin)",
+        "en": "the main stem of a plant",
+        "exampleEn": "She cut the flower with a long stalk.",
+        "exampleTr": "Uzun saplı çiçeği kesti."
       }
     ],
     "synonyms": [
@@ -276255,6 +280413,12 @@ export default [
         "en": "a group or set of three connected things",
         "exampleEn": "The chord is a triad of three notes.",
         "exampleTr": "Akor, üç notadan oluşan bir üçlüdür."
+      },
+      {
+        "tr": "üçlü akor (müzik)",
+        "en": "a chord of three musical notes",
+        "exampleEn": "The piece opens with a simple major triad.",
+        "exampleTr": "Parça basit bir majör üçlü akorla başlıyor."
       }
     ],
     "synonyms": [
@@ -276307,6 +280471,12 @@ export default [
         "en": "a lack of trust or confidence",
         "exampleEn": "There is deep distrust between the two sides.",
         "exampleTr": "İki taraf arasında derin bir güvensizlik var."
+      },
+      {
+        "tr": "güvenmemek, kuşku duymak (fiil)",
+        "en": "to have no trust in someone or something",
+        "exampleEn": "She distrusted him from the moment they met.",
+        "exampleTr": "Tanıştıkları andan itibaren ona güvenmedi."
       }
     ],
     "synonyms": [
@@ -276412,6 +280582,12 @@ export default [
         "en": "to pull something suddenly and hard",
         "exampleEn": "She yanked the door open.",
         "exampleTr": "Kapıyı sertçe çekerek açtı."
+      },
+      {
+        "tr": "ani sertçe çekiş (isim)",
+        "en": "a sudden strong pull",
+        "exampleEn": "With one yank, she pulled the rope free.",
+        "exampleTr": "Tek bir sert çekişle ipi kurtardı."
       }
     ],
     "synonyms": [
@@ -276439,6 +280615,12 @@ export default [
         "en": "to move with a sudden sharp movement",
         "exampleEn": "The train jerked to a stop.",
         "exampleTr": "Tren ani bir sarsıntıyla durdu."
+      },
+      {
+        "tr": "ahmak, salak, pislik (kişi)",
+        "en": "a stupid or unpleasant person (informal noun)",
+        "exampleEn": "He was such a jerk to leave without paying his share.",
+        "exampleTr": "Payını ödemeden gitmesiyle tam bir pislikti."
       }
     ],
     "synonyms": [
@@ -276545,6 +280727,12 @@ export default [
         "en": "bent or twisted out of shape; abnormal",
         "exampleEn": "The wooden door had warped in the heat.",
         "exampleTr": "Ahşap kapı sıcakta çarpılmıştı."
+      },
+      {
+        "tr": "(mantık/düşünce) çarpık, sağlıksız",
+        "en": "(of ideas or humour) unpleasant or strange in a way that is not normal",
+        "exampleEn": "He has a warped sense of humour that many people find disturbing.",
+        "exampleTr": "Birçok kişinin rahatsız edici bulduğu çarpık bir mizah anlayışı var."
       }
     ],
     "synonyms": [
@@ -277821,6 +282009,12 @@ export default [
         "en": "a feeling of worry or unease",
         "exampleEn": "The news caused great disquiet among investors.",
         "exampleTr": "Haber, yatırımcılar arasında büyük bir huzursuzluk yarattı."
+      },
+      {
+        "tr": "huzursuz etmek, tedirgin etmek (fiil)",
+        "en": "to make someone feel worried or uneasy",
+        "exampleEn": "The strange noises in the attic disquieted the whole family.",
+        "exampleTr": "Tavan arasındaki tuhaf sesler bütün aileyi tedirgin etti."
       }
     ],
     "synonyms": [
@@ -279097,6 +283291,12 @@ export default [
         "en": "not legally or officially acceptable; not valid",
         "exampleEn": "Your ticket is invalid because the date has expired.",
         "exampleTr": "Tarihi geçtiği için biletiniz geçersizdir."
+      },
+      {
+        "tr": "hasta, sakat, malul kimse (isim)",
+        "en": "a person who is ill or disabled and needs care (noun, stress on first syllable)",
+        "exampleEn": "After the accident she was left an invalid for the rest of her life.",
+        "exampleTr": "Kazadan sonra hayatının geri kalanında hasta/sakat kaldı."
       }
     ],
     "synonyms": [
@@ -279238,6 +283438,12 @@ export default [
         "en": "a form of something that differs slightly from others",
         "exampleEn": "This is a regional variant of the traditional recipe.",
         "exampleTr": "Bu, geleneksel tarifin bölgesel bir varyantıdır."
+      },
+      {
+        "tr": "farklı, değişen (sıfat)",
+        "en": "differing from a standard or from others of the same type",
+        "exampleEn": "There are several variant spellings of the word.",
+        "exampleTr": "Kelimenin birkaç farklı yazımı vardır."
       }
     ],
     "synonyms": [
@@ -280027,6 +284233,12 @@ export default [
         "en": "the way a surface or substance feels to the touch",
         "exampleEn": "The fabric had a soft, smooth texture.",
         "exampleTr": "Kumaş yumuşak, pürüzsüz bir dokuya sahipti."
+      },
+      {
+        "tr": "(yiyecek için) kıvam, ağızdaki his",
+        "en": "the way food feels in the mouth",
+        "exampleEn": "The cake had a light, fluffy texture.",
+        "exampleTr": "Kekin hafif, kabarık bir kıvamı vardı."
       }
     ],
     "synonyms": [
@@ -280189,6 +284401,12 @@ export default [
         "en": "a remote, uncultivated, or uninhabited region",
         "exampleEn": "They spent a week camping in the wilds of Alaska.",
         "exampleTr": "Alaska'nın ıssız doğasında bir hafta kamp yaparak geçirdiler."
+      },
+      {
+        "tr": "ücra köşe, ıssız uzak yer (mizahi)",
+        "en": "a place far from towns and civilization",
+        "exampleEn": "They live somewhere out in the wilds of northern Scotland.",
+        "exampleTr": "Kuzey İskoçya'nın ücra bir köşesinde yaşıyorlar."
       }
     ],
     "synonyms": [
@@ -280359,6 +284577,12 @@ export default [
         "en": "to spread a substance over a surface untidily",
         "exampleEn": "She tried not to smear paint on her clothes.",
         "exampleTr": "Boyayı kıyafetlerine bulaştırmamaya çalıştı."
+      },
+      {
+        "tr": "karalamak, itibarını zedelemek",
+        "en": "to damage someone's reputation with false accusations",
+        "exampleEn": "They tried to smear him with false accusations.",
+        "exampleTr": "Onu asılsız suçlamalarla karalamaya çalıştılar."
       }
     ],
     "synonyms": [
