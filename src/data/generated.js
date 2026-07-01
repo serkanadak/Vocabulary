@@ -268290,25 +268290,27 @@ export default [
     "pronunciation": "/kənˈsiːvəbli/",
     "meanings": [
       {
-        "tr": "olası olarak, akla yatkın biçimde",
-        "en": "in a way that can be imagined or believed",
-        "exampleEn": "The project could conceivably be finished by next week.",
-        "exampleTr": "Proje, olası olarak gelecek haftaya kadar bitirilebilir."
+        "tr": "akla yatkın biçimde, muhtemelen",
+        "en": "in a way that is possible to imagine or believe",
+        "exampleEn": "The project could conceivably be finished by next month.",
+        "exampleTr": "Proje muhtemelen gelecek aya kadar bitirilebilir."
       }
     ],
     "synonyms": [
       "possibly",
-      "imaginably"
+      "imaginably",
+      "feasibly"
     ],
     "antonyms": [
-      "inconceivably"
+      "inconceivably",
+      "impossibly"
     ]
   },
   {
     "id": "w_imaginably",
     "headword": "imaginably",
     "pos": "adv",
-    "level": "C1",
+    "level": "C2",
     "domains": [
       "general"
     ],
@@ -268317,10 +268319,10 @@ export default [
     "pronunciation": "/ɪˈmædʒɪnəbli/",
     "meanings": [
       {
-        "tr": "tasavvur edilebilir şekilde, düşünülebilecek biçimde",
+        "tr": "hayal edilebilir biçimde",
         "en": "in a way that can be imagined",
-        "exampleEn": "It was the most imaginably beautiful sunset.",
-        "exampleTr": "Hayal edilebilecek en güzel gün batımıydı."
+        "exampleEn": "It was, imaginably, the worst outcome they could face.",
+        "exampleTr": "Bu, hayal edilebileceği üzere, karşılaşabilecekleri en kötü sonuçtu."
       }
     ],
     "synonyms": [
@@ -268341,22 +268343,23 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ʌnˈkjʊərd/",
+    "pronunciation": "/ʌnˈkjʊəd/",
     "meanings": [
       {
         "tr": "işlenmemiş, salamura edilmemiş (et vb.)",
-        "en": "not preserved by curing",
-        "exampleEn": "The recipe calls for uncured bacon.",
-        "exampleTr": "Tarif, işlenmemiş pastırma gerektiriyor."
+        "en": "not preserved or treated by curing",
+        "exampleEn": "The recipe calls for uncured bacon without added nitrates.",
+        "exampleTr": "Tarif, nitrat eklenmemiş işlenmemiş pastırma gerektiriyor."
       }
     ],
     "synonyms": [
+      "unprocessed",
       "untreated",
       "raw"
     ],
     "antonyms": [
       "cured",
-      "treated"
+      "processed"
     ]
   },
   {
@@ -268373,14 +268376,15 @@ export default [
     "meanings": [
       {
         "tr": "işlenmemiş, ham",
-        "en": "not treated or prepared by a process",
-        "exampleEn": "A healthy diet includes unprocessed foods.",
-        "exampleTr": "Sağlıklı bir diyet işlenmemiş gıdaları içerir."
+        "en": "not having been treated or prepared by a special process",
+        "exampleEn": "She prefers unprocessed foods like fresh fruit and vegetables.",
+        "exampleTr": "Taze meyve ve sebze gibi işlenmemiş gıdaları tercih eder."
       }
     ],
     "synonyms": [
       "raw",
-      "natural"
+      "natural",
+      "untreated"
     ],
     "antonyms": [
       "processed",
@@ -268400,10 +268404,10 @@ export default [
     "pronunciation": "/ˈtriːtɪd/",
     "meanings": [
       {
-        "tr": "işlenmiş, muamele görmüş",
-        "en": "having undergone a chemical or other process",
-        "exampleEn": "The wood was treated to resist water.",
-        "exampleTr": "Ahşap, suya dayanıklı olması için işlenmişti."
+        "tr": "işlenmiş, arıtılmış",
+        "en": "having been subjected to a chemical or physical process",
+        "exampleEn": "Only treated water should be used for drinking here.",
+        "exampleTr": "Burada içmek için yalnızca arıtılmış su kullanılmalıdır."
       }
     ],
     "synonyms": [
@@ -268425,21 +268429,23 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/kjʊərd/",
+    "pronunciation": "/kjʊəd/",
     "meanings": [
       {
-        "tr": "salamura edilmiş, kürlenmiş (et/balık)",
+        "tr": "salamura edilmiş, tütsülenmiş, işlenmiş",
         "en": "preserved by salting, drying, or smoking",
-        "exampleEn": "They served thin slices of cured ham.",
-        "exampleTr": "İnce dilimler halinde kürlenmiş jambon servis ettiler."
+        "exampleEn": "They served thin slices of cured ham with melon.",
+        "exampleTr": "Kavunla birlikte ince dilim salamura jambon servis ettiler."
       }
     ],
     "synonyms": [
       "preserved",
-      "treated"
+      "smoked",
+      "salted"
     ],
     "antonyms": [
       "uncured",
+      "fresh",
       "raw"
     ]
   },
@@ -268456,19 +268462,21 @@ export default [
     "pronunciation": "/ʌnˈkʌt/",
     "meanings": [
       {
-        "tr": "kesilmemiş; sansürsüz (film)",
-        "en": "not cut, trimmed, or shortened",
-        "exampleEn": "The director released the uncut version of the film.",
-        "exampleTr": "Yönetmen, filmin kesilmemiş versiyonunu yayınladı."
+        "tr": "kesilmemiş, sansürsüz",
+        "en": "not cut, shortened, or edited",
+        "exampleEn": "The director released the full uncut version of the film.",
+        "exampleTr": "Yönetmen filmin tam, sansürsüz versiyonunu yayınladı."
       }
     ],
     "synonyms": [
       "whole",
-      "unedited"
+      "complete",
+      "unabridged"
     ],
     "antonyms": [
       "cut",
-      "trimmed"
+      "trimmed",
+      "edited"
     ]
   },
   {
@@ -268481,18 +268489,19 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˌəʊvərˈɡrəʊn/",
+    "pronunciation": "/ˌəʊvəˈɡrəʊn/",
     "meanings": [
       {
-        "tr": "otlarla kaplanmış, gür büyümüş",
-        "en": "covered with plants that have grown wild",
-        "exampleEn": "The garden was overgrown with weeds.",
-        "exampleTr": "Bahçe yabani otlarla kaplanmıştı."
+        "tr": "otlarla kaplanmış, gür ve bakımsız büyümüş",
+        "en": "covered with plants that have grown thickly and untidily",
+        "exampleEn": "The garden was overgrown with weeds after months of neglect.",
+        "exampleTr": "Aylarca ihmal edildikten sonra bahçe otlarla kaplanmıştı."
       }
     ],
     "synonyms": [
       "wild",
-      "tangled"
+      "unkempt",
+      "weedy"
     ],
     "antonyms": [
       "trimmed",
@@ -268512,15 +268521,16 @@ export default [
     "pronunciation": "/trɪmd/",
     "meanings": [
       {
-        "tr": "budanmış, kesilip düzeltilmiş",
-        "en": "cut to make neat or tidy",
-        "exampleEn": "The neatly trimmed hedge lined the path.",
-        "exampleTr": "Özenle budanmış çit, yolu sınırlıyordu."
+        "tr": "budanmış, kırpılmış, düzeltilmiş",
+        "en": "made neat by cutting away unwanted parts",
+        "exampleEn": "The neatly trimmed hedges lined the front path.",
+        "exampleTr": "Özenle budanmış çitler ön yolu sınırlıyordu."
       }
     ],
     "synonyms": [
       "clipped",
-      "neat"
+      "pruned",
+      "neatened"
     ],
     "antonyms": [
       "overgrown",
@@ -268540,19 +268550,21 @@ export default [
     "pronunciation": "/ˈstreɪndʒnəs/",
     "meanings": [
       {
-        "tr": "tuhaflık, gariplik",
-        "en": "the quality of being unusual or odd",
-        "exampleEn": "There was a strangeness about the empty town.",
-        "exampleTr": "Boş kasabada bir tuhaflık vardı."
+        "tr": "gariplik, tuhaflık",
+        "en": "the quality of being unusual or unfamiliar",
+        "exampleEn": "There was a strangeness about the empty town that unsettled her.",
+        "exampleTr": "Boş kasabada onu huzursuz eden bir tuhaflık vardı."
       }
     ],
     "synonyms": [
       "oddness",
-      "peculiarity"
+      "peculiarity",
+      "weirdness"
     ],
     "antonyms": [
       "normality",
-      "ordinariness"
+      "ordinariness",
+      "familiarity"
     ]
   },
   {
@@ -268568,10 +268580,10 @@ export default [
     "pronunciation": "/ˈreərəti/",
     "meanings": [
       {
-        "tr": "nadirlik; nadir şey",
-        "en": "the state of being rare; an uncommon thing",
-        "exampleEn": "Snow is a rarity in this region.",
-        "exampleTr": "Kar, bu bölgede bir nadirliktir."
+        "tr": "nadirlik, az bulunurluk",
+        "en": "the state of being uncommon or scarce",
+        "exampleEn": "Snow is a rarity in this part of the country.",
+        "exampleTr": "Kar, ülkenin bu bölgesinde nadir görülen bir şeydir."
       }
     ],
     "synonyms": [
@@ -268593,13 +268605,13 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/nɔːrˈmæləti/",
+    "pronunciation": "/nɔːˈmæləti/",
     "meanings": [
       {
         "tr": "normallik, olağanlık",
-        "en": "the condition of being normal or usual",
-        "exampleEn": "Life slowly returned to normality after the storm.",
-        "exampleTr": "Fırtınadan sonra hayat yavaşça normalliğe döndü."
+        "en": "the condition of being usual or expected",
+        "exampleEn": "After the storm, life slowly returned to normality.",
+        "exampleTr": "Fırtınadan sonra hayat yavaşça normale döndü."
       }
     ],
     "synonyms": [
@@ -268612,34 +268624,6 @@ export default [
     ]
   },
   {
-    "id": "w_ordinariness",
-    "headword": "ordinariness",
-    "pos": "noun",
-    "level": "C1",
-    "domains": [
-      "general"
-    ],
-    "type": "word",
-    "source": "synant+claude",
-    "pronunciation": "/ˈɔːrdnərinəs/",
-    "meanings": [
-      {
-        "tr": "sıradanlık, olağanlık",
-        "en": "the quality of being ordinary or common",
-        "exampleEn": "There was a comforting ordinariness to her daily routine.",
-        "exampleTr": "Günlük rutininde rahatlatıcı bir sıradanlık vardı."
-      }
-    ],
-    "synonyms": [
-      "normality",
-      "commonness"
-    ],
-    "antonyms": [
-      "strangeness",
-      "uniqueness"
-    ]
-  },
-  {
     "id": "w_imprudent",
     "headword": "imprudent",
     "pos": "adj",
@@ -268649,21 +268633,23 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ɪmˈpruːdnt/",
+    "pronunciation": "/ɪmˈpruːdənt/",
     "meanings": [
       {
-        "tr": "tedbirsiz, sağduyusuz, düşüncesiz",
-        "en": "not showing care for the consequences",
-        "exampleEn": "It would be imprudent to invest all your savings.",
-        "exampleTr": "Tüm birikiminizi yatırmak tedbirsizlik olur."
+        "tr": "tedbirsiz, sağduyusuz",
+        "en": "not showing care for the consequences of an action",
+        "exampleEn": "It would be imprudent to invest all your savings in one company.",
+        "exampleTr": "Tüm birikiminizi tek bir şirkete yatırmak tedbirsizlik olur."
       }
     ],
     "synonyms": [
       "unwise",
-      "reckless"
+      "reckless",
+      "rash"
     ],
     "antonyms": [
       "prudent",
+      "cautious",
       "sensible"
     ]
   },
@@ -268681,42 +268667,45 @@ export default [
     "meanings": [
       {
         "tr": "saf, deneyimsiz, toy",
-        "en": "lacking experience or judgement",
-        "exampleEn": "It was naive of him to trust them so quickly.",
-        "exampleTr": "Onlara bu kadar çabuk güvenmesi safçaydı."
+        "en": "lacking experience, wisdom, or judgment",
+        "exampleEn": "It was naive of him to trust a complete stranger with the money.",
+        "exampleTr": "Parayı tamamen yabancı birine emanet etmesi onun saflığıydı."
       }
     ],
     "synonyms": [
       "innocent",
-      "gullible"
+      "gullible",
+      "unworldly"
     ],
     "antonyms": [
       "sophisticated",
-      "worldly"
+      "worldly",
+      "shrewd"
     ]
   },
   {
     "id": "w_nurture",
     "headword": "nurture",
     "pos": "verb",
-    "level": "C1",
+    "level": "B2",
     "domains": [
       "general"
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈnɜːrtʃər/",
+    "pronunciation": "/ˈnɜːtʃə/",
     "meanings": [
       {
         "tr": "beslemek, yetiştirmek, geliştirmek",
-        "en": "to care for and help something grow",
-        "exampleEn": "Good teachers nurture their students' talents.",
-        "exampleTr": "İyi öğretmenler öğrencilerinin yeteneklerini geliştirir."
+        "en": "to care for and encourage the growth of someone or something",
+        "exampleEn": "Good teachers nurture their students' curiosity.",
+        "exampleTr": "İyi öğretmenler öğrencilerinin merakını besler."
       }
     ],
     "synonyms": [
+      "cultivate",
       "foster",
-      "cultivate"
+      "nourish"
     ],
     "antonyms": [
       "neglect",
@@ -268727,28 +268716,29 @@ export default [
     "id": "w_enhancement",
     "headword": "enhancement",
     "pos": "noun",
-    "level": "C1",
+    "level": "B2",
     "domains": [
       "general"
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ɪnˈhænsmənt/",
+    "pronunciation": "/ɪnˈhɑːnsmənt/",
     "meanings": [
       {
         "tr": "iyileştirme, geliştirme, artırma",
-        "en": "an improvement or increase in quality",
-        "exampleEn": "The update brought several enhancements to the app.",
-        "exampleTr": "Güncelleme, uygulamaya birkaç iyileştirme getirdi."
+        "en": "an improvement that makes something better in quality or value",
+        "exampleEn": "The software update brought several performance enhancements.",
+        "exampleTr": "Yazılım güncellemesi birkaç performans iyileştirmesi getirdi."
       }
     ],
     "synonyms": [
       "improvement",
-      "upgrade"
+      "upgrade",
+      "boost"
     ],
     "antonyms": [
       "reduction",
-      "decline"
+      "diminishment"
     ]
   },
   {
@@ -268765,9 +268755,9 @@ export default [
     "meanings": [
       {
         "tr": "yatay",
-        "en": "parallel to the horizon; flat and level",
-        "exampleEn": "Draw a horizontal line across the page.",
-        "exampleTr": "Sayfa boyunca yatay bir çizgi çiz."
+        "en": "parallel to the ground; level from side to side",
+        "exampleEn": "Draw a horizontal line across the middle of the page.",
+        "exampleTr": "Sayfanın ortasına yatay bir çizgi çizin."
       }
     ],
     "synonyms": [
@@ -268775,7 +268765,8 @@ export default [
       "flat"
     ],
     "antonyms": [
-      "vertical"
+      "vertical",
+      "upright"
     ]
   },
   {
@@ -268788,55 +268779,59 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ɪnˈvɜːrtɪd/",
+    "pronunciation": "/ɪnˈvɜːtɪd/",
     "meanings": [
       {
         "tr": "ters çevrilmiş, baş aşağı",
-        "en": "turned upside down or reversed",
+        "en": "turned upside down or reversed in position",
         "exampleEn": "The image appeared inverted in the mirror.",
         "exampleTr": "Görüntü aynada ters çevrilmiş göründü."
       }
     ],
     "synonyms": [
       "reversed",
+      "upturned",
       "upside-down"
     ],
     "antonyms": [
-      "upright"
+      "upright",
+      "upward"
     ]
   },
   {
     "id": "w_reversed",
     "headword": "reversed",
     "pos": "adj",
-    "level": "B2",
+    "level": "B1",
     "domains": [
       "general"
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/rɪˈvɜːrst/",
+    "pronunciation": "/rɪˈvɜːst/",
     "meanings": [
       {
         "tr": "tersine çevrilmiş, ters",
-        "en": "turned the opposite way around",
-        "exampleEn": "The roles were reversed when she became the boss.",
-        "exampleTr": "O patron olunca roller tersine çevrildi."
+        "en": "changed to the opposite direction or order",
+        "exampleEn": "The decision was reversed after a public outcry.",
+        "exampleTr": "Karar, kamuoyu tepkisinin ardından tersine çevrildi."
       }
     ],
     "synonyms": [
       "inverted",
-      "switched"
+      "overturned",
+      "undone"
     ],
     "antonyms": [
-      "unchanged"
+      "maintained",
+      "upheld"
     ]
   },
   {
     "id": "w_metropolitan",
     "headword": "metropolitan",
     "pos": "adj",
-    "level": "C1",
+    "level": "B2",
     "domains": [
       "general"
     ],
@@ -268845,15 +268840,16 @@ export default [
     "pronunciation": "/ˌmetrəˈpɒlɪtən/",
     "meanings": [
       {
-        "tr": "büyükşehir, metropol ile ilgili",
-        "en": "relating to a large city and its area",
-        "exampleEn": "She lives in the metropolitan area of London.",
-        "exampleTr": "Londra'nın büyükşehir bölgesinde yaşıyor."
+        "tr": "büyükşehir ile ilgili, metropol",
+        "en": "relating to a large, busy city and its surrounding area",
+        "exampleEn": "The metropolitan area is home to over ten million people.",
+        "exampleTr": "Büyükşehir bölgesi on milyondan fazla insana ev sahipliği yapıyor."
       }
     ],
     "synonyms": [
       "urban",
-      "cosmopolitan"
+      "cosmopolitan",
+      "city"
     ],
     "antonyms": [
       "rural",
@@ -268874,9 +268870,9 @@ export default [
     "meanings": [
       {
         "tr": "acilen, ısrarla",
-        "en": "in an urgent or insistent way",
-        "exampleEn": "She spoke pressingly about the need for reform.",
-        "exampleTr": "Reform ihtiyacından ısrarla söz etti."
+        "en": "in an urgent or insistent manner",
+        "exampleEn": "She spoke pressingly about the need for immediate action.",
+        "exampleTr": "Acil eylem ihtiyacı hakkında ısrarla konuştu."
       }
     ],
     "synonyms": [
@@ -268884,34 +268880,37 @@ export default [
       "insistently"
     ],
     "antonyms": [
-      "casually"
+      "casually",
+      "leisurely"
     ]
   },
   {
     "id": "w_usefulness",
     "headword": "usefulness",
     "pos": "noun",
-    "level": "B2",
+    "level": "B1",
     "domains": [
       "general"
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈjuːsflnəs/",
+    "pronunciation": "/ˈjuːsfəlnəs/",
     "meanings": [
       {
-        "tr": "yararlılık, kullanışlılık",
-        "en": "the quality of being useful",
-        "exampleEn": "The tool has proven its usefulness many times.",
-        "exampleTr": "Araç, yararlılığını defalarca kanıtladı."
+        "tr": "yararlılık, faydalılık",
+        "en": "the quality of being helpful or practical",
+        "exampleEn": "The tool soon proved its usefulness on the job site.",
+        "exampleTr": "Alet, şantiyede kısa sürede yararlılığını kanıtladı."
       }
     ],
     "synonyms": [
       "utility",
-      "helpfulness"
+      "helpfulness",
+      "practicality"
     ],
     "antonyms": [
-      "uselessness"
+      "uselessness",
+      "futility"
     ]
   },
   {
@@ -268928,7 +268927,7 @@ export default [
     "meanings": [
       {
         "tr": "yararsızlık, işe yaramazlık",
-        "en": "the quality of being useless",
+        "en": "the quality of having no use or value",
         "exampleEn": "He complained about the uselessness of the broken machine.",
         "exampleTr": "Bozuk makinenin işe yaramazlığından şikayet etti."
       }
@@ -268938,7 +268937,8 @@ export default [
       "worthlessness"
     ],
     "antonyms": [
-      "usefulness"
+      "usefulness",
+      "utility"
     ]
   },
   {
@@ -268954,19 +268954,20 @@ export default [
     "pronunciation": "/ʌnˈɒkjupaɪd/",
     "meanings": [
       {
-        "tr": "boş, kullanılmayan, meşgul olmayan",
-        "en": "empty or not being used",
-        "exampleEn": "The seat next to me was unoccupied.",
-        "exampleTr": "Yanımdaki koltuk boştu."
+        "tr": "boş, kullanılmayan, oturulmayan",
+        "en": "not being used or lived in; empty",
+        "exampleEn": "The house had been unoccupied for several years.",
+        "exampleTr": "Ev birkaç yıldır boştu."
       }
     ],
     "synonyms": [
       "empty",
-      "vacant"
+      "vacant",
+      "uninhabited"
     ],
     "antonyms": [
       "occupied",
-      "taken"
+      "inhabited"
     ]
   },
   {
@@ -268983,22 +268984,24 @@ export default [
     "meanings": [
       {
         "tr": "aşılama, aşı",
-        "en": "the act of giving a vaccine to prevent disease",
-        "exampleEn": "Children receive inoculation against measles.",
-        "exampleTr": "Çocuklar kızamığa karşı aşılanır."
+        "en": "the act of injecting a vaccine to protect against disease",
+        "exampleEn": "Children receive an inoculation against measles at an early age.",
+        "exampleTr": "Çocuklara erken yaşta kızamığa karşı aşı yapılır."
       }
     ],
     "synonyms": [
-      "vaccination",
-      "immunization"
+      "immunization",
+      "vaccination"
     ],
-    "antonyms": []
+    "antonyms": [
+      "infection"
+    ]
   },
   {
     "id": "w_immunization",
     "headword": "immunization",
     "pos": "noun",
-    "level": "C1",
+    "level": "B2",
     "domains": [
       "general"
     ],
@@ -269008,16 +269011,18 @@ export default [
     "meanings": [
       {
         "tr": "bağışıklama, aşılama",
-        "en": "the process of making someone immune to disease",
-        "exampleEn": "The clinic offers free immunization for infants.",
-        "exampleTr": "Klinik, bebekler için ücretsiz bağışıklama sunuyor."
+        "en": "the process of making a person resistant to a disease",
+        "exampleEn": "The clinic offers free immunization for travelers.",
+        "exampleTr": "Klinik, yolcular için ücretsiz aşılama sunuyor."
       }
     ],
     "synonyms": [
-      "vaccination",
-      "inoculation"
+      "inoculation",
+      "vaccination"
     ],
-    "antonyms": []
+    "antonyms": [
+      "susceptibility"
+    ]
   },
   {
     "id": "w_invalid",
@@ -269032,18 +269037,20 @@ export default [
     "pronunciation": "/ɪnˈvælɪd/",
     "meanings": [
       {
-        "tr": "geçersiz",
-        "en": "not legally or officially acceptable",
-        "exampleEn": "Your ticket is invalid without a stamp.",
-        "exampleTr": "Damga olmadan biletiniz geçersizdir."
+        "tr": "geçersiz, hükümsüz",
+        "en": "not legally or officially acceptable; not valid",
+        "exampleEn": "Your ticket is invalid because the date has expired.",
+        "exampleTr": "Tarihi geçtiği için biletiniz geçersizdir."
       }
     ],
     "synonyms": [
       "void",
-      "null"
+      "null",
+      "unacceptable"
     ],
     "antonyms": [
-      "valid"
+      "valid",
+      "acceptable"
     ]
   },
   {
@@ -269061,12 +269068,13 @@ export default [
       {
         "tr": "gerçekleşmek, ortaya çıkmak",
         "en": "to become real or actually happen",
-        "exampleEn": "The promised funds never materialized.",
-        "exampleTr": "Vaat edilen fonlar asla gerçekleşmedi."
+        "exampleEn": "The promised funding never materialized.",
+        "exampleTr": "Vaat edilen finansman hiçbir zaman gerçekleşmedi."
       }
     ],
     "synonyms": [
       "appear",
+      "emerge",
       "happen"
     ],
     "antonyms": [
@@ -269084,13 +269092,13 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˌnɒnˈvɜːrbl/",
+    "pronunciation": "/ˌnɒnˈvɜːbl/",
     "meanings": [
       {
-        "tr": "sözsüz, dilsel olmayan",
-        "en": "not involving or using words",
-        "exampleEn": "Body language is a form of nonverbal communication.",
-        "exampleTr": "Beden dili, sözsüz iletişimin bir biçimidir."
+        "tr": "sözsüz, sözel olmayan",
+        "en": "not involving or using words or speech",
+        "exampleEn": "Much of human communication is nonverbal, like gestures and facial expressions.",
+        "exampleTr": "İnsan iletişiminin çoğu, jestler ve yüz ifadeleri gibi sözsüzdür."
       }
     ],
     "synonyms": [
@@ -269098,7 +269106,8 @@ export default [
       "gestural"
     ],
     "antonyms": [
-      "verbal"
+      "verbal",
+      "spoken"
     ]
   },
   {
@@ -269114,10 +269123,10 @@ export default [
     "pronunciation": "/ˈɔːrəli/",
     "meanings": [
       {
-        "tr": "sözlü olarak; ağız yoluyla",
-        "en": "by spoken word; or by mouth",
-        "exampleEn": "The medicine should be taken orally.",
-        "exampleTr": "İlaç ağız yoluyla alınmalıdır."
+        "tr": "sözlü olarak, ağızdan",
+        "en": "by spoken words or by mouth",
+        "exampleEn": "The medicine should be taken orally twice a day.",
+        "exampleTr": "İlaç günde iki kez ağızdan alınmalıdır."
       }
     ],
     "synonyms": [
@@ -269142,13 +269151,14 @@ export default [
     "meanings": [
       {
         "tr": "yazılı olarak",
-        "en": "in a written form, not spoken",
-        "exampleEn": "Please confirm your order in writing.",
-        "exampleTr": "Lütfen siparişinizi yazılı olarak onaylayın."
+        "en": "in a written form rather than spoken",
+        "exampleEn": "Please confirm your agreement in writing.",
+        "exampleTr": "Lütfen onayınızı yazılı olarak iletin."
       }
     ],
     "synonyms": [
-      "written"
+      "written",
+      "on paper"
     ],
     "antonyms": [
       "orally",
@@ -269168,35 +269178,39 @@ export default [
     "pronunciation": "/ˈveəriənt/",
     "meanings": [
       {
-        "tr": "varyant, çeşit, türev",
-        "en": "a form of something that differs slightly",
-        "exampleEn": "This is a regional variant of the recipe.",
-        "exampleTr": "Bu, tarifin bölgesel bir varyantıdır."
+        "tr": "varyant, değişke, farklı biçim",
+        "en": "a form of something that differs slightly from others",
+        "exampleEn": "This is a regional variant of the traditional recipe.",
+        "exampleTr": "Bu, geleneksel tarifin bölgesel bir varyantıdır."
       }
     ],
     "synonyms": [
       "version",
-      "variation"
+      "variation",
+      "form"
     ],
-    "antonyms": []
+    "antonyms": [
+      "standard",
+      "original"
+    ]
   },
   {
-    "id": "w_old_timer",
+    "id": "w_old-timer",
     "headword": "old-timer",
     "pos": "noun",
-    "level": "B2",
+    "level": "C1",
     "domains": [
       "general"
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈəʊldˌtaɪmər/",
+    "pronunciation": "/ˌəʊldˈtaɪmə/",
     "meanings": [
       {
-        "tr": "emektar, tecrübeli yaşlı kimse",
-        "en": "a person with long experience or who is old",
-        "exampleEn": "The old-timer told stories about the early days.",
-        "exampleTr": "Emektar, eski günlere dair hikayeler anlattı."
+        "tr": "kıdemli kişi, eski toprak, tecrübeli yaşlı",
+        "en": "a person who has been in a place or activity for a long time",
+        "exampleEn": "The old-timers at the bar remembered when the mill was still running.",
+        "exampleTr": "Bardaki eski topraklar, değirmenin hâlâ çalıştığı zamanları hatırlıyordu."
       }
     ],
     "synonyms": [
@@ -269221,18 +269235,20 @@ export default [
     "pronunciation": "/ˈʃeɪkɪŋ/",
     "meanings": [
       {
-        "tr": "titreme, sallanma",
-        "en": "the act of trembling or moving quickly back and forth",
-        "exampleEn": "The shaking of the ground frightened everyone.",
-        "exampleTr": "Yerin titremesi herkesi korkuttu."
+        "tr": "titreme, sarsılma",
+        "en": "a trembling or quivering movement",
+        "exampleEn": "The shaking of her hands revealed how nervous she was.",
+        "exampleTr": "Ellerinin titremesi ne kadar gergin olduğunu ortaya koyuyordu."
       }
     ],
     "synonyms": [
       "trembling",
-      "quivering"
+      "quivering",
+      "shivering"
     ],
     "antonyms": [
-      "stillness"
+      "stillness",
+      "steadiness"
     ]
   },
   {
@@ -269248,19 +269264,20 @@ export default [
     "pronunciation": "/vaɪˈtæləti/",
     "meanings": [
       {
-        "tr": "canlılık, dinçlik, yaşam gücü",
-        "en": "energy and liveliness",
-        "exampleEn": "Despite his age, he was full of vitality.",
-        "exampleTr": "Yaşına rağmen canlılık doluydu."
+        "tr": "canlılık, dinçlik, yaşam enerjisi",
+        "en": "the state of being strong, active, and full of energy",
+        "exampleEn": "Despite his age, he was full of vitality and good humor.",
+        "exampleTr": "Yaşına rağmen, canlılık ve neşe doluydu."
       }
     ],
     "synonyms": [
       "energy",
+      "vigor",
       "liveliness"
     ],
     "antonyms": [
       "lethargy",
-      "weakness"
+      "weariness"
     ]
   },
   {
@@ -269273,18 +269290,19 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈleθərdʒi/",
+    "pronunciation": "/ˈleθədʒi/",
     "meanings": [
       {
-        "tr": "uyuşukluk, bitkinlik, halsizlik",
+        "tr": "uyuşukluk, halsizlik, bitkinlik",
         "en": "a lack of energy and enthusiasm",
-        "exampleEn": "The heat left everyone in a state of lethargy.",
-        "exampleTr": "Sıcak, herkesi bir uyuşukluk haline soktu."
+        "exampleEn": "A heavy meal left him in a state of lethargy all afternoon.",
+        "exampleTr": "Ağır bir yemek onu tüm öğleden sonra bir uyuşukluk içinde bıraktı."
       }
     ],
     "synonyms": [
       "sluggishness",
-      "tiredness"
+      "tiredness",
+      "apathy"
     ],
     "antonyms": [
       "vitality",
@@ -269305,9 +269323,9 @@ export default [
     "meanings": [
       {
         "tr": "zayıf bir şekilde, güçsüzce",
-        "en": "in a weak or faint manner",
-        "exampleEn": "He waved feebly from his hospital bed.",
-        "exampleTr": "Hastane yatağından zayıf bir şekilde el salladı."
+        "en": "in a weak manner, lacking strength",
+        "exampleEn": "The injured bird flapped its wings feebly.",
+        "exampleTr": "Yaralı kuş kanatlarını güçsüzce çırptı."
       }
     ],
     "synonyms": [
@@ -269320,7 +269338,7 @@ export default [
     ]
   },
   {
-    "id": "w_city_dweller",
+    "id": "w_city-dweller",
     "headword": "city-dweller",
     "pos": "noun",
     "level": "B2",
@@ -269329,13 +269347,13 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈsɪti ˌdwelər/",
+    "pronunciation": "/ˈsɪti ˌdwelə/",
     "meanings": [
       {
-        "tr": "şehir sakini, kentli",
+        "tr": "şehirli, kentte yaşayan kişi",
         "en": "a person who lives in a city",
-        "exampleEn": "Many city-dwellers dream of life in the countryside.",
-        "exampleTr": "Birçok şehir sakini kırsalda yaşamayı hayal eder."
+        "exampleEn": "Many city-dwellers dream of a quiet life in the countryside.",
+        "exampleTr": "Birçok şehirli, kırsalda sakin bir hayatın hayalini kurar."
       }
     ],
     "synonyms": [
@@ -269344,7 +269362,7 @@ export default [
     ],
     "antonyms": [
       "countryman",
-      "villager"
+      "rural resident"
     ]
   },
   {
@@ -269357,19 +269375,22 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˌviː ˈɑːr/",
+    "pronunciation": "/ˌviːˈɑː/",
     "meanings": [
       {
-        "tr": "sanal gerçeklik (kısaltma)",
-        "en": "virtual reality, a computer-generated environment",
-        "exampleEn": "He explored the museum using a VR headset.",
-        "exampleTr": "Müzeyi bir VR gözlüğü kullanarak gezdi."
+        "tr": "sanal gerçeklik (VR)",
+        "en": "virtual reality; a computer-generated simulated environment",
+        "exampleEn": "He put on the headset and explored the museum in VR.",
+        "exampleTr": "Kulaklığı taktı ve müzeyi VR'da gezdi."
       }
     ],
     "synonyms": [
-      "virtual reality"
+      "virtual reality",
+      "simulation"
     ],
-    "antonyms": []
+    "antonyms": [
+      "reality"
+    ]
   },
   {
     "id": "w_simulation",
@@ -269384,18 +269405,20 @@ export default [
     "pronunciation": "/ˌsɪmjuˈleɪʃn/",
     "meanings": [
       {
-        "tr": "simülasyon, benzetim",
-        "en": "an imitation of a real process or system",
-        "exampleEn": "Pilots train using a flight simulation.",
-        "exampleTr": "Pilotlar bir uçuş simülasyonu kullanarak eğitilir."
+        "tr": "benzetim, simülasyon",
+        "en": "an imitation of a real process or situation",
+        "exampleEn": "Pilots train using a flight simulation before flying real planes.",
+        "exampleTr": "Pilotlar gerçek uçaklarla uçmadan önce uçuş simülasyonu kullanarak eğitim alır."
       }
     ],
     "synonyms": [
       "imitation",
-      "model"
+      "model",
+      "mock-up"
     ],
     "antonyms": [
-      "reality"
+      "reality",
+      "actuality"
     ]
   },
   {
@@ -269411,19 +269434,20 @@ export default [
     "pronunciation": "/ˈɡʊdnəs/",
     "meanings": [
       {
-        "tr": "iyilik, iyi olma hali",
-        "en": "the quality of being good or kind",
-        "exampleEn": "She believed in the goodness of people.",
-        "exampleTr": "İnsanların iyiliğine inanıyordu."
+        "tr": "iyilik, erdem",
+        "en": "the quality of being good or morally right",
+        "exampleEn": "She believed in the basic goodness of people.",
+        "exampleTr": "İnsanların temel iyiliğine inanırdı."
       }
     ],
     "synonyms": [
       "virtue",
-      "kindness"
+      "kindness",
+      "decency"
     ],
     "antonyms": [
-      "evil",
-      "wickedness"
+      "wickedness",
+      "evil"
     ]
   },
   {
@@ -269439,10 +269463,10 @@ export default [
     "pronunciation": "/ɪnˈvɪzəbli/",
     "meanings": [
       {
-        "tr": "görünmez bir şekilde",
+        "tr": "görünmez biçimde, gizlice",
         "en": "in a way that cannot be seen",
-        "exampleEn": "The repair was done so invisibly that no one noticed.",
-        "exampleTr": "Tamir o kadar görünmez yapılmıştı ki kimse fark etmedi."
+        "exampleEn": "The repair was done so invisibly that no one noticed the crack.",
+        "exampleTr": "Onarım o kadar görünmez biçimde yapıldı ki kimse çatlağı fark etmedi."
       }
     ],
     "synonyms": [
@@ -269450,7 +269474,8 @@ export default [
       "unseen"
     ],
     "antonyms": [
-      "visibly"
+      "visibly",
+      "noticeably"
     ]
   },
   {
@@ -269463,22 +269488,23 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˌɪmpərˈseptəbli/",
+    "pronunciation": "/ˌɪmpəˈseptəbli/",
     "meanings": [
       {
-        "tr": "fark edilemez biçimde, sezilmez şekilde",
-        "en": "so gradually or slightly as to be unnoticed",
-        "exampleEn": "The temperature dropped almost imperceptibly.",
-        "exampleTr": "Sıcaklık neredeyse fark edilemez biçimde düştü."
+        "tr": "fark edilmeyecek kadar, sezilmez biçimde",
+        "en": "in a way too slight or gradual to be noticed",
+        "exampleEn": "The temperature dropped almost imperceptibly during the night.",
+        "exampleTr": "Sıcaklık gece boyunca neredeyse fark edilmeyecek kadar düştü."
       }
     ],
     "synonyms": [
       "invisibly",
-      "subtly"
+      "subtly",
+      "slightly"
     ],
     "antonyms": [
-      "noticeably",
-      "perceptibly"
+      "perceptibly",
+      "noticeably"
     ]
   },
   {
@@ -269494,10 +269520,10 @@ export default [
     "pronunciation": "/ˈkɒnskrɪpt/",
     "meanings": [
       {
-        "tr": "asker (zorunlu), erbaş, celp edilen kişi",
-        "en": "a person forced by law to serve in the army",
-        "exampleEn": "The new conscripts began their training.",
-        "exampleTr": "Yeni askerler eğitimlerine başladı."
+        "tr": "erbaş, zorunlu askere alınan kişi",
+        "en": "a person compulsorily enrolled for military service",
+        "exampleEn": "The young conscript was sent to the border for training.",
+        "exampleTr": "Genç er, eğitim için sınıra gönderildi."
       }
     ],
     "synonyms": [
@@ -269505,14 +269531,15 @@ export default [
       "recruit"
     ],
     "antonyms": [
-      "volunteer"
+      "volunteer",
+      "civilian"
     ]
   },
   {
     "id": "w_puke",
     "headword": "puke",
     "pos": "verb",
-    "level": "B1",
+    "level": "B2",
     "domains": [
       "general"
     ],
@@ -269523,13 +269550,14 @@ export default [
       {
         "tr": "kusmak (argo)",
         "en": "to vomit (informal)",
-        "exampleEn": "He felt so sick that he had to puke.",
-        "exampleTr": "O kadar fenalaştı ki kusmak zorunda kaldı."
+        "exampleEn": "He felt so seasick that he wanted to puke.",
+        "exampleTr": "O kadar deniz tuttu ki kusmak istedi."
       }
     ],
     "synonyms": [
       "vomit",
-      "throw up"
+      "throw up",
+      "retch"
     ],
     "antonyms": []
   },
@@ -269543,19 +269571,22 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ɪˈlektər/",
+    "pronunciation": "/ɪˈlektə/",
     "meanings": [
       {
-        "tr": "seçmen, oy veren kişi",
-        "en": "a person who has the right to vote",
-        "exampleEn": "Each elector cast a single vote.",
-        "exampleTr": "Her seçmen tek bir oy kullandı."
+        "tr": "seçmen",
+        "en": "a person who has the right to vote in an election",
+        "exampleEn": "Every registered elector received a ballot by mail.",
+        "exampleTr": "Kayıtlı her seçmen, posta yoluyla bir oy pusulası aldı."
       }
     ],
     "synonyms": [
-      "voter"
+      "voter",
+      "constituent"
     ],
-    "antonyms": []
+    "antonyms": [
+      "candidate"
+    ]
   },
   {
     "id": "w_midriff",
@@ -269570,15 +269601,16 @@ export default [
     "pronunciation": "/ˈmɪdrɪf/",
     "meanings": [
       {
-        "tr": "karın bölgesi, gövdenin orta kısmı",
-        "en": "the front part of the body between chest and waist",
-        "exampleEn": "The top left her midriff exposed.",
-        "exampleTr": "Üst, karın bölgesini açıkta bırakıyordu."
+        "tr": "karın orta bölgesi, bel ile göğüs arası",
+        "en": "the front part of the body between the chest and the waist",
+        "exampleEn": "The top was cut short, leaving her midriff bare.",
+        "exampleTr": "Üst kısa kesilmişti ve karın bölgesini açıkta bırakıyordu."
       }
     ],
     "synonyms": [
       "belly",
-      "stomach"
+      "abdomen",
+      "waist"
     ],
     "antonyms": []
   },
@@ -269595,10 +269627,10 @@ export default [
     "pronunciation": "/vest/",
     "meanings": [
       {
-        "tr": "yelek; atlet (İngiliz)",
+        "tr": "yelek, atlet (BrE)",
         "en": "a sleeveless garment worn on the upper body",
-        "exampleEn": "He wore a vest under his jacket.",
-        "exampleTr": "Ceketinin altına bir yelek giymişti."
+        "exampleEn": "He wore a wool vest under his jacket for warmth.",
+        "exampleTr": "Sıcak tutması için ceketinin altına yün bir yelek giydi."
       }
     ],
     "synonyms": [
@@ -269617,17 +269649,18 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈhaɪkər/",
+    "pronunciation": "/ˈhaɪkə/",
     "meanings": [
       {
         "tr": "yürüyüşçü, doğa yürüyüşü yapan kişi",
-        "en": "a person who walks long distances in nature",
-        "exampleEn": "The hiker reached the summit at noon.",
-        "exampleTr": "Yürüyüşçü zirveye öğlen vakti ulaştı."
+        "en": "a person who goes for long walks in the countryside",
+        "exampleEn": "The hiker reached the summit just before sunset.",
+        "exampleTr": "Yürüyüşçü, gün batımından hemen önce zirveye ulaştı."
       }
     ],
     "synonyms": [
       "walker",
+      "trekker",
       "rambler"
     ],
     "antonyms": []
@@ -269645,14 +269678,15 @@ export default [
     "pronunciation": "/ˈdraɪwɔːl/",
     "meanings": [
       {
-        "tr": "alçıpan, kuru duvar",
-        "en": "a board used to make interior walls",
-        "exampleEn": "They installed drywall to divide the room.",
-        "exampleTr": "Odayı bölmek için alçıpan taktılar."
+        "tr": "alçıpan, kuru duvar levhası",
+        "en": "a board of plaster used to form interior walls",
+        "exampleEn": "They hung new drywall before painting the room.",
+        "exampleTr": "Odayı boyamadan önce yeni alçıpan astılar."
       }
     ],
     "synonyms": [
-      "plasterboard"
+      "plasterboard",
+      "wallboard"
     ],
     "antonyms": []
   },
@@ -269666,17 +269700,18 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈplɑːstərbɔːrd/",
+    "pronunciation": "/ˈplɑːstəbɔːd/",
     "meanings": [
       {
         "tr": "alçıpan, alçı levha",
-        "en": "a board of plaster used for walls and ceilings",
-        "exampleEn": "The ceiling was made of plasterboard.",
-        "exampleTr": "Tavan alçıpandan yapılmıştı."
+        "en": "board made of plaster set between layers of paper, used for walls",
+        "exampleEn": "The builders fixed sheets of plasterboard to the ceiling.",
+        "exampleTr": "İnşaatçılar tavana alçıpan levhalar sabitledi."
       }
     ],
     "synonyms": [
-      "drywall"
+      "drywall",
+      "wallboard"
     ],
     "antonyms": []
   },
@@ -269694,9 +269729,9 @@ export default [
     "meanings": [
       {
         "tr": "savaş gemisi, zırhlı",
-        "en": "a large heavily armored warship",
-        "exampleEn": "The battleship fired its huge guns.",
-        "exampleTr": "Savaş gemisi devasa toplarını ateşledi."
+        "en": "a large warship with heavy guns and thick armor",
+        "exampleEn": "The mighty battleship anchored in the harbor.",
+        "exampleTr": "Heybetli savaş gemisi limana demir attı."
       }
     ],
     "synonyms": [
@@ -269706,22 +269741,22 @@ export default [
     "antonyms": []
   },
   {
-    "id": "w_man_of_war",
+    "id": "w_man-of-war",
     "headword": "man-of-war",
     "pos": "noun",
-    "level": "C2",
+    "level": "C1",
     "domains": [
       "general"
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˌmæn əv ˈwɔːr/",
+    "pronunciation": "/ˌmæn əv ˈwɔː/",
     "meanings": [
       {
-        "tr": "savaş gemisi (eski, yelkenli)",
-        "en": "an armed sailing warship of the past",
-        "exampleEn": "The old man-of-war is now a floating museum.",
-        "exampleTr": "Eski savaş gemisi artık yüzen bir müze."
+        "tr": "savaş gemisi (eski usul), kalyon",
+        "en": "an armed sailing ship of the past",
+        "exampleEn": "A British man-of-war engaged the enemy fleet at dawn.",
+        "exampleTr": "Bir İngiliz savaş gemisi şafakta düşman filosuyla çarpıştı."
       }
     ],
     "synonyms": [
@@ -269745,11 +269780,13 @@ export default [
       {
         "tr": "barış zamanı",
         "en": "a period when a country is not at war",
-        "exampleEn": "The factory made cars in peacetime.",
-        "exampleTr": "Fabrika barış zamanında araba üretti."
+        "exampleEn": "The army was much smaller during peacetime.",
+        "exampleTr": "Ordu, barış zamanında çok daha küçüktü."
       }
     ],
-    "synonyms": [],
+    "synonyms": [
+      "peace"
+    ],
     "antonyms": [
       "wartime"
     ]
@@ -269758,19 +269795,19 @@ export default [
     "id": "w_hornet",
     "headword": "hornet",
     "pos": "noun",
-    "level": "B1",
+    "level": "B2",
     "domains": [
       "general"
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈhɔːrnɪt/",
+    "pronunciation": "/ˈhɔːnɪt/",
     "meanings": [
       {
-        "tr": "eşek arısı",
-        "en": "a large stinging insect like a wasp",
-        "exampleEn": "A hornet flew into the kitchen.",
-        "exampleTr": "Bir eşek arısı mutfağa girdi."
+        "tr": "eşekarısı",
+        "en": "a large stinging insect of the wasp family",
+        "exampleEn": "A hornet flew into the kitchen and everyone panicked.",
+        "exampleTr": "Mutfağa bir eşekarısı girdi ve herkes panikledi."
       }
     ],
     "synonyms": [
@@ -269782,24 +269819,24 @@ export default [
     "id": "w_watertight",
     "headword": "watertight",
     "pos": "adj",
-    "level": "B2",
+    "level": "C1",
     "domains": [
       "general"
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈwɔːtərtaɪt/",
+    "pronunciation": "/ˈwɔːtətaɪt/",
     "meanings": [
       {
-        "tr": "su geçirmez; kusursuz (sağlam)",
-        "en": "not allowing water to pass through; flawless",
-        "exampleEn": "The compartment was completely watertight.",
-        "exampleTr": "Bölme tamamen su geçirmezdi."
+        "tr": "su geçirmez, sızdırmaz",
+        "en": "made or fastened so that water cannot get in or out",
+        "exampleEn": "The container is completely watertight, so nothing leaks.",
+        "exampleTr": "Kap tamamen su geçirmezdir, bu yüzden hiçbir şey sızmaz."
       }
     ],
     "synonyms": [
-      "waterproof",
-      "sealed"
+      "sealed",
+      "waterproof"
     ],
     "antonyms": [
       "permeable",
@@ -269816,18 +269853,18 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈpɜːrmiəbl/",
+    "pronunciation": "/ˈpɜːmiəbl/",
     "meanings": [
       {
-        "tr": "geçirgen, su/sıvı geçiren",
+        "tr": "geçirgen, su geçiren",
         "en": "allowing liquids or gases to pass through",
-        "exampleEn": "The soil here is highly permeable.",
-        "exampleTr": "Buradaki toprak oldukça geçirgendir."
+        "exampleEn": "Sandy soil is permeable and drains quickly after rain.",
+        "exampleTr": "Kumlu toprak geçirgendir ve yağmurdan sonra hızla suyu emer."
       }
     ],
     "synonyms": [
       "porous",
-      "absorbent"
+      "penetrable"
     ],
     "antonyms": [
       "watertight",
@@ -269847,15 +269884,15 @@ export default [
     "pronunciation": "/sæp/",
     "meanings": [
       {
-        "tr": "bitki özsuyu, ağaç sütü",
-        "en": "the liquid that circulates in a plant",
-        "exampleEn": "Maple sap is boiled to make syrup.",
-        "exampleTr": "Akçaağaç özsuyu, şurup yapmak için kaynatılır."
+        "tr": "bitki özsuyu, özsu",
+        "en": "the liquid that carries nutrients through a plant",
+        "exampleEn": "Sticky sap oozed from the cut in the tree trunk.",
+        "exampleTr": "Ağaç gövdesindeki kesikten yapışkan özsu sızdı."
       }
     ],
     "synonyms": [
       "juice",
-      "fluid"
+      "resin"
     ],
     "antonyms": []
   },
@@ -269873,18 +269910,19 @@ export default [
     "meanings": [
       {
         "tr": "hafifçe, belli belirsiz",
-        "en": "in a slight or weak way",
-        "exampleEn": "The music could be heard faintly in the distance.",
-        "exampleTr": "Müzik uzaktan hafifçe duyulabiliyordu."
+        "en": "in a way that is slight and hard to perceive",
+        "exampleEn": "The room smelled faintly of lavender.",
+        "exampleTr": "Oda hafifçe lavanta kokuyordu."
       }
     ],
     "synonyms": [
-      "dimly",
-      "weakly"
+      "slightly",
+      "weakly",
+      "dimly"
     ],
     "antonyms": [
-      "clearly",
-      "strongly"
+      "strongly",
+      "clearly"
     ]
   },
   {
@@ -269901,14 +269939,15 @@ export default [
     "meanings": [
       {
         "tr": "yoksullaşmış, fakirleşmiş",
-        "en": "made very poor",
-        "exampleEn": "They worked to help impoverished families.",
-        "exampleTr": "Yoksullaşmış ailelere yardım etmek için çalıştılar."
+        "en": "made very poor; lacking resources",
+        "exampleEn": "Aid was sent to the most impoverished regions of the country.",
+        "exampleTr": "Ülkenin en yoksul bölgelerine yardım gönderildi."
       }
     ],
     "synonyms": [
       "poor",
-      "destitute"
+      "destitute",
+      "needy"
     ],
     "antonyms": [
       "wealthy",
@@ -269925,18 +269964,19 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈtekstʃər/",
+    "pronunciation": "/ˈtekstʃə/",
     "meanings": [
       {
         "tr": "doku, dokunuş hissi",
-        "en": "the feel or appearance of a surface",
+        "en": "the way a surface or substance feels to the touch",
         "exampleEn": "The fabric had a soft, smooth texture.",
-        "exampleTr": "Kumaşın yumuşak, pürüzsüz bir dokusu vardı."
+        "exampleTr": "Kumaş yumuşak, pürüzsüz bir dokuya sahipti."
       }
     ],
     "synonyms": [
       "feel",
-      "consistency"
+      "consistency",
+      "grain"
     ],
     "antonyms": []
   },
@@ -269944,7 +269984,7 @@ export default [
     "id": "w_flimsy",
     "headword": "flimsy",
     "pos": "adj",
-    "level": "B2",
+    "level": "C1",
     "domains": [
       "general"
     ],
@@ -269953,15 +269993,16 @@ export default [
     "pronunciation": "/ˈflɪmzi/",
     "meanings": [
       {
-        "tr": "çürük, dayanıksız, ince",
-        "en": "weak and easily broken or torn",
-        "exampleEn": "The shelf was too flimsy to hold the books.",
-        "exampleTr": "Raf, kitapları taşıyamayacak kadar dayanıksızdı."
+        "tr": "dayanıksız, derme çatma, çürük",
+        "en": "thin and easily broken or damaged",
+        "exampleEn": "The shelter was a flimsy structure of cardboard and string.",
+        "exampleTr": "Barınak, mukavva ve iplikten derme çatma bir yapıydı."
       }
     ],
     "synonyms": [
       "fragile",
-      "weak"
+      "frail",
+      "insubstantial"
     ],
     "antonyms": [
       "sturdy",
@@ -269978,17 +270019,18 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˌʌndərˈpeɪd/",
+    "pronunciation": "/ˌʌndəˈpeɪd/",
     "meanings": [
       {
-        "tr": "düşük ücretli, az maaş alan",
+        "tr": "düşük ücretli, hak ettiğinden az ödenen",
         "en": "paid too little for the work done",
         "exampleEn": "Many nurses feel overworked and underpaid.",
-        "exampleTr": "Birçok hemşire fazla çalıştığını ve az maaş aldığını hissediyor."
+        "exampleTr": "Birçok hemşire fazla çalıştırıldığını ve düşük ücret aldığını hissediyor."
       }
     ],
     "synonyms": [
-      "low-paid"
+      "low-paid",
+      "underrated"
     ],
     "antonyms": [
       "overpaid",
@@ -269996,7 +270038,7 @@ export default [
     ]
   },
   {
-    "id": "w_low_paid",
+    "id": "w_low-paid",
     "headword": "low-paid",
     "pos": "adj",
     "level": "B2",
@@ -270009,17 +270051,18 @@ export default [
     "meanings": [
       {
         "tr": "düşük ücretli",
-        "en": "earning a small amount of money",
-        "exampleEn": "Low-paid workers struggle with rising prices.",
-        "exampleTr": "Düşük ücretli işçiler artan fiyatlarla mücadele ediyor."
+        "en": "earning or providing only a small amount of money",
+        "exampleEn": "Many low-paid workers struggle to afford rent.",
+        "exampleTr": "Birçok düşük ücretli işçi kirayı karşılamakta zorlanıyor."
       }
     ],
     "synonyms": [
-      "underpaid"
+      "underpaid",
+      "poorly-paid"
     ],
     "antonyms": [
-      "well-paid",
-      "high-paid"
+      "high-paid",
+      "well-paid"
     ]
   },
   {
@@ -270035,17 +270078,18 @@ export default [
     "pronunciation": "/ˌɒksɪˈdentl/",
     "meanings": [
       {
-        "tr": "Batılı, Batıya ait",
+        "tr": "Batı'ya ait, Batılı",
         "en": "relating to the countries of the West",
-        "exampleEn": "The book contrasts oriental and occidental philosophy.",
-        "exampleTr": "Kitap, Doğu ve Batı felsefesini karşılaştırıyor."
+        "exampleEn": "The book contrasts occidental and oriental philosophies.",
+        "exampleTr": "Kitap, Batılı ve Doğulu felsefeleri karşılaştırıyor."
       }
     ],
     "synonyms": [
       "western"
     ],
     "antonyms": [
-      "oriental"
+      "oriental",
+      "eastern"
     ]
   },
   {
@@ -270058,13 +270102,13 @@ export default [
     ],
     "type": "word",
     "source": "synant+claude",
-    "pronunciation": "/ˈwɪdəʊər/",
+    "pronunciation": "/ˈwɪdəʊə/",
     "meanings": [
       {
-        "tr": "dul erkek",
-        "en": "a man whose wife has died",
-        "exampleEn": "The widower lived alone after his wife passed.",
-        "exampleTr": "Dul erkek, eşi vefat ettikten sonra yalnız yaşadı."
+        "tr": "dul erkek, eşi ölmüş erkek",
+        "en": "a man whose wife has died and who has not remarried",
+        "exampleEn": "The elderly widower lived alone with his cat.",
+        "exampleTr": "Yaşlı dul adam kedisiyle yalnız yaşıyordu."
       }
     ],
     "synonyms": [],
@@ -270085,19 +270129,20 @@ export default [
     "pronunciation": "/waɪldz/",
     "meanings": [
       {
-        "tr": "ıssız bölgeler, vahşi doğa",
-        "en": "remote, uncultivated regions",
-        "exampleEn": "They camped in the wilds of Alaska.",
-        "exampleTr": "Alaska'nın ıssız bölgelerinde kamp yaptılar."
+        "tr": "ıssız doğa, vahşi bölgeler",
+        "en": "a remote, uncultivated, or uninhabited region",
+        "exampleEn": "They spent a week camping in the wilds of Alaska.",
+        "exampleTr": "Alaska'nın ıssız doğasında bir hafta kamp yaparak geçirdiler."
       }
     ],
     "synonyms": [
       "wilderness",
-      "backcountry"
+      "backcountry",
+      "outback"
     ],
     "antonyms": [
-      "city",
-      "civilization"
+      "civilization",
+      "city"
     ]
   },
   {
@@ -270113,19 +270158,20 @@ export default [
     "pronunciation": "/ˈbækkʌntri/",
     "meanings": [
       {
-        "tr": "ıssız kırsal, ücra bölge",
-        "en": "a remote, sparsely populated rural area",
-        "exampleEn": "They hiked deep into the backcountry.",
-        "exampleTr": "Ücra kırsalın derinliklerine doğru yürüdüler."
+        "tr": "ücra kırsal bölge, dağlık ıssız alan",
+        "en": "a sparsely inhabited rural area far from towns",
+        "exampleEn": "The skiers ventured into the backcountry away from the resort.",
+        "exampleTr": "Kayakçılar, tesisin uzağındaki ücra dağlık bölgeye açıldılar."
       }
     ],
     "synonyms": [
+      "wilds",
       "wilderness",
-      "wilds"
+      "outback"
     ],
     "antonyms": [
       "city",
-      "town"
+      "urban area"
     ]
   },
   {
@@ -270142,18 +270188,19 @@ export default [
     "meanings": [
       {
         "tr": "memnuniyetle, seve seve",
-        "en": "in a happy and willing way",
-        "exampleEn": "I would gladly help you move.",
-        "exampleTr": "Taşınmanıza seve seve yardım ederim."
+        "en": "in a willing and happy manner",
+        "exampleEn": "I would gladly help you move this weekend.",
+        "exampleTr": "Bu hafta sonu taşınmana seve seve yardım ederim."
       }
     ],
     "synonyms": [
+      "happily",
       "willingly",
-      "happily"
+      "cheerfully"
     ],
     "antonyms": [
       "reluctantly",
-      "unwillingly"
+      "grudgingly"
     ]
   },
   {
