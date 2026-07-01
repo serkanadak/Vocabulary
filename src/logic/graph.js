@@ -9,8 +9,37 @@ for (const w of WORDS) {
   headwordIndex.set(w.headword.toLowerCase(), w.id);
 }
 
+// Çekimli/çoğul biçimleri temel karta bağlamak için hafif lemmatizasyon.
+// Örn. "assets" → "asset", "funds" → "fund", "companies" → "company".
+// Böylece aynı kelimenin çekimi ayrı "kartı yok" düğümü olarak görünmez.
+function lemmaCandidates(k) {
+  const c = [];
+  if (k.endsWith('ies') && k.length > 4) c.push(k.slice(0, -3) + 'y');
+  if (k.endsWith('es') && k.length > 3) c.push(k.slice(0, -2));
+  if (k.endsWith('s') && !k.endsWith('ss') && k.length > 3) c.push(k.slice(0, -1));
+  if (k.endsWith('ing') && k.length > 5) {
+    c.push(k.slice(0, -3));
+    c.push(k.slice(0, -3) + 'e');
+  }
+  if (k.endsWith('ed') && k.length > 4) {
+    c.push(k.slice(0, -2));
+    c.push(k.slice(0, -1));
+    c.push(k.slice(0, -3) + 'y');
+  }
+  return c;
+}
+
 function resolveToId(text) {
-  return headwordIndex.get((text || '').toLowerCase()) || null;
+  const k = (text || '').trim().toLowerCase();
+  if (!k) return null;
+  const direct = headwordIndex.get(k);
+  if (direct) return direct;
+  // Doğrudan eşleşme yoksa çekimli biçimi temel karta indirgemeyi dene.
+  for (const cand of lemmaCandidates(k)) {
+    const id = headwordIndex.get(cand);
+    if (id) return id;
+  }
+  return null;
 }
 
 // Verilen kelimenin komşuluğunu (1. derece ilişkiler) çıkarır.
