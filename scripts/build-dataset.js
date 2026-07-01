@@ -214,6 +214,58 @@ function main() {
     result.push(e);
   }
 
+  // ---------------------------------------------------------------------
+  // Çok-anlamlı kart bindirmesi (meanings overlay).
+  // data-source/meanings-extra/*.json → var olan kartlara YAYGIN DİĞER
+  // anlamları ekler. Yeni kart açmaz; yalnızca mevcut kartın meanings[]
+  // dizisini genişletir. Dedup: aynı Türkçe anlam tekrar eklenmez.
+  // Şema: [{ id?, headword, extraMeanings: [{tr,en,exampleEn,exampleTr}] }]
+  // ---------------------------------------------------------------------
+  const extraDir = path.join(SRC_DIR, 'meanings-extra');
+  const byIdMap = new Map(result.map((e) => [e.id, e]));
+  const byHwMap = new Map();
+  for (const e of result) byHwMap.set((e.headword || '').toLowerCase(), e);
+  let addedMeanings = 0;
+  let overlayFiles = 0;
+  if (fs.existsSync(extraDir)) {
+    const oFiles = fs
+      .readdirSync(extraDir)
+      .filter((f) => /\.json$/i.test(f))
+      .map((f) => path.join(extraDir, f));
+    for (const full of oFiles) {
+      let entries;
+      try {
+        entries = JSON.parse(fs.readFileSync(full, 'utf8'));
+      } catch (err) {
+        console.warn(`  ! overlay atlandı (JSON hatası): ${path.basename(full)}`);
+        continue;
+      }
+      overlayFiles++;
+      for (const ov of entries) {
+        if (!ov || !Array.isArray(ov.extraMeanings) || !ov.extraMeanings.length) continue;
+        const hw = (ov.headword || '').toLowerCase();
+        const card = (ov.id && byIdMap.get(ov.id)) || byHwMap.get(hw);
+        if (!card) continue;
+        const existing = new Set(card.meanings.map((m) => (m.tr || '').trim().toLowerCase()));
+        for (const m of ov.extraMeanings) {
+          const tr = (m.tr || '').trim();
+          const ex = (m.exampleEn || '').trim();
+          if (!tr || !ex) continue;
+          const key = tr.toLowerCase();
+          if (existing.has(key)) continue;
+          existing.add(key);
+          card.meanings.push({
+            tr,
+            en: (m.en || '').trim(),
+            exampleEn: ex,
+            exampleTr: (m.exampleTr || '').trim(),
+          });
+          addedMeanings++;
+        }
+      }
+    }
+  }
+
   const banner =
     '// OTOMATİK ÜRETİLDİ — elle düzenlemeyin. Kaynak: data-source/, üretim: npm run build:data\n';
   const body = `export default ${JSON.stringify(result, null, 2)};\n`;
@@ -222,6 +274,9 @@ function main() {
   console.log(
     `\nTamam: ${result.length} kayıt yazıldı → src/data/generated.js (çakışma/atlama: ${skipped}).`
   );
+  if (overlayFiles) {
+    console.log(`Çok-anlamlı bindirme: ${overlayFiles} dosya, +${addedMeanings} ek anlam eklendi.`);
+  }
 }
 
 main();
