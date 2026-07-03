@@ -23,27 +23,31 @@ export default function WordlistScreen({ navigation }) {
   const [query, setQuery] = useState('');
   const [levels, setLevels] = useState([]); // boş = tümü
   const [statusFilter, setStatusFilter] = useState(null); // null | 'unknown' | 'passive' | 'active'
+  const [mutedOnly, setMutedOnly] = useState(false); // sadece "hatırlatma" kapalı kelimeler
 
   const data = useMemo(() => {
     let d = filterWordlist({ levels: levels.length ? levels : null, query });
+    if (mutedOnly) d = d.filter((w) => byId[w.id]?.muted);
     if (statusFilter === 'unknown') {
       d = d.filter((w) => (byId[w.id]?.status || 'unknown') === 'unknown');
     } else if (statusFilter) {
       d = d.filter((w) => byId[w.id]?.status === statusFilter);
     }
     return d;
-  }, [levels, query, statusFilter, byId]);
+  }, [levels, query, statusFilter, mutedOnly, byId]);
 
-  // Durum adetleri (işaretsiz = bilmiyorum).
+  // Durum adetleri (işaretsiz = bilmiyorum) + susturulan sayısı.
   const statusCounts = useMemo(() => {
     let passive = 0;
     let active = 0;
+    let muted = 0;
     for (const w of WORDLIST) {
-      const s = byId[w.id]?.status;
-      if (s === 'passive') passive++;
-      else if (s === 'active') active++;
+      const p = byId[w.id];
+      if (p?.status === 'passive') passive++;
+      else if (p?.status === 'active') active++;
+      if (p?.muted) muted++;
     }
-    return { unknown: WORDLIST.length - passive - active, passive, active };
+    return { unknown: WORDLIST.length - passive - active, passive, active, muted };
   }, [byId]);
 
   const toggleLevel = (lvl) =>
@@ -108,6 +112,18 @@ export default function WordlistScreen({ navigation }) {
               </TouchableOpacity>
             );
           })}
+        </View>
+
+        {/* Hatırlatması kapalı (susturulan) kelimeler */}
+        <View style={styles.chips}>
+          <TouchableOpacity
+            style={[styles.chip, mutedOnly && { backgroundColor: colors.unknown, borderColor: colors.unknown }]}
+            onPress={() => setMutedOnly((v) => !v)}
+          >
+            <Text style={[styles.chipText, mutedOnly && { color: '#0f172a' }]}>
+              🔕 Hatırlatması kapalılar ({statusCounts.muted.toLocaleString('tr-TR')})
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <Text style={styles.resultCount}>{data.length.toLocaleString('tr-TR')} sonuç</Text>

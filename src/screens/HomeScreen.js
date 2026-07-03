@@ -13,6 +13,10 @@ export default function HomeScreen({ navigation }) {
   // Üstteki istatistik hücreleriyle alttaki listeyi süzme.
   const [statusFilter, setStatusFilter] = useState(null); // null | 'unknown' | 'passive' | 'active'
   const [levelFilter, setLevelFilter] = useState(null); // null | 'A1'..'C2'
+  const [mutedOnly, setMutedOnly] = useState(false); // sadece "hatırlatma" kapalı kelimeler
+
+  // Susturulan (hatırlatma kapalı) kelime sayısı.
+  const mutedCount = useMemo(() => WORDS.filter((w) => byId[w.id]?.muted).length, [byId]);
 
   // İşaretlenmemiş tüm kelimeler varsayılan olarak "Bilmiyorum" sayılır.
   const stat = useMemo(() => {
@@ -29,6 +33,7 @@ export default function HomeScreen({ navigation }) {
   const results = useMemo(() => {
     let base = searchWords(query);
     if (levelFilter) base = base.filter((w) => w.level === levelFilter);
+    if (mutedOnly) base = base.filter((w) => byId[w.id]?.muted);
     if (statusFilter === 'unknown') {
       // İşaretsiz + açıkça bilmiyorum işaretli olanların hepsi
       base = base.filter((w) => (byId[w.id]?.status || 'unknown') === 'unknown');
@@ -36,7 +41,7 @@ export default function HomeScreen({ navigation }) {
       base = base.filter((w) => byId[w.id]?.status === statusFilter);
     }
     return base.slice(0, 80);
-  }, [query, statusFilter, levelFilter, byId]);
+  }, [query, statusFilter, levelFilter, mutedOnly, byId]);
 
   const toggle = (key) => setStatusFilter((f) => (f === key ? null : key));
 
@@ -53,7 +58,7 @@ export default function HomeScreen({ navigation }) {
               İşletme · Ekonomi · İletişim — CEFR A1-C2 İngilizce kelime kartları
             </Text>
             <Text style={styles.version}>
-              Sürüm 1.1 · Yön seçimi (İng↔Tür) · Hatırlatma susturma · Çok-anlamlı kartlar
+              Sürüm 1.2 · "Hatırlatması kapalılar" filtresi (Ana sayfa & Liste)
             </Text>
 
             <View style={styles.statsRow}>
@@ -119,8 +124,20 @@ export default function HomeScreen({ navigation }) {
               })}
             </View>
 
+            {/* Hatırlatması kapalı (susturulan) kelimeleri süz */}
+            <TouchableOpacity
+              style={[styles.mutedFilter, mutedOnly && styles.mutedFilterOn]}
+              onPress={() => setMutedOnly((v) => !v)}
+            >
+              <Text style={[styles.mutedFilterText, mutedOnly && styles.mutedFilterTextOn]}>
+                🔕 Hatırlatması kapalılar ({mutedCount})
+              </Text>
+            </TouchableOpacity>
+
             <Text style={styles.resultsLabel}>
-              {statusFilter
+              {mutedOnly
+                ? `Hatırlatması kapalı: ${results.length} kelime` + (results.length >= 80 ? ' (ilk 80)' : '')
+                : statusFilter
                 ? `${STATUS_META[statusFilter].label}: ${results.length} kelime` +
                   (results.length >= 80 ? ' (ilk 80)' : '')
                 : query
@@ -223,6 +240,18 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   levelChipText: { color: colors.textMuted, fontWeight: '700', fontSize: 12 },
+  mutedFilter: {
+    marginTop: 10,
+    alignSelf: 'flex-start',
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  mutedFilterOn: { backgroundColor: colors.unknown, borderColor: colors.unknown },
+  mutedFilterText: { color: colors.textMuted, fontWeight: '700', fontSize: 12 },
+  mutedFilterTextOn: { color: '#0f172a' },
   resultsLabel: { color: colors.textMuted, marginTop: 12, marginBottom: 6, fontSize: 12 },
   empty: { color: colors.textMuted, fontSize: 13, lineHeight: 20, paddingVertical: 12 },
   wordRow: {
