@@ -52,6 +52,9 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.tagline}>
               İşletme · Ekonomi · İletişim — CEFR A1-C2 İngilizce kelime kartları
             </Text>
+            <Text style={styles.version}>
+              Sürüm 1.1 · Yön seçimi (İng↔Tür) · Hatırlatma susturma · Çok-anlamlı kartlar
+            </Text>
 
             <View style={styles.statsRow}>
               <Stat
@@ -179,7 +182,8 @@ function QuickAction({ label, onPress }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg },
   brand: { color: colors.text, fontSize: 28, fontWeight: '800' },
-  tagline: { color: colors.textMuted, marginTop: 4, marginBottom: 16 },
+  tagline: { color: colors.textMuted, marginTop: 4 },
+  version: { color: colors.primary, fontSize: 11, marginTop: 6, marginBottom: 16, fontWeight: '600' },
   statsRow: { flexDirection: 'row', gap: 8, marginBottom: 14 },
   stat: {
     flex: 1,
