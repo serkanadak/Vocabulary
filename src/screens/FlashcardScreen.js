@@ -14,10 +14,11 @@ import { WORDS, applyEdits } from '../data';
 import { useProgress } from '../state/ProgressContext';
 import { selectForQuiz, STATUS } from '../logic/srs';
 import { StatusPicker, LevelBadge, Badge } from '../components/common';
-import { colors } from '../theme';
+import { colors, LEVEL_COLORS } from '../theme';
 
 const { width } = Dimensions.get('window');
 const SWIPE_THRESHOLD = width * 0.28;
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
 // Kaydırmalı + çevirmeli flashcard destesi. Bilinmeyen/pasif kelimelere
 // öncelik verir (Özellik 4). Sağa kaydır = biliyorum, sola = bilmiyorum.
@@ -25,15 +26,27 @@ export default function FlashcardScreen({ navigation }) {
   const { getProgress, setStatus, mergeProgress } = useProgress();
 
   const [direction, setDirection] = useState('en-tr'); // 'en-tr' | 'tr-en'
+  const [levels, setLevels] = useState([]); // boş = tüm seviyeler
 
   const deck = useMemo(
-    () => selectForQuiz(WORDS, getProgress, Math.min(WORDS.length, 40)),
+    () => {
+      const pool = levels.length ? WORDS.filter((w) => levels.includes(w.level)) : WORDS;
+      return selectForQuiz(pool, getProgress, Math.min(pool.length, 40));
+    },
+    // Seviye seçimi değişince deste yeniden kurulur.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [levels]
   );
 
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
+
+  const toggleLevel = (lvl) => {
+    setLevels((prev) => (prev.includes(lvl) ? prev.filter((l) => l !== lvl) : [...prev, lvl]));
+    setIndex(0);
+    resetFlip();
+    position.setValue({ x: 0, y: 0 });
+  };
 
   const position = useRef(new Animated.ValueXY()).current;
   const flip = useRef(new Animated.Value(0)).current;
@@ -90,10 +103,57 @@ export default function FlashcardScreen({ navigation }) {
     })
   ).current;
 
+  // Yön + seviye filtresi (boş deste durumunda da erişilebilir olmalı).
+  const filterBar = (
+    <>
+      <View style={styles.topBar}>
+        {[
+          { key: 'en-tr', label: 'İng→Tür' },
+          { key: 'tr-en', label: 'Tür→İng' },
+        ].map((o) => {
+          const on = direction === o.key;
+          return (
+            <TouchableOpacity
+              key={o.key}
+              style={[styles.dirBtn, on && styles.dirBtnOn]}
+              onPress={() => {
+                setDirection(o.key);
+                resetFlip();
+              }}
+            >
+              <Text style={[styles.dirText, on && styles.dirTextOn]}>{o.label}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+      <View style={styles.levelRow}>
+        {LEVELS.map((lvl) => {
+          const on = levels.includes(lvl);
+          return (
+            <TouchableOpacity
+              key={lvl}
+              style={[styles.levelChip, on && { backgroundColor: LEVEL_COLORS[lvl], borderColor: LEVEL_COLORS[lvl] }]}
+              onPress={() => toggleLevel(lvl)}
+            >
+              <Text style={[styles.levelChipText, on && { color: '#0f172a' }]}>{lvl}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </>
+  );
+
   if (!word) {
     return (
-      <View style={styles.center}>
-        <Text style={styles.muted}>Gösterilecek kart yok.</Text>
+      <View style={styles.container}>
+        {filterBar}
+        <View style={styles.center}>
+          <Text style={styles.muted}>
+            {levels.length
+              ? 'Seçili seviyede gösterilecek kart yok. Başka seviye seç.'
+              : 'Gösterilecek kart yok.'}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -122,26 +182,7 @@ export default function FlashcardScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.topBar}>
-        {[
-          { key: 'en-tr', label: 'İng→Tür' },
-          { key: 'tr-en', label: 'Tür→İng' },
-        ].map((o) => {
-          const on = direction === o.key;
-          return (
-            <TouchableOpacity
-              key={o.key}
-              style={[styles.dirBtn, on && styles.dirBtnOn]}
-              onPress={() => {
-                setDirection(o.key);
-                resetFlip();
-              }}
-            >
-              <Text style={[styles.dirText, on && styles.dirTextOn]}>{o.label}</Text>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
+      {filterBar}
       <Text style={styles.counter}>
         {index + 1} / {deck.length}
       </Text>
@@ -286,6 +327,15 @@ const styles = StyleSheet.create({
   dirBtnOn: { backgroundColor: colors.primary, borderColor: colors.primary },
   dirText: { color: colors.textMuted, fontWeight: '700', fontSize: 12 },
   dirTextOn: { color: '#0f172a' },
+  levelRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 8 },
+  levelChip: {
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+  },
+  levelChipText: { color: colors.textMuted, fontWeight: '700', fontSize: 12 },
   frontTr: { color: colors.text, fontSize: 22, fontWeight: '800', textAlign: 'center', marginVertical: 3 },
   backHead: { alignItems: 'center', marginBottom: 12, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: colors.border },
   backHeadword: { color: colors.text, fontSize: 26, fontWeight: '800', textAlign: 'center' },
