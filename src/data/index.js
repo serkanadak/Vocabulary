@@ -8,7 +8,6 @@ import general from './words.general';
 import idioms from './idioms';
 import generated from './generated';
 import storiesData from './stories';
-import wordlistRaw from './wordlist.generated';
 import { validateEntry } from './schema';
 
 // Curated (elle hazırlanmış) + generated (içe aktarılan/üretilen) havuz.
@@ -94,14 +93,13 @@ export const STATS = {
 
 // ---------------------------------------------------------------------------
 // BİRLEŞİK Kelime Listesi (Liste sekmesi).
-// Artık tüm kart havuzu (A1–C2 + deyimler) + CEFR-J'de olup henüz kartı olmayan
-// kelimeler birlikte gösterilir. Böylece Liste ile Ana sayfa aynı evreni paylaşır.
+// EŞİTLEME: Liste artık BİREBİR Ana sayfa ile aynı evreni (WORDS) gösterir.
+// Eskiden kartı olmayan CEFR-J kelimeleri de kartlandığı için ayrı bir
+// "liste-only" havuzu tutmaya gerek kalmadı; her satırın tam kartı vardır.
 // CEFR-J kaynağı (atıf): The CEFR-J Wordlist Version 1.6 (Yukio Tono, TUFS).
 // ---------------------------------------------------------------------------
 
-const coveredHeadwords = new Set(WORDS.map((w) => w.headword.toLowerCase()));
-
-// 1) Tüm tam kartlar (kart detayına bağlanır)
+// Tüm tam kartlar (kart detayına bağlanır). Ana sayfa (WORDS) ile aynı küme.
 const fromWords = WORDS.map((w) => ({
   id: w.id,
   headword: w.headword,
@@ -111,20 +109,8 @@ const fromWords = WORDS.map((w) => ({
   wordId: w.id,
 }));
 
-// 2) CEFR-J'de olup henüz kartı olmayanlar (varsa)
-const listOnly = wordlistRaw
-  .filter((e) => !coveredHeadwords.has(e.h.toLowerCase()))
-  .map((e) => ({
-    id: `wl_${e.h.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`,
-    headword: e.h,
-    pos: e.p,
-    level: e.l,
-    type: 'word',
-    wordId: null,
-  }));
-
 const LEVEL_ORDER = { A1: 0, A2: 1, B1: 2, B2: 3, C1: 4, C2: 5 };
-export const WORDLIST = [...fromWords, ...listOnly].sort(
+export const WORDLIST = [...fromWords].sort(
   (a, b) => (LEVEL_ORDER[a.level] ?? 9) - (LEVEL_ORDER[b.level] ?? 9) || a.headword.localeCompare(b.headword)
 );
 
