@@ -29,12 +29,20 @@ function lemmaCandidates(k) {
   return c;
 }
 
+// id indeksi: "board" gibi bir referans, başlığı farklı olsa da (ör. kart
+// başlığı "board of directors") w_board id'li karta çözülebilsin diye.
+const idIndex = new Set(WORDS.map((w) => w.id));
+const slugId = (t) => 'w_' + (t || '').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+
 function resolveToId(text) {
   const k = (text || '').trim().toLowerCase();
   if (!k) return null;
   const direct = headwordIndex.get(k);
   if (direct) return direct;
-  // Doğrudan eşleşme yoksa çekimli biçimi temel karta indirgemeyi dene.
+  // Başlık eşleşmese de w_<slug> id'li bir kart varsa ona bağla.
+  const sid = slugId(k);
+  if (idIndex.has(sid)) return sid;
+  // Son çare: çekimli biçimi temel karta indirgemeyi dene.
   for (const cand of lemmaCandidates(k)) {
     const id = headwordIndex.get(cand);
     if (id) return id;
