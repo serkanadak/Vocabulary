@@ -9,11 +9,12 @@ export const STATUS = {
 };
 
 // Duruma göre temel ağırlık. Yüksek ağırlık = teste girme olasılığı yüksek.
+// Aktif bilinenler çok seyrek, bilinmeyen/pasif olanlar sık hatırlatılır.
 const STATUS_WEIGHT = {
-  [STATUS.UNKNOWN]: 10,
-  [STATUS.PASSIVE]: 4,
-  [STATUS.ACTIVE]: 0.4,
-  unseen: 10, // işaretsiz kelimeler varsayılan olarak "bilmiyorum" sayılır
+  [STATUS.UNKNOWN]: 12,
+  [STATUS.PASSIVE]: 5,
+  [STATUS.ACTIVE]: 0.15, // aktif bildiklerini çok az hatırlat
+  unseen: 12, // işaretsiz kelimeler varsayılan olarak "bilmiyorum" sayılır
 };
 
 // Bir kelimenin seçilme ağırlığını hesaplar.
@@ -35,8 +36,10 @@ export function weightFor(word, progress) {
 }
 
 // Ağırlıklı rastgele seçim (tekrarsız) ile bir test kelime listesi üretir.
+// "Hatırlatma" tiki kapatılan (muted) kelimeler hiç seçilmez.
 export function selectForQuiz(words, getProgress, count) {
-  const pool = words.map((w) => ({ word: w, weight: weightFor(w, getProgress(w.id)) }));
+  const eligible = words.filter((w) => !getProgress(w.id)?.muted);
+  const pool = eligible.map((w) => ({ word: w, weight: weightFor(w, getProgress(w.id)) }));
   const chosen = [];
   const available = [...pool];
   const target = Math.min(count, available.length);
@@ -59,9 +62,15 @@ export function selectForQuiz(words, getProgress, count) {
   return chosen;
 }
 
-// Çoktan seçmeli soru üretir: doğru anlam + 3 çeldirici.
-export function buildQuestion(word, allWords) {
-  const correct = word.meanings[0].tr;
+// Çoktan seçmeli soru üretir: doğru cevap + 3 çeldirici.
+// direction: 'en-tr' → İngilizce kelime sorulur, Türkçe anlam seçilir (varsayılan).
+//            'tr-en' → Türkçe anlam sorulur, İngilizce kelime seçilir.
+export function buildQuestion(word, allWords, direction = 'en-tr') {
+  const trOf = (w) => w.meanings[0].tr;
+  const enOf = (w) => w.headword;
+  const [promptOf, answerOf] = direction === 'tr-en' ? [trOf, enOf] : [enOf, trOf];
+
+  const correct = answerOf(word);
   const distractors = [];
   const pool = allWords.filter((w) => w.id !== word.id);
   // Karıştır
@@ -70,12 +79,12 @@ export function buildQuestion(word, allWords) {
     [pool[i], pool[j]] = [pool[j], pool[i]];
   }
   for (const w of pool) {
-    const opt = w.meanings[0].tr;
+    const opt = answerOf(w);
     if (opt !== correct && !distractors.includes(opt)) distractors.push(opt);
     if (distractors.length >= 3) break;
   }
   const options = shuffle([correct, ...distractors]);
-  return { word, prompt: word.headword, correct, options };
+  return { word, prompt: promptOf(word), correct, options, direction };
 }
 
 function shuffle(arr) {

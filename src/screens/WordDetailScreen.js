@@ -9,8 +9,9 @@ import { TYPES } from '../data/schema';
 
 export default function WordDetailScreen({ route, navigation }) {
   const { id, fallback } = route.params;
-  const { getProgress, setStatus } = useProgress();
+  const { getProgress, setStatus, mergeProgress } = useProgress();
   const word = applyEdits(getWord(id), getProgress(id)?.edits);
+  const muted = !!getProgress(id)?.muted;
 
   // Tam Türkçe kartı olmayan (CEFR liste) kelime: yine de başlık/seviye + işaretleme göster.
   if (!word) {
@@ -87,6 +88,17 @@ export default function WordDetailScreen({ route, navigation }) {
 
       <Section title="Durumun">
         <StatusPicker value={status} onChange={(s) => setStatus(word.id, s)} />
+        <TouchableOpacity
+          style={styles.muteToggle}
+          onPress={() => mergeProgress(word.id, { muted: !muted })}
+        >
+          <View style={[styles.checkbox, muted && styles.checkboxOn]}>
+            {muted && <Text style={styles.checkmark}>✓</Text>}
+          </View>
+          <Text style={styles.muteLabel}>
+            Bu kelimeyi hatırlatma (testte/kartlarda hiç çıkmaz)
+          </Text>
+        </TouchableOpacity>
       </Section>
 
       <TouchableOpacity
@@ -140,6 +152,19 @@ const styles = StyleSheet.create({
   exampleEn: { color: colors.text, marginTop: 6, fontStyle: 'italic' },
   exampleTr: { color: colors.textMuted, marginTop: 2 },
   list: { color: colors.text, lineHeight: 22 },
+  muteToggle: { flexDirection: 'row', alignItems: 'center', marginTop: 12, gap: 10 },
+  checkbox: {
+    width: 24,
+    height: 24,
+    borderRadius: 6,
+    borderWidth: 1.5,
+    borderColor: colors.textMuted,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkboxOn: { backgroundColor: colors.unknown, borderColor: colors.unknown },
+  checkmark: { color: '#0f172a', fontWeight: '900', fontSize: 14 },
+  muteLabel: { color: colors.text, fontSize: 13, flex: 1, lineHeight: 18 },
   graphBtn: {
     marginTop: 16,
     backgroundColor: colors.primary,

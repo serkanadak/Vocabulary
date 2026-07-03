@@ -22,7 +22,9 @@ const SWIPE_THRESHOLD = width * 0.28;
 // Kaydırmalı + çevirmeli flashcard destesi. Bilinmeyen/pasif kelimelere
 // öncelik verir (Özellik 4). Sağa kaydır = biliyorum, sola = bilmiyorum.
 export default function FlashcardScreen({ navigation }) {
-  const { getProgress, setStatus } = useProgress();
+  const { getProgress, setStatus, mergeProgress } = useProgress();
+
+  const [direction, setDirection] = useState('en-tr'); // 'en-tr' | 'tr-en'
 
   const deck = useMemo(
     () => selectForQuiz(WORDS, getProgress, Math.min(WORDS.length, 40)),
@@ -111,8 +113,35 @@ export default function FlashcardScreen({ navigation }) {
   const frontOpacity = flip.interpolate({ inputRange: [89, 90], outputRange: [1, 0], extrapolate: 'clamp' });
   const backOpacity = flip.interpolate({ inputRange: [90, 91], outputRange: [0, 1], extrapolate: 'clamp' });
 
+  const muted = !!getProgress(word.id)?.muted;
+  const toggleMute = () => {
+    mergeProgress(word.id, { muted: !muted });
+    // Susturulan kelime destede kalmasın diye ilerle.
+    if (!muted) advance();
+  };
+
   return (
     <View style={styles.container}>
+      <View style={styles.topBar}>
+        {[
+          { key: 'en-tr', label: 'İng→Tür' },
+          { key: 'tr-en', label: 'Tür→İng' },
+        ].map((o) => {
+          const on = direction === o.key;
+          return (
+            <TouchableOpacity
+              key={o.key}
+              style={[styles.dirBtn, on && styles.dirBtnOn]}
+              onPress={() => {
+                setDirection(o.key);
+                resetFlip();
+              }}
+            >
+              <Text style={[styles.dirText, on && styles.dirTextOn]}>{o.label}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
       <Text style={styles.counter}>
         {index + 1} / {deck.length}
       </Text>
@@ -141,16 +170,29 @@ export default function FlashcardScreen({ navigation }) {
                 { opacity: frontOpacity, transform: [{ perspective: 1000 }, { rotateY: frontRotate }] },
               ]}
             >
-              <Text style={styles.headword}>{word.headword}</Text>
-              {!!word.pronunciation && <Text style={styles.pron}>{word.pronunciation}</Text>}
-              <Text style={styles.pos}>{word.pos}</Text>
+              {direction === 'tr-en' ? (
+                <>
+                  {word.meanings.slice(0, 3).map((m, i) => (
+                    <Text key={i} style={styles.frontTr}>• {m.tr}</Text>
+                  ))}
+                  <Text style={styles.pos}>{word.pos}</Text>
+                </>
+              ) : (
+                <>
+                  <Text style={styles.headword}>{word.headword}</Text>
+                  {!!word.pronunciation && <Text style={styles.pron}>{word.pronunciation}</Text>}
+                  <Text style={styles.pos}>{word.pos}</Text>
+                </>
+              )}
               <View style={styles.row}>
                 <LevelBadge level={word.level} />
                 {word.domains.map((d) => (
                   <Badge key={d} label={d} />
                 ))}
               </View>
-              <Text style={styles.tapHint}>Çevirmek için dokun · kaydır ↔</Text>
+              <Text style={styles.tapHint}>
+                {direction === 'tr-en' ? 'İngilizcesi için dokun' : 'Çevirmek için dokun'} · kaydır ↔
+              </Text>
             </Animated.View>
 
             {/* Arka yüz */}
@@ -162,6 +204,10 @@ export default function FlashcardScreen({ navigation }) {
               ]}
             >
               <ScrollView contentContainerStyle={styles.cardBack}>
+                <View style={styles.backHead}>
+                  <Text style={styles.backHeadword}>{word.headword}</Text>
+                  {!!word.pronunciation && <Text style={styles.pron}>{word.pronunciation}</Text>}
+                </View>
                 {word.meanings.map((m, i) => (
                   <View key={i} style={styles.meaningBlock}>
                     <Text style={styles.meaningTr}>• {m.tr}</Text>
@@ -193,6 +239,12 @@ export default function FlashcardScreen({ navigation }) {
         <StatusPicker value={status} onChange={(s) => setStatus(word.id, s)} />
       </View>
 
+      <TouchableOpacity style={styles.muteRow} onPress={toggleMute}>
+        <Text style={[styles.muteText, muted && styles.muteTextOn]}>
+          {muted ? '🔕 Hatırlatma kapalı — tekrar açmak için dokun' : '🔔 Bu kelimeyi bir daha hatırlatma'}
+        </Text>
+      </TouchableOpacity>
+
       <View style={styles.actions}>
         <TouchableOpacity style={styles.navBtn} onPress={() => forceSwipe('left')}>
           <Text style={styles.navText}>✗ Bilmiyorum</Text>
@@ -221,6 +273,25 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg, padding: 16 },
   center: { flex: 1, backgroundColor: colors.bg, alignItems: 'center', justifyContent: 'center' },
   muted: { color: colors.textMuted },
+  topBar: { flexDirection: 'row', gap: 8, marginBottom: 6 },
+  dirBtn: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 10,
+    paddingVertical: 7,
+    alignItems: 'center',
+    backgroundColor: colors.surface,
+  },
+  dirBtnOn: { backgroundColor: colors.primary, borderColor: colors.primary },
+  dirText: { color: colors.textMuted, fontWeight: '700', fontSize: 12 },
+  dirTextOn: { color: '#0f172a' },
+  frontTr: { color: colors.text, fontSize: 22, fontWeight: '800', textAlign: 'center', marginVertical: 3 },
+  backHead: { alignItems: 'center', marginBottom: 12, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: colors.border },
+  backHeadword: { color: colors.text, fontSize: 26, fontWeight: '800', textAlign: 'center' },
+  muteRow: { marginTop: 10, alignItems: 'center' },
+  muteText: { color: colors.textMuted, fontSize: 13, fontWeight: '600' },
+  muteTextOn: { color: colors.unknown },
   counter: { color: colors.textMuted, textAlign: 'center', marginBottom: 8 },
   cardArea: { flex: 1 },
   animatedCard: { flex: 1 },
