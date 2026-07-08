@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useMemo, useReducer } from
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { buildInitialCurriculum } from '../data/curriculum';
 import { pointsForTask, levelForPoints, evaluateBadges } from '../data/rewards';
+import { AVATARS, defaultAvatarId, avatarById, evaluateAvatarUnlocks } from '../data/avatars';
 import { computeStreaks } from '../logic/streak';
 
 const STORAGE_KEY = '@lgs_planlayici_v1';
@@ -15,6 +16,8 @@ function todayStr() {
   return new Date().toISOString().slice(0, 10);
 }
 
+const STARTER_AVATARS = AVATARS.filter((a) => !a.requiredBadgeId).map((a) => ({ id: a.id, unlockedAt: null }));
+
 const initialState = {
   loaded: false,
   gradeLevel: 8,
@@ -25,6 +28,8 @@ const initialState = {
   examResults: [],
   curriculum: [],
   badges: [],
+  selectedAvatarId: defaultAvatarId(),
+  unlockedAvatars: STARTER_AVATARS,
   parentPinHash: null,
 };
 
@@ -127,6 +132,11 @@ function reducer(state, action) {
     case 'UNLOCK_BADGES':
       return { ...state, badges: [...state.badges, ...action.badges] };
 
+    case 'UNLOCK_AVATARS':
+      return { ...state, unlockedAvatars: [...state.unlockedAvatars, ...action.avatars] };
+    case 'SET_AVATAR':
+      return { ...state, selectedAvatarId: action.avatarId };
+
     case 'SET_PARENT_PIN':
       return { ...state, parentPinHash: action.hash };
 
@@ -158,14 +168,21 @@ export function PlannerProvider({ children }) {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(persisted)).catch(() => {});
   }, [state]);
 
-  // Rozetleri türet ve yeni kazanılanları kalıcı listeye ekle.
+  // Rozetleri ve avatarları türet, yeni kazanılanları kalıcı listeye ekle.
   useEffect(() => {
     if (!state.loaded) return;
     const stats = computeStats(state);
-    const unlockedIds = state.badges.map((b) => b.id);
-    const newly = evaluateBadges(stats, unlockedIds);
-    if (newly.length > 0) {
-      dispatch({ type: 'UNLOCK_BADGES', badges: newly.map((id) => ({ id, unlockedAt: todayStr() })) });
+    const unlockedBadgeIds = state.badges.map((b) => b.id);
+    const newlyBadges = evaluateBadges(stats, unlockedBadgeIds);
+    if (newlyBadges.length > 0) {
+      dispatch({ type: 'UNLOCK_BADGES', badges: newlyBadges.map((id) => ({ id, unlockedAt: todayStr() })) });
+    }
+
+    const allBadgeIds = [...unlockedBadgeIds, ...newlyBadges];
+    const unlockedAvatarIds = state.unlockedAvatars.map((a) => a.id);
+    const newlyAvatars = evaluateAvatarUnlocks(allBadgeIds, unlockedAvatarIds);
+    if (newlyAvatars.length > 0) {
+      dispatch({ type: 'UNLOCK_AVATARS', avatars: newlyAvatars.map((id) => ({ id, unlockedAt: todayStr() })) });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.loaded, state.tasks, state.examResults, state.curriculum]);
@@ -178,6 +195,9 @@ export function PlannerProvider({ children }) {
       ...state,
       stats,
       level,
+      avatar: avatarById(state.selectedAvatarId),
+      unlockedAvatarIds: state.unlockedAvatars.map((a) => a.id),
+      setAvatar: (avatarId) => dispatch({ type: 'SET_AVATAR', avatarId }),
       setGrade: (gradeLevel) => dispatch({ type: 'SET_GRADE', gradeLevel }),
       setYearGoal: (patch) => dispatch({ type: 'SET_YEAR_GOAL', patch }),
       addMonthGoal: (data) => dispatch({ type: 'ADD_MONTH_GOAL', data }),

@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
 import { colors } from '../theme';
 import { Card, SectionTitle, ProgressBar } from '../components/common';
 import { BADGES } from '../data/rewards';
+import { AVATARS, avatarRequirementLabel } from '../data/avatars';
 
 export default function RewardsScreen() {
   const planner = usePlanner();
-  const unlockedIds = new Set(planner.badges.map((b) => b.id));
+  const unlockedBadgeIds = new Set(planner.badges.map((b) => b.id));
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
@@ -41,13 +42,39 @@ export default function RewardsScreen() {
         </Card>
       </View>
 
+      <SectionTitle>Avatar</SectionTitle>
+      <View style={styles.avatarGrid}>
+        {AVATARS.map((avatar) => {
+          const unlocked = planner.unlockedAvatarIds.includes(avatar.id);
+          const selected = planner.selectedAvatarId === avatar.id;
+          return (
+            <TouchableOpacity
+              key={avatar.id}
+              disabled={!unlocked}
+              onPress={() => planner.setAvatar(avatar.id)}
+              style={styles.avatarSlot}
+            >
+              <Card style={[styles.avatarCard, selected && styles.avatarSelected, !unlocked && styles.avatarLocked]}>
+                <Text style={styles.avatarEmoji}>{unlocked ? avatar.emoji : '🔒'}</Text>
+                <Text style={[styles.avatarLabel, !unlocked && styles.mutedText]} numberOfLines={2}>
+                  {unlocked ? avatar.label : avatarRequirementLabel(avatar)}
+                </Text>
+              </Card>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+
       <SectionTitle>Rozetler</SectionTitle>
       <View style={styles.badgeGrid}>
         {BADGES.map((badge) => {
-          const unlocked = unlockedIds.has(badge.id);
+          const unlocked = unlockedBadgeIds.has(badge.id);
           return (
-            <Card key={badge.id} style={[styles.badgeCard, unlocked && styles.badgeUnlocked, !unlocked && styles.badgeLocked]}>
-              <Text style={styles.badgeIcon}>{unlocked ? '🏅' : '🔒'}</Text>
+            <Card
+              key={badge.id}
+              style={[styles.badgeCard, unlocked && { borderColor: badge.color }, !unlocked && styles.badgeLocked]}
+            >
+              <Text style={styles.badgeIcon}>{unlocked ? badge.icon : '🔒'}</Text>
               <Text style={[styles.badgeTitle, !unlocked && styles.mutedText]}>{badge.title}</Text>
               <Text style={styles.badgeDesc}>{badge.description}</Text>
             </Card>
@@ -68,9 +95,15 @@ const styles = StyleSheet.create({
   statNum: { color: colors.text, fontSize: 18, fontWeight: '800' },
   streakNum: { color: colors.pink },
   statLabel: { color: colors.textMuted, fontSize: 11, marginTop: 2, textAlign: 'center' },
+  avatarGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 4 },
+  avatarSlot: { width: '22%' },
+  avatarCard: { alignItems: 'center', paddingHorizontal: 6 },
+  avatarSelected: { borderColor: colors.pink, borderWidth: 2 },
+  avatarLocked: { opacity: 0.5 },
+  avatarEmoji: { fontSize: 28, marginBottom: 4 },
+  avatarLabel: { color: colors.text, fontSize: 10, fontWeight: '600', textAlign: 'center' },
   badgeGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
   badgeCard: { width: '47%', alignItems: 'center' },
-  badgeUnlocked: { borderColor: colors.pink },
   badgeLocked: { opacity: 0.5 },
   badgeIcon: { fontSize: 26, marginBottom: 6 },
   badgeTitle: { color: colors.text, fontSize: 13, fontWeight: '700', textAlign: 'center' },

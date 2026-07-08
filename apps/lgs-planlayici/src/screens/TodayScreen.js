@@ -7,7 +7,6 @@ import { pointsForTask } from '../data/rewards';
 import { Card, SectionTitle, Chip, ProgressBar, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
-import ConfirmModal from '../components/ConfirmModal';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 
 export default function TodayScreen() {
@@ -17,7 +16,6 @@ export default function TodayScreen() {
   const [addVisible, setAddVisible] = useState(false);
   const [subjectPickerFor, setSubjectPickerFor] = useState(null);
   const [pendingSubject, setPendingSubject] = useState(null);
-  const [deleteTarget, setDeleteTarget] = useState(null);
 
   const pendingTasks = planner.tasks.filter((t) => !t.done);
   const completedToday = planner.tasks.filter(
@@ -34,9 +32,14 @@ export default function TodayScreen() {
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
       <Card>
         <View style={styles.headerRow}>
-          <View>
-            <Text style={styles.levelTitle}>{planner.level.title}</Text>
-            <Text style={styles.points}>{planner.stats.totalPoints} puan</Text>
+          <View style={styles.identityRow}>
+            <View style={styles.avatarBubble}>
+              <Text style={styles.avatarEmoji}>{planner.avatar.emoji}</Text>
+            </View>
+            <View>
+              <Text style={styles.levelTitle}>{planner.level.title}</Text>
+              <Text style={styles.points}>{planner.stats.totalPoints} puan</Text>
+            </View>
           </View>
           <View style={styles.streakBox}>
             <Text style={styles.streakNum}>🔥 {planner.stats.streakCurrent}</Text>
@@ -87,14 +90,9 @@ export default function TodayScreen() {
                     </Text>
                   </View>
                 </View>
-                <View style={styles.taskActions}>
-                  <TouchableOpacity style={styles.doneBtn} onPress={() => planner.toggleTaskDone(task.id)}>
-                    <Text style={styles.doneBtnText}>Tamamla</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setDeleteTarget(task)}>
-                    <Text style={styles.deleteText}>sil</Text>
-                  </TouchableOpacity>
-                </View>
+                <TouchableOpacity style={styles.doneBtn} onPress={() => planner.toggleTaskDone(task.id)}>
+                  <Text style={styles.doneBtnText}>Tamamla</Text>
+                </TouchableOpacity>
               </View>
             </TouchableOpacity>
           </Card>
@@ -108,14 +106,9 @@ export default function TodayScreen() {
             <Card key={task.id}>
               <View style={styles.taskRow}>
                 <Text style={[styles.taskTitle, styles.doneText]}>{task.title}</Text>
-                <View style={styles.taskActions}>
-                  <TouchableOpacity onPress={() => planner.toggleTaskDone(task.id)}>
-                    <Text style={styles.undoText}>geri al</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setDeleteTarget(task)}>
-                    <Text style={styles.deleteText}>sil</Text>
-                  </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={() => planner.toggleTaskDone(task.id)}>
+                  <Text style={styles.undoText}>geri al</Text>
+                </TouchableOpacity>
               </View>
             </Card>
           ))}
@@ -156,17 +149,6 @@ export default function TodayScreen() {
           setSubjectPickerFor(null);
         }}
       />
-
-      <ConfirmModal
-        visible={!!deleteTarget}
-        title="Görevi sil"
-        message={deleteTarget ? `"${deleteTarget.title}" silinsin mi?` : ''}
-        onCancel={() => setDeleteTarget(null)}
-        onConfirm={() => {
-          planner.deleteTask(deleteTarget.id);
-          setDeleteTarget(null);
-        }}
-      />
     </ScrollView>
   );
 }
@@ -174,6 +156,16 @@ export default function TodayScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
   headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
+  identityRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  avatarBubble: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: colors.surfaceAlt,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  avatarEmoji: { fontSize: 22 },
   levelTitle: { color: colors.gold, fontSize: 18, fontWeight: '800' },
   points: { color: colors.textMuted, fontSize: 13, marginTop: 2 },
   streakBox: { alignItems: 'flex-end' },
@@ -196,8 +188,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   doneBtnText: { color: '#0f172a', fontWeight: '700', fontSize: 12 },
-  taskActions: { alignItems: 'flex-end', gap: 6 },
   undoText: { color: colors.textMuted, fontSize: 12, textDecorationLine: 'underline' },
-  deleteText: { color: colors.danger, fontSize: 11 },
   activeCard: { borderColor: colors.pink },
 });

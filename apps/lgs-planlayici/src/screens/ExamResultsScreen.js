@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, ProgressBar, PrimaryButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
-import ConfirmModal from '../components/ConfirmModal';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 
 function todayStr() {
@@ -14,7 +13,6 @@ function todayStr() {
 export default function ExamResultsScreen() {
   const planner = usePlanner();
   const [modalVisible, setModalVisible] = useState(false);
-  const [deleteTarget, setDeleteTarget] = useState(null);
   const subjects = SUBJECTS_BY_GRADE[planner.gradeLevel] || [];
 
   const results = [...planner.examResults].sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -33,12 +31,7 @@ export default function ExamResultsScreen() {
       ) : (
         results.map((r) => (
           <Card key={r.id}>
-            <View style={styles.rowBetween}>
-              <Text style={styles.date}>{r.date}</Text>
-              <TouchableOpacity onPress={() => setDeleteTarget(r)}>
-                <Text style={styles.deleteText}>sil</Text>
-              </TouchableOpacity>
-            </View>
+            <Text style={styles.date}>{r.date}</Text>
             <Text style={styles.totalNet}>{r.totalNet.toFixed(1)} net</Text>
             <ProgressBar ratio={r.totalNet / maxNet} color={colors.gold} />
             <View style={styles.subjectNets}>
@@ -80,26 +73,13 @@ export default function ExamResultsScreen() {
           setModalVisible(false);
         }}
       />
-
-      <ConfirmModal
-        visible={!!deleteTarget}
-        title="Sonucu sil"
-        message="Bu deneme sonucu silinsin mi?"
-        onCancel={() => setDeleteTarget(null)}
-        onConfirm={() => {
-          planner.deleteExamResult(deleteTarget.id);
-          setDeleteTarget(null);
-        }}
-      />
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
-  rowBetween: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   date: { color: colors.textMuted, fontSize: 12 },
-  deleteText: { color: colors.danger, fontSize: 12 },
   totalNet: { color: colors.text, fontSize: 22, fontWeight: '800', marginVertical: 4 },
   subjectNets: { flexDirection: 'row', flexWrap: 'wrap', marginTop: 10, gap: 8 },
   netChip: { flexDirection: 'row', alignItems: 'center' },

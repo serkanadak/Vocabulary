@@ -4,7 +4,6 @@ import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, GhostButton } from '../components/common';
 import PromptModal from '../components/PromptModal';
-import ConfirmModal from '../components/ConfirmModal';
 import { GRADES, SUBJECTS_BY_GRADE } from '../data/curriculum';
 
 export default function CurriculumScreen() {
@@ -13,7 +12,6 @@ export default function CurriculumScreen() {
   const [expanded, setExpanded] = useState({});
   const [addFor, setAddFor] = useState(null);
   const [editTopic, setEditTopic] = useState(null);
-  const [deleteTopicTarget, setDeleteTopicTarget] = useState(null);
 
   const toggle = (subject) => setExpanded((e) => ({ ...e, [subject]: !e[subject] }));
 
@@ -46,17 +44,12 @@ export default function CurriculumScreen() {
               <View style={{ marginTop: 8 }}>
                 {topics.length === 0 && <Text style={styles.mutedText}>Henüz konu eklenmedi.</Text>}
                 {topics.map((topic) => (
-                  <View key={topic.id} style={styles.topicRow}>
-                    <TouchableOpacity style={{ flex: 1 }} onPress={() => setEditTopic(topic)}>
-                      <Text style={styles.topicText}>
-                        {topic.title}
-                        {topic.custom ? ' ✎' : ''}
-                      </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setDeleteTopicTarget(topic)}>
-                      <Text style={styles.deleteText}>sil</Text>
-                    </TouchableOpacity>
-                  </View>
+                  <TouchableOpacity key={topic.id} style={styles.topicRow} onPress={() => setEditTopic(topic)}>
+                    <Text style={styles.topicText}>
+                      {topic.title}
+                      {topic.custom ? ' ✎' : ''}
+                    </Text>
+                  </TouchableOpacity>
                 ))}
                 <View style={{ marginTop: 8 }}>
                   <GhostButton label="+ Konu Ekle" onPress={() => setAddFor(subject)} />
@@ -92,17 +85,6 @@ export default function CurriculumScreen() {
           setEditTopic(null);
         }}
       />
-
-      <ConfirmModal
-        visible={!!deleteTopicTarget}
-        title="Konuyu sil"
-        message={deleteTopicTarget ? `"${deleteTopicTarget.title}" silinsin mi?` : ''}
-        onCancel={() => setDeleteTopicTarget(null)}
-        onConfirm={() => {
-          planner.deleteTopic(deleteTopicTarget.id);
-          setDeleteTopicTarget(null);
-        }}
-      />
     </ScrollView>
   );
 }
@@ -127,13 +109,9 @@ const styles = StyleSheet.create({
   subjectCount: { color: colors.textMuted, fontSize: 12 },
   mutedText: { color: colors.textMuted, fontSize: 13, marginBottom: 8 },
   topicRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     paddingVertical: 8,
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
   },
   topicText: { color: colors.text, fontSize: 13 },
-  deleteText: { color: colors.danger, fontSize: 12, marginLeft: 10 },
 });
