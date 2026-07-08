@@ -21,9 +21,7 @@ export default function TodayScreen() {
   const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
 
   const pendingTasks = planner.tasks.filter((t) => !t.done);
-  const completedToday = planner.tasks.filter(
-    (t) => t.done && t.completedAt === new Date().toISOString().slice(0, 10)
-  );
+  const completedToday = planner.tasks.filter((t) => t.done && t.completedAt === todayStr());
   const totalToday = pendingTasks.length + completedToday.length;
   const ratio = totalToday === 0 ? 0 : completedToday.length / totalToday;
 

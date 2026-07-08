@@ -1,7 +1,8 @@
 // Tamamlanan görev tarihlerinden (YYYY-MM-DD) güncel ve en uzun seriyi hesaplar.
+import { todayStr as today, addDays } from './calendar';
 
 function toDayMs(dateStr) {
-  return new Date(`${dateStr}T00:00:00`).getTime();
+  return new Date(`${dateStr}T00:00:00Z`).getTime();
 }
 
 export function computeStreaks(dateStrings) {
@@ -16,8 +17,8 @@ export function computeStreaks(dateStrings) {
     longest = Math.max(longest, run);
   }
 
-  const todayStr = new Date().toISOString().slice(0, 10);
-  const yesterdayStr = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  const todayStr = today();
+  const yesterdayStr = addDays(todayStr, -1);
   const last = uniqueDays[uniqueDays.length - 1];
 
   let current = 0;

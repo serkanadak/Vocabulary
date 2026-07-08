@@ -5,10 +5,7 @@ import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, ProgressBar, PrimaryButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
-
-function todayStr() {
-  return new Date().toISOString().slice(0, 10);
-}
+import { todayStr } from '../logic/calendar';
 
 export default function ExamResultsScreen() {
   const planner = usePlanner();

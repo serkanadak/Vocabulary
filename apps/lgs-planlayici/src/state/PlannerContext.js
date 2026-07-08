@@ -4,16 +4,13 @@ import { buildInitialCurriculum } from '../data/curriculum';
 import { pointsForTask, levelForPoints, evaluateBadges } from '../data/rewards';
 import { AVATARS, defaultAvatarId, avatarById, evaluateAvatarUnlocks } from '../data/avatars';
 import { computeStreaks } from '../logic/streak';
+import { todayStr } from '../logic/calendar';
 
 const STORAGE_KEY = '@lgs_planlayici_v1';
 const PlannerContext = createContext(null);
 
 function uid(prefix) {
   return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
-}
-
-function todayStr() {
-  return new Date().toISOString().slice(0, 10);
 }
 
 const STARTER_AVATARS = AVATARS.filter((a) => !a.requiredBadgeId).map((a) => ({ id: a.id, unlockedAt: null }));

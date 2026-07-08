@@ -5,6 +5,7 @@ import { colors } from '../theme';
 import { Card, SectionTitle, Field, PrimaryButton, GhostButton, ProgressBar } from '../components/common';
 import { hashPin, verifyPin } from '../logic/pin';
 import { BADGES } from '../data/rewards';
+import { todayStr } from '../logic/calendar';
 
 export default function ParentScreen() {
   const planner = usePlanner();
@@ -64,8 +65,7 @@ export default function ParentScreen() {
     );
   }
 
-  const todayStr = new Date().toISOString().slice(0, 10);
-  const completedToday = planner.tasks.filter((t) => t.done && t.completedAt === todayStr).length;
+  const completedToday = planner.tasks.filter((t) => t.done && t.completedAt === todayStr()).length;
   const pendingToday = planner.tasks.filter((t) => !t.done).length;
   const totalToday = completedToday + pendingToday;
   const ratio = totalToday === 0 ? 0 : completedToday / totalToday;

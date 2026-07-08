@@ -1,4 +1,10 @@
 // Haftalık/aylık takvim görünümleri için tarih yardımcıları.
+//
+// Tüm tarih aritmetiği UTC üzerinden yapılır (Date.UTC + getUTC*), yerel
+// saat dilimiyle hiç etkileşmez. Böylece "YYYY-MM-DD" dizgesi bir kez yerel
+// saatle (local parse) bir kez UTC ile (toISOString) okunup saat dilimi
+// pozitif olan yerlerde (ör. UTC+3) günün bir gün geriye kaymasının önüne
+// geçilir. Yalnızca todayStr() kullanıcının o anki yerel takvim gününü verir.
 
 const MONTH_NAMES = [
   'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
@@ -7,30 +13,47 @@ const MONTH_NAMES = [
 const WEEKDAY_SHORT = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
 
 export function todayStr() {
-  return new Date().toISOString().slice(0, 10);
+  const d = new Date();
+  return ymd(d.getFullYear(), d.getMonth() + 1, d.getDate());
 }
 
-function toDate(dateStr) {
-  return new Date(`${dateStr}T00:00:00`);
+function pad2(n) {
+  return String(n).padStart(2, '0');
 }
 
-function fmt(date) {
-  return date.toISOString().slice(0, 10);
+function ymd(y, m, d) {
+  return `${y}-${pad2(m)}-${pad2(d)}`;
+}
+
+function parseYMD(dateStr) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return { y, m, d };
+}
+
+function toUTCTime(dateStr) {
+  const { y, m, d } = parseYMD(dateStr);
+  return Date.UTC(y, m - 1, d);
+}
+
+function fromUTCTime(t) {
+  const d = new Date(t);
+  return ymd(d.getUTCFullYear(), d.getUTCMonth() + 1, d.getUTCDate());
 }
 
 export function addDays(dateStr, n) {
-  const d = toDate(dateStr);
-  d.setDate(d.getDate() + n);
-  return fmt(d);
+  return fromUTCTime(toUTCTime(dateStr) + n * 86400000);
+}
+
+// 0=Pazar .. 6=Cumartesi — Date.getDay() ile aynı sırada, saat dilimi bağımsız.
+function weekdayOf(dateStr) {
+  return new Date(toUTCTime(dateStr)).getUTCDay();
 }
 
 // Verilen tarihin (Pazartesi başlangıçlı) haftasının ilk günü.
 export function mondayOf(dateStr) {
-  const d = toDate(dateStr);
-  const day = d.getDay(); // 0=Paz..6=Cmt
+  const day = weekdayOf(dateStr);
   const diff = day === 0 ? -6 : 1 - day;
-  d.setDate(d.getDate() + diff);
-  return fmt(d);
+  return addDays(dateStr, diff);
 }
 
 export function weekDates(startDate) {
@@ -38,8 +61,8 @@ export function weekDates(startDate) {
 }
 
 export function formatDayLabel(dateStr) {
-  const d = toDate(dateStr);
-  return `${WEEKDAY_SHORT[d.getDay()]} ${d.getDate()}`;
+  const { d } = parseYMD(dateStr);
+  return `${WEEKDAY_SHORT[weekdayOf(dateStr)]} ${d}`;
 }
 
 export function formatMonthLabel(year, month) {
@@ -64,10 +87,10 @@ export function nextMonths(count, fromDate = new Date()) {
 // Ayın takvim ızgarası: her biri 7 günlük satırlar (Pzt başlangıçlı),
 // ay dışına taşan hücreler null.
 export function buildMonthGrid(year, month) {
-  const firstOfMonth = `${year}-${String(month).padStart(2, '0')}-01`;
+  const firstOfMonth = ymd(year, month, 1);
   const firstWeekStart = mondayOf(firstOfMonth);
-  const daysInMonth = new Date(year, month, 0).getDate();
-  const lastOfMonth = `${year}-${String(month).padStart(2, '0')}-${String(daysInMonth).padStart(2, '0')}`;
+  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const lastOfMonth = ymd(year, month, daysInMonth);
 
   const weeks = [];
   let cursor = firstWeekStart;
@@ -82,5 +105,5 @@ export function buildMonthGrid(year, month) {
 }
 
 export function isSameMonth(dateStr, year, month) {
-  return dateStr.slice(0, 7) === `${year}-${String(month).padStart(2, '0')}`;
+  return dateStr.slice(0, 7) === `${year}-${pad2(month)}`;
 }
