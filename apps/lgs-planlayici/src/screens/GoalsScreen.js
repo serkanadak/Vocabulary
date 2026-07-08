@@ -22,7 +22,8 @@ export default function GoalsScreen({ navigation }) {
   const [pendingMonthTitle, setPendingMonthTitle] = useState('');
   const [monthPickerVisible, setMonthPickerVisible] = useState(false);
 
-  const weekCountFor = (monthId) => planner.weekGoals.filter((w) => w.monthId === monthId).length;
+  const weeksFor = (monthId) => planner.weekGoals.filter((w) => w.monthId === monthId);
+  const taskCountFor = (weekId) => planner.tasks.filter((t) => t.weekId === weekId).length;
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
@@ -52,20 +53,39 @@ export default function GoalsScreen({ navigation }) {
       {planner.monthGoals.length === 0 ? (
         <EmptyState text="Henüz aylık hedef yok." />
       ) : (
-        planner.monthGoals.map((month) => (
-          <TouchableOpacity key={month.id} onPress={() => navigation.navigate('MonthDetail', { monthId: month.id })}>
-            <Card>
-              <Text style={styles.monthTitle}>{month.title}</Text>
-              <View style={styles.chipRow}>
-                {!!(month.year && month.month) && (
-                  <Chip label={formatMonthLabel(month.year, month.month)} color={colors.gold} />
-                )}
-                {!!month.subject && <Chip label={month.subject} color={subjectColor(month.subject)} />}
-              </View>
-              <Text style={styles.mutedText}>{weekCountFor(month.id)} haftalık plan</Text>
+        planner.monthGoals.map((month) => {
+          const weeks = weeksFor(month.id);
+          return (
+            <Card key={month.id}>
+              <TouchableOpacity onPress={() => navigation.navigate('MonthDetail', { monthId: month.id })}>
+                <Text style={styles.monthTitle}>{month.title}</Text>
+                <View style={styles.chipRow}>
+                  {!!(month.year && month.month) && (
+                    <Chip label={formatMonthLabel(month.year, month.month)} color={colors.gold} />
+                  )}
+                  {!!month.subject && <Chip label={month.subject} color={subjectColor(month.subject)} />}
+                </View>
+              </TouchableOpacity>
+
+              {weeks.length === 0 ? (
+                <Text style={styles.mutedText}>Henüz haftalık plan yok.</Text>
+              ) : (
+                <View style={styles.weeksInline}>
+                  {weeks.map((week) => (
+                    <TouchableOpacity
+                      key={week.id}
+                      style={styles.weekInlineRow}
+                      onPress={() => navigation.navigate('WeekDetail', { weekId: week.id })}
+                    >
+                      <Text style={styles.weekInlineText}>{week.title}</Text>
+                      <Text style={styles.mutedText}>{taskCountFor(week.id)} görev</Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              )}
             </Card>
-          </TouchableOpacity>
-        ))
+          );
+        })
       )}
       <PrimaryButton label="+ Aylık Hedef Ekle" onPress={() => setMonthModal(true)} />
 
@@ -146,6 +166,14 @@ const styles = StyleSheet.create({
   monthTitle: { color: colors.text, fontSize: 15, fontWeight: '700' },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 6 },
   mutedText: { color: colors.textMuted, fontSize: 12, marginTop: 4 },
+  weeksInline: { marginTop: 10, borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 8 },
+  weekInlineRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 6,
+  },
+  weekInlineText: { color: colors.text, fontSize: 13, fontWeight: '600' },
   recurRow: { flexDirection: 'row', alignItems: 'center' },
   recurMeta: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 6 },
 });

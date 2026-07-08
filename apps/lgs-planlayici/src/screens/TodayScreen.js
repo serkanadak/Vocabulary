@@ -6,7 +6,7 @@ import { colors, subjectColor } from '../theme';
 import { pointsForTask } from '../data/rewards';
 import { Card, SectionTitle, Chip, ProgressBar, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
-import ChoiceModal from '../components/ChoiceModal';
+import CurriculumPicker from '../components/CurriculumPicker';
 import RecurringFields from '../components/RecurringFields';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 import { todayStr } from '../logic/calendar';
@@ -15,8 +15,8 @@ export default function TodayScreen() {
   const planner = usePlanner();
   const [activeTaskId, setActiveTaskId] = useState(null);
   const [addVisible, setAddVisible] = useState(false);
-  const [subjectPickerFor, setSubjectPickerFor] = useState(null);
-  const [pendingSubject, setPendingSubject] = useState(null);
+  const [pickerVisible, setPickerVisible] = useState(false);
+  const [pendingTask, setPendingTask] = useState(null);
   const [recurring, setRecurring] = useState(false);
   const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
 
@@ -29,6 +29,12 @@ export default function TodayScreen() {
   const pomodoro = usePomodoro(activeTask ? activeTask.estMinutes : 25);
 
   const subjects = SUBJECTS_BY_GRADE[planner.gradeLevel] || [];
+  const topics = planner.curriculum.filter((t) => t.gradeLevel === planner.gradeLevel);
+  const topicTitleFor = (task) => {
+    if (!task.topicId) return null;
+    const topic = planner.curriculum.find((t) => t.id === task.topicId);
+    return topic ? topic.title : null;
+  };
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
@@ -93,6 +99,7 @@ export default function TodayScreen() {
                       {task.estMinutes} dk · +{pointsForTask(task.estMinutes)} puan
                     </Text>
                   </View>
+                  {!!topicTitleFor(task) && <Text style={styles.topicHint}>📖 {topicTitleFor(task)}</Text>}
                 </View>
                 <TouchableOpacity style={styles.doneBtn} onPress={() => planner.toggleTaskDone(task.id)}>
                   <Text style={styles.doneBtnText}>Tamamla</Text>
@@ -140,37 +147,37 @@ export default function TodayScreen() {
         )}
         onSubmit={(values) => {
           if (!values.title) return;
-          setPendingSubject(values);
+          setPendingTask(values);
           setAddVisible(false);
-          setSubjectPickerFor('new');
+          setPickerVisible(true);
         }}
       />
 
-      <ChoiceModal
-        visible={subjectPickerFor === 'new'}
-        title="Ders seç"
-        options={subjects.map((s) => ({ label: s, value: s }))}
-        onCancel={() => setSubjectPickerFor(null)}
-        onSelect={(subject) => {
-          const estMinutes = Number(pendingSubject.estMinutes) || 15;
+      <CurriculumPicker
+        visible={pickerVisible}
+        subjects={subjects}
+        topics={topics}
+        onCancel={() => setPickerVisible(false)}
+        onSelect={(subject, topicId) => {
+          const estMinutes = Number(pendingTask.estMinutes) || 15;
           if (recurring) {
             planner.addRecurringTask({
               subject,
-              topicId: null,
-              title: pendingSubject.title,
+              topicId,
+              title: pendingTask.title,
               estMinutes,
               daysOfWeek: recurringDays,
             });
           } else {
             planner.addTask(null, {
-              title: pendingSubject.title,
+              title: pendingTask.title,
               subject,
-              topicId: null,
+              topicId,
               estMinutes,
               dueDate: todayStr(),
             });
           }
-          setSubjectPickerFor(null);
+          setPickerVisible(false);
           setRecurring(false);
           setRecurringDays([1, 2, 3, 4, 5]);
         }}
@@ -207,6 +214,7 @@ const styles = StyleSheet.create({
   doneText: { textDecorationLine: 'line-through', color: colors.textMuted },
   chipRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   taskMeta: { color: colors.textMuted, fontSize: 12 },
+  topicHint: { color: colors.textMuted, fontSize: 11, marginTop: 4 },
   doneBtn: {
     backgroundColor: colors.primary,
     borderRadius: 10,

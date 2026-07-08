@@ -5,19 +5,17 @@ import { colors, subjectColor } from '../theme';
 import { pointsForTask } from '../data/rewards';
 import { Card, SectionTitle, Chip, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
-import ChoiceModal from '../components/ChoiceModal';
+import CurriculumPicker from '../components/CurriculumPicker';
 import RecurringFields from '../components/RecurringFields';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 import { todayStr } from '../logic/calendar';
-
-const STEP = { NONE: 'none', SUBJECT: 'subject', TOPIC: 'topic' };
 
 export default function WeekDetailScreen({ route }) {
   const { weekId } = route.params;
   const planner = usePlanner();
   const [editModal, setEditModal] = useState(false);
   const [taskModal, setTaskModal] = useState(false);
-  const [step, setStep] = useState(STEP.NONE);
+  const [pickerVisible, setPickerVisible] = useState(false);
   const [draft, setDraft] = useState(null);
   const [recurring, setRecurring] = useState(false);
   const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
@@ -25,11 +23,14 @@ export default function WeekDetailScreen({ route }) {
   const week = planner.weekGoals.find((w) => w.id === weekId);
   const tasks = planner.tasks.filter((t) => t.weekId === weekId);
   const subjects = SUBJECTS_BY_GRADE[planner.gradeLevel] || [];
+  const topics = planner.curriculum.filter((t) => t.gradeLevel === planner.gradeLevel);
+  const topicTitleFor = (task) => {
+    if (!task.topicId) return null;
+    const topic = planner.curriculum.find((t) => t.id === task.topicId);
+    return topic ? topic.title : null;
+  };
 
   if (!week) return null;
-
-  const topicsForSubject = (subject) =>
-    planner.curriculum.filter((t) => t.gradeLevel === planner.gradeLevel && t.subject === subject);
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
@@ -55,6 +56,7 @@ export default function WeekDetailScreen({ route }) {
                     {task.estMinutes} dk · +{pointsForTask(task.estMinutes)} puan
                   </Text>
                 </View>
+                {!!topicTitleFor(task) && <Text style={styles.topicHint}>📖 {topicTitleFor(task)}</Text>}
               </View>
               <TouchableOpacity onPress={() => planner.toggleTaskDone(task.id)}>
                 <Text style={styles.toggleText}>{task.done ? 'geri al' : 'tamamla'}</Text>
@@ -105,36 +107,21 @@ export default function WeekDetailScreen({ route }) {
           if (!values.title) return;
           setDraft(values);
           setTaskModal(false);
-          setStep(STEP.SUBJECT);
+          setPickerVisible(true);
         }}
       />
 
-      <ChoiceModal
-        visible={step === STEP.SUBJECT}
-        title="Ders seç"
-        options={subjects.map((s) => ({ label: s, value: s }))}
-        onCancel={() => setStep(STEP.NONE)}
-        onSelect={(subject) => {
-          setDraft((d) => ({ ...d, subject }));
-          setStep(STEP.TOPIC);
-        }}
-      />
-
-      <ChoiceModal
-        visible={step === STEP.TOPIC}
-        title="Konu seç (opsiyonel)"
-        options={[
-          { label: 'Konu belirtmeden ekle', value: '__none__' },
-          ...topicsForSubject(draft && draft.subject).map((t) => ({ label: t.title, value: t.id })),
-        ]}
-        onCancel={() => setStep(STEP.NONE)}
-        onSelect={(topicId) => {
-          const resolvedTopicId = topicId === '__none__' ? null : topicId;
+      <CurriculumPicker
+        visible={pickerVisible}
+        subjects={subjects}
+        topics={topics}
+        onCancel={() => setPickerVisible(false)}
+        onSelect={(subject, topicId) => {
           const estMinutes = Number(draft.estMinutes) || 15;
           if (recurring) {
             planner.addRecurringTask({
-              subject: draft.subject,
-              topicId: resolvedTopicId,
+              subject,
+              topicId,
               title: draft.title,
               estMinutes,
               daysOfWeek: recurringDays,
@@ -142,13 +129,13 @@ export default function WeekDetailScreen({ route }) {
           } else {
             planner.addTask(week.id, {
               title: draft.title,
-              subject: draft.subject,
-              topicId: resolvedTopicId,
+              subject,
+              topicId,
               estMinutes,
               dueDate: week.startDate || todayStr(),
             });
           }
-          setStep(STEP.NONE);
+          setPickerVisible(false);
           setRecurring(false);
           setRecurringDays([1, 2, 3, 4, 5]);
         }}
@@ -166,5 +153,6 @@ const styles = StyleSheet.create({
   doneText: { textDecorationLine: 'line-through', color: colors.textMuted },
   chipRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   taskMeta: { color: colors.textMuted, fontSize: 12 },
+  topicHint: { color: colors.textMuted, fontSize: 11, marginTop: 4 },
   toggleText: { color: colors.primary, fontSize: 12, fontWeight: '700' },
 });
