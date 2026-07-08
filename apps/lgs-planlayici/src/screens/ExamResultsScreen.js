@@ -4,6 +4,8 @@ import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, ProgressBar, PrimaryButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
+import SubjectTrend from '../components/SubjectTrend';
+import { buildSubjectTrends } from '../logic/examTrends';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 import { todayStr } from '../logic/calendar';
 
@@ -14,6 +16,7 @@ export default function ExamResultsScreen() {
 
   const results = [...planner.examResults].sort((a, b) => (a.date < b.date ? 1 : -1));
   const maxNet = Math.max(1, ...results.map((r) => r.totalNet));
+  const subjectTrends = buildSubjectTrends(planner.examResults, subjects);
 
   const fields = [
     { key: 'date', label: 'Tarih (YYYY-AA-GG)', placeholder: todayStr() },
@@ -43,6 +46,15 @@ export default function ExamResultsScreen() {
             </View>
           </Card>
         ))
+      )}
+
+      {subjectTrends.length > 0 && (
+        <>
+          <SectionTitle>Ders ders trend</SectionTitle>
+          {subjectTrends.map((t) => (
+            <SubjectTrend key={t.subject} subject={t.subject} points={t.points} />
+          ))}
+        </>
       )}
 
       <PrimaryButton label="+ Deneme Sonucu Ekle" onPress={() => setModalVisible(true)} />

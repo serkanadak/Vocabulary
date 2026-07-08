@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
-import { colors, subjectColor } from '../theme';
-import { Card, SectionTitle, Chip, Field, PrimaryButton, GhostButton, ProgressBar } from '../components/common';
+import { colors } from '../theme';
+import { Card, SectionTitle, Field, PrimaryButton, GhostButton, ProgressBar } from '../components/common';
 import { hashPin, verifyPin } from '../logic/pin';
 import { BADGES } from '../data/rewards';
 import { todayStr } from '../logic/calendar';
 import { buildDailyBreakdown, buildWeeklyBreakdown, buildMonthlyBreakdown } from '../logic/periodStats';
+import { buildSubjectTrends } from '../logic/examTrends';
+import SubjectTrend from '../components/SubjectTrend';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 
 function PeriodRow({ row }) {
@@ -40,39 +42,6 @@ function PeriodRow({ row }) {
             </Text>
           ))}
         </View>
-      )}
-    </Card>
-  );
-}
-
-function SubjectTrend({ subject, points }) {
-  const maxNet = Math.max(1, ...points.map((p) => p.net));
-  const last = points[points.length - 1];
-  const prev = points.length > 1 ? points[points.length - 2] : null;
-  const delta = prev ? last.net - prev.net : null;
-
-  return (
-    <Card>
-      <View style={styles.trendHeaderRow}>
-        <Chip label={subject} color={subjectColor(subject)} />
-        <Text style={styles.trendLast}>{last.net.toFixed(1)} net</Text>
-      </View>
-      <View style={styles.trendBarsRow}>
-        {points.map((p, i) => (
-          <View key={i} style={styles.trendBarTrack}>
-            <View
-              style={[
-                styles.trendBarFill,
-                { height: `${Math.max(8, (p.net / maxNet) * 100)}%`, backgroundColor: subjectColor(subject) },
-              ]}
-            />
-          </View>
-        ))}
-      </View>
-      {delta !== null && (
-        <Text style={[styles.trendDelta, delta >= 0 ? styles.trendUp : styles.trendDown]}>
-          {delta >= 0 ? '▲' : '▼'} {Math.abs(delta).toFixed(1)} önceki denemeye göre
-        </Text>
       )}
     </Card>
   );
@@ -147,16 +116,8 @@ export default function ParentScreen() {
   const weeklyRows = buildWeeklyBreakdown(planner.tasks);
   const monthlyRows = buildMonthlyBreakdown(planner.tasks);
 
-  const sortedExams = [...planner.examResults].sort((a, b) => (a.date < b.date ? -1 : 1));
   const subjects = SUBJECTS_BY_GRADE[planner.gradeLevel] || [];
-  const subjectTrends = subjects
-    .map((subject) => ({
-      subject,
-      points: sortedExams
-        .filter((e) => e.nets && e.nets[subject] != null)
-        .map((e) => ({ date: e.date, net: e.nets[subject] })),
-    }))
-    .filter((t) => t.points.length > 0 && t.points.some((p) => p.net > 0));
+  const subjectTrends = buildSubjectTrends(planner.examResults, subjects);
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
@@ -245,12 +206,4 @@ const styles = StyleSheet.create({
   periodLabel: { color: colors.text, fontSize: 14, fontWeight: '700' },
   doneItem: { color: colors.textMuted, fontSize: 13, marginTop: 4, textDecorationLine: 'line-through' },
   missingItem: { color: colors.danger, fontSize: 13, marginTop: 4 },
-  trendHeaderRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
-  trendLast: { color: colors.text, fontSize: 15, fontWeight: '800' },
-  trendBarsRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 4, height: 60 },
-  trendBarTrack: { flex: 1, height: 60, justifyContent: 'flex-end', backgroundColor: colors.surfaceAlt, borderRadius: 4, overflow: 'hidden' },
-  trendBarFill: { width: '100%', borderRadius: 4 },
-  trendDelta: { fontSize: 12, fontWeight: '700', marginTop: 8 },
-  trendUp: { color: colors.success },
-  trendDown: { color: colors.danger },
 });

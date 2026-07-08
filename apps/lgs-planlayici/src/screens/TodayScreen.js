@@ -11,6 +11,37 @@ import RecurringFields from '../components/RecurringFields';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 import { todayStr } from '../logic/calendar';
 
+function TaskCard({ task, isActive, overdue, onSelect, onEdit, onToggleDone, topicTitleFor }) {
+  return (
+    <Card style={[isActive && styles.activeCard, overdue && styles.overdueCard]}>
+      <TouchableOpacity onPress={onSelect}>
+        <View style={styles.taskRow}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.taskTitle}>{task.title}</Text>
+            <View style={styles.chipRow}>
+              <Chip label={task.subject} color={subjectColor(task.subject)} />
+              <Text style={styles.taskMeta}>
+                {task.estMinutes} dk · +{pointsForTask(task.estMinutes)} puan
+              </Text>
+            </View>
+            {overdue && <Text style={styles.overdueHint}>⚠ {task.dueDate} için planlanmıştı</Text>}
+            {!!task.recurringId && <Text style={styles.topicHint}>🔁 tekrarlayan</Text>}
+            {!!topicTitleFor(task) && <Text style={styles.topicHint}>📖 {topicTitleFor(task)}</Text>}
+          </View>
+          <View style={styles.taskActions}>
+            <TouchableOpacity onPress={onEdit}>
+              <Text style={styles.editText}>düzenle</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.doneBtn} onPress={onToggleDone}>
+              <Text style={styles.doneBtnText}>Tamamla</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableOpacity>
+    </Card>
+  );
+}
+
 export default function TodayScreen() {
   const planner = usePlanner();
   const [activeTaskId, setActiveTaskId] = useState(null);
@@ -25,8 +56,10 @@ export default function TodayScreen() {
   const [editSubjectPickerVisible, setEditSubjectPickerVisible] = useState(false);
   const [editDraft, setEditDraft] = useState(null);
 
-  const pendingTasks = planner.tasks.filter((t) => !t.done);
-  const completedToday = planner.tasks.filter((t) => t.done && t.completedAt === todayStr());
+  const today = todayStr();
+  const pendingTasks = planner.tasks.filter((t) => !t.done && t.dueDate === today);
+  const overdueTasks = planner.tasks.filter((t) => !t.done && t.dueDate && t.dueDate < today);
+  const completedToday = planner.tasks.filter((t) => t.done && t.completedAt === today);
   const totalToday = pendingTasks.length + completedToday.length;
   const ratio = totalToday === 0 ? 0 : completedToday.length / totalToday;
 
@@ -89,36 +122,38 @@ export default function TodayScreen() {
         </View>
       </Card>
 
+      {overdueTasks.length > 0 && (
+        <>
+          <SectionTitle>Gecikmiş görevler</SectionTitle>
+          {overdueTasks.map((task) => (
+            <TaskCard
+              key={task.id}
+              task={task}
+              overdue
+              isActive={activeTaskId === task.id}
+              onSelect={() => setActiveTaskId(task.id)}
+              onEdit={() => setEditingTaskId(task.id)}
+              onToggleDone={() => planner.toggleTaskDone(task.id)}
+              topicTitleFor={topicTitleFor}
+            />
+          ))}
+        </>
+      )}
+
       <SectionTitle>Bugünkü görevler</SectionTitle>
       {pendingTasks.length === 0 ? (
         <EmptyState text="Bekleyen görev yok. Aşağıdan yeni bir görev ekleyebilirsin." />
       ) : (
         pendingTasks.map((task) => (
-          <Card key={task.id} style={activeTaskId === task.id && styles.activeCard}>
-            <TouchableOpacity onPress={() => setActiveTaskId(task.id)}>
-              <View style={styles.taskRow}>
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.taskTitle}>{task.title}</Text>
-                  <View style={styles.chipRow}>
-                    <Chip label={task.subject} color={subjectColor(task.subject)} />
-                    <Text style={styles.taskMeta}>
-                      {task.estMinutes} dk · +{pointsForTask(task.estMinutes)} puan
-                    </Text>
-                  </View>
-                  {!!task.recurringId && <Text style={styles.topicHint}>🔁 tekrarlayan</Text>}
-                  {!!topicTitleFor(task) && <Text style={styles.topicHint}>📖 {topicTitleFor(task)}</Text>}
-                </View>
-                <View style={styles.taskActions}>
-                  <TouchableOpacity onPress={() => setEditingTaskId(task.id)}>
-                    <Text style={styles.editText}>düzenle</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.doneBtn} onPress={() => planner.toggleTaskDone(task.id)}>
-                    <Text style={styles.doneBtnText}>Tamamla</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </TouchableOpacity>
-          </Card>
+          <TaskCard
+            key={task.id}
+            task={task}
+            isActive={activeTaskId === task.id}
+            onSelect={() => setActiveTaskId(task.id)}
+            onEdit={() => setEditingTaskId(task.id)}
+            onToggleDone={() => planner.toggleTaskDone(task.id)}
+            topicTitleFor={topicTitleFor}
+          />
         ))
       )}
 
@@ -298,6 +333,8 @@ const styles = StyleSheet.create({
   chipRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   taskMeta: { color: colors.textMuted, fontSize: 12 },
   topicHint: { color: colors.textMuted, fontSize: 11, marginTop: 4 },
+  overdueHint: { color: colors.danger, fontSize: 11, marginTop: 4, fontWeight: '700' },
+  overdueCard: { borderColor: colors.danger },
   taskActions: { alignItems: 'flex-end', gap: 6 },
   editText: { color: colors.textMuted, fontSize: 12, fontWeight: '600', textDecorationLine: 'underline' },
   doneBtn: {
