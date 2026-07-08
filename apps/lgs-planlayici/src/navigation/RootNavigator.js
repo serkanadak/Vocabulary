@@ -10,6 +10,7 @@ import CurriculumScreen from '../screens/CurriculumScreen';
 import ExamResultsScreen from '../screens/ExamResultsScreen';
 import RewardsScreen from '../screens/RewardsScreen';
 import ParentScreen from '../screens/ParentScreen';
+import HeaderAvatar from '../components/HeaderAvatar';
 import { colors } from '../theme';
 
 const Tab = createBottomTabNavigator();
@@ -52,6 +53,7 @@ export default function RootNavigator() {
           tabBarActiveTintColor: colors.pink,
           tabBarInactiveTintColor: colors.textMuted,
           tabBarIcon: icon(route.name),
+          headerRight: () => <HeaderAvatar />,
         })}
       >
         <Tab.Screen name="Bugün" component={TodayScreen} />

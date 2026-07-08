@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GoalsScreen from '../screens/GoalsScreen';
 import MonthDetailScreen from '../screens/MonthDetailScreen';
 import WeekDetailScreen from '../screens/WeekDetailScreen';
+import HeaderAvatar from '../components/HeaderAvatar';
 import { colors } from '../theme';
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +27,7 @@ export default function GoalsStackNavigator() {
         headerStyle: { backgroundColor: colors.surface },
         headerTitleStyle: { color: colors.text },
         headerLeft: ({ canGoBack }) => (canGoBack ? <BackButton onPress={navigation.goBack} /> : null),
+        headerRight: () => <HeaderAvatar />,
       })}
     >
       <Stack.Screen name="GoalsHome" component={GoalsScreen} options={{ title: 'Hedefler' }} />
