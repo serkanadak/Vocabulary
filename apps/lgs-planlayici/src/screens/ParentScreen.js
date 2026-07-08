@@ -1,11 +1,82 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
-import { colors } from '../theme';
-import { Card, SectionTitle, Field, PrimaryButton, GhostButton, ProgressBar } from '../components/common';
+import { colors, subjectColor } from '../theme';
+import { Card, SectionTitle, Chip, Field, PrimaryButton, GhostButton, ProgressBar } from '../components/common';
 import { hashPin, verifyPin } from '../logic/pin';
 import { BADGES } from '../data/rewards';
 import { todayStr } from '../logic/calendar';
+import { buildDailyBreakdown, buildWeeklyBreakdown, buildMonthlyBreakdown } from '../logic/periodStats';
+import { SUBJECTS_BY_GRADE } from '../data/curriculum';
+
+function PeriodRow({ row }) {
+  const [open, setOpen] = useState(false);
+  const total = row.completed.length + row.missing.length;
+  const ratio = total === 0 ? 0 : row.completed.length / total;
+  return (
+    <Card>
+      <TouchableOpacity onPress={() => setOpen((o) => !o)}>
+        <View style={styles.periodHeaderRow}>
+          <Text style={styles.periodLabel}>{row.label}</Text>
+          <Text style={styles.mutedText}>
+            {row.completed.length}/{total} tamamlandı
+          </Text>
+        </View>
+        <View style={{ marginTop: 6 }}>
+          <ProgressBar ratio={ratio} color={colors.primary} />
+        </View>
+      </TouchableOpacity>
+      {open && (
+        <View style={{ marginTop: 10 }}>
+          {total === 0 && <Text style={styles.mutedText}>Bu dönemde görev yok.</Text>}
+          {row.completed.map((t) => (
+            <Text key={t.id} style={styles.doneItem}>
+              ✓ {t.title}
+            </Text>
+          ))}
+          {row.missing.map((t) => (
+            <Text key={t.id} style={styles.missingItem}>
+              • {t.title}
+            </Text>
+          ))}
+        </View>
+      )}
+    </Card>
+  );
+}
+
+function SubjectTrend({ subject, points }) {
+  const maxNet = Math.max(1, ...points.map((p) => p.net));
+  const last = points[points.length - 1];
+  const prev = points.length > 1 ? points[points.length - 2] : null;
+  const delta = prev ? last.net - prev.net : null;
+
+  return (
+    <Card>
+      <View style={styles.trendHeaderRow}>
+        <Chip label={subject} color={subjectColor(subject)} />
+        <Text style={styles.trendLast}>{last.net.toFixed(1)} net</Text>
+      </View>
+      <View style={styles.trendBarsRow}>
+        {points.map((p, i) => (
+          <View key={i} style={styles.trendBarTrack}>
+            <View
+              style={[
+                styles.trendBarFill,
+                { height: `${Math.max(8, (p.net / maxNet) * 100)}%`, backgroundColor: subjectColor(subject) },
+              ]}
+            />
+          </View>
+        ))}
+      </View>
+      {delta !== null && (
+        <Text style={[styles.trendDelta, delta >= 0 ? styles.trendUp : styles.trendDown]}>
+          {delta >= 0 ? '▲' : '▼'} {Math.abs(delta).toFixed(1)} önceki denemeye göre
+        </Text>
+      )}
+    </Card>
+  );
+}
 
 export default function ParentScreen() {
   const planner = usePlanner();
@@ -72,6 +143,21 @@ export default function ParentScreen() {
   const lastExam = [...planner.examResults].sort((a, b) => (a.date < b.date ? 1 : -1))[0];
   const unlockedBadgeCount = planner.badges.length;
 
+  const dailyRows = buildDailyBreakdown(planner.tasks);
+  const weeklyRows = buildWeeklyBreakdown(planner.tasks);
+  const monthlyRows = buildMonthlyBreakdown(planner.tasks);
+
+  const sortedExams = [...planner.examResults].sort((a, b) => (a.date < b.date ? -1 : 1));
+  const subjects = SUBJECTS_BY_GRADE[planner.gradeLevel] || [];
+  const subjectTrends = subjects
+    .map((subject) => ({
+      subject,
+      points: sortedExams
+        .filter((e) => e.nets && e.nets[subject] != null)
+        .map((e) => ({ date: e.date, net: e.nets[subject] })),
+    }))
+    .filter((t) => t.points.length > 0 && t.points.some((p) => p.net > 0));
+
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
       <View style={styles.headerRow}>
@@ -106,6 +192,36 @@ export default function ParentScreen() {
         </Text>
       </Card>
 
+      <Card>
+        <Text style={styles.label}>Rozetler</Text>
+        <Text style={styles.value}>
+          {unlockedBadgeCount}/{BADGES.length} rozet kazanıldı
+        </Text>
+      </Card>
+
+      <SectionTitle>Gün gün görev takibi</SectionTitle>
+      {dailyRows.map((row) => (
+        <PeriodRow key={row.key} row={row} />
+      ))}
+
+      <SectionTitle>Hafta hafta görev takibi</SectionTitle>
+      {weeklyRows.map((row) => (
+        <PeriodRow key={row.key} row={row} />
+      ))}
+
+      <SectionTitle>Ay ay görev takibi</SectionTitle>
+      {monthlyRows.map((row) => (
+        <PeriodRow key={row.key} row={row} />
+      ))}
+
+      <SectionTitle>Ders ders deneme trendi</SectionTitle>
+      {subjectTrends.length === 0 ? (
+        <Card>
+          <Text style={styles.mutedText}>Henüz deneme sonucu yok.</Text>
+        </Card>
+      ) : (
+        subjectTrends.map((t) => <SubjectTrend key={t.subject} subject={t.subject} points={t.points} />)
+      )}
       {lastExam && (
         <Card>
           <Text style={styles.label}>Son deneme sonucu</Text>
@@ -114,13 +230,6 @@ export default function ParentScreen() {
           </Text>
         </Card>
       )}
-
-      <Card>
-        <Text style={styles.label}>Rozetler</Text>
-        <Text style={styles.value}>
-          {unlockedBadgeCount}/{BADGES.length} rozet kazanıldı
-        </Text>
-      </Card>
     </ScrollView>
   );
 }
@@ -132,4 +241,16 @@ const styles = StyleSheet.create({
   error: { color: colors.danger, fontSize: 12, marginTop: -4, marginBottom: 8 },
   label: { color: colors.textMuted, fontSize: 12, fontWeight: '600' },
   value: { color: colors.text, fontSize: 15, fontWeight: '700', marginTop: 4 },
+  periodHeaderRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  periodLabel: { color: colors.text, fontSize: 14, fontWeight: '700' },
+  doneItem: { color: colors.textMuted, fontSize: 13, marginTop: 4, textDecorationLine: 'line-through' },
+  missingItem: { color: colors.danger, fontSize: 13, marginTop: 4 },
+  trendHeaderRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
+  trendLast: { color: colors.text, fontSize: 15, fontWeight: '800' },
+  trendBarsRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 4, height: 60 },
+  trendBarTrack: { flex: 1, height: 60, justifyContent: 'flex-end', backgroundColor: colors.surfaceAlt, borderRadius: 4, overflow: 'hidden' },
+  trendBarFill: { width: '100%', borderRadius: 4 },
+  trendDelta: { fontSize: 12, fontWeight: '700', marginTop: 8 },
+  trendUp: { color: colors.success },
+  trendDown: { color: colors.danger },
 });
