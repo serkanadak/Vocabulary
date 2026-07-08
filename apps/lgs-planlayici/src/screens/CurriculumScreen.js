@@ -5,6 +5,7 @@ import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, PrimaryButton, GhostButton } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import MultiChoiceModal from '../components/MultiChoiceModal';
+import DateMultiPicker from '../components/DateMultiPicker';
 import RecurringFields from '../components/RecurringFields';
 import { describeDays } from '../components/WeekdayPicker';
 import { GRADES, SUBJECTS_BY_GRADE } from '../data/curriculum';
@@ -127,6 +128,8 @@ export default function CurriculumScreen({ navigation }) {
   const [recurringEndDate, setRecurringEndDate] = useState('');
   const [pendingMonthTitle, setPendingMonthTitle] = useState('');
   const [monthPickerVisible, setMonthPickerVisible] = useState(false);
+  const [datePickerVisible, setDatePickerVisible] = useState(false);
+  const [taskDraftForDates, setTaskDraftForDates] = useState(null);
 
   const toggle = (subject) => setExpanded((e) => ({ ...e, [subject]: !e[subject] }));
 
@@ -138,6 +141,8 @@ export default function CurriculumScreen({ navigation }) {
     setRecurringMonthId(null);
     setRecurringEndDate('');
     setMonthPickerVisible(false);
+    setDatePickerVisible(false);
+    setTaskDraftForDates(null);
   };
 
   return (
@@ -262,15 +267,26 @@ export default function CurriculumScreen({ navigation }) {
               monthId: recurringMonthId || null,
               endDate: recurringEndDate || null,
             });
+            closePlan();
           } else {
-            planner.addTask(null, {
+            setTaskDraftForDates({
               subject: planFor.subject,
               topicId: planFor.id,
               title: values.title,
               estMinutes,
-              dueDate: todayStr(),
             });
+            setPlanChoice(PLAN_CHOICE.NONE);
+            setDatePickerVisible(true);
           }
+        }}
+      />
+
+      <DateMultiPicker
+        visible={datePickerVisible}
+        initialDates={[todayStr()]}
+        onCancel={closePlan}
+        onConfirm={(dates) => {
+          dates.forEach((dueDate) => planner.addTask(null, { ...taskDraftForDates, dueDate }));
           closePlan();
         }}
       />

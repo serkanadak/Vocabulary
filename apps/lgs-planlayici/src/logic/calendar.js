@@ -69,6 +69,13 @@ export function formatDayLabel(dateStr) {
   return `${WEEKDAY_SHORT[weekdayOf(dateStr)]} ${d}`;
 }
 
+// Ay adı kısaltmasıyla birlikte gün etiketi — birden fazla ayı kapsayan
+// listelerde (ör. çoklu tarih seçici) belirsizliği önlemek için.
+export function formatDayMonthLabel(dateStr) {
+  const { m } = parseYMD(dateStr);
+  return `${formatDayLabel(dateStr)} ${MONTH_NAMES[m - 1].slice(0, 3)}`;
+}
+
 export function formatMonthLabel(year, month) {
   return `${MONTH_NAMES[month - 1]} ${year}`;
 }

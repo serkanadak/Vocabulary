@@ -6,6 +6,7 @@ import { pointsForTask } from '../data/rewards';
 import { Card, SectionTitle, Chip, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import CurriculumPicker from '../components/CurriculumPicker';
+import DateMultiPicker from '../components/DateMultiPicker';
 import RecurringFields from '../components/RecurringFields';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 import { todayStr } from '../logic/calendar';
@@ -24,6 +25,8 @@ export default function WeekDetailScreen({ route }) {
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [editSubjectPickerVisible, setEditSubjectPickerVisible] = useState(false);
   const [editDraft, setEditDraft] = useState(null);
+  const [datePickerVisible, setDatePickerVisible] = useState(false);
+  const [taskDraftForDates, setTaskDraftForDates] = useState(null);
 
   const week = planner.weekGoals.find((w) => w.id === weekId);
   const tasks = planner.tasks.filter((t) => t.weekId === weekId);
@@ -145,22 +148,32 @@ export default function WeekDetailScreen({ route }) {
               monthId: recurringMonthId || null,
               endDate: recurringEndDate || null,
             });
-          } else {
-            const today = todayStr();
-            planner.addTask(week.id, {
-              title: draft.title,
-              subject,
-              topicId,
-              estMinutes,
-              // Görev, geçmişte kalmış bir hafta başlangıcına değil, oluşturulduğu tarihten başlar.
-              dueDate: week.startDate && week.startDate > today ? week.startDate : today,
-            });
+            setPickerVisible(false);
+            setRecurring(false);
+            setRecurringDays([1, 2, 3, 4, 5]);
+            setRecurringMonthId(null);
+            setRecurringEndDate('');
+            return;
           }
+          setTaskDraftForDates({ title: draft.title, subject, topicId, estMinutes });
           setPickerVisible(false);
-          setRecurring(false);
-          setRecurringDays([1, 2, 3, 4, 5]);
-          setRecurringMonthId(null);
-          setRecurringEndDate('');
+          setDatePickerVisible(true);
+        }}
+      />
+
+      <DateMultiPicker
+        visible={datePickerVisible}
+        initialDates={[
+          week.startDate && week.startDate > todayStr() ? week.startDate : todayStr(),
+        ]}
+        onCancel={() => {
+          setDatePickerVisible(false);
+          setTaskDraftForDates(null);
+        }}
+        onConfirm={(dates) => {
+          dates.forEach((dueDate) => planner.addTask(week.id, { ...taskDraftForDates, dueDate }));
+          setDatePickerVisible(false);
+          setTaskDraftForDates(null);
         }}
       />
 
