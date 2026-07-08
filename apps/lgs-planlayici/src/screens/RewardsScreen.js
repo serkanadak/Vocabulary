@@ -12,6 +12,13 @@ export default function RewardsScreen() {
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
+      <Card style={styles.selectedAvatarCard}>
+        <View style={styles.selectedAvatarBubble}>
+          <Text style={styles.selectedAvatarEmoji}>{planner.avatar.emoji}</Text>
+        </View>
+        <Text style={styles.selectedAvatarLabel}>{planner.avatar.label}</Text>
+      </Card>
+
       <Card>
         <Text style={styles.levelTitle}>{planner.level.title}</Text>
         <Text style={styles.points}>{planner.stats.totalPoints} puan</Text>
@@ -87,6 +94,19 @@ export default function RewardsScreen() {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
+  selectedAvatarCard: { alignItems: 'center' },
+  selectedAvatarBubble: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: colors.surfaceAlt,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: colors.pink,
+  },
+  selectedAvatarEmoji: { fontSize: 36 },
+  selectedAvatarLabel: { color: colors.text, fontSize: 14, fontWeight: '700', marginTop: 8 },
   levelTitle: { color: colors.gold, fontSize: 22, fontWeight: '800' },
   points: { color: colors.textMuted, fontSize: 14, marginTop: 2 },
   nextLevel: { color: colors.textMuted, fontSize: 12, marginTop: 6 },
