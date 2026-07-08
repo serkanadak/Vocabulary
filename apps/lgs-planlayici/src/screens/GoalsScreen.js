@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
-import { Card, SectionTitle, Chip, PrimaryButton, GhostButton, EmptyState } from '../components/common';
+import { Card, SectionTitle, Chip, PrimaryButton, GhostButton, EmptyState, Field } from '../components/common';
 import PromptModal from '../components/PromptModal';
+import MultiChoiceModal from '../components/MultiChoiceModal';
 import ChoiceModal from '../components/ChoiceModal';
 import CurriculumPicker from '../components/CurriculumPicker';
 import WeekdayPicker, { describeDays } from '../components/WeekdayPicker';
@@ -17,6 +18,8 @@ const MONTH_OPTIONS = nextMonths(12).map((m) => ({
   month: m.month,
 }));
 
+const NONE_MONTH_VALUE = '__none__';
+
 export default function GoalsScreen({ navigation }) {
   const planner = usePlanner();
   const [yearModal, setYearModal] = useState(false);
@@ -27,6 +30,9 @@ export default function GoalsScreen({ navigation }) {
   const [editRecurringDays, setEditRecurringDays] = useState([1, 2, 3, 4, 5]);
   const [editRecurringPickerVisible, setEditRecurringPickerVisible] = useState(false);
   const [editRecurringDraft, setEditRecurringDraft] = useState(null);
+  const [editRecurringMonthId, setEditRecurringMonthId] = useState(null);
+  const [editRecurringEndDate, setEditRecurringEndDate] = useState('');
+  const [editRecurringMonthPickerVisible, setEditRecurringMonthPickerVisible] = useState(false);
 
   const weeksFor = (monthId) => planner.weekGoals.filter((w) => w.monthId === monthId);
   const taskCountFor = (weekId) => planner.tasks.filter((t) => t.weekId === weekId).length;
@@ -118,12 +124,20 @@ export default function GoalsScreen({ navigation }) {
                   <Text style={styles.mutedText}>{describeDays(r.daysOfWeek)} · {r.estMinutes} dk</Text>
                 </View>
                 {!!topicTitleForRecurring(r) && <Text style={styles.mutedText}>📖 {topicTitleForRecurring(r)}</Text>}
+                {!!r.monthId && (
+                  <Text style={styles.mutedText}>
+                    🗓 {planner.monthGoals.find((m) => m.id === r.monthId)?.title || 'aylık hedef'}
+                    {r.endDate ? ` · ${r.endDate} tarihine kadar` : ''}
+                  </Text>
+                )}
               </View>
               <View style={styles.recurActions}>
                 <TouchableOpacity
                   onPress={() => {
                     setEditingRecurringId(r.id);
                     setEditRecurringDays(r.daysOfWeek);
+                    setEditRecurringMonthId(r.monthId || null);
+                    setEditRecurringEndDate(r.endDate || '');
                   }}
                 >
                   <Text style={styles.editText}>düzenle</Text>
@@ -169,14 +183,16 @@ export default function GoalsScreen({ navigation }) {
         }}
       />
 
-      <ChoiceModal
+      <MultiChoiceModal
         visible={monthPickerVisible}
-        title="Hangi aya ait olsun?"
+        title="Hangi aylara ait olsun? (birden fazla seçebilirsin)"
         options={MONTH_OPTIONS}
         onCancel={() => setMonthPickerVisible(false)}
-        onSelect={(value) => {
-          const opt = MONTH_OPTIONS.find((o) => o.value === value);
-          planner.addMonthGoal({ title: pendingMonthTitle, year: opt.year, month: opt.month });
+        onConfirm={(values) => {
+          values.forEach((value) => {
+            const opt = MONTH_OPTIONS.find((o) => o.value === value);
+            planner.addMonthGoal({ title: pendingMonthTitle, year: opt.year, month: opt.month });
+          });
           setMonthPickerVisible(false);
         }}
       />
@@ -193,36 +209,71 @@ export default function GoalsScreen({ navigation }) {
           estMinutes: editingRecurring ? String(editingRecurring.estMinutes) : '',
         }}
         onCancel={() => setEditingRecurringId(null)}
-        renderExtra={(values) => (
-          <View style={{ marginBottom: 8 }}>
-            <Text style={styles.mutedText}>Hangi günler?</Text>
-            <WeekdayPicker days={editRecurringDays} onChange={setEditRecurringDays} />
-            <Text style={styles.mutedText}>
-              Ders: {editingRecurring ? editingRecurring.subject : ''}
-              {editingRecurring && topicTitleForRecurring(editingRecurring)
-                ? ` · ${topicTitleForRecurring(editingRecurring)}`
-                : ''}
-            </Text>
-            <View style={{ marginTop: 8 }}>
+        renderExtra={(values) => {
+          const linkedMonth = editRecurringMonthId
+            ? planner.monthGoals.find((m) => m.id === editRecurringMonthId)
+            : null;
+          return (
+            <View style={{ marginBottom: 8 }}>
+              <Text style={styles.mutedText}>Hangi günler?</Text>
+              <WeekdayPicker days={editRecurringDays} onChange={setEditRecurringDays} />
+              <Text style={styles.mutedText}>
+                Ders: {editingRecurring ? editingRecurring.subject : ''}
+                {editingRecurring && topicTitleForRecurring(editingRecurring)
+                  ? ` · ${topicTitleForRecurring(editingRecurring)}`
+                  : ''}
+              </Text>
+              <View style={{ marginTop: 8 }}>
+                <GhostButton
+                  label="Ders / Konu değiştir"
+                  onPress={() => {
+                    setEditRecurringDraft({ id: editingRecurringId, title: values.title, estMinutes: values.estMinutes });
+                    setEditingRecurringId(null);
+                    setEditRecurringPickerVisible(true);
+                  }}
+                />
+              </View>
+              <Text style={styles.mutedText}>Hangi aylık hedefe bağlı? (opsiyonel)</Text>
               <GhostButton
-                label="Ders / Konu değiştir"
-                onPress={() => {
-                  setEditRecurringDraft({ id: editingRecurringId, title: values.title, estMinutes: values.estMinutes });
-                  setEditingRecurringId(null);
-                  setEditRecurringPickerVisible(true);
-                }}
+                label={linkedMonth ? linkedMonth.title : 'Bağımsız (belirli bir aya bağlı değil)'}
+                onPress={() => setEditRecurringMonthPickerVisible(true)}
               />
+              {!!linkedMonth && (
+                <Field
+                  label="Son tekrar tarihi (opsiyonel, YYYY-AA-GG)"
+                  placeholder={`örn. ${linkedMonth.title} bitimine kadar boş bırak`}
+                  value={editRecurringEndDate}
+                  onChangeText={setEditRecurringEndDate}
+                />
+              )}
             </View>
-          </View>
-        )}
+          );
+        }}
         onSubmit={(values) => {
           if (!values.title || !editingRecurringId) return;
           planner.updateRecurringTask(editingRecurringId, {
             title: values.title,
             estMinutes: Number(values.estMinutes) || editingRecurring.estMinutes,
             daysOfWeek: editRecurringDays,
+            monthId: editRecurringMonthId || null,
+            endDate: editRecurringEndDate || null,
           });
           setEditingRecurringId(null);
+        }}
+      />
+
+      <ChoiceModal
+        visible={editRecurringMonthPickerVisible}
+        title="Hangi aylık hedefe bağlı olsun?"
+        options={[
+          { label: 'Bağımsız (belirli bir aya bağlı değil)', value: NONE_MONTH_VALUE },
+          ...planner.monthGoals.map((m) => ({ label: m.title, value: m.id })),
+        ]}
+        onCancel={() => setEditRecurringMonthPickerVisible(false)}
+        onSelect={(value) => {
+          setEditRecurringMonthId(value === NONE_MONTH_VALUE ? null : value);
+          if (value === NONE_MONTH_VALUE) setEditRecurringEndDate('');
+          setEditRecurringMonthPickerVisible(false);
         }}
       />
 
@@ -240,6 +291,8 @@ export default function GoalsScreen({ navigation }) {
               title: editRecurringDraft.title,
               estMinutes: Number(editRecurringDraft.estMinutes) || 15,
               daysOfWeek: editRecurringDays,
+              monthId: editRecurringMonthId || null,
+              endDate: editRecurringEndDate || null,
               subject,
               topicId,
             });

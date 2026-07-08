@@ -4,7 +4,7 @@ import { buildInitialCurriculum } from '../data/curriculum';
 import { pointsForTask, levelForPoints, evaluateBadges } from '../data/rewards';
 import { AVATARS, defaultAvatarId, avatarById, evaluateAvatarUnlocks } from '../data/avatars';
 import { computeStreaks } from '../logic/streak';
-import { todayStr, mondayOf } from '../logic/calendar';
+import { todayStr, mondayOf, weekDates, weekdayOfDateStr, monthWeekStarts } from '../logic/calendar';
 
 const STORAGE_KEY = '@lgs_planlayici_v1';
 const PlannerContext = createContext(null);
@@ -46,14 +46,24 @@ function reducer(state, action) {
     case 'SET_YEAR_GOAL':
       return { ...state, yearGoal: { ...(state.yearGoal || {}), ...action.patch } };
 
-    case 'ADD_MONTH_GOAL':
+    case 'ADD_MONTH_GOAL': {
+      const id = action.data.id || uid('month');
+      const month = { gradeLevel: state.gradeLevel, ...action.data, id };
+      // Aylık hedef oluşturulunca ayın tüm haftaları aynı adla altına otomatik açılır.
+      const autoWeeks = (month.year && month.month ? monthWeekStarts(month.year, month.month) : []).map(
+        (startDate, i) => ({
+          id: uid('week'),
+          monthId: id,
+          title: `${month.title} - ${i + 1}. Hafta`,
+          startDate,
+        })
+      );
       return {
         ...state,
-        monthGoals: [
-          ...state.monthGoals,
-          { gradeLevel: state.gradeLevel, ...action.data, id: action.data.id || uid('month') },
-        ],
+        monthGoals: [...state.monthGoals, month],
+        weekGoals: [...state.weekGoals, ...autoWeeks],
       };
+    }
     case 'UPDATE_MONTH_GOAL':
       return {
         ...state,
@@ -204,20 +214,55 @@ export function PlannerProvider({ children }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.loaded, state.tasks, state.examResults, state.curriculum]);
 
-  // Aktif tekrarlayan görevlerden bugüne düşenleri, henüz oluşturulmadıysa üret.
-  // İçinde bulunulan haftaya ait bir haftalık hedef varsa (Pazartesi tarihi eşleşiyorsa),
-  // üretilen görev o haftaya bağlanır — böylece "ayrı" görünmez, haftalık planın içinde belirir.
+  // Aktif tekrarlayan görevlerden üretilmesi gerekenleri, henüz oluşturulmadıysa üret.
+  // Bir aylık hedefe bağlı olan periyodik görevler, o hedefin TÜM haftalarına
+  // (son tekrar tarihine kadar) dağıtılır — böylece tek bir haftaya değil,
+  // bağlı olduğu aylık planın bütününe uygulanmış olur. Aya bağlı olmayanlar ise
+  // eskisi gibi yalnızca bugün için üretilir ve (varsa) içinde bulunulan haftaya iliştirilir.
   useEffect(() => {
     if (!state.loaded) return;
     const today = todayStr();
     const todayWeekday = new Date().getDay();
     const currentMonday = mondayOf(today);
-    const alreadyGenerated = new Set(
-      state.tasks.filter((t) => t.recurringId && t.dueDate === today).map((t) => t.recurringId)
+    const existingKeys = new Set(
+      state.tasks.filter((t) => t.recurringId).map((t) => `${t.recurringId}__${t.dueDate}`)
     );
     const matchingWeeks = state.weekGoals.filter((w) => w.startDate === currentMonday);
+
+    const addRecurringInstance = (r, weekId, dueDate) => {
+      const key = `${r.id}__${dueDate}`;
+      if (existingKeys.has(key)) return;
+      existingKeys.add(key);
+      dispatch({
+        type: 'ADD_TASK',
+        weekId,
+        data: {
+          title: r.title,
+          subject: r.subject,
+          topicId: r.topicId || null,
+          estMinutes: r.estMinutes,
+          recurringId: r.id,
+          dueDate,
+        },
+      });
+    };
+
     state.recurringTasks.forEach((r) => {
-      if (!r.active || alreadyGenerated.has(r.id) || !r.daysOfWeek.includes(todayWeekday)) return;
+      if (!r.active) return;
+
+      if (r.monthId) {
+        const weeksOfMonth = state.weekGoals.filter((w) => w.monthId === r.monthId);
+        weeksOfMonth.forEach((week) => {
+          weekDates(week.startDate).forEach((dateStr) => {
+            if (r.endDate && dateStr > r.endDate) return;
+            if (!r.daysOfWeek.includes(weekdayOfDateStr(dateStr))) return;
+            addRecurringInstance(r, week.id, dateStr);
+          });
+        });
+        return;
+      }
+
+      if (!r.daysOfWeek.includes(todayWeekday)) return;
       let weekId = null;
       if (matchingWeeks.length === 1) {
         weekId = matchingWeeks[0].id;
@@ -228,18 +273,7 @@ export function PlannerProvider({ children }) {
         });
         weekId = (bySubject || matchingWeeks[0]).id;
       }
-      dispatch({
-        type: 'ADD_TASK',
-        weekId,
-        data: {
-          title: r.title,
-          subject: r.subject,
-          topicId: r.topicId || null,
-          estMinutes: r.estMinutes,
-          recurringId: r.id,
-          dueDate: today,
-        },
-      });
+      addRecurringInstance(r, weekId, today);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.loaded, state.recurringTasks, state.tasks, state.weekGoals, state.monthGoals]);

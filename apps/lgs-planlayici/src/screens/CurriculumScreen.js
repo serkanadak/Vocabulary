@@ -4,7 +4,7 @@ import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, PrimaryButton, GhostButton } from '../components/common';
 import PromptModal from '../components/PromptModal';
-import ChoiceModal from '../components/ChoiceModal';
+import MultiChoiceModal from '../components/MultiChoiceModal';
 import RecurringFields from '../components/RecurringFields';
 import { describeDays } from '../components/WeekdayPicker';
 import { GRADES, SUBJECTS_BY_GRADE } from '../data/curriculum';
@@ -123,6 +123,8 @@ export default function CurriculumScreen({ navigation }) {
   const [planChoice, setPlanChoice] = useState(PLAN_CHOICE.NONE);
   const [recurring, setRecurring] = useState(false);
   const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
+  const [recurringMonthId, setRecurringMonthId] = useState(null);
+  const [recurringEndDate, setRecurringEndDate] = useState('');
   const [pendingMonthTitle, setPendingMonthTitle] = useState('');
   const [monthPickerVisible, setMonthPickerVisible] = useState(false);
 
@@ -133,6 +135,8 @@ export default function CurriculumScreen({ navigation }) {
     setPlanChoice(PLAN_CHOICE.NONE);
     setRecurring(false);
     setRecurringDays([1, 2, 3, 4, 5]);
+    setRecurringMonthId(null);
+    setRecurringEndDate('');
     setMonthPickerVisible(false);
   };
 
@@ -238,6 +242,11 @@ export default function CurriculumScreen({ navigation }) {
             onToggleEnabled={setRecurring}
             days={recurringDays}
             onChangeDays={setRecurringDays}
+            monthGoals={planner.monthGoals}
+            monthId={recurringMonthId}
+            onChangeMonthId={setRecurringMonthId}
+            endDate={recurringEndDate}
+            onChangeEndDate={setRecurringEndDate}
           />
         )}
         onSubmit={(values) => {
@@ -250,6 +259,8 @@ export default function CurriculumScreen({ navigation }) {
               title: values.title,
               estMinutes,
               daysOfWeek: recurringDays,
+              monthId: recurringMonthId || null,
+              endDate: recurringEndDate || null,
             });
           } else {
             planner.addTask(null, {
@@ -278,25 +289,29 @@ export default function CurriculumScreen({ navigation }) {
         }}
       />
 
-      <ChoiceModal
+      <MultiChoiceModal
         visible={monthPickerVisible}
-        title="Hangi aya ait olsun?"
+        title="Hangi aylara ait olsun? (birden fazla seçebilirsin)"
         options={MONTH_OPTIONS}
         onCancel={closePlan}
-        onSelect={(value) => {
+        onConfirm={(values) => {
           if (!planFor) return;
-          const opt = MONTH_OPTIONS.find((o) => o.value === value);
-          const monthId = uid('month');
-          planner.addMonthGoal({
-            id: monthId,
-            title: pendingMonthTitle,
-            subject: planFor.subject,
-            topicId: planFor.id,
-            year: opt.year,
-            month: opt.month,
+          let firstMonthId = null;
+          values.forEach((value) => {
+            const opt = MONTH_OPTIONS.find((o) => o.value === value);
+            const monthId = uid('month');
+            if (!firstMonthId) firstMonthId = monthId;
+            planner.addMonthGoal({
+              id: monthId,
+              title: pendingMonthTitle,
+              subject: planFor.subject,
+              topicId: planFor.id,
+              year: opt.year,
+              month: opt.month,
+            });
           });
           closePlan();
-          navigation.navigate('Hedefler', { screen: 'MonthDetail', params: { monthId } });
+          if (firstMonthId) navigation.navigate('Hedefler', { screen: 'MonthDetail', params: { monthId: firstMonthId } });
         }}
       />
     </ScrollView>

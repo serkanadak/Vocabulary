@@ -19,6 +19,8 @@ export default function TodayScreen() {
   const [pendingTask, setPendingTask] = useState(null);
   const [recurring, setRecurring] = useState(false);
   const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
+  const [recurringMonthId, setRecurringMonthId] = useState(null);
+  const [recurringEndDate, setRecurringEndDate] = useState('');
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [editSubjectPickerVisible, setEditSubjectPickerVisible] = useState(false);
   const [editDraft, setEditDraft] = useState(null);
@@ -153,6 +155,11 @@ export default function TodayScreen() {
             onToggleEnabled={setRecurring}
             days={recurringDays}
             onChangeDays={setRecurringDays}
+            monthGoals={planner.monthGoals}
+            monthId={recurringMonthId}
+            onChangeMonthId={setRecurringMonthId}
+            endDate={recurringEndDate}
+            onChangeEndDate={setRecurringEndDate}
           />
         )}
         onSubmit={(values) => {
@@ -177,6 +184,8 @@ export default function TodayScreen() {
               title: pendingTask.title,
               estMinutes,
               daysOfWeek: recurringDays,
+              monthId: recurringMonthId || null,
+              endDate: recurringEndDate || null,
             });
           } else {
             planner.addTask(null, {
@@ -190,6 +199,8 @@ export default function TodayScreen() {
           setPickerVisible(false);
           setRecurring(false);
           setRecurringDays([1, 2, 3, 4, 5]);
+          setRecurringMonthId(null);
+          setRecurringEndDate('');
         }}
       />
 

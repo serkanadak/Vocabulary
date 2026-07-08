@@ -19,6 +19,8 @@ export default function WeekDetailScreen({ route }) {
   const [draft, setDraft] = useState(null);
   const [recurring, setRecurring] = useState(false);
   const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
+  const [recurringMonthId, setRecurringMonthId] = useState(null);
+  const [recurringEndDate, setRecurringEndDate] = useState('');
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [editSubjectPickerVisible, setEditSubjectPickerVisible] = useState(false);
   const [editDraft, setEditDraft] = useState(null);
@@ -111,6 +113,11 @@ export default function WeekDetailScreen({ route }) {
             onToggleEnabled={setRecurring}
             days={recurringDays}
             onChangeDays={setRecurringDays}
+            monthGoals={planner.monthGoals}
+            monthId={recurringMonthId}
+            onChangeMonthId={setRecurringMonthId}
+            endDate={recurringEndDate}
+            onChangeEndDate={setRecurringEndDate}
           />
         )}
         onSubmit={(values) => {
@@ -135,6 +142,8 @@ export default function WeekDetailScreen({ route }) {
               title: draft.title,
               estMinutes,
               daysOfWeek: recurringDays,
+              monthId: recurringMonthId || null,
+              endDate: recurringEndDate || null,
             });
           } else {
             planner.addTask(week.id, {
@@ -148,6 +157,8 @@ export default function WeekDetailScreen({ route }) {
           setPickerVisible(false);
           setRecurring(false);
           setRecurringDays([1, 2, 3, 4, 5]);
+          setRecurringMonthId(null);
+          setRecurringEndDate('');
         }}
       />
 
