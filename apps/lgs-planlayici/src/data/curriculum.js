@@ -1,10 +1,13 @@
-// MEB güncel öğretim programından derlenen 6-7-8. sınıf konu ağacı (tohum veri).
+// MEB güncel öğretim programından derlenen 5-6-7-8. sınıf konu ağacı (tohum veri).
 // İngilizce ve Din Kültürü üniteleri bu araştırmada teyit edilemediği için boş
 // bırakıldı — kullanıcı Müfredat ekranından kendi konularını ekleyebilir.
+// Not: 5. sınıf 2025-2026'dan itibaren yeni "Türkiye Yüzyılı Maarif Modeli"ne
+// göre okutulmaktadır; 6-7-8. sınıflar henüz önceki programı kullanır.
 
-export const GRADES = [6, 7, 8];
+export const GRADES = [5, 6, 7, 8];
 
 export const SUBJECTS_BY_GRADE = {
+  5: ['Türkçe', 'Matematik', 'Fen Bilimleri', 'Sosyal Bilgiler', 'İngilizce', 'Din Kültürü ve Ahlak Bilgisi'],
   6: ['Türkçe', 'Matematik', 'Fen Bilimleri', 'Sosyal Bilgiler', 'İngilizce', 'Din Kültürü ve Ahlak Bilgisi'],
   7: ['Türkçe', 'Matematik', 'Fen Bilimleri', 'Sosyal Bilgiler', 'İngilizce', 'Din Kültürü ve Ahlak Bilgisi'],
   8: [
@@ -18,6 +21,31 @@ export const SUBJECTS_BY_GRADE = {
 };
 
 const SEED_TOPICS = {
+  5: {
+    Türkçe: [
+      'Sözcükte Anlam', 'Cümlede Anlam', 'Parçada Anlam',
+      'Sözcükler Arası Anlam İlişkileri', 'Kökler ve Ekler',
+      'Deyimler ve Atasözleri', 'Ses Bilgisi', 'Yazım Kuralları',
+      'Noktalama İşaretleri', 'Metin Türleri', 'Görsel Okuma',
+    ],
+    Matematik: [
+      'Doğal Sayılar ve İşlemler', 'Kesirler', 'Ondalık Gösterim',
+      'Temel Geometrik Kavramlar', 'Açılar', 'Üçgen ve Dörtgenler', 'Veri Analizi',
+    ],
+    'Fen Bilimleri': [
+      'Gökyüzündeki Komşularımız ve Biz (Güneş, Ay, Dünya)',
+      'Kuvveti Tanıyalım (Kuvvet Ölçme, Kütle-Ağırlık, Sürtünme)',
+      'Canlıların Yapısına Yolculuk (Hücre, Destek ve Hareket Sistemi)',
+      'Işığın Dünyası (Yayılma, Madde ile Etkileşim, Gölge)',
+      'Maddenin Doğası (Tanecikli Yapı, Isı ve Sıcaklık, Hâl Değişimi)',
+    ],
+    'Sosyal Bilgiler': [
+      'Birlikte Yaşamak', 'Evimiz Dünya', 'Ortak Mirasımız',
+      'Yaşayan Demokrasimiz', 'Hayatımızdaki Ekonomi', 'Teknoloji',
+    ],
+    İngilizce: [],
+    'Din Kültürü ve Ahlak Bilgisi': [],
+  },
   6: {
     Türkçe: [
       'Sözcükte Anlam', 'Cümlede Anlam', 'Parçada Anlam', 'Yazım Kuralları',
