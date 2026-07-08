@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
 import { pointsForTask } from '../data/rewards';
 import { Card, SectionTitle, Chip, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
+import ConfirmModal from '../components/ConfirmModal';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 
 const STEP = { NONE: 'none', SUBJECT: 'subject', TOPIC: 'topic' };
@@ -17,6 +18,8 @@ export default function WeekDetailScreen({ route, navigation }) {
   const [taskModal, setTaskModal] = useState(false);
   const [step, setStep] = useState(STEP.NONE);
   const [draft, setDraft] = useState(null);
+  const [deleteWeekConfirm, setDeleteWeekConfirm] = useState(false);
+  const [deleteTaskTarget, setDeleteTaskTarget] = useState(null);
 
   const week = planner.weekGoals.find((w) => w.id === weekId);
   const tasks = planner.tasks.filter((t) => t.weekId === weekId);
@@ -34,23 +37,7 @@ export default function WeekDetailScreen({ route, navigation }) {
         <View style={styles.row}>
           <GhostButton label="Düzenle" onPress={() => setEditModal(true)} />
           <View style={{ width: 10 }} />
-          <GhostButton
-            label="Sil"
-            danger
-            onPress={() =>
-              Alert.alert('Haftalık planı sil', 'Bu plana bağlı görevler de silinecek.', [
-                { text: 'Vazgeç', style: 'cancel' },
-                {
-                  text: 'Sil',
-                  style: 'destructive',
-                  onPress: () => {
-                    planner.deleteWeekGoal(week.id);
-                    navigation.goBack();
-                  },
-                },
-              ])
-            }
-          />
+          <GhostButton label="Sil" danger onPress={() => setDeleteWeekConfirm(true)} />
         </View>
       </Card>
 
@@ -70,9 +57,14 @@ export default function WeekDetailScreen({ route, navigation }) {
                   </Text>
                 </View>
               </View>
-              <TouchableOpacity onPress={() => planner.toggleTaskDone(task.id)}>
-                <Text style={styles.toggleText}>{task.done ? 'geri al' : 'tamamla'}</Text>
-              </TouchableOpacity>
+              <View style={styles.taskActions}>
+                <TouchableOpacity onPress={() => planner.toggleTaskDone(task.id)}>
+                  <Text style={styles.toggleText}>{task.done ? 'geri al' : 'tamamla'}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setDeleteTaskTarget(task)}>
+                  <Text style={styles.deleteText}>sil</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </Card>
         ))
@@ -144,6 +136,29 @@ export default function WeekDetailScreen({ route, navigation }) {
           setStep(STEP.NONE);
         }}
       />
+
+      <ConfirmModal
+        visible={deleteWeekConfirm}
+        title="Haftalık planı sil"
+        message="Bu plana bağlı görevler de silinecek."
+        onCancel={() => setDeleteWeekConfirm(false)}
+        onConfirm={() => {
+          planner.deleteWeekGoal(week.id);
+          setDeleteWeekConfirm(false);
+          navigation.goBack();
+        }}
+      />
+
+      <ConfirmModal
+        visible={!!deleteTaskTarget}
+        title="Görevi sil"
+        message={deleteTaskTarget ? `"${deleteTaskTarget.title}" silinsin mi?` : ''}
+        onCancel={() => setDeleteTaskTarget(null)}
+        onConfirm={() => {
+          planner.deleteTask(deleteTaskTarget.id);
+          setDeleteTaskTarget(null);
+        }}
+      />
     </ScrollView>
   );
 }
@@ -157,5 +172,7 @@ const styles = StyleSheet.create({
   doneText: { textDecorationLine: 'line-through', color: colors.textMuted },
   chipRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   taskMeta: { color: colors.textMuted, fontSize: 12 },
+  taskActions: { alignItems: 'flex-end', gap: 6 },
   toggleText: { color: colors.primary, fontSize: 12, fontWeight: '700' },
+  deleteText: { color: colors.danger, fontSize: 11 },
 });

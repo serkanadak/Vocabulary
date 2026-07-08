@@ -4,16 +4,26 @@ import { usePlanner } from '../state/PlannerContext';
 import { colors } from '../theme';
 import { Card, SectionTitle, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
+import ChoiceModal from '../components/ChoiceModal';
+import { GRADES } from '../data/curriculum';
 
 export default function GoalsScreen({ navigation }) {
   const planner = usePlanner();
   const [yearModal, setYearModal] = useState(false);
   const [monthModal, setMonthModal] = useState(false);
+  const [gradeModal, setGradeModal] = useState(false);
 
   const weekCountFor = (monthId) => planner.weekGoals.filter((w) => w.monthId === monthId).length;
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
+      <Card>
+        <View style={styles.gradeRow}>
+          <Text style={styles.gradeLabel}>Sınıf: {planner.gradeLevel}</Text>
+          <GhostButton label="Değiştir" onPress={() => setGradeModal(true)} />
+        </View>
+      </Card>
+
       <SectionTitle>Yıllık hedef</SectionTitle>
       <Card>
         {planner.yearGoal ? (
@@ -78,12 +88,25 @@ export default function GoalsScreen({ navigation }) {
           setMonthModal(false);
         }}
       />
+
+      <ChoiceModal
+        visible={gradeModal}
+        title="Sınıf seç"
+        options={GRADES.map((g) => ({ label: `${g}. sınıf`, value: g }))}
+        onCancel={() => setGradeModal(false)}
+        onSelect={(g) => {
+          planner.setGrade(g);
+          setGradeModal(false);
+        }}
+      />
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
+  gradeRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  gradeLabel: { color: colors.text, fontSize: 15, fontWeight: '700' },
   yearTitle: { color: colors.text, fontSize: 16, fontWeight: '700' },
   yearSub: { color: colors.textMuted, fontSize: 13, marginTop: 4 },
   monthTitle: { color: colors.text, fontSize: 15, fontWeight: '700' },

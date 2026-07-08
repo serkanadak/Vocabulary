@@ -7,6 +7,7 @@ import { pointsForTask } from '../data/rewards';
 import { Card, SectionTitle, Chip, ProgressBar, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
+import ConfirmModal from '../components/ConfirmModal';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 
 export default function TodayScreen() {
@@ -16,6 +17,7 @@ export default function TodayScreen() {
   const [addVisible, setAddVisible] = useState(false);
   const [subjectPickerFor, setSubjectPickerFor] = useState(null);
   const [pendingSubject, setPendingSubject] = useState(null);
+  const [deleteTarget, setDeleteTarget] = useState(null);
 
   const pendingTasks = planner.tasks.filter((t) => !t.done);
   const completedToday = planner.tasks.filter(
@@ -85,9 +87,14 @@ export default function TodayScreen() {
                     </Text>
                   </View>
                 </View>
-                <TouchableOpacity style={styles.doneBtn} onPress={() => planner.toggleTaskDone(task.id)}>
-                  <Text style={styles.doneBtnText}>Tamamla</Text>
-                </TouchableOpacity>
+                <View style={styles.taskActions}>
+                  <TouchableOpacity style={styles.doneBtn} onPress={() => planner.toggleTaskDone(task.id)}>
+                    <Text style={styles.doneBtnText}>Tamamla</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setDeleteTarget(task)}>
+                    <Text style={styles.deleteText}>sil</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </TouchableOpacity>
           </Card>
@@ -101,9 +108,14 @@ export default function TodayScreen() {
             <Card key={task.id}>
               <View style={styles.taskRow}>
                 <Text style={[styles.taskTitle, styles.doneText]}>{task.title}</Text>
-                <TouchableOpacity onPress={() => planner.toggleTaskDone(task.id)}>
-                  <Text style={styles.undoText}>geri al</Text>
-                </TouchableOpacity>
+                <View style={styles.taskActions}>
+                  <TouchableOpacity onPress={() => planner.toggleTaskDone(task.id)}>
+                    <Text style={styles.undoText}>geri al</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setDeleteTarget(task)}>
+                    <Text style={styles.deleteText}>sil</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </Card>
           ))}
@@ -144,6 +156,17 @@ export default function TodayScreen() {
           setSubjectPickerFor(null);
         }}
       />
+
+      <ConfirmModal
+        visible={!!deleteTarget}
+        title="Görevi sil"
+        message={deleteTarget ? `"${deleteTarget.title}" silinsin mi?` : ''}
+        onCancel={() => setDeleteTarget(null)}
+        onConfirm={() => {
+          planner.deleteTask(deleteTarget.id);
+          setDeleteTarget(null);
+        }}
+      />
     </ScrollView>
   );
 }
@@ -173,6 +196,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   doneBtnText: { color: '#0f172a', fontWeight: '700', fontSize: 12 },
+  taskActions: { alignItems: 'flex-end', gap: 6 },
   undoText: { color: colors.textMuted, fontSize: 12, textDecorationLine: 'underline' },
+  deleteText: { color: colors.danger, fontSize: 11 },
   activeCard: { borderColor: colors.primary },
 });

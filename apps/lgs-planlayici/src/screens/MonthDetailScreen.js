@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
 import { colors } from '../theme';
 import { Card, SectionTitle, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
+import ConfirmModal from '../components/ConfirmModal';
 
 export default function MonthDetailScreen({ route, navigation }) {
   const { monthId } = route.params;
   const planner = usePlanner();
   const [weekModal, setWeekModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
 
   const month = planner.monthGoals.find((m) => m.id === monthId);
   const weeks = planner.weekGoals.filter((w) => w.monthId === monthId);
@@ -24,23 +26,7 @@ export default function MonthDetailScreen({ route, navigation }) {
         <View style={styles.row}>
           <GhostButton label="Düzenle" onPress={() => setEditModal(true)} />
           <View style={{ width: 10 }} />
-          <GhostButton
-            label="Sil"
-            danger
-            onPress={() =>
-              Alert.alert('Aylık hedefi sil', 'Bu hedefe bağlı haftalar ve görevler de silinecek.', [
-                { text: 'Vazgeç', style: 'cancel' },
-                {
-                  text: 'Sil',
-                  style: 'destructive',
-                  onPress: () => {
-                    planner.deleteMonthGoal(month.id);
-                    navigation.goBack();
-                  },
-                },
-              ])
-            }
-          />
+          <GhostButton label="Sil" danger onPress={() => setDeleteConfirm(true)} />
         </View>
       </Card>
 
@@ -82,6 +68,18 @@ export default function MonthDetailScreen({ route, navigation }) {
           if (!values.title) return;
           planner.addWeekGoal(month.id, { title: values.title });
           setWeekModal(false);
+        }}
+      />
+
+      <ConfirmModal
+        visible={deleteConfirm}
+        title="Aylık hedefi sil"
+        message="Bu hedefe bağlı haftalar ve görevler de silinecek."
+        onCancel={() => setDeleteConfirm(false)}
+        onConfirm={() => {
+          planner.deleteMonthGoal(month.id);
+          setDeleteConfirm(false);
+          navigation.goBack();
         }}
       />
     </ScrollView>

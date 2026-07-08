@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, ProgressBar, PrimaryButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
+import ConfirmModal from '../components/ConfirmModal';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 
 function todayStr() {
@@ -13,6 +14,7 @@ function todayStr() {
 export default function ExamResultsScreen() {
   const planner = usePlanner();
   const [modalVisible, setModalVisible] = useState(false);
+  const [deleteTarget, setDeleteTarget] = useState(null);
   const subjects = SUBJECTS_BY_GRADE[planner.gradeLevel] || [];
 
   const results = [...planner.examResults].sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -33,14 +35,7 @@ export default function ExamResultsScreen() {
           <Card key={r.id}>
             <View style={styles.rowBetween}>
               <Text style={styles.date}>{r.date}</Text>
-              <TouchableOpacity
-                onPress={() =>
-                  Alert.alert('Sonucu sil', 'Bu deneme sonucu silinsin mi?', [
-                    { text: 'Vazgeç', style: 'cancel' },
-                    { text: 'Sil', style: 'destructive', onPress: () => planner.deleteExamResult(r.id) },
-                  ])
-                }
-              >
+              <TouchableOpacity onPress={() => setDeleteTarget(r)}>
                 <Text style={styles.deleteText}>sil</Text>
               </TouchableOpacity>
             </View>
@@ -83,6 +78,17 @@ export default function ExamResultsScreen() {
             totalNet: total,
           });
           setModalVisible(false);
+        }}
+      />
+
+      <ConfirmModal
+        visible={!!deleteTarget}
+        title="Sonucu sil"
+        message="Bu deneme sonucu silinsin mi?"
+        onCancel={() => setDeleteTarget(null)}
+        onConfirm={() => {
+          planner.deleteExamResult(deleteTarget.id);
+          setDeleteTarget(null);
         }}
       />
     </ScrollView>

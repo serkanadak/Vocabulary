@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, GhostButton } from '../components/common';
 import PromptModal from '../components/PromptModal';
+import ConfirmModal from '../components/ConfirmModal';
 import { GRADES, SUBJECTS_BY_GRADE } from '../data/curriculum';
 
 export default function CurriculumScreen() {
@@ -12,6 +13,7 @@ export default function CurriculumScreen() {
   const [expanded, setExpanded] = useState({});
   const [addFor, setAddFor] = useState(null);
   const [editTopic, setEditTopic] = useState(null);
+  const [deleteTopicTarget, setDeleteTopicTarget] = useState(null);
 
   const toggle = (subject) => setExpanded((e) => ({ ...e, [subject]: !e[subject] }));
 
@@ -51,14 +53,7 @@ export default function CurriculumScreen() {
                         {topic.custom ? ' ✎' : ''}
                       </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() =>
-                        Alert.alert('Konuyu sil', `"${topic.title}" silinsin mi?`, [
-                          { text: 'Vazgeç', style: 'cancel' },
-                          { text: 'Sil', style: 'destructive', onPress: () => planner.deleteTopic(topic.id) },
-                        ])
-                      }
-                    >
+                    <TouchableOpacity onPress={() => setDeleteTopicTarget(topic)}>
                       <Text style={styles.deleteText}>sil</Text>
                     </TouchableOpacity>
                   </View>
@@ -95,6 +90,17 @@ export default function CurriculumScreen() {
           if (!values.title) return;
           planner.updateTopic(editTopic.id, { title: values.title });
           setEditTopic(null);
+        }}
+      />
+
+      <ConfirmModal
+        visible={!!deleteTopicTarget}
+        title="Konuyu sil"
+        message={deleteTopicTarget ? `"${deleteTopicTarget.title}" silinsin mi?` : ''}
+        onCancel={() => setDeleteTopicTarget(null)}
+        onConfirm={() => {
+          planner.deleteTopic(deleteTopicTarget.id);
+          setDeleteTopicTarget(null);
         }}
       />
     </ScrollView>
