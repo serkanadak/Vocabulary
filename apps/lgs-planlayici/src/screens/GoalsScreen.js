@@ -5,7 +5,9 @@ import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, Chip, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
-import { describeDays } from '../components/WeekdayPicker';
+import CurriculumPicker from '../components/CurriculumPicker';
+import WeekdayPicker, { describeDays } from '../components/WeekdayPicker';
+import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 import { formatMonthLabel, nextMonths } from '../logic/calendar';
 
 const MONTH_OPTIONS = nextMonths(12).map((m) => ({
@@ -21,9 +23,22 @@ export default function GoalsScreen({ navigation }) {
   const [monthModal, setMonthModal] = useState(false);
   const [pendingMonthTitle, setPendingMonthTitle] = useState('');
   const [monthPickerVisible, setMonthPickerVisible] = useState(false);
+  const [editingRecurringId, setEditingRecurringId] = useState(null);
+  const [editRecurringDays, setEditRecurringDays] = useState([1, 2, 3, 4, 5]);
+  const [editRecurringPickerVisible, setEditRecurringPickerVisible] = useState(false);
+  const [editRecurringDraft, setEditRecurringDraft] = useState(null);
 
   const weeksFor = (monthId) => planner.weekGoals.filter((w) => w.monthId === monthId);
   const taskCountFor = (weekId) => planner.tasks.filter((t) => t.weekId === weekId).length;
+
+  const subjects = SUBJECTS_BY_GRADE[planner.gradeLevel] || [];
+  const topics = planner.curriculum.filter((t) => t.gradeLevel === planner.gradeLevel);
+  const editingRecurring = planner.recurringTasks.find((r) => r.id === editingRecurringId) || null;
+  const topicTitleForRecurring = (r) => {
+    if (!r || !r.topicId) return null;
+    const topic = planner.curriculum.find((t) => t.id === r.topicId);
+    return topic ? topic.title : null;
+  };
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
@@ -102,11 +117,22 @@ export default function GoalsScreen({ navigation }) {
                   <Chip label={r.subject} color={subjectColor(r.subject)} />
                   <Text style={styles.mutedText}>{describeDays(r.daysOfWeek)} · {r.estMinutes} dk</Text>
                 </View>
+                {!!topicTitleForRecurring(r) && <Text style={styles.mutedText}>📖 {topicTitleForRecurring(r)}</Text>}
               </View>
-              <GhostButton
-                label={r.active ? 'Aktif' : 'Pasif'}
-                onPress={() => planner.setRecurringActive(r.id, !r.active)}
-              />
+              <View style={styles.recurActions}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setEditingRecurringId(r.id);
+                    setEditRecurringDays(r.daysOfWeek);
+                  }}
+                >
+                  <Text style={styles.editText}>düzenle</Text>
+                </TouchableOpacity>
+                <GhostButton
+                  label={r.active ? 'Aktif' : 'Pasif'}
+                  onPress={() => planner.setRecurringActive(r.id, !r.active)}
+                />
+              </View>
             </View>
           </Card>
         ))
@@ -154,6 +180,74 @@ export default function GoalsScreen({ navigation }) {
           setMonthPickerVisible(false);
         }}
       />
+
+      <PromptModal
+        visible={!!editingRecurringId}
+        title="Periyodik görevi düzenle"
+        fields={[
+          { key: 'title', label: 'Görev' },
+          { key: 'estMinutes', label: 'Tahmini süre (dk)', numeric: true },
+        ]}
+        initialValues={{
+          title: editingRecurring ? editingRecurring.title : '',
+          estMinutes: editingRecurring ? String(editingRecurring.estMinutes) : '',
+        }}
+        onCancel={() => setEditingRecurringId(null)}
+        renderExtra={(values) => (
+          <View style={{ marginBottom: 8 }}>
+            <Text style={styles.mutedText}>Hangi günler?</Text>
+            <WeekdayPicker days={editRecurringDays} onChange={setEditRecurringDays} />
+            <Text style={styles.mutedText}>
+              Ders: {editingRecurring ? editingRecurring.subject : ''}
+              {editingRecurring && topicTitleForRecurring(editingRecurring)
+                ? ` · ${topicTitleForRecurring(editingRecurring)}`
+                : ''}
+            </Text>
+            <View style={{ marginTop: 8 }}>
+              <GhostButton
+                label="Ders / Konu değiştir"
+                onPress={() => {
+                  setEditRecurringDraft({ id: editingRecurringId, title: values.title, estMinutes: values.estMinutes });
+                  setEditingRecurringId(null);
+                  setEditRecurringPickerVisible(true);
+                }}
+              />
+            </View>
+          </View>
+        )}
+        onSubmit={(values) => {
+          if (!values.title || !editingRecurringId) return;
+          planner.updateRecurringTask(editingRecurringId, {
+            title: values.title,
+            estMinutes: Number(values.estMinutes) || editingRecurring.estMinutes,
+            daysOfWeek: editRecurringDays,
+          });
+          setEditingRecurringId(null);
+        }}
+      />
+
+      <CurriculumPicker
+        visible={editRecurringPickerVisible}
+        subjects={subjects}
+        topics={topics}
+        onCancel={() => {
+          setEditRecurringPickerVisible(false);
+          setEditRecurringDraft(null);
+        }}
+        onSelect={(subject, topicId) => {
+          if (editRecurringDraft) {
+            planner.updateRecurringTask(editRecurringDraft.id, {
+              title: editRecurringDraft.title,
+              estMinutes: Number(editRecurringDraft.estMinutes) || 15,
+              daysOfWeek: editRecurringDays,
+              subject,
+              topicId,
+            });
+          }
+          setEditRecurringPickerVisible(false);
+          setEditRecurringDraft(null);
+        }}
+      />
     </ScrollView>
   );
 }
@@ -176,4 +270,6 @@ const styles = StyleSheet.create({
   weekInlineText: { color: colors.text, fontSize: 13, fontWeight: '600' },
   recurRow: { flexDirection: 'row', alignItems: 'center' },
   recurMeta: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 6 },
+  recurActions: { alignItems: 'flex-end', gap: 6 },
+  editText: { color: colors.textMuted, fontSize: 12, fontWeight: '600', textDecorationLine: 'underline' },
 });

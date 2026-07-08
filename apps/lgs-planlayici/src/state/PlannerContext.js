@@ -4,7 +4,7 @@ import { buildInitialCurriculum } from '../data/curriculum';
 import { pointsForTask, levelForPoints, evaluateBadges } from '../data/rewards';
 import { AVATARS, defaultAvatarId, avatarById, evaluateAvatarUnlocks } from '../data/avatars';
 import { computeStreaks } from '../logic/streak';
-import { todayStr } from '../logic/calendar';
+import { todayStr, mondayOf } from '../logic/calendar';
 
 const STORAGE_KEY = '@lgs_planlayici_v1';
 const PlannerContext = createContext(null);
@@ -205,18 +205,32 @@ export function PlannerProvider({ children }) {
   }, [state.loaded, state.tasks, state.examResults, state.curriculum]);
 
   // Aktif tekrarlayan görevlerden bugüne düşenleri, henüz oluşturulmadıysa üret.
+  // İçinde bulunulan haftaya ait bir haftalık hedef varsa (Pazartesi tarihi eşleşiyorsa),
+  // üretilen görev o haftaya bağlanır — böylece "ayrı" görünmez, haftalık planın içinde belirir.
   useEffect(() => {
     if (!state.loaded) return;
     const today = todayStr();
     const todayWeekday = new Date().getDay();
+    const currentMonday = mondayOf(today);
     const alreadyGenerated = new Set(
       state.tasks.filter((t) => t.recurringId && t.dueDate === today).map((t) => t.recurringId)
     );
+    const matchingWeeks = state.weekGoals.filter((w) => w.startDate === currentMonday);
     state.recurringTasks.forEach((r) => {
       if (!r.active || alreadyGenerated.has(r.id) || !r.daysOfWeek.includes(todayWeekday)) return;
+      let weekId = null;
+      if (matchingWeeks.length === 1) {
+        weekId = matchingWeeks[0].id;
+      } else if (matchingWeeks.length > 1) {
+        const bySubject = matchingWeeks.find((w) => {
+          const month = state.monthGoals.find((m) => m.id === w.monthId);
+          return month && month.subject === r.subject;
+        });
+        weekId = (bySubject || matchingWeeks[0]).id;
+      }
       dispatch({
         type: 'ADD_TASK',
-        weekId: null,
+        weekId,
         data: {
           title: r.title,
           subject: r.subject,
@@ -228,7 +242,7 @@ export function PlannerProvider({ children }) {
       });
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.loaded, state.recurringTasks, state.tasks]);
+  }, [state.loaded, state.recurringTasks, state.tasks, state.weekGoals, state.monthGoals]);
 
   const value = useMemo(() => {
     const stats = computeStats(state);

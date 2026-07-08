@@ -19,6 +19,9 @@ export default function TodayScreen() {
   const [pendingTask, setPendingTask] = useState(null);
   const [recurring, setRecurring] = useState(false);
   const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
+  const [editingTaskId, setEditingTaskId] = useState(null);
+  const [editSubjectPickerVisible, setEditSubjectPickerVisible] = useState(false);
+  const [editDraft, setEditDraft] = useState(null);
 
   const pendingTasks = planner.tasks.filter((t) => !t.done);
   const completedToday = planner.tasks.filter((t) => t.done && t.completedAt === todayStr());
@@ -35,6 +38,7 @@ export default function TodayScreen() {
     const topic = planner.curriculum.find((t) => t.id === task.topicId);
     return topic ? topic.title : null;
   };
+  const editingTask = planner.tasks.find((t) => t.id === editingTaskId) || null;
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
@@ -99,11 +103,17 @@ export default function TodayScreen() {
                       {task.estMinutes} dk · +{pointsForTask(task.estMinutes)} puan
                     </Text>
                   </View>
+                  {!!task.recurringId && <Text style={styles.topicHint}>🔁 tekrarlayan</Text>}
                   {!!topicTitleFor(task) && <Text style={styles.topicHint}>📖 {topicTitleFor(task)}</Text>}
                 </View>
-                <TouchableOpacity style={styles.doneBtn} onPress={() => planner.toggleTaskDone(task.id)}>
-                  <Text style={styles.doneBtnText}>Tamamla</Text>
-                </TouchableOpacity>
+                <View style={styles.taskActions}>
+                  <TouchableOpacity onPress={() => setEditingTaskId(task.id)}>
+                    <Text style={styles.editText}>düzenle</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.doneBtn} onPress={() => planner.toggleTaskDone(task.id)}>
+                    <Text style={styles.doneBtnText}>Tamamla</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </TouchableOpacity>
           </Card>
@@ -182,6 +192,68 @@ export default function TodayScreen() {
           setRecurringDays([1, 2, 3, 4, 5]);
         }}
       />
+
+      <PromptModal
+        visible={!!editingTaskId}
+        title="Görevi düzenle"
+        fields={[
+          { key: 'title', label: 'Görev' },
+          { key: 'estMinutes', label: 'Tahmini süre (dk)', numeric: true },
+        ]}
+        initialValues={{
+          title: editingTask ? editingTask.title : '',
+          estMinutes: editingTask ? String(editingTask.estMinutes) : '',
+        }}
+        onCancel={() => setEditingTaskId(null)}
+        renderExtra={(values) => (
+          <View style={{ marginBottom: 8 }}>
+            <Text style={styles.taskMeta}>
+              Ders: {editingTask ? editingTask.subject : ''}
+              {editingTask && topicTitleFor(editingTask) ? ` · ${topicTitleFor(editingTask)}` : ''}
+            </Text>
+            <View style={{ marginTop: 8 }}>
+              <GhostButton
+                label="Ders / Konu değiştir"
+                onPress={() => {
+                  setEditDraft({ taskId: editingTaskId, title: values.title, estMinutes: values.estMinutes });
+                  setEditingTaskId(null);
+                  setEditSubjectPickerVisible(true);
+                }}
+              />
+            </View>
+          </View>
+        )}
+        onSubmit={(values) => {
+          if (!values.title || !editingTaskId) return;
+          planner.updateTask(editingTaskId, {
+            title: values.title,
+            estMinutes: Number(values.estMinutes) || editingTask.estMinutes,
+          });
+          setEditingTaskId(null);
+        }}
+      />
+
+      <CurriculumPicker
+        visible={editSubjectPickerVisible}
+        subjects={subjects}
+        topics={topics}
+        onCancel={() => {
+          setEditSubjectPickerVisible(false);
+          setEditDraft(null);
+        }}
+        onSelect={(subject, topicId) => {
+          if (editDraft) {
+            planner.updateTask(editDraft.taskId, {
+              title: editDraft.title,
+              estMinutes: Number(editDraft.estMinutes) || 15,
+              subject,
+              topicId,
+            });
+          }
+          setEditSubjectPickerVisible(false);
+          setEditDraft(null);
+        }}
+      />
     </ScrollView>
   );
 }
@@ -215,6 +287,8 @@ const styles = StyleSheet.create({
   chipRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   taskMeta: { color: colors.textMuted, fontSize: 12 },
   topicHint: { color: colors.textMuted, fontSize: 11, marginTop: 4 },
+  taskActions: { alignItems: 'flex-end', gap: 6 },
+  editText: { color: colors.textMuted, fontSize: 12, fontWeight: '600', textDecorationLine: 'underline' },
   doneBtn: {
     backgroundColor: colors.primary,
     borderRadius: 10,

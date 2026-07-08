@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Modal, View, Text, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 import { colors } from '../theme';
 import { Field, PrimaryButton, GhostButton } from './common';
@@ -15,9 +15,15 @@ export default function PromptModal({
   renderExtra,
 }) {
   const [values, setValues] = useState(initialValues || {});
+  const wasVisible = useRef(false);
 
+  // Yalnızca modal kapalıyken açılırken alanları sıfırla — initialValues her
+  // render'da yeni bir referans olabildiği için (ör. ebeveyn state'i renderExtra
+  // içindeki bir seçimle değişince) her seferinde sıfırlarsak kullanıcının o an
+  // yazmakta olduğu metin kaybolur.
   useEffect(() => {
-    if (visible) setValues(initialValues || {});
+    if (visible && !wasVisible.current) setValues(initialValues || {});
+    wasVisible.current = visible;
   }, [visible, initialValues]);
 
   return (
