@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   levelTitle: { color: colors.gold, fontSize: 18, fontWeight: '800' },
   points: { color: colors.textMuted, fontSize: 13, marginTop: 2 },
   streakBox: { alignItems: 'flex-end' },
-  streakNum: { color: colors.text, fontSize: 18, fontWeight: '700' },
+  streakNum: { color: colors.pink, fontSize: 18, fontWeight: '700' },
   streakLabel: { color: colors.textMuted, fontSize: 11 },
   progressLabel: { color: colors.textMuted, fontSize: 12, marginTop: 6 },
   mutedText: { color: colors.textMuted, fontSize: 13, marginBottom: 8 },
@@ -199,5 +199,5 @@ const styles = StyleSheet.create({
   taskActions: { alignItems: 'flex-end', gap: 6 },
   undoText: { color: colors.textMuted, fontSize: 12, textDecorationLine: 'underline' },
   deleteText: { color: colors.danger, fontSize: 11 },
-  activeCard: { borderColor: colors.primary },
+  activeCard: { borderColor: colors.pink },
 });

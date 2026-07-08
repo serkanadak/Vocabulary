@@ -7,6 +7,7 @@ export const colors = {
   textMuted: '#64748b',
   primary: '#0d9488',
   gold: '#d97706',
+  pink: '#ec4899',
   border: '#dbe2ef',
   success: '#16a34a',
   danger: '#e11d48',

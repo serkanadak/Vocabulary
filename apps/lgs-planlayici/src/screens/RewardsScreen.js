@@ -28,7 +28,7 @@ export default function RewardsScreen() {
 
       <View style={styles.statsRow}>
         <Card style={styles.statCard}>
-          <Text style={styles.statNum}>🔥 {planner.stats.streakCurrent}</Text>
+          <Text style={[styles.statNum, styles.streakNum]}>🔥 {planner.stats.streakCurrent}</Text>
           <Text style={styles.statLabel}>güncel seri</Text>
         </Card>
         <Card style={styles.statCard}>
@@ -46,7 +46,7 @@ export default function RewardsScreen() {
         {BADGES.map((badge) => {
           const unlocked = unlockedIds.has(badge.id);
           return (
-            <Card key={badge.id} style={[styles.badgeCard, !unlocked && styles.badgeLocked]}>
+            <Card key={badge.id} style={[styles.badgeCard, unlocked && styles.badgeUnlocked, !unlocked && styles.badgeLocked]}>
               <Text style={styles.badgeIcon}>{unlocked ? '🏅' : '🔒'}</Text>
               <Text style={[styles.badgeTitle, !unlocked && styles.mutedText]}>{badge.title}</Text>
               <Text style={styles.badgeDesc}>{badge.description}</Text>
@@ -66,9 +66,11 @@ const styles = StyleSheet.create({
   statsRow: { flexDirection: 'row', gap: 10, marginBottom: 4 },
   statCard: { flex: 1, alignItems: 'center' },
   statNum: { color: colors.text, fontSize: 18, fontWeight: '800' },
+  streakNum: { color: colors.pink },
   statLabel: { color: colors.textMuted, fontSize: 11, marginTop: 2, textAlign: 'center' },
   badgeGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
   badgeCard: { width: '47%', alignItems: 'center' },
+  badgeUnlocked: { borderColor: colors.pink },
   badgeLocked: { opacity: 0.5 },
   badgeIcon: { fontSize: 26, marginBottom: 6 },
   badgeTitle: { color: colors.text, fontSize: 13, fontWeight: '700', textAlign: 'center' },

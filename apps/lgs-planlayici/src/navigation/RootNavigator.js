@@ -50,7 +50,7 @@ function Tabs() {
         headerTitleStyle: { color: colors.text },
         headerTintColor: colors.text,
         tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.border },
-        tabBarActiveTintColor: colors.primary,
+        tabBarActiveTintColor: colors.pink,
         tabBarInactiveTintColor: colors.textMuted,
         tabBarIcon: icon(route.name),
       })}
