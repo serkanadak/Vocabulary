@@ -25,6 +25,7 @@ const initialState = {
   monthGoals: [],
   weekGoals: [],
   tasks: [],
+  recurringTasks: [],
   examResults: [],
   curriculum: [],
   badges: [],
@@ -51,7 +52,10 @@ function reducer(state, action) {
     case 'ADD_MONTH_GOAL':
       return {
         ...state,
-        monthGoals: [...state.monthGoals, { id: uid('month'), gradeLevel: state.gradeLevel, ...action.data }],
+        monthGoals: [
+          ...state.monthGoals,
+          { gradeLevel: state.gradeLevel, ...action.data, id: action.data.id || uid('month') },
+        ],
       };
     case 'UPDATE_MONTH_GOAL':
       return {
@@ -109,6 +113,22 @@ function reducer(state, action) {
         tasks: state.tasks.map((t) =>
           t.id === action.id ? { ...t, done: !t.done, completedAt: !t.done ? todayStr() : null } : t
         ),
+      };
+
+    case 'ADD_RECURRING_TASK':
+      return {
+        ...state,
+        recurringTasks: [...state.recurringTasks, { id: uid('recur'), active: true, ...action.data }],
+      };
+    case 'UPDATE_RECURRING_TASK':
+      return {
+        ...state,
+        recurringTasks: state.recurringTasks.map((r) => (r.id === action.id ? { ...r, ...action.patch } : r)),
+      };
+    case 'SET_RECURRING_ACTIVE':
+      return {
+        ...state,
+        recurringTasks: state.recurringTasks.map((r) => (r.id === action.id ? { ...r, active: action.active } : r)),
       };
 
     case 'ADD_EXAM_RESULT':
@@ -187,6 +207,32 @@ export function PlannerProvider({ children }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.loaded, state.tasks, state.examResults, state.curriculum]);
 
+  // Aktif tekrarlayan görevlerden bugüne düşenleri, henüz oluşturulmadıysa üret.
+  useEffect(() => {
+    if (!state.loaded) return;
+    const today = todayStr();
+    const todayWeekday = new Date().getDay();
+    const alreadyGenerated = new Set(
+      state.tasks.filter((t) => t.recurringId && t.dueDate === today).map((t) => t.recurringId)
+    );
+    state.recurringTasks.forEach((r) => {
+      if (!r.active || alreadyGenerated.has(r.id) || !r.daysOfWeek.includes(todayWeekday)) return;
+      dispatch({
+        type: 'ADD_TASK',
+        weekId: null,
+        data: {
+          title: r.title,
+          subject: r.subject,
+          topicId: r.topicId || null,
+          estMinutes: r.estMinutes,
+          recurringId: r.id,
+          dueDate: today,
+        },
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.loaded, state.recurringTasks, state.tasks]);
+
   const value = useMemo(() => {
     const stats = computeStats(state);
     const level = levelForPoints(stats.totalPoints);
@@ -210,6 +256,9 @@ export function PlannerProvider({ children }) {
       updateTask: (id, patch) => dispatch({ type: 'UPDATE_TASK', id, patch }),
       deleteTask: (id) => dispatch({ type: 'DELETE_TASK', id }),
       toggleTaskDone: (id) => dispatch({ type: 'TOGGLE_TASK_DONE', id }),
+      addRecurringTask: (data) => dispatch({ type: 'ADD_RECURRING_TASK', data }),
+      updateRecurringTask: (id, patch) => dispatch({ type: 'UPDATE_RECURRING_TASK', id, patch }),
+      setRecurringActive: (id, active) => dispatch({ type: 'SET_RECURRING_ACTIVE', id, active }),
       addExamResult: (data) => dispatch({ type: 'ADD_EXAM_RESULT', data }),
       deleteExamResult: (id) => dispatch({ type: 'DELETE_EXAM_RESULT', id }),
       addTopic: (data) => dispatch({ type: 'ADD_TOPIC', data }),

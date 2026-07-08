@@ -12,6 +12,7 @@ export default function PromptModal({
   initialValues,
   onCancel,
   onSubmit,
+  renderExtra,
 }) {
   const [values, setValues] = useState(initialValues || {});
 
@@ -37,6 +38,7 @@ export default function PromptModal({
               onChangeText={(text) => setValues((v) => ({ ...v, [f.key]: text }))}
             />
           ))}
+          {renderExtra ? renderExtra(values, setValues) : null}
           <View style={styles.row}>
             <View style={{ flex: 1 }}>
               <GhostButton label="Vazgeç" onPress={onCancel} />

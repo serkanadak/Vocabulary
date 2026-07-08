@@ -4,16 +4,35 @@ import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, GhostButton } from '../components/common';
 import PromptModal from '../components/PromptModal';
+import ChoiceModal from '../components/ChoiceModal';
+import RecurringFields from '../components/RecurringFields';
 import { GRADES, SUBJECTS_BY_GRADE } from '../data/curriculum';
 
-export default function CurriculumScreen() {
+const PLAN_CHOICE = { NONE: null, TASK: 'task', MONTH: 'month' };
+
+function uid(prefix) {
+  return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+}
+
+export default function CurriculumScreen({ navigation }) {
   const planner = usePlanner();
   const [grade, setGrade] = useState(planner.gradeLevel);
   const [expanded, setExpanded] = useState({});
   const [addFor, setAddFor] = useState(null);
   const [editTopic, setEditTopic] = useState(null);
+  const [planFor, setPlanFor] = useState(null);
+  const [planChoice, setPlanChoice] = useState(PLAN_CHOICE.NONE);
+  const [recurring, setRecurring] = useState(false);
+  const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
 
   const toggle = (subject) => setExpanded((e) => ({ ...e, [subject]: !e[subject] }));
+
+  const closePlan = () => {
+    setPlanFor(null);
+    setPlanChoice(PLAN_CHOICE.NONE);
+    setRecurring(false);
+    setRecurringDays([1, 2, 3, 4, 5]);
+  };
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
@@ -44,12 +63,15 @@ export default function CurriculumScreen() {
               <View style={{ marginTop: 8 }}>
                 {topics.length === 0 && <Text style={styles.mutedText}>Henüz konu eklenmedi.</Text>}
                 {topics.map((topic) => (
-                  <TouchableOpacity key={topic.id} style={styles.topicRow} onPress={() => setEditTopic(topic)}>
-                    <Text style={styles.topicText}>
-                      {topic.title}
-                      {topic.custom ? ' ✎' : ''}
-                    </Text>
-                  </TouchableOpacity>
+                  <View key={topic.id} style={styles.topicRow}>
+                    <TouchableOpacity style={{ flex: 1 }} onPress={() => setEditTopic(topic)}>
+                      <Text style={styles.topicText}>
+                        {topic.title}
+                        {topic.custom ? ' ✎' : ''}
+                      </Text>
+                    </TouchableOpacity>
+                    <GhostButton label="Planla" onPress={() => setPlanFor(topic)} />
+                  </View>
                 ))}
                 <View style={{ marginTop: 8 }}>
                   <GhostButton label="+ Konu Ekle" onPress={() => setAddFor(subject)} />
@@ -85,6 +107,72 @@ export default function CurriculumScreen() {
           setEditTopic(null);
         }}
       />
+
+      <ChoiceModal
+        visible={!!planFor && planChoice === PLAN_CHOICE.NONE}
+        title={planFor ? `"${planFor.title}" ile ne yapmak istersin?` : ''}
+        options={[
+          { label: 'Görev oluştur', value: PLAN_CHOICE.TASK },
+          { label: 'Aylık hedef oluştur', value: PLAN_CHOICE.MONTH },
+        ]}
+        onCancel={closePlan}
+        onSelect={setPlanChoice}
+      />
+
+      <PromptModal
+        visible={planChoice === PLAN_CHOICE.TASK}
+        title="Yeni görev"
+        fields={[
+          { key: 'title', label: 'Görev', placeholder: planFor ? planFor.title : '' },
+          { key: 'estMinutes', label: 'Tahmini süre (dk)', placeholder: '20', numeric: true },
+        ]}
+        initialValues={{ title: planFor ? planFor.title : '', estMinutes: '20' }}
+        onCancel={closePlan}
+        renderExtra={() => (
+          <RecurringFields
+            enabled={recurring}
+            onToggleEnabled={setRecurring}
+            days={recurringDays}
+            onChangeDays={setRecurringDays}
+          />
+        )}
+        onSubmit={(values) => {
+          if (!values.title || !planFor) return;
+          const estMinutes = Number(values.estMinutes) || 15;
+          if (recurring) {
+            planner.addRecurringTask({
+              subject: planFor.subject,
+              topicId: planFor.id,
+              title: values.title,
+              estMinutes,
+              daysOfWeek: recurringDays,
+            });
+          } else {
+            planner.addTask(null, {
+              subject: planFor.subject,
+              topicId: planFor.id,
+              title: values.title,
+              estMinutes,
+            });
+          }
+          closePlan();
+        }}
+      />
+
+      <PromptModal
+        visible={planChoice === PLAN_CHOICE.MONTH}
+        title="Yeni aylık hedef"
+        fields={[{ key: 'title', label: 'Başlık' }]}
+        initialValues={{ title: planFor ? `${planFor.subject}: ${planFor.title}` : '' }}
+        onCancel={closePlan}
+        onSubmit={(values) => {
+          if (!values.title || !planFor) return;
+          const monthId = uid('month');
+          planner.addMonthGoal({ id: monthId, title: values.title, subject: planFor.subject, topicId: planFor.id });
+          closePlan();
+          navigation.navigate('Hedefler', { screen: 'MonthDetail', params: { monthId } });
+        }}
+      />
     </ScrollView>
   );
 }
@@ -109,9 +197,12 @@ const styles = StyleSheet.create({
   subjectCount: { color: colors.textMuted, fontSize: 12 },
   mutedText: { color: colors.textMuted, fontSize: 13, marginBottom: 8 },
   topicRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingVertical: 8,
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
   },
-  topicText: { color: colors.text, fontSize: 13 },
+  topicText: { color: colors.text, fontSize: 13, flex: 1, marginRight: 8 },
 });

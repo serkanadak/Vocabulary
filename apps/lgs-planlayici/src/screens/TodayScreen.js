@@ -7,6 +7,7 @@ import { pointsForTask } from '../data/rewards';
 import { Card, SectionTitle, Chip, ProgressBar, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
+import RecurringFields from '../components/RecurringFields';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 
 export default function TodayScreen() {
@@ -16,6 +17,8 @@ export default function TodayScreen() {
   const [addVisible, setAddVisible] = useState(false);
   const [subjectPickerFor, setSubjectPickerFor] = useState(null);
   const [pendingSubject, setPendingSubject] = useState(null);
+  const [recurring, setRecurring] = useState(false);
+  const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
 
   const pendingTasks = planner.tasks.filter((t) => !t.done);
   const completedToday = planner.tasks.filter(
@@ -126,6 +129,14 @@ export default function TodayScreen() {
         ]}
         initialValues={{ title: '', estMinutes: '20' }}
         onCancel={() => setAddVisible(false)}
+        renderExtra={() => (
+          <RecurringFields
+            enabled={recurring}
+            onToggleEnabled={setRecurring}
+            days={recurringDays}
+            onChangeDays={setRecurringDays}
+          />
+        )}
         onSubmit={(values) => {
           if (!values.title) return;
           setPendingSubject(values);
@@ -140,13 +151,21 @@ export default function TodayScreen() {
         options={subjects.map((s) => ({ label: s, value: s }))}
         onCancel={() => setSubjectPickerFor(null)}
         onSelect={(subject) => {
-          planner.addTask(null, {
-            title: pendingSubject.title,
-            subject,
-            topicId: null,
-            estMinutes: Number(pendingSubject.estMinutes) || 15,
-          });
+          const estMinutes = Number(pendingSubject.estMinutes) || 15;
+          if (recurring) {
+            planner.addRecurringTask({
+              subject,
+              topicId: null,
+              title: pendingSubject.title,
+              estMinutes,
+              daysOfWeek: recurringDays,
+            });
+          } else {
+            planner.addTask(null, { title: pendingSubject.title, subject, topicId: null, estMinutes });
+          }
           setSubjectPickerFor(null);
+          setRecurring(false);
+          setRecurringDays([1, 2, 3, 4, 5]);
         }}
       />
     </ScrollView>

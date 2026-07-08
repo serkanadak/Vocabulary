@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
-import { colors } from '../theme';
-import { Card, SectionTitle, PrimaryButton, GhostButton, EmptyState } from '../components/common';
+import { colors, subjectColor } from '../theme';
+import { Card, SectionTitle, Chip, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
+import { describeDays } from '../components/WeekdayPicker';
 import { GRADES } from '../data/curriculum';
 
 export default function GoalsScreen({ navigation }) {
@@ -52,12 +53,40 @@ export default function GoalsScreen({ navigation }) {
           <TouchableOpacity key={month.id} onPress={() => navigation.navigate('MonthDetail', { monthId: month.id })}>
             <Card>
               <Text style={styles.monthTitle}>{month.title}</Text>
+              {!!month.subject && (
+                <View style={{ marginTop: 6 }}>
+                  <Chip label={month.subject} color={subjectColor(month.subject)} />
+                </View>
+              )}
               <Text style={styles.mutedText}>{weekCountFor(month.id)} haftalık plan</Text>
             </Card>
           </TouchableOpacity>
         ))
       )}
       <PrimaryButton label="+ Aylık Hedef Ekle" onPress={() => setMonthModal(true)} />
+
+      <SectionTitle>Tekrarlayan görevler</SectionTitle>
+      {planner.recurringTasks.length === 0 ? (
+        <EmptyState text="Henüz periyodik bir görev yok. Müfredat'tan bir konuya 'Planla' diyerek ekleyebilirsin." />
+      ) : (
+        planner.recurringTasks.map((r) => (
+          <Card key={r.id}>
+            <View style={styles.recurRow}>
+              <View style={{ flex: 1 }}>
+                <Text style={[styles.monthTitle, !r.active && styles.mutedText]}>{r.title}</Text>
+                <View style={styles.recurMeta}>
+                  <Chip label={r.subject} color={subjectColor(r.subject)} />
+                  <Text style={styles.mutedText}>{describeDays(r.daysOfWeek)} · {r.estMinutes} dk</Text>
+                </View>
+              </View>
+              <GhostButton
+                label={r.active ? 'Aktif' : 'Pasif'}
+                onPress={() => planner.setRecurringActive(r.id, !r.active)}
+              />
+            </View>
+          </Card>
+        ))
+      )}
 
       <PromptModal
         visible={yearModal}
@@ -111,4 +140,6 @@ const styles = StyleSheet.create({
   yearSub: { color: colors.textMuted, fontSize: 13, marginTop: 4 },
   monthTitle: { color: colors.text, fontSize: 15, fontWeight: '700' },
   mutedText: { color: colors.textMuted, fontSize: 12, marginTop: 4 },
+  recurRow: { flexDirection: 'row', alignItems: 'center' },
+  recurMeta: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 6 },
 });
