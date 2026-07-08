@@ -15,7 +15,8 @@ import {
 } from '../logic/calendar';
 
 const VIEW = { WEEK: 'week', MONTH: 'month' };
-const WEEKDAY_INITIAL = ['P', 'P', 'S', 'Ç', 'P', 'C', 'C'];
+// Pzt, Sal, Çar, Per, Cum, Cmt, Paz — ızgara Pazartesi'den başladığı için.
+const WEEKDAY_INITIAL = ['P', 'S', 'Ç', 'P', 'C', 'C', 'P'];
 
 export default function CalendarScreen() {
   const planner = usePlanner();

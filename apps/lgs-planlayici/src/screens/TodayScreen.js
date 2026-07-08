@@ -13,7 +13,6 @@ import { todayStr } from '../logic/calendar';
 
 export default function TodayScreen() {
   const planner = usePlanner();
-  const pomodoro = usePomodoro(25);
   const [activeTaskId, setActiveTaskId] = useState(null);
   const [addVisible, setAddVisible] = useState(false);
   const [subjectPickerFor, setSubjectPickerFor] = useState(null);
@@ -29,6 +28,7 @@ export default function TodayScreen() {
   const ratio = totalToday === 0 ? 0 : completedToday.length / totalToday;
 
   const activeTask = planner.tasks.find((t) => t.id === activeTaskId);
+  const pomodoro = usePomodoro(activeTask ? activeTask.estMinutes : 25);
 
   const subjects = SUBJECTS_BY_GRADE[planner.gradeLevel] || [];
 
@@ -61,9 +61,11 @@ export default function TodayScreen() {
       <Card>
         <SectionTitle>Odak Zamanlayıcı</SectionTitle>
         {activeTask ? (
-          <Text style={styles.activeTaskLabel}>Seçili görev: {activeTask.title}</Text>
+          <Text style={styles.activeTaskLabel}>
+            Seçili görev: {activeTask.title} ({activeTask.estMinutes} dk)
+          </Text>
         ) : (
-          <Text style={styles.mutedText}>Aşağıdan bir görev seçip başlat</Text>
+          <Text style={styles.mutedText}>Aşağıdan bir görev seçip başlat — süre o görevin süresi kadar olur</Text>
         )}
         <Text style={styles.timer}>{pomodoro.label}</Text>
         <View style={styles.row}>

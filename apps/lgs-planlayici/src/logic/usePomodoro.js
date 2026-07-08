@@ -7,6 +7,12 @@ export function usePomodoro(minutes = DEFAULT_MINUTES) {
   const [running, setRunning] = useState(false);
   const intervalRef = useRef(null);
 
+  // Seçilen görev (dolayısıyla süresi) değiştiğinde zamanlayıcıyı sıfırla.
+  useEffect(() => {
+    setRunning(false);
+    setSecondsLeft(minutes * 60);
+  }, [minutes]);
+
   useEffect(() => {
     if (running) {
       intervalRef.current = setInterval(() => {
