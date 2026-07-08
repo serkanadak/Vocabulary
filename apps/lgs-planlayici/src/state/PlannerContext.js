@@ -4,7 +4,7 @@ import { buildInitialCurriculum } from '../data/curriculum';
 import { pointsForTask, levelForPoints, evaluateBadges } from '../data/rewards';
 import { AVATARS, defaultAvatarId, avatarById, evaluateAvatarUnlocks } from '../data/avatars';
 import { computeStreaks } from '../logic/streak';
-import { todayStr, mondayOf, weekDates, weekdayOfDateStr, monthWeekStarts } from '../logic/calendar';
+import { todayStr, mondayOf, addDays, weekDates, weekdayOfDateStr, monthWeekStarts } from '../logic/calendar';
 
 const STORAGE_KEY = '@lgs_planlayici_v1';
 const PlannerContext = createContext(null);
@@ -50,14 +50,16 @@ function reducer(state, action) {
       const id = action.data.id || uid('month');
       const month = { gradeLevel: state.gradeLevel, ...action.data, id };
       // Aylık hedef oluşturulunca ayın tüm haftaları aynı adla altına otomatik açılır.
-      const autoWeeks = (month.year && month.month ? monthWeekStarts(month.year, month.month) : []).map(
-        (startDate, i) => ({
-          id: uid('week'),
-          monthId: id,
-          title: `${month.title} - ${i + 1}. Hafta`,
-          startDate,
-        })
-      );
+      // Tamamen geçmişte kalmış haftalar (bugünü de kapsamayan) oluşturulmaz.
+      const today = todayStr();
+      const allStarts = month.year && month.month ? monthWeekStarts(month.year, month.month) : [];
+      const futureStarts = allStarts.filter((startDate) => addDays(startDate, 6) >= today);
+      const autoWeeks = futureStarts.map((startDate, i) => ({
+        id: uid('week'),
+        monthId: id,
+        title: `${month.title} - ${i + 1}. Hafta`,
+        startDate,
+      }));
       return {
         ...state,
         monthGoals: [...state.monthGoals, month],
@@ -254,6 +256,8 @@ export function PlannerProvider({ children }) {
         const weeksOfMonth = state.weekGoals.filter((w) => w.monthId === r.monthId);
         weeksOfMonth.forEach((week) => {
           weekDates(week.startDate).forEach((dateStr) => {
+            // Geçmiş tarihler için görev üretilmez — görev oluştuğu tarihten itibaren başlar.
+            if (dateStr < today) return;
             if (r.endDate && dateStr > r.endDate) return;
             if (!r.daysOfWeek.includes(weekdayOfDateStr(dateStr))) return;
             addRecurringInstance(r, week.id, dateStr);

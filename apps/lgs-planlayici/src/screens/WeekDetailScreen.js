@@ -146,12 +146,14 @@ export default function WeekDetailScreen({ route }) {
               endDate: recurringEndDate || null,
             });
           } else {
+            const today = todayStr();
             planner.addTask(week.id, {
               title: draft.title,
               subject,
               topicId,
               estMinutes,
-              dueDate: week.startDate || todayStr(),
+              // Görev, geçmişte kalmış bir hafta başlangıcına değil, oluşturulduğu tarihten başlar.
+              dueDate: week.startDate && week.startDate > today ? week.startDate : today,
             });
           }
           setPickerVisible(false);
