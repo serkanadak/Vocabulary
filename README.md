@@ -9,6 +9,16 @@ Cross-platform: **Expo / React Native** ile geliştirildi → tek kod tabanında
 
 ---
 
+## Bu depodaki diğer uygulama
+
+`apps/lgs-planlayici/` altında, bu uygulamadan tamamen bağımsız ikinci bir Expo
+projesi bulunur: **LGS Planlayıcı** — 6-7-8. sınıf öğrencileri için hedef
+planlama, çalışma takibi ve soyut ödül sistemi. Tek tablette kişisel kullanım
+için tasarlanmıştır, mağazaya yayınlanmaz. Detaylar için
+`apps/lgs-planlayici/README.md`.
+
+---
+
 ## İstenen 8 özellik ve karşılığı
 
 | # | İstek | Nerede |

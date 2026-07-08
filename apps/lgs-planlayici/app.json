@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "LGS Planlayıcı",
+    "slug": "lgs-planlayici",
+    "version": "1.0.0",
+    "orientation": "default",
+    "scheme": "lgsplanlayici",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lgsplanlayici.app",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.lgsplanlayici.app",
+      "versionCode": 1
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "extra": {
+      "description": "6-7-8. sınıf için hedef planlama, çalışma takibi ve soyut ödül sistemi. Tek tablette kişisel kullanım için tasarlanmıştır, mağaza dağıtımı hedeflenmemektedir."
+    }
+  }
+}
