@@ -6,7 +6,9 @@ import { pointsForTask } from '../data/rewards';
 import { Card, SectionTitle, Chip, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
+import RecurringFields from '../components/RecurringFields';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
+import { todayStr } from '../logic/calendar';
 
 const STEP = { NONE: 'none', SUBJECT: 'subject', TOPIC: 'topic' };
 
@@ -17,6 +19,8 @@ export default function WeekDetailScreen({ route }) {
   const [taskModal, setTaskModal] = useState(false);
   const [step, setStep] = useState(STEP.NONE);
   const [draft, setDraft] = useState(null);
+  const [recurring, setRecurring] = useState(false);
+  const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
 
   const week = planner.weekGoals.find((w) => w.id === weekId);
   const tasks = planner.tasks.filter((t) => t.weekId === weekId);
@@ -89,6 +93,14 @@ export default function WeekDetailScreen({ route }) {
         ]}
         initialValues={{ title: '', estMinutes: '20' }}
         onCancel={() => setTaskModal(false)}
+        renderExtra={() => (
+          <RecurringFields
+            enabled={recurring}
+            onToggleEnabled={setRecurring}
+            days={recurringDays}
+            onChangeDays={setRecurringDays}
+          />
+        )}
         onSubmit={(values) => {
           if (!values.title) return;
           setDraft(values);
@@ -117,13 +129,28 @@ export default function WeekDetailScreen({ route }) {
         ]}
         onCancel={() => setStep(STEP.NONE)}
         onSelect={(topicId) => {
-          planner.addTask(week.id, {
-            title: draft.title,
-            subject: draft.subject,
-            topicId: topicId === '__none__' ? null : topicId,
-            estMinutes: Number(draft.estMinutes) || 15,
-          });
+          const resolvedTopicId = topicId === '__none__' ? null : topicId;
+          const estMinutes = Number(draft.estMinutes) || 15;
+          if (recurring) {
+            planner.addRecurringTask({
+              subject: draft.subject,
+              topicId: resolvedTopicId,
+              title: draft.title,
+              estMinutes,
+              daysOfWeek: recurringDays,
+            });
+          } else {
+            planner.addTask(week.id, {
+              title: draft.title,
+              subject: draft.subject,
+              topicId: resolvedTopicId,
+              estMinutes,
+              dueDate: week.startDate || todayStr(),
+            });
+          }
           setStep(STEP.NONE);
+          setRecurring(false);
+          setRecurringDays([1, 2, 3, 4, 5]);
         }}
       />
     </ScrollView>

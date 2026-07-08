@@ -6,24 +6,29 @@ import { Card, SectionTitle, Chip, PrimaryButton, GhostButton, EmptyState } from
 import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
 import { describeDays } from '../components/WeekdayPicker';
-import { GRADES } from '../data/curriculum';
+import { formatMonthLabel, nextMonths } from '../logic/calendar';
+
+const MONTH_OPTIONS = nextMonths(12).map((m) => ({
+  label: formatMonthLabel(m.year, m.month),
+  value: `${m.year}-${m.month}`,
+  year: m.year,
+  month: m.month,
+}));
 
 export default function GoalsScreen({ navigation }) {
   const planner = usePlanner();
   const [yearModal, setYearModal] = useState(false);
   const [monthModal, setMonthModal] = useState(false);
-  const [gradeModal, setGradeModal] = useState(false);
+  const [pendingMonthTitle, setPendingMonthTitle] = useState('');
+  const [monthPickerVisible, setMonthPickerVisible] = useState(false);
 
   const weekCountFor = (monthId) => planner.weekGoals.filter((w) => w.monthId === monthId).length;
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
-      <Card>
-        <View style={styles.gradeRow}>
-          <Text style={styles.gradeLabel}>Sınıf: {planner.gradeLevel}</Text>
-          <GhostButton label="Değiştir" onPress={() => setGradeModal(true)} />
-        </View>
-      </Card>
+      <Text style={styles.gradeInfo}>Sınıf: {planner.gradeLevel} (Müfredat sekmesinden değiştirilir)</Text>
+
+      <GhostButton label="📅 Takvimi Gör" onPress={() => navigation.navigate('Calendar')} />
 
       <SectionTitle>Yıllık hedef</SectionTitle>
       <Card>
@@ -53,11 +58,12 @@ export default function GoalsScreen({ navigation }) {
           <TouchableOpacity key={month.id} onPress={() => navigation.navigate('MonthDetail', { monthId: month.id })}>
             <Card>
               <Text style={styles.monthTitle}>{month.title}</Text>
-              {!!month.subject && (
-                <View style={{ marginTop: 6 }}>
-                  <Chip label={month.subject} color={subjectColor(month.subject)} />
-                </View>
-              )}
+              <View style={styles.chipRow}>
+                {!!(month.year && month.month) && (
+                  <Chip label={formatMonthLabel(month.year, month.month)} color={colors.gold} />
+                )}
+                {!!month.subject && <Chip label={month.subject} color={subjectColor(month.subject)} />}
+              </View>
               <Text style={styles.mutedText}>{weekCountFor(month.id)} haftalık plan</Text>
             </Card>
           </TouchableOpacity>
@@ -108,24 +114,26 @@ export default function GoalsScreen({ navigation }) {
       <PromptModal
         visible={monthModal}
         title="Yeni aylık hedef"
-        fields={[{ key: 'title', label: 'Başlık', placeholder: 'örn. Ekim: Kesirler ve Basınç' }]}
+        fields={[{ key: 'title', label: 'Başlık', placeholder: 'örn. Kesirler ve Basınç' }]}
         initialValues={{ title: '' }}
         onCancel={() => setMonthModal(false)}
         onSubmit={(values) => {
           if (!values.title) return;
-          planner.addMonthGoal({ title: values.title });
+          setPendingMonthTitle(values.title);
           setMonthModal(false);
+          setMonthPickerVisible(true);
         }}
       />
 
       <ChoiceModal
-        visible={gradeModal}
-        title="Sınıf seç"
-        options={GRADES.map((g) => ({ label: `${g}. sınıf`, value: g }))}
-        onCancel={() => setGradeModal(false)}
-        onSelect={(g) => {
-          planner.setGrade(g);
-          setGradeModal(false);
+        visible={monthPickerVisible}
+        title="Hangi aya ait olsun?"
+        options={MONTH_OPTIONS}
+        onCancel={() => setMonthPickerVisible(false)}
+        onSelect={(value) => {
+          const opt = MONTH_OPTIONS.find((o) => o.value === value);
+          planner.addMonthGoal({ title: pendingMonthTitle, year: opt.year, month: opt.month });
+          setMonthPickerVisible(false);
         }}
       />
     </ScrollView>
@@ -134,11 +142,11 @@ export default function GoalsScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
-  gradeRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  gradeLabel: { color: colors.text, fontSize: 15, fontWeight: '700' },
+  gradeInfo: { color: colors.textMuted, fontSize: 12, marginBottom: 10 },
   yearTitle: { color: colors.text, fontSize: 16, fontWeight: '700' },
   yearSub: { color: colors.textMuted, fontSize: 13, marginTop: 4 },
   monthTitle: { color: colors.text, fontSize: 15, fontWeight: '700' },
+  chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 6 },
   mutedText: { color: colors.textMuted, fontSize: 12, marginTop: 4 },
   recurRow: { flexDirection: 'row', alignItems: 'center' },
   recurMeta: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 6 },

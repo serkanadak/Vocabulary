@@ -4,6 +4,19 @@ import { usePlanner } from '../state/PlannerContext';
 import { colors } from '../theme';
 import { Card, SectionTitle, PrimaryButton, GhostButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
+import { mondayOf, addDays, todayStr, formatDayLabel } from '../logic/calendar';
+
+function suggestNextWeekStart(month, existingWeeks) {
+  if (existingWeeks.length > 0) {
+    const maxStart = existingWeeks.reduce((max, w) => (w.startDate > max ? w.startDate : max), existingWeeks[0].startDate);
+    return addDays(maxStart, 7);
+  }
+  if (month.year && month.month) {
+    const firstOfMonth = `${month.year}-${String(month.month).padStart(2, '0')}-01`;
+    return mondayOf(firstOfMonth);
+  }
+  return mondayOf(todayStr());
+}
 
 export default function MonthDetailScreen({ route, navigation }) {
   const { monthId } = route.params;
@@ -34,6 +47,11 @@ export default function MonthDetailScreen({ route, navigation }) {
           <TouchableOpacity key={week.id} onPress={() => navigation.navigate('WeekDetail', { weekId: week.id })}>
             <Card>
               <Text style={styles.weekTitle}>{week.title}</Text>
+              {!!week.startDate && (
+                <Text style={styles.mutedText}>
+                  {formatDayLabel(week.startDate)} — {formatDayLabel(addDays(week.startDate, 6))}
+                </Text>
+              )}
               <Text style={styles.mutedText}>{taskCountFor(week.id)} görev</Text>
             </Card>
           </TouchableOpacity>
@@ -57,12 +75,18 @@ export default function MonthDetailScreen({ route, navigation }) {
       <PromptModal
         visible={weekModal}
         title="Yeni haftalık plan"
-        fields={[{ key: 'title', label: 'Başlık', placeholder: 'örn. 1. Hafta: Denklemler' }]}
-        initialValues={{ title: '' }}
+        fields={[
+          { key: 'title', label: 'Başlık', placeholder: 'örn. 1. Hafta: Denklemler' },
+          { key: 'startDate', label: 'Başlangıç tarihi (Pazartesi)' },
+        ]}
+        initialValues={{ title: '', startDate: weekModal ? suggestNextWeekStart(month, weeks) : '' }}
         onCancel={() => setWeekModal(false)}
         onSubmit={(values) => {
           if (!values.title) return;
-          planner.addWeekGoal(month.id, { title: values.title });
+          planner.addWeekGoal(month.id, {
+            title: values.title,
+            startDate: values.startDate || suggestNextWeekStart(month, weeks),
+          });
           setWeekModal(false);
         }}
       />

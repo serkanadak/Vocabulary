@@ -7,8 +7,16 @@ import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
 import RecurringFields from '../components/RecurringFields';
 import { GRADES, SUBJECTS_BY_GRADE } from '../data/curriculum';
+import { todayStr, formatMonthLabel, nextMonths } from '../logic/calendar';
 
 const PLAN_CHOICE = { NONE: null, TASK: 'task', MONTH: 'month' };
+
+const MONTH_OPTIONS = nextMonths(12).map((m) => ({
+  label: formatMonthLabel(m.year, m.month),
+  value: `${m.year}-${m.month}`,
+  year: m.year,
+  month: m.month,
+}));
 
 function uid(prefix) {
   return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
@@ -16,7 +24,7 @@ function uid(prefix) {
 
 export default function CurriculumScreen({ navigation }) {
   const planner = usePlanner();
-  const [grade, setGrade] = useState(planner.gradeLevel);
+  const grade = planner.gradeLevel;
   const [expanded, setExpanded] = useState({});
   const [addFor, setAddFor] = useState(null);
   const [editTopic, setEditTopic] = useState(null);
@@ -24,6 +32,8 @@ export default function CurriculumScreen({ navigation }) {
   const [planChoice, setPlanChoice] = useState(PLAN_CHOICE.NONE);
   const [recurring, setRecurring] = useState(false);
   const [recurringDays, setRecurringDays] = useState([1, 2, 3, 4, 5]);
+  const [pendingMonthTitle, setPendingMonthTitle] = useState('');
+  const [monthPickerVisible, setMonthPickerVisible] = useState(false);
 
   const toggle = (subject) => setExpanded((e) => ({ ...e, [subject]: !e[subject] }));
 
@@ -32,16 +42,18 @@ export default function CurriculumScreen({ navigation }) {
     setPlanChoice(PLAN_CHOICE.NONE);
     setRecurring(false);
     setRecurringDays([1, 2, 3, 4, 5]);
+    setMonthPickerVisible(false);
   };
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
+      <Text style={styles.gradeHint}>Sınıfını seç — bu seçim tüm uygulamada kullanılır.</Text>
       <View style={styles.gradeRow}>
         {GRADES.map((g) => (
           <TouchableOpacity
             key={g}
             style={[styles.gradeBtn, grade === g && styles.gradeBtnActive]}
-            onPress={() => setGrade(g)}
+            onPress={() => planner.setGrade(g)}
           >
             <Text style={[styles.gradeBtnText, grade === g && styles.gradeBtnTextActive]}>{g}. Sınıf</Text>
           </TouchableOpacity>
@@ -153,6 +165,7 @@ export default function CurriculumScreen({ navigation }) {
               topicId: planFor.id,
               title: values.title,
               estMinutes,
+              dueDate: todayStr(),
             });
           }
           closePlan();
@@ -166,9 +179,30 @@ export default function CurriculumScreen({ navigation }) {
         initialValues={{ title: planFor ? `${planFor.subject}: ${planFor.title}` : '' }}
         onCancel={closePlan}
         onSubmit={(values) => {
-          if (!values.title || !planFor) return;
+          if (!values.title) return;
+          setPendingMonthTitle(values.title);
+          setPlanChoice(PLAN_CHOICE.NONE);
+          setMonthPickerVisible(true);
+        }}
+      />
+
+      <ChoiceModal
+        visible={monthPickerVisible}
+        title="Hangi aya ait olsun?"
+        options={MONTH_OPTIONS}
+        onCancel={closePlan}
+        onSelect={(value) => {
+          if (!planFor) return;
+          const opt = MONTH_OPTIONS.find((o) => o.value === value);
           const monthId = uid('month');
-          planner.addMonthGoal({ id: monthId, title: values.title, subject: planFor.subject, topicId: planFor.id });
+          planner.addMonthGoal({
+            id: monthId,
+            title: pendingMonthTitle,
+            subject: planFor.subject,
+            topicId: planFor.id,
+            year: opt.year,
+            month: opt.month,
+          });
           closePlan();
           navigation.navigate('Hedefler', { screen: 'MonthDetail', params: { monthId } });
         }}
@@ -179,6 +213,7 @@ export default function CurriculumScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
+  gradeHint: { color: colors.textMuted, fontSize: 11, marginBottom: 6 },
   gradeRow: { flexDirection: 'row', marginBottom: 14, gap: 8 },
   gradeBtn: {
     flex: 1,

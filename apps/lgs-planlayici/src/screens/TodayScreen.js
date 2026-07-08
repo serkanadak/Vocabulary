@@ -9,6 +9,7 @@ import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
 import RecurringFields from '../components/RecurringFields';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
+import { todayStr } from '../logic/calendar';
 
 export default function TodayScreen() {
   const planner = usePlanner();
@@ -161,7 +162,13 @@ export default function TodayScreen() {
               daysOfWeek: recurringDays,
             });
           } else {
-            planner.addTask(null, { title: pendingSubject.title, subject, topicId: null, estMinutes });
+            planner.addTask(null, {
+              title: pendingSubject.title,
+              subject,
+              topicId: null,
+              estMinutes,
+              dueDate: todayStr(),
+            });
           }
           setSubjectPickerFor(null);
           setRecurring(false);
