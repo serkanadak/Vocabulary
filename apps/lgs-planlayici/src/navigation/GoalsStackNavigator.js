@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GoalsScreen from '../screens/GoalsScreen';
 import MonthDetailScreen from '../screens/MonthDetailScreen';
 import WeekDetailScreen from '../screens/WeekDetailScreen';
-import CalendarScreen from '../screens/CalendarScreen';
 import { colors } from '../theme';
 
 const Stack = createNativeStackNavigator();
@@ -32,7 +31,6 @@ export default function GoalsStackNavigator() {
       <Stack.Screen name="GoalsHome" component={GoalsScreen} options={{ title: 'Hedefler' }} />
       <Stack.Screen name="MonthDetail" component={MonthDetailScreen} options={{ title: 'Aylık Hedef' }} />
       <Stack.Screen name="WeekDetail" component={WeekDetailScreen} options={{ title: 'Haftalık Plan' }} />
-      <Stack.Screen name="Calendar" component={CalendarScreen} options={{ title: 'Takvim' }} />
     </Stack.Navigator>
   );
 }

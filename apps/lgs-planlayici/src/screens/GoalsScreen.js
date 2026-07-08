@@ -28,8 +28,6 @@ export default function GoalsScreen({ navigation }) {
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
       <Text style={styles.gradeInfo}>Sınıf: {planner.gradeLevel} (Müfredat sekmesinden değiştirilir)</Text>
 
-      <GhostButton label="📅 Takvimi Gör" onPress={() => navigation.navigate('Calendar')} />
-
       <SectionTitle>Yıllık hedef</SectionTitle>
       <Card>
         {planner.yearGoal ? (

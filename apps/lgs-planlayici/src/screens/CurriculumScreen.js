@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Modal, StyleSheet } from 'react-native';
 import { usePlanner } from '../state/PlannerContext';
 import { colors, subjectColor } from '../theme';
-import { Card, SectionTitle, GhostButton } from '../components/common';
+import { Card, SectionTitle, PrimaryButton, GhostButton } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import ChoiceModal from '../components/ChoiceModal';
 import RecurringFields from '../components/RecurringFields';
+import { describeDays } from '../components/WeekdayPicker';
 import { GRADES, SUBJECTS_BY_GRADE } from '../data/curriculum';
+import { pointsForTask } from '../data/rewards';
 import { todayStr, formatMonthLabel, nextMonths } from '../logic/calendar';
 
 const PLAN_CHOICE = { NONE: null, TASK: 'task', MONTH: 'month' };
@@ -21,6 +23,95 @@ const MONTH_OPTIONS = nextMonths(12).map((m) => ({
 function uid(prefix) {
   return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
 }
+
+function TopicPlanModal({ visible, topic, tasks, recurringTasks, onToggleTaskDone, onToggleRecurringActive, onCreateTask, onCreateMonth, onCancel }) {
+  return (
+    <Modal visible={visible} transparent animationType="fade" onRequestClose={onCancel}>
+      <View style={modalStyles.backdrop}>
+        <View style={modalStyles.sheet}>
+          <Text style={modalStyles.sheetTitle}>{topic ? `"${topic.title}"` : ''}</Text>
+
+          <ScrollView style={{ maxHeight: 280 }}>
+            {recurringTasks.length > 0 && (
+              <>
+                <Text style={modalStyles.sheetSubheading}>Periyodik görevler</Text>
+                {recurringTasks.map((r) => (
+                  <View key={r.id} style={modalStyles.sheetRow}>
+                    <View style={{ flex: 1 }}>
+                      <Text style={[modalStyles.sheetItemTitle, !r.active && modalStyles.mutedText]}>{r.title}</Text>
+                      <Text style={modalStyles.mutedText}>
+                        {describeDays(r.daysOfWeek)} · {r.estMinutes} dk
+                      </Text>
+                    </View>
+                    <GhostButton label={r.active ? 'Aktif' : 'Pasif'} onPress={() => onToggleRecurringActive(r.id, !r.active)} />
+                  </View>
+                ))}
+              </>
+            )}
+
+            {tasks.length > 0 && (
+              <>
+                <Text style={modalStyles.sheetSubheading}>Görevler</Text>
+                {tasks.map((t) => (
+                  <View key={t.id} style={modalStyles.sheetRow}>
+                    <View style={{ flex: 1 }}>
+                      <Text style={[modalStyles.sheetItemTitle, t.done && modalStyles.doneText]}>{t.title}</Text>
+                      <Text style={modalStyles.mutedText}>
+                        {t.estMinutes} dk · +{pointsForTask(t.estMinutes)} puan
+                      </Text>
+                    </View>
+                    <TouchableOpacity onPress={() => onToggleTaskDone(t.id)}>
+                      <Text style={modalStyles.toggleText}>{t.done ? 'geri al' : 'tamamla'}</Text>
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </>
+            )}
+
+            {recurringTasks.length === 0 && tasks.length === 0 && (
+              <Text style={modalStyles.mutedText}>Bu konu için henüz planlanmış bir görev yok.</Text>
+            )}
+          </ScrollView>
+
+          <View style={{ marginTop: 14 }}>
+            <PrimaryButton label="+ Görev oluştur" onPress={onCreateTask} />
+          </View>
+          <View style={{ marginTop: 8 }}>
+            <GhostButton label="+ Aylık hedef oluştur" onPress={onCreateMonth} />
+          </View>
+          <View style={{ marginTop: 8 }}>
+            <GhostButton label="Vazgeç" onPress={onCancel} />
+          </View>
+        </View>
+      </View>
+    </Modal>
+  );
+}
+
+const modalStyles = StyleSheet.create({
+  backdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.55)', justifyContent: 'center', padding: 20 },
+  sheet: {
+    backgroundColor: colors.surface,
+    borderRadius: 16,
+    padding: 18,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  sheetTitle: { color: colors.text, fontSize: 17, fontWeight: '700', marginBottom: 10 },
+  sheetSubheading: { color: colors.textMuted, fontSize: 11, fontWeight: '700', marginTop: 8, marginBottom: 4 },
+  sheetRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  sheetItemTitle: { color: colors.text, fontSize: 13, fontWeight: '600' },
+  doneText: { textDecorationLine: 'line-through' },
+  mutedText: { color: colors.textMuted, fontSize: 11, marginTop: 2 },
+  toggleText: { color: colors.primary, fontSize: 12, fontWeight: '700' },
+});
 
 export default function CurriculumScreen({ navigation }) {
   const planner = usePlanner();
@@ -120,15 +211,16 @@ export default function CurriculumScreen({ navigation }) {
         }}
       />
 
-      <ChoiceModal
+      <TopicPlanModal
         visible={!!planFor && planChoice === PLAN_CHOICE.NONE}
-        title={planFor ? `"${planFor.title}" ile ne yapmak istersin?` : ''}
-        options={[
-          { label: 'Görev oluştur', value: PLAN_CHOICE.TASK },
-          { label: 'Aylık hedef oluştur', value: PLAN_CHOICE.MONTH },
-        ]}
+        topic={planFor}
+        tasks={planFor ? planner.tasks.filter((t) => t.topicId === planFor.id) : []}
+        recurringTasks={planFor ? planner.recurringTasks.filter((r) => r.topicId === planFor.id) : []}
+        onToggleTaskDone={planner.toggleTaskDone}
+        onToggleRecurringActive={planner.setRecurringActive}
+        onCreateTask={() => setPlanChoice(PLAN_CHOICE.TASK)}
+        onCreateMonth={() => setPlanChoice(PLAN_CHOICE.MONTH)}
         onCancel={closePlan}
-        onSelect={setPlanChoice}
       />
 
       <PromptModal

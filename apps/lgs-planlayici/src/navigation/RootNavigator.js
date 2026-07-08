@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import TodayScreen from '../screens/TodayScreen';
 import GoalsStackNavigator from './GoalsStackNavigator';
+import CalendarScreen from '../screens/CalendarScreen';
 import CurriculumScreen from '../screens/CurriculumScreen';
 import ExamResultsScreen from '../screens/ExamResultsScreen';
 import RewardsScreen from '../screens/RewardsScreen';
@@ -28,6 +29,7 @@ const navTheme = {
 const TAB_ICONS = {
   Bugün: '☀️',
   Hedefler: '🎯',
+  Takvim: '📅',
   Müfredat: '📚',
   Denemeler: '📊',
   Ödüller: '🏅',
@@ -54,6 +56,7 @@ export default function RootNavigator() {
       >
         <Tab.Screen name="Bugün" component={TodayScreen} />
         <Tab.Screen name="Hedefler" component={GoalsStackNavigator} options={{ headerShown: false }} />
+        <Tab.Screen name="Takvim" component={CalendarScreen} />
         <Tab.Screen name="Müfredat" component={CurriculumScreen} />
         <Tab.Screen name="Denemeler" component={ExamResultsScreen} />
         <Tab.Screen name="Ödüller" component={RewardsScreen} />
