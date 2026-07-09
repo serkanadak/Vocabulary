@@ -39,12 +39,27 @@ export default function WeekDetailScreen({ route }) {
   };
   const editingTask = tasks.find((t) => t.id === editingTaskId) || null;
 
+  const month = week ? planner.monthGoals.find((m) => m.id === week.monthId) : null;
+  // Bu haftanın bağlı olduğu aylık hedef belirli bir ders/konuya bağlıysa
+  // (Müfredat'taki "Planla" akışından oluşturulduysa), yeni görevler için
+  // tekrar ders/konu sorulmaz — otomatik olarak o derse/konuya bağlanır.
+  const fixedTopic = month && month.subject && month.topicId
+    ? topics.find((t) => t.id === month.topicId)
+    : null;
+  const hasFixedSubject = !!(month && month.subject && month.topicId);
+
   if (!week) return null;
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ padding: 16 }}>
       <Card>
         <Text style={styles.title}>{week.title}</Text>
+        {hasFixedSubject && (
+          <Text style={styles.fixedSubjectHint}>
+            📖 {month.subject}
+            {fixedTopic ? ` · ${fixedTopic.title}` : ''} dersine bağlı — yeni görevler otomatik buraya eklenir
+          </Text>
+        )}
         <View style={styles.row}>
           <GhostButton label="Düzenle" onPress={() => setEditModal(true)} />
         </View>
@@ -125,8 +140,32 @@ export default function WeekDetailScreen({ route }) {
         )}
         onSubmit={(values) => {
           if (!values.title) return;
-          setDraft(values);
           setTaskModal(false);
+
+          if (hasFixedSubject) {
+            const estMinutes = Number(values.estMinutes) || 15;
+            if (recurring) {
+              planner.addRecurringTask({
+                subject: month.subject,
+                topicId: month.topicId,
+                title: values.title,
+                estMinutes,
+                daysOfWeek: recurringDays,
+                monthId: recurringMonthId || null,
+                endDate: recurringEndDate || null,
+              });
+              setRecurring(false);
+              setRecurringDays([1, 2, 3, 4, 5]);
+              setRecurringMonthId(null);
+              setRecurringEndDate('');
+            } else {
+              setTaskDraftForDates({ title: values.title, subject: month.subject, topicId: month.topicId, estMinutes });
+              setDatePickerVisible(true);
+            }
+            return;
+          }
+
+          setDraft(values);
           setPickerVisible(true);
         }}
       />
@@ -245,6 +284,7 @@ export default function WeekDetailScreen({ route }) {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
   title: { color: colors.text, fontSize: 18, fontWeight: '800' },
+  fixedSubjectHint: { color: colors.textMuted, fontSize: 12, marginTop: 6 },
   row: { flexDirection: 'row', marginTop: 10 },
   taskRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   taskTitle: { color: colors.text, fontSize: 14, fontWeight: '600', marginBottom: 6 },
