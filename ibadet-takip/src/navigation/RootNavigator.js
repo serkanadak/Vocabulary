@@ -5,10 +5,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import TodayScreen from '../screens/TodayScreen';
+import KazaScreen from '../screens/KazaScreen';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import StatsScreen from '../screens/StatsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ItemDetailScreen from '../screens/ItemDetailScreen';
+import AddCustomItemScreen from '../screens/AddCustomItemScreen';
 import { colors } from '../theme';
 
 const Tab = createBottomTabNavigator();
@@ -26,7 +28,7 @@ const navTheme = {
   },
 };
 
-const TAB_ICONS = { Bugün: '✅', Kategoriler: '📚', İstatistik: '📊', Ayarlar: '⚙️' };
+const TAB_ICONS = { Bugün: '✅', Geçmiş: '🕰️', Kategoriler: '📚', İstatistik: '📊', Ayarlar: '⚙️' };
 
 function icon(routeName) {
   return ({ color }) => <Text style={{ fontSize: 18, color }}>{TAB_ICONS[routeName]}</Text>;
@@ -44,6 +46,7 @@ function Tabs() {
       })}
     >
       <Tab.Screen name="Bugün" component={TodayScreen} />
+      <Tab.Screen name="Geçmiş" component={KazaScreen} />
       <Tab.Screen name="Kategoriler" component={CategoriesScreen} />
       <Tab.Screen name="İstatistik" component={StatsScreen} />
       <Tab.Screen name="Ayarlar" component={SettingsScreen} />
@@ -63,6 +66,7 @@ export default function RootNavigator() {
       >
         <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
         <Stack.Screen name="ItemDetail" component={ItemDetailScreen} options={{ title: 'İbadet Detayı' }} />
+        <Stack.Screen name="AddCustomItem" component={AddCustomItemScreen} options={{ title: 'İlave İbadet Ekle' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

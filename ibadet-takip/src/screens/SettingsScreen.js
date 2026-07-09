@@ -1,36 +1,13 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Switch, TextInput, Pressable, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, Switch, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
 import { colors } from '../theme';
-import { Card, SectionHeader } from '../components/common';
-
-function DateField({ label, value, onChange }) {
-  return (
-    <View style={styles.dateField}>
-      <Text style={styles.dateLabel}>{label}</Text>
-      <TextInput
-        style={styles.dateInput}
-        value={value}
-        onChangeText={onChange}
-        placeholder="YYYY-AA-GG"
-        placeholderTextColor={colors.textMuted}
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
-    </View>
-  );
-}
+import { Card, SectionHeader, DateField, ConfirmModal } from '../components/common';
 
 export default function SettingsScreen() {
   const { settings, updateSettings, reset } = useTracker();
-
-  const confirmReset = () => {
-    Alert.alert('Tüm veriler silinsin mi?', 'İşaretlemeler ve ayarlar sıfırlanacak. Bu işlem geri alınamaz.', [
-      { text: 'Vazgeç', style: 'cancel' },
-      { text: 'Sıfırla', style: 'destructive', onPress: reset },
-    ]);
-  };
+  const [confirmVisible, setConfirmVisible] = useState(false);
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -108,7 +85,7 @@ export default function SettingsScreen() {
         </Card>
 
         <SectionHeader title="Veri" />
-        <Pressable style={styles.resetBtn} onPress={confirmReset}>
+        <Pressable style={styles.resetBtn} onPress={() => setConfirmVisible(true)}>
           <Text style={styles.resetText}>Tüm verileri sıfırla</Text>
         </Pressable>
 
@@ -117,6 +94,19 @@ export default function SettingsScreen() {
           yerine geçmez.
         </Text>
       </ScrollView>
+
+      <ConfirmModal
+        visible={confirmVisible}
+        title="Tüm veriler silinsin mi?"
+        message="İşaretlemeler, ilave ibadetler ve ayarlar sıfırlanacak. Bu işlem geri alınamaz."
+        confirmLabel="Sıfırla"
+        destructive
+        onCancel={() => setConfirmVisible(false)}
+        onConfirm={() => {
+          setConfirmVisible(false);
+          reset();
+        }}
+      />
     </SafeAreaView>
   );
 }
@@ -138,16 +128,6 @@ const styles = StyleSheet.create({
   genderTextActive: { color: '#1c1305' },
   switchRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   switchLabel: { color: colors.text, fontSize: 14, flex: 1, marginRight: 12, lineHeight: 19 },
-  dateField: { marginBottom: 10 },
-  dateLabel: { color: colors.textMuted, fontSize: 12, marginBottom: 4 },
-  dateInput: {
-    backgroundColor: colors.surfaceAlt,
-    color: colors.text,
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    fontSize: 14,
-  },
   resetBtn: {
     marginHorizontal: 16,
     marginTop: 4,

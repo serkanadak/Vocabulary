@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { CATEGORY_META, HUKUM_META, getByCategory } from '../data/ibadetler';
+import { useTracker } from '../state/TrackerContext';
 import { colors } from '../theme';
-import { HukumBadge } from '../components/common';
+import { HukumBadge, PrimaryButton } from '../components/common';
 
 export default function CategoriesScreen({ navigation }) {
+  const { customItems } = useTracker();
   const [expanded, setExpanded] = useState(() => Object.fromEntries(Object.keys(CATEGORY_META).map((k) => [k, true])));
 
   const toggle = (cat) => setExpanded((prev) => ({ ...prev, [cat]: !prev[cat] }));
+
+  const itemsByCategory = useMemo(() => {
+    const map = {};
+    for (const catKey of Object.keys(CATEGORY_META)) {
+      map[catKey] = [...getByCategory(catKey), ...customItems.filter((i) => i.category === catKey)];
+    }
+    return map;
+  }, [customItems]);
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -18,8 +28,11 @@ export default function CategoriesScreen({ navigation }) {
           Sünni itikat (Hanefi fıkhı) esasına göre farz, vacip ve sünnet ibadetlerin tam listesi.
         </Text>
 
+        <PrimaryButton title="+ İlave İbadet Ekle" onPress={() => navigation.navigate('AddCustomItem')} />
+
         {Object.entries(CATEGORY_META).map(([catKey, meta]) => {
-          const items = getByCategory(catKey);
+          const items = itemsByCategory[catKey];
+          if (items.length === 0) return null;
           return (
             <View key={catKey} style={styles.categoryBlock}>
               <Pressable style={styles.categoryHeader} onPress={() => toggle(catKey)}>
@@ -35,7 +48,10 @@ export default function CategoriesScreen({ navigation }) {
                     style={styles.itemRow}
                     onPress={() => navigation.navigate('ItemDetail', { id: item.id })}
                   >
-                    <Text style={styles.itemTitle}>{item.title}</Text>
+                    <Text style={styles.itemTitle}>
+                      {item.title}
+                      {item.custom ? ' 🔖' : ''}
+                    </Text>
                     <HukumBadge hukum={item.hukum} />
                   </Pressable>
                 ))}

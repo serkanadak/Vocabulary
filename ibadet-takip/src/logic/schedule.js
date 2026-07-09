@@ -3,13 +3,14 @@ import { weekday, isWithinRange } from './date';
 
 // Bugün için gösterilecek ibadetleri, "zorunlu" (farz/vacip/sünnet-i müekkede,
 // bugüne bağlı) ve "opsiyonel" (nafile, kullanıcı ayarından açılan) olarak ayırır.
-export function getTodaySchedule({ dateKey, settings }) {
+// extraItems: kullanıcının eklediği ilave ibadetler (TrackerContext.customItems).
+export function getTodaySchedule({ dateKey, settings, extraItems = [] }) {
   const wd = weekday(new Date(dateKey));
   const required = [];
   const optional = [];
   const yearlyReminders = [];
 
-  for (const item of IBADETLER) {
+  for (const item of [...IBADETLER, ...extraItems]) {
     switch (item.frequency) {
       case FREQUENCY.DAILY:
         required.push(item);
@@ -82,14 +83,14 @@ export function groupForDisplay(items) {
   return result;
 }
 
-export function getLifetimeItems() {
-  return IBADETLER.filter((i) => i.frequency === FREQUENCY.LIFETIME);
+export function getLifetimeItems(extraItems = []) {
+  return [...IBADETLER, ...extraItems].filter((i) => i.frequency === FREQUENCY.LIFETIME);
 }
 
-export function getYearlyOnceItems() {
-  return IBADETLER.filter((i) => i.frequency === FREQUENCY.YEARLY_ONCE);
+export function getYearlyOnceItems(extraItems = []) {
+  return [...IBADETLER, ...extraItems].filter((i) => i.frequency === FREQUENCY.YEARLY_ONCE);
 }
 
-export function getOccasionalItems() {
-  return IBADETLER.filter((i) => i.frequency === FREQUENCY.OCCASIONAL);
+export function getOccasionalItems(extraItems = []) {
+  return [...IBADETLER, ...extraItems].filter((i) => i.frequency === FREQUENCY.OCCASIONAL);
 }

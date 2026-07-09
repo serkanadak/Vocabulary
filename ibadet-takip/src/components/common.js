@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, TextInput, Modal, StyleSheet } from 'react-native';
 import { colors, HUKUM_COLORS } from '../theme';
 import { HUKUM_META } from '../data/ibadetler';
 
@@ -58,6 +58,23 @@ export function Card({ children, style }) {
   return <View style={[styles.card, style]}>{children}</View>;
 }
 
+export function DateField({ label, value, onChange }) {
+  return (
+    <View style={styles.dateField}>
+      <Text style={styles.dateLabel}>{label}</Text>
+      <TextInput
+        style={styles.dateInput}
+        value={value}
+        onChangeText={onChange}
+        placeholder="YYYY-AA-GG"
+        placeholderTextColor={colors.textMuted}
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+    </View>
+  );
+}
+
 export function PrimaryButton({ title, onPress, disabled }) {
   return (
     <Pressable
@@ -67,6 +84,34 @@ export function PrimaryButton({ title, onPress, disabled }) {
     >
       <Text style={styles.buttonText}>{title}</Text>
     </Pressable>
+  );
+}
+
+// React Native'in Alert.alert'i web'de (react-native-web) desteklenmediği için
+// tüm platformlarda çalışan özel bir onay modalı.
+export function ConfirmModal({ visible, title, message, confirmLabel = 'Onayla', cancelLabel = 'Vazgeç', destructive, onConfirm, onCancel }) {
+  return (
+    <Modal visible={visible} transparent animationType="fade" onRequestClose={onCancel}>
+      <View style={styles.modalBackdrop}>
+        <View style={styles.modalCard}>
+          <Text style={styles.modalTitle}>{title}</Text>
+          {message ? <Text style={styles.modalMessage}>{message}</Text> : null}
+          <View style={styles.modalButtonRow}>
+            <Pressable style={styles.modalCancelBtn} onPress={onCancel}>
+              <Text style={styles.modalCancelText}>{cancelLabel}</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.modalConfirmBtn, destructive && styles.modalConfirmBtnDestructive]}
+              onPress={onConfirm}
+            >
+              <Text style={[styles.modalConfirmText, destructive && styles.modalConfirmTextDestructive]}>
+                {confirmLabel}
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+      </View>
+    </Modal>
   );
 }
 
@@ -131,4 +176,52 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   buttonText: { color: '#1c1305', fontWeight: '800', fontSize: 15 },
+  dateField: { marginBottom: 10 },
+  dateLabel: { color: colors.textMuted, fontSize: 12, marginBottom: 4 },
+  dateInput: {
+    backgroundColor: colors.surfaceAlt,
+    color: colors.text,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    fontSize: 14,
+  },
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 24,
+  },
+  modalCard: {
+    backgroundColor: colors.surface,
+    borderRadius: 16,
+    padding: 20,
+    width: '100%',
+    maxWidth: 360,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  modalTitle: { color: colors.text, fontSize: 17, fontWeight: '800' },
+  modalMessage: { color: colors.textMuted, fontSize: 13, marginTop: 8, lineHeight: 19 },
+  modalButtonRow: { flexDirection: 'row', gap: 10, marginTop: 20 },
+  modalCancelBtn: {
+    flex: 1,
+    paddingVertical: 11,
+    borderRadius: 10,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  modalCancelText: { color: colors.textMuted, fontWeight: '700' },
+  modalConfirmBtn: {
+    flex: 1,
+    paddingVertical: 11,
+    borderRadius: 10,
+    alignItems: 'center',
+    backgroundColor: colors.primary,
+  },
+  modalConfirmBtnDestructive: { backgroundColor: '#ef4444' },
+  modalConfirmText: { color: '#1c1305', fontWeight: '800' },
+  modalConfirmTextDestructive: { color: '#fff' },
 });

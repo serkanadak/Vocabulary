@@ -8,7 +8,7 @@ import { colors } from '../theme';
 import { Card, SectionHeader } from '../components/common';
 
 export default function StatsScreen({ navigation }) {
-  const { byDate, isCheckedLifetime, isCheckedYearly, yearKeyStr } = useTracker();
+  const { byDate, isCheckedLifetime, isCheckedYearly, yearKeyStr, customItems } = useTracker();
 
   const dailyIds = useMemo(() => getDailyRequiredIds(), []);
   const streak = useMemo(() => currentStreak(byDate, dailyIds), [byDate, dailyIds]);
@@ -16,8 +16,8 @@ export default function StatsScreen({ navigation }) {
   const avg30 = useMemo(() => averageCompletion(byDate, dailyIds, 30), [byDate, dailyIds]);
   const history = useMemo(() => dailyHistory(byDate, dailyIds, 14), [byDate, dailyIds]);
 
-  const lifetimeItems = useMemo(() => getLifetimeItems(), []);
-  const yearlyItems = useMemo(() => getYearlyOnceItems(), []);
+  const lifetimeItems = useMemo(() => getLifetimeItems(customItems), [customItems]);
+  const yearlyItems = useMemo(() => getYearlyOnceItems(customItems), [customItems]);
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>

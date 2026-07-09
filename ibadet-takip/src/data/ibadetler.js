@@ -23,6 +23,7 @@ export const CATEGORY = {
   ZEKAT: 'zekat',
   HAC: 'hac',
   KURBAN: 'kurban',
+  DIGER: 'diger',
 };
 
 export const CATEGORY_META = {
@@ -31,6 +32,7 @@ export const CATEGORY_META = {
   [CATEGORY.ZEKAT]: { label: 'Zekât', icon: '🤲' },
   [CATEGORY.HAC]: { label: 'Hac & Umre', icon: '🕋' },
   [CATEGORY.KURBAN]: { label: 'Kurban', icon: '🐑' },
+  [CATEGORY.DIGER]: { label: 'Diğer (İlave)', icon: '➕' },
 };
 
 // Aynı vakte ait farz + sünnet kayıtlarını "Bugün" listesinde tek satırda
@@ -409,4 +411,28 @@ export function getById(id) {
 
 export function getByCategory(category) {
   return IBADETLER.filter((i) => i.category === category);
+}
+
+// İlave (kullanıcı tanımlı) ibadet oluşturmak için kullanılan seçenekler ve fabrika fonksiyonu.
+export const CUSTOM_FREQUENCY_OPTIONS = [
+  { value: FREQUENCY.DAILY, label: 'Her gün (zorunlu listede)' },
+  { value: FREQUENCY.OPTIONAL_DAILY, label: 'Her gün (nafile listesinde)' },
+  { value: FREQUENCY.YEARLY_ONCE, label: 'Yılda bir (takvime bağlı değil)' },
+  { value: FREQUENCY.LIFETIME, label: 'Ömürde bir' },
+];
+
+export const CUSTOM_HUKUM_OPTIONS = Object.values(HUKUM);
+
+export function createCustomItem({ title, category, hukum, frequency, rekat, description }) {
+  return {
+    id: `custom-${Date.now()}-${Math.round(Math.random() * 1e6)}`,
+    title: title.trim(),
+    category: category || CATEGORY.DIGER,
+    hukum: hukum || HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: frequency || FREQUENCY.OPTIONAL_DAILY,
+    rekat: rekat ? Number(rekat) : undefined,
+    gender: 'all',
+    description: description?.trim() || 'Kullanıcı tarafından eklenen ilave ibadet.',
+    custom: true,
+  };
 }

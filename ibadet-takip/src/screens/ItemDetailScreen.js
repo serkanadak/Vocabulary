@@ -1,21 +1,31 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getById, CATEGORY_META, FREQUENCY } from '../data/ibadetler';
 import { useTracker } from '../state/TrackerContext';
 import { colors } from '../theme';
-import { HukumBadge, Card, PrimaryButton } from '../components/common';
+import { HukumBadge, Card, PrimaryButton, ConfirmModal } from '../components/common';
 
 const GENDER_NOTE = {
   male_farz_female_nafile:
     'Mukim ve mükellef erkeklere farz-ı ayndır. Kadınlar için farz değildir; kılarlarsa nafile olur.',
 };
 
-export default function ItemDetailScreen({ route }) {
+export default function ItemDetailScreen({ route, navigation }) {
   const { id } = route.params;
-  const item = getById(id);
-  const { isCheckedToday, toggleToday, isCheckedYearly, toggleYearly, isCheckedLifetime, toggleLifetime, yearKeyStr } =
-    useTracker();
+  const {
+    isCheckedToday,
+    toggleToday,
+    isCheckedYearly,
+    toggleYearly,
+    isCheckedLifetime,
+    toggleLifetime,
+    yearKeyStr,
+    customItems,
+    removeCustomItem,
+  } = useTracker();
+  const item = getById(id) || customItems.find((i) => i.id === id);
+  const [confirmVisible, setConfirmVisible] = useState(false);
 
   if (!item) {
     return (
@@ -70,7 +80,27 @@ export default function ItemDetailScreen({ route }) {
             onPress={() => toggleToday(item.id)}
           />
         )}
+
+        {item.custom && (
+          <Pressable style={styles.deleteBtn} onPress={() => setConfirmVisible(true)}>
+            <Text style={styles.deleteText}>İlave ibadeti sil</Text>
+          </Pressable>
+        )}
       </ScrollView>
+
+      <ConfirmModal
+        visible={confirmVisible}
+        title="İlave ibadet silinsin mi?"
+        message={`"${item.title}" kalıcı olarak silinecek.`}
+        confirmLabel="Sil"
+        destructive
+        onCancel={() => setConfirmVisible(false)}
+        onConfirm={() => {
+          setConfirmVisible(false);
+          removeCustomItem(item.id);
+          navigation.goBack();
+        }}
+      />
     </SafeAreaView>
   );
 }
@@ -85,4 +115,14 @@ const styles = StyleSheet.create({
   genderNote: { color: colors.textMuted, fontSize: 12, marginTop: 10, lineHeight: 18 },
   hint: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginTop: 8 },
   notFound: { color: colors.text, padding: 16 },
+  deleteBtn: {
+    marginHorizontal: 16,
+    marginTop: 10,
+    paddingVertical: 12,
+    borderRadius: 12,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#ef4444',
+  },
+  deleteText: { color: '#ef4444', fontWeight: '700' },
 });

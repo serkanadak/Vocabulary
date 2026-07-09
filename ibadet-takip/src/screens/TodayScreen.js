@@ -35,11 +35,12 @@ export default function TodayScreen({ navigation }) {
     isCheckedYearly,
     toggleYearly,
     byDate,
+    customItems,
   } = useTracker();
 
   const { required, optional, yearlyReminders } = useMemo(
-    () => getTodaySchedule({ dateKey: todayKey, settings }),
-    [todayKey, settings]
+    () => getTodaySchedule({ dateKey: todayKey, settings, extraItems: customItems }),
+    [todayKey, settings, customItems]
   );
 
   const dailyIds = useMemo(() => getDailyRequiredIds(), []);

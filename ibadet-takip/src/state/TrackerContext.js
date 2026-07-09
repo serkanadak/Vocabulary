@@ -1,5 +1,6 @@
-// İbadet takip durumu: günlük işaretlemeler, yıllık/ömürlük işaretlemeler ve ayarlar.
-// AsyncStorage ile cihazda kalıcı saklanır.
+// İbadet takip durumu: günlük işaretlemeler, yıllık/ömürlük işaretlemeler,
+// ilave (kullanıcı tanımlı) ibadetler ve ayarlar. AsyncStorage ile cihazda
+// kalıcı saklanır.
 
 import React, { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -18,6 +19,7 @@ const DEFAULT_SETTINGS = {
   eidRamadanEnd: '',
   eidKurbanStart: '',
   eidKurbanEnd: '',
+  kazaStartDate: '', // geçmiş namaz (kaza) takibinin başlangıç tarihi
 };
 
 const initialState = {
@@ -25,6 +27,7 @@ const initialState = {
   byDate: {}, // { '2026-07-09': { itemId: true } }
   byYear: {}, // { '2026': { itemId: true } }
   lifetime: {}, // { itemId: true }
+  customItems: [], // kullanıcının eklediği ilave ibadetler
   settings: DEFAULT_SETTINGS,
 };
 
@@ -37,6 +40,7 @@ function reducer(state, action) {
         byDate: action.payload?.byDate || {},
         byYear: action.payload?.byYear || {},
         lifetime: action.payload?.lifetime || {},
+        customItems: action.payload?.customItems || [],
         settings: { ...DEFAULT_SETTINGS, ...(action.payload?.settings || {}) },
       };
     case 'TOGGLE_DATE': {
@@ -63,6 +67,10 @@ function reducer(state, action) {
     }
     case 'UPDATE_SETTINGS':
       return { ...state, settings: { ...state.settings, ...action.patch } };
+    case 'ADD_CUSTOM':
+      return { ...state, customItems: [...state.customItems, action.item] };
+    case 'REMOVE_CUSTOM':
+      return { ...state, customItems: state.customItems.filter((i) => i.id !== action.id) };
     case 'RESET':
       return { ...initialState, loaded: true };
     default:
@@ -86,9 +94,11 @@ export function TrackerProvider({ children }) {
 
   useEffect(() => {
     if (!state.loaded) return;
-    const { byDate, byYear, lifetime, settings } = state;
-    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ byDate, byYear, lifetime, settings })).catch(() => {});
-  }, [state.byDate, state.byYear, state.lifetime, state.settings, state.loaded]);
+    const { byDate, byYear, lifetime, customItems, settings } = state;
+    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ byDate, byYear, lifetime, customItems, settings })).catch(
+      () => {}
+    );
+  }, [state.byDate, state.byYear, state.lifetime, state.customItems, state.settings, state.loaded]);
 
   const value = useMemo(() => {
     const dKey = todayKey();
@@ -99,6 +109,7 @@ export function TrackerProvider({ children }) {
     const toggleToday = (itemId) => dispatch({ type: 'TOGGLE_DATE', dateKey: dKey, itemId });
     const toggleOnDate = (dateKey, itemId) => dispatch({ type: 'TOGGLE_DATE', dateKey, itemId });
     const setCheckedToday = (itemId, value) => dispatch({ type: 'SET_DATE', dateKey: dKey, itemId, value });
+    const setCheckedOnDate = (dateKey, itemId, value) => dispatch({ type: 'SET_DATE', dateKey, itemId, value });
 
     const isCheckedYearly = (itemId) => !!state.byYear[yKey]?.[itemId];
     const toggleYearly = (itemId) => dispatch({ type: 'TOGGLE_YEAR', yKey, itemId });
@@ -107,6 +118,8 @@ export function TrackerProvider({ children }) {
     const toggleLifetime = (itemId) => dispatch({ type: 'TOGGLE_LIFETIME', itemId });
 
     const updateSettings = (patch) => dispatch({ type: 'UPDATE_SETTINGS', patch });
+    const addCustomItem = (item) => dispatch({ type: 'ADD_CUSTOM', item });
+    const removeCustomItem = (id) => dispatch({ type: 'REMOVE_CUSTOM', id });
     const reset = () => dispatch({ type: 'RESET' });
 
     return {
@@ -114,6 +127,7 @@ export function TrackerProvider({ children }) {
       byDate: state.byDate,
       byYear: state.byYear,
       lifetime: state.lifetime,
+      customItems: state.customItems,
       settings: state.settings,
       todayKey: dKey,
       yearKeyStr: yKey,
@@ -122,11 +136,14 @@ export function TrackerProvider({ children }) {
       toggleToday,
       toggleOnDate,
       setCheckedToday,
+      setCheckedOnDate,
       isCheckedYearly,
       toggleYearly,
       isCheckedLifetime,
       toggleLifetime,
       updateSettings,
+      addCustomItem,
+      removeCustomItem,
       reset,
     };
   }, [state]);
