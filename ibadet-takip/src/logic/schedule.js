@@ -15,7 +15,12 @@ export function getTodaySchedule({ dateKey, settings }) {
         required.push(item);
         break;
       case FREQUENCY.OPTIONAL_DAILY:
-        if (settings.showNafile) optional.push(item);
+        if (item.group) {
+          // İlgili vaktin sünnetiyle aynı satırda gösterilecek nafile (ör. ikindi/yatsı ilk sünneti).
+          if (settings.showNafile) required.push(item);
+        } else if (settings.showNafile) {
+          optional.push(item);
+        }
         break;
       case FREQUENCY.WEEKLY_FRIDAY:
         if (wd === 5) required.push(item);

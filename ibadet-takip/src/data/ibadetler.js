@@ -171,6 +171,17 @@ export const IBADETLER = [
     description: 'Akşam namazının sünnetinden sonra kılınan nafile (2\'şer veya 4+2 rekât).',
   },
   {
+    id: 'namaz-yatsi-ilk-sunnet',
+    title: 'Yatsı Namazı İlk Sünneti',
+    category: CATEGORY.NAMAZ,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    rekat: 4,
+    gender: 'all',
+    group: 'yatsi',
+    description: 'Yatsı farzından önce kılınan 4 rekât, sünnet-i gayr-i müekkede (nafile).',
+  },
+  {
     id: 'namaz-yatsi-farz',
     title: 'Yatsı Namazı Farzı',
     category: CATEGORY.NAMAZ,
