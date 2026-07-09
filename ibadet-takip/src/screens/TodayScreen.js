@@ -1,0 +1,107 @@
+import React, { useMemo } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTracker } from '../state/TrackerContext';
+import { getTodaySchedule } from '../logic/schedule';
+import { getDailyRequiredIds, currentStreak } from '../logic/stats';
+import { colors } from '../theme';
+import { CheckRow, SectionHeader, Card } from '../components/common';
+
+export default function TodayScreen({ navigation }) {
+  const { settings, todayKey, isCheckedToday, toggleToday, isCheckedYearly, toggleYearly, byDate } = useTracker();
+
+  const { required, optional, yearlyReminders } = useMemo(
+    () => getTodaySchedule({ dateKey: todayKey, settings }),
+    [todayKey, settings]
+  );
+
+  const dailyIds = useMemo(() => getDailyRequiredIds(), []);
+  const streak = useMemo(() => currentStreak(byDate, dailyIds), [byDate, dailyIds]);
+
+  const doneCount = required.filter((i) => isCheckedToday(i.id)).length;
+
+  return (
+    <SafeAreaView style={styles.container} edges={['top']}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Bugün</Text>
+          <Text style={styles.dateText}>{todayKey}</Text>
+        </View>
+
+        <Card style={styles.streakCard}>
+          <Text style={styles.streakNumber}>🔥 {streak} gün</Text>
+          <Text style={styles.streakLabel}>kesintisiz tam ibadet serisi</Text>
+          <Text style={styles.progressText}>
+            Bugün: {doneCount}/{required.length} tamamlandı
+          </Text>
+        </Card>
+
+        <SectionHeader title="Farz, Vacip ve Sünnet-i Müekkede" subtitle="Bugüne ait zorunlu/müekked ibadetler" />
+        {required.map((item) => (
+          <CheckRow
+            key={item.id}
+            title={item.title}
+            hukum={item.hukum}
+            rekat={item.rekat}
+            checked={isCheckedToday(item.id)}
+            onPress={() => toggleToday(item.id)}
+            onLongPress={() => navigation.navigate('ItemDetail', { id: item.id })}
+          />
+        ))}
+
+        {yearlyReminders.filter((i) => !isCheckedYearly(i.id)).length > 0 && (
+          <>
+            <SectionHeader title="Bu Yıl İçin Hatırlatma" subtitle="Takvime bağlı olmayan, yılda bir işaretlenen ibadetler" />
+            {yearlyReminders
+              .filter((i) => !isCheckedYearly(i.id))
+              .map((item) => (
+                <CheckRow
+                  key={item.id}
+                  title={item.title}
+                  hukum={item.hukum}
+                  checked={isCheckedYearly(item.id)}
+                  onPress={() => toggleYearly(item.id)}
+                  onLongPress={() => navigation.navigate('ItemDetail', { id: item.id })}
+                />
+              ))}
+          </>
+        )}
+
+        {settings.showNafile && optional.length > 0 && (
+          <>
+            <SectionHeader title="Nafile (Opsiyonel)" subtitle="Ayarlar'dan açtığınız ek sünnet/nafile ibadetler" />
+            {optional.map((item) => (
+              <CheckRow
+                key={item.id}
+                title={item.title}
+                hukum={item.hukum}
+                rekat={item.rekat}
+                checked={isCheckedToday(item.id)}
+                onPress={() => toggleToday(item.id)}
+                onLongPress={() => navigation.navigate('ItemDetail', { id: item.id })}
+              />
+            ))}
+          </>
+        )}
+
+        {!settings.showNafile && (
+          <Text style={styles.hint}>
+            İpucu: Nafile/ek sünnetleri de takip etmek için Ayarlar'dan "Nafile ibadetleri göster"i açabilirsin.
+          </Text>
+        )}
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: colors.bg },
+  header: { paddingHorizontal: 16, paddingTop: 8, paddingBottom: 4 },
+  title: { color: colors.text, fontSize: 26, fontWeight: '800' },
+  dateText: { color: colors.textMuted, fontSize: 13, marginTop: 2 },
+  streakCard: { alignItems: 'center', marginTop: 12 },
+  streakNumber: { color: colors.primary, fontSize: 22, fontWeight: '800' },
+  streakLabel: { color: colors.textMuted, fontSize: 12, marginTop: 2 },
+  progressText: { color: colors.text, fontSize: 13, marginTop: 8, fontWeight: '600' },
+  hint: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginTop: 12, lineHeight: 18 },
+});
