@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Switch, Pressable } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Switch, Pressable, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
+import { fetchIslamicCalendarDates } from '../logic/hijriApi';
 import { colors } from '../theme';
-import { Card, SectionHeader, DateField, ConfirmModal } from '../components/common';
+import { Card, SectionHeader, DateField, ConfirmModal, PrimaryButton } from '../components/common';
 
-export default function SettingsScreen() {
-  const { settings, updateSettings, reset } = useTracker();
+export default function SettingsScreen({ navigation }) {
+  const { settings, updateSettings, reset, todayKey } = useTracker();
   const [confirmVisible, setConfirmVisible] = useState(false);
+  const [fetching, setFetching] = useState(false);
+  const [fetchError, setFetchError] = useState('');
+  const [fetchedAt, setFetchedAt] = useState('');
+
+  const autoFetchDates = async () => {
+    setFetching(true);
+    setFetchError('');
+    try {
+      const dates = await fetchIslamicCalendarDates(todayKey);
+      updateSettings(dates);
+      setFetchedAt(todayKey);
+    } catch (e) {
+      setFetchError(e.message || 'Tarihler getirilemedi.');
+    } finally {
+      setFetching(false);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -57,9 +75,23 @@ export default function SettingsScreen() {
 
         <SectionHeader
           title="Kamerî Takvim Tarihleri"
-          subtitle="Ramazan ve bayram tarihleri her yıl kaydığı için elle girilir (YYYY-AA-GG)"
+          subtitle="Ramazan ve bayram tarihlerini otomatik getir, gerekirse elle düzelt (YYYY-AA-GG)"
         />
         <Card>
+          {fetching ? (
+            <View style={styles.fetchingRow}>
+              <ActivityIndicator color={colors.primary} />
+              <Text style={styles.fetchingText}>Tarihler getiriliyor...</Text>
+            </View>
+          ) : (
+            <PrimaryButton title="Otomatik Getir" onPress={autoFetchDates} />
+          )}
+          {fetchError ? <Text style={styles.error}>{fetchError}</Text> : null}
+          {fetchedAt ? <Text style={styles.fetchedNote}>✓ {fetchedAt} tarihinde güncellendi</Text> : null}
+          <Text style={styles.hint}>
+            Tarihler AlAdhan takvim servisinden hesaplama yöntemiyle getirilir; Diyanet'in görüşe dayalı ilan
+            ettiği resmî tarihlerden ±1 gün farklı olabilir. Emin olmak için aşağıdan elle kontrol/düzelt.
+          </Text>
           <DateField label="Ramazan başlangıcı" value={settings.ramadanStart} onChange={(v) => updateSettings({ ramadanStart: v })} />
           <DateField label="Ramazan bitişi" value={settings.ramadanEnd} onChange={(v) => updateSettings({ ramadanEnd: v })} />
           <DateField
@@ -85,6 +117,7 @@ export default function SettingsScreen() {
         </Card>
 
         <SectionHeader title="Veri" />
+        <PrimaryButton title="Yedekle / Geri Yükle" onPress={() => navigation.navigate('Backup')} />
         <Pressable style={styles.resetBtn} onPress={() => setConfirmVisible(true)}>
           <Text style={styles.resetText}>Tüm verileri sıfırla</Text>
         </Pressable>
@@ -139,4 +172,9 @@ const styles = StyleSheet.create({
   },
   resetText: { color: '#ef4444', fontWeight: '700' },
   footnote: { color: colors.textMuted, fontSize: 11, marginHorizontal: 16, marginTop: 16, lineHeight: 16 },
+  fetchingRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingVertical: 12 },
+  fetchingText: { color: colors.textMuted, fontSize: 13 },
+  error: { color: '#ef4444', fontSize: 12, marginTop: 8, textAlign: 'center' },
+  fetchedNote: { color: colors.success, fontSize: 12, marginTop: 8, textAlign: 'center' },
+  hint: { color: colors.textMuted, fontSize: 11, marginTop: 10, marginBottom: 6, lineHeight: 16 },
 });

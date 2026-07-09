@@ -2,10 +2,10 @@ import React, { useMemo, useState } from 'react';
 import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
-import { getKazaItems, enumerateDates, computeKazaSummary, yesterdayKey } from '../logic/kaza';
+import { enumerateDates, computeKazaSummary, getKazaItemsForDate, yesterdayKey, KAZA_SLOT_META } from '../logic/kaza';
 import { todayKey } from '../logic/date';
 import { colors } from '../theme';
-import { Card, DateField, PrimaryButton } from '../components/common';
+import { Card, DateField, PrimaryButton, ConfirmModal } from '../components/common';
 
 function daysAgoKey(n) {
   const d = new Date();
@@ -13,47 +13,46 @@ function daysAgoKey(n) {
   return todayKey(d);
 }
 
-function DayRow({ dateKey, items, byDate, onToggle }) {
-  const dayMap = byDate[dateKey] || {};
-  const doneCount = items.filter((i) => dayMap[i.id]).length;
-  const complete = doneCount === items.length;
+function DayRow({ day, byDate, onToggle, onMarkAll }) {
+  const dayMap = byDate[day.dateKey] || {};
   return (
-    <View style={[styles.dayRow, complete && styles.dayRowComplete]}>
+    <View style={[styles.dayRow, day.complete && styles.dayRowComplete]}>
       <View style={styles.dayHeader}>
-        <Text style={styles.dayDate}>{dateKey}</Text>
-        <Text style={[styles.dayProgress, complete && styles.dayProgressComplete]}>
-          {doneCount}/{items.length}
+        <Text style={styles.dayDate}>{day.dateKey}</Text>
+        <Text style={[styles.dayProgress, day.complete && styles.dayProgressComplete]}>
+          {day.done}/{day.total}
         </Text>
       </View>
       <View style={styles.chipRow}>
-        {items.map((item) => {
+        {day.items.map((item) => {
           const checked = !!dayMap[item.id];
           return (
             <Pressable
-              key={item.id}
-              onPress={() => onToggle(dateKey, item.id)}
+              key={item.slot}
+              onPress={() => onToggle(day.dateKey, item.id)}
               style={[styles.chip, checked && styles.chipChecked]}
             >
               <Text style={[styles.chipText, checked && styles.chipTextChecked]}>{item.shortLabel}</Text>
             </Pressable>
           );
         })}
+        <Pressable style={styles.markAllChip} onPress={() => onMarkAll(day)}>
+          <Text style={styles.markAllText}>{day.complete ? 'Temizle' : 'Tümü'}</Text>
+        </Pressable>
       </View>
     </View>
   );
 }
 
 export default function KazaScreen() {
-  const { settings, updateSettings, byDate, toggleOnDate } = useTracker();
+  const { settings, updateSettings, byDate, toggleOnDate, bulkSetChecked } = useTracker();
   const [onlyIncomplete, setOnlyIncomplete] = useState(true);
   const [editingStart, setEditingStart] = useState(false);
   const [draftStart, setDraftStart] = useState(settings.kazaStartDate);
-
-  const items = useMemo(() => {
-    const raw = getKazaItems();
-    const labels = ['S', 'Ö', 'İ', 'A', 'Y', 'V'];
-    return raw.map((item, idx) => ({ ...item, shortLabel: labels[idx] || item.title[0] }));
-  }, []);
+  const [rangeToolOpen, setRangeToolOpen] = useState(false);
+  const [rangeStart, setRangeStart] = useState('');
+  const [rangeEnd, setRangeEnd] = useState('');
+  const [rangeConfirm, setRangeConfirm] = useState(false);
 
   const endKey = yesterdayKey();
   const dates = useMemo(
@@ -61,7 +60,7 @@ export default function KazaScreen() {
     [settings.kazaStartDate, endKey]
   );
 
-  const summary = useMemo(() => computeKazaSummary(byDate, items, dates), [byDate, items, dates]);
+  const summary = useMemo(() => computeKazaSummary(byDate, dates), [byDate, dates]);
 
   const visibleDays = onlyIncomplete ? summary.days.filter((d) => !d.complete) : summary.days;
 
@@ -77,6 +76,22 @@ export default function KazaScreen() {
       updateSettings({ kazaStartDate: draftStart });
       setEditingStart(false);
     }
+  };
+
+  const markAllForDay = (day) => {
+    const targetValue = !day.complete;
+    bulkSetChecked(
+      day.items.map((item) => ({ dateKey: day.dateKey, itemId: item.id })),
+      targetValue
+    );
+  };
+
+  const applyRangeMark = () => {
+    const rangeDates = enumerateDates(rangeStart, rangeEnd);
+    const pairs = rangeDates.flatMap((dk) => getKazaItemsForDate(dk).map((item) => ({ dateKey: dk, itemId: item.id })));
+    bulkSetChecked(pairs, true);
+    setRangeConfirm(false);
+    setRangeToolOpen(false);
   };
 
   if (!settings.kazaStartDate || editingStart) {
@@ -118,16 +133,16 @@ export default function KazaScreen() {
           <View>
             <Text style={styles.title}>Geçmiş Namazlar</Text>
             <Text style={styles.subtitle}>
-              {settings.kazaStartDate} → {endKey} arası, farz ve vacip namazlar (S: Sabah, Ö: Öğle, İ: İkindi, A:
-              Akşam, Y: Yatsı, V: Vitir)
+              {settings.kazaStartDate} → {endKey} arası, farz ve vacip namazlar (Cuma günleri Öğle yerine Cuma
+              namazı sayılır)
             </Text>
 
             <Card>
               <Text style={styles.debtNumber}>{summary.totalDebt} vakit kaza borcu</Text>
               <View style={styles.perItemRow}>
-                {items.map((item) => (
-                  <Text key={item.id} style={styles.perItemText}>
-                    {item.shortLabel}: {summary.perItemDebt[item.id]}
+                {Object.entries(KAZA_SLOT_META).map(([slot, meta]) => (
+                  <Text key={slot} style={styles.perItemText}>
+                    {meta.label}: {summary.perSlotDebt[slot]}
                   </Text>
                 ))}
               </View>
@@ -150,6 +165,20 @@ export default function KazaScreen() {
                   <Text style={styles.filterText}>Başlangıcı değiştir</Text>
                 </Pressable>
               </View>
+              <Pressable style={styles.rangeToggle} onPress={() => setRangeToolOpen(!rangeToolOpen)}>
+                <Text style={styles.rangeToggleText}>{rangeToolOpen ? '▾ Toplu işaretlemeyi kapat' : '▸ Bir aralığı toplu kıldım işaretle'}</Text>
+              </Pressable>
+              {rangeToolOpen && (
+                <View style={styles.rangeBox}>
+                  <DateField label="Aralık başlangıcı" value={rangeStart} onChange={setRangeStart} />
+                  <DateField label="Aralık bitişi" value={rangeEnd} onChange={setRangeEnd} />
+                  <PrimaryButton
+                    title="Aralığı Kıldım İşaretle"
+                    onPress={() => setRangeConfirm(true)}
+                    disabled={!rangeStart || !rangeEnd || rangeStart > rangeEnd}
+                  />
+                </View>
+              )}
             </Card>
 
             {visibleDays.length === 0 && (
@@ -160,11 +189,20 @@ export default function KazaScreen() {
           </View>
         }
         renderItem={({ item: day }) => (
-          <DayRow dateKey={day.dateKey} items={items} byDate={byDate} onToggle={toggleOnDate} />
+          <DayRow day={day} byDate={byDate} onToggle={toggleOnDate} onMarkAll={markAllForDay} />
         )}
         contentContainerStyle={{ paddingBottom: 32 }}
         initialNumToRender={20}
         windowSize={7}
+      />
+
+      <ConfirmModal
+        visible={rangeConfirm}
+        title="Aralık toplu işaretlensin mi?"
+        message={`${rangeStart} → ${rangeEnd} arasındaki tüm günler, tüm vakitler için "kılındı" olarak işaretlenecek.`}
+        confirmLabel="İşaretle"
+        onCancel={() => setRangeConfirm(false)}
+        onConfirm={applyRangeMark}
       />
     </SafeAreaView>
   );
@@ -200,6 +238,9 @@ const styles = StyleSheet.create({
   filterBtnActive: { backgroundColor: colors.success + '33', borderColor: colors.success },
   filterText: { color: colors.textMuted, fontSize: 12, fontWeight: '700' },
   filterTextActive: { color: colors.success },
+  rangeToggle: { marginTop: 12, alignItems: 'center' },
+  rangeToggleText: { color: colors.primary, fontSize: 12, fontWeight: '700' },
+  rangeBox: { marginTop: 10 },
   emptyText: { color: colors.textMuted, textAlign: 'center', marginTop: 16, fontSize: 13 },
   dayRow: {
     backgroundColor: colors.surface,
@@ -216,7 +257,7 @@ const styles = StyleSheet.create({
   dayDate: { color: colors.text, fontSize: 13, fontWeight: '700' },
   dayProgress: { color: colors.textMuted, fontSize: 12, fontWeight: '700' },
   dayProgressComplete: { color: colors.success },
-  chipRow: { flexDirection: 'row', gap: 6 },
+  chipRow: { flexDirection: 'row', gap: 6, alignItems: 'center' },
   chip: {
     width: 32,
     height: 32,
@@ -230,4 +271,15 @@ const styles = StyleSheet.create({
   chipChecked: { backgroundColor: colors.success, borderColor: colors.success },
   chipText: { color: colors.textMuted, fontWeight: '800', fontSize: 12 },
   chipTextChecked: { color: '#06281a' },
+  markAllChip: {
+    height: 32,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: colors.primary,
+    marginLeft: 4,
+  },
+  markAllText: { color: colors.primary, fontWeight: '700', fontSize: 11 },
 });

@@ -55,6 +55,14 @@ function reducer(state, action) {
       dayMap[itemId] = value;
       return { ...state, byDate: { ...state.byDate, [dateKey]: dayMap } };
     }
+    case 'BULK_SET': {
+      const { pairs, value } = action; // pairs: [{ dateKey, itemId }]
+      const byDate = { ...state.byDate };
+      for (const { dateKey, itemId } of pairs) {
+        byDate[dateKey] = { ...(byDate[dateKey] || {}), [itemId]: value };
+      }
+      return { ...state, byDate };
+    }
     case 'TOGGLE_YEAR': {
       const { yKey, itemId } = action;
       const yMap = { ...(state.byYear[yKey] || {}) };
@@ -110,6 +118,7 @@ export function TrackerProvider({ children }) {
     const toggleOnDate = (dateKey, itemId) => dispatch({ type: 'TOGGLE_DATE', dateKey, itemId });
     const setCheckedToday = (itemId, value) => dispatch({ type: 'SET_DATE', dateKey: dKey, itemId, value });
     const setCheckedOnDate = (dateKey, itemId, value) => dispatch({ type: 'SET_DATE', dateKey, itemId, value });
+    const bulkSetChecked = (pairs, value) => dispatch({ type: 'BULK_SET', pairs, value });
 
     const isCheckedYearly = (itemId) => !!state.byYear[yKey]?.[itemId];
     const toggleYearly = (itemId) => dispatch({ type: 'TOGGLE_YEAR', yKey, itemId });
@@ -121,6 +130,33 @@ export function TrackerProvider({ children }) {
     const addCustomItem = (item) => dispatch({ type: 'ADD_CUSTOM', item });
     const removeCustomItem = (id) => dispatch({ type: 'REMOVE_CUSTOM', id });
     const reset = () => dispatch({ type: 'RESET' });
+
+    // Yedekleme: mevcut durumu taşınabilir bir JSON metnine çevirir.
+    const exportSnapshot = () => {
+      const { byDate, byYear, lifetime, customItems, settings } = state;
+      return JSON.stringify(
+        { app: 'ibadetlerim', version: 1, exportedAt: new Date().toISOString(), data: { byDate, byYear, lifetime, customItems, settings } },
+        null,
+        2
+      );
+    };
+
+    // Geri yükleme: dışa aktarılan (veya eski) bir JSON metnini doğrulayıp yükler.
+    // Başarılıysa null, hata varsa kullanıcıya gösterilecek bir mesaj döner.
+    const importSnapshot = (text) => {
+      let parsed;
+      try {
+        parsed = JSON.parse(text);
+      } catch (e) {
+        return 'Geçersiz JSON: metin doğru yapıştırılmamış olabilir.';
+      }
+      const payload = parsed?.data && typeof parsed.data === 'object' ? parsed.data : parsed;
+      if (!payload || typeof payload !== 'object') {
+        return 'Tanınmayan yedek biçimi.';
+      }
+      dispatch({ type: 'HYDRATE', payload });
+      return null;
+    };
 
     return {
       loaded: state.loaded,
@@ -137,6 +173,7 @@ export function TrackerProvider({ children }) {
       toggleOnDate,
       setCheckedToday,
       setCheckedOnDate,
+      bulkSetChecked,
       isCheckedYearly,
       toggleYearly,
       isCheckedLifetime,
@@ -145,6 +182,8 @@ export function TrackerProvider({ children }) {
       addCustomItem,
       removeCustomItem,
       reset,
+      exportSnapshot,
+      importSnapshot,
     };
   }, [state]);
 

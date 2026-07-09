@@ -11,6 +11,7 @@ import StatsScreen from '../screens/StatsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ItemDetailScreen from '../screens/ItemDetailScreen';
 import AddCustomItemScreen from '../screens/AddCustomItemScreen';
+import BackupScreen from '../screens/BackupScreen';
 import { colors } from '../theme';
 
 const Tab = createBottomTabNavigator();
@@ -67,6 +68,7 @@ export default function RootNavigator() {
         <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
         <Stack.Screen name="ItemDetail" component={ItemDetailScreen} options={{ title: 'İbadet Detayı' }} />
         <Stack.Screen name="AddCustomItem" component={AddCustomItemScreen} options={{ title: 'İlave İbadet Ekle' }} />
+        <Stack.Screen name="Backup" component={BackupScreen} options={{ title: 'Yedekle / Geri Yükle' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
