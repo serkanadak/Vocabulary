@@ -33,6 +33,16 @@ export const CATEGORY_META = {
   [CATEGORY.KURBAN]: { label: 'Kurban', icon: '🐑' },
 };
 
+// Aynı vakte ait farz + sünnet kayıtlarını "Bugün" listesinde tek satırda
+// göstermek için kullanılan vakit grubu etiketleri.
+export const NAMAZ_GROUP_LABELS = {
+  sabah: 'Sabah Namazı',
+  ogle: 'Öğle Namazı',
+  ikindi: 'İkindi Namazı',
+  aksam: 'Akşam Namazı',
+  yatsi: 'Yatsı Namazı',
+};
+
 // frequency: takvimde ne zaman "bugün yapılacaklar" listesine düşeceğini belirler.
 export const FREQUENCY = {
   DAILY: 'daily', // her gün
@@ -59,6 +69,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 2,
     gender: 'all',
+    group: 'sabah',
     description: 'Sabah farzından önce kılınır. Terki mekruh sayılan sünnet-i müekkededir.',
   },
   {
@@ -69,6 +80,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 2,
     gender: 'all',
+    group: 'sabah',
     description: 'Günün 5 vakit farz namazından ilkidir.',
   },
   {
@@ -79,6 +91,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 4,
     gender: 'all',
+    group: 'ogle',
     description: 'Öğle farzından önce kılınan 4 rekât sünnet-i müekkede.',
   },
   {
@@ -89,6 +102,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 4,
     gender: 'all',
+    group: 'ogle',
     description: '5 vakit farz namazdan biri.',
   },
   {
@@ -99,6 +113,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 2,
     gender: 'all',
+    group: 'ogle',
     description: 'Öğle farzından sonra kılınan 2 rekât sünnet-i müekkede.',
   },
   {
@@ -109,6 +124,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.OPTIONAL_DAILY,
     rekat: 4,
     gender: 'all',
+    group: 'ikindi',
     description: 'İkindi farzından önce kılınan 4 rekât, sünnet-i gayr-i müekkede (nafile).',
   },
   {
@@ -119,6 +135,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 4,
     gender: 'all',
+    group: 'ikindi',
     description: '5 vakit farz namazdan biri.',
   },
   {
@@ -129,6 +146,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 3,
     gender: 'all',
+    group: 'aksam',
     description: '5 vakit farz namazdan biri.',
   },
   {
@@ -139,6 +157,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 2,
     gender: 'all',
+    group: 'aksam',
     description: 'Akşam farzından sonra kılınan 2 rekât sünnet-i müekkede.',
   },
   {
@@ -159,6 +178,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 4,
     gender: 'all',
+    group: 'yatsi',
     description: '5 vakit farz namazdan sonuncusu.',
   },
   {
@@ -169,6 +189,7 @@ export const IBADETLER = [
     frequency: FREQUENCY.DAILY,
     rekat: 2,
     gender: 'all',
+    group: 'yatsi',
     description: 'Yatsı farzından sonra kılınan 2 rekât sünnet-i müekkede.',
   },
   {

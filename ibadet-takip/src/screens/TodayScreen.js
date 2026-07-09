@@ -4,11 +4,38 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
 import { getTodaySchedule } from '../logic/schedule';
 import { getDailyRequiredIds, currentStreak } from '../logic/stats';
+import { NAMAZ_GROUP_LABELS } from '../data/ibadetler';
 import { colors } from '../theme';
 import { CheckRow, SectionHeader, Card } from '../components/common';
 
+const REKAT_LABEL = {
+  farz_ayn: 'Farz',
+  farz_kifaye: 'Farz',
+  vacip: 'Vacip',
+  sunnet_muekkede: 'Sünnet',
+  sunnet_gayrimuekkede: 'Nafile',
+};
+
+function flattenIds(list) {
+  const ids = [];
+  for (const entry of list) {
+    if (entry.isGroup) ids.push(...entry.items.map((i) => i.id));
+    else ids.push(entry.id);
+  }
+  return ids;
+}
+
 export default function TodayScreen({ navigation }) {
-  const { settings, todayKey, isCheckedToday, toggleToday, isCheckedYearly, toggleYearly, byDate } = useTracker();
+  const {
+    settings,
+    todayKey,
+    isCheckedToday,
+    toggleToday,
+    setCheckedToday,
+    isCheckedYearly,
+    toggleYearly,
+    byDate,
+  } = useTracker();
 
   const { required, optional, yearlyReminders } = useMemo(
     () => getTodaySchedule({ dateKey: todayKey, settings }),
@@ -18,7 +45,8 @@ export default function TodayScreen({ navigation }) {
   const dailyIds = useMemo(() => getDailyRequiredIds(), []);
   const streak = useMemo(() => currentStreak(byDate, dailyIds), [byDate, dailyIds]);
 
-  const doneCount = required.filter((i) => isCheckedToday(i.id)).length;
+  const requiredIds = flattenIds(required);
+  const doneCount = requiredIds.filter((id) => isCheckedToday(id)).length;
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -32,22 +60,41 @@ export default function TodayScreen({ navigation }) {
           <Text style={styles.streakNumber}>🔥 {streak} gün</Text>
           <Text style={styles.streakLabel}>kesintisiz tam ibadet serisi</Text>
           <Text style={styles.progressText}>
-            Bugün: {doneCount}/{required.length} tamamlandı
+            Bugün: {doneCount}/{requiredIds.length} tamamlandı
           </Text>
         </Card>
 
         <SectionHeader title="Farz, Vacip ve Sünnet-i Müekkede" subtitle="Bugüne ait zorunlu/müekked ibadetler" />
-        {required.map((item) => (
-          <CheckRow
-            key={item.id}
-            title={item.title}
-            hukum={item.hukum}
-            rekat={item.rekat}
-            checked={isCheckedToday(item.id)}
-            onPress={() => toggleToday(item.id)}
-            onLongPress={() => navigation.navigate('ItemDetail', { id: item.id })}
-          />
-        ))}
+        {required.map((entry) => {
+          if (entry.isGroup) {
+            const allChecked = entry.items.every((i) => isCheckedToday(i.id));
+            const hukumList = [...new Set(entry.items.map((i) => i.hukum))];
+            const rekatText = entry.items.map((i) => `${REKAT_LABEL[i.hukum]} ${i.rekat}`).join(' + ');
+            const detailTarget = entry.items.find((i) => i.hukum === 'farz_ayn') || entry.items[0];
+            return (
+              <CheckRow
+                key={entry.groupKey}
+                title={NAMAZ_GROUP_LABELS[entry.groupKey] || entry.items[0].title}
+                hukumList={hukumList}
+                rekatText={rekatText}
+                checked={allChecked}
+                onPress={() => entry.items.forEach((i) => setCheckedToday(i.id, !allChecked))}
+                onLongPress={() => navigation.navigate('ItemDetail', { id: detailTarget.id })}
+              />
+            );
+          }
+          return (
+            <CheckRow
+              key={entry.id}
+              title={entry.title}
+              hukum={entry.hukum}
+              rekat={entry.rekat}
+              checked={isCheckedToday(entry.id)}
+              onPress={() => toggleToday(entry.id)}
+              onLongPress={() => navigation.navigate('ItemDetail', { id: entry.id })}
+            />
+          );
+        })}
 
         {yearlyReminders.filter((i) => !isCheckedYearly(i.id)).length > 0 && (
           <>

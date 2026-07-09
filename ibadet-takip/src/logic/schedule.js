@@ -46,7 +46,35 @@ export function getTodaySchedule({ dateKey, settings }) {
     }
   }
 
-  return { required, optional, yearlyReminders };
+  return { required: groupForDisplay(required), optional, yearlyReminders };
+}
+
+// Aynı vakte ait (aynı `group` alanına sahip) birden fazla kayıt varsa
+// (ör. sünnet + farz), bunları "Bugün" listesinde tek satırlık bir grup
+// nesnesine indirger. Yalnızca bir kayıt varsa (ör. nafile kapalıyken tek
+// başına ikindi farzı) olduğu gibi bırakılır.
+export function groupForDisplay(items) {
+  const result = [];
+  const groupIndex = new Map();
+  for (const item of items) {
+    if (!item.group) {
+      result.push(item);
+      continue;
+    }
+    if (groupIndex.has(item.group)) {
+      const idx = groupIndex.get(item.group);
+      const existing = result[idx];
+      if (existing.isGroup) {
+        existing.items.push(item);
+      } else {
+        result[idx] = { isGroup: true, groupKey: item.group, items: [existing, item] };
+      }
+    } else {
+      groupIndex.set(item.group, result.length);
+      result.push(item);
+    }
+  }
+  return result;
 }
 
 export function getLifetimeItems() {

@@ -23,7 +23,8 @@ export function SectionHeader({ title, subtitle }) {
   );
 }
 
-export function CheckRow({ title, subtitle, hukum, rekat, checked, onPress, onLongPress }) {
+export function CheckRow({ title, subtitle, hukum, hukumList, rekat, rekatText, checked, onPress, onLongPress }) {
+  const rekatSuffix = rekatText ? ` (${rekatText})` : rekat ? ` (${rekat} rekât)` : '';
   return (
     <Pressable
       onPress={onPress}
@@ -36,11 +37,19 @@ export function CheckRow({ title, subtitle, hukum, rekat, checked, onPress, onLo
       <View style={{ flex: 1 }}>
         <Text style={[styles.rowTitle, checked && styles.rowTitleChecked]}>
           {title}
-          {rekat ? ` (${rekat} rekât)` : ''}
+          {rekatSuffix}
         </Text>
         {subtitle ? <Text style={styles.rowSubtitle}>{subtitle}</Text> : null}
       </View>
-      {hukum ? <HukumBadge hukum={hukum} /> : null}
+      {hukumList ? (
+        <View style={styles.badgeStack}>
+          {hukumList.map((h) => (
+            <HukumBadge key={h} hukum={h} />
+          ))}
+        </View>
+      ) : hukum ? (
+        <HukumBadge hukum={hukum} />
+      ) : null}
     </Pressable>
   );
 }
@@ -68,6 +77,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 3,
     marginLeft: 8,
+  },
+  badgeStack: {
+    alignItems: 'flex-end',
+    gap: 4,
   },
   badgeText: { fontSize: 11, fontWeight: '700' },
   sectionHeader: { paddingHorizontal: 16, paddingTop: 18, paddingBottom: 6 },

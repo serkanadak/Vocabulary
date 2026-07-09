@@ -45,6 +45,12 @@ function reducer(state, action) {
       dayMap[itemId] = !dayMap[itemId];
       return { ...state, byDate: { ...state.byDate, [dateKey]: dayMap } };
     }
+    case 'SET_DATE': {
+      const { dateKey, itemId, value } = action;
+      const dayMap = { ...(state.byDate[dateKey] || {}) };
+      dayMap[itemId] = value;
+      return { ...state, byDate: { ...state.byDate, [dateKey]: dayMap } };
+    }
     case 'TOGGLE_YEAR': {
       const { yKey, itemId } = action;
       const yMap = { ...(state.byYear[yKey] || {}) };
@@ -92,6 +98,7 @@ export function TrackerProvider({ children }) {
     const isCheckedToday = (itemId) => isCheckedOn(dKey, itemId);
     const toggleToday = (itemId) => dispatch({ type: 'TOGGLE_DATE', dateKey: dKey, itemId });
     const toggleOnDate = (dateKey, itemId) => dispatch({ type: 'TOGGLE_DATE', dateKey, itemId });
+    const setCheckedToday = (itemId, value) => dispatch({ type: 'SET_DATE', dateKey: dKey, itemId, value });
 
     const isCheckedYearly = (itemId) => !!state.byYear[yKey]?.[itemId];
     const toggleYearly = (itemId) => dispatch({ type: 'TOGGLE_YEAR', yKey, itemId });
@@ -114,6 +121,7 @@ export function TrackerProvider({ children }) {
       isCheckedToday,
       toggleToday,
       toggleOnDate,
+      setCheckedToday,
       isCheckedYearly,
       toggleYearly,
       isCheckedLifetime,
