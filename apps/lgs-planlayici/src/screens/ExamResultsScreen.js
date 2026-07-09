@@ -5,6 +5,7 @@ import { colors, subjectColor } from '../theme';
 import { Card, SectionTitle, ProgressBar, PrimaryButton, EmptyState } from '../components/common';
 import PromptModal from '../components/PromptModal';
 import SubjectTrend from '../components/SubjectTrend';
+import ExamTable from '../components/ExamTable';
 import { buildSubjectTrends } from '../logic/examTrends';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 import { todayStr } from '../logic/calendar';
@@ -56,6 +57,8 @@ export default function ExamResultsScreen() {
           ))}
         </>
       )}
+
+      <ExamTable examResults={planner.examResults} subjects={subjects} />
 
       <PrimaryButton label="+ Deneme Sonucu Ekle" onPress={() => setModalVisible(true)} />
 
