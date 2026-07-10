@@ -4,7 +4,14 @@
 // haftanın gününe göre değişir.
 
 import { getById } from '../data/ibadetler';
-import { todayKey, weekday } from './date';
+import { todayKey, weekday, isValidDateKey } from './date';
+
+// 'YYYY-MM-DD' anahtarını, ISO dize ayrıştırmasının saat dilimine/AA-GG
+// sırasına bağlı belirsizliğine düşmeden yerel bir Date'e çevirir.
+function parseDateKey(key) {
+  const [y, m, d] = key.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
 
 const SLOT_ITEM_IDS = {
   sabah: 'namaz-sabah-farz',
@@ -36,10 +43,10 @@ export function getKazaItemsForDate(dateKey) {
 
 // endKey dahil, startKey'e kadar (dahil) günleri en yeniden en eskiye sıralar.
 export function enumerateDates(startKey, endKey) {
-  if (!startKey || !endKey || startKey > endKey) return [];
+  if (!isValidDateKey(startKey) || !isValidDateKey(endKey) || startKey > endKey) return [];
   const dates = [];
-  const cur = new Date(endKey);
-  const start = new Date(startKey);
+  const cur = parseDateKey(endKey);
+  const start = parseDateKey(startKey);
   while (cur >= start) {
     dates.push(todayKey(cur));
     cur.setDate(cur.getDate() - 1);

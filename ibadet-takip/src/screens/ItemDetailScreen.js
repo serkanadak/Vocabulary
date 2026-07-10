@@ -18,8 +18,12 @@ export default function ItemDetailScreen({ route, navigation }) {
     toggleToday,
     isCheckedYearly,
     toggleYearly,
+    isNotApplicableYearly,
+    toggleYearlyNotApplicable,
     isCheckedLifetime,
     toggleLifetime,
+    isNotApplicableLifetime,
+    toggleLifetimeNotApplicable,
     yearKeyStr,
     customItems,
     removeCustomItem,
@@ -61,17 +65,43 @@ export default function ItemDetailScreen({ route, navigation }) {
         )}
 
         {item.frequency === FREQUENCY.LIFETIME && (
-          <PrimaryButton
-            title={isCheckedLifetime(item.id) ? '✓ Yaptım' : 'Yaptım olarak işaretle'}
-            onPress={() => toggleLifetime(item.id)}
-          />
+          <>
+            <PrimaryButton
+              title={isCheckedLifetime(item.id) ? '✓ Yaptım' : 'Yaptım olarak işaretle'}
+              onPress={() => toggleLifetime(item.id)}
+            />
+            <Pressable style={styles.naBtn} onPress={() => toggleLifetimeNotApplicable(item.id)}>
+              <Text style={[styles.naText, isNotApplicableLifetime(item.id) && styles.naTextActive]}>
+                {isNotApplicableLifetime(item.id) ? '✓ Bana uygulanmıyor' : 'Bana uygulanmıyor olarak işaretle'}
+              </Text>
+            </Pressable>
+            {isNotApplicableLifetime(item.id) && (
+              <Text style={styles.naHint}>
+                Sebebi doğduğunda (ör. istitâat kazanma, adak) buradan tekrar "Yaptım" olarak işaretleyebilirsin;
+                hatırlatma listelerinde görünmez.
+              </Text>
+            )}
+          </>
         )}
 
         {item.frequency === FREQUENCY.YEARLY_ONCE && (
-          <PrimaryButton
-            title={isCheckedYearly(item.id) ? `✓ Bu yıl (${yearKeyStr}) yaptım` : `Bu yıl (${yearKeyStr}) için işaretle`}
-            onPress={() => toggleYearly(item.id)}
-          />
+          <>
+            <PrimaryButton
+              title={isCheckedYearly(item.id) ? `✓ Bu yıl (${yearKeyStr}) yaptım` : `Bu yıl (${yearKeyStr}) için işaretle`}
+              onPress={() => toggleYearly(item.id)}
+            />
+            <Pressable style={styles.naBtn} onPress={() => toggleYearlyNotApplicable(item.id)}>
+              <Text style={[styles.naText, isNotApplicableYearly(item.id) && styles.naTextActive]}>
+                {isNotApplicableYearly(item.id) ? `✓ Bu yıl (${yearKeyStr}) bana uygulanmıyor` : 'Bu yıl bana uygulanmıyor olarak işaretle'}
+              </Text>
+            </Pressable>
+            {isNotApplicableYearly(item.id) && (
+              <Text style={styles.naHint}>
+                Adak gibi bir sebebe bağlı ibadetlerde, sebebi oluşmadıysa bunu işaretleyebilirsin; "Bu Yıl İçin
+                Hatırlatma" listesinde görünmez. Sebep oluşursa buradan tekrar "Yaptım" olarak işaretle.
+              </Text>
+            )}
+          </>
         )}
 
         {![FREQUENCY.OCCASIONAL, FREQUENCY.LIFETIME].includes(item.frequency) && (
@@ -114,6 +144,10 @@ const styles = StyleSheet.create({
   description: { color: colors.text, fontSize: 14, lineHeight: 21 },
   genderNote: { color: colors.textMuted, fontSize: 12, marginTop: 10, lineHeight: 18 },
   hint: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginTop: 8 },
+  naBtn: { marginHorizontal: 16, marginTop: 10, paddingVertical: 8, alignItems: 'center' },
+  naText: { color: colors.textMuted, fontSize: 13, fontWeight: '600' },
+  naTextActive: { color: colors.primary },
+  naHint: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginTop: 4, lineHeight: 17, textAlign: 'center' },
   notFound: { color: colors.text, padding: 16 },
   deleteBtn: {
     marginHorizontal: 16,

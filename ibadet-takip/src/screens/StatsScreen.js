@@ -8,7 +8,15 @@ import { colors } from '../theme';
 import { Card, SectionHeader } from '../components/common';
 
 export default function StatsScreen({ navigation }) {
-  const { byDate, isCheckedLifetime, isCheckedYearly, yearKeyStr, customItems } = useTracker();
+  const {
+    byDate,
+    isCheckedLifetime,
+    isNotApplicableLifetime,
+    isCheckedYearly,
+    isNotApplicableYearly,
+    yearKeyStr,
+    customItems,
+  } = useTracker();
 
   const dailyIds = useMemo(() => getDailyRequiredIds(), []);
   const streak = useMemo(() => currentStreak(byDate, dailyIds), [byDate, dailyIds]);
@@ -48,8 +56,14 @@ export default function StatsScreen({ navigation }) {
         {lifetimeItems.map((item) => (
           <Pressable key={item.id} style={styles.simpleRow} onPress={() => navigation.navigate('ItemDetail', { id: item.id })}>
             <Text style={styles.rowTitle}>{item.title}</Text>
-            <Text style={[styles.status, isCheckedLifetime(item.id) && styles.statusDone]}>
-              {isCheckedLifetime(item.id) ? '✓ Yapıldı' : 'Bekliyor'}
+            <Text
+              style={[
+                styles.status,
+                isCheckedLifetime(item.id) && styles.statusDone,
+                isNotApplicableLifetime(item.id) && styles.statusNA,
+              ]}
+            >
+              {isCheckedLifetime(item.id) ? '✓ Yapıldı' : isNotApplicableLifetime(item.id) ? 'Uygulanmıyor' : 'Bekliyor'}
             </Text>
           </Pressable>
         ))}
@@ -58,8 +72,14 @@ export default function StatsScreen({ navigation }) {
         {yearlyItems.map((item) => (
           <Pressable key={item.id} style={styles.simpleRow} onPress={() => navigation.navigate('ItemDetail', { id: item.id })}>
             <Text style={styles.rowTitle}>{item.title}</Text>
-            <Text style={[styles.status, isCheckedYearly(item.id) && styles.statusDone]}>
-              {isCheckedYearly(item.id) ? '✓ Yapıldı' : 'Bekliyor'}
+            <Text
+              style={[
+                styles.status,
+                isCheckedYearly(item.id) && styles.statusDone,
+                isNotApplicableYearly(item.id) && styles.statusNA,
+              ]}
+            >
+              {isCheckedYearly(item.id) ? '✓ Yapıldı' : isNotApplicableYearly(item.id) ? 'Uygulanmıyor' : 'Bekliyor'}
             </Text>
           </Pressable>
         ))}
@@ -104,4 +124,5 @@ const styles = StyleSheet.create({
   rowTitle: { color: colors.text, fontSize: 14, fontWeight: '600', flex: 1 },
   status: { color: colors.textMuted, fontSize: 12, fontWeight: '700' },
   statusDone: { color: colors.success },
+  statusNA: { color: colors.textMuted, fontStyle: 'italic' },
 });

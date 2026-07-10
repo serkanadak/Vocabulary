@@ -40,6 +40,13 @@ describe('enumerateDates', () => {
   test('tek günlük aralıkta tek eleman döner', () => {
     expect(enumerateDates('2026-07-01', '2026-07-01')).toEqual(['2026-07-01']);
   });
+
+  test('GG.AA.YYYY gibi geçersiz biçimli başlangıç tarihinde boş dizi döner (sessiz yanlış tarihe düşmez)', () => {
+    // Bu biçim JS'in Date ayrıştırıcısı tarafından AA.GG.YYYY sanılıp
+    // gelecekteki bir tarihe (10.07.2026 -> 7 Ekim 2026) çevrilebiliyordu;
+    // bu da borcun sessizce 0 görünmesine yol açıyordu.
+    expect(enumerateDates('10.07.2026', '2026-07-09')).toEqual([]);
+  });
 });
 
 describe('computeKazaSummary', () => {

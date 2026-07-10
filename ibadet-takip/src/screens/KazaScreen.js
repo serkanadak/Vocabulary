@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
 import { enumerateDates, computeKazaSummary, getKazaItemsForDate, yesterdayKey, KAZA_SLOT_META } from '../logic/kaza';
-import { todayKey } from '../logic/date';
+import { todayKey, isValidDateKey } from '../logic/date';
 import { colors } from '../theme';
 import { Card, DateField, PrimaryButton, ConfirmModal } from '../components/common';
 
@@ -71,8 +71,10 @@ export default function KazaScreen() {
     setEditingStart(false);
   };
 
+  const draftStartValid = isValidDateKey(draftStart);
+
   const saveDraft = () => {
-    if (draftStart) {
+    if (draftStartValid) {
       updateSettings({ kazaStartDate: draftStart });
       setEditingStart(false);
     }
@@ -94,7 +96,7 @@ export default function KazaScreen() {
     setRangeToolOpen(false);
   };
 
-  if (!settings.kazaStartDate || editingStart) {
+  if (!isValidDateKey(settings.kazaStartDate) || editingStart) {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
         <View style={{ paddingBottom: 32 }}>
@@ -111,8 +113,13 @@ export default function KazaScreen() {
                 </Pressable>
               ))}
             </View>
-            <DateField label="Başlangıç tarihi (elle gir)" value={draftStart} onChange={setDraftStart} />
-            <PrimaryButton title="Kaydet" onPress={saveDraft} disabled={!draftStart} />
+            <DateField
+              label="Başlangıç tarihi (elle gir)"
+              value={draftStart}
+              onChange={setDraftStart}
+              error={draftStart && !draftStartValid ? 'Geçersiz tarih — YYYY-AA-GG biçiminde gir, örn: 2026-07-10' : ''}
+            />
+            <PrimaryButton title="Kaydet" onPress={saveDraft} disabled={!draftStartValid} />
             {settings.kazaStartDate ? (
               <Pressable style={{ marginTop: 10 }} onPress={() => setEditingStart(false)}>
                 <Text style={styles.cancelText}>Vazgeç</Text>
@@ -170,12 +177,22 @@ export default function KazaScreen() {
               </Pressable>
               {rangeToolOpen && (
                 <View style={styles.rangeBox}>
-                  <DateField label="Aralık başlangıcı" value={rangeStart} onChange={setRangeStart} />
-                  <DateField label="Aralık bitişi" value={rangeEnd} onChange={setRangeEnd} />
+                  <DateField
+                    label="Aralık başlangıcı"
+                    value={rangeStart}
+                    onChange={setRangeStart}
+                    error={rangeStart && !isValidDateKey(rangeStart) ? 'Geçersiz tarih — YYYY-AA-GG' : ''}
+                  />
+                  <DateField
+                    label="Aralık bitişi"
+                    value={rangeEnd}
+                    onChange={setRangeEnd}
+                    error={rangeEnd && !isValidDateKey(rangeEnd) ? 'Geçersiz tarih — YYYY-AA-GG' : ''}
+                  />
                   <PrimaryButton
                     title="Aralığı Kıldım İşaretle"
                     onPress={() => setRangeConfirm(true)}
-                    disabled={!rangeStart || !rangeEnd || rangeStart > rangeEnd}
+                    disabled={!isValidDateKey(rangeStart) || !isValidDateKey(rangeEnd) || rangeStart > rangeEnd}
                   />
                 </View>
               )}

@@ -58,12 +58,12 @@ export function Card({ children, style }) {
   return <View style={[styles.card, style]}>{children}</View>;
 }
 
-export function DateField({ label, value, onChange }) {
+export function DateField({ label, value, onChange, error }) {
   return (
     <View style={styles.dateField}>
       <Text style={styles.dateLabel}>{label}</Text>
       <TextInput
-        style={styles.dateInput}
+        style={[styles.dateInput, error && styles.dateInputError]}
         value={value}
         onChangeText={onChange}
         placeholder="YYYY-AA-GG"
@@ -71,6 +71,7 @@ export function DateField({ label, value, onChange }) {
         autoCapitalize="none"
         autoCorrect={false}
       />
+      {error ? <Text style={styles.dateError}>{error}</Text> : null}
     </View>
   );
 }
@@ -185,7 +186,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 8,
     fontSize: 14,
+    borderWidth: 1,
+    borderColor: 'transparent',
   },
+  dateInputError: { borderColor: '#ef4444' },
+  dateError: { color: '#ef4444', fontSize: 11, marginTop: 4 },
   modalBackdrop: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.6)',

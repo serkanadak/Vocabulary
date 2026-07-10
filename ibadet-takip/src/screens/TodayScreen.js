@@ -34,6 +34,7 @@ export default function TodayScreen({ navigation }) {
     setCheckedToday,
     isCheckedYearly,
     toggleYearly,
+    isNotApplicableYearly,
     byDate,
     customItems,
   } = useTracker();
@@ -97,11 +98,14 @@ export default function TodayScreen({ navigation }) {
           );
         })}
 
-        {yearlyReminders.filter((i) => !isCheckedYearly(i.id)).length > 0 && (
+        {yearlyReminders.filter((i) => !isCheckedYearly(i.id) && !isNotApplicableYearly(i.id)).length > 0 && (
           <>
-            <SectionHeader title="Bu Yıl İçin Hatırlatma" subtitle="Takvime bağlı olmayan, yılda bir işaretlenen ibadetler" />
+            <SectionHeader
+              title="Bu Yıl İçin Hatırlatma"
+              subtitle="Takvime bağlı olmayan, yılda bir işaretlenen ibadetler — adak gibi bir sebebe bağlıysa detayından 'bana uygulanmıyor' işaretleyebilirsin"
+            />
             {yearlyReminders
-              .filter((i) => !isCheckedYearly(i.id))
+              .filter((i) => !isCheckedYearly(i.id) && !isNotApplicableYearly(i.id))
               .map((item) => (
                 <CheckRow
                   key={item.id}

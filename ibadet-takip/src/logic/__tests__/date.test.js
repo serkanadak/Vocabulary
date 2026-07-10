@@ -1,4 +1,4 @@
-import { todayKey, yearKey, weekday, isWithinRange } from '../date';
+import { todayKey, yearKey, weekday, isWithinRange, isValidDateKey } from '../date';
 
 describe('todayKey', () => {
   test('YYYY-AA-GG olarak, sıfır dolgulu biçimlendirir', () => {
@@ -36,5 +36,28 @@ describe('isWithinRange', () => {
   test('başlangıç veya bitiş boşsa false döner', () => {
     expect(isWithinRange('2026-03-15', '', '2026-03-20')).toBe(false);
     expect(isWithinRange('2026-03-15', '2026-03-10', '')).toBe(false);
+  });
+});
+
+describe('isValidDateKey', () => {
+  test('geçerli YYYY-MM-DD için true döner', () => {
+    expect(isValidDateKey('2026-07-10')).toBe(true);
+    expect(isValidDateKey('2026-01-01')).toBe(true);
+  });
+
+  test('GG.AA.YYYY gibi Türkçe biçimli girişleri reddeder (elle kaza başlangıcı hatasının kaynağı)', () => {
+    expect(isValidDateKey('10.07.2026')).toBe(false);
+    expect(isValidDateKey('10/07/2026')).toBe(false);
+  });
+
+  test('takvimde olmayan günleri reddeder', () => {
+    expect(isValidDateKey('2026-02-30')).toBe(false);
+    expect(isValidDateKey('2026-13-01')).toBe(false);
+  });
+
+  test('boş veya eksik girişi reddeder', () => {
+    expect(isValidDateKey('')).toBe(false);
+    expect(isValidDateKey('2026-7-10')).toBe(false);
+    expect(isValidDateKey(undefined)).toBe(false);
   });
 });
