@@ -2,7 +2,16 @@ import React, { useMemo, useState } from 'react';
 import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
-import { enumerateDates, computeKazaSummary, getKazaItemsForDate, yesterdayKey, KAZA_SLOT_META } from '../logic/kaza';
+import {
+  enumerateDates,
+  computeKazaSummary,
+  getKazaItemsForDate,
+  yesterdayKey,
+  KAZA_SLOT_META,
+  monthKeyOf,
+  monthLabel,
+  shiftMonthKey,
+} from '../logic/kaza';
 import { todayKey, isValidDateKey } from '../logic/date';
 import { colors } from '../theme';
 import { Card, DateField, PrimaryButton, ConfirmModal } from '../components/common';
@@ -53,6 +62,9 @@ export default function KazaScreen() {
   const [rangeStart, setRangeStart] = useState('');
   const [rangeEnd, setRangeEnd] = useState('');
   const [rangeConfirm, setRangeConfirm] = useState(false);
+  const [monthPickerOpen, setMonthPickerOpen] = useState(false);
+  const [monthFilter, setMonthFilter] = useState(null); // null = tüm dönem, aksi halde 'YYYY-MM'
+  const [pickerMonth, setPickerMonth] = useState(null); // seçici içindeki geçici gezinme ayı
 
   const endKey = yesterdayKey();
   const dates = useMemo(
@@ -62,7 +74,15 @@ export default function KazaScreen() {
 
   const summary = useMemo(() => computeKazaSummary(byDate, dates), [byDate, dates]);
 
-  const visibleDays = onlyIncomplete ? summary.days.filter((d) => !d.complete) : summary.days;
+  const startMonthKey = monthKeyOf(settings.kazaStartDate);
+  const endMonthKey = monthKeyOf(endKey);
+
+  const visibleDays = useMemo(() => {
+    let days = summary.days;
+    if (monthFilter) days = days.filter((d) => monthKeyOf(d.dateKey) === monthFilter);
+    if (onlyIncomplete) days = days.filter((d) => !d.complete);
+    return days;
+  }, [summary.days, monthFilter, onlyIncomplete]);
 
   const applyPreset = (n) => {
     const start = daysAgoKey(n);
@@ -141,7 +161,7 @@ export default function KazaScreen() {
             <Text style={styles.title}>Geçmiş Namazlar</Text>
             <Text style={styles.subtitle}>
               {settings.kazaStartDate} → {endKey} arası, farz ve vacip namazlar (Cuma günleri Öğle yerine Cuma
-              namazı sayılır)
+              namazı sayılır){monthFilter ? ` — şu an yalnızca ${monthLabel(monthFilter)} gösteriliyor` : ''}
             </Text>
 
             <Card>
@@ -172,6 +192,58 @@ export default function KazaScreen() {
                   <Text style={styles.filterText}>Başlangıcı değiştir</Text>
                 </Pressable>
               </View>
+              <Pressable
+                style={styles.rangeToggle}
+                onPress={() => {
+                  setPickerMonth(monthFilter || endMonthKey);
+                  setMonthPickerOpen(!monthPickerOpen);
+                }}
+              >
+                <Text style={styles.rangeToggleText}>
+                  {monthPickerOpen
+                    ? '▾ Ay/yıl seçmeyi kapat'
+                    : `▸ Ay/yıl seç${monthFilter ? ` (${monthLabel(monthFilter)} gösteriliyor)` : ''}`}
+                </Text>
+              </Pressable>
+              {monthPickerOpen && (
+                <View style={styles.monthPickerBox}>
+                  <View style={styles.monthNavRow}>
+                    <Pressable
+                      style={[styles.monthNavBtn, pickerMonth <= startMonthKey && styles.monthNavBtnDisabled]}
+                      disabled={pickerMonth <= startMonthKey}
+                      onPress={() => setPickerMonth((m) => shiftMonthKey(m, -1))}
+                    >
+                      <Text style={styles.monthNavText}>‹</Text>
+                    </Pressable>
+                    <Text style={styles.monthNavLabel}>{pickerMonth ? monthLabel(pickerMonth) : ''}</Text>
+                    <Pressable
+                      style={[styles.monthNavBtn, pickerMonth >= endMonthKey && styles.monthNavBtnDisabled]}
+                      disabled={pickerMonth >= endMonthKey}
+                      onPress={() => setPickerMonth((m) => shiftMonthKey(m, 1))}
+                    >
+                      <Text style={styles.monthNavText}>›</Text>
+                    </Pressable>
+                  </View>
+                  <PrimaryButton
+                    title="Bu Ayı Göster"
+                    onPress={() => {
+                      setMonthFilter(pickerMonth);
+                      setMonthPickerOpen(false);
+                    }}
+                  />
+                  {monthFilter && (
+                    <Pressable
+                      style={{ marginTop: 10 }}
+                      onPress={() => {
+                        setMonthFilter(null);
+                        setMonthPickerOpen(false);
+                      }}
+                    >
+                      <Text style={styles.cancelText}>Tüm dönemi göster</Text>
+                    </Pressable>
+                  )}
+                </View>
+              )}
               <Pressable style={styles.rangeToggle} onPress={() => setRangeToolOpen(!rangeToolOpen)}>
                 <Text style={styles.rangeToggleText}>{rangeToolOpen ? '▾ Toplu işaretlemeyi kapat' : '▸ Bir aralığı toplu kıldım işaretle'}</Text>
               </Pressable>
@@ -200,7 +272,11 @@ export default function KazaScreen() {
 
             {visibleDays.length === 0 && (
               <Text style={styles.emptyText}>
-                {onlyIncomplete ? 'Eksik gün yok — borç kalmadı 🎉' : 'Görüntülenecek gün yok.'}
+                {onlyIncomplete
+                  ? monthFilter
+                    ? `${monthLabel(monthFilter)} için eksik gün yok 🎉`
+                    : 'Eksik gün yok — borç kalmadı 🎉'
+                  : 'Görüntülenecek gün yok.'}
               </Text>
             )}
           </View>
@@ -258,6 +334,26 @@ const styles = StyleSheet.create({
   rangeToggle: { marginTop: 12, alignItems: 'center' },
   rangeToggleText: { color: colors.primary, fontSize: 12, fontWeight: '700' },
   rangeBox: { marginTop: 10 },
+  monthPickerBox: { marginTop: 10 },
+  monthNavRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  monthNavBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surfaceAlt,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  monthNavBtnDisabled: { opacity: 0.35 },
+  monthNavText: { color: colors.text, fontSize: 18, fontWeight: '800' },
+  monthNavLabel: { color: colors.text, fontSize: 15, fontWeight: '700' },
   emptyText: { color: colors.textMuted, textAlign: 'center', marginTop: 16, fontSize: 13 },
   dayRow: {
     backgroundColor: colors.surface,

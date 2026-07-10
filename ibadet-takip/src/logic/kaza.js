@@ -41,15 +41,16 @@ export function getKazaItemsForDate(dateKey) {
   });
 }
 
-// endKey dahil, startKey'e kadar (dahil) günleri en yeniden en eskiye sıralar.
+// startKey'den endKey'e (ikisi de dahil) günleri en eskiden en yeniye
+// (geçmişten bugüne) sıralar.
 export function enumerateDates(startKey, endKey) {
   if (!isValidDateKey(startKey) || !isValidDateKey(endKey) || startKey > endKey) return [];
   const dates = [];
-  const cur = parseDateKey(endKey);
-  const start = parseDateKey(startKey);
-  while (cur >= start) {
+  const cur = parseDateKey(startKey);
+  const end = parseDateKey(endKey);
+  while (cur <= end) {
     dates.push(todayKey(cur));
-    cur.setDate(cur.getDate() - 1);
+    cur.setDate(cur.getDate() + 1);
   }
   return dates;
 }
@@ -58,6 +59,29 @@ export function yesterdayKey() {
   const d = new Date();
   d.setDate(d.getDate() - 1);
   return todayKey(d);
+}
+
+const TR_MONTHS = [
+  'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+  'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık',
+];
+
+// 'YYYY-MM-DD' -> 'YYYY-MM'
+export function monthKeyOf(dateKey) {
+  return typeof dateKey === 'string' ? dateKey.slice(0, 7) : '';
+}
+
+// 'YYYY-MM' -> 'Temmuz 2026'
+export function monthLabel(monthKeyStr) {
+  const [y, m] = monthKeyStr.split('-').map(Number);
+  return `${TR_MONTHS[m - 1]} ${y}`;
+}
+
+// 'YYYY-MM' -> delta ay sonraki/önceki 'YYYY-MM'
+export function shiftMonthKey(monthKeyStr, delta) {
+  const [y, m] = monthKeyStr.split('-').map(Number);
+  const d = new Date(y, m - 1 + delta, 1);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 }
 
 // Her gün için tamamlanma durumu + slot bazlı (Sabah/Öğle-Cuma/İkindi/Akşam/Yatsı/Vitir)

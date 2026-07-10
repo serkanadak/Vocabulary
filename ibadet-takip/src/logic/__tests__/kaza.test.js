@@ -1,4 +1,12 @@
-import { getKazaItemsForDate, enumerateDates, computeKazaSummary, KAZA_SLOTS } from '../kaza';
+import {
+  getKazaItemsForDate,
+  enumerateDates,
+  computeKazaSummary,
+  KAZA_SLOTS,
+  monthKeyOf,
+  monthLabel,
+  shiftMonthKey,
+} from '../kaza';
 
 describe('getKazaItemsForDate', () => {
   test('hafta içi bir günde ogle_cuma slotu Öğle Namazı Farzı olur', () => {
@@ -23,9 +31,9 @@ describe('getKazaItemsForDate', () => {
 });
 
 describe('enumerateDates', () => {
-  test('start ve end dahil, en yeniden en eskiye sıralı döner', () => {
+  test('start ve end dahil, en eskiden en yeniye (geçmişten bugüne) sıralı döner', () => {
     const dates = enumerateDates('2026-07-01', '2026-07-03');
-    expect(dates).toEqual(['2026-07-03', '2026-07-02', '2026-07-01']);
+    expect(dates).toEqual(['2026-07-01', '2026-07-02', '2026-07-03']);
   });
 
   test('start > end ise boş dizi döner', () => {
@@ -46,6 +54,26 @@ describe('enumerateDates', () => {
     // gelecekteki bir tarihe (10.07.2026 -> 7 Ekim 2026) çevrilebiliyordu;
     // bu da borcun sessizce 0 görünmesine yol açıyordu.
     expect(enumerateDates('10.07.2026', '2026-07-09')).toEqual([]);
+  });
+});
+
+describe('monthKeyOf / monthLabel / shiftMonthKey', () => {
+  test('monthKeyOf bir tarih anahtarından YYYY-MM üretir', () => {
+    expect(monthKeyOf('2026-07-10')).toBe('2026-07');
+    expect(monthKeyOf('')).toBe('');
+  });
+
+  test('monthLabel Türkçe ay adı + yıl döner', () => {
+    expect(monthLabel('2026-07')).toBe('Temmuz 2026');
+    expect(monthLabel('2026-01')).toBe('Ocak 2026');
+    expect(monthLabel('2025-12')).toBe('Aralık 2025');
+  });
+
+  test('shiftMonthKey ileri/geri ay kaydırır, yıl sınırını doğru geçer', () => {
+    expect(shiftMonthKey('2026-07', 1)).toBe('2026-08');
+    expect(shiftMonthKey('2026-07', -1)).toBe('2026-06');
+    expect(shiftMonthKey('2026-01', -1)).toBe('2025-12');
+    expect(shiftMonthKey('2026-12', 1)).toBe('2027-01');
   });
 });
 
