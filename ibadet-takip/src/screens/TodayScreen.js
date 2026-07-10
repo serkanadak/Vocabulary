@@ -35,6 +35,7 @@ export default function TodayScreen({ navigation }) {
     isCheckedYearly,
     toggleYearly,
     isNotApplicableYearly,
+    toggleYearlyNotApplicable,
     byDate,
     customItems,
   } = useTracker();
@@ -102,7 +103,7 @@ export default function TodayScreen({ navigation }) {
           <>
             <SectionHeader
               title="Bu Yıl İçin Hatırlatma"
-              subtitle="Takvime bağlı olmayan, yılda bir işaretlenen ibadetler — adak gibi bir sebebe bağlıysa detayından 'bana uygulanmıyor' işaretleyebilirsin"
+              subtitle="Takvime bağlı olmayan, yılda bir işaretlenen ibadetler"
             />
             {yearlyReminders
               .filter((i) => !isCheckedYearly(i.id) && !isNotApplicableYearly(i.id))
@@ -114,6 +115,8 @@ export default function TodayScreen({ navigation }) {
                   checked={isCheckedYearly(item.id)}
                   onPress={() => toggleYearly(item.id)}
                   onLongPress={() => navigation.navigate('ItemDetail', { id: item.id })}
+                  secondaryLabel="Bana uygulanmıyor"
+                  onSecondaryPress={() => toggleYearlyNotApplicable(item.id)}
                 />
               ))}
           </>

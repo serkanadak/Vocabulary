@@ -23,7 +23,19 @@ export function SectionHeader({ title, subtitle }) {
   );
 }
 
-export function CheckRow({ title, subtitle, hukum, hukumList, rekat, rekatText, checked, onPress, onLongPress }) {
+export function CheckRow({
+  title,
+  subtitle,
+  hukum,
+  hukumList,
+  rekat,
+  rekatText,
+  checked,
+  onPress,
+  onLongPress,
+  secondaryLabel,
+  onSecondaryPress,
+}) {
   const rekatSuffix = rekatText ? ` (${rekatText})` : rekat ? ` (${rekat} rekât)` : '';
   return (
     <Pressable
@@ -40,6 +52,11 @@ export function CheckRow({ title, subtitle, hukum, hukumList, rekat, rekatText, 
           {rekatSuffix}
         </Text>
         {subtitle ? <Text style={styles.rowSubtitle}>{subtitle}</Text> : null}
+        {secondaryLabel ? (
+          <Pressable onPress={onSecondaryPress} hitSlop={8} style={styles.secondaryLinkWrap}>
+            <Text style={styles.secondaryLink}>{secondaryLabel}</Text>
+          </Pressable>
+        ) : null}
       </View>
       {hukumList ? (
         <View style={styles.badgeStack}>
@@ -159,6 +176,8 @@ const styles = StyleSheet.create({
   rowTitle: { color: colors.text, fontSize: 15, fontWeight: '600' },
   rowTitleChecked: { textDecorationLine: 'line-through', color: colors.textMuted },
   rowSubtitle: { color: colors.textMuted, fontSize: 12, marginTop: 2 },
+  secondaryLinkWrap: { marginTop: 4, alignSelf: 'flex-start' },
+  secondaryLink: { color: colors.primary, fontSize: 11, fontWeight: '700', textDecorationLine: 'underline' },
   card: {
     backgroundColor: colors.surface,
     borderRadius: 14,
