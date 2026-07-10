@@ -2,7 +2,7 @@
 /**
  * Uygulama görsellerini (icon / adaptive-icon / splash / favicon) koddan üretir.
  * Harici kütüphane yok — yalnızca Node'un yerleşik zlib'i ile PNG yazar.
- * Motif: toz kum zemin + toz altın hilal + merkezde onay işareti (checklist teması).
+ * Motif: açık toz yeşil zemin + toz altın hilal + merkezde onay işareti (checklist teması).
  *
  * Kullanım: npm run gen:assets   (veya node scripts/gen-assets.js)
  */
@@ -12,9 +12,9 @@ const zlib = require('zlib');
 
 const OUT = path.resolve(__dirname, '..', 'assets');
 
-const BG = [231, 224, 207, 255]; // #e7e0cf
+const BG = [217, 227, 208, 255]; // #d9e3d0
 const GOLD = [180, 143, 74, 255]; // #b48f4a
-const TEXT = [59, 56, 47, 255]; // #3b382f
+const TEXT = [51, 60, 45, 255]; // #333c2d
 
 function makeCanvas(w, h, bg) {
   const buf = Buffer.alloc(w * h * 4);
