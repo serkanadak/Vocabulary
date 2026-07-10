@@ -1,4 +1,4 @@
-import { getTodaySchedule, groupForDisplay, getDailyRequiredIdsForDate } from '../schedule';
+import { getTodaySchedule, groupForDisplay, getDailyRequiredIdsForDate, getRecurringTrackableItems } from '../schedule';
 import { HUKUM, FREQUENCY, CATEGORY } from '../../data/ibadetler';
 
 const baseSettings = {
@@ -182,5 +182,41 @@ describe('getDailyRequiredIdsForDate', () => {
 
   test('hafta içi ve Cuma günü listeleri aynı uzunlukta olur (öğle 3 öğe <-> Cuma 3 öğe)', () => {
     expect(getDailyRequiredIdsForDate('2026-07-08').length).toBe(getDailyRequiredIdsForDate('2026-07-10').length);
+  });
+});
+
+describe('getRecurringTrackableItems', () => {
+  test('farz/vacip/sünnet-i müekkede günlük öğeleri içerir', () => {
+    const ids = getRecurringTrackableItems().map((i) => i.id);
+    expect(ids).toContain('namaz-sabah-farz');
+    expect(ids).toContain('namaz-cuma-farz');
+  });
+
+  test('nafile (opsiyonel günlük/haftalık/aylık) öğeleri içerir', () => {
+    const ids = getRecurringTrackableItems().map((i) => i.id);
+    expect(ids).toContain('namaz-teheccud');
+    expect(ids).toContain('oruc-pazartesi-persembe');
+    expect(ids).toContain('oruc-eyyam-i-biyz');
+  });
+
+  test('ömürde bir, yılda bir ve mevsimsel (ramazan/bayram) öğeleri içermez', () => {
+    const ids = getRecurringTrackableItems().map((i) => i.id);
+    expect(ids).not.toContain('hac-farz');
+    expect(ids).not.toContain('zekat-mal');
+    expect(ids).not.toContain('oruc-ramazan');
+    expect(ids).not.toContain('namaz-cenaze');
+  });
+
+  test('extraItems (ilave ibadetler) uygun sıklıktaysa listeye dahil olur', () => {
+    const custom = {
+      id: 'custom-1',
+      title: 'Test',
+      category: CATEGORY.DIGER,
+      hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+      frequency: FREQUENCY.OPTIONAL_DAILY,
+      custom: true,
+    };
+    const ids = getRecurringTrackableItems([custom]).map((i) => i.id);
+    expect(ids).toContain('custom-1');
   });
 });

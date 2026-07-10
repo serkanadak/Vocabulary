@@ -2,10 +2,15 @@ import React, { useMemo } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
-import { currentStreak, averageCompletion, dailyHistory } from '../logic/stats';
-import { getLifetimeItems, getYearlyOnceItems, getDailyRequiredIdsForDate } from '../logic/schedule';
+import { currentStreak, averageCompletion, dailyHistory, itemCountInLastDays, expectedOccurrences } from '../logic/stats';
+import { getLifetimeItems, getYearlyOnceItems, getDailyRequiredIdsForDate, getRecurringTrackableItems } from '../logic/schedule';
+import { FREQUENCY } from '../data/ibadetler';
 import { colors } from '../theme';
-import { Card, SectionHeader } from '../components/common';
+import { Card, SectionHeader, HukumBadge } from '../components/common';
+
+const REQUIRED_RECURRING_FREQS = [FREQUENCY.DAILY, FREQUENCY.WEEKLY_FRIDAY];
+const NAFILE_RECURRING_FREQS = [FREQUENCY.OPTIONAL_DAILY, FREQUENCY.OPTIONAL_WEEKLY_MON_THU, FREQUENCY.OPTIONAL_MONTHLY];
+const STAT_WINDOW_DAYS = 30;
 
 export default function StatsScreen({ navigation }) {
   const {
@@ -25,6 +30,17 @@ export default function StatsScreen({ navigation }) {
 
   const lifetimeItems = useMemo(() => getLifetimeItems(customItems), [customItems]);
   const yearlyItems = useMemo(() => getYearlyOnceItems(customItems), [customItems]);
+
+  const recurringStats = useMemo(() => {
+    return getRecurringTrackableItems(customItems).map((item) => ({
+      item,
+      count: itemCountInLastDays(byDate, item.id, STAT_WINDOW_DAYS),
+      expected: expectedOccurrences(item, STAT_WINDOW_DAYS),
+    }));
+  }, [customItems, byDate]);
+
+  const requiredStats = recurringStats.filter((s) => REQUIRED_RECURRING_FREQS.includes(s.item.frequency));
+  const nafileStats = recurringStats.filter((s) => NAFILE_RECURRING_FREQS.includes(s.item.frequency));
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -50,6 +66,22 @@ export default function StatsScreen({ navigation }) {
           </View>
           <Text style={styles.barCaption}>eskiden bugüne →</Text>
         </Card>
+
+        <SectionHeader
+          title="Farz/Vacip/Sünnet-i Müekkede — İbadet Bazında"
+          subtitle="Son 30 günde uygulanabildiği gün sayısına göre kaç kez kılındı/tutuldu"
+        />
+        {requiredStats.map(({ item, count, expected }) => (
+          <ItemStatRow key={item.id} item={item} count={count} expected={expected} onPress={() => navigation.navigate('ItemDetail', { id: item.id })} />
+        ))}
+
+        <SectionHeader
+          title="Nafile İbadetler — İbadet Bazında"
+          subtitle="Son 30 günde kaç kez işaretlendi (Ayarlar'dan gösterilmesi gerekmez)"
+        />
+        {nafileStats.map(({ item, count, expected }) => (
+          <ItemStatRow key={item.id} item={item} count={count} expected={expected} onPress={() => navigation.navigate('ItemDetail', { id: item.id })} />
+        ))}
 
         <SectionHeader title="Ömürde Bir" subtitle="Hac, umre gibi bir kez yapılan ibadetler" />
         {lifetimeItems.map((item) => (
@@ -96,6 +128,18 @@ function Stat({ label, value }) {
   );
 }
 
+function ItemStatRow({ item, count, expected, onPress }) {
+  return (
+    <Pressable style={styles.simpleRow} onPress={onPress}>
+      <Text style={styles.rowTitle}>{item.title}</Text>
+      <View style={styles.itemStatRight}>
+        <HukumBadge hukum={item.hukum} />
+        <Text style={styles.itemStatValue}>{expected != null ? `${count}/${expected}` : `${count}×`}</Text>
+      </View>
+    </Pressable>
+  );
+}
+
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg },
   title: { color: colors.text, fontSize: 26, fontWeight: '800', paddingHorizontal: 16, paddingTop: 8, marginBottom: 4 },
@@ -124,4 +168,6 @@ const styles = StyleSheet.create({
   status: { color: colors.textMuted, fontSize: 12, fontWeight: '700' },
   statusDone: { color: colors.success },
   statusNA: { color: colors.textMuted, fontStyle: 'italic' },
+  itemStatRight: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  itemStatValue: { color: colors.text, fontSize: 13, fontWeight: '800' },
 });

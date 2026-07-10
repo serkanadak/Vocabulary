@@ -4,7 +4,19 @@ import { weekday, isWithinRange } from './date';
 // Cuma günü Cuma namazı (ilk sünnet + farz + son sünnet) öğle namazının
 // (ilk sünnet + farz + son sünnet) yerine geçer; bu üçü Cuma günleri
 // "Bugün" ve günlük seri/istatistik hesaplarından çıkarılır.
-const OGLE_DAILY_IDS = ['namaz-ogle-ilk-sunnet', 'namaz-ogle-farz', 'namaz-ogle-son-sunnet'];
+export const OGLE_DAILY_IDS = ['namaz-ogle-ilk-sunnet', 'namaz-ogle-farz', 'namaz-ogle-son-sunnet'];
+
+// Düzenli bir takvim ritmi olan (günlük/haftalık, farz veya nafile) sıklıklar
+// — istatistik ekranında ibadet bazında detay için kullanılır. Ramazan/bayram
+// gibi mevsimsel veya ömürde bir/yılda bir kayıtlar hariçtir (ayrı bölümlerde
+// zaten gösteriliyor).
+export const RECURRING_FREQUENCIES = [
+  FREQUENCY.DAILY,
+  FREQUENCY.OPTIONAL_DAILY,
+  FREQUENCY.WEEKLY_FRIDAY,
+  FREQUENCY.OPTIONAL_WEEKLY_MON_THU,
+  FREQUENCY.OPTIONAL_MONTHLY,
+];
 
 // Bugün için gösterilecek ibadetleri, "zorunlu" (farz/vacip/sünnet-i müekkede,
 // bugüne bağlı) ve "opsiyonel" (nafile, kullanıcı ayarından açılan) olarak ayırır.
@@ -99,6 +111,10 @@ export function getYearlyOnceItems(extraItems = []) {
 
 export function getOccasionalItems(extraItems = []) {
   return [...IBADETLER, ...extraItems].filter((i) => i.frequency === FREQUENCY.OCCASIONAL);
+}
+
+export function getRecurringTrackableItems(extraItems = []) {
+  return [...IBADETLER, ...extraItems].filter((i) => RECURRING_FREQUENCIES.includes(i.frequency));
 }
 
 // Verilen tarihte fiilen zorunlu olan günlük (farz/vacip/sünnet-i müekkede)
