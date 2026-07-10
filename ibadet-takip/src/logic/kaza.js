@@ -77,11 +77,30 @@ export function monthLabel(monthKeyStr) {
   return `${TR_MONTHS[m - 1]} ${y}`;
 }
 
-// 'YYYY-MM' -> delta ay sonraki/önceki 'YYYY-MM'
-export function shiftMonthKey(monthKeyStr, delta) {
-  const [y, m] = monthKeyStr.split('-').map(Number);
-  const d = new Date(y, m - 1 + delta, 1);
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+const TR_MONTHS_SHORT = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
+
+// m: 1-12 -> 'Oca'..'Ara'
+export function monthShortLabel(m) {
+  return TR_MONTHS_SHORT[m - 1];
+}
+
+// 'YYYY-MM' başlangıç ve bitiş ayları arasındaki tüm yılları artan sırada döner.
+export function yearsInRange(startMonthKeyStr, endMonthKeyStr) {
+  if (!startMonthKeyStr || !endMonthKeyStr) return [];
+  const startYear = Number(startMonthKeyStr.slice(0, 4));
+  const endYear = Number(endMonthKeyStr.slice(0, 4));
+  const years = [];
+  for (let y = startYear; y <= endYear; y++) years.push(y);
+  return years;
+}
+
+// year (sayı) ve month (1-12) verilip startMonthKeyStr/endMonthKeyStr aralığına
+// sığdırılmış 'YYYY-MM' üretir (aralık dışına taşarsa en yakın uca kenetlenir).
+export function buildMonthKey(year, month, startMonthKeyStr, endMonthKeyStr) {
+  const key = `${year}-${String(month).padStart(2, '0')}`;
+  if (startMonthKeyStr && key < startMonthKeyStr) return startMonthKeyStr;
+  if (endMonthKeyStr && key > endMonthKeyStr) return endMonthKeyStr;
+  return key;
 }
 
 // Her gün için tamamlanma durumu + slot bazlı (Sabah/Öğle-Cuma/İkindi/Akşam/Yatsı/Vitir)

@@ -5,7 +5,9 @@ import {
   KAZA_SLOTS,
   monthKeyOf,
   monthLabel,
-  shiftMonthKey,
+  monthShortLabel,
+  yearsInRange,
+  buildMonthKey,
 } from '../kaza';
 
 describe('getKazaItemsForDate', () => {
@@ -57,7 +59,7 @@ describe('enumerateDates', () => {
   });
 });
 
-describe('monthKeyOf / monthLabel / shiftMonthKey', () => {
+describe('monthKeyOf / monthLabel / monthShortLabel', () => {
   test('monthKeyOf bir tarih anahtarından YYYY-MM üretir', () => {
     expect(monthKeyOf('2026-07-10')).toBe('2026-07');
     expect(monthKeyOf('')).toBe('');
@@ -69,11 +71,36 @@ describe('monthKeyOf / monthLabel / shiftMonthKey', () => {
     expect(monthLabel('2025-12')).toBe('Aralık 2025');
   });
 
-  test('shiftMonthKey ileri/geri ay kaydırır, yıl sınırını doğru geçer', () => {
-    expect(shiftMonthKey('2026-07', 1)).toBe('2026-08');
-    expect(shiftMonthKey('2026-07', -1)).toBe('2026-06');
-    expect(shiftMonthKey('2026-01', -1)).toBe('2025-12');
-    expect(shiftMonthKey('2026-12', 1)).toBe('2027-01');
+  test('monthShortLabel kısaltılmış ay adı döner', () => {
+    expect(monthShortLabel(1)).toBe('Oca');
+    expect(monthShortLabel(7)).toBe('Tem');
+    expect(monthShortLabel(12)).toBe('Ara');
+  });
+});
+
+describe('yearsInRange', () => {
+  test('başlangıç ve bitiş ayının yıllarını artan sırada döner', () => {
+    expect(yearsInRange('2024-03', '2026-07')).toEqual([2024, 2025, 2026]);
+  });
+
+  test('aynı yıl içinse tek elemanlı dizi döner', () => {
+    expect(yearsInRange('2026-01', '2026-11')).toEqual([2026]);
+  });
+
+  test('başlangıç veya bitiş boşsa boş dizi döner', () => {
+    expect(yearsInRange('', '2026-07')).toEqual([]);
+    expect(yearsInRange('2026-01', '')).toEqual([]);
+  });
+});
+
+describe('buildMonthKey', () => {
+  test('yıl/ay aralık içindeyse olduğu gibi döner', () => {
+    expect(buildMonthKey(2026, 3, '2024-03', '2026-07')).toBe('2026-03');
+  });
+
+  test('aralık dışına taşarsa en yakın uca kenetlenir', () => {
+    expect(buildMonthKey(2023, 5, '2024-03', '2026-07')).toBe('2024-03');
+    expect(buildMonthKey(2027, 1, '2024-03', '2026-07')).toBe('2026-07');
   });
 });
 

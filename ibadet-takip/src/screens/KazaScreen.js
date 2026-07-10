@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Pressable, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
 import {
@@ -10,7 +10,9 @@ import {
   KAZA_SLOT_META,
   monthKeyOf,
   monthLabel,
-  shiftMonthKey,
+  monthShortLabel,
+  yearsInRange,
+  buildMonthKey,
 } from '../logic/kaza';
 import { todayKey, isValidDateKey } from '../logic/date';
 import { colors } from '../theme';
@@ -76,6 +78,8 @@ export default function KazaScreen() {
 
   const startMonthKey = monthKeyOf(settings.kazaStartDate);
   const endMonthKey = monthKeyOf(endKey);
+  const years = useMemo(() => yearsInRange(startMonthKey, endMonthKey), [startMonthKey, endMonthKey]);
+  const [pickerYear, pickerMonthNum] = pickerMonth ? pickerMonth.split('-').map(Number) : [null, null];
 
   const visibleDays = useMemo(() => {
     let days = summary.days;
@@ -207,22 +211,45 @@ export default function KazaScreen() {
               </Pressable>
               {monthPickerOpen && (
                 <View style={styles.monthPickerBox}>
-                  <View style={styles.monthNavRow}>
-                    <Pressable
-                      style={[styles.monthNavBtn, pickerMonth <= startMonthKey && styles.monthNavBtnDisabled]}
-                      disabled={pickerMonth <= startMonthKey}
-                      onPress={() => setPickerMonth((m) => shiftMonthKey(m, -1))}
-                    >
-                      <Text style={styles.monthNavText}>‹</Text>
-                    </Pressable>
-                    <Text style={styles.monthNavLabel}>{pickerMonth ? monthLabel(pickerMonth) : ''}</Text>
-                    <Pressable
-                      style={[styles.monthNavBtn, pickerMonth >= endMonthKey && styles.monthNavBtnDisabled]}
-                      disabled={pickerMonth >= endMonthKey}
-                      onPress={() => setPickerMonth((m) => shiftMonthKey(m, 1))}
-                    >
-                      <Text style={styles.monthNavText}>›</Text>
-                    </Pressable>
+                  <Text style={styles.monthPickerLabel}>{pickerMonth ? monthLabel(pickerMonth) : ''}</Text>
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.yearRow}>
+                    {years.map((y) => {
+                      const active = pickerYear === y;
+                      return (
+                        <Pressable
+                          key={y}
+                          style={[styles.yearChip, active && styles.yearChipActive]}
+                          onPress={() => setPickerMonth(buildMonthKey(y, pickerMonthNum, startMonthKey, endMonthKey))}
+                        >
+                          <Text style={[styles.yearChipText, active && styles.yearChipTextActive]}>{y}</Text>
+                        </Pressable>
+                      );
+                    })}
+                  </ScrollView>
+                  <View style={styles.monthGrid}>
+                    {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => {
+                      const key = `${pickerYear}-${String(m).padStart(2, '0')}`;
+                      const disabled = key < startMonthKey || key > endMonthKey;
+                      const active = pickerMonthNum === m && !disabled;
+                      return (
+                        <Pressable
+                          key={m}
+                          disabled={disabled}
+                          style={[styles.monthChip, active && styles.monthChipActive, disabled && styles.monthChipDisabled]}
+                          onPress={() => setPickerMonth(buildMonthKey(pickerYear, m, startMonthKey, endMonthKey))}
+                        >
+                          <Text
+                            style={[
+                              styles.monthChipText,
+                              active && styles.monthChipTextActive,
+                              disabled && styles.monthChipTextDisabled,
+                            ]}
+                          >
+                            {monthShortLabel(m)}
+                          </Text>
+                        </Pressable>
+                      );
+                    })}
                   </View>
                   <PrimaryButton
                     title="Bu Ayı Göster"
@@ -335,25 +362,35 @@ const styles = StyleSheet.create({
   rangeToggleText: { color: colors.primary, fontSize: 12, fontWeight: '700' },
   rangeBox: { marginTop: 10 },
   monthPickerBox: { marginTop: 10 },
-  monthNavRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 10,
+  monthPickerLabel: { color: colors.text, fontSize: 15, fontWeight: '700', textAlign: 'center', marginBottom: 10 },
+  yearRow: { marginBottom: 10 },
+  yearChip: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surfaceAlt,
+    marginRight: 8,
   },
-  monthNavBtn: {
-    width: 40,
-    height: 40,
+  yearChipActive: { backgroundColor: colors.primary + '33', borderColor: colors.primary },
+  yearChipText: { color: colors.textMuted, fontSize: 13, fontWeight: '700' },
+  yearChipTextActive: { color: colors.primary },
+  monthGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 12 },
+  monthChip: {
+    width: '22%',
+    paddingVertical: 10,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: colors.border,
     backgroundColor: colors.surfaceAlt,
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  monthNavBtnDisabled: { opacity: 0.35 },
-  monthNavText: { color: colors.text, fontSize: 18, fontWeight: '800' },
-  monthNavLabel: { color: colors.text, fontSize: 15, fontWeight: '700' },
+  monthChipActive: { backgroundColor: colors.primary + '33', borderColor: colors.primary },
+  monthChipDisabled: { opacity: 0.3 },
+  monthChipText: { color: colors.text, fontSize: 12, fontWeight: '700' },
+  monthChipTextActive: { color: colors.primary },
+  monthChipTextDisabled: { color: colors.textMuted },
   emptyText: { color: colors.textMuted, textAlign: 'center', marginTop: 16, fontSize: 13 },
   dayRow: {
     backgroundColor: colors.surface,
