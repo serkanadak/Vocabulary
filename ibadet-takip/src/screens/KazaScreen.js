@@ -15,7 +15,7 @@ import {
   buildMonthKey,
 } from '../logic/kaza';
 import { todayKey, isValidDateKey } from '../logic/date';
-import { colors } from '../theme';
+import { colors, ON_ACCENT } from '../theme';
 import { Card, DateField, PrimaryButton, ConfirmModal } from '../components/common';
 
 function daysAgoKey(n) {
@@ -420,7 +420,7 @@ const styles = StyleSheet.create({
   },
   chipChecked: { backgroundColor: colors.success, borderColor: colors.success },
   chipText: { color: colors.textMuted, fontWeight: '800', fontSize: 12 },
-  chipTextChecked: { color: '#06281a' },
+  chipTextChecked: { color: ON_ACCENT },
   markAllChip: {
     height: 32,
     paddingHorizontal: 10,

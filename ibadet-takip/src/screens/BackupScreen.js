@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, TextInput, Pressable } from 'react-
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Clipboard from 'expo-clipboard';
 import { useTracker } from '../state/TrackerContext';
-import { colors } from '../theme';
+import { colors, DANGER } from '../theme';
 import { Card, SectionHeader, PrimaryButton, ConfirmModal } from '../components/common';
 
 export default function BackupScreen({ navigation }) {
@@ -120,5 +120,5 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   pasteText: { color: colors.textMuted, fontWeight: '700', fontSize: 12 },
-  error: { color: '#ef4444', fontSize: 12, marginTop: 8 },
+  error: { color: DANGER, fontSize: 12, marginTop: 8 },
 });

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getById, CATEGORY_META, FREQUENCY } from '../data/ibadetler';
 import { useTracker } from '../state/TrackerContext';
-import { colors } from '../theme';
+import { colors, DANGER } from '../theme';
 import { HukumBadge, Card, PrimaryButton, ConfirmModal } from '../components/common';
 
 const GENDER_NOTE = {
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#ef4444',
+    borderColor: DANGER,
   },
-  deleteText: { color: '#ef4444', fontWeight: '700' },
+  deleteText: { color: DANGER, fontWeight: '700' },
 });

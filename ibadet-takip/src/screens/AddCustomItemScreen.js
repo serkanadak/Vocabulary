@@ -10,7 +10,7 @@ import {
   createCustomItem,
 } from '../data/ibadetler';
 import { useTracker } from '../state/TrackerContext';
-import { colors } from '../theme';
+import { colors, ON_ACCENT } from '../theme';
 import { Card, SectionHeader, PrimaryButton } from '../components/common';
 
 function ChipPicker({ options, value, onChange, renderLabel }) {
@@ -137,5 +137,5 @@ const styles = StyleSheet.create({
   },
   chipSelected: { backgroundColor: colors.primary, borderColor: colors.primary },
   chipText: { color: colors.textMuted, fontSize: 12, fontWeight: '600' },
-  chipTextSelected: { color: '#1c1305' },
+  chipTextSelected: { color: ON_ACCENT },
 });

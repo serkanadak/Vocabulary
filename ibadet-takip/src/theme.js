@@ -1,19 +1,26 @@
-// Ortak tema/renkler — koyu yeşil + altın vurgu.
+// Ortak tema/renkler — açık, toz (dusty) tonlar + kum rengi altın vurgu.
 export const colors = {
-  bg: '#0b1f17',
-  surface: '#123526',
-  surfaceAlt: '#1c4a34',
-  text: '#f0fdf4',
-  textMuted: '#9cc9ae',
-  primary: '#d4af37',
-  border: '#1c4a34',
-  success: '#22c55e',
+  bg: '#f3f0e8',
+  surface: '#fbfaf6',
+  surfaceAlt: '#e7e0cf',
+  text: '#3b382f',
+  textMuted: '#8a8577',
+  primary: '#a9863f',
+  border: '#ddd5c0',
+  success: '#7f9773',
 };
 
+// colors.primary veya colors.success gibi orta tonlu dolgu renklerinin
+// üzerinde okunaklı kalan koyu, nötr metin/işaret rengi.
+export const ON_ACCENT = '#2b2415';
+
+// Silme/uyarı gibi yıkıcı eylemler için toz kırmızı.
+export const DANGER = '#bb6156';
+
 export const HUKUM_COLORS = {
-  farz_ayn: '#ef4444',
-  farz_kifaye: '#fb7185',
-  vacip: '#f59e0b',
-  sunnet_muekkede: '#22c55e',
-  sunnet_gayrimuekkede: '#38bdf8',
+  farz_ayn: '#bb6156',
+  farz_kifaye: '#c98f86',
+  vacip: '#bd8f4f',
+  sunnet_muekkede: '#7f9773',
+  sunnet_gayrimuekkede: '#7a95a8',
 };

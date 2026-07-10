@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Pressable, TextInput, Modal, StyleSheet } from 'react-native';
-import { colors, HUKUM_COLORS } from '../theme';
+import { colors, HUKUM_COLORS, ON_ACCENT, DANGER } from '../theme';
 import { HUKUM_META } from '../data/ibadetler';
 
 export function HukumBadge({ hukum }) {
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   checkboxChecked: { backgroundColor: colors.success, borderColor: colors.success },
-  checkmark: { color: '#06281a', fontWeight: '900', fontSize: 14 },
+  checkmark: { color: ON_ACCENT, fontWeight: '900', fontSize: 14 },
   rowTitle: { color: colors.text, fontSize: 15, fontWeight: '600' },
   rowTitleChecked: { textDecorationLine: 'line-through', color: colors.textMuted },
   rowSubtitle: { color: colors.textMuted, fontSize: 12, marginTop: 2 },
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 8,
   },
-  buttonText: { color: '#1c1305', fontWeight: '800', fontSize: 15 },
+  buttonText: { color: ON_ACCENT, fontWeight: '800', fontSize: 15 },
   dateField: { marginBottom: 10 },
   dateLabel: { color: colors.textMuted, fontSize: 12, marginBottom: 4 },
   dateInput: {
@@ -189,8 +189,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'transparent',
   },
-  dateInputError: { borderColor: '#ef4444' },
-  dateError: { color: '#ef4444', fontSize: 11, marginTop: 4 },
+  dateInputError: { borderColor: DANGER },
+  dateError: { color: DANGER, fontSize: 11, marginTop: 4 },
   modalBackdrop: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.6)',
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.primary,
   },
-  modalConfirmBtnDestructive: { backgroundColor: '#ef4444' },
-  modalConfirmText: { color: '#1c1305', fontWeight: '800' },
+  modalConfirmBtnDestructive: { backgroundColor: DANGER },
+  modalConfirmText: { color: ON_ACCENT, fontWeight: '800' },
   modalConfirmTextDestructive: { color: '#fff' },
 });
