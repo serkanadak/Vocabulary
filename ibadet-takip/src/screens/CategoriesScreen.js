@@ -25,7 +25,8 @@ export default function CategoriesScreen({ navigation }) {
       <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
         <Text style={styles.title}>Kategoriler</Text>
         <Text style={styles.subtitle}>
-          Sünni itikat (Hanefi fıkhı) esasına göre farz, vacip ve sünnet ibadetlerin tam listesi.
+          Sünni itikat (Hanefi fıkhı) esasına göre farz, vacip ve sünnet ibadetlerin tam listesi. Bir ibadete
+          dokunarak anlamını ve nasıl yapıldığını okuyabilirsin.
         </Text>
 
         <PrimaryButton title="+ İlave İbadet Ekle" onPress={() => navigation.navigate('AddCustomItem')} />

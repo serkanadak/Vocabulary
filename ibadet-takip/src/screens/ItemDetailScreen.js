@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { getById, CATEGORY_META, FREQUENCY } from '../data/ibadetler';
 import { useTracker } from '../state/TrackerContext';
 import { colors, DANGER } from '../theme';
-import { HukumBadge, Card, PrimaryButton, ConfirmModal } from '../components/common';
+import { HukumBadge, Card, SectionHeader, PrimaryButton, ConfirmModal } from '../components/common';
 
 const GENDER_NOTE = {
   male_farz_female_nafile:
@@ -54,6 +54,16 @@ export default function ItemDetailScreen({ route, navigation }) {
           </View>
         </View>
 
+        {item.summary && (
+          <>
+            <SectionHeader title="Anlamı ve Yapılışı" />
+            <Card>
+              <Text style={styles.summaryText}>{item.summary}</Text>
+            </Card>
+          </>
+        )}
+
+        <SectionHeader title="Hüküm ve Detaylar" />
         <Card>
           {item.rekat ? <Text style={styles.meta}>Rekât: {item.rekat}</Text> : null}
           <Text style={styles.description}>{item.description}</Text>
@@ -142,6 +152,7 @@ const styles = StyleSheet.create({
   title: { color: colors.text, fontSize: 22, fontWeight: '800' },
   meta: { color: colors.primary, fontWeight: '700', marginBottom: 8 },
   description: { color: colors.text, fontSize: 14, lineHeight: 21 },
+  summaryText: { color: colors.text, fontSize: 14, lineHeight: 21 },
   genderNote: { color: colors.textMuted, fontSize: 12, marginTop: 10, lineHeight: 18 },
   hint: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginTop: 8 },
   naBtn: { marginHorizontal: 16, marginTop: 10, paddingVertical: 8, alignItems: 'center' },
