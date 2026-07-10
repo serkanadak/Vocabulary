@@ -92,6 +92,19 @@ export const IBADETLER = [
       'Günün ilk farz namazı olup Allah\'a kulluğun günün başında tazelenmesini ifade eder. Niyet edilip iftitah tekbiriyle başlanır, her rekâtta Fatiha ve bir sûre okunarak rükû-secde ile 2 rekât kılınıp selamla bitirilir.',
   },
   {
+    id: 'namaz-kusluk',
+    title: 'Kuşluk (Duhâ) Namazı',
+    category: CATEGORY.NAMAZ,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    rekat: 2,
+    gender: 'all',
+    description:
+      'Güneş bir mızrak boyu yükseldikten (yaklaşık gün doğumundan 45-50 dakika sonra) öğle vaktine kadar kılınabilen, en az 2 rekât sünnet-i gayr-i müekkede (nafile) namaz.',
+    summary:
+      'Günün bereketi ve şükrü için tavsiye edilen, bir rivayete göre vücuttaki her eklemin sadakası yerine geçtiği bildirilen bir nafiledir. Güneş doğup bir mızrak boyu yükseldikten öğle vaktine yaklaşana kadar, en az 2, dilenirse 4 veya 8 rekâta kadar, ikişer rekâtlık selamlarla kılınır.',
+  },
+  {
     id: 'namaz-ogle-ilk-sunnet',
     title: 'Öğle Namazı İlk Sünneti',
     category: CATEGORY.NAMAZ,
