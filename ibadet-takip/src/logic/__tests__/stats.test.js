@@ -39,6 +39,16 @@ describe('currentStreak', () => {
     };
     expect(currentStreak(byDate, ids)).toBe(0);
   });
+
+  test('itemIds bir fonksiyon olduğunda güne özgü gerekli id listesini kullanır', () => {
+    // dün 'a' gerekiyordu ve işaretlenmedi, ama bugünün listesinde 'a' yok — seri kırılmamalı.
+    const getIdsForDate = (dateKey) => (dateKey === keyFor(1) ? ['b'] : ['a', 'b']);
+    const byDate = {
+      [keyFor(0)]: { a: true, b: true },
+      [keyFor(1)]: { b: true },
+    };
+    expect(currentStreak(byDate, getIdsForDate)).toBe(2);
+  });
 });
 
 describe('averageCompletion', () => {

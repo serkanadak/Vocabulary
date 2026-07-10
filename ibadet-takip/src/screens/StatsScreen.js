@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
-import { getDailyRequiredIds, currentStreak, averageCompletion, dailyHistory } from '../logic/stats';
-import { getLifetimeItems, getYearlyOnceItems } from '../logic/schedule';
+import { currentStreak, averageCompletion, dailyHistory } from '../logic/stats';
+import { getLifetimeItems, getYearlyOnceItems, getDailyRequiredIdsForDate } from '../logic/schedule';
 import { colors } from '../theme';
 import { Card, SectionHeader } from '../components/common';
 
@@ -18,11 +18,10 @@ export default function StatsScreen({ navigation }) {
     customItems,
   } = useTracker();
 
-  const dailyIds = useMemo(() => getDailyRequiredIds(), []);
-  const streak = useMemo(() => currentStreak(byDate, dailyIds), [byDate, dailyIds]);
-  const avg7 = useMemo(() => averageCompletion(byDate, dailyIds, 7), [byDate, dailyIds]);
-  const avg30 = useMemo(() => averageCompletion(byDate, dailyIds, 30), [byDate, dailyIds]);
-  const history = useMemo(() => dailyHistory(byDate, dailyIds, 14), [byDate, dailyIds]);
+  const streak = useMemo(() => currentStreak(byDate, getDailyRequiredIdsForDate), [byDate]);
+  const avg7 = useMemo(() => averageCompletion(byDate, getDailyRequiredIdsForDate, 7), [byDate]);
+  const avg30 = useMemo(() => averageCompletion(byDate, getDailyRequiredIdsForDate, 30), [byDate]);
+  const history = useMemo(() => dailyHistory(byDate, getDailyRequiredIdsForDate, 14), [byDate]);
 
   const lifetimeItems = useMemo(() => getLifetimeItems(customItems), [customItems]);
   const yearlyItems = useMemo(() => getYearlyOnceItems(customItems), [customItems]);

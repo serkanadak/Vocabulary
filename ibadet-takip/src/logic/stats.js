@@ -11,11 +11,15 @@ function dateKeyOffset(daysAgo) {
   return todayKey(d);
 }
 
+// itemIds: sabit bir id dizisi veya (dateKey) => id dizisi döner bir fonksiyon
+// olabilir (ör. Cuma günleri öğle yerine Cuma namazı öğelerinin gerekmesi
+// gibi güne bağlı zorunlu listeler için).
 function dayCompletionRatio(byDate, dateKey, itemIds) {
   const dayMap = byDate[dateKey] || {};
-  if (itemIds.length === 0) return 0;
-  const done = itemIds.filter((id) => dayMap[id]).length;
-  return done / itemIds.length;
+  const ids = typeof itemIds === 'function' ? itemIds(dateKey) : itemIds;
+  if (ids.length === 0) return 0;
+  const done = ids.filter((id) => dayMap[id]).length;
+  return done / ids.length;
 }
 
 // Bugünden geriye doğru, tüm günlük zorunlu ibadetlerin (%100) tamamlandığı

@@ -227,6 +227,17 @@ export const IBADETLER = [
     description: 'Gecenin son üçte biri gibi kılınan, çokça tavsiye edilen nafile namaz.',
   },
   {
+    id: 'namaz-cuma-ilk-sunnet',
+    title: 'Cuma Namazı İlk Sünneti',
+    category: CATEGORY.NAMAZ,
+    hukum: HUKUM.SUNNET_MUEKKEDE,
+    frequency: FREQUENCY.WEEKLY_FRIDAY,
+    rekat: 4,
+    gender: 'all',
+    group: 'ogle',
+    description: 'Cuma farzından önce kılınan 4 rekât sünnet-i müekkede.',
+  },
+  {
     id: 'namaz-cuma-farz',
     title: 'Cuma Namazı',
     category: CATEGORY.NAMAZ,
@@ -234,8 +245,20 @@ export const IBADETLER = [
     frequency: FREQUENCY.WEEKLY_FRIDAY,
     rekat: 2,
     gender: 'male_farz_female_nafile',
+    group: 'ogle',
     description:
       'Cuma günü öğle namazının yerine geçer. Mukim ve mükellef erkeklere farz-ı ayndır; kadınlar için farz değildir, kılarlarsa nafile yerine geçer ve öğle namazı yerine sayılır.',
+  },
+  {
+    id: 'namaz-cuma-son-sunnet',
+    title: 'Cuma Namazı Son Sünneti',
+    category: CATEGORY.NAMAZ,
+    hukum: HUKUM.SUNNET_MUEKKEDE,
+    frequency: FREQUENCY.WEEKLY_FRIDAY,
+    rekat: 4,
+    gender: 'all',
+    group: 'ogle',
+    description: 'Cuma farzından sonra kılınan 4 rekât sünnet-i müekkede.',
   },
   {
     id: 'namaz-teravih',

@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
-import { getTodaySchedule } from '../logic/schedule';
-import { getDailyRequiredIds, currentStreak } from '../logic/stats';
+import { getTodaySchedule, getDailyRequiredIdsForDate } from '../logic/schedule';
+import { currentStreak } from '../logic/stats';
 import { NAMAZ_GROUP_LABELS } from '../data/ibadetler';
 import { colors } from '../theme';
 import { CheckRow, SectionHeader, Card } from '../components/common';
@@ -45,8 +45,7 @@ export default function TodayScreen({ navigation }) {
     [todayKey, settings, customItems]
   );
 
-  const dailyIds = useMemo(() => getDailyRequiredIds(), []);
-  const streak = useMemo(() => currentStreak(byDate, dailyIds), [byDate, dailyIds]);
+  const streak = useMemo(() => currentStreak(byDate, getDailyRequiredIdsForDate), [byDate]);
 
   const requiredIds = flattenIds(required);
   const doneCount = requiredIds.filter((id) => isCheckedToday(id)).length;
@@ -74,10 +73,12 @@ export default function TodayScreen({ navigation }) {
             const hukumList = [...new Set(entry.items.map((i) => i.hukum))];
             const rekatText = entry.items.map((i) => `${REKAT_LABEL[i.hukum]} ${i.rekat}`).join(' + ');
             const detailTarget = entry.items.find((i) => i.hukum === 'farz_ayn') || entry.items[0];
+            const isCumaGroup = entry.items.some((i) => i.id === 'namaz-cuma-farz');
+            const groupTitle = isCumaGroup ? 'Cuma Namazı' : NAMAZ_GROUP_LABELS[entry.groupKey] || entry.items[0].title;
             return (
               <CheckRow
                 key={entry.groupKey}
-                title={NAMAZ_GROUP_LABELS[entry.groupKey] || entry.items[0].title}
+                title={groupTitle}
                 hukumList={hukumList}
                 rekatText={rekatText}
                 checked={allChecked}

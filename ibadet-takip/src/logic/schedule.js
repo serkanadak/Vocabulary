@@ -1,6 +1,11 @@
 import { IBADETLER, FREQUENCY } from '../data/ibadetler';
 import { weekday, isWithinRange } from './date';
 
+// Cuma günü Cuma namazı (ilk sünnet + farz + son sünnet) öğle namazının
+// (ilk sünnet + farz + son sünnet) yerine geçer; bu üçü Cuma günleri
+// "Bugün" ve günlük seri/istatistik hesaplarından çıkarılır.
+const OGLE_DAILY_IDS = ['namaz-ogle-ilk-sunnet', 'namaz-ogle-farz', 'namaz-ogle-son-sunnet'];
+
 // Bugün için gösterilecek ibadetleri, "zorunlu" (farz/vacip/sünnet-i müekkede,
 // bugüne bağlı) ve "opsiyonel" (nafile, kullanıcı ayarından açılan) olarak ayırır.
 // extraItems: kullanıcının eklediği ilave ibadetler (TrackerContext.customItems).
@@ -13,6 +18,7 @@ export function getTodaySchedule({ dateKey, settings, extraItems = [] }) {
   for (const item of [...IBADETLER, ...extraItems]) {
     switch (item.frequency) {
       case FREQUENCY.DAILY:
+        if (wd === 5 && OGLE_DAILY_IDS.includes(item.id)) break;
         required.push(item);
         break;
       case FREQUENCY.OPTIONAL_DAILY:
@@ -93,4 +99,15 @@ export function getYearlyOnceItems(extraItems = []) {
 
 export function getOccasionalItems(extraItems = []) {
   return [...IBADETLER, ...extraItems].filter((i) => i.frequency === FREQUENCY.OCCASIONAL);
+}
+
+// Verilen tarihte fiilen zorunlu olan günlük (farz/vacip/sünnet-i müekkede)
+// ibadet id'lerini döner: normal günlerde sabit DAILY listesi, Cuma günleri
+// öğle namazı öğeleri yerine Cuma namazı öğeleri ile. Seri/istatistik
+// hesaplarında güne özgü doğru kıyas için kullanılır.
+export function getDailyRequiredIdsForDate(dateKey) {
+  const dailyIds = IBADETLER.filter((i) => i.frequency === FREQUENCY.DAILY).map((i) => i.id);
+  if (weekday(new Date(dateKey)) !== 5) return dailyIds;
+  const cumaIds = IBADETLER.filter((i) => i.frequency === FREQUENCY.WEEKLY_FRIDAY).map((i) => i.id);
+  return [...dailyIds.filter((id) => !OGLE_DAILY_IDS.includes(id)), ...cumaIds];
 }
