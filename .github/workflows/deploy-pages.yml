@@ -1,0 +1,84 @@
+name: Web sürümlerini GitHub Pages'e yayınla
+
+# Üç Expo uygulamasının web sürümünü (statik export) tek bir Pages sitesinde
+# yayınlar. Telefondan/masaüstünden tarayıcıyla açılabilir:
+#   /                 -> Kelime Haritası (ana uygulama)
+#   /ibadet-takip/    -> İbadetlerim
+#   /gezgin-gunlugu/  -> Gezgin Günlüğü
+# Her uygulamanın app.json'ındaki experiments.baseUrl bu alt yollara göre ayarlı.
+
+on:
+  push:
+    branches: [claude/turkish-vocab-flashcard-3xwegv] # reponun varsayılan dalı
+  workflow_dispatch: {}
+
+# GitHub Pages dağıtımı için gereken izinler
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Aynı anda tek dağıtım
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      EXPO_OFFLINE: '1'
+      CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      # 1) Ana uygulama (Kelime Haritası) -> site kökü
+      - name: Kelime Haritası (web export)
+        run: |
+          npm install --no-audit --no-fund
+          npx expo export --platform web --output-dir _site
+
+      # 2) İbadetlerim -> /ibadet-takip
+      - name: İbadetlerim (web export)
+        working-directory: ibadet-takip
+        run: |
+          npm install --no-audit --no-fund
+          npx expo export --platform web --output-dir dist
+      - run: |
+          mkdir -p _site/ibadet-takip
+          cp -r ibadet-takip/dist/. _site/ibadet-takip/
+
+      # 3) Gezgin Günlüğü -> /gezgin-gunlugu
+      - name: Gezgin Günlüğü (web export)
+        working-directory: gezgin-gunlugu
+        run: |
+          npm install --no-audit --no-fund
+          npx expo export --platform web --output-dir dist
+      - run: |
+          mkdir -p _site/gezgin-gunlugu
+          cp -r gezgin-gunlugu/dist/. _site/gezgin-gunlugu/
+
+      # SPA yönlendirmesi ve Jekyll'i devre dışı bırakma
+      - run: touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
