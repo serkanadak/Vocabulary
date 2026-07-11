@@ -1,6 +1,6 @@
 // Coğrafi hesaplar: iki koordinat arası kuş uçuşu mesafe (haversine) ve
 // araç bazlı yol mesafesi/süresi.
-import { getVehicle } from '../data/vehicles';
+import { getVehicle, effectiveSpeed } from '../data/vehicles';
 
 const EARTH_R = 6371; // km
 
@@ -44,6 +44,7 @@ export function formatKm(km) {
 // stops: [{ id, name, lat, lng }]
 export function computeRoute(stops, vehicleId) {
   const vehicle = getVehicle(vehicleId);
+  const speed = effectiveSpeed(vehicle); // maxSpeed tavanı varsa uygulanır (ör. çekme karavan ≤ 90)
   const legs = [];
   let totalKm = 0;
   let totalHours = 0;
@@ -59,7 +60,7 @@ export function computeRoute(stops, vehicleId) {
       continue;
     }
     const km = straight * vehicle.detour;
-    const hours = km / vehicle.speed;
+    const hours = km / speed;
     totalKm += km;
     totalHours += hours;
     legs.push({ from, to, km, hours });
