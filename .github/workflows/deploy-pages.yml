@@ -1,24 +1,24 @@
 name: Web sürümlerini GitHub Pages'e yayınla
 
-# Üç Expo uygulamasının web sürümünü (statik export) tek bir Pages sitesinde
-# yayınlar. Telefondan/masaüstünden tarayıcıyla açılabilir:
-#   /                 -> Kelime Haritası (ana uygulama)
+# Mevcut yayınlanmış siteyi (gh-pages dalı: Kelime Haritası + İbadetlerim +
+# LGS Planlayıcı) OLDUĞU GİBİ temel alır ve üstüne Gezgin Günlüğü'nü ekler.
+# Böylece eski uygulamalar birebir korunur (yeniden derlenmez), yalnızca
+# Gezgin Günlüğü kaynaktan derlenip /gezgin-gunlugu/ altına yerleştirilir.
+#   /                 -> Kelime Haritası
 #   /ibadet-takip/    -> İbadetlerim
+#   /lgs-planlayici/  -> LGS Planlayıcı
 #   /gezgin-gunlugu/  -> Gezgin Günlüğü
-# Her uygulamanın app.json'ındaki experiments.baseUrl bu alt yollara göre ayarlı.
 
 on:
   push:
     branches: [claude/turkish-vocab-flashcard-3xwegv] # reponun varsayılan dalı
   workflow_dispatch: {}
 
-# GitHub Pages dağıtımı için gereken izinler
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Aynı anda tek dağıtım
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -30,43 +30,38 @@ jobs:
       EXPO_OFFLINE: '1'
       CI: '1'
     steps:
+      # Varsayılan dal: workflow + Gezgin Günlüğü kaynağı
       - uses: actions/checkout@v4
+
+      # Mevcut yayınlanmış site (gh-pages) — temel alınacak
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: _pages_base
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
-      # 1) Ana uygulama (Kelime Haritası) -> site kökü
-      - name: Kelime Haritası (web export)
-        run: |
-          npm install --no-audit --no-fund
-          npx expo export --platform web --output-dir _site
-
-      # 2) İbadetlerim -> /ibadet-takip
-      - name: İbadetlerim (web export)
-        working-directory: ibadet-takip
-        run: |
-          npm install --no-audit --no-fund
-          npx expo export --platform web --output-dir dist
+      # Mevcut siteyi _site'e kopyala (git meta verisi hariç)
       - run: |
-          mkdir -p _site/ibadet-takip
-          cp -r ibadet-takip/dist/. _site/ibadet-takip/
+          rm -rf _pages_base/.git
+          mkdir -p _site
+          cp -r _pages_base/. _site/
 
-      # 3) Gezgin Günlüğü -> /gezgin-gunlugu
+      # Gezgin Günlüğü'nü kaynaktan derle ve /gezgin-gunlugu altına yerleştir
       - name: Gezgin Günlüğü (web export)
         working-directory: gezgin-gunlugu
         run: |
           npm install --no-audit --no-fund
           npx expo export --platform web --output-dir dist
       - run: |
+          rm -rf _site/gezgin-gunlugu
           mkdir -p _site/gezgin-gunlugu
           cp -r gezgin-gunlugu/dist/. _site/gezgin-gunlugu/
 
-      # SPA yönlendirmesi ve Jekyll'i devre dışı bırakma
       - run: touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
