@@ -30,6 +30,7 @@ export default function ItemDetailScreen({ route, navigation }) {
   } = useTracker();
   const item = getById(id) || customItems.find((i) => i.id === id);
   const [confirmVisible, setConfirmVisible] = useState(false);
+  const [textExpanded, setTextExpanded] = useState(false);
 
   if (!item) {
     return (
@@ -59,6 +60,29 @@ export default function ItemDetailScreen({ route, navigation }) {
             <SectionHeader title="Anlamı ve Yapılışı" />
             <Card>
               <Text style={styles.summaryText}>{item.summary}</Text>
+            </Card>
+          </>
+        )}
+
+        {item.arabic && (
+          <>
+            <SectionHeader title="Arapça Metni, Okunuşu ve Meali" />
+            <Card>
+              <Pressable onPress={() => setTextExpanded(!textExpanded)}>
+                <Text style={styles.textToggle}>{textExpanded ? '▾ Metni gizle' : '▸ Metni göster'}</Text>
+              </Pressable>
+              {textExpanded && (
+                <View style={{ marginTop: 12 }}>
+                  <Text style={styles.textLabel}>Arapça</Text>
+                  <Text style={styles.arabicText}>{item.arabic}</Text>
+
+                  <Text style={[styles.textLabel, styles.textLabelSpaced]}>Okunuşu</Text>
+                  <Text style={styles.transliterationText}>{item.transliteration}</Text>
+
+                  <Text style={[styles.textLabel, styles.textLabelSpaced]}>Meali</Text>
+                  <Text style={styles.translationText}>{item.translation}</Text>
+                </View>
+              )}
             </Card>
           </>
         )}
@@ -153,6 +177,25 @@ const styles = StyleSheet.create({
   meta: { color: colors.primary, fontWeight: '700', marginBottom: 8 },
   description: { color: colors.text, fontSize: 14, lineHeight: 21 },
   summaryText: { color: colors.text, fontSize: 14, lineHeight: 21 },
+  textToggle: { color: colors.primary, fontSize: 13, fontWeight: '700', textAlign: 'center' },
+  textLabel: {
+    color: colors.textMuted,
+    fontSize: 11,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginBottom: 6,
+  },
+  textLabelSpaced: { marginTop: 16 },
+  arabicText: {
+    color: colors.text,
+    fontSize: 20,
+    lineHeight: 36,
+    textAlign: 'right',
+    writingDirection: 'rtl',
+  },
+  transliterationText: { color: colors.textMuted, fontSize: 14, lineHeight: 22, fontStyle: 'italic' },
+  translationText: { color: colors.text, fontSize: 14, lineHeight: 22 },
   genderNote: { color: colors.textMuted, fontSize: 12, marginTop: 10, lineHeight: 18 },
   hint: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginTop: 8 },
   naBtn: { marginHorizontal: 16, marginTop: 10, paddingVertical: 8, alignItems: 'center' },

@@ -23,6 +23,7 @@ export const CATEGORY = {
   ZEKAT: 'zekat',
   HAC: 'hac',
   KURBAN: 'kurban',
+  ZIKIR: 'zikir',
   DIGER: 'diger',
 };
 
@@ -32,6 +33,7 @@ export const CATEGORY_META = {
   [CATEGORY.ZEKAT]: { label: 'Zekât', icon: '🤲' },
   [CATEGORY.HAC]: { label: 'Hac & Umre', icon: '🕋' },
   [CATEGORY.KURBAN]: { label: 'Kurban', icon: '🐑' },
+  [CATEGORY.ZIKIR]: { label: 'Zikir & Dua', icon: '📿' },
   [CATEGORY.DIGER]: { label: 'Diğer (İlave)', icon: '➕' },
 };
 
@@ -510,6 +512,268 @@ export const IBADETLER = [
       'Nisap miktarına sahip, akıllı, bâliğ, mukim her Müslümana Kurban Bayramı günlerinde Hanefi mezhebinde vaciptir (diğer 3 mezhepte sünnet-i müekkededir).',
     summary:
       'Hz. İbrahim\'in oğlunu Allah için kurban etmeye hazır oluşunu anan, malını Allah rızası için paylaşmayı öğreten bir ibadettir. Kurban Bayramı\'nın ilk üç günü içinde, nisap sahibi her Müslüman uygun bir hayvan kestirip etini kendisi, akrabaları ve muhtaçlar arasında paylaştırır.',
+  },
+
+  // ---- ZİKİR & DUA ----
+  // "Tesbihat" (namaz sonrası 33-33-33) hariç, kullanıcı onayıyla eklenen
+  // sayı/vakit belirlenen tavsiye edilen zikir ve dualar. arabic/transliteration/
+  // translation alanları ItemDetailScreen'de "Arapça Metni, Okunuşu ve Meali"
+  // bölümünde gösterilir. Metinler AI tarafından derlenmiştir; namazda/ibadette
+  // esas alınmadan önce bir mushaf veya güvenilir bir kaynakla karşılaştırılması
+  // tavsiye edilir.
+  {
+    id: 'zikir-mulk-suresi',
+    title: 'Mülk Suresi (Yatsıdan Sonra)',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: 'Her gece, tercihen yatsıdan sonra/yatmadan önce okunması tavsiye edilen, 30 ayetlik Mülk (Tebâreke) suresi.',
+    summary:
+      'Kabir azabından koruduğu ve okuyana kıyamet günü şefaat edeceği bildirilen (Tirmizî, Hâkim), her gece okunması tavsiye edilen bir suredir. Yatsı namazından sonra, yatmadan önce baştan sona okunur.',
+    arabic: `تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ (1)
+الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا ۚ وَهُوَ الْعَزِيزُ الْغَفُورُ (2)
+الَّذِي خَلَقَ سَبْعَ سَمَاوَاتٍ طِبَاقًا ۖ مَا تَرَىٰ فِي خَلْقِ الرَّحْمَٰنِ مِنْ تَفَاوُتٍ ۖ فَارْجِعِ الْبَصَرَ هَلْ تَرَىٰ مِنْ فُطُورٍ (3)
+ثُمَّ ارْجِعِ الْبَصَرَ كَرَّتَيْنِ يَنْقَلِبْ إِلَيْكَ الْبَصَرُ خَاسِئًا وَهُوَ حَسِيرٌ (4)
+وَلَقَدْ زَيَّنَّا السَّمَاءَ الدُّنْيَا بِمَصَابِيحَ وَجَعَلْنَاهَا رُجُومًا لِلشَّيَاطِينِ ۖ وَأَعْتَدْنَا لَهُمْ عَذَابَ السَّعِيرِ (5)
+وَلِلَّذِينَ كَفَرُوا بِرَبِّهِمْ عَذَابُ جَهَنَّمَ ۖ وَبِئْسَ الْمَصِيرُ (6)
+إِذَا أُلْقُوا فِيهَا سَمِعُوا لَهَا شَهِيقًا وَهِيَ تَفُورُ (7)
+تَكَادُ تَمَيَّزُ مِنَ الْغَيْظِ ۖ كُلَّمَا أُلْقِيَ فِيهَا فَوْجٌ سَأَلَهُمْ خَزَنَتُهَا أَلَمْ يَأْتِكُمْ نَذِيرٌ (8)
+قَالُوا بَلَىٰ قَدْ جَاءَنَا نَذِيرٌ فَكَذَّبْنَا وَقُلْنَا مَا نَزَّلَ اللَّهُ مِنْ شَيْءٍ إِنْ أَنْتُمْ إِلَّا فِي ضَلَالٍ كَبِيرٍ (9)
+وَقَالُوا لَوْ كُنَّا نَسْمَعُ أَوْ نَعْقِلُ مَا كُنَّا فِي أَصْحَابِ السَّعِيرِ (10)
+فَاعْتَرَفُوا بِذَنْبِهِمْ فَسُحْقًا لِأَصْحَابِ السَّعِيرِ (11)
+إِنَّ الَّذِينَ يَخْشَوْنَ رَبَّهُمْ بِالْغَيْبِ لَهُمْ مَغْفِرَةٌ وَأَجْرٌ كَبِيرٌ (12)
+وَأَسِرُّوا قَوْلَكُمْ أَوِ اجْهَرُوا بِهِ ۖ إِنَّهُ عَلِيمٌ بِذَاتِ الصُّدُورِ (13)
+أَلَا يَعْلَمُ مَنْ خَلَقَ وَهُوَ اللَّطِيفُ الْخَبِيرُ (14)
+هُوَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ ذَلُولًا فَامْشُوا فِي مَنَاكِبِهَا وَكُلُوا مِنْ رِزْقِهِ ۖ وَإِلَيْهِ النُّشُورُ (15)
+أَأَمِنْتُمْ مَنْ فِي السَّمَاءِ أَنْ يَخْسِفَ بِكُمُ الْأَرْضَ فَإِذَا هِيَ تَمُورُ (16)
+أَمْ أَمِنْتُمْ مَنْ فِي السَّمَاءِ أَنْ يُرْسِلَ عَلَيْكُمْ حَاصِبًا ۖ فَسَتَعْلَمُونَ كَيْفَ نَذِيرِ (17)
+وَلَقَدْ كَذَّبَ الَّذِينَ مِنْ قَبْلِهِمْ فَكَيْفَ كَانَ نَكِيرِ (18)
+أَوَلَمْ يَرَوْا إِلَى الطَّيْرِ فَوْقَهُمْ صَافَّاتٍ وَيَقْبِضْنَ ۚ مَا يُمْسِكُهُنَّ إِلَّا الرَّحْمَٰنُ ۚ إِنَّهُ بِكُلِّ شَيْءٍ بَصِيرٌ (19)
+أَمَّنْ هَٰذَا الَّذِي هُوَ جُنْدٌ لَكُمْ يَنْصُرُكُمْ مِنْ دُونِ الرَّحْمَٰنِ ۚ إِنِ الْكَافِرُونَ إِلَّا فِي غُرُورٍ (20)
+أَمَّنْ هَٰذَا الَّذِي يَرْزُقُكُمْ إِنْ أَمْسَكَ رِزْقَهُ ۚ بَلْ لَجُّوا فِي عُتُوٍّ وَنُفُورٍ (21)
+أَفَمَنْ يَمْشِي مُكِبًّا عَلَىٰ وَجْهِهِ أَهْدَىٰ أَمَّنْ يَمْشِي سَوِيًّا عَلَىٰ صِرَاطٍ مُسْتَقِيمٍ (22)
+قُلْ هُوَ الَّذِي أَنْشَأَكُمْ وَجَعَلَ لَكُمُ السَّمْعَ وَالْأَبْصَارَ وَالْأَفْئِدَةَ ۖ قَلِيلًا مَا تَشْكُرُونَ (23)
+قُلْ هُوَ الَّذِي ذَرَأَكُمْ فِي الْأَرْضِ وَإِلَيْهِ تُحْشَرُونَ (24)
+وَيَقُولُونَ مَتَىٰ هَٰذَا الْوَعْدُ إِنْ كُنْتُمْ صَادِقِينَ (25)
+قُلْ إِنَّمَا الْعِلْمُ عِنْدَ اللَّهِ وَإِنَّمَا أَنَا نَذِيرٌ مُبِينٌ (26)
+فَلَمَّا رَأَوْهُ زُلْفَةً سِيئَتْ وُجُوهُ الَّذِينَ كَفَرُوا وَقِيلَ هَٰذَا الَّذِي كُنْتُمْ بِهِ تَدَّعُونَ (27)
+قُلْ أَرَأَيْتُمْ إِنْ أَهْلَكَنِيَ اللَّهُ وَمَنْ مَعِيَ أَوْ رَحِمَنَا فَمَنْ يُجِيرُ الْكَافِرِينَ مِنْ عَذَابٍ أَلِيمٍ (28)
+قُلْ هُوَ الرَّحْمَٰنُ آمَنَّا بِهِ وَعَلَيْهِ تَوَكَّلْنَا ۖ فَسَتَعْلَمُونَ مَنْ هُوَ فِي ضَلَالٍ مُبِينٍ (29)
+قُلْ أَرَأَيْتُمْ إِنْ أَصْبَحَ مَاؤُكُمْ غَوْرًا فَمَنْ يَأْتِيكُمْ بِمَاءٍ مَعِينٍ (30)`,
+    transliteration: `1. Tebârakellezî bi yedihi'l-mülkü ve hüve alâ külli şey'in kadîr.
+2. Ellezî halakal mevte vel hayâte li yeblüveküm eyyüküm ahsenü amelâ, ve huvel azîzul gafûr.
+3. Ellezî halaka seb'a semâvâtin tibâkâ, mâ terâ fî halkır rahmâni min tefâvüt, ferci'il basara hel terâ min futûr.
+4. Sümmerci'il basara kerrateyni yenkalib ileykel basaru hâsian ve huve hasîr.
+5. Ve lekad zeyyennes semâed dünyâ bi mesâbîha ve cealnâhâ rucûmen liş şeyâtîni ve a'tednâ lehüm azâbes seaîr.
+6. Ve lillezîne keferû bi rabbihim azâbü cehennem, ve bi'sel masîr.
+7. İzâ ulkû fîhâ semiû lehâ şehîkan ve hiye tefûr.
+8. Tekâdü temeyyezü minel gayz, küllemâ ulkıye fîhâ fevcun seelehüm hazenetühâ e lem ye'tiküm nezîr.
+9. Kâlû belâ kad câenâ nezîrun fe kezzebnâ ve kulnâ mâ nezzelallâhu min şey'in in entüm illâ fî dalâlin kebîr.
+10. Ve kâlû lev künnâ nesmeu ev na'kılu mâ künnâ fî ashâbis seaîr.
+11. Fa'terafû bi zenbihim, fe suhkan li ashâbis seaîr.
+12. İnnellezîne yahşevne rabbehüm bil gaybi lehüm magfiratün ve ecrun kebîr.
+13. Ve esirrû kavleküm evicherû bih, innehû alîmün bi zâtis sudûr.
+14. E lâ ya'lemü men halâk, ve huvel latîful habîr.
+15. Huvellezî ceale lekümül arda zelûlen femşû fî menâkibihâ ve külû min rızkıh, ve ileyhin nüşûr.
+16. E emintüm men fîs semâi ey yahsife bikümül arda fe izâ hiye temûr.
+17. Em emintüm men fîs semâi ey yursile aleyküm hâsıben fe se ta'lemûne keyfe nezîr.
+18. Ve lekad kezzebellezîne min kablihim fe keyfe kâne nekîr.
+19. E ve lem yerav ilet tayri fevkahüm sâffâtin ve yakbıdn, mâ yümsikühünne illerrahmân, innehû bi külli şey'in basîr.
+20. Emmen hâzellezî hüve cündün leküm yansuruküm min dûnirrahmân, inil kâfirûne illâ fî gurûr.
+21. Emmen hâzellezî yerzukuküm in emseke rızkah, bel leccû fî utüvvin ve nufûr.
+22. E fe men yemşî mükibben alâ vechihî ehdâ emmen yemşî seviyyen alâ sırâtın müstakîm.
+23. Kul huvellezî enşeeküm ve ceale lekümüs sem'a vel ebsâra vel ef'ideh, kalîlen mâ teşkurûn.
+24. Kul huvellezî zeraeküm fîl erdı ve ileyhi tuhşerûn.
+25. Ve yekûlûne metâ hâzel va'dü in küntüm sâdikîn.
+26. Kul innemel ilmu indallâhi ve innemâ ene nezîrun mübîn.
+27. Fe lemmâ raevhu zülfeten sîet vucûhüllezîne keferû ve kîle hâzellezî küntüm bihî tedde'ûn.
+28. Kul e raeytüm in ehlekeniyallâhu ve men maiye ev rahımenâ fe men yücîrul kâfirîne min azâbin elîm.
+29. Kul huver rahmânü âmennâ bihî ve aleyhi tevekkelnâ, fe se ta'lemûne men hüve fî dalâlin mübîn.
+30. Kul e raeytüm in asbeha mâüküm gavran fe men ye'tîküm bi mâin main.`,
+    translation: `1. Mülk elinde bulunan Allah, yücedir. O, her şeye hakkıyla gücü yetendir.
+2. O, hanginizin daha güzel amel edeceğini sınamak için ölümü ve hayatı yaratandır. O, mutlak güç sahibidir, çok bağışlayandır.
+3. O, yedi göğü tabaka tabaka yaratandır. Rahmân'ın yaratışında hiçbir uyumsuzluk göremezsin. Bir kere daha gözünü çevir de bak, bir bozukluk görebiliyor musun?
+4. Sonra gözünü tekrar tekrar çevir bak; göz (aradığı bozukluğu bulmaktan) âciz ve bitkin hâlde sana dönecektir.
+5. Andolsun, biz en yakın göğü kandillerle donattık. Onları şeytanlara atılan taşlar yaptık ve onlara alevli ateş azabını hazırladık.
+6. Rablerini inkâr edenler için cehennem azabı vardır. Ne kötü varış yeridir orası!
+7. Oraya atıldıklarında, onun kaynarken çıkardığı uğultuyu işitirler.
+8. Cehennem, öfkesinin şiddetinden neredeyse çatlayacak gibi olur. Her bir grup içine atıldıkça, cehennemin bekçileri onlara sorar: "Size bir uyarıcı gelmedi mi?"
+9. Onlar şöyle derler: "Evet, doğrusu bize bir uyarıcı gelmişti. Fakat biz yalanladık ve 'Allah hiçbir şey indirmedi, siz ancak büyük bir sapıklık içindesiniz' demiştik."
+10. Yine şöyle derler: "Eğer kulak vermiş veya aklımızı kullanmış olsaydık, şu alevli ateştekilerden olmazdık."
+11. Böylece günahlarını itiraf ederler. Artık (Allah'ın rahmetinden) uzak olsun, o alevli ateştekiler!
+12. Görmedikleri hâlde Rablerinden için için korkanlar var ya, onlar için bir bağışlanma ve büyük bir mükâfat vardır.
+13. Sözünüzü ister gizleyin, ister açığa vurun; bilin ki O, göğüslerin özünü hakkıyla bilendir.
+14. Hiç yaratan bilmez mi? O, en gizli şeyleri bilir, her şeyden hakkıyla haberdardır.
+15. O, yeryüzünü size boyun eğdirendir. Öyleyse onun omuzlarında dolaşın ve Allah'ın rızkından yiyin. Dönüş ancak O'nadır.
+16. Göktekinin, sizi yere batırıvermeyeceğinden emin mi oldunuz? O zaman yeryüzü ansızın çalkalanmaya başlar.
+17. Yahut göktekinin, üzerinize taş yağdıran bir fırtına göndermeyeceğinden emin mi oldunuz? İşte uyarımın nasıl olduğunu bileceksiniz!
+18. Andolsun, onlardan öncekiler de yalanlamışlardı. Ama benim inkârım (onları cezalandırmam) nasıl olmuştu!
+19. Üstlerinde kanatlarını aça-kapata uçan kuşları görmüyorlar mı? Onları havada Rahmân'dan başkası tutmuyor. Şüphesiz O, her şeyi hakkıyla görendir.
+20. Rahmân'dan başka size yardım edecek askerleriniz kimdir, kimmiş? İnkârcılar ancak derin bir gaflet içindedirler.
+21. Allah rızkını tutacak olsa, size rızık verebilecek kimdir? Hayır, onlar azgınlık ve nefretle direnip durmaktadırlar.
+22. Şimdi, yüzükoyun kapanarak yürüyen mi daha doğru gider, yoksa dosdoğru bir yol üzerinde dimdik yürüyen mi?
+23. De ki: "O, sizi yaratan ve size kulaklar, gözler ve kalpler verendir. Ne kadar da az şükrediyorsunuz!"
+24. De ki: "O, sizi yeryüzünde yaratıp türeten ve döndürülüp huzurunda toplanacağınız Allah'tır."
+25. Onlar, "Eğer doğru söyleyenler iseniz, bu tehdit ne zaman gerçekleşecek?" diyorlar.
+26. De ki: "O bilgi ancak Allah katındadır. Ben ancak apaçık bir uyarıcıyım."
+27. Onu (azabı) yakında görünce, inkâr edenlerin yüzleri kararacak ve kendilerine "İşte bu, isteyip durduğunuz şeydir" denecek.
+28. De ki: "Ne dersiniz? Allah beni ve benimle beraber olanları yok etse, yahut bize merhamet etse, inkârcıları elem dolu bir azaptan kim kurtarır?"
+29. De ki: "O, Rahmân'dır. O'na iman ettik ve yalnızca O'na tevekkül ettik. Kimin apaçık bir sapıklık içinde olduğunu yakında bileceksiniz!"
+30. De ki: "Suyunuz çekiliverse, söyleyin bakalım, size kim bir akarsu getirebilir?"`,
+  },
+  {
+    id: 'zikir-amenerrasulu',
+    title: 'Bakara Suresi Son 2 Ayeti (Âmenerrasûlü)',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: 'Bakara suresinin 285-286. ayetleri; her gece, tercihen yatmadan önce okunması tavsiye edilir.',
+    summary:
+      '"Kim geceleyin bu iki ayeti okursa, o gece için ona yeter" hadisine dayanan (Buhârî, Müslim), iman esaslarını ve tevekkülü özetleyen bir dua-ayet çiftidir. Gece, tercihen yatmadan önce okunur.',
+    arabic: `آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِنْ رُسُلِهِ ۚ وَقَالُوا سَمِعْنَا وَأَطَعْنَا ۖ غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ (285)
+لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ ۗ رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ۚ أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ (286)`,
+    transliteration: `285. Âmener resûlü bimâ ünzile ileyhi mir rabbihî vel mü'minûn, küllün âmene billâhi ve melâiketihî ve kütübihî ve rusülih, lâ nüferriku beyne ehadin mir rusülih, ve kâlû semi'nâ ve eta'nâ gufrâneke rabbenâ ve ileykel masîr.
+286. Lâ yükellifullâhu nefsen illâ vüs'ahâ, lehâ mâ kesebet ve aleyhâ mektesebet, rabbenâ lâ tüâhıznâ in nesînâ ev ahta'nâ, rabbenâ ve lâ tahmil aleynâ ısran kemâ hameltehû alellezîne min kablinâ, rabbenâ ve lâ tuhammilnâ mâ lâ tâkate lenâ bih, va'fu annâ, vagfirlenâ, verhamnâ, ente mevlânâ fensurnâ alel kavmil kâfirîn.`,
+    translation: `285. Peygamber, Rabbinden kendisine indirilene iman etti, müminler de iman ettiler. Her biri Allah'a, meleklerine, kitaplarına ve peygamberlerine iman ettiler ve şöyle dediler: "Onun peygamberlerinden hiçbirini ayırt etmeyiz." Şöyle de dediler: "İşittik ve itaat ettik. Ey Rabbimiz! Senden bağışlama dileriz. Sonunda dönüş yalnız sanadır."
+286. Allah, bir kimseyi ancak gücünün yettiği şeyle yükümlü kılar. Onun kazandığı iyilik kendi yararına, kötülük de kendi zararınadır. "Ey Rabbimiz! Unutur ya da yanılırsak bizi sorumlu tutma! Ey Rabbimiz! Bize, bizden öncekilere yüklediğin gibi ağır yük yükleme. Ey Rabbimiz! Bize gücümüzün yetmediği şeyleri yükleme! Bizi affet, bizi bağışla, bize acı! Sen bizim Mevlâmızsın. Kâfirler topluluğuna karşı bize yardım et."`,
+  },
+  {
+    id: 'zikir-yatarken-tesbihi',
+    title: 'Yatarken Tesbihi (Fâtıma Tesbihi)',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: 'Yatmadan önce 33 Sübhânallah, 33 Elhamdülillah, 34 Allâhu ekber şeklinde çekilen tesbih.',
+    summary:
+      'Hz. Peygamber\'in, hizmetçi isteyen kızı Fâtıma ile Hz. Ali\'ye hizmetçi yerine öğrettiği, "bu sizin için ondan daha hayırlıdır" buyurduğu bir tesbihtir (Buhârî, Müslim). Yatağa girip yatmadan önce sırasıyla 33 Sübhânallah, 33 Elhamdülillah, 34 Allâhu ekber denilerek çekilir.',
+    arabic: `سُبْحَانَ اللَّهِ (٣٣) — الْحَمْدُ لِلَّهِ (٣٣) — اللَّهُ أَكْبَرُ (٣٤)`,
+    transliteration: `Sübhânallah (33 kere), Elhamdülillâh (33 kere), Allâhu ekber (34 kere).`,
+    translation: `Allah her türlü eksiklikten uzaktır (33 kere). Hamd (övgü) Allah'a mahsustur (33 kere). Allah en büyüktür (34 kere).`,
+  },
+  {
+    id: 'zikir-hasr-son-ayetler',
+    title: 'Haşr Suresi Son 3 Ayeti (Sabah)',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: `Haşr suresinin 22-24. ayetleri; sabah, "Eûzü billâhi's-semîi'l-alîm" ile başlanarak okunur.`,
+    summary:
+      '"Kim sabahleyin üç kere Eûzü billâhis-semîil-alîm min-eş-şeytânir-racîm diyerek Haşr suresinin sonundaki üç ayeti okursa, Allah ona akşama kadar dua eden 70.000 melek görevlendirir; o gün ölürse şehit olarak ölür" hadisine dayanır (Tirmizî). Sabah namazından sonra, önce istiaze çekilip ardından üç ayet okunur.',
+    arabic: `أَعُوذُ بِاللَّهِ السَّمِيعِ الْعَلِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ
+هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ ۖ عَالِمُ الْغَيْبِ وَالشَّهَادَةِ ۖ هُوَ الرَّحْمَٰنُ الرَّحِيمُ (22)
+هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلَامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ ۚ سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ (23)
+هُوَ اللَّهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ ۖ لَهُ الْأَسْمَاءُ الْحُسْنَىٰ ۚ يُسَبِّحُ لَهُ مَا فِي السَّمَاوَاتِ وَالْأَرْضِ ۖ وَهُوَ الْعَزِيزُ الْحَكِيمُ (24)`,
+    transliteration: `Eûzü billâhis-semîil-alîmi mineş-şeytânir-racîm.
+22. Hüvellâhüllezî lâ ilâhe illâ hû, âlimül gaybi veş şehâdeh, hüver rahmânür rahîm.
+23. Hüvellâhüllezî lâ ilâhe illâ hû, elmelikül kuddûsüs selâmül mü'minül müheyminül azîzül cebbârul mütekebbir, sübhânallâhi ammâ yüşrikûn.
+24. Hüvellâhül hâlikul bâriül müsavviru lehül esmâül hüsnâ, yüsebbihu lehû mâ fis semâvâti vel ard, ve hüvel azîzül hakîm.`,
+    translation: `Duyan, bilen Allah'a; kovulmuş şeytandan sığınırım.
+22. O, kendisinden başka hiçbir ilâh bulunmayan Allah'tır. Görülmeyeni ve görüleni bilendir. O, Rahmân'dır, Rahîm'dir.
+23. O, kendisinden başka hiçbir ilâh bulunmayan Allah'tır. O; mülkün gerçek sahibi, eksiklikten münezzeh, selâmet veren, güvenlik veren, gözetip koruyan, mutlak güç sahibi, dilediğini yaptıran ve büyüklükte eşsiz olandır. Allah, onların ortak koştuklarından uzaktır.
+24. O; yaratan, var eden, şekil veren Allah'tır. Güzel isimler O'nundur. Göklerdeki ve yerdeki her şey O'nu tesbih eder. O, mutlak güç sahibidir, hüküm ve hikmet sahibidir.`,
+  },
+  {
+    id: 'zikir-ihlas-felak-nas',
+    title: 'İhlas, Felak ve Nâs Sureleri (3\'er Kere)',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: 'Sabah ve akşam üçer kere okunması tavsiye edilen İhlas, Felak ve Nâs sureleri (Muavvizeteyn + İhlas).',
+    summary:
+      '"Sabah ve akşam bu üç sureyi üçer kere okuyan kişiye, her şeye karşı yeterli gelir" hadisine dayanır (Tirmizî, Ebû Dâvûd). Sabah namazından sonra ve akşam/yatmadan önce, her biri üçer kez okunur.',
+    arabic: `قُلْ هُوَ اللَّهُ أَحَدٌ * اللَّهُ الصَّمَدُ * لَمْ يَلِدْ وَلَمْ يُولَدْ * وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ (İhlas — 3 kere)
+
+قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ * مِنْ شَرِّ مَا خَلَقَ * وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ * وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ * وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ (Felak — 3 kere)
+
+قُلْ أَعُوذُ بِرَبِّ النَّاسِ * مَلِكِ النَّاسِ * إِلَٰهِ النَّاسِ * مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ * الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ * مِنَ الْجِنَّةِ وَالنَّاسِ (Nâs — 3 kere)`,
+    transliteration: `İhlas (3 kere): Kul hüvallâhü ehad. Allâhüs samed. Lem yelid ve lem yûled. Ve lem yekün lehû küfüven ehad.
+
+Felak (3 kere): Kul eûzü birabbil felak. Min şerri mâ halâk. Ve min şerri gâsikın izâ vekab. Ve min şerrin neffâsâti fil ukad. Ve min şerri hâsidin izâ hased.
+
+Nâs (3 kere): Kul eûzü birabbin nâs. Melikin nâs. İlâhin nâs. Min şerril vesvâsil hannâs. Ellezî yüvesvisü fî sudûrin nâs. Minel cinneti ven nâs.`,
+    translation: `İhlas: De ki: "O, Allah'tır, bir tektir. Allah Samed'dir (her şey O'na muhtaçtır, O hiçbir şeye muhtaç değildir). O'ndan çocuk olmamıştır, kendisi de doğmamıştır. Hiçbir şey O'na denk ve benzer değildir."
+
+Felak: De ki: "Yarattığı şeylerin kötülüğünden, karanlığı çöktüğü zaman gecenin kötülüğünden, düğümlere üfleyenlerin kötülüğünden ve haset ettiği zaman hasetçinin kötülüğünden, sabahın Rabbine sığınırım."
+
+Nâs: De ki: "Cinlerden ve insanlardan; insanların kalplerine vesvese veren sinsi vesvesecinin kötülüğünden, insanların Rabbine, insanların Melik'ine, insanların İlâh'ına sığınırım."`,
+  },
+  {
+    id: 'zikir-ayetel-kursi',
+    title: 'Âyet-el Kürsî',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: 'Bakara suresi 255. ayet; her gün, tercihen her farz namazdan sonra okunması tavsiye edilir.',
+    summary:
+      '"Her farz namazdan sonra Ayet-el Kürsî\'yi okuyan kimsenin cennete girmesine ölümden başka engel kalmaz" hadisine dayanır (Nesâî). Kur\'an\'ın en faziletli ayeti kabul edilir; günün herhangi bir vaktinde, özellikle farz namazların ardından okunur.',
+    arabic: `اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ`,
+    transliteration: `Allâhü lâ ilâhe illâ hüvel hayyül kayyûm, lâ te'huzühû sinetün ve lâ nevm, lehû mâ fis semâvâti ve mâ fil ard, men zellezî yeşfeu indehû illâ bi iznih, ya'lemü mâ beyne eydîhim ve mâ halfehüm ve lâ yühîtûne bi şey'im min ilmihî illâ bimâ şâ, vesia kürsiyyühüs semâvâti vel ard, ve lâ yeûdühû hıfzuhümâ ve hüvel aliyyül azîm.`,
+    translation: `Allah, kendisinden başka hiçbir ilâh olmayandır. Diridir, kayyûmdur. O'nu ne bir uyuklama tutabilir, ne de bir uyku. Göklerdeki her şey, yerdeki her şey O'nundur. İzni olmaksızın O'nun katında şefaat edecek kimdir? O, kulların önlerindekileri ve arkalarındakileri bilir. O'nun ilminden, kendisinin dilediği kadarından başka hiçbir şeyi kavrayamazlar. O'nun kürsüsü, bütün gökleri ve yeri kaplayıp kuşatmıştır. Gökleri ve yeri koruyup gözetmek O'na güç gelmez. O, yücedir, büyüktür.`,
+  },
+  {
+    id: 'zikir-istigfar',
+    title: 'İstiğfar (100 Kere)',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: 'Günde 100 kere "Estağfirullah" denilerek yapılan istiğfar.',
+    summary:
+      '"Vallahi ben günde 100 kereden fazla Allah\'a istiğfar eder, tövbe ederim" hadisine dayanır (Buhârî). Günün herhangi bir vaktinde, 100 kere "Estağfirullah" denilerek çekilir.',
+    arabic: `أَسْتَغْفِرُ اللَّهَ (١٠٠)`,
+    transliteration: `Estağfirullah (100 kere).`,
+    translation: `Allah'tan bağışlanma dilerim.`,
+  },
+  {
+    id: 'zikir-sübhanallahi-ve-bihamdihi',
+    title: 'Sübhânallahi ve Bihamdihî (100 Kere)',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: 'Günde 100 kere "Sübhânallahi ve bihamdihî" denilerek yapılan tesbih.',
+    summary:
+      '"Kim günde 100 kere Sübhânallahi ve bihamdihî derse, günahları deniz köpüğü kadar çok olsa bile bağışlanır" hadisine dayanır (Buhârî, Müslim). Günün herhangi bir vaktinde 100 kere çekilir.',
+    arabic: `سُبْحَانَ اللَّهِ وَبِحَمْدِهِ (١٠٠)`,
+    transliteration: `Sübhânallâhi ve bihamdihî (100 kere).`,
+    translation: `Allah'ı hamd ile tesbih ederim (Allah'ı her türlü noksanlıktan uzak tutarak överim).`,
+  },
+  {
+    id: 'zikir-kelime-i-tevhid',
+    title: 'Kelime-i Tevhid (100 Kere)',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: 'Günde 100 kere "Lâ ilâhe illallâhu vahdehû lâ şerîke leh..." denilerek yapılan tehlil.',
+    summary:
+      '"Kim günde 100 kere bunu söylerse, kendisi için 10 köle azat etmiş gibi sevap yazılır, 100 iyilik yazılır, 100 günahı silinir ve o gün akşama kadar şeytandan korunmuş olur" hadisine dayanır (Buhârî, Müslim). Günün herhangi bir vaktinde 100 kere çekilir.',
+    arabic: `لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ (١٠٠)`,
+    transliteration: `Lâ ilâhe illallâhu vahdehû lâ şerîke leh, lehül mülkü ve lehül hamdü ve hüve alâ külli şey'in kadîr (100 kere).`,
+    translation: `Allah'tan başka ilah yoktur, O tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır. O, her şeye hakkıyla gücü yetendir.`,
+  },
+  {
+    id: 'zikir-salavat-i-serife',
+    title: 'Salavat-ı Şerife (Salli-Bârik Duası)',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    description: 'Namazın son oturuşunda okunan Salli-Bârik duasının, namaz dışında da çokça tekrar edilmesi tavsiye edilen salavat metni.',
+    summary:
+      'Hz. Peygamber\'e salavat getirmenin Kur\'an\'da emredildiği (Ahzâb, 33/56) ve özellikle Cuma günleri çokça tekrarının tavsiye edildiği bir duadır. Namazın son oturuşunda okunduğu gibi, günün herhangi bir vaktinde de tekrarlanabilir.',
+    arabic: `اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ وَعَلَىٰ آلِ سَيِّدِنَا مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَىٰ سَيِّدِنَا إِبْرَاهِيمَ وَعَلَىٰ آلِ سَيِّدِنَا إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ
+اللَّهُمَّ بَارِكْ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ وَعَلَىٰ آلِ سَيِّدِنَا مُحَمَّدٍ كَمَا بَارَكْتَ عَلَىٰ سَيِّدِنَا إِبْرَاهِيمَ وَعَلَىٰ آلِ سَيِّدِنَا إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ`,
+    transliteration: `Allâhümme salli alâ seyyidinâ Muhammedin ve alâ âli seyyidinâ Muhammed, kemâ salleyte alâ seyyidinâ İbrâhîme ve alâ âli seyyidinâ İbrâhîm, inneke hamîdün mecîd.
+Allâhümme bârik alâ seyyidinâ Muhammedin ve alâ âli seyyidinâ Muhammed, kemâ bârekte alâ seyyidinâ İbrâhîme ve alâ âli seyyidinâ İbrâhîm, inneke hamîdün mecîd.`,
+    translation: `Allah'ım! İbrahim'e ve âline salât ettiğin gibi Muhammed'e ve âline de salât et; şüphesiz sen övülmeye layıksın, şanı yücesin.
+Allah'ım! İbrahim'e ve âline bereket verdiğin gibi Muhammed'e ve âline de bereket ver; şüphesiz sen övülmeye layıksın, şanı yücesin.`,
   },
 ];
 
