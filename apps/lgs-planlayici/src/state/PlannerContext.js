@@ -4,7 +4,7 @@ import { buildInitialCurriculum } from '../data/curriculum';
 import { pointsForTask, levelForPoints, evaluateBadges } from '../data/rewards';
 import { AVATARS, defaultAvatarId, avatarById, evaluateAvatarUnlocks } from '../data/avatars';
 import { computeStreaks } from '../logic/streak';
-import { todayStr, mondayOf, addDays, weekDates, weekdayOfDateStr, monthWeekStarts } from '../logic/calendar';
+import { todayStr, weekdayOfDateStr, datesInMonth } from '../logic/calendar';
 
 const STORAGE_KEY = '@lgs_planlayici_v1';
 const PlannerContext = createContext(null);
@@ -20,7 +20,6 @@ const initialState = {
   gradeLevel: 8,
   yearGoal: null,
   monthGoals: [],
-  weekGoals: [],
   tasks: [],
   recurringTasks: [],
   examResults: [],
@@ -35,10 +34,31 @@ function freshState() {
   return { ...initialState, curriculum: buildInitialCurriculum() };
 }
 
+// Eski hafta tabanlı model (weekGoals + task.weekId) kalıcı depoda varsa,
+// yeni ay tabanlı modele (task.monthId) geçiş yapılır — hiçbir görev kaybolmaz,
+// yalnızca bağlı olduğu haftanın üst aylık hedefine yeniden bağlanır.
+function migrateLegacyWeeks(payload) {
+  if (!Array.isArray(payload.weekGoals)) return payload;
+  const weekById = {};
+  payload.weekGoals.forEach((w) => {
+    weekById[w.id] = w;
+  });
+  const migratedTasks = (payload.tasks || []).map((t) => {
+    const { weekId, ...rest } = t;
+    if (weekId == null) return { ...rest, monthId: t.monthId || null };
+    const week = weekById[weekId];
+    return { ...rest, monthId: week ? week.monthId : t.monthId || null };
+  });
+  const { weekGoals, ...restPayload } = payload;
+  return { ...restPayload, tasks: migratedTasks };
+}
+
 function reducer(state, action) {
   switch (action.type) {
-    case 'HYDRATE':
-      return action.payload ? { ...action.payload, loaded: true } : { ...freshState(), loaded: true };
+    case 'HYDRATE': {
+      if (!action.payload) return { ...freshState(), loaded: true };
+      return { ...migrateLegacyWeeks(action.payload), loaded: true };
+    }
 
     case 'SET_GRADE':
       return { ...state, gradeLevel: action.gradeLevel };
@@ -49,53 +69,18 @@ function reducer(state, action) {
     case 'ADD_MONTH_GOAL': {
       const id = action.data.id || uid('month');
       const month = { gradeLevel: state.gradeLevel, ...action.data, id };
-      // Aylık hedef oluşturulunca ayın tüm haftaları aynı adla altına otomatik açılır.
-      // Tamamen geçmişte kalmış haftalar (bugünü de kapsamayan) oluşturulmaz.
-      const today = todayStr();
-      const allStarts = month.year && month.month ? monthWeekStarts(month.year, month.month) : [];
-      const futureStarts = allStarts.filter((startDate) => addDays(startDate, 6) >= today);
-      const autoWeeks = futureStarts.map((startDate, i) => ({
-        id: uid('week'),
-        monthId: id,
-        title: `${month.title} - ${i + 1}. Hafta`,
-        startDate,
-      }));
-      return {
-        ...state,
-        monthGoals: [...state.monthGoals, month],
-        weekGoals: [...state.weekGoals, ...autoWeeks],
-      };
+      return { ...state, monthGoals: [...state.monthGoals, month] };
     }
     case 'UPDATE_MONTH_GOAL':
       return {
         ...state,
         monthGoals: state.monthGoals.map((m) => (m.id === action.id ? { ...m, ...action.patch } : m)),
       };
-    case 'DELETE_MONTH_GOAL': {
-      const weekIds = state.weekGoals.filter((w) => w.monthId === action.id).map((w) => w.id);
+    case 'DELETE_MONTH_GOAL':
       return {
         ...state,
         monthGoals: state.monthGoals.filter((m) => m.id !== action.id),
-        weekGoals: state.weekGoals.filter((w) => w.monthId !== action.id),
-        tasks: state.tasks.filter((t) => !weekIds.includes(t.weekId)),
-      };
-    }
-
-    case 'ADD_WEEK_GOAL':
-      return {
-        ...state,
-        weekGoals: [...state.weekGoals, { id: uid('week'), monthId: action.monthId, ...action.data }],
-      };
-    case 'UPDATE_WEEK_GOAL':
-      return {
-        ...state,
-        weekGoals: state.weekGoals.map((w) => (w.id === action.id ? { ...w, ...action.patch } : w)),
-      };
-    case 'DELETE_WEEK_GOAL':
-      return {
-        ...state,
-        weekGoals: state.weekGoals.filter((w) => w.id !== action.id),
-        tasks: state.tasks.filter((t) => t.weekId !== action.id),
+        tasks: state.tasks.filter((t) => t.monthId !== action.id),
       };
 
     case 'ADD_TASK':
@@ -105,7 +90,7 @@ function reducer(state, action) {
           ...state.tasks,
           {
             id: uid('task'),
-            weekId: action.weekId || null,
+            monthId: action.monthId || null,
             done: false,
             completedAt: null,
             ...action.data,
@@ -217,27 +202,25 @@ export function PlannerProvider({ children }) {
   }, [state.loaded, state.tasks, state.examResults, state.curriculum]);
 
   // Aktif tekrarlayan görevlerden üretilmesi gerekenleri, henüz oluşturulmadıysa üret.
-  // Bir aylık hedefe bağlı olan periyodik görevler, o hedefin TÜM haftalarına
-  // (son tekrar tarihine kadar) dağıtılır — böylece tek bir haftaya değil,
-  // bağlı olduğu aylık planın bütününe uygulanmış olur. Aya bağlı olmayanlar ise
-  // eskisi gibi yalnızca bugün için üretilir ve (varsa) içinde bulunulan haftaya iliştirilir.
+  // Bir aylık hedefe bağlı olan periyodik görevler, o hedefin TÜM günlerine (son
+  // tekrar tarihine kadar) dağıtılır — hafta hafta görünüm, bu görevlerin
+  // dueDate'lerine göre ekranda otomatik hesaplanır, ayrı bir hafta nesnesi yoktur.
+  // Aya bağlı olmayanlar ise eskisi gibi yalnızca bugün için üretilir.
   useEffect(() => {
     if (!state.loaded) return;
     const today = todayStr();
     const todayWeekday = new Date().getDay();
-    const currentMonday = mondayOf(today);
     const existingKeys = new Set(
       state.tasks.filter((t) => t.recurringId).map((t) => `${t.recurringId}__${t.dueDate}`)
     );
-    const matchingWeeks = state.weekGoals.filter((w) => w.startDate === currentMonday);
 
-    const addRecurringInstance = (r, weekId, dueDate) => {
+    const addRecurringInstance = (r, monthId, dueDate) => {
       const key = `${r.id}__${dueDate}`;
       if (existingKeys.has(key)) return;
       existingKeys.add(key);
       dispatch({
         type: 'ADD_TASK',
-        weekId,
+        monthId,
         data: {
           title: r.title,
           subject: r.subject,
@@ -253,34 +236,23 @@ export function PlannerProvider({ children }) {
       if (!r.active) return;
 
       if (r.monthId) {
-        const weeksOfMonth = state.weekGoals.filter((w) => w.monthId === r.monthId);
-        weeksOfMonth.forEach((week) => {
-          weekDates(week.startDate).forEach((dateStr) => {
-            // Geçmiş tarihler için görev üretilmez — görev oluştuğu tarihten itibaren başlar.
-            if (dateStr < today) return;
-            if (r.endDate && dateStr > r.endDate) return;
-            if (!r.daysOfWeek.includes(weekdayOfDateStr(dateStr))) return;
-            addRecurringInstance(r, week.id, dateStr);
-          });
+        const month = state.monthGoals.find((m) => m.id === r.monthId);
+        if (!month || !month.year || !month.month) return;
+        datesInMonth(month.year, month.month).forEach((dateStr) => {
+          // Geçmiş tarihler için görev üretilmez — görev oluştuğu tarihten itibaren başlar.
+          if (dateStr < today) return;
+          if (r.endDate && dateStr > r.endDate) return;
+          if (!r.daysOfWeek.includes(weekdayOfDateStr(dateStr))) return;
+          addRecurringInstance(r, month.id, dateStr);
         });
         return;
       }
 
       if (!r.daysOfWeek.includes(todayWeekday)) return;
-      let weekId = null;
-      if (matchingWeeks.length === 1) {
-        weekId = matchingWeeks[0].id;
-      } else if (matchingWeeks.length > 1) {
-        const bySubject = matchingWeeks.find((w) => {
-          const month = state.monthGoals.find((m) => m.id === w.monthId);
-          return month && month.subject === r.subject;
-        });
-        weekId = (bySubject || matchingWeeks[0]).id;
-      }
-      addRecurringInstance(r, weekId, today);
+      addRecurringInstance(r, null, today);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.loaded, state.recurringTasks, state.tasks, state.weekGoals, state.monthGoals]);
+  }, [state.loaded, state.recurringTasks, state.tasks, state.monthGoals]);
 
   const value = useMemo(() => {
     const stats = computeStats(state);
@@ -298,10 +270,7 @@ export function PlannerProvider({ children }) {
       addMonthGoal: (data) => dispatch({ type: 'ADD_MONTH_GOAL', data }),
       updateMonthGoal: (id, patch) => dispatch({ type: 'UPDATE_MONTH_GOAL', id, patch }),
       deleteMonthGoal: (id) => dispatch({ type: 'DELETE_MONTH_GOAL', id }),
-      addWeekGoal: (monthId, data) => dispatch({ type: 'ADD_WEEK_GOAL', monthId, data }),
-      updateWeekGoal: (id, patch) => dispatch({ type: 'UPDATE_WEEK_GOAL', id, patch }),
-      deleteWeekGoal: (id) => dispatch({ type: 'DELETE_WEEK_GOAL', id }),
-      addTask: (weekId, data) => dispatch({ type: 'ADD_TASK', weekId, data }),
+      addTask: (monthId, data) => dispatch({ type: 'ADD_TASK', monthId, data }),
       updateTask: (id, patch) => dispatch({ type: 'UPDATE_TASK', id, patch }),
       deleteTask: (id) => dispatch({ type: 'DELETE_TASK', id }),
       toggleTaskDone: (id) => dispatch({ type: 'TOGGLE_TASK_DONE', id }),

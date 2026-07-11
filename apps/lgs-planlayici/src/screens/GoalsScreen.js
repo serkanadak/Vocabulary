@@ -34,8 +34,7 @@ export default function GoalsScreen({ navigation }) {
   const [editRecurringEndDate, setEditRecurringEndDate] = useState('');
   const [editRecurringMonthPickerVisible, setEditRecurringMonthPickerVisible] = useState(false);
 
-  const weeksFor = (monthId) => planner.weekGoals.filter((w) => w.monthId === monthId);
-  const taskCountFor = (weekId) => planner.tasks.filter((t) => t.weekId === weekId).length;
+  const taskCountForMonth = (monthId) => planner.tasks.filter((t) => t.monthId === monthId).length;
 
   const subjects = SUBJECTS_BY_GRADE[planner.gradeLevel] || [];
   const topics = planner.curriculum.filter((t) => t.gradeLevel === planner.gradeLevel);
@@ -75,10 +74,10 @@ export default function GoalsScreen({ navigation }) {
         <EmptyState text="Henüz aylık hedef yok." />
       ) : (
         planner.monthGoals.map((month) => {
-          const weeks = weeksFor(month.id);
+          const taskCount = taskCountForMonth(month.id);
           return (
-            <Card key={month.id}>
-              <TouchableOpacity onPress={() => navigation.navigate('MonthDetail', { monthId: month.id })}>
+            <TouchableOpacity key={month.id} onPress={() => navigation.navigate('MonthDetail', { monthId: month.id })}>
+              <Card>
                 <Text style={styles.monthTitle}>{month.title}</Text>
                 <View style={styles.chipRow}>
                   {!!(month.year && month.month) && (
@@ -86,25 +85,9 @@ export default function GoalsScreen({ navigation }) {
                   )}
                   {!!month.subject && <Chip label={month.subject} color={subjectColor(month.subject)} />}
                 </View>
-              </TouchableOpacity>
-
-              {weeks.length === 0 ? (
-                <Text style={styles.mutedText}>Henüz haftalık plan yok.</Text>
-              ) : (
-                <View style={styles.weeksInline}>
-                  {weeks.map((week) => (
-                    <TouchableOpacity
-                      key={week.id}
-                      style={styles.weekInlineRow}
-                      onPress={() => navigation.navigate('WeekDetail', { weekId: week.id })}
-                    >
-                      <Text style={styles.weekInlineText}>{week.title}</Text>
-                      <Text style={styles.mutedText}>{taskCountFor(week.id)} görev</Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              )}
-            </Card>
+                <Text style={styles.mutedText}>{taskCount === 0 ? 'Henüz görev yok.' : `${taskCount} görev`}</Text>
+              </Card>
+            </TouchableOpacity>
           );
         })
       )}
@@ -313,14 +296,6 @@ const styles = StyleSheet.create({
   monthTitle: { color: colors.text, fontSize: 15, fontWeight: '700' },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 6 },
   mutedText: { color: colors.textMuted, fontSize: 12, marginTop: 4 },
-  weeksInline: { marginTop: 10, borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 8 },
-  weekInlineRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 6,
-  },
-  weekInlineText: { color: colors.text, fontSize: 13, fontWeight: '600' },
   recurRow: { flexDirection: 'row', alignItems: 'center' },
   recurMeta: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 6 },
   recurActions: { alignItems: 'flex-end', gap: 6 },

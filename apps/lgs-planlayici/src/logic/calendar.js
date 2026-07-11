@@ -119,20 +119,8 @@ export function isSameMonth(dateStr, year, month) {
   return dateStr.slice(0, 7) === `${year}-${pad2(month)}`;
 }
 
-// Bir takvim ayını kapsayan haftaların (Pzt başlangıçlı) başlangıç tarihleri.
-export function monthWeekStarts(year, month) {
-  const firstOfMonth = ymd(year, month, 1);
-  const firstWeekStart = mondayOf(firstOfMonth);
-  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
-  const lastOfMonth = ymd(year, month, daysInMonth);
-
-  const starts = [];
-  let cursor = firstWeekStart;
-  // eslint-disable-next-line no-constant-condition
-  while (true) {
-    starts.push(cursor);
-    cursor = addDays(cursor, 7);
-    if (cursor > lastOfMonth) break;
-  }
-  return starts;
+// Bir takvim ayının tüm günleri ("YYYY-MM-DD" dizgeleri, ayın 1'inden son gününe kadar).
+export function datesInMonth(year, month) {
+  const daysCount = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  return Array.from({ length: daysCount }, (_, i) => ymd(year, month, i + 1));
 }
