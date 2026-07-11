@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
@@ -7,12 +7,22 @@ import { colors } from '../theme';
 import { Card, Field, PrimaryButton, SectionHeader } from '../components/common';
 
 export default function AddStopScreen({ route, navigation }) {
-  const { tripId } = route.params;
-  const { addStop } = useJournal();
-  const [name, setName] = useState('');
-  const [lat, setLat] = useState('');
-  const [lng, setLng] = useState('');
-  const [note, setNote] = useState('');
+  const { tripId, stopId } = route.params;
+  const { addStop, updateStop, getTrip } = useJournal();
+
+  const existing = stopId ? getTrip(tripId)?.stops?.find((s) => s.id === stopId) : null;
+  const isEdit = !!existing;
+
+  const [name, setName] = useState(existing?.name || '');
+  const [lat, setLat] = useState(existing?.lat != null ? String(existing.lat) : '');
+  const [lng, setLng] = useState(existing?.lng != null ? String(existing.lng) : '');
+  const [accommodation, setAccommodation] = useState(existing?.accommodation || '');
+  const [nights, setNights] = useState(existing?.nights != null ? String(existing.nights) : '');
+  const [note, setNote] = useState(existing?.note || '');
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ title: isEdit ? 'Durağı Düzenle' : 'Durak Ekle' });
+  }, [navigation, isEdit]);
 
   // Girilen isim bilinen bir yerse koordinat önerisi sun.
   const suggestion = name.trim().length >= 3 ? matchPlace(name) : null;
@@ -27,18 +37,24 @@ export default function AddStopScreen({ route, navigation }) {
 
   const parsedLat = parseFloat(lat);
   const parsedLng = parseFloat(lng);
+  const parsedNights = parseInt(nights, 10);
   const latOk = !lat || (!Number.isNaN(parsedLat) && parsedLat >= -90 && parsedLat <= 90);
   const lngOk = !lng || (!Number.isNaN(parsedLng) && parsedLng >= -180 && parsedLng <= 180);
-  const canSave = name.trim().length > 0 && latOk && lngOk;
+  const nightsOk = !nights || (!Number.isNaN(parsedNights) && parsedNights >= 0 && parsedNights <= 365);
+  const canSave = name.trim().length > 0 && latOk && lngOk && nightsOk;
 
   const save = () => {
     if (!canSave) return;
-    addStop(tripId, {
+    const payload = {
       name: name.trim(),
       lat: lat ? parsedLat : null,
       lng: lng ? parsedLng : null,
+      accommodation: accommodation.trim(),
+      nights: nights ? parsedNights : null,
       note: note.trim(),
-    });
+    };
+    if (isEdit) updateStop(tripId, stopId, payload);
+    else addStop(tripId, payload);
     navigation.goBack();
   };
 
@@ -46,8 +62,8 @@ export default function AddStopScreen({ route, navigation }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         <SectionHeader
-          title="Durak Ekle"
-          subtitle="Şehir/mekan adı gir. Bilinen bir yerse koordinatı otomatik önerilir; değilse elle girebilirsin."
+          title={isEdit ? 'Durağı Düzenle' : 'Durak Ekle'}
+          subtitle="Şehir/mekan adı gir. Bilinen bir yerse koordinatı otomatik önerilir. Kalacak yer ve notunu da ekleyebilirsin."
         />
         <Card>
           <Field label="Durak adı" value={name} onChangeText={setName} placeholder="ör. Efes, İzmir" />
@@ -85,14 +101,37 @@ export default function AddStopScreen({ route, navigation }) {
               {!lngOk ? <Text style={styles.err}>-180 ile 180 arası olmalı.</Text> : null}
             </View>
           </View>
+        </Card>
 
-          <Field label="Not (opsiyonel)" value={note} onChangeText={setNote} placeholder="ör. 2 gece konaklama" />
+        <SectionHeader title="Konaklama & Notlar" />
+        <Card>
+          <Field
+            label="🏨 Kalacak yer (otel / adres)"
+            value={accommodation}
+            onChangeText={setAccommodation}
+            placeholder="ör. Hotel Kaya, Merkez Mah."
+          />
+          <Field
+            label="🌙 Gece sayısı (opsiyonel)"
+            value={nights}
+            onChangeText={setNights}
+            placeholder="ör. 2"
+            keyboardType="number-pad"
+          />
+          {!nightsOk ? <Text style={styles.err}>0-365 arası bir sayı olmalı.</Text> : null}
+          <Field
+            label="📝 Not (opsiyonel)"
+            value={note}
+            onChangeText={setNote}
+            placeholder="ör. Rezervasyon no, giriş saati, bütçe…"
+            multiline
+          />
           <Text style={styles.hint}>
             Koordinat girmezsen durak listeye eklenir ama bu bacağın mesafesi hesaplanamaz.
           </Text>
         </Card>
 
-        <PrimaryButton title="Durağı Kaydet" onPress={save} disabled={!canSave} />
+        <PrimaryButton title={isEdit ? 'Değişiklikleri Kaydet' : 'Durağı Kaydet'} onPress={save} disabled={!canSave} />
       </ScrollView>
     </SafeAreaView>
   );

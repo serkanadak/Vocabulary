@@ -89,15 +89,27 @@ export default function RouteScreen({ route, navigation }) {
                     <View style={styles.stopIndex}>
                       <Text style={styles.stopIndexText}>{i + 1}</Text>
                     </View>
-                    <View style={{ flex: 1 }}>
+                    <Pressable
+                      style={{ flex: 1 }}
+                      onPress={() => navigation.navigate('AddStop', { tripId, stopId: stop.id })}
+                    >
                       <Text style={styles.stopName}>{stop.name}</Text>
                       <Text style={styles.stopMeta}>
                         {hasCoords(stop)
                           ? `${stop.lat.toFixed(3)}, ${stop.lng.toFixed(3)}`
                           : 'Koordinat yok — mesafe hesaplanamıyor'}
-                        {stop.note ? ` · ${stop.note}` : ''}
                       </Text>
-                    </View>
+                      {stop.accommodation ? (
+                        <Text style={styles.stopExtra}>
+                          🏨 {stop.accommodation}
+                          {stop.nights ? ` · ${stop.nights} gece` : ''}
+                        </Text>
+                      ) : stop.nights ? (
+                        <Text style={styles.stopExtra}>🌙 {stop.nights} gece</Text>
+                      ) : null}
+                      {stop.note ? <Text style={styles.stopNote}>📝 {stop.note}</Text> : null}
+                      <Text style={styles.editHint}>Düzenlemek için dokun ›</Text>
+                    </Pressable>
                     <View style={styles.stopActions}>
                       <Pressable onPress={() => move(i, -1)} hitSlop={6} disabled={i === 0}>
                         <Text style={[styles.moveBtn, i === 0 && styles.moveDisabled]}>▲</Text>
@@ -174,7 +186,7 @@ const styles = StyleSheet.create({
   timeline: { marginTop: 16 },
   stopRow: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: colors.surface,
     borderRadius: 12,
     padding: 14,
@@ -194,6 +206,9 @@ const styles = StyleSheet.create({
   stopIndexText: { color: '#0b1a2b', fontWeight: '800' },
   stopName: { color: colors.text, fontSize: 15, fontWeight: '700' },
   stopMeta: { color: colors.textMuted, fontSize: 12, marginTop: 2 },
+  stopExtra: { color: colors.accent, fontSize: 12, marginTop: 4 },
+  stopNote: { color: colors.textMuted, fontSize: 12, marginTop: 3, fontStyle: 'italic' },
+  editHint: { color: colors.primary, fontSize: 11, marginTop: 5, fontWeight: '600' },
   stopActions: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   moveBtn: { color: colors.textMuted, fontSize: 14 },
   moveDisabled: { opacity: 0.3 },

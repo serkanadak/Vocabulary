@@ -23,16 +23,30 @@ function StatusButton({ status, onPress }) {
   );
 }
 
-function ChecklistRow({ item, onCycle, onSetStatus, onRemove }) {
+function ChecklistRow({ item, onCycle, onSetStatus, onSetNote, onRemove }) {
   const [expanded, setExpanded] = useState(false);
+  const [note, setNote] = useState(item.note || '');
   const meta = CHECK_STATUS_META[item.status];
   const color = CHECK_COLORS[item.status];
   const done = item.status === CHECK_STATUS.DONE;
+
+  const saveNote = () => {
+    const trimmed = note.trim();
+    if ((item.note || '') !== trimmed) onSetNote(trimmed);
+  };
+
   return (
     <View style={styles.row}>
       <Pressable onPress={onCycle} onLongPress={() => setExpanded((e) => !e)} style={styles.rowMain}>
         <Text style={styles.rowIcon}>{item.icon}</Text>
-        <Text style={[styles.rowTitle, done && styles.rowTitleDone]}>{item.title}</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={[styles.rowTitle, done && styles.rowTitleDone]}>{item.title}</Text>
+          {!expanded && item.note ? (
+            <Text style={styles.notePreview} numberOfLines={1}>
+              📝 {item.note}
+            </Text>
+          ) : null}
+        </View>
         <View style={[styles.rowStatusPill, { borderColor: color, backgroundColor: color + '22' }]}>
           <Text style={[styles.rowStatusText, { color }]}>
             {meta.icon} {meta.label}
@@ -47,11 +61,34 @@ function ChecklistRow({ item, onCycle, onSetStatus, onRemove }) {
               <StatusButton key={s} status={s} onPress={() => onSetStatus(s)} />
             ))}
           </View>
-          {item.custom ? (
-            <Pressable onPress={onRemove} style={styles.removeBtn}>
-              <Text style={styles.removeText}>Bu maddeyi sil</Text>
+
+          <Text style={styles.noteLabel}>📝 Not</Text>
+          <TextInput
+            style={styles.noteInput}
+            value={note}
+            onChangeText={setNote}
+            onBlur={saveNote}
+            placeholder="ör. Rezervasyon no, bütçe, hatırlatma…"
+            placeholderTextColor={colors.textMuted}
+            multiline
+          />
+
+          <View style={styles.expandedActions}>
+            <Pressable
+              onPress={() => {
+                saveNote();
+                setExpanded(false);
+              }}
+              style={styles.noteSaveBtn}
+            >
+              <Text style={styles.noteSaveText}>Notu kaydet</Text>
             </Pressable>
-          ) : null}
+            {item.custom ? (
+              <Pressable onPress={onRemove} style={styles.removeBtn}>
+                <Text style={styles.removeText}>Maddeyi sil</Text>
+              </Pressable>
+            ) : null}
+          </View>
         </View>
       ) : null}
     </View>
@@ -60,7 +97,7 @@ function ChecklistRow({ item, onCycle, onSetStatus, onRemove }) {
 
 export default function ChecklistScreen({ route }) {
   const { tripId } = route.params;
-  const { getTrip, setCheckStatus, addCheckItem, removeCheckItem } = useJournal();
+  const { getTrip, setCheckStatus, setCheckNote, addCheckItem, removeCheckItem } = useJournal();
   const trip = getTrip(tripId);
   const [newTitle, setNewTitle] = useState('');
   const [pendingRemove, setPendingRemove] = useState(null);
@@ -92,7 +129,7 @@ export default function ChecklistScreen({ route }) {
           <ProgressBar ratio={prog.ratio} color={colors.primary} />
           <Text style={styles.hint}>
             Bir maddeye <Text style={styles.bold}>dokun</Text>: durum sırayla değişir (Bekliyor → Tamam → Kısmen →
-            Gerek Yok). <Text style={styles.bold}>Uzun bas</Text>: doğrudan durum seç / sil.
+            Gerek Yok). <Text style={styles.bold}>Uzun bas</Text>: durum seç, <Text style={styles.bold}>not ekle</Text> veya sil.
           </Text>
         </View>
 
@@ -102,6 +139,7 @@ export default function ChecklistScreen({ route }) {
             item={item}
             onCycle={() => setCheckStatus(tripId, item.id, nextStatus(item.status))}
             onSetStatus={(s) => setCheckStatus(tripId, item.id, s)}
+            onSetNote={(v) => setCheckNote(tripId, item.id, v)}
             onRemove={() => setPendingRemove(item)}
           />
         ))}
@@ -170,12 +208,32 @@ const styles = StyleSheet.create({
   },
   rowMain: { flexDirection: 'row', alignItems: 'center', padding: 14, gap: 10 },
   rowIcon: { fontSize: 18 },
-  rowTitle: { color: colors.text, fontSize: 14, fontWeight: '600', flex: 1 },
+  rowTitle: { color: colors.text, fontSize: 14, fontWeight: '600' },
   rowTitleDone: { textDecorationLine: 'line-through', color: colors.textMuted },
+  notePreview: { color: colors.accent, fontSize: 12, marginTop: 3 },
   rowStatusPill: { borderWidth: 1, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 3 },
   rowStatusText: { fontSize: 11, fontWeight: '700' },
   rowExpanded: { paddingHorizontal: 14, paddingBottom: 14, borderTopWidth: 1, borderTopColor: colors.border },
   statusChoices: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 12 },
+  noteLabel: { color: colors.textMuted, fontSize: 12, marginTop: 14, marginBottom: 6 },
+  noteInput: {
+    backgroundColor: colors.surfaceAlt,
+    color: colors.text,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    fontSize: 14,
+    minHeight: 60,
+    textAlignVertical: 'top',
+  },
+  expandedActions: { flexDirection: 'row', alignItems: 'center', gap: 16, marginTop: 12 },
+  noteSaveBtn: {
+    backgroundColor: colors.primary,
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 9,
+  },
+  noteSaveText: { color: '#0b1a2b', fontWeight: '800', fontSize: 13 },
   statusBtn: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -187,7 +245,7 @@ const styles = StyleSheet.create({
   },
   statusIcon: { fontSize: 14 },
   statusLabel: { fontSize: 12, fontWeight: '700' },
-  removeBtn: { marginTop: 12, alignSelf: 'flex-start' },
+  removeBtn: { alignSelf: 'center' },
   removeText: { color: colors.danger, fontSize: 13, fontWeight: '700' },
   addBox: {
     marginHorizontal: 16,
