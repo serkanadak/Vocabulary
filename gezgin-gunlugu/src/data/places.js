@@ -214,6 +214,323 @@ export const PLACES = [
       'Odysseus — Yunanistan Kültür Bakanlığı portalı',
     ],
   },
+
+  // --- Balkanlar & Orta Avrupa rotası ---
+  {
+    id: 'filibe',
+    name: 'Filibe',
+    city: 'Plovdiv',
+    country: 'Bulgaristan',
+    lat: 42.1354,
+    lng: 24.7453,
+    aliases: ['filibe', 'plovdiv', 'philippopolis', 'filibe plovdiv'],
+    summary:
+      'Filibe (Plovdiv), Avrupa’nın kesintisiz yerleşilen en eski kentlerinden biridir; kökleri Trak yerleşimi Eumolpias’a, sekiz bin yıl öncesine uzanır. Makedon Kralı II. Filip’ten aldığı Philippopolis adıyla anıldı; Romalılar döneminde ise yamaca oyulmuş, bugün hâlâ konserlere ev sahipliği yapan görkemli antik tiyatrosuyla parladı. Yedi tepe üzerine kurulu kent, katman katman uygarlığı taşıyan bir açık hava müzesi gibidir.\n\nArnavut kaldırımlı Eski Şehir’i (Stariyat Grad), cumbalı ve renkli Bulgar Uyanış Dönemi konaklarıyla ünlüdür. 2019’da Avrupa Kültür Başkenti seçilen Filibe, antik Roma stadyumu, Osmanlı Cuma Camii ve canlı sanatçı mahallesi Kapana ile geçmişi ve bugünü iç içe yaşatır.',
+    sources: [
+      'Visit Plovdiv — Resmî kent turizm portalı',
+      'Lonely Planet — Plovdiv',
+    ],
+  },
+  {
+    id: 'sofya',
+    name: 'Sofya',
+    city: 'Sofia',
+    country: 'Bulgaristan',
+    lat: 42.6977,
+    lng: 23.3219,
+    aliases: ['sofya', 'sofia', 'serdica', 'sredets'],
+    summary:
+      'Bulgaristan’ın başkenti Sofya, iki bin yılı aşan tarihiyle Balkanların en eski kentlerindendir; Roma döneminde Serdica adıyla önemli bir merkezdi ve İmparator Konstantin’in “Serdica benim Roma’mdır” dediği söylenir. Şehrin merkezindeki metro kazılarında ortaya çıkan Roma kalıntıları, modern kentin altındaki antik dokuyu gözler önüne serer. Kentin arması “Büyür ama yaşlanmaz” sözünü taşır.\n\nSofya’nın simgesi, altın kubbeleriyle görkemli Aleksandr Nevski Katedrali’dir. Yakınındaki UNESCO Dünya Mirası Boyana Kilisesi’nin freskleri, ortaçağ Bulgar resminin başyapıtı sayılır. Arka planda yükselen Vitoşa Dağı, şehre dört mevsim doğa ve kayak imkânı sunar.',
+    sources: [
+      'UNESCO World Heritage List — Boyana Church',
+      'Lonely Planet — Sofia',
+    ],
+  },
+  {
+    id: 'nis',
+    name: 'Niş',
+    city: 'Niš',
+    country: 'Sırbistan',
+    lat: 43.3209,
+    lng: 21.8958,
+    aliases: ['nis', 'niš', 'naissus'],
+    summary:
+      'Niş, Balkanların en eski kentlerinden biridir ve Roma döneminde Naissus adıyla bilinirdi; Hristiyanlığı serbest bırakan Milano Fermanı’nın sahibi Büyük Konstantin’in doğduğu yer olmasıyla tarihe geçer. Konumu, yüzyıllar boyunca Orta Avrupa ile İstanbul’u bağlayan yol üzerinde stratejik bir kavşak olmasını sağladı.\n\nKentin Osmanlı yapımı kalesi (Niš Kalesi) bugün canlı bir park ve etkinlik alanıdır. 1809’daki Sırp ayaklanmasının ardından yapılan ürpertici Kafatası Kulesi (Ćele Kula) ve Roma imparatorluk villası Mediana, Niş’in acı ve ihtişamla örülü tarihini anlatır.',
+    sources: [
+      'Sırbistan Ulusal Turizm Örgütü (Serbia.travel) — Niš',
+      'Lonely Planet — Niš',
+    ],
+  },
+  {
+    id: 'belgrad',
+    name: 'Belgrad',
+    city: 'Beograd',
+    country: 'Sırbistan',
+    lat: 44.7866,
+    lng: 20.4489,
+    aliases: ['belgrad', 'beograd', 'belgrade', 'singidunum'],
+    summary:
+      'Sırbistan’ın başkenti Belgrad, adını “Beyaz Şehir” anlamına gelen Beograd’dan alır ve Sava ile Tuna nehirlerinin buluştuğu noktada yükselir. Kelt Singidunum’undan Roma’ya, Bizans’tan Osmanlı ve Avusturya-Macaristan’a kadar sayısız uygarlığın el değiştirdiği kent, tam kırk kez yıkılıp yeniden kurulduğu söylenen bir hayatta kalma öyküsüdür.\n\nİki nehre hâkim Kalemegdan Kalesi, kentin tarihî kalbi ve en sevilen buluşma yeridir. Bohem Skadarlija sokağı, nehir üzerindeki yüzer kulüpleriyle (splav) Belgrad, Balkanların en enerjik gece hayatına da ev sahipliği yapar.',
+    sources: [
+      'Sırbistan Ulusal Turizm Örgütü (Serbia.travel) — Belgrad',
+      'Lonely Planet — Belgrade',
+    ],
+  },
+  {
+    id: 'budapeste',
+    name: 'Budapeşte',
+    city: 'Budapest',
+    country: 'Macaristan',
+    lat: 47.4979,
+    lng: 19.0402,
+    aliases: ['budapeste', 'budapeşte', 'budapest', 'buda', 'peşte', 'peste'],
+    summary:
+      'Macaristan’ın başkenti Budapeşte, 1873’te Tuna’nın iki yakasındaki Buda ile Peşte’nin birleşmesiyle doğdu ve “Tuna’nın İncisi” olarak anılır. Nehir kıyısındaki panoraması, Buda Kalesi ve Andrássy Bulvarı UNESCO Dünya Mirası Listesi’ndedir. Tepedeki Balıkçı Tabyası ve Matyas Kilisesi’nden bakıldığında, karşı yakadaki neo-gotik Parlamento binası masalsı bir görüntü sunar.\n\nZincir Köprü iki yakayı zarifçe birbirine bağlar. Yüzlerce yıllık termal kaynakları üzerine kurulu Széchenyi ve Gellért kaplıcaları, kenti dünyanın en ünlü “kaplıca başkenti” yapar. Kahvehaneleri, ruin barları ve zengin müzik geleneğiyle Budapeşte, ihtişamı ve keyfi bir arada sunar.',
+    sources: [
+      'UNESCO World Heritage List — Budapest, the Banks of the Danube',
+      'Lonely Planet — Budapest',
+    ],
+  },
+  {
+    id: 'viyana',
+    name: 'Viyana',
+    city: 'Wien',
+    country: 'Avusturya',
+    lat: 48.2082,
+    lng: 16.3738,
+    aliases: ['viyana', 'wien', 'vienna', 'vindobona'],
+    summary:
+      'Avusturya’nın başkenti Viyana, yüzyıllarca Habsburg İmparatorluğu’nun görkemli merkezi oldu ve tarihî çekirdeği UNESCO Dünya Mirası Listesi’ndedir. Barok Schönbrunn ve Belvedere sarayları, gotik Aziz Stephan Katedrali ve Ringstrasse boyunca sıralanan anıtsal yapılar, imparatorluk ihtişamını bugüne taşır.\n\nViyana aynı zamanda “müziğin başkenti”dir: Mozart, Beethoven, Schubert ve Strauss bu şehirde yaşadı, besteledi. Yeni Yıl Konseri, opera baloları ve köşe başındaki geleneksel kahvehaneleriyle kent, klasik zarafeti günlük yaşamın içine yerleştirir.',
+    sources: [
+      'UNESCO World Heritage List — Historic Centre of Vienna',
+      'Wien.info — Viyana resmî turizm portalı',
+    ],
+  },
+  {
+    id: 'hallstatt',
+    name: 'Hallstatt',
+    city: 'Salzkammergut',
+    country: 'Avusturya',
+    lat: 47.5622,
+    lng: 13.6493,
+    aliases: ['hallstatt', 'hallstatt gölü', 'hallstatter see'],
+    summary:
+      'Hallstatt, Avusturya Alpleri’nde bir gölün kıyısı ile dik dağlar arasına sıkışmış, dünyanın en çok fotoğraflanan köylerinden biridir. Ahşap evlerinin gölde yansıması, kartpostal güzelliğinde bir manzara sunar. Köyün bulunduğu Hallstatt-Dachstein / Salzkammergut kültürel peyzajı UNESCO Dünya Mirası Listesi’ndedir.\n\nBölgenin asıl zenginliği tuzdur: yaklaşık yedi bin yıldır işletilen dünyanın en eski tuz madeni buradadır. Demir Çağı’nın bir evresi (“Hallstatt kültürü”) adını bu yerden alır. Dağ eteğindeki panoramik teras ve tuz madeni turu, köyün derin tarihini gözler önüne serer.',
+    sources: [
+      'UNESCO World Heritage List — Hallstatt-Dachstein/Salzkammergut Cultural Landscape',
+      'Hallstatt.net — Resmî bölge turizm portalı',
+    ],
+  },
+  {
+    id: 'salzburg',
+    name: 'Salzburg',
+    city: 'Salzburg',
+    country: 'Avusturya',
+    lat: 47.8095,
+    lng: 13.0550,
+    aliases: ['salzburg', 'mozart şehri'],
+    summary:
+      'Salzburg, Alplerin eteğinde, barok mimarisiyle bütünlük taşıyan tarihî merkeziyle UNESCO Dünya Mirası Listesi’nde yer alır. Adı “tuz kalesi” anlamına gelir ve kentin zenginliği yüzyıllarca tuz ticaretinden geldi. Tepede yükselen Hohensalzburg Kalesi, Orta Avrupa’nın en iyi korunmuş ortaçağ kalelerinden biridir.\n\nSalzburg, Wolfgang Amadeus Mozart’ın doğduğu şehir olmasıyla dünya çapında ünlüdür; her yıl düzenlenen Salzburg Festivali klasik müzik takviminin zirvelerindendir. Mirabell Bahçeleri ve dar barok sokakları, aynı zamanda “Bir Aşk Uğruna” (The Sound of Music) filminin de sahnesi olmuştur.',
+    sources: [
+      'UNESCO World Heritage List — Historic Centre of the City of Salzburg',
+      'Salzburg.info — Resmî kent turizm portalı',
+    ],
+  },
+  {
+    id: 'graz',
+    name: 'Graz',
+    city: 'Steiermark',
+    country: 'Avusturya',
+    lat: 47.0707,
+    lng: 15.4395,
+    aliases: ['graz', 'steiermark', 'styria'],
+    summary:
+      'Avusturya’nın ikinci büyük kenti Graz, kırmızı kiremitli çatıları ve iyi korunmuş Rönesans-barok dokusuyla dikkat çeker; tarihî merkezi ve Eggenberg Sarayı UNESCO Dünya Mirası Listesi’ndedir. Kentin ortasındaki Schlossberg tepesi ve simgesi olan Saat Kulesi (Uhrturm), şehre panoramik bir bakış sunar.\n\nCanlı bir üniversite kenti olan Graz, geçmişin zarafetini çağdaş tasarımla harmanlar; nehir üzerindeki yapay ada Murinsel ve fütüristik çağdaş sanat müzesi Kunsthaus (“dost canlısı uzaylı” lakaplı) bunun en çarpıcı örnekleridir. 2003’te Avrupa Kültür Başkenti seçilmiştir.',
+    sources: [
+      'UNESCO World Heritage List — City of Graz – Historic Centre and Schloss Eggenberg',
+      'Graz Tourismus — Resmî kent turizm portalı',
+    ],
+  },
+  {
+    id: 'bratislava',
+    name: 'Bratislava',
+    city: 'Bratislava',
+    country: 'Slovakya',
+    lat: 48.1486,
+    lng: 17.1077,
+    aliases: ['bratislava', 'pressburg', 'pozsony'],
+    summary:
+      'Slovakya’nın başkenti Bratislava, Tuna kıyısında, Avusturya ve Macaristan sınırlarının hemen yanında yükselen kompakt ve keyifli bir kenttir. Nehre ve şehre hâkim tepedeki dört köşe kulesiyle Bratislava Kalesi, kentin simgesidir. Bir zamanlar Macar krallarının taç giydiği Aziz Martin Katedrali de buradadır.\n\nBarok sarayları, dar Arnavut kaldırımlı sokakları ve neşeli meydanlarıyla Eski Şehir, gezmesi kolay ve samimi bir atmosfer sunar. Köşe başlarındaki bronz heykeller (özellikle rögardan başını uzatan “Čumil”) kente eğlenceli bir dokunuş katar. Viyana’ya yalnızca bir saat uzaklıktadır.',
+    sources: [
+      'Visit Bratislava — Resmî kent turizm portalı',
+      'Lonely Planet — Bratislava',
+    ],
+  },
+  {
+    id: 'saraybosna',
+    name: 'Saraybosna',
+    city: 'Sarajevo',
+    country: 'Bosna-Hersek',
+    lat: 43.8563,
+    lng: 18.4131,
+    aliases: ['saraybosna', 'sarajevo', 'baščaršija', 'bascarsija'],
+    summary:
+      'Bosna-Hersek’in başkenti Saraybosna, cami, kilise, katedral ve sinagogun yürüme mesafesinde bir arada bulunduğu kültürel çeşitliliğiyle “Avrupa’nın Kudüs’ü” olarak anılır. Osmanlı’nın kurduğu Başçarşı (Baščaršija), bakır ustaları, çeşmeleri ve Gazi Hüsrev Bey Camii ile kentin tarihî kalbidir. Bir sokak, âdeta doğu ile batının buluştuğu çizgi gibi Osmanlı çarşısından Avusturya-Macaristan cephelerine geçiverir.\n\nLatin Köprüsü, 1914’te Arşidük Franz Ferdinand’a düzenlenen ve I. Dünya Savaşı’nı ateşleyen suikastin yeridir. 1984 Kış Olimpiyatları’na ev sahipliği yapan kent, 1990’ların uzun kuşatmasının izlerini “Saraybosna gülleri” denen anıtlarla hâlâ taşır; yine de dayanıklılığın ve bir arada yaşamanın simgesi olmayı sürdürür.',
+    sources: [
+      'Sarajevo Navigator — Resmî kent turizm portalı',
+      'Lonely Planet — Sarajevo',
+    ],
+  },
+  {
+    id: 'mostar',
+    name: 'Mostar',
+    city: 'Hersek',
+    country: 'Bosna-Hersek',
+    lat: 43.3438,
+    lng: 17.8078,
+    aliases: ['mostar', 'stari most', 'mostar köprüsü'],
+    summary:
+      'Mostar, adını Neretva Nehri üzerindeki eşsiz taş köprüsünü bekleyen köprü muhafızlarından (mostari) alır. Osmanlı mimarı Mimar Hayruddin’in 1566’da tamamladığı Stari Most (Eski Köprü), tek kemerli zarif kavisiyle yüzyıllarca kentin simgesi oldu. 1993’te savaşta yıkılan köprü, 2004’te aslına uygun biçimde yeniden inşa edildi ve UNESCO Dünya Mirası Listesi’ne girdi.\n\nCesur dalgıçların köprüden yeşil Neretva sularına atladığı manzara, Mostar’ın en ünlü geleneğidir. Arnavut kaldırımlı çarşısı, camileri ve bakır işleriyle Eski Şehir, farklı kültürlerin yüzyıllarca yan yana yaşadığı bir buluşma noktasıdır.',
+    sources: [
+      'UNESCO World Heritage List — Old Bridge Area of the Old City of Mostar',
+      'Lonely Planet — Mostar',
+    ],
+  },
+  {
+    id: 'uskup',
+    name: 'Üsküp',
+    city: 'Skopje',
+    country: 'Kuzey Makedonya',
+    lat: 41.9981,
+    lng: 21.4254,
+    aliases: ['uskup', 'üsküp', 'skopje', 'skopye'],
+    summary:
+      'Kuzey Makedonya’nın başkenti Üsküp, Vardar Nehri’nin iki yakasına yayılır ve Balkanların en büyük Osmanlı çarşılarından birine ev sahipliği yapar. 15. yüzyıldan kalma Taş Köprü, eski çarşı ile modern meydanı birbirine bağlar; tepedeki Kale (Kale Fortress) kente hâkimdir. Kentin dar sokaklarındaki camiler, hanlar ve hamamlar, yüzyıllık ticaret geleneğini yaşatır.\n\nÜsküp, Rahibe Teresa’nın doğduğu şehir olmasıyla da anılır. Son yıllarda meydanlara dikilen çok sayıda anıt ve neoklasik cephe (“Skopje 2014” projesi) kente tartışmalı ama çarpıcı bir görünüm kazandırmıştır. Eski ile yeninin keskin karşıtlığı, Üsküp’ü Balkanların en özgün başkentlerinden biri yapar.',
+    sources: [
+      'Kuzey Makedonya Ulusal Turizm Portalı (Macedonia-Timeless)',
+      'Lonely Planet — Skopje',
+    ],
+  },
+  {
+    id: 'ohrid',
+    name: 'Ohrid',
+    city: 'Ohrid',
+    country: 'Kuzey Makedonya',
+    lat: 41.1231,
+    lng: 20.8016,
+    aliases: ['ohrid', 'ohri', 'ohrid gölü', 'lake ohrid', 'kaneo'],
+    summary:
+      'Ohrid, Avrupa’nın en eski ve en derin göllerinden biri olan, üç milyon yılı aşkın yaşıyla âdeta canlı bir fosil sayılan Ohrid Gölü’nün kıyısında kuruludur. Hem doğal hem kültürel değerleriyle UNESCO Dünya Mirası Listesi’nde yer alan ender karma alanlardandır. Gölün üzerindeki kayalığa tüneyen Sveti Jovan Kaneo Kilisesi, Balkanların en ikonik manzaralarından biridir.\n\nBir zamanlar 365 kilisesiyle “Balkanların Kudüs’ü” olarak anılan Ohrid, Slav yazısının ve Ortodoks kültürünün önemli bir beşiğiydi. Kentin tepesindeki Çar Samuil Kalesi, antik tiyatrosu ve arnavut kaldırımlı eski mahalleleri, göl kıyısı huzuruyla birleşir.',
+    sources: [
+      'UNESCO World Heritage List — Natural and Cultural Heritage of the Ohrid region',
+      'Lonely Planet — Ohrid',
+    ],
+  },
+  {
+    id: 'prizren',
+    name: 'Prizren',
+    city: 'Prizren',
+    country: 'Kosova',
+    lat: 42.2139,
+    lng: 20.7397,
+    aliases: ['prizren', 'prizen'],
+    summary:
+      'Prizren, Kosova’nın kültür ve tarih başkenti kabul edilir; Osmanlı dokusunu en iyi koruyan Balkan kentlerinden biridir. Bistrica Deresi’nin böldüğü kent, taş köprüsü, arnavut kaldırımlı sokakları ve zarif Sinan Paşa Camii ile bir açık hava müzesini andırır. Tepedeki Prizren Kalesi (Kaljaja), çatıların ve minarelerin üzerinden geniş bir panorama sunar.\n\nKent, 1878’de Arnavut ulusal uyanışının simgesi olan Prizren Birliği’nin kurulduğu yer olmasıyla da tarihe geçer. Camileri, kiliseleri ve tekkeleriyle çok katmanlı bir miras taşıyan Prizren, her yaz düzenlenen DokuFest belgesel film festivaliyle de tanınır.',
+    sources: [
+      'Kosova Turizm — Resmî tanıtım portalı',
+      'Lonely Planet — Prizren',
+    ],
+  },
+  {
+    id: 'dubrovnik',
+    name: 'Dubrovnik',
+    city: 'Dalmaçya',
+    country: 'Hırvatistan',
+    lat: 42.6407,
+    lng: 18.1077,
+    aliases: ['dubrovnik', 'ragusa', 'dubrovnik surları'],
+    summary:
+      'Adriyatik’in İncisi olarak anılan Dubrovnik, denize bakan sarp kıyıda, neredeyse eksiksiz korunmuş ortaçağ surlarıyla çevrili görkemli bir kenttir; tarihî merkezi UNESCO Dünya Mirası Listesi’ndedir. Bir zamanlar bağımsız ve zengin bir deniz cumhuriyeti (Ragusa) olan şehir, Venedik’e rakip bir ticaret gücüydü ve diplomasideki inceliğiyle ün yaptı.\n\nCilalı taş ana caddesi Stradun, barok kiliseleri ve iki kilometreyi aşan sur yürüyüşü, ziyaretçileri geçmişe götürür. Surların üzerinden bakıldığında turuncu çatılar ile masmavi deniz kusursuz bir kompozisyon oluşturur; kent, “Taht Oyunları”nda King’s Landing olarak da dünyaca tanınmıştır.',
+    sources: [
+      'UNESCO World Heritage List — Old City of Dubrovnik',
+      'Hırvatistan Turizm Kurumu (Croatia.hr) — Dubrovnik',
+    ],
+  },
+  {
+    id: 'zadar',
+    name: 'Zadar',
+    city: 'Dalmaçya',
+    country: 'Hırvatistan',
+    lat: 44.1194,
+    lng: 15.2314,
+    aliases: ['zadar', 'iadera', 'deniz orgu', 'sea organ'],
+    summary:
+      'Zadar, üç bin yıllık geçmişiyle Dalmaçya kıyısının en eski kentlerindendir; Roma dönemi forumu, dairesel Aziz Donatus Kilisesi ve antik sütunları, modern kent dokusunun içine serpiştirilmiştir. Yarımada üzerindeki eski şehir, tarih ile deniz arasında zarif bir denge kurar.\n\nKentin en özgün iki eseri çağdaştır: Nikola Bašić’in tasarladığı Deniz Orgu, dalgaların basıncıyla mermer basamaklardan doğaçlama melodiler üretir; hemen yanındaki “Güneşe Selam” ise gün boyu depoladığı güneş enerjisiyle geceleri ışık gösterisine dönüşür. Alfred Hitchcock’un “dünyanın en güzel gün batımı” dediği manzara da buradan izlenir.',
+    sources: [
+      'Hırvatistan Turizm Kurumu (Croatia.hr) — Zadar',
+      'Lonely Planet — Zadar',
+    ],
+  },
+  {
+    id: 'zagreb',
+    name: 'Zagreb',
+    city: 'Zagreb',
+    country: 'Hırvatistan',
+    lat: 45.8150,
+    lng: 15.9819,
+    aliases: ['zagreb', 'agram'],
+    summary:
+      'Hırvatistan’ın başkenti Zagreb, ortaçağ dokusunu koruyan tepedeki Yukarı Şehir (Gornji Grad) ile 19. yüzyıl Avusturya-Macaristan mimarisinin egemen olduğu Aşağı Şehir’in buluştuğu bir kenttir. Yukarı Şehir’deki Aziz Mark Kilisesi, rengârenk çinili çatısındaki armalarla şehrin en tanınmış imgelerinden biridir; Lotrščak Kulesi’nden her öğlen atılan top sesi asırlık bir gelenektir.\n\nBan Jelačić Meydanı kentin canlı kalbidir; çevresindeki kafeler, çarşılar ve müzeler (aralarında özgün “Kopmuş İlişkiler Müzesi”) Zagreb’e rahat ve kültürlü bir hava katar. Funiküleriyle, yeşil parkları ve kahve keyfiyle şehir, gösterişten çok samimiyetiyle öne çıkar.',
+    sources: [
+      'Hırvatistan Turizm Kurumu (Croatia.hr) — Zagreb',
+      'Lonely Planet — Zagreb',
+    ],
+  },
+  {
+    id: 'prag',
+    name: 'Prag',
+    city: 'Praha',
+    country: 'Çekya',
+    lat: 50.0755,
+    lng: 14.4378,
+    aliases: ['prag', 'praha', 'prague', 'prag kalesi', 'charles köprüsü'],
+    summary:
+      '“Yüz Kuleli Şehir” olarak anılan Prag, Çekya’nın başkentidir ve tarihî merkezi UNESCO Dünya Mirası Listesi’ndedir. Vltava Nehri üzerindeki heykellerle bezeli Charles Köprüsü, dünyanın en büyük antik kale kompleksi sayılan Prag Kalesi’ni Eski Şehir’e bağlar. Gotik, barok ve rönesans yapılar iç içe geçerek masalsı bir siluet oluşturur.\n\nEski Şehir Meydanı’ndaki 15. yüzyıldan kalma Astronomik Saat (Orloj), her saat başı figürlü gösterisiyle kalabalıkları toplar. Franz Kafka’nın izlerini taşıyan dar sokakları, bira kültürü ve konser salonlarıyla Prag, Orta Avrupa’nın en romantik başkentlerinden biridir.',
+    sources: [
+      'UNESCO World Heritage List — Historic Centre of Prague',
+      'Prague City Tourism (Prague.eu) — Resmî portal',
+    ],
+  },
+  {
+    id: 'budva',
+    name: 'Budva',
+    city: 'Budva Rivierası',
+    country: 'Karadağ',
+    lat: 42.2911,
+    lng: 18.8401,
+    aliases: ['budva', 'budua'],
+    summary:
+      'Budva, Adriyatik kıyısındaki iki bin beş yüz yılı aşkın geçmişiyle Karadağ’ın en eski yerleşimlerindendir. Venedik döneminden kalma surlarla çevrili Eski Şehir (Stari Grad), dar taş sokakları, meydanları ve deniz kenarındaki kalesiyle küçük ama etkileyici bir labirenttir. Kıvrımlı sahil şeridi ve canlı gece hayatı, kente “Karadağ’ın Miami’si” lakabını kazandırmıştır.\n\nBudva Rivierası, ince çakıllı koyları ve turkuaz sularıyla ünlüdür. Yakınındaki, bir zamanlar balıkçı köyü olup lüks bir otele dönüşen Sveti Stefan adacığı, bölgenin en ikonik manzarasını sunar.',
+    sources: [
+      'Karadağ Ulusal Turizm Örgütü (Montenegro.travel) — Budva',
+      'Lonely Planet — Budva',
+    ],
+  },
+  {
+    id: 'kotor',
+    name: 'Kotor',
+    city: 'Kotor Körfezi',
+    country: 'Karadağ',
+    lat: 42.4247,
+    lng: 18.7712,
+    aliases: ['kotor', 'cattaro', 'kotor körfezi', 'boka kotorska'],
+    summary:
+      'Kotor, sarp dağların denize dik indiği, âdeta bir fiyort görünümündeki Boka Kotorska (Kotor Körfezi) kıyısında saklıdır; körfez ve tarihî kent birlikte UNESCO Dünya Mirası Listesi’nde yer alır. Venedik izleri taşıyan surlarla çevrili Eski Şehir, meydanları, kiliseleri ve romanesk Aziz Trifon Katedrali ile ortaçağ atmosferini korur.\n\nKentin en unutulmaz deneyimi, dağ yamacına tırmanan surlar boyunca yaklaşık 1.350 basamak çıkarak Aziz İoannes (San Giovanni) Kalesi’ne ulaşmaktır; zirveden körfezin ve kırmızı çatıların panoraması nefes kesicidir. Kotor, Adriyatik’in en dramatik doğal ve tarihî manzaralarından birini sunar.',
+    sources: [
+      'UNESCO World Heritage List — Natural and Culturo-Historical Region of Kotor',
+      'Karadağ Ulusal Turizm Örgütü (Montenegro.travel) — Kotor',
+    ],
+  },
 ];
 
 // Basit normalleştirme: küçük harf + Türkçe/aksan sadeleştirme + boşluk temizliği.
@@ -229,25 +546,36 @@ export function normalize(text) {
     .trim();
 }
 
+// Bir yerin tüm eşleştirme adaylarını (ad, şehir, takma adlar) normalize edip döndürür.
+function candidatesOf(place) {
+  return [place.name, place.city, ...(place.aliases || [])].map(normalize).filter(Boolean);
+}
+
 // Girdiyi (mekan ismi veya "mekan, şehir") yerel veri tabanıyla eşleştirir.
+// Öncelik: (1) tam eşleşme, (2) sorguda bütün kelime olarak geçen ad — en uzun ad
+// kazanır. Böylece "Sofya", "Ayasofya"nın alt dizesi olsa da yanlış eşleşmez.
 export function matchPlace(query) {
   const q = normalize(query);
   if (!q) return null;
 
+  // 1) Tam eşleşme
   for (const place of PLACES) {
-    const candidates = [place.name, place.city, ...(place.aliases || [])].map(normalize);
-    for (const cand of candidates) {
-      if (!cand) continue;
-      // İki yönlü içerme: "ayasofya" ↔ "ayasofya istanbul" gibi durumları yakalar.
-      if (q === cand || q.includes(cand) || cand.includes(q)) {
-        return place;
+    if (candidatesOf(place).some((c) => c === q)) return place;
+  }
+
+  // 2) Sorgu, bilinen bir adı bütün kelime(ler) olarak içeriyor mu?
+  //    (ör. "efes antik kenti" -> "efes", "kotor körfezi gezisi" -> "kotor körfezi")
+  //    Kısa bir alt dizenin yanlış eşleşmemesi için en uzun aday kazanır.
+  const padded = ` ${q} `;
+  let best = null;
+  let bestLen = 0;
+  for (const place of PLACES) {
+    for (const c of candidatesOf(place)) {
+      if (c.length >= 3 && padded.includes(` ${c} `) && c.length > bestLen) {
+        best = place;
+        bestLen = c.length;
       }
     }
-    // Kelime bazlı eşleşme (ör. "efes antik" -> "efes").
-    const qWords = q.split(' ');
-    if (qWords.some((w) => w.length >= 4 && candidates.includes(w))) {
-      return place;
-    }
   }
-  return null;
+  return best;
 }
