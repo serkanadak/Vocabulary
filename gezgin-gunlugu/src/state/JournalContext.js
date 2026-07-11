@@ -60,6 +60,14 @@ function reducer(state, action) {
           checklist: t.checklist.map((c) => (c.id === action.itemId ? { ...c, status: action.status } : c)),
         })),
       };
+    case 'SET_CHECK_NOTE':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          checklist: t.checklist.map((c) => (c.id === action.itemId ? { ...c, note: action.note } : c)),
+        })),
+      };
     case 'ADD_CHECK_ITEM':
       return {
         ...state,
@@ -79,6 +87,14 @@ function reducer(state, action) {
       return {
         ...state,
         trips: mapTrip(state.trips, action.tripId, (t) => ({ ...t, stops: [...(t.stops || []), action.stop] })),
+      };
+    case 'UPDATE_STOP':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          stops: (t.stops || []).map((s) => (s.id === action.stopId ? { ...s, ...action.patch } : s)),
+        })),
       };
     case 'REMOVE_STOP':
       return {
@@ -181,11 +197,13 @@ export function JournalProvider({ children }) {
       reopenTrip: (tripId) => dispatch({ type: 'UPDATE_TRIP', tripId, patch: { finished: false } }),
       // checklist
       setCheckStatus: (tripId, itemId, status) => dispatch({ type: 'SET_CHECK_STATUS', tripId, itemId, status }),
+      setCheckNote: (tripId, itemId, note) => dispatch({ type: 'SET_CHECK_NOTE', tripId, itemId, note }),
       addCheckItem: (tripId, title, icon) =>
         dispatch({ type: 'ADD_CHECK_ITEM', tripId, item: createChecklistItem(title, icon) }),
       removeCheckItem: (tripId, itemId) => dispatch({ type: 'REMOVE_CHECK_ITEM', tripId, itemId }),
       // stops
       addStop: (tripId, stop) => dispatch({ type: 'ADD_STOP', tripId, stop: { id: uid('stop'), ...stop } }),
+      updateStop: (tripId, stopId, patch) => dispatch({ type: 'UPDATE_STOP', tripId, stopId, patch }),
       removeStop: (tripId, stopId) => dispatch({ type: 'REMOVE_STOP', tripId, stopId }),
       reorderStops: (tripId, stops) => dispatch({ type: 'REORDER_STOPS', tripId, stops }),
       // discoveries

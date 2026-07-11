@@ -23,14 +23,22 @@ export function nextStatus(status) {
   return STATUS_CYCLE[(i + 1) % STATUS_CYCLE.length];
 }
 
+// Birbiriyle sıkı ilişkili olmayan işler ayrı maddeler olarak tutulur (ör. vize
+// pasaporttan; sigorta ilaçtan; kart bildirimi paradan; çeviri uygulaması haritadan
+// bağımsız birer görevdir). Yalnızca aynı amaca hizmet edenler tek maddede birleşiktir
+// (ör. şarj/adaptör/powerbank hepsi "güç"; bavul & kıyafet aynı hazırlık).
 const DEFAULT_ITEMS = [
-  { icon: '🛂', title: 'Pasaport / kimlik & vize kontrolü' },
+  { icon: '🛂', title: 'Pasaport / kimlik geçerliliği' },
+  { icon: '📄', title: 'Vize başvurusu / kontrolü' },
   { icon: '🎫', title: 'Ulaşım biletleri (uçak/tren/otobüs)' },
   { icon: '🏨', title: 'Konaklama rezervasyonları' },
-  { icon: '💊', title: 'Sağlık, ilaç & seyahat sigortası' },
-  { icon: '💳', title: 'Para / döviz & kart bildirimi' },
+  { icon: '💊', title: 'İlaç & kişisel sağlık malzemeleri' },
+  { icon: '🛡️', title: 'Seyahat sağlık sigortası' },
+  { icon: '💳', title: 'Para / döviz' },
+  { icon: '🏦', title: 'Bankaya yurt dışı kart bildirimi' },
   { icon: '🔌', title: 'Şarj aleti, priz adaptörü & powerbank' },
-  { icon: '📱', title: 'Offline harita & çeviri uygulamaları' },
+  { icon: '📲', title: 'Offline harita indir' },
+  { icon: '🈯', title: 'Çeviri uygulaması' },
   { icon: '🎒', title: 'Bavul & kıyafet (hava durumuna göre)' },
   { icon: '📷', title: 'Kamera / telefon & yedek hafıza' },
   { icon: '🗺️', title: 'Günlük gezi rotası taslağı' },
@@ -49,6 +57,7 @@ export function createDefaultChecklist() {
     icon: it.icon,
     title: it.title,
     status: CHECK_STATUS.TODO,
+    note: '',
     custom: false,
   }));
 }
@@ -60,6 +69,7 @@ export function createChecklistItem(title, icon = '📌') {
     icon,
     title: title.trim(),
     status: CHECK_STATUS.TODO,
+    note: '',
     custom: true,
   };
 }
