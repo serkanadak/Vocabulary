@@ -793,13 +793,13 @@ Allah'ım! İbrahim'e ve âline bereket verdiğin gibi Muhammed'e ve âline de b
     id: 'zikir-tesrik-tekbiri',
     title: 'Teşrik Tekbiri',
     category: CATEGORY.ZIKIR,
-    hukum: HUKUM.VACIP,
-    frequency: FREQUENCY.YEARLY_ONCE,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
     description:
-      'Arefe günü sabah namazından, Kurban Bayramı\'nın 4. günü ikindi namazına kadar, her farz namazın hemen ardından okunan tekbir. Hanefi mezhebinde vaciptir.',
+      'Arefe günü sabah namazından Kurban Bayramı\'nın 4. günü ikindi namazına kadar, her farz namazın hemen ardından okunması Hanefi mezhebinde vaciptir; bu dönem dışında da nafile bir tekbir/zikir olarak günlük çekilebilir.',
     summary:
-      'Zilhicce\'nin 9\'u (Arefe) sabah namazından başlayıp bayramın 4. günü ikindi namazına kadar, aralıksız 23 vakit farz namazın hemen ardından, tek başına kılan da cemaatle kılan da, kadın erkek her mükellefin okuması Hanefi mezhebinde vaciptir. Namazın selamından hemen sonra, beklemeden okunur.',
+      'Zilhicce\'nin 9\'u (Arefe) sabah namazından başlayıp bayramın 4. günü ikindi namazına kadar, aralıksız 23 vakit farz namazın hemen ardından okunması Hanefi mezhebinde vaciptir. Bu özel dönemin dışında da, sadece bir tekbir/zikir olarak günün herhangi bir vaktinde nafile niyetiyle çekilebilir.',
     arabic: `اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ لَا اِلٰهَ اِلَّا اللّٰهُ وَاللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ وَلِلّٰهِ الْحَمْدُ`,
     transliteration: `Allâhü ekber Allâhü ekber, lâ ilâhe illallâhü vallâhü ekber. Allâhü ekber ve lillâhi'l-hamd.`,
     translation: `Allah en büyüktür, Allah en büyüktür. Allah'tan başka ilah yoktur. Allah en büyüktür, Allah en büyüktür. Hamd yalnızca Allah'adır.`,
