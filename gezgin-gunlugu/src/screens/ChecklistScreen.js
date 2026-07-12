@@ -8,6 +8,8 @@ import {
   STATUS_CYCLE,
   nextStatus,
   checklistProgress,
+  checklistNeedsUpdate,
+  mergeChecklistWithDefaults,
 } from '../data/checklist';
 import { CHECK_COLORS, colors } from '../theme';
 import { ProgressBar, ConfirmModal, EmptyState } from '../components/common';
@@ -97,7 +99,7 @@ function ChecklistRow({ item, onCycle, onSetStatus, onSetNote, onRemove }) {
 
 export default function ChecklistScreen({ route }) {
   const { tripId } = route.params;
-  const { getTrip, setCheckStatus, setCheckNote, addCheckItem, removeCheckItem } = useJournal();
+  const { getTrip, setCheckStatus, setCheckNote, setChecklist, addCheckItem, removeCheckItem } = useJournal();
   const trip = getTrip(tripId);
   const [newTitle, setNewTitle] = useState('');
   const [pendingRemove, setPendingRemove] = useState(null);
@@ -111,11 +113,16 @@ export default function ChecklistScreen({ route }) {
   }
 
   const prog = checklistProgress(trip.checklist || []);
+  const needsUpdate = checklistNeedsUpdate(trip.checklist || [], trip.vehicle);
 
   const addItem = () => {
     if (!newTitle.trim()) return;
     addCheckItem(tripId, newTitle);
     setNewTitle('');
+  };
+
+  const updateList = () => {
+    setChecklist(tripId, mergeChecklistWithDefaults(trip.checklist || [], trip.vehicle));
   };
 
   return (
@@ -132,6 +139,18 @@ export default function ChecklistScreen({ route }) {
             Gerek Yok). <Text style={styles.bold}>Uzun bas</Text>: durum seç, <Text style={styles.bold}>not ekle</Text> veya sil.
           </Text>
         </View>
+
+        {needsUpdate ? (
+          <Pressable style={styles.updateBox} onPress={updateList}>
+            <Text style={styles.updateTitle}>🔄 Hazırlık listesini güncelle</Text>
+            <Text style={styles.updateText}>
+              Bu seyahatin listesi güncel değil. Güncel varsayılan maddeleri (ör. çıkış harcı, ayrıştırılmış vize/
+              sigorta, araca özel yeşil kart & kasko) getirir. Mevcut maddelerinin durumu, notların ve elle
+              eklediklerin korunur.
+            </Text>
+            <Text style={styles.updateCta}>Listeyi güncelle →</Text>
+          </Pressable>
+        ) : null}
 
         {trip.checklist.map((item) => (
           <ChecklistRow
@@ -197,6 +216,18 @@ const styles = StyleSheet.create({
   summaryPct: { color: colors.primary, fontSize: 15, fontWeight: '800' },
   hint: { color: colors.textMuted, fontSize: 12, marginTop: 12, lineHeight: 18 },
   bold: { color: colors.text, fontWeight: '700' },
+  updateBox: {
+    backgroundColor: colors.accent + '18',
+    borderColor: colors.accent,
+    borderWidth: 1,
+    borderRadius: 12,
+    padding: 14,
+    marginHorizontal: 16,
+    marginBottom: 10,
+  },
+  updateTitle: { color: colors.accent, fontSize: 14, fontWeight: '800' },
+  updateText: { color: colors.textMuted, fontSize: 12, lineHeight: 18, marginTop: 6 },
+  updateCta: { color: colors.accent, fontSize: 13, fontWeight: '700', marginTop: 8 },
   row: {
     backgroundColor: colors.surface,
     borderRadius: 12,

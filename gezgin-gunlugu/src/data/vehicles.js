@@ -25,6 +25,15 @@ export function effectiveSpeed(vehicle) {
 
 export const DEFAULT_VEHICLE = 'car';
 
+// Kişinin yurt dışına kendi kullandığı araçla çıktığı vasıtalar. Yeşil kart
+// (zorunlu yurt dışı trafik sigortası) ve kasko yurt dışı kapsam genişletme
+// yalnızca bu araçlar için gerekir (uçak/tren/otobüs yolcusu vb. için değil).
+export const OWN_VEHICLE_IDS = ['car', 'motokaravan', 'cekme_karavan', 'motorbike'];
+
+export function isOwnVehicle(id) {
+  return OWN_VEHICLE_IDS.includes(id);
+}
+
 export function getVehicle(id) {
   return VEHICLES.find((v) => v.id === id) || VEHICLES.find((v) => v.id === DEFAULT_VEHICLE);
 }
