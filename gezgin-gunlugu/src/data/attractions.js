@@ -1,0 +1,261 @@
+// Güzergahtaki şehirlerin önemli turistik/tarihi mekanları.
+// places.js'teki şehir id'sine göre anahtarlanır. Kullanıcı, güzergah ve keşif
+// sayfalarında bu listeleri görüp tek dokunuşla keşfe ekleyebilir; böylece
+// gezilecek tarihi mekanları uygulama dışına çıkmadan görür.
+
+export const ATTRACTIONS = {
+  // --- Türkiye ---
+  istanbul: [
+    { name: 'Ayasofya', desc: '537’den beri ayakta; Bizans ve Osmanlı’nın buluştuğu simge yapı.' },
+    { name: 'Sultanahmet Camii (Mavi Cami)', desc: 'Altı minareli, İznik çinileriyle ünlü Osmanlı camii.' },
+    { name: 'Topkapı Sarayı', desc: 'Dört yüzyıl padişah sarayı; hazine ve kutsal emanetler.' },
+    { name: 'Kapalıçarşı', desc: 'Dünyanın en eski ve büyük kapalı çarşılarından.' },
+    { name: 'Galata Kulesi', desc: 'Tarihî yarımada ve Boğaz panoramalı ortaçağ kulesi.' },
+    { name: 'Dolmabahçe Sarayı & Boğaz', desc: 'Boğaz kıyısı saray ve vapur turu.' },
+  ],
+  edirne: [
+    { name: 'Selimiye Camii (UNESCO)', desc: 'Mimar Sinan’ın “ustalık eserim” dediği başyapıt.' },
+    { name: 'Eski Cami', desc: 'Dev hat levhalarıyla erken Osmanlı camii.' },
+    { name: 'Üç Şerefeli Cami', desc: 'Farklı minareleriyle özgün 15. yy camii.' },
+    { name: 'II. Bayezid Külliyesi & Sağlık Müzesi', desc: 'Tarihî şifahane; müzikle tedavi geleneği.' },
+    { name: 'Meriç Köprüsü', desc: 'Nehir üzerinde zarif Osmanlı köprüsü, gün batımı manzarası.' },
+    { name: 'Karaağaç', desc: 'Tarihî gar, Lozan Anıtı ve kafeleriyle şirin semt.' },
+  ],
+  izmir: [
+    { name: 'Saat Kulesi & Konak Meydanı', desc: 'İzmir’in simgesi 1901 yapımı saat kulesi.' },
+    { name: 'Kemeraltı Çarşısı', desc: 'Tarihî hanlar, camiler ve dükkânlarla canlı çarşı.' },
+    { name: 'Smyrna Agorası', desc: 'Antik Smyrna’nın Roma dönemi meydanı.' },
+    { name: 'Kadifekale', desc: 'Kente ve körfeze hâkim antik kale.' },
+    { name: 'Tarihi Asansör', desc: 'Karataş’ta panoramik manzaralı tarihî asansör.' },
+    { name: 'Kordon', desc: 'Körfez boyu yürüyüş ve gün batımı güzergâhı.' },
+  ],
+  bursa: [
+    { name: 'Ulu Cami', desc: '20 kubbeli, hat sanatıyla ünlü erken Osmanlı camii.' },
+    { name: 'Yeşil Cami & Yeşil Türbe', desc: 'Çini işçiliğiyle Osmanlı klasiğinin doruğu.' },
+    { name: 'Koza Han', desc: 'İpek ticaretinin tarihî hanı, avlu kafeleri.' },
+    { name: 'Cumalıkızık (UNESCO)', desc: 'Erken Osmanlı köyü; taş sokaklar, cumbalı evler.' },
+    { name: 'Uludağ', desc: 'Teleferikle çıkılan kayak ve doğa merkezi.' },
+    { name: 'Tophane & Osman-Orhan Türbeleri', desc: 'Kurucu padişahların türbesi ve saat kulesi.' },
+  ],
+  canakkale: [
+    { name: 'Truva (Troya) Antik Kenti (UNESCO)', desc: 'Homeros’un destanına konu efsanevi kent; tahta at.' },
+    { name: 'Gelibolu Şehitlikleri & Anzak Koyu', desc: 'I. Dünya Savaşı anıtları ve tarihî alan.' },
+    { name: 'Çimenlik Kalesi', desc: 'Boğaz’a hâkim Osmanlı kalesi ve deniz müzesi.' },
+    { name: 'Assos (Behramkale)', desc: 'Athena Tapınağı ve taş köyüyle antik kent (yakın).' },
+    { name: 'Bozcaada', desc: 'Bağları, kalesi ve plajlarıyla ada (yakın).' },
+  ],
+  antalya: [
+    { name: 'Kaleiçi', desc: 'Surlarla çevrili tarihî sokaklar ve eski liman.' },
+    { name: 'Hadrian Kapısı', desc: 'MS 130 Roma imparatorluk zafer kapısı.' },
+    { name: 'Düden Şelalesi', desc: 'Denize dökülen etkileyici şelale.' },
+    { name: 'Antalya Müzesi', desc: 'Perge heykelleriyle zengin arkeoloji müzesi.' },
+    { name: 'Aspendos Tiyatrosu', desc: 'Dünyanın en iyi korunan antik tiyatrolarından (yakın).' },
+    { name: 'Konyaaltı & Lara Plajları', desc: 'Toroslar manzaralı kent sahilleri.' },
+  ],
+  ankara: [
+    { name: 'Anıtkabir', desc: 'Atatürk’ün anıtmezarı; müze ve tören alanı.' },
+    { name: 'Ankara Kalesi', desc: 'Eski şehre hâkim, tarihî mahalleli kale.' },
+    { name: 'Anadolu Medeniyetleri Müzesi', desc: 'Hitit ve Frig hazineleriyle ödüllü müze.' },
+    { name: 'Hacı Bayram Camii & Augustus Tapınağı', desc: 'Osmanlı camii ile Roma tapınağı yan yana.' },
+    { name: 'Roma Hamamı', desc: 'Kent merkezinde antik Roma hamamı kalıntıları.' },
+  ],
+  konya: [
+    { name: 'Mevlânâ Müzesi', desc: 'Yeşil kubbeli türbe; sema ve maneviyat merkezi.' },
+    { name: 'Alâeddin Camii', desc: 'Tepedeki en eski Selçuklu camisi.' },
+    { name: 'İnce Minareli Medrese', desc: 'Taş işçiliğiyle ünlü Selçuklu medresesi-müzesi.' },
+    { name: 'Çatalhöyük (UNESCO)', desc: 'İnsanlığın en eski yerleşimlerinden Neolitik alan (yakın).' },
+    { name: 'Sille', desc: 'Tarihî kilise ve taş evleriyle eski köy.' },
+  ],
+  trabzon: [
+    { name: 'Sümela Manastırı', desc: 'Kayalığa tutunan freskli tarihî manastır.' },
+    { name: 'Trabzon Ayasofyası', desc: 'Deniz manzaralı, freskli Bizans kilise-müzesi.' },
+    { name: 'Atatürk Köşkü', desc: 'Bahçeli beyaz tarihî köşk.' },
+    { name: 'Uzungöl', desc: 'Dağlarla çevrili göl ve yaylalar (yakın).' },
+    { name: 'Boztepe', desc: 'Kente ve denize hâkim panoramik tepe.' },
+  ],
+  gaziantep: [
+    { name: 'Zeugma Mozaik Müzesi', desc: 'Dünyanın en büyük mozaik müzelerinden; “Çingene Kızı”.' },
+    { name: 'Gaziantep Kalesi', desc: 'Kent merkezinde tarihî kale ve savunma müzesi.' },
+    { name: 'Bakırcılar Çarşısı', desc: 'El işi bakır ve baharatlarla tarihî çarşı.' },
+    { name: 'Emine Göğüş Mutfak Müzesi', desc: 'Antep mutfağını anlatan müze.' },
+    { name: 'Tarihî Hanlar & Baklava', desc: 'Hanlar bölgesi ve dünyaca ünlü baklava durakları.' },
+  ],
+
+  // --- Balkanlar & Orta Avrupa ---
+  filibe: [
+    { name: 'Antik Roma Tiyatrosu', desc: 'MS 1.-2. yy; hâlâ konser verilen görkemli Roma tiyatrosu.' },
+    { name: 'Eski Şehir (Stariyat Grad)', desc: 'Arnavut kaldırımlı sokaklar, renkli Bulgar Uyanış konakları.' },
+    { name: 'Roma Stadyumu', desc: 'Philippopolis’in antik stadyumundan kalan mermer tribünler.' },
+    { name: 'Kapana Sanatçı Mahallesi', desc: 'Butik kafeler, atölyeler ve sokak sanatıyla canlı semt.' },
+    { name: 'Cuma (Dzhumaya) Camii', desc: '14. yy Osmanlı camii, kent merkezinde.' },
+  ],
+  sofya: [
+    { name: 'Aleksandr Nevski Katedrali', desc: 'Altın kubbeli, kentin simgesi Ortodoks katedrali.' },
+    { name: 'Aziz Sofya Kilisesi', desc: 'Şehre adını veren 6. yy Bizans kilisesi.' },
+    { name: 'Boyana Kilisesi (UNESCO)', desc: 'Eşsiz ortaçağ freskleriyle Dünya Mirası kilise (kent dışı).' },
+    { name: 'Banya Başı Camii', desc: '16. yy Osmanlı camii, Mimar Sinan ekolü.' },
+    { name: 'Antik Serdica Kalıntıları', desc: 'Metro kazılarıyla açığa çıkan Roma kent kalıntıları.' },
+    { name: 'Vitosha Bulvarı', desc: 'Dağ manzaralı yaya cadde; alışveriş ve kafeler.' },
+  ],
+  nis: [
+    { name: 'Niš Kalesi', desc: 'Osmanlı yapımı, kent merkezindeki büyük kale ve park.' },
+    { name: 'Kafatası Kulesi (Ćele Kula)', desc: '1809 ayaklanmasından kalma ürpertici anıt.' },
+    { name: 'Mediana', desc: 'Büyük Konstantin dönemi Roma imparatorluk villası.' },
+    { name: 'Kızıl Haç Kampı (Crveni Krst)', desc: 'II. Dünya Savaşı toplama kampı müzesi.' },
+  ],
+  belgrad: [
+    { name: 'Kalemegdan Kalesi', desc: 'Sava ile Tuna’nın buluştuğu noktaya hâkim tarihi kale.' },
+    { name: 'Aziz Sava Tapınağı', desc: 'Dünyanın en büyük Ortodoks kiliselerinden biri.' },
+    { name: 'Knez Mihailova Caddesi', desc: 'Kentin canlı yaya alışveriş ve kafe caddesi.' },
+    { name: 'Skadarlija', desc: 'Bohem, arnavut kaldırımlı restoran ve müzik sokağı.' },
+    { name: 'Zemun & Gardoš Kulesi', desc: 'Tuna kıyısı eski semt ve panoramik kule.' },
+  ],
+  budapeste: [
+    { name: 'Buda Kalesi', desc: 'Tuna’ya bakan saray kompleksi; müzeler ve teraslar.' },
+    { name: 'Balıkçı Tabyası & Matyas Kilisesi', desc: 'Masalsı taraça ve çinili çatılı gotik kilise.' },
+    { name: 'Parlamento Binası', desc: 'Tuna kıyısındaki neo-gotik simge yapı.' },
+    { name: 'Zincir Köprü', desc: 'İki yakayı bağlayan tarihi zarif köprü.' },
+    { name: 'Széchenyi Kaplıcası', desc: 'Görkemli açık/kapalı termal havuzlar.' },
+    { name: 'Aziz István Bazilikası', desc: 'Kentin en büyük kilisesi; kubbe seyir terası.' },
+  ],
+  viyana: [
+    { name: 'Schönbrunn Sarayı (UNESCO)', desc: 'Habsburg yazlık sarayı ve barok bahçeleri.' },
+    { name: 'Aziz Stephan Katedrali', desc: 'Renkli çatılı gotik katedral, kent kalbi.' },
+    { name: 'Belvedere Sarayı', desc: 'Klimt’in “Öpücük”ünün sergilendiği barok saray.' },
+    { name: 'Hofburg Sarayı', desc: 'İmparatorluk sarayı; Sisi Müzesi ve hazine.' },
+    { name: 'Devlet Operası', desc: 'Dünyaca ünlü opera binası.' },
+    { name: 'Prater & Dev Çark', desc: 'Tarihi lunapark ve simge dönme dolap.' },
+  ],
+  hallstatt: [
+    { name: 'Tuz Madeni & Skywalk', desc: 'Dünyanın en eski tuz madeni ve panoramik teras.' },
+    { name: 'Göl & Köy Manzarası (Marktplatz)', desc: 'Kartpostallık göl kıyısı meydan ve evler.' },
+    { name: 'Kemik Şapeli (Beinhaus)', desc: 'Boyalı kafataslarıyla ünlü küçük şapel.' },
+    { name: 'Dachstein Buz Mağaraları', desc: 'Teleferikle çıkılan dev buz ve mamut mağaraları.' },
+    { name: 'Gosausee Gölü', desc: 'Dachstein yansımalı berrak alp gölü (yakın).' },
+  ],
+  salzburg: [
+    { name: 'Hohensalzburg Kalesi', desc: 'Kente hâkim, Avrupa’nın en iyi korunan kalelerinden.' },
+    { name: 'Mozart’ın Doğduğu Ev', desc: 'Getreidegasse’de bestecinin müze evi.' },
+    { name: 'Mirabell Sarayı & Bahçeleri', desc: 'Ünlü bahçeler; “Sound of Music” sahneleri.' },
+    { name: 'Getreidegasse', desc: 'Demir tabelalarıyla ünlü tarihi alışveriş sokağı.' },
+    { name: 'Salzburg Katedrali', desc: 'Barok başkatedral, eski şehrin merkezinde.' },
+  ],
+  graz: [
+    { name: 'Schlossberg & Saat Kulesi', desc: 'Tepedeki park ve kentin simgesi Uhrturm.' },
+    { name: 'Eggenberg Sarayı (UNESCO)', desc: 'Bahçeli barok saray; kozmik tasarımıyla ünlü.' },
+    { name: 'Kunsthaus', desc: '“Dost uzaylı” lakaplı fütüristik çağdaş sanat müzesi.' },
+    { name: 'Murinsel', desc: 'Mur Nehri üzerinde yapay ada-kafe.' },
+    { name: 'Landeszeughaus', desc: 'Dünyanın en büyük tarihi silah deposu-müzesi.' },
+  ],
+  bratislava: [
+    { name: 'Bratislava Kalesi', desc: 'Tuna ve kente hâkim dört kuleli beyaz kale.' },
+    { name: 'Aziz Martin Katedrali', desc: 'Macar krallarının taç giydiği gotik katedral.' },
+    { name: 'Michael Kapısı', desc: 'Eski şehrin son ayakta kalan ortaçağ kapısı.' },
+    { name: 'Mavi Kilise (Aziz Elizabeth)', desc: 'Art nouveau tarzı masalsı mavi kilise.' },
+    { name: 'UFO Köprüsü Seyir Terası', desc: 'Tuna üzerinde panoramik gözlem kulesi.' },
+    { name: 'Devín Kalesi', desc: 'İki nehrin birleştiği noktada dramatik kale (yakın).' },
+  ],
+  saraybosna: [
+    { name: 'Başçarşı (Baščaršija)', desc: 'Osmanlı çarşısı; bakırcılar, çeşme ve kahveler.' },
+    { name: 'Gazi Hüsrev Bey Camii', desc: '16. yy Osmanlı külliyesinin merkez camii.' },
+    { name: 'Latin Köprüsü', desc: '1914 suikastının yapıldığı tarihi köprü.' },
+    { name: 'Sebilj Çeşmesi', desc: 'Başçarşı meydanının simgesi ahşap çeşme.' },
+    { name: 'Savaş Tüneli Müzesi', desc: 'Kuşatma döneminin hayat damarı tünel-müze.' },
+    { name: 'Vijećnica (Belediye/Kütüphane)', desc: 'Görkemli sözde-Mağribi mimarili yapı.' },
+  ],
+  mostar: [
+    { name: 'Stari Most (Eski Köprü)', desc: 'Mimar Hayruddin’in köprüsü; dalgıç geleneği.' },
+    { name: 'Koski Mehmed Paşa Camii', desc: 'Köprü manzaralı minaresiyle Osmanlı camii.' },
+    { name: 'Kujundžiluk Çarşısı', desc: 'Bakır ve el işi dükkânlarıyla eski çarşı.' },
+    { name: 'Crooked Bridge (Kriva Ćuprija)', desc: 'Eski Köprü’nün küçük “provası” tarihi köprü.' },
+    { name: 'Blagaj Tekkesi', desc: 'Kayalık pınar başındaki tarihi tekke (yakın).' },
+  ],
+  uskup: [
+    { name: 'Taş Köprü', desc: 'Vardar üzerinde 15. yy köprüsü; kentin simgesi.' },
+    { name: 'Eski Çarşı (Čaršija)', desc: 'Balkanların en büyük Osmanlı çarşılarından.' },
+    { name: 'Skopje Kalesi (Kale)', desc: 'Kente hâkim antik/orta çağ kalesi.' },
+    { name: 'Rahibe Teresa Anı Evi', desc: 'Üsküp’te doğan Rahibe Teresa müzesi.' },
+    { name: 'Mustafa Paşa Camii', desc: '15. yy zarif Osmanlı camii.' },
+    { name: 'Matka Kanyonu', desc: 'Göl, mağara ve manastırlarıyla doğa alanı (yakın).' },
+  ],
+  ohrid: [
+    { name: 'Sveti Jovan Kaneo', desc: 'Göl kayalığındaki ikonik 13. yy kilisesi.' },
+    { name: 'Çar Samuil Kalesi', desc: 'Kente ve göle hâkim ortaçağ kalesi.' },
+    { name: 'Antik Tiyatro', desc: 'Helenistik dönem açık hava tiyatrosu.' },
+    { name: 'Sveti Naum Manastırı', desc: 'Göl kıyısında pınarlı tarihi manastır (yakın).' },
+    { name: 'Plaošnik', desc: 'Erken Hristiyan bazilikası ve mozaik alanı.' },
+  ],
+  prizren: [
+    { name: 'Sinan Paşa Camii', desc: 'Kent merkezine hâkim görkemli Osmanlı camii.' },
+    { name: 'Prizren Kalesi (Kaljaja)', desc: 'Çatılar ve nehir üzerine panoramik kale.' },
+    { name: 'Taş Köprü', desc: 'Bistrica üzerindeki tarihi Osmanlı köprüsü.' },
+    { name: 'Prizren Birliği Evi', desc: '1878 Arnavut ulusal uyanışının müze-evi.' },
+    { name: 'Our Lady of Ljeviš (UNESCO)', desc: 'Freskli ortaçağ Sırp Ortodoks kilisesi.' },
+  ],
+  dubrovnik: [
+    { name: 'Şehir Surları', desc: '2 km’yi aşan sur yürüyüşü; deniz ve çatı manzarası.' },
+    { name: 'Stradun', desc: 'Cilalı taş ana cadde; kentin kalbi.' },
+    { name: 'Rektör Sarayı', desc: 'Ragusa Cumhuriyeti’nin gotik-rönesans sarayı.' },
+    { name: 'Lovrijenac Kalesi', desc: 'Denize bakan kale; “King’s Landing” sahnesi.' },
+    { name: 'Srđ Teleferiği', desc: 'Tepeden eski şehir ve Adriyatik panoraması.' },
+    { name: 'Fransisken Manastırı & Eczane', desc: 'Avrupa’nın en eski işleyen eczanelerinden.' },
+  ],
+  zadar: [
+    { name: 'Deniz Orgu', desc: 'Dalgalarla melodi üreten benzersiz sahil eseri.' },
+    { name: 'Güneşe Selam', desc: 'Güneş enerjili ışık gösterisi meydanı.' },
+    { name: 'Roma Forumu', desc: 'Antik kent meydanı kalıntıları.' },
+    { name: 'Aziz Donatus Kilisesi', desc: 'Dairesel planlı 9. yy Bizans kilisesi.' },
+    { name: 'Aziz Anastasia Katedrali', desc: 'Çan kulesinden kent panoraması.' },
+  ],
+  zagreb: [
+    { name: 'Aziz Mark Kilisesi', desc: 'Rengârenk çinili çatısıyla simge kilise.' },
+    { name: 'Zagreb Katedrali', desc: 'İki kuleli neo-gotik katedral.' },
+    { name: 'Ban Jelačić Meydanı', desc: 'Kentin canlı ana meydanı.' },
+    { name: 'Lotrščak Kulesi & Funiküler', desc: 'Öğlen topu ve Yukarı Şehir manzarası.' },
+    { name: 'Dolac Pazarı', desc: 'Kırmızı şemsiyeli tarihi açık pazar.' },
+    { name: 'Kopmuş İlişkiler Müzesi', desc: 'Dünyaca ünlü özgün konseptli müze.' },
+  ],
+  prag: [
+    { name: 'Charles Köprüsü', desc: 'Heykellerle bezeli 14. yy taş köprü.' },
+    { name: 'Prag Kalesi & Aziz Vitus', desc: 'Dünyanın en büyük antik kale kompleksi.' },
+    { name: 'Astronomik Saat (Orloj)', desc: 'Eski Şehir Meydanı’nda figürlü ortaçağ saati.' },
+    { name: 'Eski Şehir Meydanı', desc: 'Gotik-barok cepheler ve Týn Kilisesi.' },
+    { name: 'Altın Sokak', desc: 'Kale içinde minik renkli tarihi evler.' },
+    { name: 'Petřín Tepesi', desc: 'Bakış kulesi ve kent panoraması.' },
+  ],
+  budva: [
+    { name: 'Eski Şehir (Stari Grad)', desc: 'Venedik surlarıyla çevrili taş sokaklı kent.' },
+    { name: 'Citadela', desc: 'Denize bakan kale ve surlar.' },
+    { name: 'Sveti Stefan', desc: 'Adacık üzerindeki ikonik tarihi yerleşim (yakın).' },
+    { name: 'Mogren Plajı', desc: 'Eski şehre yürüme mesafesinde koy.' },
+    { name: 'Balerin Heykeli', desc: 'Sahildeki simge dansçı heykeli.' },
+  ],
+  kotor: [
+    { name: 'Kotor Surları & San Giovanni', desc: '~1350 basamaklı sur tırmanışı; körfez panoraması.' },
+    { name: 'Aziz Trifon Katedrali', desc: 'Romanesk 12. yy katedrali.' },
+    { name: 'Eski Şehir Meydanları', desc: 'Venedik izli labirent sokaklar ve saat kulesi.' },
+    { name: 'Deniz Müzesi', desc: 'Boka denizciliğinin tarihini anlatan saray-müze.' },
+    { name: 'Our Lady of the Rocks', desc: 'Perast açığında yapay ada kilisesi (tekneyle, yakın).' },
+  ],
+};
+
+export function attractionsFor(placeId) {
+  return ATTRACTIONS[placeId] || [];
+}
+
+// Bir mekanı, keşif olarak eklenmeye hazır bir nesneye çevirir (yerel arşiv kaynaklı).
+export function attractionToDiscovery(attraction, place, dateKey) {
+  return {
+    placeName: attraction.name,
+    city: place.city || place.name,
+    country: place.country || '',
+    date: dateKey,
+    lat: attraction.lat ?? place.lat ?? null,
+    lng: attraction.lng ?? place.lng ?? null,
+    summary: attraction.desc || '',
+    sources: place.sources || [],
+    userNotes: '',
+    photoUri: null,
+    enrichSource: 'local',
+  };
+}
