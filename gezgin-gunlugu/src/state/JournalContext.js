@@ -68,6 +68,11 @@ function reducer(state, action) {
           checklist: t.checklist.map((c) => (c.id === action.itemId ? { ...c, note: action.note } : c)),
         })),
       };
+    case 'SET_CHECKLIST':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({ ...t, checklist: action.checklist })),
+      };
     case 'ADD_CHECK_ITEM':
       return {
         ...state,
@@ -174,7 +179,7 @@ export function JournalProvider({ children }) {
         vehicle: vehicle || DEFAULT_VEHICLE,
         finished: false,
         createdAt: new Date().toISOString(),
-        checklist: createDefaultChecklist(),
+        checklist: createDefaultChecklist(vehicle || DEFAULT_VEHICLE),
         stops: [],
         discoveries: [],
       };
@@ -198,6 +203,7 @@ export function JournalProvider({ children }) {
       // checklist
       setCheckStatus: (tripId, itemId, status) => dispatch({ type: 'SET_CHECK_STATUS', tripId, itemId, status }),
       setCheckNote: (tripId, itemId, note) => dispatch({ type: 'SET_CHECK_NOTE', tripId, itemId, note }),
+      setChecklist: (tripId, checklist) => dispatch({ type: 'SET_CHECKLIST', tripId, checklist }),
       addCheckItem: (tripId, title, icon) =>
         dispatch({ type: 'ADD_CHECK_ITEM', tripId, item: createChecklistItem(title, icon) }),
       removeCheckItem: (tripId, itemId) => dispatch({ type: 'REMOVE_CHECK_ITEM', tripId, itemId }),
