@@ -6,6 +6,8 @@ import { useJournal } from '../state/JournalContext';
 import { enrichPlace, ENRICH_SOURCE } from '../logic/enrich';
 import { exifDateKey, exifCoords } from '../logic/exif';
 import { todayKey, formatLongDate } from '../logic/date';
+import { matchPlace } from '../data/places';
+import { attractionsFor, attractionToDiscovery } from '../data/attractions';
 import { colors } from '../theme';
 import { Card, Field, PrimaryButton, SecondaryButton, SectionHeader, Pill } from '../components/common';
 
@@ -15,9 +17,66 @@ const SOURCE_LABEL = {
   [ENRICH_SOURCE.TEMPLATE]: { label: 'Boş şablon', color: colors.textMuted },
 };
 
+// Rotadaki bir şehrin mekanlarını hızlı ekleme grubu (açılır).
+function PlannedCity({ place, discoveries, onAdd }) {
+  const [open, setOpen] = useState(false);
+  const list = attractionsFor(place.id);
+  if (!list.length) return null;
+  const added = new Set((discoveries || []).map((d) => (d.placeName || '').toLocaleLowerCase('tr')));
+  const addedCount = list.filter((a) => added.has(a.name.toLocaleLowerCase('tr'))).length;
+  return (
+    <View style={styles.planCity}>
+      <Pressable onPress={() => setOpen((o) => !o)} style={styles.planCityHead}>
+        <Text style={styles.planCityName}>
+          📍 {place.name}
+          <Text style={styles.planCityCount}> · {addedCount}/{list.length} eklendi</Text>
+        </Text>
+        <Text style={styles.planChevron}>{open ? '▲' : '▼'}</Text>
+      </Pressable>
+      {open ? (
+        <View style={{ marginTop: 6, gap: 6 }}>
+          {list.map((a) => {
+            const isAdded = added.has(a.name.toLocaleLowerCase('tr'));
+            return (
+              <View key={a.name} style={styles.planItem}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.planItemName}>{a.name}</Text>
+                  <Text style={styles.planItemDesc}>{a.desc}</Text>
+                </View>
+                {isAdded ? (
+                  <Text style={styles.planAdded}>✓</Text>
+                ) : (
+                  <Pressable onPress={() => onAdd(a, place)} style={styles.planAddBtn} hitSlop={6}>
+                    <Text style={styles.planAddText}>＋</Text>
+                  </Pressable>
+                )}
+              </View>
+            );
+          })}
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
 export default function AddDiscoveryScreen({ route, navigation }) {
   const { tripId } = route.params;
-  const { addDiscovery, settings } = useJournal();
+  const { addDiscovery, settings, getTrip } = useJournal();
+  const trip = getTrip(tripId);
+
+  // Rotadaki bilinen şehirler (mekan listesi olanlar) — plana göre hızlı ekleme.
+  const plannedPlaces = [];
+  const seen = new Set();
+  for (const stop of trip?.stops || []) {
+    const p = matchPlace(stop.name);
+    if (p && attractionsFor(p.id).length && !seen.has(p.id)) {
+      seen.add(p.id);
+      plannedPlaces.push(p);
+    }
+  }
+  const addPlanned = (attraction, place) => {
+    addDiscovery(tripId, attractionToDiscovery(attraction, place, todayKey()));
+  };
 
   const [query, setQuery] = useState('');
   const [photoUri, setPhotoUri] = useState(null);
@@ -88,9 +147,23 @@ export default function AddDiscoveryScreen({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
+        {plannedPlaces.length ? (
+          <>
+            <SectionHeader
+              title="Planındaki yerler"
+              subtitle="Rotandaki şehirlerin öne çıkan mekanları. Gideceğin yeri ＋ ile keşif günlüğüne ekle."
+            />
+            <Card>
+              {plannedPlaces.map((p) => (
+                <PlannedCity key={p.id} place={p} discoveries={trip?.discoveries} onAdd={addPlanned} />
+              ))}
+            </Card>
+          </>
+        ) : null}
+
         <SectionHeader
           title="Yeni Keşif"
-          subtitle="Bir fotoğraf yükle ve/veya mekan adı gir. Tarihi/kültürel özeti ben hazırlayayım."
+          subtitle="Plan dışı bir yer mi? Fotoğraf yükle ve/veya mekan adı gir; tarihi/kültürel özeti ben hazırlayayım."
         />
 
         <Card>
@@ -204,6 +277,38 @@ const styles = StyleSheet.create({
   },
   removePhotoText: { color: '#fff', fontWeight: '800' },
   exifNote: { color: colors.accent, fontSize: 12, marginTop: 10 },
+  planCity: { marginBottom: 6 },
+  planCityHead: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+  },
+  planCityName: { color: colors.text, fontSize: 15, fontWeight: '700' },
+  planCityCount: { color: colors.textMuted, fontSize: 12, fontWeight: '400' },
+  planChevron: { color: colors.textMuted, fontSize: 11 },
+  planItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    backgroundColor: colors.surfaceAlt,
+    borderRadius: 10,
+    paddingVertical: 9,
+    paddingHorizontal: 12,
+  },
+  planItemName: { color: colors.text, fontSize: 14, fontWeight: '600' },
+  planItemDesc: { color: colors.textMuted, fontSize: 12, marginTop: 2, lineHeight: 16 },
+  planAddBtn: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  planAddText: { color: colors.primary, fontSize: 18, fontWeight: '800' },
+  planAdded: { color: colors.success, fontSize: 16, fontWeight: '800', width: 32, textAlign: 'center' },
   resultCard: {
     backgroundColor: colors.surface,
     borderRadius: 14,

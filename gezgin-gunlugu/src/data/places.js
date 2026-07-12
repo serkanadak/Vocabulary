@@ -4,6 +4,343 @@
 // (Ayarlar'dan canlı AI açık değilse) boş şablon üretilir.
 
 export const PLACES = [
+  // ===================== TÜRKİYE — ŞEHİRLER =====================
+  {
+    id: 'istanbul',
+    name: 'İstanbul',
+    city: 'İstanbul',
+    country: 'Türkiye',
+    lat: 41.0082,
+    lng: 28.9784,
+    aliases: ['istanbul', 'constantinople', 'konstantinopolis', 'byzantion', 'stambul'],
+    summary:
+      'İki kıtayı birbirine bağlayan İstanbul, Roma, Bizans ve Osmanlı imparatorluklarına başkentlik yapmış; tarih boyunca dünyanın en stratejik ve görkemli şehirlerinden biri olmuştur. Boğaz’ın iki yakasına yayılan kent; Ayasofya, Sultanahmet ve Topkapı gibi anıtlarıyla farklı medeniyetlerin izlerini aynı silüette taşır.\n\nKapalıçarşı’nın labirent sokaklarından Galata’nın dar yokuşlarına, Boğaz vapurlarından tarihî yarımadanın minarelerine kadar İstanbul, geçmiş ile bugünü kesintisiz bir enerjiyle harmanlar. Tarihi Yarımada UNESCO Dünya Mirası Listesi’ndedir.',
+    sources: [
+      'UNESCO World Heritage List — Historic Areas of Istanbul',
+      'T.C. Kültür ve Turizm Bakanlığı — İstanbul',
+    ],
+  },
+  {
+    id: 'edirne',
+    name: 'Edirne',
+    city: 'Edirne',
+    country: 'Türkiye',
+    lat: 41.6771,
+    lng: 26.5557,
+    aliases: ['edirne', 'adrianople', 'hadrianopolis'],
+    summary:
+      'Bir zamanlar Osmanlı’nın başkenti olan Edirne, Bulgaristan ve Yunanistan sınırının hemen yanında, ülkenin Avrupa’ya açılan kapısıdır. Kentin tacı, Mimar Sinan’ın “ustalık eserim” dediği ve UNESCO Dünya Mirası Listesi’nde yer alan Selimiye Camii’dir.\n\nEski Cami, Üç Şerefeli Cami, tarihî bedestenler ve Meriç Nehri üzerindeki zarif Osmanlı köprüleriyle Edirne bir açık hava müzesidir. Her yıl düzenlenen Kırkpınar Yağlı Güreşleri de kente özgü asırlık bir gelenektir.',
+    sources: [
+      'UNESCO World Heritage List — Selimiye Mosque and its Social Complex',
+      'T.C. Kültür ve Turizm Bakanlığı — Edirne',
+    ],
+  },
+  {
+    id: 'izmir',
+    name: 'İzmir',
+    city: 'İzmir',
+    country: 'Türkiye',
+    lat: 38.4237,
+    lng: 27.1428,
+    aliases: ['izmir', 'smyrna', 'smirna'],
+    summary:
+      'Ege’nin incisi İzmir, üç bin yılı aşan geçmişiyle antik Smyrna’dan bugüne uzanan bir liman kentidir. Körfez boyunca uzanan Kordon, Saat Kulesi’nin bulunduğu Konak Meydanı ve tarihî Kemeraltı Çarşısı kentin canlı kalbini oluşturur.\n\nAkdeniz esintili, özgür ruhlu atmosferiyle İzmir; Efes, Bergama ve Çeşme gibi hazinelere de kapı açar. Agora, Kadifekale ve tarihî asansörü, kentin katmanlı geçmişini bugüne taşır.',
+    sources: [
+      'T.C. Kültür ve Turizm Bakanlığı — İzmir',
+      'Lonely Planet — İzmir',
+    ],
+  },
+  {
+    id: 'bursa',
+    name: 'Bursa',
+    city: 'Bursa',
+    country: 'Türkiye',
+    lat: 40.1885,
+    lng: 29.061,
+    aliases: ['bursa', 'prusa'],
+    summary:
+      'Osmanlı Devleti’nin ilk başkenti Bursa, “Yeşil Bursa” lakabıyla anılan, Uludağ’ın eteğine kurulu tarihî bir kenttir. Ulu Cami, Yeşil Cami ve Yeşil Türbe, erken Osmanlı mimarisinin en zarif örneklerindendir.\n\nİpek ticaretinin merkezi Koza Han, kaplıcaları ve UNESCO Dünya Mirası Listesi’ndeki Cumalıkızık köyüyle Bursa, tarihi ve doğayı bir arada sunar. Kış aylarında Uludağ önemli bir kayak merkezidir.',
+    sources: [
+      'UNESCO World Heritage List — Bursa and Cumalıkızık',
+      'T.C. Kültür ve Turizm Bakanlığı — Bursa',
+    ],
+  },
+  {
+    id: 'canakkale',
+    name: 'Çanakkale',
+    city: 'Çanakkale',
+    country: 'Türkiye',
+    lat: 40.1553,
+    lng: 26.4142,
+    aliases: ['canakkale', 'çanakkale', 'dardanelles', 'gelibolu', 'gallipoli'],
+    summary:
+      'Çanakkale, Boğaz’ın iki yakasında Asya ile Avrupa’yı buluşturan, tarih ve mitolojiyle yüklü bir kenttir. Efsanevi Truva antik kenti (UNESCO) ile I. Dünya Savaşı’nın kader anlarına sahne olan Gelibolu Yarımadası buradadır.\n\nŞehitlikler, anıtlar ve Anzak Koyu her yıl binlerce ziyaretçiyi ağırlar. Çimenlik Kalesi, kordon boyu ve karşı kıyıdaki Truva Atı replikasıyla Çanakkale, geçmişin ağırlığını huzurlu bir deniz kentiyle birleştirir.',
+    sources: [
+      'UNESCO World Heritage List — Archaeological Site of Troy',
+      'T.C. Kültür ve Turizm Bakanlığı — Çanakkale (Tarihi Alan Başkanlığı)',
+    ],
+  },
+  {
+    id: 'antalya',
+    name: 'Antalya',
+    city: 'Antalya',
+    country: 'Türkiye',
+    lat: 36.8969,
+    lng: 30.7133,
+    aliases: ['antalya', 'attaleia'],
+    summary:
+      'Akdeniz kıyısının turizm başkenti Antalya, antik Attaleia’dan bugüne uzanan tarihi ve turkuaz sahilleriyle ünlüdür. Surlarla çevrili tarihî Kaleiçi, dar sokakları, Osmanlı konakları ve Roma dönemi Hadrian Kapısı ile bir açık hava müzesini andırır.\n\nKent merkezindeki Düden Şelalesi, zengin Antalya Müzesi ve çevredeki Aspendos, Perge, Side gibi antik kentlerle bölge, tarih ve tatili bir arada sunar. Toroslar ile deniz arasındaki konumu eşsiz manzaralar yaratır.',
+    sources: [
+      'T.C. Kültür ve Turizm Bakanlığı — Antalya',
+      'Lonely Planet — Antalya',
+    ],
+  },
+  {
+    id: 'ankara',
+    name: 'Ankara',
+    city: 'Ankara',
+    country: 'Türkiye',
+    lat: 39.9334,
+    lng: 32.8597,
+    aliases: ['ankara', 'angora', 'ankyra'],
+    summary:
+      'Türkiye Cumhuriyeti’nin başkenti Ankara, Hitit’ten Frig’e, Roma’dan Osmanlı’ya uzanan köklü bir geçmişe sahiptir. Cumhuriyet’in kurucusu Atatürk’ün anıtmezarı Anıtkabir, kentin en önemli simgesi ve ulusal bir buluşma noktasıdır.\n\nTepedeki Ankara Kalesi, dünyaca ünlü Anadolu Medeniyetleri Müzesi ve Roma dönemi kalıntılarıyla başkent, idari kimliğinin yanında derin bir tarih de barındırır.',
+    sources: [
+      'T.C. Kültür ve Turizm Bakanlığı — Ankara',
+      'Anadolu Medeniyetleri Müzesi — resmi portal',
+    ],
+  },
+  {
+    id: 'konya',
+    name: 'Konya',
+    city: 'Konya',
+    country: 'Türkiye',
+    lat: 37.8746,
+    lng: 32.4932,
+    aliases: ['konya', 'iconium', 'ikonyum'],
+    summary:
+      'Selçuklu Devleti’ne başkentlik yapan Konya, Mevlânâ Celâleddîn-i Rûmî’nin şehri olarak dünyaca tanınır. Yeşil kubbeli Mevlânâ Müzesi ve türbesi, her yıl milyonlarca ziyaretçiyi ağırlar; Şeb-i Arûs törenleri ve sema, kentin manevi kimliğini yaşatır.\n\nAlâeddin Camii, İnce Minareli Medrese gibi Selçuklu eserleri ve insanlık tarihinin en eski yerleşimlerinden Çatalhöyük (UNESCO) ile Konya, maneviyat ve tarihin buluştuğu bir merkezdir.',
+    sources: [
+      'UNESCO World Heritage List — Çatalhöyük Neolithic Site',
+      'T.C. Kültür ve Turizm Bakanlığı — Konya',
+    ],
+  },
+  {
+    id: 'trabzon',
+    name: 'Trabzon',
+    city: 'Trabzon',
+    country: 'Türkiye',
+    lat: 41.0027,
+    lng: 39.7168,
+    aliases: ['trabzon', 'trebizond', 'trapezus'],
+    summary:
+      'Karadeniz kıyısının en önemli tarihî kenti Trabzon, bir zamanlar İpek Yolu’nun batı ucundaki zengin bir liman ve Trabzon Rum İmparatorluğu’nun başkentiydi. Kentin simgesi, sarp bir kaya yüzeyine tutunan Sümela Manastırı’dır.\n\nFreskli Ayasofya Müzesi, Atatürk Köşkü ve çevredeki Uzungöl gibi doğa harikalarıyla Trabzon, tarih ile yemyeşil dağların iç içe geçtiği eşsiz bir bölgedir.',
+    sources: [
+      'T.C. Kültür ve Turizm Bakanlığı — Trabzon (Sümela)',
+      'Lonely Planet — Trabzon',
+    ],
+  },
+  {
+    id: 'gaziantep',
+    name: 'Gaziantep',
+    city: 'Gaziantep',
+    country: 'Türkiye',
+    lat: 37.0662,
+    lng: 37.3833,
+    aliases: ['gaziantep', 'antep', 'ayintab'],
+    summary:
+      'Güneydoğu’nun köklü kenti Gaziantep, binlerce yıllık geçmişi ve dünyaca ünlü mutfağıyla bir UNESCO Gastronomi Şehri’dir. Dünyanın en büyük mozaik koleksiyonlarından birini barındıran Zeugma Mozaik Müzesi, kentin en görkemli hazinesidir.\n\nTarihî Gaziantep Kalesi, bakırcılar çarşısı, tarihî hanları ve baklavasıyla ünlü mutfak kültürüyle Antep, tarih ve lezzeti bir arada sunar.',
+    sources: [
+      'Zeugma Mozaik Müzesi — resmi portal',
+      'T.C. Kültür ve Turizm Bakanlığı — Gaziantep',
+    ],
+  },
+
+  // ============= TÜRKİYE — SINIR GİRİŞ/ÇIKIŞ KAPILARI =============
+  {
+    id: 'kapikule',
+    name: 'Kapıkule Sınır Kapısı',
+    city: 'Edirne',
+    country: 'Türkiye',
+    lat: 41.7186,
+    lng: 26.34,
+    aliases: ['kapikule', 'kapıkule', 'kapitan andreevo'],
+    summary:
+      'Türkiye’nin Bulgaristan’a (ve Avrupa’ya) açılan en büyük ve en işlek kara sınır kapısıdır; karşı tarafta Bulgaristan’ın Kapitan Andreevo kapısı yer alır. Edirne’ye yaklaşık 18 km uzaklıktadır ve Avrupa’ya karayolu seyahatlerinin ana güzergâhıdır. Yoğun dönemlerde bekleme süreleri uzayabilir.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+      'Emniyet Genel Müdürlüğü — Sınır Kapıları',
+    ],
+  },
+  {
+    id: 'hamzabeyli',
+    name: 'Hamzabeyli Sınır Kapısı',
+    city: 'Edirne',
+    country: 'Türkiye',
+    lat: 41.9772,
+    lng: 26.6839,
+    aliases: ['hamzabeyli', 'lesovo'],
+    summary:
+      'Edirne’nin kuzeyinde, Türkiye’yi Bulgaristan’ın Lesovo kapısına bağlayan sınır kapısıdır. Kapıkule’ye alternatif olarak, özellikle yoğun dönemlerde tercih edilir.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'dereko',
+    name: 'Dereköy Sınır Kapısı',
+    city: 'Kırklareli',
+    country: 'Türkiye',
+    lat: 41.926,
+    lng: 27.546,
+    aliases: ['dereko', 'dereköy', 'malko tarnovo'],
+    summary:
+      'Kırklareli’nde, Türkiye’yi Bulgaristan’ın Malko Tarnovo kapısına bağlayan sınır kapısıdır. Istranca Dağları üzerinden geçen, Karadeniz kıyısına yakın alternatif bir güzergâhtır.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'ipsala',
+    name: 'İpsala Sınır Kapısı',
+    city: 'Edirne',
+    country: 'Türkiye',
+    lat: 40.9268,
+    lng: 26.3878,
+    aliases: ['ipsala', 'i̇psala', 'kipoi'],
+    summary:
+      'Edirne’nin İpsala ilçesinde, Türkiye’yi Yunanistan’ın Kipoi kapısına bağlayan sınır kapısıdır. Yunanistan ve Batı Avrupa’ya (Meriç Nehri üzerinden) karayolu geçişlerinin başlıca noktasıdır.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'sarp',
+    name: 'Sarp Sınır Kapısı',
+    city: 'Artvin',
+    country: 'Türkiye',
+    lat: 41.514,
+    lng: 41.548,
+    aliases: ['sarp', 'sarpi'],
+    summary:
+      'Karadeniz kıyısında, Artvin’in Hopa ilçesine bağlı Sarp’ta yer alan; Türkiye’yi Gürcistan’ın Sarpi kapısına bağlayan sınır kapısıdır. Kafkaslara ve Batum’a açılan ana geçiştir.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'turkgozu',
+    name: 'Türkgözü Sınır Kapısı',
+    city: 'Ardahan',
+    country: 'Türkiye',
+    lat: 41.42,
+    lng: 42.85,
+    aliases: ['turkgozu', 'türkgözü', 'kartsakhi'],
+    summary:
+      'Ardahan’ın Posof ilçesinde, Türkiye’yi Gürcistan’ın Kartsakhi kapısına bağlayan sınır kapısıdır. Tiflis yönüne iç bölgelerden geçiş sağlar.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'gurbulak',
+    name: 'Gürbulak Sınır Kapısı',
+    city: 'Ağrı',
+    country: 'Türkiye',
+    lat: 39.382,
+    lng: 44.348,
+    aliases: ['gurbulak', 'gürbulak', 'bazargan'],
+    summary:
+      'Ağrı’nın Doğubayazıt ilçesinde, Ağrı Dağı eteğinde; Türkiye’yi İran’ın Bazargan kapısına bağlayan en işlek doğu sınır kapısıdır. İran’a karayolu geçişinin ana noktasıdır.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'kapikoy',
+    name: 'Kapıköy Sınır Kapısı',
+    city: 'Van',
+    country: 'Türkiye',
+    lat: 38.72,
+    lng: 44.35,
+    aliases: ['kapikoy', 'kapıköy', 'razi'],
+    summary:
+      'Van’ın Saray ilçesinde, Türkiye’yi İran’ın Razi kapısına bağlayan sınır kapısıdır. Demiryolu bağlantısıyla da öne çıkar.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'esendere',
+    name: 'Esendere Sınır Kapısı',
+    city: 'Hakkâri',
+    country: 'Türkiye',
+    lat: 38.3,
+    lng: 44.55,
+    aliases: ['esendere', 'sero'],
+    summary:
+      'Hakkâri’nin Yüksekova ilçesinde, Türkiye’yi İran’ın Sero kapısına bağlayan güneydoğu sınır kapısıdır.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'habur',
+    name: 'Habur Sınır Kapısı',
+    city: 'Şırnak',
+    country: 'Türkiye',
+    lat: 37.135,
+    lng: 42.453,
+    aliases: ['habur', 'ibrahim khalil', 'i̇brahim halil'],
+    summary:
+      'Şırnak’ın Silopi ilçesinde, Türkiye’yi Irak’ın (Kürt Bölgesi) İbrahim Halil kapısına bağlayan, ticaretin yoğun olduğu güney sınır kapısıdır.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'cilvegozu',
+    name: 'Cilvegözü Sınır Kapısı',
+    city: 'Hatay',
+    country: 'Türkiye',
+    lat: 36.22,
+    lng: 36.68,
+    aliases: ['cilvegozu', 'cilvegözü', 'bab al-hawa'],
+    summary:
+      'Hatay’ın Reyhanlı ilçesinde, Türkiye’yi Suriye’nin Bab el-Hava kapısına bağlayan sınır kapısıdır. (Geçiş durumu güncel koşullara göre değişebilir.)',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'oncupinar',
+    name: 'Öncüpınar Sınır Kapısı',
+    city: 'Kilis',
+    country: 'Türkiye',
+    lat: 36.66,
+    lng: 37.12,
+    aliases: ['oncupinar', 'öncüpınar', 'bab al-salam'],
+    summary:
+      'Kilis’te, Türkiye’yi Suriye’nin Bab es-Selam kapısına bağlayan sınır kapısıdır. (Geçiş durumu güncel koşullara göre değişebilir.)',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+  {
+    id: 'dilucu',
+    name: 'Dilucu Sınır Kapısı',
+    city: 'Iğdır',
+    country: 'Türkiye',
+    lat: 39.61,
+    lng: 44.98,
+    aliases: ['dilucu', 'nahcivan', 'nahçıvan', 'sadarak'],
+    summary:
+      'Iğdır’ın Aralık ilçesinde, Türkiye’yi Azerbaycan’ın Nahçıvan Özerk Cumhuriyeti’ne (Sederek) bağlayan sınır kapısıdır. Türkiye’nin Azerbaycan ile tek doğrudan kara bağlantısıdır.',
+    sources: [
+      'T.C. Ticaret Bakanlığı — Gümrük Kapıları',
+    ],
+  },
+
   {
     id: 'ayasofya',
     name: 'Ayasofya',

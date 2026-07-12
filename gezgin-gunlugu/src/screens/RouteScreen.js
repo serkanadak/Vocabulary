@@ -4,12 +4,56 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { VEHICLES, getVehicle } from '../data/vehicles';
 import { computeRoute, formatKm, formatDuration, hasCoords } from '../logic/geo';
+import { matchPlace } from '../data/places';
+import { attractionsFor, attractionToDiscovery } from '../data/attractions';
+import { todayKey } from '../logic/date';
 import { colors } from '../theme';
 import { ChipPicker, ConfirmModal, EmptyState } from '../components/common';
 
+// Bir durağın şehrindeki önemli mekanları açılır liste olarak gösterir; her biri
+// tek dokunuşla keşfe eklenebilir. Zaten eklenmişse "Eklendi" olarak işaretlenir.
+function StopAttractions({ place, discoveries, onAdd }) {
+  const [open, setOpen] = useState(false);
+  const list = attractionsFor(place.id);
+  if (!list.length) return null;
+  const added = new Set((discoveries || []).map((d) => (d.placeName || '').toLocaleLowerCase('tr')));
+  return (
+    <View style={styles.attrWrap}>
+      <Pressable onPress={() => setOpen((o) => !o)} style={styles.attrToggle}>
+        <Text style={styles.attrToggleText}>
+          🏛️ Gezilecek yerler ({list.length})
+        </Text>
+        <Text style={styles.attrChevron}>{open ? '▲' : '▼'}</Text>
+      </Pressable>
+      {open ? (
+        <View style={styles.attrList}>
+          {list.map((a) => {
+            const isAdded = added.has(a.name.toLocaleLowerCase('tr'));
+            return (
+              <View key={a.name} style={styles.attrItem}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.attrName}>{a.name}</Text>
+                  <Text style={styles.attrDesc}>{a.desc}</Text>
+                </View>
+                {isAdded ? (
+                  <Text style={styles.attrAdded}>✓ Eklendi</Text>
+                ) : (
+                  <Pressable onPress={() => onAdd(a, place)} style={styles.attrAddBtn} hitSlop={6}>
+                    <Text style={styles.attrAddText}>＋ Keşfe</Text>
+                  </Pressable>
+                )}
+              </View>
+            );
+          })}
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
 export default function RouteScreen({ route, navigation }) {
   const { tripId } = route.params;
-  const { getTrip, updateTrip, removeStop, reorderStops } = useJournal();
+  const { getTrip, updateTrip, removeStop, reorderStops, addDiscovery } = useJournal();
   const trip = getTrip(tripId);
   const [pendingRemove, setPendingRemove] = useState(null);
 
@@ -41,6 +85,10 @@ export default function RouteScreen({ route, navigation }) {
     if (j < 0 || j >= next.length) return;
     [next[index], next[j]] = [next[j], next[index]];
     reorderStops(tripId, next);
+  };
+
+  const addAttraction = (attraction, place) => {
+    addDiscovery(tripId, attractionToDiscovery(attraction, place, todayKey()));
   };
 
   return (
@@ -83,6 +131,7 @@ export default function RouteScreen({ route, navigation }) {
           <View style={styles.timeline}>
             {stops.map((stop, i) => {
               const leg = result.legs[i]; // bu duraktan sonrakine
+              const place = matchPlace(stop.name); // bilinen şehir → gezilecek yerler
               return (
                 <View key={stop.id}>
                   <View style={styles.stopRow}>
@@ -122,6 +171,10 @@ export default function RouteScreen({ route, navigation }) {
                       </Pressable>
                     </View>
                   </View>
+
+                  {place ? (
+                    <StopAttractions place={place} discoveries={trip.discoveries} onAdd={addAttraction} />
+                  ) : null}
 
                   {i < stops.length - 1 ? (
                     <View style={styles.legRow}>
@@ -213,6 +266,41 @@ const styles = StyleSheet.create({
   moveBtn: { color: colors.textMuted, fontSize: 14 },
   moveDisabled: { opacity: 0.3 },
   removeBtn: { color: colors.danger, fontSize: 16, fontWeight: '700' },
+  attrWrap: { marginHorizontal: 16, marginTop: 4 },
+  attrToggle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    backgroundColor: colors.surfaceAlt,
+    borderRadius: 10,
+  },
+  attrToggleText: { color: colors.accent, fontSize: 13, fontWeight: '700' },
+  attrChevron: { color: colors.accent, fontSize: 11 },
+  attrList: { marginTop: 6, gap: 6 },
+  attrItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    backgroundColor: colors.surface,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: colors.border,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+  },
+  attrName: { color: colors.text, fontSize: 14, fontWeight: '600' },
+  attrDesc: { color: colors.textMuted, fontSize: 12, marginTop: 2, lineHeight: 16 },
+  attrAddBtn: {
+    borderWidth: 1,
+    borderColor: colors.primary,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+  },
+  attrAddText: { color: colors.primary, fontSize: 12, fontWeight: '800' },
+  attrAdded: { color: colors.success, fontSize: 12, fontWeight: '700' },
   legRow: { flexDirection: 'row', alignItems: 'center', paddingLeft: 30, paddingVertical: 6 },
   legLine: { width: 2, height: 22, backgroundColor: colors.border, marginRight: 12, marginLeft: 12 },
   legText: { color: colors.textMuted, fontSize: 12 },
