@@ -15,6 +15,7 @@ const DEFAULT_SETTINGS = {
   apiProvider: 'openai', // 'openai' | 'claude'
   apiKey: '',
   apiModel: '',
+  roadOnline: true, // çevrimiçiyken gerçek yol mesafesi (OSRM); kapalıysa yalnızca tahmin
 };
 
 const initialState = {

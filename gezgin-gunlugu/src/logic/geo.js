@@ -42,28 +42,42 @@ export function formatKm(km) {
 
 // Bir durak dizisi (koordinatlı) ve araç için bacak bacak mesafe/süre + toplamlar.
 // stops: [{ id, name, lat, lng }]
-export function computeRoute(stops, vehicleId) {
+// roadKm (opsiyonel): { 'fromId->toId': km } — çevrimiçi OSRM'den gelen gerçek yol
+// mesafeleri. Bir bacak için varsa haversine×detour yerine bu kullanılır (Google'a yakın).
+export function computeRoute(stops, vehicleId, roadKm) {
   const vehicle = getVehicle(vehicleId);
   const speed = effectiveSpeed(vehicle); // maxSpeed tavanı varsa uygulanır (ör. çekme karavan ≤ 90)
   const legs = [];
   let totalKm = 0;
   let totalHours = 0;
   let unknownLegs = 0;
+  let roadLegs = 0;
 
   for (let i = 0; i < stops.length - 1; i++) {
     const from = stops[i];
     const to = stops[i + 1];
-    const straight = haversineKm(from, to);
-    if (straight == null) {
-      legs.push({ from, to, km: null, hours: null });
-      unknownLegs += 1;
-      continue;
+    const realKm = roadKm && roadKm[`${from.id}->${to.id}`];
+    let km = null;
+    let source = null;
+    // Uçak dışında gerçek yol mesafesi varsa onu kullan (uçak great-circle uçar).
+    if (realKm != null && vehicle.id !== 'plane') {
+      km = realKm;
+      source = 'road';
+      roadLegs += 1;
+    } else {
+      const straight = haversineKm(from, to);
+      if (straight == null) {
+        legs.push({ from, to, km: null, hours: null, source: null });
+        unknownLegs += 1;
+        continue;
+      }
+      km = straight * vehicle.detour;
+      source = 'estimate';
     }
-    const km = straight * vehicle.detour;
     const hours = km / speed;
     totalKm += km;
     totalHours += hours;
-    legs.push({ from, to, km, hours });
+    legs.push({ from, to, km, hours, source });
   }
 
   return {
@@ -72,6 +86,7 @@ export function computeRoute(stops, vehicleId) {
     totalKm,
     totalHours,
     unknownLegs,
+    roadLegs,
     hasAny: legs.some((l) => l.km != null),
   };
 }

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { matchPlace } from '../data/places';
+import { isValidDateKey } from '../logic/date';
 import { colors } from '../theme';
 import { Card, Field, PrimaryButton, SectionHeader } from '../components/common';
 
@@ -16,6 +17,7 @@ export default function AddStopScreen({ route, navigation }) {
   const [name, setName] = useState(existing?.name || '');
   const [lat, setLat] = useState(existing?.lat != null ? String(existing.lat) : '');
   const [lng, setLng] = useState(existing?.lng != null ? String(existing.lng) : '');
+  const [date, setDate] = useState(existing?.date || '');
   const [accommodation, setAccommodation] = useState(existing?.accommodation || '');
   const [nights, setNights] = useState(existing?.nights != null ? String(existing.nights) : '');
   const [note, setNote] = useState(existing?.note || '');
@@ -41,7 +43,8 @@ export default function AddStopScreen({ route, navigation }) {
   const latOk = !lat || (!Number.isNaN(parsedLat) && parsedLat >= -90 && parsedLat <= 90);
   const lngOk = !lng || (!Number.isNaN(parsedLng) && parsedLng >= -180 && parsedLng <= 180);
   const nightsOk = !nights || (!Number.isNaN(parsedNights) && parsedNights >= 0 && parsedNights <= 365);
-  const canSave = name.trim().length > 0 && latOk && lngOk && nightsOk;
+  const dateOk = !date || isValidDateKey(date);
+  const canSave = name.trim().length > 0 && latOk && lngOk && nightsOk && dateOk;
 
   const save = () => {
     if (!canSave) return;
@@ -49,6 +52,7 @@ export default function AddStopScreen({ route, navigation }) {
       name: name.trim(),
       lat: lat ? parsedLat : null,
       lng: lng ? parsedLng : null,
+      date: date.trim(),
       accommodation: accommodation.trim(),
       nights: nights ? parsedNights : null,
       note: note.trim(),
@@ -103,8 +107,16 @@ export default function AddStopScreen({ route, navigation }) {
           </View>
         </Card>
 
-        <SectionHeader title="Konaklama & Notlar" />
+        <SectionHeader title="Tarih, Konaklama & Notlar" />
         <Card>
+          <Field
+            label="📅 Tarih (YYYY-AA-GG, opsiyonel)"
+            value={date}
+            onChangeText={setDate}
+            placeholder="ör. 2026-08-03"
+            autoCapitalize="none"
+          />
+          {!dateOk ? <Text style={styles.err}>Geçersiz tarih biçimi.</Text> : null}
           <Field
             label="🏨 Kalacak yer (otel / adres)"
             value={accommodation}

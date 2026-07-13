@@ -39,6 +39,7 @@ const DEFAULT_ITEMS = [
   { icon: '💳', title: 'Para / döviz' },
   { icon: '🏦', title: 'Bankaya yurt dışı kart bildirimi' },
   { icon: '🔌', title: 'Şarj aleti, priz adaptörü & powerbank' },
+  { icon: '📱', title: 'E-SIM / yerel data hattı' },
   { icon: '📲', title: 'Offline harita indir' },
   { icon: '🈯', title: 'Çeviri uygulaması' },
   { icon: '🎒', title: 'Bavul & kıyafet (hava durumuna göre)' },
@@ -51,6 +52,7 @@ const DEFAULT_ITEMS = [
 const VEHICLE_EXIT_ITEMS = [
   { icon: '🟢', title: 'Yeşil kart (yurt dışı araç trafik sigortası)' },
   { icon: '🚗', title: 'Kasko yurt dışı kapsam genişletme' },
+  { icon: '🛣️', title: 'Vinyet / otoyol geçiş (HGS · OGS · vinyet)' },
 ];
 
 // Verilen araca göre tam varsayılan madde listesini ({icon,title}) döndürür.

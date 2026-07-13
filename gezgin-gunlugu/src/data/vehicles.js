@@ -1,20 +1,23 @@
 // Seyahat araçları — ortalama seyir hızı (km/sa) ve "detour" (dolambaç) çarpanı.
-// Haversine düz kuş uçuşu mesafe verir; kara/ray araçlarında gerçek yol daha uzundur,
-// bu yüzden mesafeyi detour çarpanıyla düzeltiriz. Uçakta great-circle ~ gerçek rota (1.0).
 //
-// Karavanlar: normal arabaya (85 km/sa) göre %15 daha yavaş öngörülür → 85 × 0.85 ≈ 72 km/sa.
-// Çekme karavan ayrıca en fazla 90 km/sa ile sınırlıdır (maxSpeed); rota süresi hesabında
-// etkin hız = min(speed, maxSpeed) kullanılır.
+// MESAFE: Çevrimiçiyken gerçek yol mesafesi OSRM yol ağından alınır (Google'a yakın).
+// Çevrimdışıyken kuş uçuşu (haversine) mesafe, detour çarpanıyla düzeltilir. Gelişmiş
+// yol ağlarında şehirler arası "yol/kuş uçuşu" oranı ortalama ~1.2'dir (otoyol
+// koridorlarında daha düşük); bu yüzden çarpan 1.3'ten 1.2'ye çekildi. Uçak great-circle (1.0).
+//
+// HIZ: Uzun yol ortalamaları (otoyol + şehir içi + sınır dahil) esas alındı. Süre =
+// (gerçek/tahmini yol km) / etkin hız. Karavanlar arabaya göre ~%15 yavaş; çekme
+// karavan ayrıca ≤ 90 km/sa (maxSpeed) ile sınırlı.
 export const VEHICLES = [
   { id: 'plane', label: 'Uçak', icon: '✈️', speed: 750, detour: 1.0 },
-  { id: 'car', label: 'Araba', icon: '🚗', speed: 85, detour: 1.3 },
-  { id: 'motokaravan', label: 'Motokaravan', icon: '🚐', speed: 72, detour: 1.3 },
-  { id: 'cekme_karavan', label: 'Çekme Karavan', icon: '🚙', speed: 72, detour: 1.3, maxSpeed: 90 },
-  { id: 'bus', label: 'Otobüs', icon: '🚌', speed: 70, detour: 1.3 },
-  { id: 'train', label: 'Tren', icon: '🚆', speed: 110, detour: 1.2 },
-  { id: 'motorbike', label: 'Motosiklet', icon: '🏍️', speed: 80, detour: 1.3 },
+  { id: 'car', label: 'Araba', icon: '🚗', speed: 95, detour: 1.2 },
+  { id: 'motokaravan', label: 'Motokaravan', icon: '🚐', speed: 81, detour: 1.2 },
+  { id: 'cekme_karavan', label: 'Çekme Karavan', icon: '🚙', speed: 81, detour: 1.2, maxSpeed: 90 },
+  { id: 'bus', label: 'Otobüs', icon: '🚌', speed: 78, detour: 1.2 },
+  { id: 'train', label: 'Tren', icon: '🚆', speed: 105, detour: 1.15 },
+  { id: 'motorbike', label: 'Motosiklet', icon: '🏍️', speed: 92, detour: 1.2 },
   { id: 'bike', label: 'Bisiklet', icon: '🚲', speed: 16, detour: 1.25 },
-  { id: 'walk', label: 'Yürüyüş', icon: '🚶', speed: 4.5, detour: 1.25 },
+  { id: 'walk', label: 'Yürüyüş', icon: '🚶', speed: 4.5, detour: 1.3 },
 ];
 
 // Bir aracın rota planında kullanılacak etkin seyir hızı (varsa maxSpeed tavanı uygulanır).
