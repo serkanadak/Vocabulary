@@ -19,6 +19,27 @@ export default function SettingsScreen() {
         </View>
 
         <SectionHeader
+          title="Güzergah Mesafesi"
+          subtitle="Duraklar arası mesafe nasıl hesaplansın?"
+        />
+        <Card>
+          <ChipPicker
+            options={[
+              { value: 'on', label: '🛰️ Gerçek yol (çevrimiçi)' },
+              { value: 'off', label: '≈ Tahmini (çevrimdışı)' },
+            ]}
+            value={settings.roadOnline ? 'on' : 'off'}
+            onChange={(v) => updateSettings({ roadOnline: v === 'on' })}
+            renderLabel={(o) => o.label}
+          />
+          <Text style={styles.hint}>
+            {settings.roadOnline
+              ? 'Çevrimiçiyken gerçek karayolu mesafesi (OSRM) kullanılır; Google Haritalar’a yakın olur. İnternet yoksa otomatik olarak tahmine düşer.'
+              : 'Yalnızca kuş uçuşu mesafe × yol payı çarpanıyla tahmin yapılır (internet kullanmaz). Gerçek yola göre sapma olabilir.'}
+          </Text>
+        </Card>
+
+        <SectionHeader
           title="Tarihi/Kültürel Özet Kaynağı"
           subtitle="Keşif eklerken özetler nasıl üretilsin?"
         />

@@ -341,6 +341,449 @@ export const PLACES = [
     ],
   },
 
+  // ===================== AVRUPA — ŞEHİRLER =====================
+  // --- Fransa ---
+  {
+    id: 'paris',
+    name: 'Paris',
+    city: 'Paris',
+    country: 'Fransa',
+    lat: 48.8566,
+    lng: 2.3522,
+    aliases: ['paris', 'pari'],
+    summary:
+      'Işık Şehri Paris, Eyfel Kulesi’nden Louvre’a, Seine kıyısı bulvarlarından Montmartre’ın sanatçı sokaklarına uzanan sanatın, modanın ve romantizmin başkentidir. Notre-Dame, Champs-Élysées ve sayısız müzesiyle dünyanın en çok ziyaret edilen şehirlerinden biridir.',
+    sources: ['UNESCO World Heritage List — Paris, Banks of the Seine', 'Lonely Planet — Paris'],
+  },
+  {
+    id: 'nice',
+    name: 'Nice',
+    city: 'Nice',
+    country: 'Fransa',
+    lat: 43.7102,
+    lng: 7.262,
+    aliases: ['nice', 'nis fransa', 'cote dazur'],
+    summary:
+      'Fransız Rivierası’nın (Côte d’Azur) incisi Nice, turkuaz koyları, Promenade des Anglais sahil yolu ve renkli Eski Şehir’iyle Akdeniz’in en şık tatil kentlerindendir. Yakınındaki Monako, Cannes ve Èze köyüne de kapı açar.',
+    sources: ['Lonely Planet — Nice', 'Explore Nice Côte d’Azur — resmi turizm'],
+  },
+  {
+    id: 'lyon',
+    name: 'Lyon',
+    city: 'Lyon',
+    country: 'Fransa',
+    lat: 45.764,
+    lng: 4.8357,
+    aliases: ['lyon', 'lugdunum'],
+    summary:
+      'İki nehrin buluştuğu Lyon, Rönesans dokulu Vieux Lyon’u, gizli geçitleri (traboules) ve Fourvière Bazilikası’yla UNESCO Dünya Mirası’dır. Fransa’nın gastronomi başkenti olarak da ün yapmıştır.',
+    sources: ['UNESCO World Heritage List — Historic Site of Lyon', 'Lonely Planet — Lyon'],
+  },
+  {
+    id: 'marseille',
+    name: 'Marsilya',
+    city: 'Marseille',
+    country: 'Fransa',
+    lat: 43.2965,
+    lng: 5.3698,
+    aliases: ['marsilya', 'marseille'],
+    summary:
+      'Fransa’nın en eski ve en büyük liman kenti Marsilya, canlı Eski Liman’ı (Vieux-Port), tepedeki Notre-Dame de la Garde Bazilikası ve turkuaz Calanques koylarıyla Akdeniz ruhunu taşır.',
+    sources: ['Lonely Planet — Marseille', 'Fransa Turizm — Marsilya'],
+  },
+  {
+    id: 'bordeaux',
+    name: 'Bordeaux',
+    city: 'Bordeaux',
+    country: 'Fransa',
+    lat: 44.8378,
+    lng: -0.5792,
+    aliases: ['bordeaux', 'bordo'],
+    summary:
+      'Dünyaca ünlü şarap bölgesinin merkezi Bordeaux, 18. yüzyıl taş cepheleri ve Place de la Bourse’un su aynasıyla UNESCO Dünya Mirası bir kenttir. Garonne kıyısı boyunca zarif bir mimari bütünlük sunar.',
+    sources: ['UNESCO World Heritage List — Bordeaux, Port of the Moon', 'Lonely Planet — Bordeaux'],
+  },
+
+  // --- İtalya ---
+  {
+    id: 'roma',
+    name: 'Roma',
+    city: 'Roma',
+    country: 'İtalya',
+    lat: 41.9028,
+    lng: 12.4964,
+    aliases: ['roma', 'rome', 'roman'],
+    summary:
+      'Ebedî Şehir Roma, Kolezyum ve Forum Romanum’dan Vatikan ve Trevi Çeşmesi’ne uzanan üç bin yıllık bir açık hava müzesidir. Antik imparatorluk, Rönesans ve barok katmanları kentin her sokağında iç içedir.',
+    sources: ['UNESCO World Heritage List — Historic Centre of Rome', 'Lonely Planet — Rome'],
+  },
+  {
+    id: 'venedik',
+    name: 'Venedik',
+    city: 'Venezia',
+    country: 'İtalya',
+    lat: 45.4408,
+    lng: 12.3155,
+    aliases: ['venedik', 'venezia', 'venice', 'venesia'],
+    summary:
+      'Kanallar üzerine kurulu benzersiz Venedik, San Marco Meydanı, Rialto Köprüsü ve gondollarıyla dünyanın en romantik şehirlerinden biridir. Tüm kent ve lagünü UNESCO Dünya Mirası Listesi’ndedir.',
+    sources: ['UNESCO World Heritage List — Venice and its Lagoon', 'Lonely Planet — Venice'],
+  },
+  {
+    id: 'floransa',
+    name: 'Floransa',
+    city: 'Firenze',
+    country: 'İtalya',
+    lat: 43.7696,
+    lng: 11.2558,
+    aliases: ['floransa', 'firenze', 'florence'],
+    summary:
+      'Rönesans’ın doğduğu şehir Floransa; Duomo, Uffizi Galerisi, Ponte Vecchio ve Michelangelo’nun David’iyle bir sanat hazinesidir. Tarihî merkezi UNESCO Dünya Mirası Listesi’ndedir.',
+    sources: ['UNESCO World Heritage List — Historic Centre of Florence', 'Lonely Planet — Florence'],
+  },
+  {
+    id: 'milano',
+    name: 'Milano',
+    city: 'Milano',
+    country: 'İtalya',
+    lat: 45.4642,
+    lng: 9.19,
+    aliases: ['milano', 'milan'],
+    summary:
+      'İtalya’nın moda ve tasarım başkenti Milano, görkemli gotik Duomo’su, cam tavanlı Galleria Vittorio Emanuele II ve Leonardo’nun “Son Akşam Yemeği” freskiyle ünlüdür. Alışveriş ve opera (La Scala) merkezidir.',
+    sources: ['Lonely Planet — Milan', 'İtalya Turizm — Milano'],
+  },
+  {
+    id: 'napoli',
+    name: 'Napoli',
+    city: 'Napoli',
+    country: 'İtalya',
+    lat: 40.8518,
+    lng: 14.2681,
+    aliases: ['napoli', 'naples'],
+    summary:
+      'Vezüv’ün gölgesindeki tutkulu Napoli, pizzanın doğduğu şehir; tarihî merkezi UNESCO Dünya Mirası’dır. Yakınındaki Pompeii, Amalfi Kıyısı ve Capri’ye açılan bir kapıdır.',
+    sources: ['UNESCO World Heritage List — Historic Centre of Naples', 'Lonely Planet — Naples'],
+  },
+
+  // --- İspanya ---
+  {
+    id: 'barselona',
+    name: 'Barselona',
+    city: 'Barcelona',
+    country: 'İspanya',
+    lat: 41.3874,
+    lng: 2.1686,
+    aliases: ['barselona', 'barcelona'],
+    summary:
+      'Katalonya’nın canlı başkenti Barselona, Gaudí’nin Sagrada Família ve Park Güell gibi masalsı eserleri, Gotik Mahalle ve La Rambla’sıyla mimari ve deniz keyfini birleştirir.',
+    sources: ['UNESCO World Heritage List — Works of Antoni Gaudí', 'Lonely Planet — Barcelona'],
+  },
+  {
+    id: 'madrid',
+    name: 'Madrid',
+    city: 'Madrid',
+    country: 'İspanya',
+    lat: 40.4168,
+    lng: -3.7038,
+    aliases: ['madrid'],
+    summary:
+      'İspanya’nın başkenti Madrid, dünyaca ünlü Prado Müzesi, görkemli Kraliyet Sarayı, canlı Plaza Mayor’u ve geniş Retiro Parkı’yla sanatın ve gece hayatının merkezidir.',
+    sources: ['Lonely Planet — Madrid', 'İspanya Turizm — Madrid'],
+  },
+  {
+    id: 'sevilla',
+    name: 'Sevilla',
+    city: 'Sevilla',
+    country: 'İspanya',
+    lat: 37.3891,
+    lng: -5.9845,
+    aliases: ['sevilla', 'seville', 'sevilya'],
+    summary:
+      'Endülüs’ün ruhu Sevilla; Mağribi-Hristiyan mimarinin başyapıtı Alcázar, dev katedrali ve Giralda kulesi (UNESCO) ile flamenkonun ateşini bir arada sunar. Plaza de España göz kamaştırır.',
+    sources: ['UNESCO World Heritage List — Cathedral, Alcázar and Archivo de Indias, Seville', 'Lonely Planet — Seville'],
+  },
+  {
+    id: 'granada',
+    name: 'Granada',
+    city: 'Granada',
+    country: 'İspanya',
+    lat: 37.1773,
+    lng: -3.5986,
+    aliases: ['granada'],
+    summary:
+      'Sierra Nevada eteğindeki Granada’nın tacı, İslam sanatının doruğu Elhamra Sarayı ve Generalife bahçeleridir (UNESCO). Albaicín’in dar sokakları ve çingene mağaralarıyla Endülüs mirasını yaşatır.',
+    sources: ['UNESCO World Heritage List — Alhambra, Generalife and Albayzín, Granada', 'Lonely Planet — Granada'],
+  },
+  {
+    id: 'valensiya',
+    name: 'Valensiya',
+    city: 'Valencia',
+    country: 'İspanya',
+    lat: 39.4699,
+    lng: -0.3763,
+    aliases: ['valensiya', 'valencia'],
+    summary:
+      'Paella’nın doğduğu Valensiya, fütüristik Sanat ve Bilim Şehri (Calatrava), tarihî ipek borsası Lonja (UNESCO) ve geniş plajlarıyla geleneksel ile moderni birleştirir.',
+    sources: ['UNESCO World Heritage List — La Lonja de la Seda de Valencia', 'Lonely Planet — Valencia'],
+  },
+
+  // --- Almanya ---
+  {
+    id: 'berlin',
+    name: 'Berlin',
+    city: 'Berlin',
+    country: 'Almanya',
+    lat: 52.52,
+    lng: 13.405,
+    aliases: ['berlin'],
+    summary:
+      'Almanya’nın başkenti Berlin, Brandenburg Kapısı, Berlin Duvarı kalıntıları (East Side Gallery), Müze Adası (UNESCO) ve dinamik sanat sahnesiyle tarih ile modernliği çarpıcı biçimde birleştirir.',
+    sources: ['UNESCO World Heritage List — Museumsinsel (Museum Island), Berlin', 'Lonely Planet — Berlin'],
+  },
+  {
+    id: 'munih',
+    name: 'Münih',
+    city: 'München',
+    country: 'Almanya',
+    lat: 48.1351,
+    lng: 11.582,
+    aliases: ['munih', 'münih', 'munchen', 'münchen', 'munich'],
+    summary:
+      'Bavyera’nın başkenti Münih, Marienplatz meydanı, tarihî bira bahçeleri ve dünyaca ünlü Oktoberfest’iyle tanınır. Alplerin eteğindeki konumu, Neuschwanstein Şatosu gibi masal yerlerine de kapı açar.',
+    sources: ['Lonely Planet — Munich', 'Almanya Turizm — München'],
+  },
+  {
+    id: 'koln',
+    name: 'Köln',
+    city: 'Köln',
+    country: 'Almanya',
+    lat: 50.9375,
+    lng: 6.9603,
+    aliases: ['koln', 'köln', 'cologne', 'kolonya'],
+    summary:
+      'Ren Nehri kıyısındaki Köln, iki kulesiyle göğe uzanan devasa gotik Katedrali (UNESCO) ile ünlüdür. Tarihî eski şehri, müzeleri ve karnavalıyla canlı bir kültür merkezidir.',
+    sources: ['UNESCO World Heritage List — Cologne Cathedral', 'Lonely Planet — Cologne'],
+  },
+  {
+    id: 'hamburg',
+    name: 'Hamburg',
+    city: 'Hamburg',
+    country: 'Almanya',
+    lat: 53.5511,
+    lng: 9.9937,
+    aliases: ['hamburg'],
+    summary:
+      'Almanya’nın büyük liman kenti Hamburg; tuğla depoların oluşturduğu Speicherstadt (UNESCO), modern Elbphilharmonie konser salonu ve canlı Reeperbahn’ıyla su üzerine kurulu bir metropoldür.',
+    sources: ['UNESCO World Heritage List — Speicherstadt and Kontorhaus District', 'Lonely Planet — Hamburg'],
+  },
+
+  // --- Yunanistan ---
+  {
+    id: 'atina',
+    name: 'Atina',
+    city: 'Athína',
+    country: 'Yunanistan',
+    lat: 37.9838,
+    lng: 23.7275,
+    aliases: ['atina', 'athens', 'athina'],
+    summary:
+      'Batı uygarlığının, demokrasinin ve felsefenin beşiği Atina; Akropolis ve Parthenon’dan antik Agora’ya uzanan görkemli mirasıyla dünyanın en eski şehirlerindendir. Plaka’nın dar sokakları modern kentle iç içedir.',
+    sources: ['UNESCO World Heritage List — Acropolis, Athens', 'Lonely Planet — Athens'],
+  },
+  {
+    id: 'selanik',
+    name: 'Selanik',
+    city: 'Thessaloniki',
+    country: 'Yunanistan',
+    lat: 40.6401,
+    lng: 22.9444,
+    aliases: ['selanik', 'thessaloniki', 'salonika'],
+    summary:
+      'Yunanistan’ın ikinci büyük kenti Selanik, Bizans surları ve kiliseleri (UNESCO), simge Beyaz Kule’si ve Osmanlı izleriyle katmanlı bir tarih sunar. Atatürk’ün doğduğu ev de buradadır.',
+    sources: ['UNESCO World Heritage List — Palaeochristian and Byzantine Monuments of Thessalonika', 'Lonely Planet — Thessaloniki'],
+  },
+  {
+    id: 'santorini',
+    name: 'Santorini',
+    city: 'Santorini',
+    country: 'Yunanistan',
+    lat: 36.4162,
+    lng: 25.4325,
+    aliases: ['santorini', 'thira', 'fira'],
+    summary:
+      'Bir volkanik kalderanın kenarına kurulu Santorini, beyaz badanalı evleri, mavi kubbeli kiliseleri ve dünyaca ünlü Oia gün batımıyla Ege’nin en ikonik adasıdır.',
+    sources: ['Lonely Planet — Santorini', 'Yunanistan Turizm — Santorini'],
+  },
+
+  // --- Hollanda ---
+  {
+    id: 'amsterdam',
+    name: 'Amsterdam',
+    city: 'Amsterdam',
+    country: 'Hollanda',
+    lat: 52.3676,
+    lng: 4.9041,
+    aliases: ['amsterdam'],
+    summary:
+      'Kanalları UNESCO Dünya Mirası olan Amsterdam; Van Gogh ve Rijksmuseum gibi müzeleri, Anne Frank Evi ve bisikletli yaşamıyla zarif ve özgür ruhlu bir başkenttir.',
+    sources: ['UNESCO World Heritage List — Seventeenth-century canal ring of Amsterdam', 'Lonely Planet — Amsterdam'],
+  },
+  {
+    id: 'rotterdam',
+    name: 'Rotterdam',
+    city: 'Rotterdam',
+    country: 'Hollanda',
+    lat: 51.9244,
+    lng: 4.4777,
+    aliases: ['rotterdam'],
+    summary:
+      'II. Dünya Savaşı sonrası yeniden doğan Rotterdam, cesur modern mimarisiyle (Küp Evler, Markthal, Erasmus Köprüsü) Avrupa’nın en yenilikçi liman kentidir.',
+    sources: ['Lonely Planet — Rotterdam', 'Hollanda Turizm — Rotterdam'],
+  },
+
+  // --- Portekiz ---
+  {
+    id: 'lizbon',
+    name: 'Lizbon',
+    city: 'Lisboa',
+    country: 'Portekiz',
+    lat: 38.7223,
+    lng: -9.1393,
+    aliases: ['lizbon', 'lisboa', 'lisbon'],
+    summary:
+      'Yedi tepeye kurulu Lizbon; sarı tramvayları, Alfama’nın fado dolu sokakları, Belém Kulesi ve Jerónimos Manastırı (UNESCO) ile Atlantik ışığında parlar.',
+    sources: ['UNESCO World Heritage List — Monastery of the Hieronymites and Tower of Belém', 'Lonely Planet — Lisbon'],
+  },
+  {
+    id: 'porto',
+    name: 'Porto',
+    city: 'Porto',
+    country: 'Portekiz',
+    lat: 41.1579,
+    lng: -8.6291,
+    aliases: ['porto', 'oporto'],
+    summary:
+      'Porto şarabının anavatanı Porto; Douro Nehri kıyısındaki renkli Ribeira mahallesi (UNESCO), Dom Luís I Köprüsü ve çini kaplı kiliseleriyle büyüleyici bir kenttir.',
+    sources: ['UNESCO World Heritage List — Historic Centre of Oporto', 'Lonely Planet — Porto'],
+  },
+
+  // --- Birleşik Krallık ---
+  {
+    id: 'londra',
+    name: 'Londra',
+    city: 'London',
+    country: 'Birleşik Krallık',
+    lat: 51.5074,
+    lng: -0.1278,
+    aliases: ['londra', 'london'],
+    summary:
+      'Dünyanın en etkili metropollerinden Londra; Big Ben ve Parlamento, Londra Kulesi (UNESCO), British Museum ve kraliyet saraylarıyla tarih, kültür ve modern yaşamı bir arada sunar.',
+    sources: ['UNESCO World Heritage List — Tower of London', 'Lonely Planet — London'],
+  },
+  {
+    id: 'edinburgh',
+    name: 'Edinburgh',
+    city: 'Edinburgh',
+    country: 'Birleşik Krallık',
+    lat: 55.9533,
+    lng: -3.1883,
+    aliases: ['edinburgh', 'edinburg'],
+    summary:
+      'İskoçya’nın başkenti Edinburgh; tepedeki kalesi, ortaçağ Old Town’u ile Gürcü Yeni Şehri (UNESCO) ve dünyaca ünlü festivalleriyle dramatik ve edebi bir atmosfer sunar.',
+    sources: ['UNESCO World Heritage List — Old and New Towns of Edinburgh', 'Lonely Planet — Edinburgh'],
+  },
+
+  // --- İsviçre ---
+  {
+    id: 'zurih',
+    name: 'Zürih',
+    city: 'Zürich',
+    country: 'İsviçre',
+    lat: 47.3769,
+    lng: 8.5417,
+    aliases: ['zurih', 'zürih', 'zurich', 'zürich'],
+    summary:
+      'Göl ve nehir kıyısındaki Zürih; şık Bahnhofstrasse, tarihî Old Town (Altstadt), Chagall vitraylı Fraumünster ve Alp manzaralarıyla İsviçre’nin canlı finans ve kültür merkezidir.',
+    sources: ['Lonely Planet — Zürich', 'İsviçre Turizm — Zürich'],
+  },
+  {
+    id: 'luzern',
+    name: 'Luzern',
+    city: 'Luzern',
+    country: 'İsviçre',
+    lat: 47.0502,
+    lng: 8.3093,
+    aliases: ['luzern', 'lucerne'],
+    summary:
+      'Göl ve karlı dağlar arasındaki Luzern; ahşap Kapellbrücke köprüsü, Ağlayan Aslan anıtı ve Pilatus/Rigi dağ turlarıyla İsviçre’nin en şirin göl kentlerindendir.',
+    sources: ['Lonely Planet — Lucerne', 'İsviçre Turizm — Luzern'],
+  },
+  {
+    id: 'interlaken',
+    name: 'Interlaken',
+    city: 'Interlaken',
+    country: 'İsviçre',
+    lat: 46.6863,
+    lng: 7.8632,
+    aliases: ['interlaken'],
+    summary:
+      'İki göl arasındaki Interlaken, Jungfrau bölgesinin kapısıdır; “Avrupa’nın çatısı” Jungfraujoch, Lauterbrunnen şelaleleri ve macera sporlarıyla Alpler’in kalbinde bir üstür.',
+    sources: ['Lonely Planet — Interlaken', 'İsviçre Turizm — Interlaken'],
+  },
+
+  // --- Belçika ---
+  {
+    id: 'bruksel',
+    name: 'Brüksel',
+    city: 'Brussel',
+    country: 'Belçika',
+    lat: 50.8503,
+    lng: 4.3517,
+    aliases: ['bruksel', 'brüksel', 'brussels', 'bruxelles'],
+    summary:
+      'Avrupa Birliği’nin başkenti Brüksel; altın işlemeli Grand-Place meydanı (UNESCO), Manneken Pis, Atomium ve çikolata-waffle kültürüyle tarihi ve uluslararası bir kenttir.',
+    sources: ['UNESCO World Heritage List — La Grand-Place, Brussels', 'Lonely Planet — Brussels'],
+  },
+  {
+    id: 'bruges',
+    name: 'Bruges',
+    city: 'Brugge',
+    country: 'Belçika',
+    lat: 51.2093,
+    lng: 3.2247,
+    aliases: ['bruges', 'brugge', 'brugge belcika'],
+    summary:
+      '“Kuzeyin Venedik’i” Bruges; kanalları, ortaçağdan kalma tarihî merkezi (UNESCO), Çan Kulesi (Belfort) ve arnavut kaldırımlı meydanlarıyla âdeta bir masal şehridir.',
+    sources: ['UNESCO World Heritage List — Historic Centre of Brugge', 'Lonely Planet — Bruges'],
+  },
+
+  // --- Polonya ---
+  {
+    id: 'krakow',
+    name: 'Krakow',
+    city: 'Kraków',
+    country: 'Polonya',
+    lat: 50.0647,
+    lng: 19.945,
+    aliases: ['krakow', 'kraków', 'cracow'],
+    summary:
+      'Polonya’nın eski başkenti Krakow; Avrupa’nın en büyük ortaçağ meydanlarından Rynek Główny, Wawel Kalesi ve tarihî merkezi (UNESCO) ile savaştan sağ çıkmış bir kültür hazinesidir. Auschwitz ve Tuz Madeni’ne yakındır.',
+    sources: ['UNESCO World Heritage List — Historic Centre of Kraków', 'Lonely Planet — Kraków'],
+  },
+  {
+    id: 'varsova',
+    name: 'Varşova',
+    city: 'Warszawa',
+    country: 'Polonya',
+    lat: 52.2297,
+    lng: 21.0122,
+    aliases: ['varsova', 'varşova', 'warsaw', 'warszawa'],
+    summary:
+      'Savaşta yıkılıp aslına uygun yeniden inşa edilen Varşova’nın Eski Şehri UNESCO Dünya Mirası’dır. Kraliyet Sarayı, Łazienki Parkı ve dirençli ruhuyla Polonya’nın canlı başkentidir.',
+    sources: ['UNESCO World Heritage List — Historic Centre of Warsaw', 'Lonely Planet — Warsaw'],
+  },
+
   {
     id: 'ayasofya',
     name: 'Ayasofya',

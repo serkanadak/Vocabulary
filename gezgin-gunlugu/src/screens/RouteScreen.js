@@ -1,12 +1,13 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { VEHICLES, getVehicle } from '../data/vehicles';
 import { computeRoute, formatKm, formatDuration, hasCoords } from '../logic/geo';
+import { fetchRoadKm } from '../logic/roadRoute';
 import { matchPlace } from '../data/places';
 import { attractionsFor, attractionToDiscovery } from '../data/attractions';
-import { todayKey } from '../logic/date';
+import { todayKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { ChipPicker, ConfirmModal, EmptyState } from '../components/common';
 
@@ -53,9 +54,44 @@ function StopAttractions({ place, discoveries, onAdd }) {
 
 export default function RouteScreen({ route, navigation }) {
   const { tripId } = route.params;
-  const { getTrip, updateTrip, removeStop, reorderStops, addDiscovery } = useJournal();
+  const { getTrip, updateTrip, removeStop, reorderStops, addDiscovery, settings } = useJournal();
   const trip = getTrip(tripId);
   const [pendingRemove, setPendingRemove] = useState(null);
+  const [roadKm, setRoadKm] = useState(null); // OSRM gerçek yol mesafeleri
+  const [roadState, setRoadState] = useState('idle'); // idle | loading | ok | error
+
+  const stopsKey = (trip?.stops || [])
+    .map((s) => `${s.id}:${s.lat},${s.lng}`)
+    .join('|');
+
+  // Çevrimiçi gerçek yol mesafesini getir (duraklar/koordinatlar değişince).
+  useEffect(() => {
+    const roadStops = (trip?.stops || []).filter(hasCoords);
+    if (!settings?.roadOnline || roadStops.length < 2) {
+      setRoadKm(null);
+      setRoadState('idle');
+      return;
+    }
+    let cancelled = false;
+    const controller = new AbortController();
+    setRoadState('loading');
+    fetchRoadKm(trip.stops, { signal: controller.signal })
+      .then((map) => {
+        if (cancelled) return;
+        setRoadKm(map);
+        setRoadState('ok');
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setRoadKm(null);
+        setRoadState('error');
+      });
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stopsKey, settings?.roadOnline]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -76,8 +112,9 @@ export default function RouteScreen({ route, navigation }) {
   }
 
   const stops = trip.stops || [];
-  const result = computeRoute(stops, trip.vehicle);
+  const result = computeRoute(stops, trip.vehicle, roadKm);
   const vehicle = getVehicle(trip.vehicle);
+  const usingRoad = result.roadLegs > 0;
 
   const move = (index, dir) => {
     const next = [...stops];
@@ -121,6 +158,18 @@ export default function RouteScreen({ route, navigation }) {
           </View>
         ) : null}
 
+        {result.hasAny ? (
+          <Text style={styles.sourceBadge}>
+            {usingRoad
+              ? '🛰️ Gerçek yol mesafesi (çevrimiçi)'
+              : roadState === 'loading'
+              ? '… gerçek yol mesafesi alınıyor'
+              : settings?.roadOnline
+              ? '≈ Tahmini mesafe (kuş uçuşu × yol payı) — çevrimiçi olunca gerçek yola geçer'
+              : '≈ Tahmini mesafe (kuş uçuşu × yol payı) — gerçek yol Ayarlar’dan açılabilir'}
+          </Text>
+        ) : null}
+
         {stops.length === 0 ? (
           <EmptyState
             icon="🗺️"
@@ -142,7 +191,10 @@ export default function RouteScreen({ route, navigation }) {
                       style={{ flex: 1 }}
                       onPress={() => navigation.navigate('AddStop', { tripId, stopId: stop.id })}
                     >
-                      <Text style={styles.stopName}>{stop.name}</Text>
+                      <View style={styles.stopNameRow}>
+                        <Text style={styles.stopName}>{stop.name}</Text>
+                        {stop.date ? <Text style={styles.stopDate}>📅 {formatShortDate(stop.date)}</Text> : null}
+                      </View>
                       <Text style={styles.stopMeta}>
                         {hasCoords(stop)
                           ? `${stop.lat.toFixed(3)}, ${stop.lng.toFixed(3)}`
@@ -257,7 +309,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   stopIndexText: { color: '#0b1a2b', fontWeight: '800' },
-  stopName: { color: colors.text, fontSize: 15, fontWeight: '700' },
+  sourceBadge: {
+    color: colors.textMuted,
+    fontSize: 11,
+    marginHorizontal: 16,
+    marginTop: 8,
+    marginBottom: 2,
+    lineHeight: 15,
+  },
+  stopNameRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
+  stopName: { color: colors.text, fontSize: 15, fontWeight: '700', flexShrink: 1 },
+  stopDate: { color: colors.accent, fontSize: 12, fontWeight: '700' },
   stopMeta: { color: colors.textMuted, fontSize: 12, marginTop: 2 },
   stopExtra: { color: colors.accent, fontSize: 12, marginTop: 4 },
   stopNote: { color: colors.textMuted, fontSize: 12, marginTop: 3, fontStyle: 'italic' },
