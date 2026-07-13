@@ -1,7 +1,10 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Svg, { Line, Circle, Text as SvgText } from 'react-native-svg';
-import { WORDS } from '../data';
+import { WORDS, getWord, searchWords } from '../data';
+import { useProgress } from '../state/ProgressContext';
+import { STATUS } from '../logic/srs';
+import { StatusPicker, LevelBadge } from '../components/common';
 import { buildNeighborhood, radialLayout, RELATION_COLORS, RELATION_LABELS } from '../logic/graph';
 import { colors } from '../theme';
 
@@ -12,6 +15,8 @@ const SIZE = Math.min(width - 24, 360);
 export default function GraphScreen({ route, navigation }) {
   const initialId = route.params?.id || WORDS[0]?.id;
   const [centerId, setCenterId] = useState(initialId);
+  const [query, setQuery] = useState('');
+  const { getProgress, setStatus } = useProgress();
 
   // Başka ekrandan id ile gelindiğinde merkezi güncelle.
   useEffect(() => {
@@ -21,13 +26,74 @@ export default function GraphScreen({ route, navigation }) {
   const graph = useMemo(() => buildNeighborhood(centerId), [centerId]);
   const positions = useMemo(() => radialLayout(graph, SIZE, SIZE), [graph]);
   const center = graph.nodes.find((n) => n.relation === 'center');
+  const centerWord = getWord(centerId);
+
+  // Arama önerileri (yalnızca kartı olan kelimeler).
+  const suggestions = useMemo(() => {
+    if (query.trim().length < 2) return [];
+    return searchWords(query).slice(0, 8);
+  }, [query]);
+
+  const goTo = (id) => {
+    setCenterId(id);
+    setQuery('');
+  };
+
+  const randomWord = () => {
+    const w = WORDS[Math.floor(Math.random() * WORDS.length)];
+    if (w) goTo(w.id);
+  };
+
+  const status = getProgress(centerId)?.status || STATUS.UNKNOWN;
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ padding: 12 }}>
+    <ScrollView style={styles.container} contentContainerStyle={{ padding: 12 }} keyboardShouldPersistTaps="handled">
       <Text style={styles.title}>İlişki Ağı</Text>
-      <Text style={styles.subtitle}>
-        “{center?.headword}” kelimesinin eş/zıt anlam, kök ve ilişkili bağlantıları
-      </Text>
+
+      {/* Arama + rastgele kelime */}
+      <View style={styles.searchRow}>
+        <TextInput
+          style={styles.search}
+          placeholder="Ağını görmek istediğin kelime…"
+          placeholderTextColor={colors.textMuted}
+          value={query}
+          onChangeText={setQuery}
+          autoCorrect={false}
+          autoCapitalize="none"
+        />
+        <TouchableOpacity style={styles.randomBtn} onPress={randomWord}>
+          <Text style={styles.randomBtnText}>🎲 Rastgele</Text>
+        </TouchableOpacity>
+      </View>
+
+      {suggestions.length > 0 && (
+        <View style={styles.suggestBox}>
+          {suggestions.map((w) => (
+            <TouchableOpacity key={w.id} style={styles.suggestRow} onPress={() => goTo(w.id)}>
+              <Text style={styles.suggestWord}>{w.headword}</Text>
+              <Text style={styles.suggestMeaning} numberOfLines={1}>
+                {w.meanings[0].tr}
+              </Text>
+              <LevelBadge level={w.level} />
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
+
+      <View style={styles.centerHead}>
+        <Text style={styles.subtitle}>
+          “{center?.headword}” kelimesinin eş/zıt anlam, kök ve ilişkili bağlantıları
+        </Text>
+        {!!centerWord && <LevelBadge level={centerWord.level} />}
+      </View>
+
+      {/* Merkez kelimenin durumu: bilmiyorum / pasif / aktif */}
+      {!!centerWord && (
+        <View style={styles.statusWrap}>
+          <Text style={styles.statusTitle}>Bu kelimeyi:</Text>
+          <StatusPicker value={status} onChange={(s) => setStatus(centerId, s)} />
+        </View>
+      )}
 
       <View style={styles.canvas}>
         <Svg width={SIZE} height={SIZE}>
@@ -135,7 +201,47 @@ function clip(s) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg },
   title: { color: colors.text, fontSize: 22, fontWeight: '800' },
-  subtitle: { color: colors.textMuted, marginTop: 4, marginBottom: 12 },
+  searchRow: { flexDirection: 'row', gap: 8, marginTop: 10 },
+  search: {
+    flex: 1,
+    backgroundColor: colors.surface,
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    color: colors.text,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  randomBtn: {
+    backgroundColor: colors.primary,
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    justifyContent: 'center',
+  },
+  randomBtnText: { color: '#0f172a', fontWeight: '800', fontSize: 13 },
+  suggestBox: {
+    marginTop: 8,
+    backgroundColor: colors.surface,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: colors.border,
+    overflow: 'hidden',
+  },
+  suggestRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.border,
+  },
+  suggestWord: { color: colors.text, fontWeight: '700', fontSize: 14 },
+  suggestMeaning: { color: colors.textMuted, fontSize: 12, flex: 1 },
+  centerHead: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, flexWrap: 'wrap' },
+  subtitle: { color: colors.textMuted, flexShrink: 1 },
+  statusWrap: { marginTop: 10, marginBottom: 4 },
+  statusTitle: { color: colors.textMuted, marginBottom: 6, fontSize: 13 },
   canvas: {
     alignItems: 'center',
     backgroundColor: colors.surface,
