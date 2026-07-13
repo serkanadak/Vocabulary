@@ -11,6 +11,7 @@ import TripDetailScreen from '../screens/TripDetailScreen';
 import ChecklistScreen from '../screens/ChecklistScreen';
 import RouteScreen from '../screens/RouteScreen';
 import AddStopScreen from '../screens/AddStopScreen';
+import DiscoveryHubScreen from '../screens/DiscoveryHubScreen';
 import AddDiscoveryScreen from '../screens/AddDiscoveryScreen';
 import DiscoveryDetailScreen from '../screens/DiscoveryDetailScreen';
 import AlbumScreen from '../screens/AlbumScreen';
@@ -71,6 +72,7 @@ export default function RootNavigator() {
         <Stack.Screen name="Checklist" component={ChecklistScreen} options={{ title: 'Hazırlık Listesi' }} />
         <Stack.Screen name="Route" component={RouteScreen} options={{ title: 'Güzergah Planı' }} />
         <Stack.Screen name="AddStop" component={AddStopScreen} options={{ title: 'Durak Ekle' }} />
+        <Stack.Screen name="DiscoveryHub" component={DiscoveryHubScreen} options={{ title: 'Keşif Günlüğü' }} />
         <Stack.Screen name="AddDiscovery" component={AddDiscoveryScreen} options={{ title: 'Keşif Ekle' }} />
         <Stack.Screen name="DiscoveryDetail" component={DiscoveryDetailScreen} options={{ title: 'Keşif' }} />
         <Stack.Screen name="Album" component={AlbumScreen} options={{ title: 'Albüm / Yayın' }} />

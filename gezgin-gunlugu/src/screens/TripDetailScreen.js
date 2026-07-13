@@ -122,44 +122,19 @@ export default function TripDetailScreen({ route, navigation }) {
           onPress={() => navigation.navigate('Route', { tripId })}
         />
 
-        {/* Günlük / Keşifler */}
-        <View style={styles.discHeader}>
-          <Text style={styles.sectionLabel}>GÜNLÜK · KEŞİFLER</Text>
-          <Pressable onPress={() => navigation.navigate('AddDiscovery', { tripId })} hitSlop={8}>
-            <Text style={styles.addLink}>＋ Keşif Ekle</Text>
-          </Pressable>
-        </View>
-
-        {sortedDisc.length === 0 ? (
-          <Card>
-            <Text style={styles.emptyDisc}>
-              Henüz keşif yok. Bir fotoğraf yükle veya konum ismi gir; tarihi/kültürel özetini oluşturayım.
-            </Text>
-            <Pressable style={styles.linkBtn} onPress={() => navigation.navigate('AddDiscovery', { tripId })}>
-              <Text style={styles.linkText}>İlk keşfi ekle →</Text>
-            </Pressable>
-          </Card>
-        ) : (
-          sortedDisc.map((d) => (
-            <Pressable
-              key={d.id}
-              onPress={() => navigation.navigate('DiscoveryDetail', { tripId, discoveryId: d.id })}
-              style={({ pressed }) => [styles.discCard, pressed && { opacity: 0.85 }]}
-            >
-              <Text style={styles.discIcon}>{d.photoUri ? '📷' : '📍'}</Text>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.discTitle} numberOfLines={1}>
-                  {d.placeName}
-                </Text>
-                <Text style={styles.discMeta}>
-                  {[d.city, d.country].filter(Boolean).join(', ') || '—'}
-                  {d.date ? ` · ${formatShortDate(d.date)}` : ''}
-                </Text>
-              </View>
-              <Text style={styles.chevron}>›</Text>
-            </Pressable>
-          ))
-        )}
+        {/* Günlük / Keşifler — detaylar keşif günlüğünün içinde */}
+        <Text style={styles.sectionLabel}>GÜNLÜK · KEŞİFLER</Text>
+        <NavCard
+          icon="🧭"
+          title="Keşif Günlüğü"
+          subtitle={
+            sortedDisc.length
+              ? `${sortedDisc.length} keşif · duraklara göre düzenle, fotoğraf & not ekle`
+              : 'Güzergah noktalarını aç, gezdiğin yerleri işaretle & ekle'
+          }
+          badge={sortedDisc.length || null}
+          onPress={() => navigation.navigate('DiscoveryHub', { tripId })}
+        />
 
         {/* Çıktılar */}
         <Text style={styles.sectionLabel}>SEYAHATİ BİTİR · ÇIKTILAR</Text>
