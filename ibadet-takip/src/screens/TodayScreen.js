@@ -129,7 +129,7 @@ export default function TodayScreen({ navigation }) {
             {optional.map((item) => (
               <CheckRow
                 key={item.id}
-                title={item.title}
+                title={item.timingLabel ? `${item.title} (${item.timingLabel})` : item.title}
                 hukum={item.hukum}
                 rekat={item.rekat}
                 checked={isCheckedToday(item.id)}

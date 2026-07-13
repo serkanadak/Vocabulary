@@ -101,6 +101,8 @@ export const IBADETLER = [
     frequency: FREQUENCY.OPTIONAL_DAILY,
     rekat: 2,
     gender: 'all',
+    timingLabel: 'Güneş Doğduktan Sonra',
+    timeOrder: 1,
     description:
       'Güneş bir mızrak boyu yükseldikten (yaklaşık gün doğumundan 45-50 dakika sonra) öğle vaktine kadar kılınabilen, en az 2 rekât sünnet-i gayr-i müekkede (nafile) namaz.',
     summary:
@@ -154,6 +156,8 @@ export const IBADETLER = [
     rekat: 4,
     gender: 'all',
     group: 'ikindi',
+    timingLabel: 'İkindiden Önce',
+    timeOrder: 2,
     description: 'İkindi farzından önce kılınan 4 rekât, sünnet-i gayr-i müekkede (nafile).',
     summary:
       'Hz. Peygamber\'in ara sıra kıldığı, terkinde günah olmayan fakat sevabı büyük olan bir nafiledir. İkindi farzından önce, içinden okuyarak, 4 rekât (iki selamla) kılınır.',
@@ -205,6 +209,8 @@ export const IBADETLER = [
     frequency: FREQUENCY.OPTIONAL_DAILY,
     rekat: 6,
     gender: 'all',
+    timingLabel: 'Akşamdan Sonra',
+    timeOrder: 3,
     description: 'Akşam namazının sünnetinden sonra kılınan nafile (2\'şer veya 4+2 rekât).',
     summary:
       '"Evvâbîn" (Allah\'a sürekli dönenler) adıyla anılan, akşamla yatsı arasındaki vakti değerlendiren faziletli bir nafiledir. Akşam sünnetinden sonra, ikişer rekâtlık selamlarla toplam 6 rekât olarak kılınır.',
@@ -218,6 +224,8 @@ export const IBADETLER = [
     rekat: 4,
     gender: 'all',
     group: 'yatsi',
+    timingLabel: 'Yatsıdan Önce',
+    timeOrder: 4,
     description: 'Yatsı farzından önce kılınan 4 rekât, sünnet-i gayr-i müekkede (nafile).',
     summary:
       'Yatsı vaktine girerken kılınan, terkinde sakınca olmayan fakat fazileti yüksek bir nafiledir. Yatsı farzından önce, içinden okuyarak, 4 rekât kılınır.',
@@ -269,6 +277,8 @@ export const IBADETLER = [
     frequency: FREQUENCY.OPTIONAL_DAILY,
     rekat: 2,
     gender: 'all',
+    timingLabel: 'Gecenin Son Üçte Biri',
+    timeOrder: 7,
     description: 'Gecenin son üçte biri gibi kılınan, çokça tavsiye edilen nafile namaz.',
     summary:
       'Gecenin sessizliğinde kılınan, Kur\'an\'da övülen ve Hz. Peygamber\'in özenle devam ettiği en faziletli nafile namazlardandır. Uyanıp gecenin son üçte biri gibi bir vakitte, dilenen sayıda 2\'şer rekât olarak kılınır.',
@@ -413,6 +423,7 @@ export const IBADETLER = [
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_WEEKLY_MON_THU,
     gender: 'all',
+    timeOrder: 0,
     description: 'Hz. Peygamber\'in düzenli tuttuğu haftalık müstehap oruç günleri.',
     summary:
       'Amellerin Allah\'a arz edildiği günler olduğu rivayet edilen Pazartesi ve Perşembe günlerinde, Hz. Peygamber\'in düzenli olarak tuttuğu bir sünnettir. Haftanın bu iki gününde, diğer nafile oruçlar gibi niyet edilerek tutulur.',
@@ -424,6 +435,7 @@ export const IBADETLER = [
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_MONTHLY,
     gender: 'all',
+    timeOrder: 0,
     description: 'Her kamerî ayın 13-14-15. günlerinde tutulan müstehap oruç.',
     summary:
       '"Beyaz/aydınlık günler" anlamına gelen, ayın dolunay haline yaklaştığı günlerde tutulan, sevabı bütün ayı oruçlu geçirmiş gibi yazılan bir sünnettir. Her kamerî ayın 13, 14 ve 15. günlerinde tutulur.',
@@ -523,11 +535,13 @@ export const IBADETLER = [
   // tavsiye edilir.
   {
     id: 'zikir-mulk-suresi',
-    title: 'Mülk Suresi (Yatsıdan Sonra)',
+    title: 'Mülk Suresi',
     category: CATEGORY.ZIKIR,
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timingLabel: 'Yatsıdan Sonra',
+    timeOrder: 5,
     description: 'Her gece, tercihen yatsıdan sonra/yatmadan önce okunması tavsiye edilen, 30 ayetlik Mülk (Tebâreke) suresi.',
     summary:
       'Kabir azabından koruduğu ve okuyana kıyamet günü şefaat edeceği bildirilen (Tirmizî, Hâkim), her gece okunması tavsiye edilen bir suredir. Yatsı namazından sonra, yatmadan önce baştan sona okunur.',
@@ -629,6 +643,8 @@ export const IBADETLER = [
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timingLabel: 'Gece',
+    timeOrder: 6,
     description: 'Bakara suresinin 285-286. ayetleri; her gece, tercihen yatmadan önce okunması tavsiye edilir.',
     summary:
       '"Kim geceleyin bu iki ayeti okursa, o gece için ona yeter" hadisine dayanan (Buhârî, Müslim), iman esaslarını ve tevekkülü özetleyen bir dua-ayet çiftidir. Gece, tercihen yatmadan önce okunur.',
@@ -646,6 +662,8 @@ export const IBADETLER = [
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timingLabel: 'Yatmadan Önce',
+    timeOrder: 6,
     description: 'Yatmadan önce 33 Sübhânallah, 33 Elhamdülillah, 34 Allâhu ekber şeklinde çekilen tesbih.',
     summary:
       'Hz. Peygamber\'in, hizmetçi isteyen kızı Fâtıma ile Hz. Ali\'ye hizmetçi yerine öğrettiği, "bu sizin için ondan daha hayırlıdır" buyurduğu bir tesbihtir (Buhârî, Müslim). Yatağa girip yatmadan önce sırasıyla 33 Sübhânallah, 33 Elhamdülillah, 34 Allâhu ekber denilerek çekilir.',
@@ -655,11 +673,13 @@ export const IBADETLER = [
   },
   {
     id: 'zikir-hasr-son-ayetler',
-    title: 'Haşr Suresi Son 3 Ayeti (Sabah)',
+    title: 'Haşr Suresi Son 3 Ayeti',
     category: CATEGORY.ZIKIR,
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timingLabel: 'Sabah',
+    timeOrder: 1,
     description: `Haşr suresinin 22-24. ayetleri; sabah, "Eûzü billâhi's-semîi'l-alîm" ile başlanarak okunur.`,
     summary:
       '"Kim sabahleyin üç kere Eûzü billâhis-semîil-alîm min-eş-şeytânir-racîm diyerek Haşr suresinin sonundaki üç ayeti okursa, Allah ona akşama kadar dua eden 70.000 melek görevlendirir; o gün ölürse şehit olarak ölür" hadisine dayanır (Tirmizî). Sabah namazından sonra, önce istiaze çekilip ardından üç ayet okunur.',
@@ -683,6 +703,8 @@ export const IBADETLER = [
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timingLabel: 'Sabah ve Akşam',
+    timeOrder: 1,
     description: 'Sabah ve akşam üçer kere okunması tavsiye edilen İhlas, Felak ve Nâs sureleri (Muavvizeteyn + İhlas).',
     summary:
       '"Sabah ve akşam bu üç sureyi üçer kere okuyan kişiye, her şeye karşı yeterli gelir" hadisine dayanır (Tirmizî, Ebû Dâvûd). Sabah namazından sonra ve akşam/yatmadan önce, her biri üçer kez okunur.',
@@ -709,6 +731,8 @@ Nâs: De ki: "Cinlerden ve insanlardan; insanların kalplerine vesvese veren sin
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timingLabel: 'Her Farz Namazdan Sonra',
+    timeOrder: 8,
     description: 'Bakara suresi 255. ayet; her gün, tercihen her farz namazdan sonra okunması tavsiye edilir.',
     summary:
       '"Her farz namazdan sonra Ayet-el Kürsî\'yi okuyan kimsenin cennete girmesine ölümden başka engel kalmaz" hadisine dayanır (Nesâî). Kur\'an\'ın en faziletli ayeti kabul edilir; günün herhangi bir vaktinde, özellikle farz namazların ardından okunur.',
@@ -723,6 +747,7 @@ Nâs: De ki: "Cinlerden ve insanlardan; insanların kalplerine vesvese veren sin
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timeOrder: 9,
     description: 'Günde 100 kere "Estağfirullah" denilerek yapılan istiğfar.',
     summary:
       '"Vallahi ben günde 100 kereden fazla Allah\'a istiğfar eder, tövbe ederim" hadisine dayanır (Buhârî). Günün herhangi bir vaktinde, 100 kere "Estağfirullah" denilerek çekilir.',
@@ -737,6 +762,7 @@ Nâs: De ki: "Cinlerden ve insanlardan; insanların kalplerine vesvese veren sin
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timeOrder: 9,
     description: 'Günde 100 kere "Sübhânallahi ve bihamdihî" denilerek yapılan tesbih.',
     summary:
       '"Kim günde 100 kere Sübhânallahi ve bihamdihî derse, günahları deniz köpüğü kadar çok olsa bile bağışlanır" hadisine dayanır (Buhârî, Müslim). Günün herhangi bir vaktinde 100 kere çekilir.',
@@ -751,6 +777,7 @@ Nâs: De ki: "Cinlerden ve insanlardan; insanların kalplerine vesvese veren sin
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timeOrder: 9,
     description: 'Günde 100 kere "Lâ ilâhe illallâhu vahdehû lâ şerîke leh..." denilerek yapılan tehlil.',
     summary:
       '"Kim günde 100 kere bunu söylerse, kendisi için 10 köle azat etmiş gibi sevap yazılır, 100 iyilik yazılır, 100 günahı silinir ve o gün akşama kadar şeytandan korunmuş olur" hadisine dayanır (Buhârî, Müslim). Günün herhangi bir vaktinde 100 kere çekilir.',
@@ -765,6 +792,7 @@ Nâs: De ki: "Cinlerden ve insanlardan; insanların kalplerine vesvese veren sin
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timeOrder: 9,
     description: 'Namazın son oturuşunda okunan Salli-Bârik duasının, namaz dışında da çokça tekrar edilmesi tavsiye edilen salavat metni.',
     summary:
       'Hz. Peygamber\'e salavat getirmenin Kur\'an\'da emredildiği (Ahzâb, 33/56) ve özellikle Cuma günleri çokça tekrarının tavsiye edildiği bir duadır. Namazın son oturuşunda okunduğu gibi, günün herhangi bir vaktinde de tekrarlanabilir.',
@@ -782,6 +810,7 @@ Allah'ım! İbrahim'e ve âline bereket verdiğin gibi Muhammed'e ve âline de b
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timeOrder: 9,
     description: 'Anadolu\'da yaygın olarak bilinen, kısa ve öz bir salavat; günün herhangi bir vaktinde tekrar edilir.',
     summary:
       'Hz. Peygamber\'in "ümmî" (okuma-yazma öğrenmemiş, bilgisi doğrudan vahiyle gelen) nübüvvet vasfını anan, Anadolu\'da rızık ve bereket niyetiyle de okunması yaygınlaşmış, kısa ve öz bir salavat şeklidir. Diğer salavatlar gibi günün herhangi bir vaktinde tekrar edilir; belirli bir hadis kaynağına dayanmaz, halk arasında yerleşmiş bir dua şeklidir.',
@@ -796,6 +825,7 @@ Allah'ım! İbrahim'e ve âline bereket verdiğin gibi Muhammed'e ve âline de b
     hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
     frequency: FREQUENCY.OPTIONAL_DAILY,
     gender: 'all',
+    timeOrder: 9,
     description:
       'Arefe günü sabah namazından Kurban Bayramı\'nın 4. günü ikindi namazına kadar, her farz namazın hemen ardından okunması Hanefi mezhebinde vaciptir; bu dönem dışında da nafile bir tekbir/zikir olarak günlük çekilebilir.',
     summary:

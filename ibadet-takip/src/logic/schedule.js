@@ -70,7 +70,18 @@ export function getTodaySchedule({ dateKey, settings, extraItems = [] }) {
     }
   }
 
-  return { required: groupForDisplay(required), optional, yearlyReminders };
+  return { required: groupForDisplay(required), optional: sortByTimeOfDay(optional), yearlyReminders };
+}
+
+// Nafile (opsiyonel) listesini, ibadetin `timeOrder` alanına göre (günün
+// erken vaktinden geç vaktine) sıralar. timeOrder tanımlı olmayan kayıtlar
+// listenin en sonuna, kendi aralarında orijinal sırayla düşer.
+function sortByTimeOfDay(items) {
+  return [...items].sort((a, b) => {
+    const orderA = a.timeOrder ?? Infinity;
+    const orderB = b.timeOrder ?? Infinity;
+    return orderA - orderB;
+  });
 }
 
 // Aynı vakte ait (aynı `group` alanına sahip) birden fazla kayıt varsa

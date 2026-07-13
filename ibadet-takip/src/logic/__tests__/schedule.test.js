@@ -147,6 +147,21 @@ describe('getTodaySchedule', () => {
     expect(flatIds(required)).not.toContain('zekat-mal');
   });
 
+  test('showNafile açıkken opsiyonel liste günün vaktine göre (timeOrder artan) sıralanır', () => {
+    // 2026-07-08 Çarşamba.
+    const settings = { ...baseSettings, showNafile: true };
+    const { optional } = getTodaySchedule({ dateKey: '2026-07-08', settings });
+    const orders = optional.map((i) => i.timeOrder ?? Infinity);
+    const sortedOrders = [...orders].sort((a, b) => a - b);
+    expect(orders).toEqual(sortedOrders);
+
+    const ids = optional.map((i) => i.id);
+    expect(ids.indexOf('namaz-kusluk')).toBeLessThan(ids.indexOf('namaz-evvabin'));
+    expect(ids.indexOf('namaz-evvabin')).toBeLessThan(ids.indexOf('zikir-mulk-suresi'));
+    expect(ids.indexOf('zikir-mulk-suresi')).toBeLessThan(ids.indexOf('namaz-teheccud'));
+    expect(ids.indexOf('namaz-teheccud')).toBeLessThan(ids.indexOf('zikir-istigfar'));
+  });
+
   test('extraItems (ilave ibadetler) frequency=daily ise zorunlu listeye dahil olur', () => {
     const custom = {
       id: 'custom-1',

@@ -51,6 +51,7 @@ export default function CategoriesScreen({ navigation }) {
                   >
                     <Text style={styles.itemTitle}>
                       {item.title}
+                      {item.timingLabel ? ` (${item.timingLabel})` : ''}
                       {item.custom ? ' 🔖' : ''}
                     </Text>
                     <HukumBadge hukum={item.hukum} />
