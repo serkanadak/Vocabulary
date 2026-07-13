@@ -35,12 +35,17 @@ export default function TripDetailScreen({ route, navigation }) {
       title: trip?.title || 'Seyahat',
       headerRight: () =>
         trip ? (
-          <Pressable onPress={() => setConfirmDelete(true)} hitSlop={10}>
-            <Text style={{ color: colors.danger, fontWeight: '700' }}>Sil</Text>
-          </Pressable>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+            <Pressable onPress={() => navigation.navigate('NewTrip', { tripId })} hitSlop={10}>
+              <Text style={{ color: colors.primary, fontWeight: '700' }}>Düzenle</Text>
+            </Pressable>
+            <Pressable onPress={() => setConfirmDelete(true)} hitSlop={10}>
+              <Text style={{ color: colors.danger, fontWeight: '700' }}>Sil</Text>
+            </Pressable>
+          </View>
         ) : null,
     });
-  }, [navigation, trip]);
+  }, [navigation, trip, tripId]);
 
   if (!trip) {
     return (
@@ -60,7 +65,10 @@ export default function TripDetailScreen({ route, navigation }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         {/* Özet başlık */}
-        <View style={styles.hero}>
+        <Pressable
+          style={({ pressed }) => [styles.hero, pressed && { opacity: 0.9 }]}
+          onPress={() => navigation.navigate('NewTrip', { tripId })}
+        >
           <View style={styles.heroTop}>
             <Text style={styles.heroVehicle}>
               {vehicle.icon} {vehicle.label}
@@ -81,7 +89,8 @@ export default function TripDetailScreen({ route, navigation }) {
               🗺️ {formatKm(route2.totalKm)} · ⏱️ {formatDuration(route2.totalHours)}
             </Text>
           ) : null}
-        </View>
+          <Text style={styles.heroEditHint}>✏️ Bilgileri düzenle</Text>
+        </Pressable>
 
         {/* Hazırlık */}
         <Text style={styles.sectionLabel}>HAZIRLIK</Text>
@@ -220,6 +229,7 @@ const styles = StyleSheet.create({
   heroVehicle: { color: colors.primary, fontSize: 15, fontWeight: '800' },
   heroDates: { color: colors.text, fontSize: 14, marginTop: 10 },
   heroRoute: { color: colors.textMuted, fontSize: 13, marginTop: 6 },
+  heroEditHint: { color: colors.primary, fontSize: 12, fontWeight: '700', marginTop: 12 },
   sectionLabel: {
     color: colors.textMuted,
     fontSize: 12,
