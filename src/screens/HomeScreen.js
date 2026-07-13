@@ -58,7 +58,7 @@ export default function HomeScreen({ navigation }) {
               İşletme · Ekonomi · İletişim — CEFR A1-C2 İngilizce kelime kartları
             </Text>
             <Text style={styles.version}>
-              Sürüm 1.4 · Ağ'a arama, seviye/durum ve rastgele kelime
+              Sürüm 1.5 · Ağ: seviye+durum filtreli rastgele kelime havuzu
             </Text>
 
             <View style={styles.statsRow}>

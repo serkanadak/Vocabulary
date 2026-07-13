@@ -3,20 +3,28 @@ import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Dimens
 import Svg, { Line, Circle, Text as SvgText } from 'react-native-svg';
 import { WORDS, getWord, searchWords } from '../data';
 import { useProgress } from '../state/ProgressContext';
-import { STATUS } from '../logic/srs';
-import { StatusPicker, LevelBadge } from '../components/common';
+import { LevelBadge } from '../components/common';
 import { buildNeighborhood, radialLayout, RELATION_COLORS, RELATION_LABELS } from '../logic/graph';
-import { colors } from '../theme';
+import { colors, LEVEL_COLORS, STATUS_META } from '../theme';
 
 const { width } = Dimensions.get('window');
 const SIZE = Math.min(width - 24, 360);
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+const STATUS_FILTERS = [
+  { key: 'unknown', label: 'Bilmiyorum' },
+  { key: 'passive', label: 'Pasif' },
+  { key: 'active', label: 'Aktif' },
+];
 
 // Kelime ilişki ağı görselleştirmesi (Özellik 6).
 export default function GraphScreen({ route, navigation }) {
   const initialId = route.params?.id || WORDS[0]?.id;
   const [centerId, setCenterId] = useState(initialId);
   const [query, setQuery] = useState('');
-  const { getProgress, setStatus } = useProgress();
+  // Rastgele seçim havuzunu belirleyen filtreler (boş = kısıtlama yok).
+  const [levels, setLevels] = useState([]);
+  const [statuses, setStatuses] = useState([]);
+  const { byId } = useProgress();
 
   // Başka ekrandan id ile gelindiğinde merkezi güncelle.
   useEffect(() => {
@@ -34,23 +42,39 @@ export default function GraphScreen({ route, navigation }) {
     return searchWords(query).slice(0, 8);
   }, [query]);
 
+  // Filtreye uyan rastgele-seçim havuzu (işaretsiz = bilmiyorum sayılır).
+  const pool = useMemo(() => {
+    return WORDS.filter((w) => {
+      if (levels.length && !levels.includes(w.level)) return false;
+      if (statuses.length) {
+        const s = byId[w.id]?.status || 'unknown';
+        if (!statuses.includes(s)) return false;
+      }
+      return true;
+    });
+  }, [levels, statuses, byId]);
+
   const goTo = (id) => {
     setCenterId(id);
     setQuery('');
   };
 
   const randomWord = () => {
-    const w = WORDS[Math.floor(Math.random() * WORDS.length)];
+    if (!pool.length) return;
+    const w = pool[Math.floor(Math.random() * pool.length)];
     if (w) goTo(w.id);
   };
 
-  const status = getProgress(centerId)?.status || STATUS.UNKNOWN;
+  const toggleLevel = (lvl) =>
+    setLevels((prev) => (prev.includes(lvl) ? prev.filter((l) => l !== lvl) : [...prev, lvl]));
+  const toggleStatus = (key) =>
+    setStatuses((prev) => (prev.includes(key) ? prev.filter((s) => s !== key) : [...prev, key]));
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 12 }} keyboardShouldPersistTaps="handled">
       <Text style={styles.title}>İlişki Ağı</Text>
 
-      {/* Arama + rastgele kelime */}
+      {/* Arama */}
       <View style={styles.searchRow}>
         <TextInput
           style={styles.search}
@@ -61,9 +85,6 @@ export default function GraphScreen({ route, navigation }) {
           autoCorrect={false}
           autoCapitalize="none"
         />
-        <TouchableOpacity style={styles.randomBtn} onPress={randomWord}>
-          <Text style={styles.randomBtnText}>🎲 Rastgele</Text>
-        </TouchableOpacity>
       </View>
 
       {suggestions.length > 0 && (
@@ -80,20 +101,51 @@ export default function GraphScreen({ route, navigation }) {
         </View>
       )}
 
-      <View style={styles.centerHead}>
-        <Text style={styles.subtitle}>
-          “{center?.headword}” kelimesinin eş/zıt anlam, kök ve ilişkili bağlantıları
-        </Text>
-        {!!centerWord && <LevelBadge level={centerWord.level} />}
+      {/* Rastgele seçim havuzu filtresi: seviye + durum */}
+      <Text style={styles.filterLabel}>🎲 Rastgele havuzu filtrele (seçim yapmazsan tümü):</Text>
+      <View style={styles.chips}>
+        {LEVELS.map((lvl) => {
+          const on = levels.includes(lvl);
+          return (
+            <TouchableOpacity
+              key={lvl}
+              style={[styles.chip, on && { backgroundColor: LEVEL_COLORS[lvl], borderColor: LEVEL_COLORS[lvl] }]}
+              onPress={() => toggleLevel(lvl)}
+            >
+              <Text style={[styles.chipText, on && { color: '#0f172a' }]}>{lvl}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+      <View style={styles.chips}>
+        {STATUS_FILTERS.map((s) => {
+          const on = statuses.includes(s.key);
+          const c = STATUS_META[s.key].color;
+          return (
+            <TouchableOpacity
+              key={s.key}
+              style={[styles.chip, on && { backgroundColor: c, borderColor: c }]}
+              onPress={() => toggleStatus(s.key)}
+            >
+              <Text style={[styles.chipText, on && { color: '#0f172a' }]}>{s.label}</Text>
+            </TouchableOpacity>
+          );
+        })}
       </View>
 
-      {/* Merkez kelimenin durumu: bilmiyorum / pasif / aktif */}
-      {!!centerWord && (
-        <View style={styles.statusWrap}>
-          <Text style={styles.statusTitle}>Bu kelimeyi:</Text>
-          <StatusPicker value={status} onChange={(s) => setStatus(centerId, s)} />
-        </View>
-      )}
+      <TouchableOpacity
+        style={[styles.randomBtn, !pool.length && styles.randomBtnDisabled]}
+        onPress={randomWord}
+        disabled={!pool.length}
+      >
+        <Text style={styles.randomBtnText}>
+          🎲 Havuzdan rastgele kelime ({pool.length.toLocaleString('tr-TR')})
+        </Text>
+      </TouchableOpacity>
+
+      <Text style={styles.subtitle}>
+        “{center?.headword}”{centerWord ? ` (${centerWord.level})` : ''} — eş/zıt anlam, kök ve ilişkili bağlantıları
+      </Text>
 
       <View style={styles.canvas}>
         <Svg width={SIZE} height={SIZE}>
@@ -212,13 +264,26 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
   },
+  filterLabel: { color: colors.textMuted, fontSize: 12, marginTop: 14, fontWeight: '600' },
+  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 },
+  chip: {
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  chipText: { color: colors.textMuted, fontWeight: '700', fontSize: 12 },
   randomBtn: {
+    marginTop: 12,
     backgroundColor: colors.primary,
     borderRadius: 12,
-    paddingHorizontal: 14,
+    paddingVertical: 12,
+    alignItems: 'center',
     justifyContent: 'center',
   },
-  randomBtnText: { color: '#0f172a', fontWeight: '800', fontSize: 13 },
+  randomBtnDisabled: { opacity: 0.4 },
+  randomBtnText: { color: '#0f172a', fontWeight: '800', fontSize: 14 },
   suggestBox: {
     marginTop: 8,
     backgroundColor: colors.surface,
@@ -238,10 +303,7 @@ const styles = StyleSheet.create({
   },
   suggestWord: { color: colors.text, fontWeight: '700', fontSize: 14 },
   suggestMeaning: { color: colors.textMuted, fontSize: 12, flex: 1 },
-  centerHead: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, flexWrap: 'wrap' },
-  subtitle: { color: colors.textMuted, flexShrink: 1 },
-  statusWrap: { marginTop: 10, marginBottom: 4 },
-  statusTitle: { color: colors.textMuted, marginBottom: 6, fontSize: 13 },
+  subtitle: { color: colors.textMuted, marginTop: 14, marginBottom: 4 },
   canvas: {
     alignItems: 'center',
     backgroundColor: colors.surface,
