@@ -784,6 +784,201 @@ export const PLACES = [
     sources: ['UNESCO World Heritage List — Historic Centre of Warsaw', 'Lonely Planet — Warsaw'],
   },
 
+  // ===================== AFRİKA — ŞEHİRLER =====================
+  // --- Mısır ---
+  {
+    id: 'kahire',
+    name: 'Kahire',
+    city: 'Cairo',
+    country: 'Mısır',
+    lat: 30.0444,
+    lng: 31.2357,
+    aliases: ['kahire', 'cairo', 'kahira', 'giza', 'gize'],
+    summary:
+      'Nil kıyısındaki uçsuz bucaksız Kahire, hemen yanı başındaki Giza Piramitleri ve Sfenks ile antik dünyanın tek ayakta kalan harikasına ev sahipliği yapar. Han el-Halili çarşısı, İslami Kahire’nin camileri ve dünyaca ünlü Mısır Müzesi ile firavunlardan bugüne uzanan bir tarih sunar.',
+    sources: ['UNESCO World Heritage List — Memphis and its Necropolis (Pyramids of Giza)', 'Lonely Planet — Cairo'],
+  },
+  {
+    id: 'luksor',
+    name: 'Luksor',
+    city: 'Luxor',
+    country: 'Mısır',
+    lat: 25.6872,
+    lng: 32.6396,
+    aliases: ['luksor', 'luxor', 'teb', 'thebes'],
+    summary:
+      'Antik Teb’in üzerine kurulu Luksor, “dünyanın en büyük açık hava müzesi” sayılır. Karnak ve Luksor tapınakları, Nil’in batı yakasındaki Krallar Vadisi ve Hatşepsut Tapınağı ile firavunların ihtişamını bugüne taşır.',
+    sources: ['UNESCO World Heritage List — Ancient Thebes with its Necropolis', 'Lonely Planet — Luxor'],
+  },
+  {
+    id: 'asvan',
+    name: 'Asvan',
+    city: 'Aswan',
+    country: 'Mısır',
+    lat: 24.0889,
+    lng: 32.8998,
+    aliases: ['asvan', 'aswan', 'assuan'],
+    summary:
+      'Nil’in en güzel manzaralarına sahip Asvan; feluka yelkenlileri, Philae Tapınağı ve adalarıyla huzurlu bir Nubya kentidir. Güneyindeki devasa Abu Simbel tapınakları bölgenin en görkemli hazinesidir.',
+    sources: ['UNESCO World Heritage List — Nubian Monuments from Abu Simbel to Philae', 'Lonely Planet — Aswan'],
+  },
+  {
+    id: 'iskenderiye',
+    name: 'İskenderiye',
+    city: 'Alexandria',
+    country: 'Mısır',
+    lat: 31.2001,
+    lng: 29.9187,
+    aliases: ['iskenderiye', 'alexandria', 'iskandariya'],
+    summary:
+      'Büyük İskender’in kurduğu Akdeniz kenti İskenderiye, antik dünyanın ünlü kütüphanesine ve deniz fenerine ev sahipliği yapmıştı. Bugün modern Bibliotheca Alexandrina, Kaitbay Kalesi ve yeraltı mezarlarıyla köklü geçmişini yaşatır.',
+    sources: ['Lonely Planet — Alexandria', 'Bibliotheca Alexandrina — resmi portal'],
+  },
+
+  // --- Fas ---
+  {
+    id: 'marakes',
+    name: 'Marakeş',
+    city: 'Marrakech',
+    country: 'Fas',
+    lat: 31.6295,
+    lng: -7.9811,
+    aliases: ['marakes', 'marakeş', 'marrakech', 'marrakesh'],
+    summary:
+      '“Kızıl Şehir” Marakeş, canlı Jemaa el-Fnaa meydanı, labirent souk’ları ve Koutoubia Camii’nin minaresiyle duyulara hitap eden bir Fas kentidir. Bahia Sarayı ve Majorelle Bahçesi gibi vahalarıyla renk ve dinginliği bir arada sunar.',
+    sources: ['UNESCO World Heritage List — Medina of Marrakesh', 'Lonely Planet — Marrakesh'],
+  },
+  {
+    id: 'fes',
+    name: 'Fes',
+    city: 'Fès',
+    country: 'Fas',
+    lat: 34.0181,
+    lng: -5.0078,
+    aliases: ['fes', 'fez', 'fès'],
+    summary:
+      'Fas’ın manevi ve kültürel başkenti Fes, dünyanın en büyük ve en iyi korunmuş ortaçağ medinalarından birine sahiptir (UNESCO). Dar dokuma sokakları, dünyanın en eski üniversitesi Al-Karaouine ve renkli Chouara tabakhanesiyle zamanda yolculuk yaşatır.',
+    sources: ['UNESCO World Heritage List — Medina of Fez', 'Lonely Planet — Fez'],
+  },
+  {
+    id: 'safsavan',
+    name: 'Şafşavan',
+    city: 'Chefchaouen',
+    country: 'Fas',
+    lat: 35.1688,
+    lng: -5.2636,
+    aliases: ['safsavan', 'şafşavan', 'chefchaouen', 'chaouen', 'mavi sehir'],
+    summary:
+      'Rif Dağları’na yaslanan Şafşavan, mavinin her tonuna boyanmış sokaklarıyla “Mavi Şehir” olarak ünlüdür. Fotojenik medinası ve dağ manzaralarıyla Fas’ın en sevilen kaçış noktalarından biridir.',
+    sources: ['Lonely Planet — Chefchaouen', 'Fas Turizm — Chefchaouen'],
+  },
+  {
+    id: 'kazablanka',
+    name: 'Kazablanka',
+    city: 'Casablanca',
+    country: 'Fas',
+    lat: 33.5731,
+    lng: -7.5898,
+    aliases: ['kazablanka', 'casablanca', 'dar el beida'],
+    summary:
+      'Fas’ın modern yüzü Kazablanka; denize uzanan devasa II. Hassan Camii, art deco mimarisi ve Corniche sahiliyle Atlantik kıyısında canlı bir metropoldür.',
+    sources: ['Lonely Planet — Casablanca', 'Fas Turizm — Casablanca'],
+  },
+
+  // --- Güney Afrika ---
+  {
+    id: 'capetown',
+    name: 'Cape Town',
+    city: 'Cape Town',
+    country: 'Güney Afrika',
+    lat: -33.9249,
+    lng: 18.4241,
+    aliases: ['cape town', 'capetown', 'kaapstad', 'kap sehri'],
+    summary:
+      'Table Mountain’ın eteğinde iki okyanusun buluştuğu Cape Town, dünyanın en güzel konumlu kentlerinden biridir. Ümit Burnu, V&A Waterfront, penguen kolonili plajlar ve şarap bağlarıyla doğa ve şehri kusursuz birleştirir.',
+    sources: ['UNESCO World Heritage List — Cape Floral Region', 'Lonely Planet — Cape Town'],
+  },
+  {
+    id: 'johannesburg',
+    name: 'Johannesburg',
+    city: 'Johannesburg',
+    country: 'Güney Afrika',
+    lat: -26.2041,
+    lng: 28.0473,
+    aliases: ['johannesburg', 'joburg', 'jozi'],
+    summary:
+      'Güney Afrika’nın en büyük kenti Johannesburg; Apartheid Müzesi, Mandela’nın izlerini taşıyan Soweto ve yakınındaki “İnsanlığın Beşiği” fosil alanlarıyla ülkenin tarihini ve dönüşümünü anlatır.',
+    sources: ['UNESCO World Heritage List — Fossil Hominid Sites (Cradle of Humankind)', 'Lonely Planet — Johannesburg'],
+  },
+
+  // --- Tanzanya ---
+  {
+    id: 'zanzibar',
+    name: 'Zanzibar (Stone Town)',
+    city: 'Zanzibar',
+    country: 'Tanzanya',
+    lat: -6.1659,
+    lng: 39.2026,
+    aliases: ['zanzibar', 'stone town', 'unguja'],
+    summary:
+      'Hint Okyanusu’nun baharat adası Zanzibar; Afrika, Arap ve Hint kültürlerinin kaynaştığı tarihî Stone Town (UNESCO), oymalı ahşap kapıları ve bembeyaz plajlarıyla büyüler.',
+    sources: ['UNESCO World Heritage List — Stone Town of Zanzibar', 'Lonely Planet — Zanzibar'],
+  },
+  {
+    id: 'arusha',
+    name: 'Arusha',
+    city: 'Arusha',
+    country: 'Tanzanya',
+    lat: -3.3869,
+    lng: 36.683,
+    aliases: ['arusha', 'serengeti', 'ngorongoro'],
+    summary:
+      'Kuzey Tanzanya safari turlarının kapısı Arusha; Serengeti Milli Parkı, Ngorongoro Krateri ve Kilimanjaro’ya açılan bir üstür. Büyük göç ve vahşi yaşamın kalbine buradan ulaşılır.',
+    sources: ['UNESCO World Heritage List — Serengeti National Park', 'Lonely Planet — Arusha'],
+  },
+
+  // --- Kenya ---
+  {
+    id: 'nairobi',
+    name: 'Nairobi',
+    city: 'Nairobi',
+    country: 'Kenya',
+    lat: -1.2921,
+    lng: 36.8219,
+    aliases: ['nairobi'],
+    summary:
+      'Kenya’nın başkenti Nairobi, şehrin hemen yanındaki milli parkta safari yapılabilen ender metropoldür. Fil yetimhanesi ve Zürafa Merkezi gibi deneyimlerle vahşi yaşamı kent hayatına taşır; Maasai Mara’ya açılan kapıdır.',
+    sources: ['Kenya Wildlife Service — Nairobi National Park', 'Lonely Planet — Nairobi'],
+  },
+
+  // --- Tunus ---
+  {
+    id: 'tunus',
+    name: 'Tunus',
+    city: 'Tunis',
+    country: 'Tunus',
+    lat: 36.8065,
+    lng: 10.1815,
+    aliases: ['tunus', 'tunis', 'kartaca', 'carthage'],
+    summary:
+      'Tunus’un başkenti; UNESCO listesindeki tarihî medinası, yakınındaki antik Kartaca kalıntıları ve mavi-beyaz Sidi Bou Said köyüyle Akdeniz, Arap ve Roma mirasını bir arada sunar. Bardo Müzesi eşsiz mozaik koleksiyonuyla ünlüdür.',
+    sources: ['UNESCO World Heritage List — Medina of Tunis / Carthage', 'Lonely Planet — Tunis'],
+  },
+
+  // --- Etiyopya ---
+  {
+    id: 'lalibela',
+    name: 'Lalibela',
+    city: 'Lalibela',
+    country: 'Etiyopya',
+    lat: 12.0319,
+    lng: 39.0413,
+    aliases: ['lalibela'],
+    summary:
+      'Etiyopya’nın kutsal kenti Lalibela, 12.-13. yüzyılda tek parça kayadan oyularak inşa edilen 11 anıtsal kilisesiyle dünyada eşi olmayan bir hac merkezidir (UNESCO). “Yeni Kudüs” olarak da anılır.',
+    sources: ['UNESCO World Heritage List — Rock-Hewn Churches, Lalibela', 'Lonely Planet — Lalibela'],
+  },
+
   {
     id: 'ayasofya',
     name: 'Ayasofya',

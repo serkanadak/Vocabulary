@@ -81,6 +81,104 @@ export const ATTRACTIONS = {
     { name: 'Tarihî Hanlar & Baklava', desc: 'Hanlar bölgesi ve dünyaca ünlü baklava durakları.' },
   ],
 
+  // --- Afrika ---
+  kahire: [
+    { name: 'Giza Piramitleri & Sfenks', desc: 'Antik dünyanın tek ayakta kalan harikası.' },
+    { name: 'Mısır Müzesi', desc: 'Tutankamon hazineleri ve mumyalar.' },
+    { name: 'Han el-Halili', desc: 'Asırlık, labirent gibi kapalı çarşı.' },
+    { name: 'Salahaddin Kalesi & Muhammed Ali Camii', desc: 'Şehre hâkim kale ve alabastr camii.' },
+    { name: 'Kıpti Kahire', desc: 'Asılı Kilise ve erken Hristiyanlık izleri.' },
+  ],
+  luksor: [
+    { name: 'Karnak Tapınağı', desc: 'Dev sütunlu salonuyla muazzam tapınak kompleksi.' },
+    { name: 'Luksor Tapınağı', desc: 'Nil kıyısında, geceleri aydınlatılan tapınak.' },
+    { name: 'Krallar Vadisi', desc: 'Firavun mezarları; Tutankamon.' },
+    { name: 'Hatşepsut Tapınağı', desc: 'Kayaya oyulmuş teraslı anıt tapınak.' },
+    { name: 'Sıcak Hava Balonu', desc: 'Gün doğumunda Teb üzerinde uçuş.' },
+  ],
+  asvan: [
+    { name: 'Philae Tapınağı', desc: 'Adaya taşınmış zarif İsis tapınağı.' },
+    { name: 'Abu Simbel', desc: 'II. Ramses’in dev kaya tapınakları (yakın).' },
+    { name: 'Feluka & Elephantine', desc: 'Nil’de yelkenli turu ve Nubya adası.' },
+    { name: 'Nubya Köyü', desc: 'Rengârenk evler ve yerel kültür.' },
+  ],
+  iskenderiye: [
+    { name: 'Bibliotheca Alexandrina', desc: 'Antik kütüphanenin modern halefi.' },
+    { name: 'Kaitbay Kalesi', desc: 'Antik deniz feneri yerindeki kale.' },
+    { name: 'Kom el-Shoqafa', desc: 'Roma-Mısır yeraltı mezarları.' },
+    { name: 'Pompey Sütunu', desc: 'Antik Serapeum’dan kalan dev sütun.' },
+  ],
+  marakes: [
+    { name: 'Jemaa el-Fnaa', desc: 'Göstericiler ve yemekçilerle canlı meydan.' },
+    { name: 'Koutoubia Camii', desc: 'Şehrin simgesi minare.' },
+    { name: 'Bahia Sarayı', desc: 'Bahçeli, süslü 19. yy sarayı.' },
+    { name: 'Majorelle Bahçesi', desc: 'YSL’nin mavi villası ve egzotik bahçe.' },
+    { name: 'Medina Souk’ları', desc: 'Baharat, halı ve el işi labirenti.' },
+  ],
+  fes: [
+    { name: 'Fes el-Bali Medina', desc: 'Arabasız, dünyanın en büyük medinalarından.' },
+    { name: 'Al-Karaouine', desc: 'Dünyanın en eski üniversitesi/camisi.' },
+    { name: 'Chouara Tabakhanesi', desc: 'Renkli boya çukurlarıyla asırlık deri işliği.' },
+    { name: 'Bab Bou Jeloud', desc: 'Mavi çinili anıtsal medina kapısı.' },
+    { name: 'Bou Inania Medresesi', desc: 'Zarif çini ve oyma işçilikli medrese.' },
+  ],
+  safsavan: [
+    { name: 'Mavi Medina Sokakları', desc: 'Mavinin tonlarına boyalı fotojenik sokaklar.' },
+    { name: 'Ras el-Maa Şelalesi', desc: 'Medina kenarında serin su başı.' },
+    { name: 'İspanyol Camii Manzarası', desc: 'Tepeden mavi şehir panoraması.' },
+    { name: 'Kasbah', desc: 'Meydandaki tarihî kale ve bahçe.' },
+  ],
+  kazablanka: [
+    { name: 'II. Hassan Camii', desc: 'Denize uzanan dev minareli görkemli camii.' },
+    { name: 'Corniche', desc: 'Atlantik kıyısı sahil şeridi.' },
+    { name: 'Eski Medina', desc: 'Geleneksel çarşı ve sokaklar.' },
+    { name: 'Place Mohammed V', desc: 'Art deco meydan ve fıskiyeler.' },
+  ],
+  capetown: [
+    { name: 'Table Mountain', desc: 'Teleferikle çıkılan düz tepeli simge dağ.' },
+    { name: 'Ümit Burnu', desc: 'İki okyanusun buluştuğu dramatik burun.' },
+    { name: 'V&A Waterfront', desc: 'Liman kenarı çarşı, kafe ve tekneler.' },
+    { name: 'Robben Island', desc: 'Mandela’nın hapsedildiği ada-müze.' },
+    { name: 'Boulders Plajı', desc: 'Afrika penguen kolonisi.' },
+    { name: 'Kirstenbosch', desc: 'Dağ eteğinde botanik bahçesi.' },
+  ],
+  johannesburg: [
+    { name: 'Apartheid Müzesi', desc: 'Ayrımcılık dönemini anlatan güçlü müze.' },
+    { name: 'Soweto & Mandela Evi', desc: 'Direnişin sembolü mahalle ve ev-müze.' },
+    { name: 'Constitution Hill', desc: 'Eski hapishane, bugün anayasa mahkemesi.' },
+    { name: 'Cradle of Humankind', desc: 'İnsanlığın beşiği fosil mağaraları (yakın).' },
+  ],
+  zanzibar: [
+    { name: 'Stone Town', desc: 'Oymalı kapılar, çarşılar ve tarihî sokaklar.' },
+    { name: 'Baharat Turu', desc: 'Karanfil, vanilya ve tarçın çiftlikleri.' },
+    { name: 'Prison Island', desc: 'Dev kaplumbağalar ve şnorkel.' },
+    { name: 'Nungwi & Kendwa Plajları', desc: 'Turkuaz su, beyaz kum, yelkenliler.' },
+  ],
+  arusha: [
+    { name: 'Serengeti Safari', desc: 'Büyük göç ve aslanlarıyla ünlü savan.' },
+    { name: 'Ngorongoro Krateri', desc: 'Vahşi yaşam dolu dev volkanik krater.' },
+    { name: 'Tarangire', desc: 'Filler ve baobab ağaçlarıyla park.' },
+    { name: 'Kilimanjaro Manzarası', desc: 'Afrika’nın çatısına açılan üs.' },
+  ],
+  nairobi: [
+    { name: 'Nairobi Milli Parkı', desc: 'Şehir siluetli safari deneyimi.' },
+    { name: 'Fil Yetimhanesi (Sheldrick)', desc: 'Yavru fillerin bakım merkezi.' },
+    { name: 'Zürafa Merkezi', desc: 'Nesli tehlikedeki zürafalarla buluşma.' },
+    { name: 'Karen Blixen Müzesi', desc: '“Benim Afrikam” yazarının çiftlik evi.' },
+  ],
+  tunus: [
+    { name: 'Kartaca (Carthage)', desc: 'Deniz kıyısı antik Kartaca kalıntıları.' },
+    { name: 'Sidi Bou Said', desc: 'Mavi-beyaz kayalık köy.' },
+    { name: 'Medina (UNESCO)', desc: 'Çarşıları ve camileriyle tarihî merkez.' },
+    { name: 'Bardo Müzesi', desc: 'Dünyanın en zengin mozaik koleksiyonlarından.' },
+  ],
+  lalibela: [
+    { name: 'Bete Giyorgis', desc: 'Haç planlı, tek kayadan oyma ünlü kilise.' },
+    { name: 'Bete Medhane Alem', desc: 'Dünyanın en büyük monolitik kilisesi.' },
+    { name: 'Kuzey Kilise Grubu', desc: 'Tünel ve avlularla bağlı kaya kiliseleri.' },
+    { name: 'Asheton Meryem Manastırı', desc: 'Dağ üstü manastır ve manzara.' },
+  ],
+
   // --- Avrupa ---
   paris: [
     { name: 'Eyfel Kulesi', desc: '330 m demir kule; Paris’in simgesi, seyir terasları.' },
