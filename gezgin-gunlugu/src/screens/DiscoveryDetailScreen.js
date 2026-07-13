@@ -1,11 +1,12 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import * as ImagePicker from 'expo-image-picker';
 import { useJournal } from '../state/JournalContext';
 import { ENRICH_SOURCE } from '../logic/enrich';
 import { formatLongDate } from '../logic/date';
 import { colors } from '../theme';
-import { Field, PrimaryButton, ConfirmModal, EmptyState, Pill } from '../components/common';
+import { Field, PrimaryButton, SecondaryButton, ConfirmModal, EmptyState, Pill } from '../components/common';
 
 const SOURCE_LABEL = {
   [ENRICH_SOURCE.LOCAL]: { label: 'Yerel arşiv', color: colors.success },
@@ -48,12 +49,43 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
     setEditing(false);
   };
 
+  const pickPhoto = async () => {
+    try {
+      const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (!perm.granted) return;
+      const res = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 0.7,
+      });
+      if (res.canceled || !res.assets?.length) return;
+      updateDiscovery(tripId, discoveryId, { photoUri: res.assets[0].uri });
+    } catch (e) {
+      // sessizce geç
+    }
+  };
+  const removePhoto = () => updateDiscovery(tripId, discoveryId, { photoUri: null });
+
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
-        {disc.photoUri ? <Image source={{ uri: disc.photoUri }} style={styles.photo} resizeMode="cover" /> : null}
+        {disc.photoUri ? (
+          <View>
+            <Image source={{ uri: disc.photoUri }} style={styles.photo} resizeMode="cover" />
+            <View style={styles.photoActions}>
+              <Pressable onPress={pickPhoto} hitSlop={8} style={styles.photoBtn}>
+                <Text style={styles.photoBtnText}>Değiştir</Text>
+              </Pressable>
+              <Pressable onPress={removePhoto} hitSlop={8} style={styles.photoBtn}>
+                <Text style={[styles.photoBtnText, { color: colors.danger }]}>Kaldır</Text>
+              </Pressable>
+            </View>
+          </View>
+        ) : null}
 
         <View style={styles.body}>
+          {!disc.photoUri ? (
+            <SecondaryButton title="📷 Fotoğraf ekle" onPress={pickPhoto} style={{ marginHorizontal: 0, marginBottom: 8 }} />
+          ) : null}
           <View style={styles.headerRow}>
             <Text style={styles.pin}>📍</Text>
             <View style={{ flex: 1 }}>
@@ -132,6 +164,20 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg },
   photo: { width: '100%', height: 240, backgroundColor: colors.surfaceAlt },
+  photoActions: {
+    position: 'absolute',
+    bottom: 8,
+    right: 8,
+    flexDirection: 'row',
+    gap: 8,
+  },
+  photoBtn: {
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  photoBtnText: { color: '#fff', fontSize: 12, fontWeight: '700' },
   body: { padding: 16 },
   headerRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 8 },
   pin: { fontSize: 20 },

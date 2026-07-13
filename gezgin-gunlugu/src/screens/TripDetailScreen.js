@@ -35,12 +35,17 @@ export default function TripDetailScreen({ route, navigation }) {
       title: trip?.title || 'Seyahat',
       headerRight: () =>
         trip ? (
-          <Pressable onPress={() => setConfirmDelete(true)} hitSlop={10}>
-            <Text style={{ color: colors.danger, fontWeight: '700' }}>Sil</Text>
-          </Pressable>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+            <Pressable onPress={() => navigation.navigate('NewTrip', { tripId })} hitSlop={10}>
+              <Text style={{ color: colors.primary, fontWeight: '700' }}>Düzenle</Text>
+            </Pressable>
+            <Pressable onPress={() => setConfirmDelete(true)} hitSlop={10}>
+              <Text style={{ color: colors.danger, fontWeight: '700' }}>Sil</Text>
+            </Pressable>
+          </View>
         ) : null,
     });
-  }, [navigation, trip]);
+  }, [navigation, trip, tripId]);
 
   if (!trip) {
     return (
@@ -60,7 +65,10 @@ export default function TripDetailScreen({ route, navigation }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         {/* Özet başlık */}
-        <View style={styles.hero}>
+        <Pressable
+          style={({ pressed }) => [styles.hero, pressed && { opacity: 0.9 }]}
+          onPress={() => navigation.navigate('NewTrip', { tripId })}
+        >
           <View style={styles.heroTop}>
             <Text style={styles.heroVehicle}>
               {vehicle.icon} {vehicle.label}
@@ -81,7 +89,8 @@ export default function TripDetailScreen({ route, navigation }) {
               🗺️ {formatKm(route2.totalKm)} · ⏱️ {formatDuration(route2.totalHours)}
             </Text>
           ) : null}
-        </View>
+          <Text style={styles.heroEditHint}>✏️ Bilgileri düzenle</Text>
+        </Pressable>
 
         {/* Hazırlık */}
         <Text style={styles.sectionLabel}>HAZIRLIK</Text>
@@ -113,44 +122,19 @@ export default function TripDetailScreen({ route, navigation }) {
           onPress={() => navigation.navigate('Route', { tripId })}
         />
 
-        {/* Günlük / Keşifler */}
-        <View style={styles.discHeader}>
-          <Text style={styles.sectionLabel}>GÜNLÜK · KEŞİFLER</Text>
-          <Pressable onPress={() => navigation.navigate('AddDiscovery', { tripId })} hitSlop={8}>
-            <Text style={styles.addLink}>＋ Keşif Ekle</Text>
-          </Pressable>
-        </View>
-
-        {sortedDisc.length === 0 ? (
-          <Card>
-            <Text style={styles.emptyDisc}>
-              Henüz keşif yok. Bir fotoğraf yükle veya konum ismi gir; tarihi/kültürel özetini oluşturayım.
-            </Text>
-            <Pressable style={styles.linkBtn} onPress={() => navigation.navigate('AddDiscovery', { tripId })}>
-              <Text style={styles.linkText}>İlk keşfi ekle →</Text>
-            </Pressable>
-          </Card>
-        ) : (
-          sortedDisc.map((d) => (
-            <Pressable
-              key={d.id}
-              onPress={() => navigation.navigate('DiscoveryDetail', { tripId, discoveryId: d.id })}
-              style={({ pressed }) => [styles.discCard, pressed && { opacity: 0.85 }]}
-            >
-              <Text style={styles.discIcon}>{d.photoUri ? '📷' : '📍'}</Text>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.discTitle} numberOfLines={1}>
-                  {d.placeName}
-                </Text>
-                <Text style={styles.discMeta}>
-                  {[d.city, d.country].filter(Boolean).join(', ') || '—'}
-                  {d.date ? ` · ${formatShortDate(d.date)}` : ''}
-                </Text>
-              </View>
-              <Text style={styles.chevron}>›</Text>
-            </Pressable>
-          ))
-        )}
+        {/* Günlük / Keşifler — detaylar keşif günlüğünün içinde */}
+        <Text style={styles.sectionLabel}>GÜNLÜK · KEŞİFLER</Text>
+        <NavCard
+          icon="🧭"
+          title="Keşif Günlüğü"
+          subtitle={
+            sortedDisc.length
+              ? `${sortedDisc.length} keşif · duraklara göre düzenle, fotoğraf & not ekle`
+              : 'Güzergah noktalarını aç, gezdiğin yerleri işaretle & ekle'
+          }
+          badge={sortedDisc.length || null}
+          onPress={() => navigation.navigate('DiscoveryHub', { tripId })}
+        />
 
         {/* Çıktılar */}
         <Text style={styles.sectionLabel}>SEYAHATİ BİTİR · ÇIKTILAR</Text>
@@ -220,6 +204,7 @@ const styles = StyleSheet.create({
   heroVehicle: { color: colors.primary, fontSize: 15, fontWeight: '800' },
   heroDates: { color: colors.text, fontSize: 14, marginTop: 10 },
   heroRoute: { color: colors.textMuted, fontSize: 13, marginTop: 6 },
+  heroEditHint: { color: colors.primary, fontSize: 12, fontWeight: '700', marginTop: 12 },
   sectionLabel: {
     color: colors.textMuted,
     fontSize: 12,
