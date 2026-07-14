@@ -2,7 +2,7 @@
 // keşifleri ile) ve genel ayarlar. AsyncStorage ile cihazda kalıcı saklanır.
 
 import React, { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { storageGet, storageSet } from '../logic/storage';
 import { createDefaultChecklist, createChecklistItem, dedupeChecklist } from '../data/checklist';
 import { DEFAULT_VEHICLE } from '../data/vehicles';
 import { todayKey } from '../logic/date';
@@ -159,7 +159,7 @@ export function JournalProvider({ children }) {
   useEffect(() => {
     (async () => {
       try {
-        const raw = await AsyncStorage.getItem(STORAGE_KEY);
+        const raw = await storageGet(STORAGE_KEY);
         dispatch({ type: 'HYDRATE', payload: raw ? JSON.parse(raw) : {} });
       } catch (e) {
         dispatch({ type: 'HYDRATE', payload: {} });
@@ -171,25 +171,11 @@ export function JournalProvider({ children }) {
     if (!state.loaded) return;
     (async () => {
       try {
-        await AsyncStorage.setItem(
-          STORAGE_KEY,
-          JSON.stringify({ trips: state.trips, settings: state.settings })
-        );
+        await storageSet(STORAGE_KEY, JSON.stringify({ trips: state.trips, settings: state.settings }));
       } catch (e) {
-        // Kota aşımı (ör. çok fotoğraf): en azından metin/mekan verisi kaybolmasın.
-        // Fotoğrafları düşürerek yeniden yaz; böylece duraklar/keşifler kalıcı olur.
-        try {
-          const lean = state.trips.map((t) => ({
-            ...t,
-            discoveries: (t.discoveries || []).map((d) => ({ ...d, photos: [], photoUri: null })),
-          }));
-          await AsyncStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify({ trips: lean, settings: state.settings })
-          );
-        } catch (e2) {
-          // yine olmadıysa sessiz geç (bellekteki durum çalışmaya devam eder)
-        }
+        // Yazılamadıysa (ör. depolama dolu) mevcut kayıt bozulmaz; bellekteki
+        // durum çalışmaya devam eder. Fotoğraflar artık IndexedDB'de tutulduğu
+        // için bu durum normal kullanımda görülmez.
       }
     })();
   }, [state.trips, state.settings, state.loaded]);
