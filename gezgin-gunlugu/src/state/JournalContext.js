@@ -169,9 +169,29 @@ export function JournalProvider({ children }) {
 
   useEffect(() => {
     if (!state.loaded) return;
-    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ trips: state.trips, settings: state.settings })).catch(
-      () => {}
-    );
+    (async () => {
+      try {
+        await AsyncStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({ trips: state.trips, settings: state.settings })
+        );
+      } catch (e) {
+        // Kota aşımı (ör. çok fotoğraf): en azından metin/mekan verisi kaybolmasın.
+        // Fotoğrafları düşürerek yeniden yaz; böylece duraklar/keşifler kalıcı olur.
+        try {
+          const lean = state.trips.map((t) => ({
+            ...t,
+            discoveries: (t.discoveries || []).map((d) => ({ ...d, photos: [], photoUri: null })),
+          }));
+          await AsyncStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify({ trips: lean, settings: state.settings })
+          );
+        } catch (e2) {
+          // yine olmadıysa sessiz geç (bellekteki durum çalışmaya devam eder)
+        }
+      }
+    })();
   }, [state.trips, state.settings, state.loaded]);
 
   const value = useMemo(() => {

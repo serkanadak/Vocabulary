@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Pressable, Image } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
 import { useJournal } from '../state/JournalContext';
+import { preparePhotos } from '../logic/imageStore';
 import { ENRICH_SOURCE } from '../logic/enrich';
 import { formatLongDate, isValidDateKey } from '../logic/date';
 import { colors } from '../theme';
@@ -91,7 +92,8 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
         selectionLimit: 0,
       });
       if (res.canceled || !res.assets?.length) return;
-      const next = [...photos, ...res.assets.map((a) => a.uri)];
+      const prepared = await preparePhotos(res.assets.map((a) => a.uri));
+      const next = [...photos, ...prepared];
       updateDiscovery(tripId, discoveryId, { photos: next, photoUri: next[0] || null });
     } catch (e) {
       // sessizce geç
