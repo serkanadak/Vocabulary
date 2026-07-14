@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Platform, Alert, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Clipboard from 'expo-clipboard';
 import { useJournal } from '../state/JournalContext';
 import { generateAlbumPlan, albumPlanToText } from '../logic/publish';
+import { exportAlbumPdf } from '../logic/albumHtml';
 import { colors } from '../theme';
 import { EmptyState } from '../components/common';
 
@@ -16,6 +17,7 @@ export default function AlbumScreen({ route }) {
   const { getTrip } = useJournal();
   const trip = getTrip(tripId);
   const [copied, setCopied] = useState(false);
+  const [pdfBusy, setPdfBusy] = useState(false);
 
   if (!trip) {
     return (
@@ -45,6 +47,30 @@ export default function AlbumScreen({ route }) {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const makePdf = async () => {
+    if (Platform.OS !== 'web') {
+      Alert.alert(
+        'PDF web sürümünde',
+        'Fotoğraflı PDF albümü, uygulamanın tarayıcı (web) sürümünde oluşturulur. Aynı seyahat linkini telefonun tarayıcısında açıp “📄 PDF olarak kaydet” diyebilirsin.'
+      );
+      return;
+    }
+    setPdfBusy(true);
+    try {
+      const res = await exportAlbumPdf(trip);
+      if (!res.ok && res.reason === 'popup') {
+        Alert.alert(
+          'Açılır pencere engellendi',
+          'PDF için yeni bir sekme açılması gerekiyor. Tarayıcının açılır pencere (popup) iznini verip tekrar dene.'
+        );
+      }
+    } catch (e) {
+      Alert.alert('PDF oluşturulamadı', 'Beklenmedik bir hata oluştu. Tekrar deneyebilirsin.');
+    } finally {
+      setPdfBusy(false);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
@@ -53,9 +79,20 @@ export default function AlbumScreen({ route }) {
           <Text style={styles.introSub}>
             {plan.discoveryCount} keşif · {plan.pages.length} sayfa · {plan.vehicle.icon} {plan.vehicle.label}
           </Text>
+          <Pressable style={[styles.pdfBtn, pdfBusy && { opacity: 0.7 }]} onPress={makePdf} disabled={pdfBusy}>
+            {pdfBusy ? (
+              <ActivityIndicator color="#0b1a2b" />
+            ) : (
+              <Text style={styles.pdfText}>📄 PDF olarak kaydet</Text>
+            )}
+          </Pressable>
           <Pressable style={styles.copyBtn} onPress={copyPlan}>
             <Text style={styles.copyText}>{copied ? '✓ Kopyalandı' : '📋 Planı metin olarak kopyala'}</Text>
           </Pressable>
+          <Text style={styles.pdfHint}>
+            PDF, fotoğrafların gömülü olarak baskıya hazır sayfalara dizilir; açılan pencerede “PDF olarak kaydet”i
+            seç. Her şey cihazında kalır.
+          </Text>
         </View>
 
         {/* Kapak */}
@@ -129,14 +166,27 @@ const styles = StyleSheet.create({
   },
   introTitle: { color: colors.text, fontSize: 18, fontWeight: '800' },
   introSub: { color: colors.textMuted, fontSize: 13, marginTop: 4 },
-  copyBtn: {
+  pdfBtn: {
     marginTop: 14,
     backgroundColor: colors.primary,
+    borderRadius: 10,
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 44,
+  },
+  pdfText: { color: '#0b1a2b', fontWeight: '800', fontSize: 15 },
+  copyBtn: {
+    marginTop: 10,
+    backgroundColor: colors.surfaceAlt,
+    borderWidth: 1,
+    borderColor: colors.border,
     borderRadius: 10,
     paddingVertical: 11,
     alignItems: 'center',
   },
-  copyText: { color: '#0b1a2b', fontWeight: '800', fontSize: 14 },
+  copyText: { color: colors.text, fontWeight: '700', fontSize: 14 },
+  pdfHint: { color: colors.textMuted, fontSize: 12, lineHeight: 17, marginTop: 10 },
   stage: {
     color: colors.textMuted,
     fontSize: 12,

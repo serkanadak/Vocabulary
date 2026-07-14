@@ -1418,6 +1418,64 @@ export const ATTRACTIONS = {
     { name: 'Deniz Müzesi', desc: 'Boka denizciliğinin tarihini anlatan saray-müze.' },
     { name: 'Our Lady of the Rocks', desc: 'Perast açığında yapay ada kilisesi (tekneyle, yakın).' },
   ],
+
+  // --- Arnavutluk & İtalya & Yunanistan rota ek şehirleri ---
+  tiran: [
+    { name: 'Skanderbeg Meydanı', desc: 'Kentin kalbindeki geniş meydan; atlı ulusal kahraman heykeli.' },
+    { name: 'Et’hem Bey Camii', desc: 'Freskli, zarif 18.-19. yy Osmanlı camii.' },
+    { name: 'Bunk’Art', desc: 'Devasa komünizm dönemi sığınağından dönüşen tarih/sanat müzesi.' },
+    { name: 'Dajti Dağı Teleferiği', desc: 'Şehre panoramik bakış için Balkanların uzun teleferiklerinden.' },
+    { name: 'Piramit (Piramida)', desc: 'Enver Hoxha anıtından dönüşen ikonik brütalist yapı.' },
+  ],
+  shkoder: [
+    { name: 'Rozafa Kalesi', desc: 'Göl, nehir ve ovaya hâkim efsanevi tepedeki kale.' },
+    { name: 'Marubi Fotoğraf Müzesi', desc: 'Balkanların en eski fotoğraf arşivlerinden.' },
+    { name: 'Shkodra Gölü', desc: 'Balkanların en büyük gölünde tekne ve kuş gözlemi.' },
+    { name: 'Kurşunlu (Lead) Camii', desc: 'Göl kenarında kurşun kubbeli tarihî camii.' },
+  ],
+  lezhe: [
+    { name: 'Skanderbeg Anıt-Mezarı', desc: 'Ulusal kahramanın gömülü olduğu kilise-anıt.' },
+    { name: 'Lezha (Lissus) Kalesi', desc: 'İliryalılardan kalma, kente hâkim tepedeki kale.' },
+    { name: 'Antik Lissus Kalıntıları', desc: 'Surları ve kalıntılarıyla antik kent.' },
+  ],
+  trieste: [
+    { name: 'Piazza Unità d’Italia', desc: 'Denize açılan, Avrupa’nın en büyük deniz kıyısı meydanlarından.' },
+    { name: 'Miramare Şatosu', desc: 'Deniz kıyısında bahçeli, beyaz masalsı şato.' },
+    { name: 'Canal Grande & Borsa', desc: 'Kanal boyu neoklasik cepheler ve kafeler.' },
+    { name: 'San Giusto Kalesi & Katedrali', desc: 'Tepeden kent ve körfez panoraması.' },
+    { name: 'Tarihî Kahvehaneler', desc: 'Trieste’nin ünlü kahve kültürü (Caffè San Marco vb.).' },
+  ],
+  treviso: [
+    { name: 'Piazza dei Signori', desc: 'Palazzo dei Trecento’nun çevrelediği tarihî ana meydan.' },
+    { name: 'Su Kanalları & Buranelli', desc: '“Küçük Venedik” denen kanal kıyısı sokaklar.' },
+    { name: 'Şehir Surları & Kapıları', desc: 'Venedik dönemi surları ve anıtsal kapılar.' },
+    { name: 'Prosecco Yolu', desc: 'UNESCO bağ tepeleri ve köpüklü şarap tadımı (yakın).' },
+  ],
+  pisa: [
+    { name: 'Eğik Kule', desc: 'Dünyaca ünlü, yana yatık çan kulesi; tırmanılabilir.' },
+    { name: 'Piazza dei Miracoli', desc: 'Katedral, kule ve vaftizhaneyi barındıran “Mucizeler Meydanı”; UNESCO.' },
+    { name: 'Duomo & Vaftizhane', desc: 'Görkemli mermer katedral ve akustiğiyle ünlü vaftizhane.' },
+    { name: 'Camposanto', desc: 'Anıtsal mezarlık ve freskler.' },
+    { name: 'Arno Rıhtımı & Lungarni', desc: 'Nehir boyu renkli cepheler ve Santa Maria della Spina.' },
+  ],
+  bari: [
+    { name: 'Bari Vecchia', desc: 'Labirent sokaklarında el yapımı orecchiette makarnası yapan kadınlar.' },
+    { name: 'San Nicola Bazilikası', desc: 'Aziz Nikolaos’un (Noel Baba) emanetlerini barındıran hac kilisesi.' },
+    { name: 'Svevo Kalesi', desc: 'II. Frederick’in denize bakan Norman-Sveb kalesi.' },
+    { name: 'Lungomare & Liman', desc: 'Uzun sahil bulvarı ve Adriyatik feribot limanı.' },
+  ],
+  kavala: [
+    { name: 'Panagia Eski Mahallesi', desc: 'Yarımadada renkli evler, dar sokaklar ve deniz manzarası.' },
+    { name: 'Kamares Su Kemeri', desc: 'Kenti aşan görkemli tarihî su kemeri.' },
+    { name: 'İmaret (Mehmet Ali Paşa Külliyesi)', desc: 'Kubbeleriyle dikkat çeken Osmanlı külliyesi (bugün otel).' },
+    { name: 'Mehmet Ali Paşa’nın Evi', desc: 'Kavala doğumlu paşanın korunmuş konağı ve atlı heykeli.' },
+    { name: 'Kavala Kalesi', desc: 'Yarımadanın tepesinden liman ve şehir panoraması.' },
+  ],
+  igumenitsa: [
+    { name: 'Feribot Limanı', desc: 'İtalya (Bari/Brindisi) ve Korfu’ya açılan ana geçiş noktası.' },
+    { name: 'Drepano Plajı', desc: 'Kente yakın uzun kumsal ve sığ berrak su.' },
+    { name: 'Syvota Koyları', desc: 'Turkuaz koyları ve adacıklarıyla ünlü sahil (yakın).' },
+  ],
 };
 
 export function attractionsFor(placeId) {
