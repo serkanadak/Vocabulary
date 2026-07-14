@@ -2337,6 +2337,17 @@ export const PLACES = [
       'Karadağ Ulusal Turizm Örgütü (Montenegro.travel) — Kotor',
     ],
   },
+
+  // --- Arnavutluk & İtalya & Yunanistan rota ek şehirleri ---
+  { id: 'tiran', name: 'Tiran', city: 'Tiran', country: 'Arnavutluk', lat: 41.3275, lng: 19.8187, aliases: ['tiran', 'tirana'], summary: 'Arnavutluk’un renkli başkenti Tiran; Skanderbeg Meydanı, Et’hem Bey Camii, komünizm dönemi sığınağı Bunk’Art ve Dajti Dağı teleferiğiyle bilinir.', sources: ['Arnavutluk Ulusal Turizm Ajansı — Tiran', 'Lonely Planet — Tirana'] },
+  { id: 'shkoder', name: 'İşkodra (Shkodër)', city: 'İşkodra', country: 'Arnavutluk', lat: 42.0685, lng: 19.5126, aliases: ['shkoder', 'shkodër', 'iskodra', 'işkodra', 'scutari', 'skadar'], summary: 'Arnavutluk’un en eski kentlerinden İşkodra; göle ve nehirlere hâkim Rozafa Kalesi, Marubi Fotoğraf Müzesi ve bisiklet kültürüyle öne çıkar.', sources: ['Arnavutluk Ulusal Turizm Ajansı — Shkodër'] },
+  { id: 'lezhe', name: 'Lezhë (Lesh)', city: 'Lezhë', country: 'Arnavutluk', lat: 41.7836, lng: 19.6436, aliases: ['lezhe', 'lezhë', 'lesh', 'leş', 'alessio'], summary: 'Kuzey Arnavutluk’ta tarihî Lezhë (Lesh); ulusal kahraman Skanderbeg’in mezar-anıtının bulunduğu kilise ve tepedeki kalesiyle bilinir.', sources: ['Arnavutluk Ulusal Turizm Ajansı — Lezhë'] },
+  { id: 'trieste', name: 'Trieste', city: 'Trieste', country: 'İtalya', lat: 45.6495, lng: 13.7768, aliases: ['trieste', 'triyeste', 'tergeste'], summary: 'Adriyatik kıyısında, Orta Avrupa esintili Trieste; denize açılan dev Piazza Unità d’Italia, Miramare Şatosu ve tarihî kahvehaneleriyle bilinir.', sources: ['Italia.it — Trieste'] },
+  { id: 'treviso', name: 'Treviso', city: 'Treviso', country: 'İtalya', lat: 45.6669, lng: 12.2431, aliases: ['treviso'], summary: 'Venedik’in hemen kuzeyindeki Treviso; su kanalları, Piazza dei Signori ve Prosecco bağlarına açılan konumuyla şirin bir İtalyan kentidir.', sources: ['Italia.it — Treviso'] },
+  { id: 'pisa', name: 'Pisa', city: 'Pisa', country: 'İtalya', lat: 43.7228, lng: 10.3966, aliases: ['pisa'], summary: 'Toskana’daki Pisa; Piazza dei Miracoli’de yükselen dünyaca ünlü Eğik Kule, katedrali ve vaftizhanesiyle (UNESCO) bir cazibe merkezidir.', sources: ['UNESCO World Heritage List — Piazza del Duomo, Pisa'] },
+  { id: 'bari', name: 'Bari', city: 'Bari', country: 'İtalya', lat: 41.1171, lng: 16.8719, aliases: ['bari'], summary: 'Güney İtalya Puglia’nın başkenti Bari; labirent sokaklı Bari Vecchia, Aziz Nikolaos’un (Noel Baba) emanetlerini barındıran bazilika ve Adriyatik feribot limanıyla bilinir.', sources: ['Italia.it — Bari'] },
+  { id: 'igumenitsa', name: 'İgumenitsa', city: 'İgumenitsa', country: 'Yunanistan', lat: 39.504, lng: 20.266, aliases: ['igumenitsa', 'igoumenitsa', 'igoumenitza', 'lgumemiça', 'igumenice'], summary: 'Yunanistan’ın kuzeybatısındaki liman kenti İgumenitsa; İtalya ve Korfu feribotlarının kalkış noktası, çevresindeki koy ve plajlarıyla bir geçiş durağıdır.', sources: ['Visit Greece — Igoumenitsa'] },
+  { id: 'kavala', name: 'Kavala', city: 'Kavala', country: 'Yunanistan', lat: 40.9397, lng: 24.4019, aliases: ['kavala', 'kavála', 'neapolis'], summary: 'Kuzey Yunanistan’ın liman kenti Kavala; yamaçtaki Panagia eski mahallesi, kemerli Kamares su kemeri, Mehmet Ali Paşa’nın doğduğu ev ve İmaret külliyesiyle güçlü Osmanlı izleri taşır.', sources: ['Visit Greece — Kavala'] },
 ];
 
 // Basit normalleştirme: küçük harf + Türkçe/aksan sadeleştirme + boşluk temizliği.
