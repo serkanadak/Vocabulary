@@ -18,12 +18,23 @@ function esc(s) {
 }
 
 // Bir görseli tarayıcıda küçültüp JPEG data URI'ye çevirir.
-// Cross-origin/erişilemeyen görsellerde orijinal uri veya null döner (güvenli).
+// Yüklenemez/taint olursa ORİJİNAL uri döner (asla null); böylece PDF'te en
+// azından görsel gömülü kalır. Yalnızca uzak (http) görsellerde crossOrigin
+// kullanılır — blob:/data: URL'lerde crossOrigin bazı tarayıcılarda yüklemeyi
+// bozar, o yüzden atlanır.
 function downscale(uri, maxPx = 1400, quality = 0.72) {
   return new Promise((resolve) => {
+    if (!uri) return resolve(null);
+    let done = false;
+    const finish = (v) => {
+      if (!done) {
+        done = true;
+        resolve(v);
+      }
+    };
     try {
       const img = new window.Image();
-      img.crossOrigin = 'anonymous';
+      if (/^https?:/i.test(uri)) img.crossOrigin = 'anonymous';
       img.onload = () => {
         try {
           const scale = Math.min(1, maxPx / Math.max(img.width || 1, img.height || 1));
@@ -34,15 +45,16 @@ function downscale(uri, maxPx = 1400, quality = 0.72) {
           canvas.height = h;
           const ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, w, h);
-          resolve(canvas.toDataURL('image/jpeg', quality));
+          finish(canvas.toDataURL('image/jpeg', quality));
         } catch (e) {
-          resolve(uri); // tainted canvas → orijinali kullan
+          finish(uri); // tainted canvas → orijinali göm
         }
       };
-      img.onerror = () => resolve(null);
+      img.onerror = () => finish(uri); // yüklenemedi → orijinali dene
       img.src = uri;
+      setTimeout(() => finish(uri), 6000); // güvenlik zaman aşımı
     } catch (e) {
-      resolve(null);
+      finish(uri);
     }
   });
 }
@@ -173,7 +185,7 @@ export async function exportAlbumPdf(trip) {
   win.document.open();
   win.document.write(html);
   win.document.close();
-  const trigger = () => {
+  const doPrint = () => {
     try {
       win.focus();
       win.print();
@@ -181,8 +193,18 @@ export async function exportAlbumPdf(trip) {
       // kullanıcı sekmeden elle yazdırabilir
     }
   };
-  // Görseller data URI olduğundan yükleme hızlı; yine de yerleşime kısa süre tanı.
-  if (win.document.readyState === 'complete') setTimeout(trigger, 400);
-  else win.onload = () => setTimeout(trigger, 400);
+  // Tüm görseller yüklenene (veya kısa bir üst sınıra) kadar bekle, sonra yazdır.
+  const waitImages = () => {
+    const imgs = Array.from(win.document.images || []);
+    const start = Date.now();
+    const tick = () => {
+      const allDone = imgs.every((im) => im.complete);
+      if (allDone || Date.now() - start > 6000) setTimeout(doPrint, 250);
+      else win.setTimeout(tick, 150);
+    };
+    tick();
+  };
+  if (win.document.readyState === 'complete') waitImages();
+  else win.onload = waitImages;
   return { ok: true };
 }
