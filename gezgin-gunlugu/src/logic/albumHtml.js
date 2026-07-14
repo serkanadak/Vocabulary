@@ -217,13 +217,13 @@ export async function buildAlbumHtml(trip) {
     <h2>Giriş</h2>
     <div class="intro-text">${esc(plan.intro.text)}</div>
   </section>
-  ${journalSections || '<section class="page"><div class="intro-text">Henüz keşif eklenmemiş.</div></section>'}
   <section class="page">
     <h2>Seyahat Haritası</h2>
     ${routeSvg ? `<div class="mapbox">${routeSvg}</div>` : ''}
     <div class="route">${routeText}</div>
     ${totalDist ? `<div class="dist">Toplam mesafe: ${totalDist}</div>` : ''}
   </section>
+  ${journalSections || '<section class="page"><div class="intro-text">Henüz keşif eklenmemiş.</div></section>'}
 </body></html>`;
 }
 
