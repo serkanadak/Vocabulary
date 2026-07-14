@@ -1476,6 +1476,20 @@ export const ATTRACTIONS = {
     { name: 'Drepano Plajı', desc: 'Kente yakın uzun kumsal ve sığ berrak su.' },
     { name: 'Syvota Koyları', desc: 'Turkuaz koyları ve adacıklarıyla ünlü sahil (yakın).' },
   ],
+  ljubljana: [
+    { name: 'Ljubljana Kalesi', desc: 'Fünikülerle çıkılan, şehre panoramik ortaçağ kalesi.' },
+    { name: 'Üç Köprü & Prešeren Meydanı', desc: 'Plečnik’in üçlü köprüsü ve pembe kilisenin meydanı.' },
+    { name: 'Ejderha Köprüsü', desc: 'Kentin simgesi ejderha heykelli art nouveau köprü.' },
+    { name: 'Merkez Pazar (Plečnik Kolonadı)', desc: 'Nehir kıyısı üstü kapalı çarşı ve yerel ürünler.' },
+    { name: 'Tivoli Parkı', desc: 'Şehrin en büyük yeşil alanı, yürüyüş yolları.' },
+  ],
+  bled: [
+    { name: 'Bled Adası & Meryem Kilisesi', desc: 'Göl ortasındaki adaya pletna teknesiyle geçiş; dilek çanı.' },
+    { name: 'Bled Kalesi', desc: 'Uçurumda, göle ve Alplere hâkim ortaçağ kalesi.' },
+    { name: 'Pletna Tekne Turu', desc: 'Geleneksel kürekli tekneyle göl gezisi.' },
+    { name: 'Vintgar Boğazı', desc: 'Ahşap patikalarla turkuaz nehir kanyonu (yakın).' },
+    { name: 'Bled Kreması (Kremšnita)', desc: 'Göl kıyısında meşhur kremalı pasta molası.' },
+  ],
 };
 
 export function attractionsFor(placeId) {
