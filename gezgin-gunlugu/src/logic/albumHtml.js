@@ -52,33 +52,52 @@ export function buildAlbumHtml(trip) {
     }
   }
 
-  // Güzergah sırasına göre mekan blokları; durak değişince başlık eklenir.
-  let lastGroup;
-  const blocks = ranked
-    .map(({ d }) => {
-      const inStop = d.stopId && stopOrder.has(d.stopId);
-      const groupKey = inStop ? d.stopId : '__free__';
-      let header = '';
-      if (groupKey !== lastGroup) {
-        lastGroup = groupKey;
-        const title = inStop ? `${stopOrder.get(groupKey) + 1}. ${stopName.get(groupKey)}` : 'Rota dışı · Diğer';
-        header = `<div class="stop-head">🗺️ ${esc(title)}</div>`;
-      }
-      const loc = [d.city, d.country].filter(Boolean).join(', ');
-      const photos = photosOf(d);
-      const photoHtml = photos.length
-        ? `<div class="photos">${photos.map((src) => `<img src="${src}" />`).join('')}</div>`
-        : '';
-      return (
-        `${header}<div class="place">` +
-        `<div class="place-title">${esc(d.placeName)}${d.date ? ` <span class="place-date">${esc(formatLongDate(d.date))}</span>` : ''}</div>` +
-        (loc ? `<div class="place-loc">${esc(loc)}</div>` : '') +
-        (d.summary ? `<div class="place-summary">${esc(d.summary)}</div>` : '') +
-        (d.userNotes ? `<div class="place-note">✍️ ${esc(d.userNotes)}</div>` : '') +
-        photoHtml +
-        `</div>`
-      );
-    })
+  // Keşifleri güzergah sırasına göre gruplandır (her durak ayrı bir grup).
+  const groups = [];
+  let cur = null;
+  for (const { d } of ranked) {
+    const inStop = d.stopId && stopOrder.has(d.stopId);
+    const key = inStop ? d.stopId : '__free__';
+    if (!cur || cur.key !== key) {
+      cur = {
+        key,
+        title: inStop ? `${stopOrder.get(key) + 1}. ${stopName.get(key)}` : 'Rota dışı · Diğer',
+        items: [],
+      };
+      groups.push(cur);
+    }
+    cur.items.push(d);
+  }
+
+  const placeBlock = (d) => {
+    const loc = [d.city, d.country].filter(Boolean).join(', ');
+    const photos = photosOf(d);
+    const solo = photos.length === 1 ? ' solo' : '';
+    const photoHtml = photos.length
+      ? `<div class="photos">${photos
+          .map((src) => `<figure class="ph${solo}"><img src="${src}" /></figure>`)
+          .join('')}</div>`
+      : '';
+    return (
+      `<div class="place">` +
+      `<div class="place-title">${esc(d.placeName)}${d.date ? ` <span class="place-date">${esc(formatLongDate(d.date))}</span>` : ''}</div>` +
+      (loc ? `<div class="place-loc">${esc(loc)}</div>` : '') +
+      (d.summary ? `<div class="place-summary">${esc(d.summary)}</div>` : '') +
+      (d.userNotes ? `<div class="place-note">✍️ ${esc(d.userNotes)}</div>` : '') +
+      photoHtml +
+      `</div>`
+    );
+  };
+
+  // Her durak (güzergah) YENİ SAYFADAN başlar → ayrı .page section.
+  const journalSections = groups
+    .map(
+      (g) =>
+        `<section class="page stop-section">` +
+        `<div class="stop-head">🗺️ ${esc(g.title)}</div>` +
+        g.items.map(placeBlock).join('') +
+        `</section>`
+    )
     .join('');
 
   const routeText = esc(plan.mapPage.routeText || '');
@@ -112,17 +131,20 @@ export function buildAlbumHtml(trip) {
   h2 { font-size: 13px; letter-spacing: 1px; color: #9aa4ad; text-transform: uppercase; margin: 0 0 10px; }
   .intro-text { font-size: 15px; line-height: 1.6; }
   .stop-head { font-size: 20px; font-weight: 800; color: #0b3a5b; border-bottom: 2px solid #0b3a5b;
-    padding-bottom: 5px; margin: 22px 0 12px; page-break-after: avoid; }
-  .stop-head:first-child { margin-top: 0; }
-  .place { margin-bottom: 18px; page-break-inside: avoid; }
-  .place-title { font-size: 17px; font-weight: 700; }
+    padding-bottom: 5px; margin: 0 0 14px; page-break-after: avoid; break-after: avoid; }
+  .place { margin-bottom: 16px; }
+  .place-title { font-size: 17px; font-weight: 700; break-after: avoid; page-break-after: avoid; }
   .place-title .place-date { font-weight: 400; color: #7a8791; font-size: 13px; }
   .place-loc { font-size: 13px; color: #7a8791; margin-top: 1px; }
   .place-summary { font-size: 13.5px; line-height: 1.55; color: #33404b; margin-top: 6px; }
   .place-note { font-size: 13px; color: #55636e; font-style: italic; margin-top: 5px; }
-  .photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 10px; }
-  .photos img { width: 100%; height: auto; border-radius: 4px; page-break-inside: avoid; }
-  .photos img:only-child { grid-column: 1 / -1; max-height: 170mm; object-fit: contain; }
+  /* İki sütunlu paketleme; her fotoğraf tek parça — bölünmeden sığmıyorsa
+     komple sonraki sayfaya geçer. */
+  .photos { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: flex-start; }
+  .ph { flex: 0 1 calc(50% - 3px); margin: 0; break-inside: avoid; page-break-inside: avoid; }
+  .ph.solo { flex-basis: 100%; }
+  .ph img { width: 100%; height: auto; max-height: 235mm; object-fit: contain; border-radius: 4px; display: block; }
+  .ph.solo img { max-height: 210mm; }
   .mapbox { width: 100%; margin-bottom: 14px; }
   .mapbox svg { width: 100%; height: auto; border: 1px solid #e6ebf0; border-radius: 8px; }
   .route { font-size: 15px; font-weight: 600; line-height: 1.6; }
@@ -144,9 +166,7 @@ export function buildAlbumHtml(trip) {
     <h2>Giriş</h2>
     <div class="intro-text">${esc(plan.intro.text)}</div>
   </section>
-  <section class="page">
-    ${blocks || '<div class="intro-text">Henüz keşif eklenmemiş.</div>'}
-  </section>
+  ${journalSections || '<section class="page"><div class="intro-text">Henüz keşif eklenmemiş.</div></section>'}
   <section class="page">
     <h2>Seyahat Haritası</h2>
     ${routeSvg ? `<div class="mapbox">${routeSvg}</div>` : ''}
