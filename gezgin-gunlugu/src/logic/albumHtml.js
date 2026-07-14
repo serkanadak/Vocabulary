@@ -1,10 +1,11 @@
 // Uygulama içi PDF albüm üretimi (web).
-// Baskıya hazır tek parça (self-contained) bir HTML belge üretir. Fotoğraflar
-// AYNEN (elleçlenmeden) gömülür — seçim anında zaten küçültülüp kalıcı data
-// URI'ye çevrildikleri için burada tekrar işlenmez; bu, PDF'te görünmeme
-// sorununu ortadan kaldırır. Belge internetsiz çalışır, cihazda kalır.
-// Düzen: güzergah sırasıyla her ziyaret edilen mekanın bilgisi + ardından
-// o mekanın fotoğrafları; sonra sıradaki mekan.
+// Baskıya hazır tek parça (self-contained) HTML üretir. Fotoğraflar AYNEN
+// gömülür (yeniden kodlanmaz); yalnızca en/boy oranları ölçülüp düzen için
+// kullanılır. Düzen: güzergah sırasıyla her durak YENİ SAYFADAN başlar; her
+// mekanın bilgisi + ardından fotoğrafları. Fotoğraflar yönüne göre gruplanır
+// (önce yatay, sonra dik) ve ikişerli, bölünmez satırlar hâlinde dizilir;
+// böylece bir foto sayfada yarıda kesilmez, sığmıyorsa komple sonraki sayfaya
+// geçer.
 import { generateAlbumPlan } from './publish';
 import { buildRouteSvg } from './routeMap';
 import { formatLongDate } from './date';
@@ -18,6 +19,25 @@ function esc(s) {
   return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
+}
+
+// Bir görselin doğal boyutunu ölçer (yeniden kodlamaz). Ölçülemezse null.
+function imgSize(uri) {
+  return new Promise((resolve) => {
+    if (!uri || typeof window === 'undefined') {
+      resolve(null);
+      return;
+    }
+    try {
+      const img = new window.Image();
+      img.onload = () => resolve({ w: img.naturalWidth || img.width || 1, h: img.naturalHeight || img.height || 1 });
+      img.onerror = () => resolve(null);
+      img.src = uri;
+      setTimeout(() => resolve(null), 6000);
+    } catch (e) {
+      resolve(null);
+    }
+  });
 }
 
 // Keşifleri güzergah sırasına diz: durak sırasına göre, rota dışı olanlar en
@@ -35,24 +55,47 @@ function orderByRoute(trip) {
     .sort((a, b) => a.rank - b.rank || a.idx - b.idx);
 }
 
-export function buildAlbumHtml(trip) {
+// Aynı yöndeki fotoğrafları ikişerli, bölünmez satırlara dizer.
+function rowsHtml(list, orient) {
+  let out = '';
+  for (let i = 0; i < list.length; i += 2) {
+    const pair = list.slice(i, i + 2);
+    out += `<div class="prow ${orient}">${pair.map((src) => `<figure class="ph"><img src="${src}" /></figure>`).join('')}</div>`;
+  }
+  return out;
+}
+
+export async function buildAlbumHtml(trip) {
   const plan = generateAlbumPlan(trip);
   const stops = trip.stops || [];
   const stopOrder = new Map(stops.map((s, i) => [s.id, i]));
   const stopName = new Map(stops.map((s) => [s.id, s.name]));
   const ranked = orderByRoute(trip);
 
-  // Kapak görseli: sırayla ilk fotoğraflı keşif.
-  let coverImg = null;
-  for (const { d } of ranked) {
-    const ph = photosOf(d);
-    if (ph.length) {
-      coverImg = ph[0];
-      break;
+  // Tüm fotoğrafların yönünü (dik/yatay) ölç.
+  const allPhotos = [];
+  for (const { d } of ranked) for (const p of photosOf(d)) allPhotos.push(p);
+  const sizes = await Promise.all(allPhotos.map(imgSize));
+  const orient = new Map();
+  allPhotos.forEach((p, i) => {
+    const s = sizes[i];
+    orient.set(p, s && s.h > s.w * 1.05 ? 'port' : 'land');
+  });
+
+  // Kapak görseli: kullanıcı seçtiyse onu kullan (hâlâ mevcutsa), yoksa sırayla
+  // ilk fotoğraflı keşif.
+  let coverImg = trip.coverPhoto && allPhotos.includes(trip.coverPhoto) ? trip.coverPhoto : null;
+  if (!coverImg) {
+    for (const { d } of ranked) {
+      const ph = photosOf(d);
+      if (ph.length) {
+        coverImg = ph[0];
+        break;
+      }
     }
   }
 
-  // Keşifleri güzergah sırasına göre gruplandır (her durak ayrı bir grup).
+  // Keşifleri güzergah sırasına göre gruplandır (her durak ayrı grup).
   const groups = [];
   let cur = null;
   for (const { d } of ranked) {
@@ -72,12 +115,15 @@ export function buildAlbumHtml(trip) {
   const placeBlock = (d) => {
     const loc = [d.city, d.country].filter(Boolean).join(', ');
     const photos = photosOf(d);
-    const solo = photos.length === 1 ? ' solo' : '';
-    const photoHtml = photos.length
-      ? `<div class="photos">${photos
-          .map((src) => `<figure class="ph${solo}"><img src="${src}" /></figure>`)
-          .join('')}</div>`
-      : '';
+    let photoHtml = '';
+    if (photos.length === 1) {
+      const o = orient.get(photos[0]) || 'land';
+      photoHtml = `<div class="photos"><div class="prow ${o} solo"><figure class="ph"><img src="${photos[0]}" /></figure></div></div>`;
+    } else if (photos.length) {
+      const land = photos.filter((p) => (orient.get(p) || 'land') === 'land');
+      const port = photos.filter((p) => orient.get(p) === 'port');
+      photoHtml = `<div class="photos">${rowsHtml(land, 'land')}${rowsHtml(port, 'port')}</div>`;
+    }
     return (
       `<div class="place">` +
       `<div class="place-title">${esc(d.placeName)}${d.date ? ` <span class="place-date">${esc(formatLongDate(d.date))}</span>` : ''}</div>` +
@@ -138,13 +184,18 @@ export function buildAlbumHtml(trip) {
   .place-loc { font-size: 13px; color: #7a8791; margin-top: 1px; }
   .place-summary { font-size: 13.5px; line-height: 1.55; color: #33404b; margin-top: 6px; }
   .place-note { font-size: 13px; color: #55636e; font-style: italic; margin-top: 5px; }
-  /* İki sütunlu paketleme; her fotoğraf tek parça — bölünmeden sığmıyorsa
-     komple sonraki sayfaya geçer. */
-  .photos { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: flex-start; }
-  .ph { flex: 0 1 calc(50% - 3px); margin: 0; break-inside: avoid; page-break-inside: avoid; }
-  .ph.solo { flex-basis: 100%; }
-  .ph img { width: 100%; height: auto; max-height: 235mm; object-fit: contain; border-radius: 4px; display: block; }
-  .ph.solo img { max-height: 210mm; }
+  /* Fotoğraflar: yöne göre gruplanır; her SATIR (2 foto) bölünmez ve yüksekliği
+     bir sayfayı aşmaz → sığmazsa komple sonraki sayfaya iner. */
+  .photos { margin-top: 10px; }
+  .prow { display: flex; gap: 6px; margin-top: 6px; align-items: flex-start;
+    break-inside: avoid; page-break-inside: avoid; }
+  .prow figure.ph { flex: 0 1 calc(50% - 3px); margin: 0; }
+  .prow.solo figure.ph { flex-basis: 100%; }
+  .prow img { width: 100%; height: auto; object-fit: contain; border-radius: 4px; display: block; }
+  .prow.land img { max-height: 105mm; }
+  .prow.port img { max-height: 150mm; }
+  .prow.solo.land img { max-height: 150mm; }
+  .prow.solo.port img { max-height: 210mm; }
   .mapbox { width: 100%; margin-bottom: 14px; }
   .mapbox svg { width: 100%; height: auto; border: 1px solid #e6ebf0; border-radius: 8px; }
   .route { font-size: 15px; font-weight: 600; line-height: 1.6; }
@@ -223,8 +274,7 @@ function printViaIframe(html) {
 
 // Web'de albümü yazdır/PDF olarak kaydet diyaloğunu açar.
 // ÖNEMLİ: açılır pencere, kullanıcı tıklamasıyla aynı anda (await'ten ÖNCE)
-// açılmalı; yoksa tarayıcı engeller. Bu yüzden pencereyi hemen açar, albümü
-// hazırladıktan sonra içine yazarız. Engellenirse iframe'e düşeriz.
+// açılmalı; yoksa tarayıcı engeller.
 export async function exportAlbumPdf(trip) {
   let win = null;
   try {
@@ -243,7 +293,7 @@ export async function exportAlbumPdf(trip) {
     }
   }
 
-  const html = buildAlbumHtml(trip);
+  const html = await buildAlbumHtml(trip);
 
   if (win && !win.closed) {
     try {

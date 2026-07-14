@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, Platform, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Platform, Alert, ActivityIndicator, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Clipboard from 'expo-clipboard';
 import { useJournal } from '../state/JournalContext';
@@ -8,13 +8,22 @@ import { exportAlbumPdf } from '../logic/albumHtml';
 import { colors } from '../theme';
 import { EmptyState } from '../components/common';
 
+function tripPhotos(trip) {
+  const out = [];
+  for (const d of trip.discoveries || []) {
+    const arr = Array.isArray(d.photos) && d.photos.length ? d.photos : d.photoUri ? [d.photoUri] : [];
+    for (const p of arr) if (p && !out.includes(p)) out.push(p);
+  }
+  return out;
+}
+
 function Block({ children, style }) {
   return <View style={[styles.block, style]}>{children}</View>;
 }
 
 export default function AlbumScreen({ route }) {
   const { tripId } = route.params;
-  const { getTrip } = useJournal();
+  const { getTrip, updateTrip } = useJournal();
   const trip = getTrip(tripId);
   const [copied, setCopied] = useState(false);
   const [pdfBusy, setPdfBusy] = useState(false);
@@ -40,6 +49,7 @@ export default function AlbumScreen({ route }) {
   }
 
   const plan = generateAlbumPlan(trip);
+  const photos = tripPhotos(trip);
 
   const copyPlan = async () => {
     await Clipboard.setStringAsync(albumPlanToText(trip));
@@ -94,6 +104,40 @@ export default function AlbumScreen({ route }) {
             seç. Her şey cihazında kalır.
           </Text>
         </View>
+
+        {/* Kapak fotoğrafı seçimi */}
+        {photos.length ? (
+          <>
+            <Text style={styles.stage}>KAPAK FOTOĞRAFI</Text>
+            <View style={styles.coverPick}>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingRight: 8 }}>
+                <Pressable
+                  onPress={() => updateTrip(tripId, { coverPhoto: null })}
+                  style={[styles.coverAuto, !trip.coverPhoto && styles.coverSelected]}
+                >
+                  <Text style={styles.coverAutoText}>Otomatik</Text>
+                </Pressable>
+                {photos.map((uri) => (
+                  <Pressable
+                    key={uri}
+                    onPress={() => updateTrip(tripId, { coverPhoto: uri })}
+                    style={[styles.coverThumbWrap, trip.coverPhoto === uri && styles.coverSelected]}
+                  >
+                    <Image source={{ uri }} style={styles.coverThumb} resizeMode="cover" />
+                    {trip.coverPhoto === uri ? (
+                      <View style={styles.coverCheck}>
+                        <Text style={styles.coverCheckText}>✓</Text>
+                      </View>
+                    ) : null}
+                  </Pressable>
+                ))}
+              </ScrollView>
+              <Text style={styles.coverHint}>
+                Albüm kapağında görünecek fotoğrafı seç. “Otomatik”: güzergahtaki ilk fotoğraf.
+              </Text>
+            </View>
+          </>
+        ) : null}
 
         {/* Kapak */}
         <Text style={styles.stage}>KAPAK</Text>
@@ -187,6 +231,34 @@ const styles = StyleSheet.create({
   },
   copyText: { color: colors.text, fontWeight: '700', fontSize: 14 },
   pdfHint: { color: colors.textMuted, fontSize: 12, lineHeight: 17, marginTop: 10 },
+  coverPick: { marginHorizontal: 16 },
+  coverThumbWrap: { borderRadius: 10, overflow: 'hidden', borderWidth: 2, borderColor: 'transparent' },
+  coverThumb: { width: 84, height: 84, backgroundColor: colors.surfaceAlt },
+  coverSelected: { borderColor: colors.primary },
+  coverCheck: {
+    position: 'absolute',
+    top: 4,
+    right: 4,
+    backgroundColor: colors.primary,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  coverCheckText: { color: '#0b1a2b', fontWeight: '800', fontSize: 13 },
+  coverAuto: {
+    width: 84,
+    height: 84,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: 'transparent',
+    backgroundColor: colors.surfaceAlt,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  coverAutoText: { color: colors.textMuted, fontSize: 13, fontWeight: '700' },
+  coverHint: { color: colors.textMuted, fontSize: 12, lineHeight: 17, marginTop: 8 },
   stage: {
     color: colors.textMuted,
     fontSize: 12,
