@@ -76,6 +76,24 @@ export async function storageGet(key) {
   return AsyncStorage.getItem(key);
 }
 
+// Tarayıcının verdiği depolama tahmini (kullanılan/kota, bayt). Web dışında null.
+export async function storageEstimate() {
+  if (
+    Platform.OS === 'web' &&
+    typeof navigator !== 'undefined' &&
+    navigator.storage &&
+    typeof navigator.storage.estimate === 'function'
+  ) {
+    try {
+      const e = await navigator.storage.estimate();
+      return { usage: e.usage || 0, quota: e.quota || 0 };
+    } catch (err) {
+      return null;
+    }
+  }
+  return null;
+}
+
 export async function storageSet(key, val) {
   if (idbAvailable()) {
     try {
