@@ -192,34 +192,86 @@ export async function buildAlbumHtml(trip) {
 </body></html>`;
 }
 
-// Web'de albümü yeni sekmede açıp yazdır/PDF olarak kaydet diyaloğunu tetikler.
-export async function exportAlbumPdf(trip) {
-  const html = await buildAlbumHtml(trip);
-  const win = window.open('', '_blank');
-  if (!win) return { ok: false, reason: 'popup' };
-  win.document.open();
-  win.document.write(html);
-  win.document.close();
+// Bir belge (yeni sekme ya da iframe) içindeki görseller yüklenince yazdırır.
+function printWhenReady(targetWin, targetDoc, onDone) {
   const doPrint = () => {
     try {
-      win.focus();
-      win.print();
+      targetWin.focus();
+      targetWin.print();
     } catch (e) {
-      // kullanıcı sekmeden elle yazdırabilir
+      // kullanıcı elle yazdırabilir
     }
+    if (onDone) setTimeout(onDone, 1000);
   };
-  // Tüm görseller yüklenene (veya kısa bir üst sınıra) kadar bekle, sonra yazdır.
-  const waitImages = () => {
-    const imgs = Array.from(win.document.images || []);
-    const start = Date.now();
-    const tick = () => {
-      const allDone = imgs.every((im) => im.complete);
-      if (allDone || Date.now() - start > 6000) setTimeout(doPrint, 250);
-      else win.setTimeout(tick, 150);
-    };
-    tick();
+  const start = Date.now();
+  const tick = () => {
+    const imgs = Array.from(targetDoc.images || []);
+    if (imgs.every((im) => im.complete) || Date.now() - start > 6000) setTimeout(doPrint, 300);
+    else setTimeout(tick, 150);
   };
-  if (win.document.readyState === 'complete') waitImages();
-  else win.onload = waitImages;
-  return { ok: true };
+  if (targetDoc.readyState === 'complete') tick();
+  else targetWin.onload = tick;
+}
+
+// Popup engellenirse gizli iframe ile yazdır (açılır pencere gerektirmez).
+function printViaIframe(html) {
+  try {
+    const iframe = window.document.createElement('iframe');
+    iframe.setAttribute('aria-hidden', 'true');
+    iframe.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;';
+    window.document.body.appendChild(iframe);
+    const doc = iframe.contentWindow.document;
+    doc.open();
+    doc.write(html);
+    doc.close();
+    printWhenReady(iframe.contentWindow, doc, () => {
+      try {
+        window.document.body.removeChild(iframe);
+      } catch (e) {
+        // yok say
+      }
+    });
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+// Web'de albümü yazdır/PDF olarak kaydet diyaloğunu açar.
+// ÖNEMLİ: açılır pencere, kullanıcı tıklamasıyla aynı anda (await'ten ÖNCE)
+// açılmalı; yoksa tarayıcı engeller. Bu yüzden pencereyi hemen açar, albümü
+// hazırladıktan sonra içine yazarız. Engellenirse iframe'e düşeriz.
+export async function exportAlbumPdf(trip) {
+  let win = null;
+  try {
+    win = window.open('', '_blank');
+  } catch (e) {
+    win = null;
+  }
+  if (win) {
+    try {
+      win.document.write(
+        '<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Albüm hazırlanıyor…</title></head>' +
+          '<body style="font-family:sans-serif;padding:24px;color:#333">📖 Albüm hazırlanıyor…</body></html>'
+      );
+    } catch (e) {
+      // yok say
+    }
+  }
+
+  const html = await buildAlbumHtml(trip);
+
+  if (win && !win.closed) {
+    try {
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+      printWhenReady(win, win.document);
+      return { ok: true };
+    } catch (e) {
+      // popup yazımı başarısız → iframe dene
+    }
+  }
+
+  return printViaIframe(html) ? { ok: true, fallback: 'iframe' } : { ok: false, reason: 'popup' };
 }
