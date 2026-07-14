@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Image, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { VEHICLES, getVehicle } from '../data/vehicles';
@@ -7,9 +7,36 @@ import { computeRoute, formatKm, formatDuration, hasCoords } from '../logic/geo'
 import { fetchRoadKm } from '../logic/roadRoute';
 import { matchPlace } from '../data/places';
 import { attractionsFor, attractionToDiscovery } from '../data/attractions';
+import { routeSvgDataUri, mappableStopCount } from '../logic/routeMap';
 import { todayKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { ChipPicker, ConfirmModal, EmptyState } from '../components/common';
+
+// Güzergah haritası (koyu tema paletiyle) — koordinatlı duraklar SVG üzerinde.
+function RouteMap({ stops }) {
+  const { width } = useWindowDimensions();
+  if (mappableStopCount(stops) < 2) return null;
+  const W = Math.min(width - 32, 560);
+  const H = Math.round(W * 0.62);
+  const uri = routeSvgDataUri(stops, {
+    W: 620,
+    H: 380,
+    bg: colors.surface,
+    grid: colors.surfaceAlt,
+    line: colors.accent,
+    dot: colors.primary,
+    dotStroke: colors.bg,
+    dotText: colors.bg,
+    text: colors.text,
+  });
+  if (!uri) return null;
+  return (
+    <View style={styles.mapWrap}>
+      <Image source={{ uri }} style={{ width: W, height: H, borderRadius: 12 }} resizeMode="contain" />
+      <Text style={styles.mapHint}>Duraklar sırasıyla; numaralar durak sırasını gösterir (şematik harita).</Text>
+    </View>
+  );
+}
 
 // Bir durağın şehrindeki önemli mekanları açılır liste olarak gösterir; her biri
 // tek dokunuşla keşfe eklenebilir. Zaten eklenmişse "Eklendi" olarak işaretlenir.
@@ -158,6 +185,8 @@ export default function RouteScreen({ route, navigation }) {
           </View>
         ) : null}
 
+        <RouteMap stops={stops} />
+
         {result.hasAny ? (
           <Text style={styles.sourceBadge}>
             {usingRoad
@@ -288,6 +317,8 @@ const styles = StyleSheet.create({
   totalItem: { flex: 1, alignItems: 'center' },
   totalNum: { color: colors.primary, fontSize: 18, fontWeight: '800' },
   totalLabel: { color: colors.textMuted, fontSize: 11, marginTop: 4 },
+  mapWrap: { alignItems: 'center', marginTop: 16, marginHorizontal: 16 },
+  mapHint: { color: colors.textMuted, fontSize: 11, marginTop: 6, textAlign: 'center' },
   timeline: { marginTop: 16 },
   stopRow: {
     flexDirection: 'row',
