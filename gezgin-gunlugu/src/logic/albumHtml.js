@@ -125,9 +125,9 @@ export async function buildAlbumHtml(trip) {
   const routeSvg = buildRouteSvg(trip.stops || [], {
     W: 620,
     H: 380,
-    bg: '#f7f9fb',
-    grid: '#e6ebf0',
-    line: '#0b3a5b',
+    sea: '#dceaf5',
+    land: '#eef3ea',
+    line: '#c0392b',
     dot: '#f5a623',
     dotStroke: '#0b3a5b',
     dotText: '#0b3a5b',

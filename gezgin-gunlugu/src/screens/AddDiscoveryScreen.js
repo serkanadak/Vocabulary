@@ -5,6 +5,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useJournal } from '../state/JournalContext';
 import { enrichPlace, ENRICH_SOURCE } from '../logic/enrich';
 import { exifDateKey, exifCoords } from '../logic/exif';
+import { preparePhotos } from '../logic/imageStore';
 import { todayKey, formatLongDate } from '../logic/date';
 import { colors } from '../theme';
 import { Card, Field, PrimaryButton, SecondaryButton, SectionHeader, Pill } from '../components/common';
@@ -51,14 +52,16 @@ export default function AddDiscoveryScreen({ route, navigation }) {
         selectionLimit: 0,
       });
       if (res.canceled || !res.assets?.length) return;
-      setPhotos((prev) => [...prev, ...res.assets.map((a) => a.uri)]);
-      // İlk uygun fotoğrafın meta verisinden tarih/konum al (henüz yoksa).
+      // Meta veriyi (tarih/konum) küçültmeden önce orijinal asset'lerden oku.
       for (const a of res.assets) {
         const coords = exifCoords(a.exif);
         const date = exifDateKey(a.exif);
         if (coords && !photoCoords) setPhotoCoords(coords);
         if (date && !photoDate) setPhotoDate(date);
       }
+      // Kalıcı/gömülebilir hâle getir (web'de küçültülmüş data URI).
+      const prepared = await preparePhotos(res.assets.map((a) => a.uri));
+      setPhotos((prev) => [...prev, ...prepared]);
     } catch (e) {
       // sessizce geç — kullanıcı elle konum girebilir
     }
