@@ -741,6 +741,19 @@ Nâs: De ki: "Cinlerden ve insanlardan; insanların kalplerine vesvese veren sin
     translation: `Allah, kendisinden başka hiçbir ilâh olmayandır. Diridir, kayyûmdur. O'nu ne bir uyuklama tutabilir, ne de bir uyku. Göklerdeki her şey, yerdeki her şey O'nundur. İzni olmaksızın O'nun katında şefaat edecek kimdir? O, kulların önlerindekileri ve arkalarındakileri bilir. O'nun ilminden, kendisinin dilediği kadarından başka hiçbir şeyi kavrayamazlar. O'nun kürsüsü, bütün gökleri ve yeri kaplayıp kuşatmıştır. Gökleri ve yeri koruyup gözetmek O'na güç gelmez. O, yücedir, büyüktür.`,
   },
   {
+    id: 'zikir-gunluk-kuran-okuma',
+    title: 'Günlük Kur\'an Okuma',
+    category: CATEGORY.ZIKIR,
+    hukum: HUKUM.SUNNET_GAYRIMUEKKEDE,
+    frequency: FREQUENCY.OPTIONAL_DAILY,
+    gender: 'all',
+    timeOrder: 9,
+    description:
+      'Sabit bir sureye/ayete bağlı olmayan, günün herhangi bir vaktinde kendi seçtiğin bir bölümü (bir sayfa, birkaç ayet veya bir cüz) okuyarak yerine getirilen günlük Kur\'an okuma alışkanlığı.',
+    summary:
+      '"Kur\'an okuyunuz; çünkü o, kıyamet günü kendisini okuyanlara şefaatçi olarak gelecektir" hadisine dayanan (Müslim), düzenli okumayı teşvik eden bir nafiledir. Sabit bir metni yoktur; günün herhangi bir vaktinde, kendi belirlediğin bir miktar (ör. bir sayfa, birkaç ayet veya bir cüz) okunarak yerine getirilir; zamanla hatim tamamlamak için de bir alışkanlık oluşturur.',
+  },
+  {
     id: 'zikir-istigfar',
     title: 'İstiğfar (100 Kere)',
     category: CATEGORY.ZIKIR,
