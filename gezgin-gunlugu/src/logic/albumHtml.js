@@ -4,6 +4,7 @@
 // küçültülüp data URI olarak gömülür; böylece belge internetsiz, cihazda kalır.
 // Kullanıcı yazdır → "PDF olarak kaydet" ile gerçek PDF alır.
 import { generateAlbumPlan } from './publish';
+import { buildRouteSvg } from './routeMap';
 import { formatLongDate } from './date';
 
 function photosOf(d) {
@@ -121,6 +122,17 @@ export async function buildAlbumHtml(trip) {
 
   const routeText = esc(plan.mapPage.routeText || '');
   const totalDist = plan.mapPage.totalDistance ? esc(plan.mapPage.totalDistance) : '';
+  const routeSvg = buildRouteSvg(trip.stops || [], {
+    W: 620,
+    H: 380,
+    bg: '#f7f9fb',
+    grid: '#e6ebf0',
+    line: '#0b3a5b',
+    dot: '#f5a623',
+    dotStroke: '#0b3a5b',
+    dotText: '#0b3a5b',
+    text: '#14202b',
+  });
 
   return `<!doctype html><html lang="tr"><head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -149,6 +161,8 @@ export async function buildAlbumHtml(trip) {
   .entry-title .loc { font-weight: 400; color: #7a8791; font-size: 13px; }
   .entry-summary { font-size: 13px; line-height: 1.5; color: #33404b; margin-top: 3px; }
   .entry-note { font-size: 13px; color: #55636e; font-style: italic; margin-top: 4px; }
+  .mapbox { width: 100%; margin-bottom: 14px; }
+  .mapbox svg { width: 100%; height: auto; border: 1px solid #e6ebf0; border-radius: 8px; }
   .route { font-size: 15px; font-weight: 600; line-height: 1.6; }
   .dist { font-size: 13px; color: #7a8791; margin-top: 6px; }
   @media print {
@@ -171,6 +185,7 @@ export async function buildAlbumHtml(trip) {
   ${dayPages}
   <section class="page">
     <h2>Seyahat Haritası</h2>
+    ${routeSvg ? `<div class="mapbox">${routeSvg}</div>` : ''}
     <div class="route">${routeText}</div>
     ${totalDist ? `<div class="dist">Toplam mesafe: ${totalDist}</div>` : ''}
   </section>
