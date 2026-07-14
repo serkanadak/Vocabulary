@@ -1,15 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { PLACES } from '../data/places';
+import { storageEstimate } from '../logic/storage';
 import { colors } from '../theme';
-import { Card, Field, ChipPicker, SectionHeader } from '../components/common';
+import { Card, Field, ChipPicker, SectionHeader, ProgressBar } from '../components/common';
+
+function fmtBytes(n) {
+  if (!n) return '0 MB';
+  const mb = n / 1048576;
+  if (mb >= 1024) return `${(mb / 1024).toFixed(2)} GB`;
+  return `${mb.toFixed(mb < 10 ? 1 : 0)} MB`;
+}
+
+function photoCountOf(trips) {
+  let n = 0;
+  for (const t of trips) {
+    for (const d of t.discoveries || []) {
+      const arr = Array.isArray(d.photos) && d.photos.length ? d.photos : d.photoUri ? [d.photoUri] : [];
+      n += arr.length;
+    }
+  }
+  return n;
+}
 
 export default function SettingsScreen() {
   const { settings, updateSettings, trips } = useJournal();
 
   const totalDiscoveries = trips.reduce((n, t) => n + (t.discoveries || []).length, 0);
+  const photoCount = photoCountOf(trips);
+
+  const [storage, setStorage] = useState(undefined); // undefined: yükleniyor, null: yok
+  useEffect(() => {
+    let alive = true;
+    storageEstimate().then((e) => {
+      if (alive) setStorage(e);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [photoCount, totalDiscoveries]);
+
+  const ratio = storage && storage.quota ? Math.min(1, storage.usage / storage.quota) : 0;
+  const barColor = ratio > 0.9 ? colors.danger : ratio > 0.7 ? colors.primary : colors.success;
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -100,6 +134,39 @@ export default function SettingsScreen() {
             </Card>
           </>
         ) : null}
+
+        <SectionHeader title="Depolama" subtitle="Fotoğraflar ve tüm veriler yalnızca bu cihazda tutulur." />
+        <Card>
+          {storage === undefined ? (
+            <Text style={styles.hint}>Depolama bilgisi hesaplanıyor…</Text>
+          ) : storage && storage.quota ? (
+            <>
+              <View style={styles.statRow}>
+                <Text style={styles.statLabel}>Kullanılan</Text>
+                <Text style={styles.statVal}>
+                  {fmtBytes(storage.usage)} / {fmtBytes(storage.quota)}
+                </Text>
+              </View>
+              <View style={{ marginTop: 8 }}>
+                <ProgressBar ratio={ratio} color={barColor} />
+              </View>
+              <Text style={styles.hint}>
+                %{Math.round(ratio * 100)} dolu · {photoCount} fotoğraf · {totalDiscoveries} keşif
+              </Text>
+              {ratio > 0.85 ? (
+                <Text style={styles.warn}>
+                  ⚠️ Depolama doluyor. Yeni fotoğraflar kaydedilemeyebilir; eski/gereksiz fotoğrafları silerek yer
+                  açabilirsin.
+                </Text>
+              ) : null}
+            </>
+          ) : (
+            <Text style={styles.hint}>
+              Bu cihaz/tarayıcı depolama tahminini sağlamıyor. Yine de {photoCount} fotoğraf ve {totalDiscoveries}{' '}
+              keşif kayıtlı.
+            </Text>
+          )}
+        </Card>
 
         <SectionHeader title="Özet" />
         <Card>
