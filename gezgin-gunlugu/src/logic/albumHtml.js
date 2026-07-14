@@ -55,12 +55,12 @@ function orderByRoute(trip) {
     .sort((a, b) => a.rank - b.rank || a.idx - b.idx);
 }
 
-// Aynı yöndeki fotoğrafları ikişerli, bölünmez satırlara dizer.
-function rowsHtml(list, orient) {
-  let out = '';
+// Aynı yöndeki fotoğrafları ikişerli, bölünmez satır dizilerine böler (dizi döner).
+function rowsArr(list, orient) {
+  const out = [];
   for (let i = 0; i < list.length; i += 2) {
     const pair = list.slice(i, i + 2);
-    out += `<div class="prow ${orient}">${pair.map((src) => `<figure class="ph"><img src="${src}" /></figure>`).join('')}</div>`;
+    out.push(`<div class="prow ${orient}">${pair.map((src) => `<figure class="ph"><img src="${src}" /></figure>`).join('')}</div>`);
   }
   return out;
 }
@@ -114,25 +114,28 @@ export async function buildAlbumHtml(trip) {
 
   const placeBlock = (d) => {
     const loc = [d.city, d.country].filter(Boolean).join(', ');
-    const photos = photosOf(d);
-    let photoHtml = '';
-    if (photos.length === 1) {
-      const o = orient.get(photos[0]) || 'land';
-      photoHtml = `<div class="photos"><div class="prow ${o} solo"><figure class="ph"><img src="${photos[0]}" /></figure></div></div>`;
-    } else if (photos.length) {
-      const land = photos.filter((p) => (orient.get(p) || 'land') === 'land');
-      const port = photos.filter((p) => orient.get(p) === 'port');
-      photoHtml = `<div class="photos">${rowsHtml(land, 'land')}${rowsHtml(port, 'port')}</div>`;
-    }
-    return (
-      `<div class="place">` +
+    const head =
       `<div class="place-title">${esc(d.placeName)}${d.date ? ` <span class="place-date">${esc(formatLongDate(d.date))}</span>` : ''}</div>` +
       (loc ? `<div class="place-loc">${esc(loc)}</div>` : '') +
       (d.summary ? `<div class="place-summary">${esc(d.summary)}</div>` : '') +
-      (d.userNotes ? `<div class="place-note">✍️ ${esc(d.userNotes)}</div>` : '') +
-      photoHtml +
-      `</div>`
-    );
+      (d.userNotes ? `<div class="place-note">✍️ ${esc(d.userNotes)}</div>` : '');
+
+    const photos = photosOf(d);
+    let rows = [];
+    if (photos.length === 1) {
+      const o = orient.get(photos[0]) || 'land';
+      rows = [`<div class="prow ${o} solo"><figure class="ph"><img src="${photos[0]}" /></figure></div>`];
+    } else if (photos.length) {
+      const land = photos.filter((p) => (orient.get(p) || 'land') === 'land');
+      const port = photos.filter((p) => orient.get(p) === 'port');
+      rows = [...rowsArr(land, 'land'), ...rowsArr(port, 'port')];
+    }
+
+    // Mekan bilgisi + İLK fotoğraf satırı bölünmez bir gruptur → başlık asla
+    // fotoğraflarından ayrı, tek başına önceki sayfada kalmaz.
+    const lead = `<div class="place-lead">${head}${rows[0] || ''}</div>`;
+    const rest = rows.slice(1).join('');
+    return `<div class="place">${lead}${rest}</div>`;
   };
 
   // Her durak (güzergah) YENİ SAYFADAN başlar → ayrı .page section.
@@ -179,15 +182,16 @@ export async function buildAlbumHtml(trip) {
   .stop-head { font-size: 20px; font-weight: 800; color: #0b3a5b; border-bottom: 2px solid #0b3a5b;
     padding-bottom: 5px; margin: 0 0 14px; page-break-after: avoid; break-after: avoid; }
   .place { margin-bottom: 16px; }
-  .place-title { font-size: 17px; font-weight: 700; break-after: avoid; page-break-after: avoid; }
+  /* Mekan bilgisi + ilk fotoğraf satırı birlikte kalır (başlık öksüz kalmasın). */
+  .place-lead { break-inside: avoid; page-break-inside: avoid; }
+  .place-title { font-size: 17px; font-weight: 700; }
   .place-title .place-date { font-weight: 400; color: #7a8791; font-size: 13px; }
   .place-loc { font-size: 13px; color: #7a8791; margin-top: 1px; }
   .place-summary { font-size: 13.5px; line-height: 1.55; color: #33404b; margin-top: 6px; }
   .place-note { font-size: 13px; color: #55636e; font-style: italic; margin-top: 5px; }
   /* Fotoğraflar: yöne göre gruplanır; her SATIR (2 foto) bölünmez ve yüksekliği
      bir sayfayı aşmaz → sığmazsa komple sonraki sayfaya iner. */
-  .photos { margin-top: 10px; }
-  .prow { display: flex; gap: 6px; margin-top: 6px; align-items: flex-start;
+  .prow { display: flex; gap: 6px; margin-top: 10px; align-items: flex-start;
     break-inside: avoid; page-break-inside: avoid; }
   .prow figure.ph { flex: 0 1 calc(50% - 3px); margin: 0; }
   .prow.solo figure.ph { flex-basis: 100%; }
