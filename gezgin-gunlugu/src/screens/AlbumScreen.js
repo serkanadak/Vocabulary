@@ -93,6 +93,7 @@ export default function AlbumScreen({ route }) {
               <View key={i} style={styles.entry}>
                 <Text style={styles.entryTitle}>
                   {e.hasPhoto ? '📷' : '📍'} {e.placeName}
+                  {e.photoCount > 1 ? <Text style={styles.entryLoc}>  ×{e.photoCount}</Text> : null}
                   {e.location ? <Text style={styles.entryLoc}>  {e.location}</Text> : null}
                 </Text>
                 {e.userNotes ? <Text style={styles.entryNote}>✍️ {e.userNotes}</Text> : null}

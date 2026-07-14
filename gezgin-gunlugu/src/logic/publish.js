@@ -4,6 +4,12 @@ import { formatLongDate, formatShortDate, daysBetween } from './date';
 import { computeRoute, formatKm } from './geo';
 import { getVehicle } from '../data/vehicles';
 
+// Geriye uyumlu foto listesi (yeni: photos[], eski: tek photoUri).
+function photosOf(d) {
+  if (Array.isArray(d?.photos) && d.photos.length) return d.photos;
+  return d?.photoUri ? [d.photoUri] : [];
+}
+
 // Keşifleri tarihe göre grupla (gün gün).
 function groupByDay(discoveries) {
   const map = new Map();
@@ -55,21 +61,28 @@ export function generateAlbumPlan(trip) {
     layout: 'Sol sayfa: kısa giriş metni + künye (tarih, araç, kişi). Sağ sayfa: küçük rota haritası önizlemesi.',
   };
 
-  const pages = days.map(([dateKey, items], idx) => ({
-    pageNo: idx + 1,
-    date: dateKey === 'tarihsiz' ? 'Tarihsiz' : formatLongDate(dateKey),
-    photoCount: items.filter((i) => i.photoUri).length,
-    layout: layoutFor(items.filter((i) => i.photoUri).length || items.length),
-    entries: items.map((i) => ({
-      placeName: i.placeName,
-      location: [i.city, i.country].filter(Boolean).join(', '),
-      hasPhoto: !!i.photoUri,
-      photoUri: i.photoUri || null,
-      summary: i.summary || '',
-      userNotes: i.userNotes || '',
-      sources: i.sources || [],
-    })),
-  }));
+  const pages = days.map(([dateKey, items], idx) => {
+    const totalPhotos = items.reduce((n, i) => n + photosOf(i).length, 0);
+    return {
+      pageNo: idx + 1,
+      date: dateKey === 'tarihsiz' ? 'Tarihsiz' : formatLongDate(dateKey),
+      photoCount: totalPhotos,
+      layout: layoutFor(totalPhotos || items.length),
+      entries: items.map((i) => {
+        const ph = photosOf(i);
+        return {
+          placeName: i.placeName,
+          location: [i.city, i.country].filter(Boolean).join(', '),
+          hasPhoto: ph.length > 0,
+          photoCount: ph.length,
+          photoUri: ph[0] || null,
+          summary: i.summary || '',
+          userNotes: i.userNotes || '',
+          sources: i.sources || [],
+        };
+      }),
+    };
+  });
 
   const mapPage = {
     heading: 'Seyahat Haritası / Gezi Rotası',
@@ -105,7 +118,11 @@ export function albumPlanToText(trip) {
     L.push(`### Sayfa ${p.pageNo} — ${p.date}`);
     L.push(`- Fotoğraf: ${p.photoCount} · Yerleşim: ${p.layout}`);
     p.entries.forEach((e) => {
-      L.push(`  - **${e.placeName}**${e.location ? ' (' + e.location + ')' : ''}${e.hasPhoto ? ' 📷' : ''}`);
+      L.push(
+        `  - **${e.placeName}**${e.location ? ' (' + e.location + ')' : ''}${
+          e.photoCount ? ` 📷×${e.photoCount}` : ''
+        }`
+      );
       if (e.userNotes) L.push(`    - Not: ${e.userNotes}`);
     });
   });

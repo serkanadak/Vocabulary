@@ -87,6 +87,21 @@ function normTitle(t) {
   return (t || '').toLocaleLowerCase('tr').replace(/\s+/g, ' ').trim();
 }
 
+// Aynı başlıklı yinelenen maddeleri temizler; İLK görüleni korur (kullanıcının
+// durumu/notu onda saklıdır), sonrakileri düşürür. Eski kayıtlarda oluşmuş
+// çift maddeleri (ör. iki kez eklenen E-SIM) sadeleştirmek için kullanılır.
+export function dedupeChecklist(items = []) {
+  const seen = new Set();
+  const out = [];
+  for (const it of items) {
+    const key = normTitle(it.title);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(it);
+  }
+  return out;
+}
+
 // Mevcut listeyi güncel varsayılanlarla birleştirir:
 //  - Güncel varsayılan maddeler (araca göre) sırasıyla yer alır; başlığı hâlâ
 //    eşleşen maddelerin durum ve notu KORUNUR.
@@ -108,7 +123,7 @@ export function mergeChecklistWithDefaults(existingItems, vehicleId) {
     };
   });
   const customs = existing.filter((e) => e.custom && !defTitles.has(normTitle(e.title)));
-  return [...merged, ...customs];
+  return dedupeChecklist([...merged, ...customs]);
 }
 
 // Mevcut listenin varsayılan bölümü güncel varsayılanlardan farklı mı?

@@ -32,7 +32,7 @@ export default function AddDiscoveryScreen({ route, navigation }) {
   }, [navigation, stopName]);
 
   const [query, setQuery] = useState('');
-  const [photoUri, setPhotoUri] = useState(null);
+  const [photos, setPhotos] = useState([]); // uri listesi — aynı mekana birden fazla foto
   const [photoCoords, setPhotoCoords] = useState(null);
   const [photoDate, setPhotoDate] = useState(null);
   const [analyzing, setAnalyzing] = useState(false);
@@ -47,23 +47,28 @@ export default function AddDiscoveryScreen({ route, navigation }) {
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         quality: 0.7,
         exif: true,
+        allowsMultipleSelection: true,
+        selectionLimit: 0,
       });
       if (res.canceled || !res.assets?.length) return;
-      const asset = res.assets[0];
-      setPhotoUri(asset.uri);
-      const coords = exifCoords(asset.exif);
-      const date = exifDateKey(asset.exif);
-      setPhotoCoords(coords);
-      setPhotoDate(date);
-      setResult(null);
+      setPhotos((prev) => [...prev, ...res.assets.map((a) => a.uri)]);
+      // İlk uygun fotoğrafın meta verisinden tarih/konum al (henüz yoksa).
+      for (const a of res.assets) {
+        const coords = exifCoords(a.exif);
+        const date = exifDateKey(a.exif);
+        if (coords && !photoCoords) setPhotoCoords(coords);
+        if (date && !photoDate) setPhotoDate(date);
+      }
     } catch (e) {
       // sessizce geç — kullanıcı elle konum girebilir
     }
   };
 
+  const removePhoto = (uri) => setPhotos((prev) => prev.filter((u) => u !== uri));
+
   const analyze = async () => {
     const q = query.trim();
-    if (!q && !photoUri) return;
+    if (!q && !photos.length) return;
     setAnalyzing(true);
     try {
       const coords = photoCoords || (presetLat != null && presetLng != null ? { lat: presetLat, lng: presetLng } : null);
@@ -90,7 +95,8 @@ export default function AddDiscoveryScreen({ route, navigation }) {
       summary: result.summary,
       sources: result.sources,
       userNotes: userNotes.trim(),
-      photoUri: photoUri || null,
+      photos,
+      photoUri: photos[0] || null, // kapak (geri uyumluluk)
       enrichSource: result.source,
       stopId: stopId ?? null,
     });
@@ -106,8 +112,8 @@ export default function AddDiscoveryScreen({ route, navigation }) {
           title={stopName ? 'Bu durağa keşif ekle' : 'Rotadan bağımsız keşif'}
           subtitle={
             stopName
-              ? `“${stopName}” durağında gezdiğin, listede olmayan bir yeri veya fotoğrafı ekle.`
-              : 'Güzergahta olmayan bir yer ya da aktivite. Fotoğraf yükle ve/veya adını gir; özeti hazırlayayım.'
+              ? `“${stopName}” durağında gezdiğin, listede olmayan bir yeri veya fotoğrafları ekle.`
+              : 'Güzergahta olmayan bir yer ya da aktivite. Fotoğraf(lar) yükle ve/veya adını gir; özeti hazırlayayım.'
           }
         />
         {stopName ? (
@@ -117,22 +123,26 @@ export default function AddDiscoveryScreen({ route, navigation }) {
         ) : null}
 
         <Card>
-          {photoUri ? (
-            <View style={styles.photoWrap}>
-              <Image source={{ uri: photoUri }} style={styles.photo} resizeMode="cover" />
-              <Pressable style={styles.removePhoto} onPress={() => setPhotoUri(null)}>
-                <Text style={styles.removePhotoText}>✕</Text>
-              </Pressable>
-            </View>
+          {photos.length ? (
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.photoStrip}>
+              {photos.map((uri) => (
+                <View key={uri} style={styles.photoThumbWrap}>
+                  <Image source={{ uri }} style={styles.photoThumb} resizeMode="cover" />
+                  <Pressable style={styles.removeThumb} onPress={() => removePhoto(uri)} hitSlop={6}>
+                    <Text style={styles.removeThumbText}>✕</Text>
+                  </Pressable>
+                </View>
+              ))}
+            </ScrollView>
           ) : null}
 
           <SecondaryButton
-            title={photoUri ? '📷 Fotoğrafı değiştir' : '📷 Fotoğraf yükle'}
+            title={photos.length ? `📷 Fotoğraf ekle (${photos.length})` : '📷 Fotoğraf yükle'}
             onPress={pickPhoto}
             style={{ marginHorizontal: 0 }}
           />
 
-          {photoUri && (photoCoords || photoDate) ? (
+          {photos.length && (photoCoords || photoDate) ? (
             <Text style={styles.exifNote}>
               Meta veriden okundu:
               {photoDate ? ` 📅 ${photoDate}` : ''}
@@ -150,7 +160,7 @@ export default function AddDiscoveryScreen({ route, navigation }) {
           <PrimaryButton
             title={analyzing ? 'Analiz ediliyor…' : '🔎 Analiz Et & Özet Oluştur'}
             onPress={analyze}
-            disabled={analyzing || (!query.trim() && !photoUri)}
+            disabled={analyzing || (!query.trim() && !photos.length)}
             style={{ marginHorizontal: 0, marginTop: 16 }}
           />
           {analyzing ? <ActivityIndicator color={colors.primary} style={{ marginTop: 12 }} /> : null}
@@ -223,20 +233,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   ctxText: { color: colors.text, fontSize: 13, fontWeight: '600' },
-  photoWrap: { position: 'relative', marginBottom: 12 },
-  photo: { width: '100%', height: 200, borderRadius: 12, backgroundColor: colors.surfaceAlt },
-  removePhoto: {
+  photoStrip: { marginBottom: 12 },
+  photoThumbWrap: { position: 'relative', marginRight: 10 },
+  photoThumb: { width: 120, height: 120, borderRadius: 12, backgroundColor: colors.surfaceAlt },
+  removeThumb: {
     position: 'absolute',
-    top: 8,
-    right: 8,
+    top: 6,
+    right: 6,
     backgroundColor: 'rgba(0,0,0,0.6)',
-    width: 30,
-    height: 30,
-    borderRadius: 15,
+    width: 26,
+    height: 26,
+    borderRadius: 13,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  removePhotoText: { color: '#fff', fontWeight: '800' },
+  removeThumbText: { color: '#fff', fontWeight: '800', fontSize: 12 },
   exifNote: { color: colors.accent, fontSize: 12, marginTop: 10 },
   resultCard: {
     backgroundColor: colors.surface,

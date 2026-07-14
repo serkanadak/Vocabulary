@@ -3,7 +3,7 @@
 
 import React, { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createDefaultChecklist, createChecklistItem } from '../data/checklist';
+import { createDefaultChecklist, createChecklistItem, dedupeChecklist } from '../data/checklist';
 import { DEFAULT_VEHICLE } from '../data/vehicles';
 import { todayKey } from '../logic/date';
 
@@ -35,13 +35,17 @@ function mapTrip(trips, tripId, fn) {
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'HYDRATE':
+    case 'HYDRATE': {
+      const rawTrips = Array.isArray(action.payload?.trips) ? action.payload.trips : [];
+      // Eski kayıtlarda oluşmuş yinelenen hazırlık maddelerini (ör. çift E-SIM) temizle.
+      const trips = rawTrips.map((t) => ({ ...t, checklist: dedupeChecklist(t.checklist || []) }));
       return {
         ...state,
         loaded: true,
-        trips: Array.isArray(action.payload?.trips) ? action.payload.trips : [],
+        trips,
         settings: { ...DEFAULT_SETTINGS, ...(action.payload?.settings || {}) },
       };
+    }
 
     case 'ADD_TRIP':
       return { ...state, trips: [action.trip, ...state.trips] };

@@ -5,6 +5,12 @@ import { formatShortDate } from './date';
 import { getVehicle } from '../data/vehicles';
 import { computeRoute, formatKm } from './geo';
 
+// Geriye uyumlu foto listesi (yeni: photos[], eski: tek photoUri).
+function photosOf(d) {
+  if (Array.isArray(d?.photos) && d.photos.length) return d.photos;
+  return d?.photoUri ? [d.photoUri] : [];
+}
+
 const MUSIC_MOODS = {
   plane: 'Ferah, yükselen orkestral / cinematic (BPM ~90)',
   car: 'Yol hissi veren indie-folk, gitar riff (BPM ~110)',
@@ -46,7 +52,7 @@ export function generateVideoScript(trip, opts = {}) {
     type: SCENE_TYPE.INTRO,
     title: 'Açılış',
     duration: 3,
-    visual: trip.discoveries?.[0]?.photoUri
+    visual: photosOf(trip.discoveries?.[0]).length
       ? 'İlk keşif fotoğrafına yavaş zoom-in (Ken Burns), üstüne başlık yazısı belirir.'
       : 'Karartılmış dünya haritasında başlangıç noktasına doğru kamera dalışı.',
     transition: 'Fade-in',
@@ -82,9 +88,12 @@ export function generateVideoScript(trip, opts = {}) {
       type: SCENE_TYPE.PLACE,
       title: d.placeName,
       duration: perPlace,
-      visual: d.photoUri
-        ? 'Keşif fotoğrafı tam ekran; hafif Ken Burns + kenarlarda sinematik letterbox.'
-        : 'Konum adı büyük tipografiyle; arka planda ilgili harita dokusu kayar.',
+      visual:
+        photosOf(d).length > 1
+          ? `${photosOf(d).length} fotoğraflı hızlı kolaj/mozaik (beat’e senkron kesme) + hafif Ken Burns.`
+          : photosOf(d).length === 1
+          ? 'Keşif fotoğrafı tam ekran; hafif Ken Burns + kenarlarda sinematik letterbox.'
+          : 'Konum adı büyük tipografiyle; arka planda ilgili harita dokusu kayar.',
       transition: i % 2 === 0 ? 'Whip-pan' : 'Cross-dissolve',
       onScreenText: `${d.placeName}${d.date ? ' · ' + formatShortDate(d.date) : ''}`,
       voiceover: shortLine(d),
