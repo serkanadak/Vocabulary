@@ -1490,6 +1490,13 @@ export const ATTRACTIONS = {
     { name: 'Vintgar Boğazı', desc: 'Ahşap patikalarla turkuaz nehir kanyonu (yakın).' },
     { name: 'Bled Kreması (Kremšnita)', desc: 'Göl kıyısında meşhur kremalı pasta molası.' },
   ],
+  sirmione: [
+    { name: 'Scaliger Kalesi', desc: 'Su hendekleriyle çevrili, göl üstüne kurulu 13. yy kalesi.' },
+    { name: 'Grotte di Catullo', desc: 'Yarımadanın ucunda zeytinlikler arasında dev Roma villası kalıntıları.' },
+    { name: 'Garda Gölü & Jamaica Plajı', desc: 'Berrak sığ suları ve düz kaya sahiliyle ünlü göl köşesi.' },
+    { name: 'Termal Kaplıcalar (Aquaria)', desc: 'Göl kıyısında kükürtlü termal spa.' },
+    { name: 'Eski Kasaba Sokakları', desc: 'Dar taş sokaklar, dondurmacılar ve göl manzaralı meydanlar.' },
+  ],
 };
 
 export function attractionsFor(placeId) {
