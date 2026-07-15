@@ -44,6 +44,16 @@ export function formatKm(km) {
 // stops: [{ id, name, lat, lng }]
 // roadKm (opsiyonel): { 'fromId->toId': km } — çevrimiçi OSRM'den gelen gerçek yol
 // mesafeleri. Bir bacak için varsa haversine×detour yerine bu kullanılır (Google'a yakın).
+// Bir yol mesafesi mantıklı mı? Karayolu, kuş uçuşundan kısa olamaz (great-circle
+// en kısadır) ve makul bir üst kata kadar uzayabilir. Dışındaysa (ör. OSRM açık
+// sunucusunun hatalı yanıtı) yok sayılır ve tahmine düşülür.
+const ROAD_MIN_FACTOR = 0.95; // sayısal paya izin
+const ROAD_MAX_FACTOR = 3.0; // dağlık/dolambaçlı dahil güvenli üst sınır
+function roadPlausible(roadKmVal, straightKm) {
+  if (roadKmVal == null || straightKm == null) return false;
+  return roadKmVal >= straightKm * ROAD_MIN_FACTOR && roadKmVal <= straightKm * ROAD_MAX_FACTOR;
+}
+
 export function computeRoute(stops, vehicleId, roadKm) {
   const vehicle = getVehicle(vehicleId);
   const speed = effectiveSpeed(vehicle); // maxSpeed tavanı varsa uygulanır (ör. çekme karavan ≤ 90)
@@ -57,15 +67,16 @@ export function computeRoute(stops, vehicleId, roadKm) {
     const from = stops[i];
     const to = stops[i + 1];
     const realKm = roadKm && roadKm[`${from.id}->${to.id}`];
+    const straight = haversineKm(from, to);
     let km = null;
     let source = null;
-    // Uçak dışında gerçek yol mesafesi varsa onu kullan (uçak great-circle uçar).
-    if (realKm != null && vehicle.id !== 'plane') {
+    // Uçak dışında gerçek yol mesafesi varsa VE mantıklıysa onu kullan (uçak
+    // great-circle uçar). Mantıksız (ör. kuş uçuşundan kısa) değeri yok say.
+    if (realKm != null && vehicle.id !== 'plane' && roadPlausible(realKm, straight)) {
       km = realKm;
       source = 'road';
       roadLegs += 1;
     } else {
-      const straight = haversineKm(from, to);
       if (straight == null) {
         legs.push({ from, to, km: null, hours: null, source: null });
         unknownLegs += 1;
