@@ -1631,6 +1631,131 @@ export const ATTRACTIONS = {
     { name: 'Borgo San Giuliano', desc: 'Fellini duvar resimli renkli balıkçı mahallesi.' },
     { name: 'San Marino', desc: 'Tepedeki kaleleriyle minik ülke (yakın).' },
   ],
+
+  // --- Slovenya / Hırvatistan / Adriyatik ---
+  maribor: [
+    { name: 'Yaşlı Asma (Stara Trta)', desc: 'Dünyanın en yaşlı üzüm asması ve müzesi.' },
+    { name: 'Lent Semti', desc: 'Drava kıyısı tarihî mahalle ve festival alanı.' },
+    { name: 'Ana Meydan & Veba Anıtı', desc: 'Belediye sarayı ve barok sütun.' },
+    { name: 'Pohorje', desc: 'Teleferikle çıkılan kayak ve doğa dağı.' },
+  ],
+  postojna: [
+    { name: 'Postojna Mağarası', desc: 'Yeraltı treniyle gezilen dev damlataş mağarası.' },
+    { name: 'Predjama Kalesi', desc: 'Mağara ağzına, uçuruma oyulmuş ortaçağ kalesi.' },
+    { name: 'İnsan Balığı (Proteus)', desc: 'Mağaranın kör “ejder yavrusu” semenderleri.' },
+  ],
+  piran: [
+    { name: 'Tartini Meydanı', desc: 'Besteci Tartini’nin heykelli mermer meydanı.' },
+    { name: 'Aziz George Kilisesi', desc: 'Tepeden kızıl çatılar ve deniz manzarası.' },
+    { name: 'Deniz Surları', desc: 'Kasabaya panoramik tarihî savunma duvarları.' },
+    { name: 'Piran Rıhtımı & Deniz Ürünleri', desc: 'Fenerli liman ucu ve balık lokantaları.' },
+  ],
+  rovinj: [
+    { name: 'Aziz Euphemia Kilisesi', desc: 'Denizden yükselen çan kuleli barok kilise.' },
+    { name: 'Eski Şehir Sokakları', desc: 'Denize inen dar, renkli arnavut kaldırımları.' },
+    { name: 'Grisia Sokağı', desc: 'Sanatçı atölyeleri ve galerilerle ünlü sokak.' },
+    { name: 'Balbi Takı & Liman', desc: 'Eski kent kapısı ve balıkçı teknesi rıhtımı.' },
+  ],
+  pula: [
+    { name: 'Pula Arenası', desc: 'İyi korunmuş dev Roma amfitiyatrosu.' },
+    { name: 'Augustus Tapınağı', desc: 'Forum meydanındaki zarif Roma tapınağı.' },
+    { name: 'Herkül Kapısı & Surlar', desc: 'Antik kent kapıları ve kale.' },
+    { name: 'Brijuni Adaları', desc: 'Milli park adaları ve safari (yakın).' },
+  ],
+  plitvice: [
+    { name: 'Aşağı Göller & Büyük Şelale', desc: 'Ahşap patikalarla en gösterişli çağlayanlar.' },
+    { name: 'Yukarı Göller', desc: 'Turkuaz teraslı sakin göl dizisi.' },
+    { name: 'Kozjak Gölü Tekne Turu', desc: 'Elektrikli tekneyle en büyük gölü geçiş.' },
+    { name: 'Panoramik Tren', desc: 'Park bölümleri arası manzaralı ulaşım.' },
+  ],
+  split: [
+    { name: 'Diocletianus Sarayı', desc: 'İçinde yaşayan kentin olduğu Roma sarayı.' },
+    { name: 'Katedral & Çan Kulesi', desc: 'İmparator mozolesinden dönüşen katedral; panorama.' },
+    { name: 'Riva', desc: 'Palmiyeli deniz kıyısı gezinti bulvarı.' },
+    { name: 'Marjan Tepesi', desc: 'Kente ve adalara bakan çam tepesi.' },
+    { name: 'Ada Feribotları (Hvar/Brač)', desc: 'Dalmaçya adalarına açılan liman.' },
+  ],
+  sibenik: [
+    { name: 'Aziz Yakup Katedrali', desc: 'Tümüyle taştan, kubbeli UNESCO katedrali.' },
+    { name: 'Aziz Mihail Kalesi', desc: 'Kente hâkim, sahne olarak kullanılan kale.' },
+    { name: 'Aziz John Kalesi', desc: 'Panoramik surlarıyla tepedeki kale.' },
+    { name: 'Krka Milli Parkı', desc: 'Yürüyüş yollu şelaleler (yakın).' },
+  ],
+  trogir: [
+    { name: 'Aziz Lawrence Katedrali', desc: 'Radovan’ın portalıyla ünlü Romanesk katedral.' },
+    { name: 'Kamerlengo Kalesi', desc: 'Liman ağzında Venedik kalesi.' },
+    { name: 'Eski Şehir Adası', desc: 'Köprülerle bağlı, saraylı ortaçağ dokusu.' },
+    { name: 'Rıhtım (Riva)', desc: 'Yat limanı boyunca gezinti ve kafeler.' },
+  ],
+  opatija: [
+    { name: 'Lungomare', desc: 'Kıyı boyunca 12 km belle époque sahil yolu.' },
+    { name: 'Denizkızı Heykeli (Maiden)', desc: 'Kayalıkta kentin simgesi heykel.' },
+    { name: 'Villa Angiolina & Parkı', desc: 'Egzotik bitkili tarihî villa bahçesi.' },
+    { name: 'Učka Dağı', desc: 'Körfeze bakan doğa parkı (yakın).' },
+  ],
+
+  // --- Almanya ara/geçiş durakları ---
+  regensburg: [
+    { name: 'Taş Köprü', desc: '12. yy Tuna köprüsü; eski şehre giriş.' },
+    { name: 'Aziz Peter Katedrali', desc: 'Bavyera gotiğinin başyapıtı, vitraylar.' },
+    { name: 'Eski Şehir (UNESCO)', desc: 'Patrici kuleleri ve ara sokaklar.' },
+    { name: 'Walhalla', desc: 'Tuna üstünde tapınak biçimli şeref anıtı (yakın).' },
+  ],
+  nurnberg: [
+    { name: 'İmparatorluk Kalesi (Kaiserburg)', desc: 'Kente hâkim tarihî kale ve surlar.' },
+    { name: 'Eski Şehir & Schöner Brunnen', desc: 'Pazar meydanı ve altın çeşme.' },
+    { name: 'Nazi Rally Belgeleme Merkezi', desc: 'II. Dünya Savaşı tarihini anlatan müze.' },
+    { name: 'Germanisches Nationalmuseum', desc: 'Alman kültür tarihinin en büyük müzesi.' },
+    { name: 'Handwerkerhof', desc: 'Surdaki el sanatları avlusu; Nürnberg sosisi.' },
+  ],
+  wurzburg: [
+    { name: 'Würzburg Residenz', desc: 'Tiepolo tavan freskli görkemli barok saray.' },
+    { name: 'Marienberg Kalesi', desc: 'Nehre ve şehre bakan piskopos kalesi.' },
+    { name: 'Alte Mainbrücke', desc: 'Heykelli tarihî köprü; bağ manzaralı şarap.' },
+    { name: 'Katedral & Şapel', desc: 'Romanesk katedral ve Marienkapelle.' },
+  ],
+  rothenburg: [
+    { name: 'Şehir Surları & Kuleler', desc: 'Üstünde yürünen tam korunmuş ortaçağ surları.' },
+    { name: 'Plönlein', desc: 'Almanya’nın en fotoğraflanan köşesi.' },
+    { name: 'Marktplatz & Belediye Kulesi', desc: 'Panoramik kule ve tarihî meydan.' },
+    { name: 'Noel Müzesi', desc: 'Yıl boyu açık Alman Noel geleneği müzesi.' },
+  ],
+  fussen: [
+    { name: 'Neuschwanstein Şatosu', desc: 'Alplerde “masal şatosu”; Disney ilhamı.' },
+    { name: 'Hohenschwangau Şatosu', desc: 'Kralın çocukluk sarısı şatosu.' },
+    { name: 'Marienbrücke', desc: 'Şatoya bakan boğaz üstü asma köprü.' },
+    { name: 'Alpsee & Füssen Eski Şehri', desc: 'Berrak dağ gölü ve renkli kasaba.' },
+  ],
+  heidelberg: [
+    { name: 'Heidelberg Kalesi', desc: 'Neckar’a bakan kızıl yıkık kale ve dev fıçı.' },
+    { name: 'Eski Köprü (Karl Theodor)', desc: 'Maymun heykelli tarihî nehir köprüsü.' },
+    { name: 'Filozoflar Yolu', desc: 'Kaleye ve eski şehre panoramik yürüyüş.' },
+    { name: 'Hauptstrasse & Üniversite', desc: 'Uzun yaya cadde ve öğrenci hapishanesi.' },
+  ],
+  dresden: [
+    { name: 'Frauenkirche', desc: 'Yeniden inşa edilen ikonik kubbeli kilise.' },
+    { name: 'Zwinger Sarayı', desc: 'Barok avlu ve Eski Ustalar galerisi.' },
+    { name: 'Semperoper', desc: 'Görkemli tarihî opera binası.' },
+    { name: 'Brühl Terası & Fürstenzug', desc: 'Elbe manzaralı teras ve porselen duvar resmi.' },
+  ],
+  leipzig: [
+    { name: 'Thomaskirche (Bach)', desc: 'Bach’ın çalıştığı ve gömülü olduğu kilise.' },
+    { name: 'Uluslar Savaşı Anıtı', desc: 'Devasa Napolyon savaşı anıtı ve panorama.' },
+    { name: 'Pasajlar (Mädlerpassage)', desc: 'Auerbachs Keller dahil tarihî alışveriş pasajları.' },
+    { name: 'Barış Devrimi (Nikolaikirche)', desc: '1989 gösterilerinin merkez kilisesi.' },
+  ],
+  badenbaden: [
+    { name: 'Friedrichsbad & Caracalla', desc: 'Tarihî ve modern termal hamam deneyimleri.' },
+    { name: 'Kurhaus & Kumarhane', desc: 'Görkemli 19. yy kür salonu ve kazino.' },
+    { name: 'Lichtentaler Allee', desc: 'Oos deresi boyunca ağaçlı park yürüyüşü.' },
+    { name: 'Merkur Dağı Füniküleri', desc: 'Kente ve Ren ovasına panorama.' },
+  ],
+  freiburg: [
+    { name: 'Freiburg Münster', desc: 'Tek kuleli gotik katedral ve pazar meydanı.' },
+    { name: 'Bächle', desc: 'Sokaklardan akan minik su kanalları.' },
+    { name: 'Schlossberg', desc: 'Füniküler/yürüyüşle çıkılan panoramik tepe.' },
+    { name: 'Kara Orman Kapısı', desc: 'Titisee ve orman rotalarına başlangıç (yakın).' },
+  ],
 };
 
 export function attractionsFor(placeId) {
