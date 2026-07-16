@@ -2297,6 +2297,102 @@ export const ATTRACTIONS = {
     { name: 'Ginjinha (Çikolata Bardakta)', desc: 'Vişne likörü tadım geleneği.' },
     { name: 'Santa Maria Kilisesi', desc: 'Azulejo çinili tarihî kilise.' },
   ],
+
+  // --- Birleşik Krallık derinleştirme ---
+  bath: [
+    { name: 'Roma Hamamları', desc: 'İyi korunmuş antik termal hamam kompleksi.' },
+    { name: 'Royal Crescent & Circus', desc: 'Yarım ay biçimli Georgian konut sıraları.' },
+    { name: 'Bath Abbey', desc: 'Fan tavanlı, “melekler merdivenli” gotik kilise.' },
+    { name: 'Pulteney Köprüsü', desc: 'Üstünde dükkânlar olan nadir köprülerden.' },
+    { name: 'Thermae Bath Spa', desc: 'Çatı havuzundan şehir manzaralı modern kaplıca.' },
+  ],
+  york: [
+    { name: 'York Minster', desc: 'Kuzey Avrupa’nın en büyük gotik katedrallerinden.' },
+    { name: 'The Shambles', desc: 'Dükkânların birleştiği eğri ortaçağ sokağı.' },
+    { name: 'Şehir Surları', desc: 'Kenti çevreleyen yürünen tarihî surlar.' },
+    { name: 'Jorvik Viking Merkezi', desc: 'Viking York’unu canlandıran müze.' },
+    { name: 'National Railway Museum', desc: 'Dünyanın büyük demiryolu müzelerinden.' },
+  ],
+  oxford: [
+    { name: 'Christ Church College', desc: 'Harry Potter yemekhanesine ilham veren kolej.' },
+    { name: 'Radcliffe Camera & Bodleian', desc: 'Kubbeli kütüphane ve tarihî okuma salonları.' },
+    { name: 'Ahlar Köprüsü (Hertford)', desc: 'Venedik esintili ünlü geçit köprüsü.' },
+    { name: 'Ashmolean Müzesi', desc: 'Britanya’nın en eski kamu müzesi.' },
+    { name: 'Carfax Kulesi', desc: 'Kentin merkezine panoramik bakış.' },
+  ],
+  cambridge: [
+    { name: 'King’s College Şapeli', desc: 'Fan tavanlı görkemli gotik şapel.' },
+    { name: 'Punting (Cam Nehri)', desc: 'Kolejlerin arkasında sırıkla tekne gezisi.' },
+    { name: 'Trinity & St John’s', desc: 'İçler Köprüsü’yle tarihî kolejler.' },
+    { name: 'Fitzwilliam Müzesi', desc: 'Zengin sanat ve antik eser koleksiyonu.' },
+    { name: 'Matematik Köprüsü', desc: 'Ünlü ahşap kafes köprü.' },
+  ],
+  liverpool: [
+    { name: 'Albert Dock', desc: 'Tarihî rıhtım; müzeler ve restoranlar.' },
+    { name: 'The Beatles Story', desc: 'Grubun izini süren müze; Cavern Club.' },
+    { name: 'Royal Liver Building', desc: 'Liver kuşlu simge su kenarı yapısı.' },
+    { name: 'İki Katedral', desc: 'Anglikan ve modern Katolik katedralleri.' },
+  ],
+  // --- İrlanda ---
+  dublin: [
+    { name: 'Trinity College & Kells Kitabı', desc: 'Tarihî uzun kütüphane ve aydınlatılmış elyazması.' },
+    { name: 'Temple Bar', desc: 'Canlı müzikli pub ve kültür semti.' },
+    { name: 'Guinness Storehouse', desc: 'Çatı barında panoramalı bira deneyimi.' },
+    { name: 'Dublin Kalesi & Katedraller', desc: 'St Patrick’s ve Christ Church.' },
+    { name: 'Kilmainham Gaol', desc: 'İrlanda tarihini anlatan tarihî hapishane.' },
+  ],
+  galway: [
+    { name: 'Latin Mahallesi', desc: 'Renkli, sokak müzikli yaya sokakları.' },
+    { name: 'Spanish Arch & Corrib', desc: 'Nehir ağzı tarihî kemer ve gezinti.' },
+    { name: 'Moher Uçurumları', desc: '200 m Atlantik uçurumları (yakın).' },
+    { name: 'Connemara', desc: 'Göller, dağlar ve manastırıyla vahşi doğa (yakın).' },
+  ],
+  cork: [
+    { name: 'English Market', desc: 'Tarihî üstü kapalı gıda pazarı.' },
+    { name: 'Blarney Kalesi', desc: '“Gevezelik taşı” öpülen kale ve bahçe (yakın).' },
+    { name: 'Aziz Fin Barre Katedrali', desc: 'Üç kuleli neo-gotik katedral.' },
+    { name: 'Cobh & Titanic', desc: 'Renkli sahil kasabası; Titanic’in son limanı (yakın).' },
+  ],
+  // --- Hollanda derinleştirme ---
+  utrecht: [
+    { name: 'Dom Kulesi', desc: 'Hollanda’nın en yüksek kilise kulesi; tırmanış.' },
+    { name: 'Kanal Rıhtımları (Werf)', desc: 'Su seviyesinde kafeli çift katlı kanallar.' },
+    { name: 'Miffy (Nijntje) Müzesi', desc: 'Çocuk dostu sevimli tasarım müzesi.' },
+    { name: 'DOMunder', desc: 'Meydan altında Roma-ortaçağ arkeolojisi.' },
+  ],
+  delft: [
+    { name: 'Markt & Nieuwe Kerk', desc: 'Kraliyet mezarlı kilise ve tarihî meydan.' },
+    { name: 'Royal Delft (Porselen)', desc: 'Mavi-beyaz çini atölyesi ve müzesi.' },
+    { name: 'Vermeer Merkezi', desc: 'Ressamın kenti ve eserlerinin izi.' },
+    { name: 'Kanal Yürüyüşü', desc: 'Ağaçlı, köprülü tarihî su yolları.' },
+  ],
+  lahey: [
+    { name: 'Mauritshuis', desc: '“İnci Küpeli Kız” ve Hollanda Altın Çağı resmi.' },
+    { name: 'Binnenhof', desc: 'Göl kıyısında tarihî parlamento kompleksi.' },
+    { name: 'Escher in Het Paleis', desc: 'Sarayda Escher’in yanılsama sanatı.' },
+    { name: 'Scheveningen', desc: 'İskeleli deniz kıyısı tatil semti.' },
+    { name: 'Madurodam', desc: 'Hollanda’nın minyatür maket parkı.' },
+  ],
+  giethoorn: [
+    { name: 'Kanal Tekne Turu', desc: '“Fısıltı teknesi”yle sessiz su gezisi.' },
+    { name: 'Tahta Köprüler', desc: 'Çiftlikleri bağlayan yüzlerce yaya köprüsü.' },
+    { name: 'Kamış Çatılı Evler', desc: 'Su üstünde geleneksel çiftlik evleri.' },
+    { name: 'Weerribben-Wieden', desc: 'Bataklık doğa parkında kano (yakın).' },
+  ],
+  // --- Belçika derinleştirme ---
+  gent: [
+    { name: 'Gravensteen Kalesi', desc: 'Su hendekli ortaçağ kont kalesi.' },
+    { name: 'Gent Altar (Van Eyck)', desc: 'Aziz Bavo Katedrali’ndeki başyapıt.' },
+    { name: 'Graslei & Korenlei', desc: 'Kanal kıyısı tarihî lonca evleri.' },
+    { name: 'Belfort', desc: 'UNESCO çan kulesinden panorama.' },
+  ],
+  anvers: [
+    { name: 'Onze-Lieve-Vrouwe Katedrali', desc: 'Rubens tablolu görkemli gotik katedral.' },
+    { name: 'Merkez Tren Garı', desc: '“Demiryolu katedrali” denen görkemli gar.' },
+    { name: 'Grote Markt & Belediye', desc: 'Lonca evleri ve Brabo çeşmesi.' },
+    { name: 'Elmas Bölgesi', desc: 'Dünya elmas ticaretinin merkezlerinden.' },
+    { name: 'MAS Müzesi', desc: 'Liman manzaralı çağdaş kent müzesi.' },
+  ],
 };
 
 export function attractionsFor(placeId) {

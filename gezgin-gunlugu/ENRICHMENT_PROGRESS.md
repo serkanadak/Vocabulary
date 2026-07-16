@@ -33,6 +33,8 @@ sıradakine geç; hepsi bitince zamanlayıcıyı durdur.
 - [x] S1 — İskandinavya: Norveç (Oslo, Bergen, Tromsø, Stavanger, Ålesund, Geiranger, Lofoten), İsveç (Stockholm, Göteborg, Malmö, Uppsala, Kiruna, Visby), Danimarka (Kopenhag, Aarhus, Odense, Skagen), Finlandiya (Helsinki, Rovaniemi, Turku, Tampere), İzlanda (Reykjavik, Vík, Akureyri)
 - [x] J1 — Japonya genişletme: Hakone, Nikko, Kanazawa, Takayama, Sapporo, Fukuoka, Kamakura, Kobe, Nagoya, Fuji-Kawaguchiko
 - [x] EU1 — İspanya (Bilbao, San Sebastián, Toledo, Córdoba, Málaga, Santiago) + Portekiz (Sintra, Faro, Coimbra, Óbidos) derinleştirme
-- [ ] EU2 — Birleşik Krallık + İrlanda + Hollanda + Belçika derinleştirme
+- [x] EU2 — Birleşik Krallık (Bath, York, Oxford, Cambridge, Liverpool) + İrlanda (Dublin, Galway, Cork) + Hollanda (Utrecht, Delft, Lahey, Giethoorn) + Belçika (Gent, Anvers) derinleştirme
+
+## DURUM: 2. tur da tamamlandı (S1, J1, EU1, EU2).
 
 Not: "var" = zaten arşivde. Tamamlanınca bu dosyayı da güncelle.
