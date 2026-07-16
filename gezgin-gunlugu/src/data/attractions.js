@@ -528,6 +528,9 @@ export const ATTRACTIONS = {
     { name: 'Bondi Plajı', desc: 'Ünlü sörf plajı ve sahil yürüyüşü.' },
     { name: 'The Rocks', desc: 'Kentin tarihî ilk yerleşim mahallesi.' },
     { name: 'Darling Harbour', desc: 'Akvaryum ve restoranlı liman.' },
+    { name: 'Manly & Feribot', desc: 'Limandan geçen feribotla sörf plajı.' },
+    { name: 'Blue Mountains', desc: 'Üç Kızkardeş kayalıkları ve orman (yakın).' },
+    { name: 'Queen Victoria Building', desc: 'Görkemli Victoria dönemi alışveriş galerisi.' },
   ],
   melbourne: [
     { name: 'Federation Square', desc: 'Kentin çağdaş buluşma meydanı.' },
@@ -569,6 +572,9 @@ export const ATTRACTIONS = {
     { name: 'Empire State Building', desc: 'Art deco gökdelenden panorama.' },
     { name: '9/11 Memorial & One WTC', desc: 'Anıt havuzlar ve gözlem katı.' },
     { name: 'Metropolitan Müzesi', desc: 'Dünyanın en büyük sanat müzelerinden.' },
+    { name: 'Brooklyn Köprüsü & DUMBO', desc: 'Yürünen ikonik köprü ve silüet manzarası.' },
+    { name: 'High Line & Chelsea', desc: 'Eski demiryolundan yükseltilmiş park.' },
+    { name: 'Rockefeller Center (Top of the Rock)', desc: 'Empire State manzaralı seyir katı.' },
   ],
   sanfrancisco: [
     { name: 'Golden Gate Köprüsü', desc: 'Kızıl simge asma köprü.' },
@@ -623,6 +629,9 @@ export const ATTRACTIONS = {
     { name: 'Antropoloji Müzesi', desc: 'Aztek/Maya hazinelerinin dünya devi.' },
     { name: 'Frida Kahlo Evi', desc: '“Mavi Ev” sanatçı müzesi.' },
     { name: 'Xochimilco', desc: 'Renkli teknelerle kanal gezisi.' },
+    { name: 'Chapultepec & Kale', desc: 'Dev şehir parkı ve tepedeki imparator sarayı.' },
+    { name: 'Coyoacán', desc: 'Arnavut kaldırımlı bohem sanatçı mahallesi.' },
+    { name: 'Palacio de Bellas Artes', desc: 'Art nouveau/deco kültür sarayı ve muraller.' },
   ],
   cancun: [
     { name: 'Chichén Itzá', desc: 'Maya piramidi Kukulkán; dünya harikası (yakın).' },
@@ -637,6 +646,9 @@ export const ATTRACTIONS = {
     { name: 'Malecón', desc: 'Okyanus kıyısı ünlü sahil şeridi.' },
     { name: 'El Capitolio', desc: 'Washington Capitol benzeri görkemli bina.' },
     { name: 'Havana Kalesi (Morro)', desc: 'Liman girişini koruyan tarihî kale.' },
+    { name: 'Katedral Meydanı', desc: 'Barok katedral çevresi sömürge meydanı.' },
+    { name: 'Fusterlandia', desc: 'Mozaiklerle kaplı rengârenk sanatçı mahallesi.' },
+    { name: 'Vedado & Callejón de Hamel', desc: 'Afro-Küba sanatı ve rumba köşesi.' },
   ],
   rio: [
     { name: 'Kurtarıcı İsa', desc: 'Corcovado tepesinde dev heykel.' },
@@ -644,6 +656,9 @@ export const ATTRACTIONS = {
     { name: 'Copacabana & Ipanema', desc: 'Dünyaca ünlü plajlar.' },
     { name: 'Selarón Merdivenleri', desc: 'Rengârenk çini kaplı merdivenler.' },
     { name: 'Maracanã', desc: 'Efsanevi futbol stadı.' },
+    { name: 'Santa Teresa & Escadaria', desc: 'Tramvaylı sanatçı tepesi ve renkli merdiven.' },
+    { name: 'Lapa Kemerleri', desc: 'Tarihî su kemeri ve canlı gece hayatı.' },
+    { name: 'Jardim Botânico', desc: 'İmparatorluk palmiyeli botanik bahçesi.' },
   ],
   saopaulo: [
     { name: 'MASP', desc: 'Kırmızı askılı ünlü sanat müzesi.' },
@@ -658,6 +673,9 @@ export const ATTRACTIONS = {
     { name: 'Plaza de Mayo & Casa Rosada', desc: 'Tarihî meydan ve pembe başkanlık sarayı.' },
     { name: 'Teatro Colón', desc: 'Dünyanın en iyi opera binalarından.' },
     { name: 'Tango Gösterisi', desc: 'San Telmo’da canlı tango.' },
+    { name: 'El Ateneo Grand Splendid', desc: 'Tiyatrodan dönüşen dünyaca ünlü kitapçı.' },
+    { name: 'Palermo & Bosques', desc: 'Parkları ve kafeleriyle şık mahalle.' },
+    { name: 'Puerto Madero', desc: 'Kadın Köprüsü’yle modern nehir kıyısı.' },
   ],
   cusco: [
     { name: 'Machu Picchu', desc: 'Bulutlar üstünde kayıp İnka şehri; UNESCO.' },
@@ -706,6 +724,9 @@ export const ATTRACTIONS = {
     { name: 'Arashiyama Bambu Ormanı', desc: 'Göğe uzanan bambu patikası.' },
     { name: 'Kiyomizu-dera', desc: 'Ahşap teraslı, manzaralı tapınak.' },
     { name: 'Gion', desc: 'Geyşaların dolaştığı geleneksel mahalle.' },
+    { name: 'Nishiki Pazarı', desc: '“Kyoto’nun mutfağı” dar gıda çarşısı.' },
+    { name: 'Nijo Kalesi', desc: '“Bülbül zeminli” şogun sarayı ve bahçe.' },
+    { name: 'Ginkaku-ji & Felsefe Yolu', desc: 'Gümüş Pavyon ve kiraz çiçekli patika.' },
   ],
   osaka: [
     { name: 'Osaka Kalesi', desc: 'Parkı ve müzesiyle görkemli kale.' },
@@ -733,6 +754,9 @@ export const ATTRACTIONS = {
     { name: 'Tiananmen Meydanı', desc: 'Dünyanın en büyük meydanlarından.' },
     { name: 'Yaz Sarayı', desc: 'Göllü, köprülü imparatorluk bahçesi.' },
     { name: 'Hutong’lar', desc: 'Eski Pekin’in dar avlulu sokakları.' },
+    { name: 'Lama Tapınağı', desc: 'Dev ahşap Buda heykelli Tibet Budist tapınağı.' },
+    { name: '798 Sanat Bölgesi', desc: 'Eski fabrikalarda çağdaş sanat galerileri.' },
+    { name: 'Ming Mezarları', desc: 'İmparator türbeleri ve Kutsal Yol (yakın).' },
   ],
   sanghay: [
     { name: 'The Bund', desc: 'Nehir kıyısı sömürge cepheleri ve manzara.' },
@@ -759,6 +783,9 @@ export const ATTRACTIONS = {
     { name: 'Humayun Türbesi', desc: 'Tac Mahal’a ilham veren bahçeli türbe.' },
     { name: 'Jama Camii & Chandni Chowk', desc: 'Dev cami ve kaotik eski çarşı.' },
     { name: 'Hindistan Kapısı', desc: 'Anıtsal savaş anıtı.' },
+    { name: 'Lotus Tapınağı', desc: 'Nilüfer biçimli beyaz Bahai ibadet evi.' },
+    { name: 'Akshardham', desc: 'Devasa oymalı modern Hindu tapınak kompleksi.' },
+    { name: 'Raj Ghat & Chandni Chowk', desc: 'Gandhi anıtı ve kaotik eski çarşı.' },
   ],
   agra: [
     { name: 'Tac Mahal', desc: 'Beyaz mermer aşk anıtı; dünya harikası.' },
@@ -791,6 +818,9 @@ export const ATTRACTIONS = {
     { name: 'Palm Jumeirah', desc: 'Palmiye şeklinde yapay ada.' },
     { name: 'Al Fahidi & Abra', desc: 'Eski Dubai semti ve nehir taksisi.' },
     { name: 'Çöl Safari', desc: 'Kum tepeleri, deve ve gün batımı.' },
+    { name: 'Museum of the Future', desc: 'Halkalı, hat sanatlı fütüristik müze.' },
+    { name: 'Dubai Frame', desc: 'Eski ve yeni Dubai’yi çerçeveleyen dev yapı.' },
+    { name: 'Madinat Jumeirah & Souk', desc: 'Kanallı geleneksel çarşı, Burj Al Arab manzarası.' },
   ],
   abudabi: [
     { name: 'Şeyh Zayed Camii', desc: 'Bembeyaz, göz kamaştıran dev camii.' },
@@ -804,6 +834,9 @@ export const ATTRACTIONS = {
     { name: 'Wat Pho', desc: 'Devasa yatan altın Buda.' },
     { name: 'Chatuchak Pazarı', desc: 'Dünyanın en büyük hafta sonu pazarlarından.' },
     { name: 'Chao Phraya & Tuk-tuk', desc: 'Nehir tekneleri ve renkli sokaklar.' },
+    { name: 'Wat Saket (Altın Dağ)', desc: 'Tepeden şehre bakan altın stupa.' },
+    { name: 'Khao San Road', desc: 'Sırt çantalı gezgin ve gece hayatı sokağı.' },
+    { name: 'Jim Thompson Evi', desc: 'İpek tüccarının geleneksel Tay evi-müzesi.' },
   ],
   chiangmai: [
     { name: 'Doi Suthep', desc: 'Dağ tepesinde altın tapınak, kent manzarası.' },
@@ -864,6 +897,9 @@ export const ATTRACTIONS = {
     { name: 'Sentosa', desc: 'Plaj, tema parkları ve eğlence adası.' },
     { name: 'Merlion Park', desc: 'Kentin simgesi aslan-balık heykeli.' },
     { name: 'Chinatown & Little India', desc: 'Renkli çok kültürlü mahalleler.' },
+    { name: 'Clarke Quay', desc: 'Nehir kıyısı renkli eğlence ve restoran semti.' },
+    { name: 'Singapore Flyer', desc: 'Körfeze bakan dev gözlem çarkı.' },
+    { name: 'Botanik Bahçesi (Orkide)', desc: 'UNESCO tropik bahçe ve orkide bahçesi.' },
   ],
   isfahan: [
     { name: 'Nakş-ı Cihan Meydanı', desc: 'Dünyanın en büyük tarihî meydanlarından.' },
@@ -964,6 +1000,9 @@ export const ATTRACTIONS = {
     { name: 'Bahia Sarayı', desc: 'Bahçeli, süslü 19. yy sarayı.' },
     { name: 'Majorelle Bahçesi', desc: 'YSL’nin mavi villası ve egzotik bahçe.' },
     { name: 'Medina Souk’ları', desc: 'Baharat, halı ve el işi labirenti.' },
+    { name: 'Bahia Sarayı', desc: 'Avlulu, süslü tavanlı 19. yy sarayı.' },
+    { name: 'Ben Youssef Medresesi', desc: 'Çini ve oyma işçilikli tarihî Kuran okulu.' },
+    { name: 'Menara Bahçeleri', desc: 'Zeytinlikler ve Atlas manzaralı havuzlu bahçe.' },
   ],
   fes: [
     { name: 'Fes el-Bali Medina', desc: 'Arabasız, dünyanın en büyük medinalarından.' },
@@ -991,6 +1030,9 @@ export const ATTRACTIONS = {
     { name: 'Robben Island', desc: 'Mandela’nın hapsedildiği ada-müze.' },
     { name: 'Boulders Plajı', desc: 'Afrika penguen kolonisi.' },
     { name: 'Kirstenbosch', desc: 'Dağ eteğinde botanik bahçesi.' },
+    { name: 'Şaraphane Rotası (Stellenbosch)', desc: 'Ünlü bağ ve şarap kasabaları (yakın).' },
+    { name: 'Signal Hill & Lion’s Head', desc: 'Gün batımı ve tırmanışla panorama.' },
+    { name: 'Bo-Kaap', desc: 'Rengârenk evleriyle Cape Malay mahallesi.' },
   ],
   johannesburg: [
     { name: 'Apartheid Müzesi', desc: 'Ayrımcılık dönemini anlatan güçlü müze.' },
