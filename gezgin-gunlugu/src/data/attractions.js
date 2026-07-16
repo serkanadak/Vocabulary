@@ -1883,6 +1883,51 @@ export const ATTRACTIONS = {
     { name: 'Urban Kulesi & Tiyatro', desc: 'Tarihî çan kulesi ve neobarok tiyatro.' },
     { name: 'Miklós Hapishanesi', desc: 'Ortaçağ yapısında kent müzesi.' },
   ],
+
+  // --- Yunanistan & Balkan ara durakları ---
+  meteora: [
+    { name: 'Büyük Meteoron Manastırı', desc: 'En büyük ve en yüksek manastır; müze.' },
+    { name: 'Varlaam Manastırı', desc: 'Freskleri ve eski erzak kuleleriyle ünlü.' },
+    { name: 'Roussanou & Aziz Nikolaos', desc: 'Kayaya yapışık daha küçük manastırlar.' },
+    { name: 'Gün Batımı Bakı Noktaları', desc: 'Kaya sütunları üzerinde altın saat manzarası.' },
+    { name: 'Kalambaka Kaya Kilisesi', desc: 'Kasabadaki freskli Meryem kilisesi.' },
+  ],
+  delphi: [
+    { name: 'Apollon Tapınağı', desc: 'Kâhinliğin yapıldığı kutsal alan.' },
+    { name: 'Antik Tiyatro & Stadyum', desc: 'Vadiye bakan tiyatro ve Pisti.' },
+    { name: 'Delphi Müzesi', desc: 'Ünlü bronz Arabacı heykelinin evi.' },
+    { name: 'Tholos (Athena Pronaia)', desc: 'Dairesel sütunlu ikonik tapınak.' },
+  ],
+  nafplio: [
+    { name: 'Palamidi Kalesi', desc: '900 basamakla çıkılan Venedik kalesi; panorama.' },
+    { name: 'Bourtzi', desc: 'Liman ağzında adacık üstü kale.' },
+    { name: 'Eski Şehir & Syntagma', desc: 'Neoklasik evler, begonviller ve meydan.' },
+    { name: 'Akronafplia & Arvanitia', desc: 'Sur yürüyüşü ve kayalık plaj.' },
+  ],
+  ioannina: [
+    { name: 'Ioannina Kalesi (Kastro)', desc: 'Ali Paşa dönemi surlar, cami ve müze.' },
+    { name: 'Göl Adası (Nisi)', desc: 'Tekneyle manastırlar ve Ali Paşa müzesi.' },
+    { name: 'Perama Mağarası', desc: 'Renkli sarkıt-dikitli büyük mağara.' },
+    { name: 'Gümüş İşçiliği Müzesi', desc: 'Yanya’nın ünlü telkâri geleneği.' },
+  ],
+  bitola: [
+    { name: 'Şirok Sokak', desc: 'Konsolosluk dönemi mimarili yaya cadde.' },
+    { name: 'Heraklea Lynkestis', desc: 'Filip döneminden mozaikli antik kent.' },
+    { name: 'Saat Kulesi & Eski Çarşı', desc: 'Osmanlı çarşısı (Bezisten) ve kule.' },
+    { name: 'Pelister Milli Parkı', desc: 'Buzul göllü dağ doğası (yakın).' },
+  ],
+  trebinje: [
+    { name: 'Arslanagić (Perović) Köprüsü', desc: 'İki kemerli tarihî Osmanlı köprüsü.' },
+    { name: 'Eski Şehir (Kastel)', desc: 'Surlar içinde çınarlı meydan ve cami.' },
+    { name: 'Hercegovačka Gračanica', desc: 'Tepeden kente hâkim manastır ve manzara.' },
+    { name: 'Şarap Mahzenleri', desc: 'Çevre bağlarda yerel şarap tadımı.' },
+  ],
+  ston: [
+    { name: 'Ston Surları', desc: 'Yürünen 5 km’lik “Avrupa Çin Seddi”.' },
+    { name: 'Tuzlalar', desc: 'Antik yöntemle işleyen tarihî deniz tuzlaları.' },
+    { name: 'Mali Ston & İstiridye', desc: 'Körfezde taze istiridye-midye tadımı.' },
+    { name: 'Pelješac Bağ Yolu', desc: 'Dingač şaraplarına açılan bağ rotası (yakın).' },
+  ],
 };
 
 export function attractionsFor(placeId) {
