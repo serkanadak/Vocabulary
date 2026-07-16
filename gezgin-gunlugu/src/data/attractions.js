@@ -1546,6 +1546,91 @@ export const ATTRACTIONS = {
     { name: 'Termal Kaplıcalar (Aquaria)', desc: 'Göl kıyısında kükürtlü termal spa.' },
     { name: 'Eski Kasaba Sokakları', desc: 'Dar taş sokaklar, dondurmacılar ve göl manzaralı meydanlar.' },
   ],
+
+  // --- İtalya ara/geçiş durakları ---
+  verona: [
+    { name: 'Arena di Verona', desc: 'Ayakta duran Roma amfitiyatrosu; yazın açık hava operası.' },
+    { name: 'Juliet’in Evi & Balkonu', desc: 'Romeo-Juliet efsanesinin ünlü balkonu ve avlusu.' },
+    { name: 'Piazza delle Erbe', desc: 'Freskli cepheler ve pazarıyla tarihî meydan.' },
+    { name: 'Castelvecchio & Köprüsü', desc: 'Adige üstünde mazgallı ortaçağ kalesi ve müze.' },
+    { name: 'Piazza dei Signori & Lamberti Kulesi', desc: 'Dante heykeli ve panoramik kule.' },
+  ],
+  padova: [
+    { name: 'Scrovegni Şapeli', desc: 'Giotto’nun çığır açan fresk döngüsü (UNESCO).' },
+    { name: 'Aziz Antonio Bazilikası', desc: 'Kubbeleriyle önemli hac kilisesi.' },
+    { name: 'Prato della Valle', desc: 'Kanal ve heykellerle çevrili dev elips meydan.' },
+    { name: 'Orto Botanico', desc: 'Dünyanın en eski üniversite botanik bahçesi (UNESCO).' },
+    { name: 'Palazzo della Ragione', desc: 'Dev salonlu ortaçağ adalet sarayı.' },
+  ],
+  vicenza: [
+    { name: 'Teatro Olimpico', desc: 'Palladio’nun ayakta kalan en eski kapalı sahne tiyatrosu.' },
+    { name: 'Basilica Palladiana', desc: 'Bakır çatılı, revaklı simge meydan yapısı.' },
+    { name: 'Villa La Rotonda', desc: 'Palladio’nun simetrik ünlü villası (yakın).' },
+    { name: 'Corso Palladio', desc: 'Saraylarla dizili ana cadde.' },
+  ],
+  bologna: [
+    { name: 'Piazza Maggiore & San Petronio', desc: 'Dev meydan ve yarım kalmış cepheli bazilika.' },
+    { name: 'İki Kule (Asinelli & Garisenda)', desc: 'Tırmanılan eğik ortaçağ kuleleri.' },
+    { name: 'Portici (Kemerli Yollar)', desc: '60 km’yi aşan tarihî revaklar (UNESCO).' },
+    { name: 'Quadrilatero Çarşısı', desc: 'Gıda tezgâhları ve tratoryalarla lezzet semti.' },
+    { name: 'Archiginnasio', desc: 'Eski üniversite ve ahşap anatomi tiyatrosu.' },
+  ],
+  bergamo: [
+    { name: 'Città Alta (Üst Şehir)', desc: 'Venedik surları içinde tarihî tepedeki kent.' },
+    { name: 'Piazza Vecchia & Campanone', desc: 'Zarif meydan ve çanlı saat kulesi.' },
+    { name: 'Cappella Colleoni', desc: 'Renkli mermer cepheli Rönesans şapeli.' },
+    { name: 'Funicular & Surlar', desc: 'Fünikülerle çıkış ve sur yürüyüşü.' },
+  ],
+  como: [
+    { name: 'Como Katedrali (Duomo)', desc: 'Gotik-Rönesans karışımı görkemli katedral.' },
+    { name: 'Brunate Funicular', desc: 'Göl ve Alp panoraması için dik tren.' },
+    { name: 'Bellagio', desc: '“Gölün incisi” villa ve bahçeli kasaba (tekneyle).' },
+    { name: 'Villa Olmo & Göl Turu', desc: 'Neoklasik villa ve vapurla göl gezisi.' },
+  ],
+  bolzano: [
+    { name: 'Ötzi (Güney Tirol Arkeoloji Müzesi)', desc: '5.300 yıllık buz adamının sergilendiği müze.' },
+    { name: 'Piazza Walther & Katedral', desc: 'Kentin canlı meydanı ve gotik katedral.' },
+    { name: 'Renon Teleferiği', desc: 'Dolomit manzaralı yaylaya çıkış.' },
+    { name: 'Eski Çarşı (Via dei Portici)', desc: 'Kemerli tarihî alışveriş sokağı.' },
+  ],
+  trento: [
+    { name: 'Castello del Buonconsiglio', desc: 'Freskli salonlarıyla piskopos-prens kalesi.' },
+    { name: 'Piazza Duomo & Neptün Çeşmesi', desc: 'Freskli evlerle çevrili tarihî meydan.' },
+    { name: 'MUSE Bilim Müzesi', desc: 'Renzo Piano tasarımı modern doğa bilimleri müzesi.' },
+    { name: 'Sardagna Teleferiği', desc: 'Kente ve vadiye panoramik çıkış.' },
+  ],
+  siena: [
+    { name: 'Piazza del Campo & Palio', desc: 'Kabuk biçimli meydan; ünlü at yarışının sahnesi.' },
+    { name: 'Siena Katedrali (Duomo)', desc: 'Alacalı mermer, mozaik zeminli görkemli katedral.' },
+    { name: 'Torre del Mangia', desc: 'Belediye sarayının panoramik çan kulesi.' },
+    { name: 'Palazzo Pubblico & Müze', desc: 'Lorenzetti freskleriyle ortaçağ belediye sarayı.' },
+  ],
+  sangimignano: [
+    { name: 'Ortaçağ Kuleleri', desc: 'Silüeti oluşturan taş “gökdelenler”.' },
+    { name: 'Piazza della Cisterna', desc: 'Kuyulu üçgen tarihî meydan.' },
+    { name: 'Collegiata', desc: 'Fresklerle kaplı Romanesk kilise.' },
+    { name: 'Vernaccia Şarabı & Dondurma', desc: 'Yerel beyaz şarap ve ödüllü dondurmacı.' },
+  ],
+  lucca: [
+    { name: 'Rönesans Surları', desc: 'Üstünde yürünen/bisiklete binilen yeşil surlar.' },
+    { name: 'Piazza Anfiteatro', desc: 'Roma tiyatrosu üstüne kurulu oval meydan.' },
+    { name: 'Guinigi Kulesi', desc: 'Tepesinde meşe ağaçları olan kule.' },
+    { name: 'San Martino Katedrali', desc: 'Volto Santo ve oymalı cepheli katedral.' },
+  ],
+  cinqueterre: [
+    { name: 'Vernazza & Manarola', desc: 'Renkli evleriyle en fotojenik iki köy.' },
+    { name: 'Sentiero Azzurro', desc: 'Köyleri bağlayan deniz manzaralı yürüyüş yolu.' },
+    { name: 'Riomaggiore Limanı', desc: 'Kayalık koyu ve teknelerle balıkçı köyü.' },
+    { name: 'Monterosso Plajı', desc: 'Bölgenin ana kumsalı ve gezinti yolu.' },
+    { name: 'Bölge Treni', desc: 'Köyler arası tünelli sahil demiryolu.' },
+  ],
+  rimini: [
+    { name: 'Rimini Plajları', desc: 'Şezlonglu, canlı Adriyatik kumsalları.' },
+    { name: 'Tiberius Köprüsü', desc: 'Hâlâ kullanılan Roma dönemi taş köprüsü.' },
+    { name: 'Augustus Takı', desc: 'İtalya’nın en eski ayakta Roma zafer takı.' },
+    { name: 'Borgo San Giuliano', desc: 'Fellini duvar resimli renkli balıkçı mahallesi.' },
+    { name: 'San Marino', desc: 'Tepedeki kaleleriyle minik ülke (yakın).' },
+  ],
 };
 
 export function attractionsFor(placeId) {
