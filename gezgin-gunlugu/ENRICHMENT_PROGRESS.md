@@ -13,8 +13,8 @@ sıradakine geç; hepsi bitince zamanlayıcıyı durdur.
 - [x] B1 — İtalya ara duraklar: Verona, Padova, Vicenza, Bologna, Bergamo, Como, Bolzano, Trento, Siena, San Gimignano, Lucca, Cinque Terre, Rimini
 - [x] B2 — Slovenya/Hırvatistan/Adriyatik: Maribor, Postojna, Piran, Rovinj, Pula, Plitvice, Split, Šibenik, Trogir, Opatija, Zagreb(var)
 - [x] B3 — Almanya ara duraklar: Regensburg, Nürnberg, Würzburg, Rothenburg, Füssen (Neuschwanstein), Heidelberg, Dresden, Leipzig, Baden-Baden, Freiburg
-- [ ] B4 — İsviçre & Doğu Fransa: Bern, Cenevre, Lausanne, Montreux, Lugano, Strasbourg, Colmar, Dijon, Annecy, Avignon, Aix-en-Provence
-- [ ] B5 — Orta Avrupa (Çekya/Slovakya/Macaristan/Avusturya): Brno, Český Krumlov, Salzkammergut(Wachau/Melk), Győr, Eger, Pécs, Szentendre, Balaton, Košice
+- [x] B4 — İsviçre & Doğu Fransa: Bern, Cenevre, Lausanne, Montreux, Lugano, Strasbourg, Colmar, Dijon, Annecy, Avignon, Aix-en-Provence
+- [x] B5 — Orta Avrupa (Çekya/Slovakya/Macaristan/Avusturya): Brno, Český Krumlov, Melk(Wachau), Győr, Eger, Pécs, Szentendre, Balaton, Košice
 - [ ] B6 — Yunanistan & Balkan ara: Meteora (Kalambaka), Delphi, Nafplio, Ioannina, Bitola, Trebinje, Ston, Kotor(var), Budva(var)
 
 ## Mevcut şehir mekanlarını genişletme (8+'a çıkar)

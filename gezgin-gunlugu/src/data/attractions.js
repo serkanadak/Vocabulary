@@ -1756,6 +1756,133 @@ export const ATTRACTIONS = {
     { name: 'Schlossberg', desc: 'Füniküler/yürüyüşle çıkılan panoramik tepe.' },
     { name: 'Kara Orman Kapısı', desc: 'Titisee ve orman rotalarına başlangıç (yakın).' },
   ],
+
+  // --- İsviçre & Doğu Fransa ---
+  bern: [
+    { name: 'Eski Şehir & Arkadlar', desc: 'Km’lerce kemerli yaya alışveriş yolları (UNESCO).' },
+    { name: 'Zytglogge', desc: 'Figürlü ortaçağ astronomik saat kulesi.' },
+    { name: 'Ayı Parkı & Aare', desc: 'Nehir kıvrımında kentin simgesi ayılar.' },
+    { name: 'Bern Katedrali (Münster)', desc: 'İsviçre’nin en yüksek çan kulesi; panorama.' },
+    { name: 'Rosengarten', desc: 'Eski şehir siluetine bakan gül bahçesi.' },
+  ],
+  cenevre: [
+    { name: 'Jet d’Eau', desc: 'Gölden 140 m fışkıran simge fıskiye.' },
+    { name: 'Eski Şehir & Aziz Pierre Katedrali', desc: 'Kule manzaralı tarihî merkez.' },
+    { name: 'Çiçek Saati', desc: 'İngiliz Bahçesi’nde ünlü canlı saat.' },
+    { name: 'BM & Kırık Sandalye', desc: 'Palais des Nations ve anıt heykel.' },
+    { name: 'Göl Kıyısı Promenadı', desc: 'Léman boyunca yürüyüş ve tekne.' },
+  ],
+  lausanne: [
+    { name: 'Notre-Dame Katedrali', desc: 'İsviçre’nin en güzel gotik katedrallerinden.' },
+    { name: 'Olimpiyat Müzesi', desc: 'Göl kıyısında interaktif spor müzesi.' },
+    { name: 'Ouchy', desc: 'Göl kenarı sahil, iskele ve parklar.' },
+    { name: 'Eski Şehir & Escaliers', desc: 'Merdivenli tarihî sokaklar ve pazar.' },
+  ],
+  montreux: [
+    { name: 'Chillon Şatosu', desc: 'Göl üstünde İsviçre’nin en çok gezilen kalesi.' },
+    { name: 'Sahil Promenadı', desc: 'Çiçekli, heykelli göl kıyısı yürüyüşü (Freddie Mercury).' },
+    { name: 'Rochers-de-Naye', desc: 'Dişli trenle Alp zirvesi manzarası.' },
+    { name: 'Lavaux Bağları', desc: 'Göle bakan teraslı UNESCO bağları (yakın).' },
+  ],
+  lugano: [
+    { name: 'Göl Kıyısı & Parco Ciani', desc: 'Palmiyeli promenad ve göl parkı.' },
+    { name: 'Monte Brè / San Salvatore', desc: 'Fünikülerle panoramik zirveler.' },
+    { name: 'Eski Şehir & Piazza della Riforma', desc: 'İtalyan havalı meydan ve arkadlar.' },
+    { name: 'Gandria', desc: 'Göl kıyısı şirin balıkçı köyü (yakın).' },
+  ],
+  strasbourg: [
+    { name: 'Notre-Dame Katedrali', desc: 'Pembe kumtaşı gotik cephe ve astronomik saat.' },
+    { name: 'Petite France', desc: 'Kanallı, yarım ahşap evli tarihî mahalle.' },
+    { name: 'Barrage Vauban & Ponts Couverts', desc: 'Kuleli köprüler ve teras manzarası.' },
+    { name: 'Avrupa Parlamentosu', desc: 'AB kurumları bölgesi (yakın).' },
+    { name: 'Noel Pazarı', desc: 'Avrupa’nın en eski ve büyük Christkindelsmärik’i.' },
+  ],
+  colmar: [
+    { name: 'La Petite Venise', desc: 'Kanal kıyısı renkli evler ve tekne turu.' },
+    { name: 'Maison Pfister', desc: 'Süslü Rönesans tüccar evi.' },
+    { name: 'Unterlinden Müzesi', desc: 'Isenheim Sunağı’nın bulunduğu müze.' },
+    { name: 'Alsas Şarap Yolu', desc: 'Riquewihr/Eguisheim bağ köyleri (yakın).' },
+  ],
+  dijon: [
+    { name: 'Dük Sarayı & Kule', desc: 'Burgonya düklerinin sarayı ve panoramik kule.' },
+    { name: 'Baykuş Rotası (Chouette)', desc: 'Şehir simgesi baykuşu izleyen yürüyüş.' },
+    { name: 'Notre-Dame de Dijon', desc: 'Gargoyle cepheli gotik kilise.' },
+    { name: 'Les Halles Pazarı', desc: 'Eiffel yapımı kapalı gıda pazarı; hardal.' },
+  ],
+  annecy: [
+    { name: 'Palais de l’Isle', desc: 'Kanal ortasında üçgen tarihî yapı.' },
+    { name: 'Annecy Gölü & Pont des Amours', desc: 'Turkuaz göl kıyısı ve “aşıklar köprüsü”.' },
+    { name: 'Château d’Annecy', desc: 'Eski şehre hâkim tepedeki kale.' },
+    { name: 'Vieille Ville Kanalları', desc: 'Çiçekli, arkadlı tarihî sokaklar.' },
+  ],
+  avignon: [
+    { name: 'Papalık Sarayı', desc: 'Avrupa’nın en büyük gotik saraylarından.' },
+    { name: 'Pont Saint-Bénézet', desc: 'Şarkıya konu yarım kalmış Rhône köprüsü.' },
+    { name: 'Rocher des Doms', desc: 'Saray ve nehre bakan bahçe-teras.' },
+    { name: 'Place de l’Horloge', desc: 'Tiyatro ve kafelerle canlı meydan.' },
+  ],
+  aix: [
+    { name: 'Cours Mirabeau', desc: 'Çınarlı, çeşmeli görkemli bulvar.' },
+    { name: 'Cézanne Atölyesi', desc: 'Ressamın korunmuş çalışma mekânı.' },
+    { name: 'Saint-Sauveur Katedrali', desc: 'Farklı çağları birleştiren katedral.' },
+    { name: 'Provence Pazarları', desc: 'Çiçek, lavanta ve yerel ürün tezgâhları.' },
+  ],
+
+  // --- Orta Avrupa ara durakları ---
+  brno: [
+    { name: 'Špilberk Kalesi', desc: 'Kente hâkim kale ve kazamat müzesi.' },
+    { name: 'Villa Tugendhat', desc: 'Mies van der Rohe’nin modernist başyapıtı (UNESCO).' },
+    { name: 'Aziz Petrus ve Pavlus Katedrali', desc: 'İki kuleli tepe silüeti.' },
+    { name: 'Zelný trh & Yeraltı', desc: 'Sebze pazarı ve tarihî yeraltı geçitleri.' },
+  ],
+  ceskykrumlov: [
+    { name: 'Český Krumlov Kalesi', desc: 'Barok tiyatrolu, kuleli devasa saray kompleksi.' },
+    { name: 'Kale Kulesi', desc: 'Renkli, kızıl çatılara panoramik bakış.' },
+    { name: 'Eski Şehir Kıvrımı', desc: 'Vltava’nın sardığı Rönesans meydanları.' },
+    { name: 'Vltava Kano/Sal Turu', desc: 'Nehirden şehir manzarası.' },
+  ],
+  melk: [
+    { name: 'Melk Manastırı', desc: 'Görkemli kütüphaneli, freskli sarı Barok abbey.' },
+    { name: 'Wachau Vadisi', desc: 'Tuna boyunca bağlar ve kayısı bahçeleri.' },
+    { name: 'Dürnstein', desc: 'Mavi kuleli kilise ve Richard’ın kalesi (yakın).' },
+    { name: 'Tuna Nehir Turu', desc: 'Melk-Krems arası vapurla vadi geçişi.' },
+  ],
+  gyor: [
+    { name: 'Barok Eski Şehir', desc: 'Cumbalı evler ve avlular.' },
+    { name: 'Bazilika & Herm', desc: 'Aziz László’nun altın büstünün bulunduğu kilise.' },
+    { name: 'Püspökvár (Piskopos Kalesi)', desc: 'Nehre bakan tarihî kale.' },
+    { name: 'Rába Termal', desc: 'Şifalı sularıyla kaplıca (yakın).' },
+  ],
+  eger: [
+    { name: 'Eger Kalesi', desc: '1552 kuşatmasının kahramanlık kalesi ve müzesi.' },
+    { name: 'Minare', desc: 'Avrupa’nın en kuzeydeki Osmanlı minaresi.' },
+    { name: 'Güzel Kadınlar Vadisi', desc: 'Bikaver (Boğa Kanı) şarap mahzenleri.' },
+    { name: 'Bazilika & Barok Merkez', desc: 'Görkemli katedral ve meydan.' },
+  ],
+  pecs: [
+    { name: 'Erken Hristiyan Nekropolü', desc: 'Freskli yeraltı mezar odaları (UNESCO).' },
+    { name: 'Gazi Kasım Paşa Camii', desc: 'Kiliseye dönüşmüş kubbeli Osmanlı camisi.' },
+    { name: 'Zsolnay Mahallesi', desc: 'Ünlü porselen/çini kültür merkezi.' },
+    { name: 'Katedral & Barbakan', desc: 'Dört kuleli katedral ve kale kalıntısı.' },
+  ],
+  szentendre: [
+    { name: 'Fő tér (Ana Meydan)', desc: 'Renkli barok evler ve veba haçı.' },
+    { name: 'Belgrád Katedrali', desc: 'Sırp Ortodoks kilisesi ve ikonaları.' },
+    { name: 'Sanat Galerileri', desc: 'Marzipan Müzesi dahil atölye ve galeriler.' },
+    { name: 'Skanzen (Açık Hava Müzesi)', desc: 'Macar köy mimarisi parkı (yakın).' },
+  ],
+  balaton: [
+    { name: 'Tihany Manastırı', desc: 'Yarımadada göl manzaralı barok abbey.' },
+    { name: 'Balatonfüred', desc: 'Tarihî sahil promenadı ve marina.' },
+    { name: 'Badacsony Bağları', desc: 'Volkanik tepelerde şarap ve manzara.' },
+    { name: 'Göl Plajları', desc: 'Sığ, ılık sularıyla yüzme ve yelken.' },
+  ],
+  kosice: [
+    { name: 'Aziz Elizabeth Katedrali', desc: 'Slovakya’nın en büyük gotik kilisesi.' },
+    { name: 'Hlavná (Ana Cadde)', desc: 'Şarkı söyleyen çeşme ve saraylı bulvar.' },
+    { name: 'Urban Kulesi & Tiyatro', desc: 'Tarihî çan kulesi ve neobarok tiyatro.' },
+    { name: 'Miklós Hapishanesi', desc: 'Ortaçağ yapısında kent müzesi.' },
+  ],
 };
 
 export function attractionsFor(placeId) {
