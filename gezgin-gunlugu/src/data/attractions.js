@@ -2231,6 +2231,72 @@ export const ATTRACTIONS = {
     { name: 'Oshino Hakkai', desc: 'Berrak kaynak havuzlu geleneksel köy.' },
     { name: 'Fuji Panorama Teleferiği', desc: 'Göl ve dağa panoramik bakış.' },
   ],
+
+  // --- İspanya derinleştirme ---
+  bilbao: [
+    { name: 'Guggenheim Müzesi', desc: 'Gehry’nin titanyum kıvrımlı çağdaş sanat müzesi.' },
+    { name: 'Casco Viejo', desc: 'Yedi sokaklı tarihî merkez ve pintxos barları.' },
+    { name: 'Ribera Pazarı', desc: 'Nehir kıyısı kapalı gıda pazarı.' },
+    { name: 'Artxanda Füniküleri', desc: 'Kente panoramik tepe.' },
+  ],
+  sansebastian: [
+    { name: 'La Concha Plajı', desc: 'Kabuk biçimli, kentin simgesi körfez plajı.' },
+    { name: 'Parte Vieja & Pintxos', desc: 'Eski şehirde bar bar pintxos turu.' },
+    { name: 'Monte Igueldo', desc: 'Füniküler ve eski lunaparkla körfez manzarası.' },
+    { name: 'Monte Urgull', desc: 'Kaleli tepeden şehir panoraması.' },
+  ],
+  toledo: [
+    { name: 'Toledo Katedrali', desc: 'İspanya gotiğinin başyapıtlarından.' },
+    { name: 'Alcázar', desc: 'Şehre hâkim kare planlı kale-müze.' },
+    { name: 'El Greco İzleri', desc: 'Santo Tomé’de “Kont Orgaz’ın Cenazesi”.' },
+    { name: 'Mirador del Valle', desc: 'Nehir kıvrımıyla klasik şehir manzarası.' },
+    { name: 'Yahudi Mahallesi & Sinagoglar', desc: 'Santa María la Blanca ve dar sokaklar.' },
+  ],
+  cordoba: [
+    { name: 'Mezquita-Catedral', desc: 'Kırmızı-beyaz kemerli cami-katedral (UNESCO).' },
+    { name: 'Judería', desc: 'Çiçekli avlulu tarihî Yahudi mahallesi.' },
+    { name: 'Alcázar de los Reyes', desc: 'Bahçeli, havuzlu ortaçağ sarayı.' },
+    { name: 'Roma Köprüsü', desc: 'Guadalquivir üstünde antik köprü.' },
+    { name: 'Patios (Avlular)', desc: 'Saksı çiçekleriyle bezenmiş ünlü iç avlular.' },
+  ],
+  malaga: [
+    { name: 'Alcazaba & Gibralfaro', desc: 'Denize bakan Mağribi kale kompleksi.' },
+    { name: 'Picasso Müzesi', desc: 'Sanatçının doğduğu kentte eserleri.' },
+    { name: 'Katedral (La Manquita)', desc: 'Tek kuleli görkemli katedral.' },
+    { name: 'Muelle Uno & Sahil', desc: 'Liman promenadı ve şehir plajları.' },
+  ],
+  santiagocompostela: [
+    { name: 'Santiago Katedrali', desc: 'Camino’nun bittiği görkemli hac kilisesi.' },
+    { name: 'Praza do Obradoiro', desc: 'Katedralin baktığı anıtsal meydan.' },
+    { name: 'Eski Şehir (UNESCO)', desc: 'Granit arkadlı sokaklar ve meydanlar.' },
+    { name: 'Mercado de Abastos', desc: 'Galiçya deniz ürünleri ve pazar.' },
+  ],
+  // --- Portekiz derinleştirme ---
+  sintra: [
+    { name: 'Pena Sarayı', desc: 'Rengârenk, romantik tepe sarayı.' },
+    { name: 'Quinta da Regaleira', desc: 'Gizemli “başlatılma kuyusu” ve bahçe.' },
+    { name: 'Mağribi Kalesi', desc: 'Surlarından okyanusa panorama.' },
+    { name: 'Monserrate Sarayı', desc: 'Egzotik bahçeli zarif villa.' },
+    { name: 'Cabo da Roca', desc: 'Avrupa anakarasının en batı ucu (yakın).' },
+  ],
+  faro: [
+    { name: 'Cidade Velha (Surlu Şehir)', desc: 'Kemerli kapı, katedral ve leylekler.' },
+    { name: 'Ria Formosa', desc: 'Lagün adaları ve tekne turları.' },
+    { name: 'Algarve Kayalık Koyları', desc: 'Benagil/Lagos altın kayalıkları (yakın).' },
+    { name: 'Kemik Kapeli (Carmo)', desc: 'İskeletlerle örülü ürpertici şapel.' },
+  ],
+  coimbra: [
+    { name: 'Joanina Kütüphanesi', desc: 'Barok, yaldızlı üniversite kütüphanesi.' },
+    { name: 'Eski Üniversite & Kule', desc: 'Tepeden şehre panoramik avlu.' },
+    { name: 'Coimbra Fado’su', desc: 'Öğrenci pelerinli erkek fado geleneği.' },
+    { name: 'Eski Katedral (Sé Velha)', desc: 'Kale gibi Romanesk katedral.' },
+  ],
+  obidos: [
+    { name: 'Óbidos Kalesi & Surları', desc: 'Üstünde yürünen ortaçağ surları.' },
+    { name: 'Rua Direita', desc: 'Çiçekli, dükkânlı ana kasaba sokağı.' },
+    { name: 'Ginjinha (Çikolata Bardakta)', desc: 'Vişne likörü tadım geleneği.' },
+    { name: 'Santa Maria Kilisesi', desc: 'Azulejo çinili tarihî kilise.' },
+  ],
 };
 
 export function attractionsFor(placeId) {
