@@ -26,6 +26,13 @@ sıradakine geç; hepsi bitince zamanlayıcıyı durdur.
 - [x] E5 — Amerika üst sıra: New York, Rio, Buenos Aires, Meksiko, Havana
 - [x] E6 — Afrika/Okyanusya: Marakeş, Cape Town, Sydney
 
-## DURUM: Plandaki tüm batch'ler tamamlandı (B1-B6, E1-E6).
+## DURUM: İlk plan tamamlandı (B1-B6, E1-E6).
+
+## 2. Tur — İskandinavya + Japonya + Avrupa derinleştirme
+
+- [x] S1 — İskandinavya: Norveç (Oslo, Bergen, Tromsø, Stavanger, Ålesund, Geiranger, Lofoten), İsveç (Stockholm, Göteborg, Malmö, Uppsala, Kiruna, Visby), Danimarka (Kopenhag, Aarhus, Odense, Skagen), Finlandiya (Helsinki, Rovaniemi, Turku, Tampere), İzlanda (Reykjavik, Vík, Akureyri)
+- [ ] J1 — Japonya genişletme: Hakone, Nikko, Kanazawa, Takayama, Sapporo, Fukuoka, Kamakura, Kobe, Nagoya, Fuji-Kawaguchiko
+- [ ] EU1 — İspanya + Portekiz derinleştirme
+- [ ] EU2 — Birleşik Krallık + İrlanda + Hollanda + Belçika derinleştirme
 
 Not: "var" = zaten arşivde. Tamamlanınca bu dosyayı da güncelle.
