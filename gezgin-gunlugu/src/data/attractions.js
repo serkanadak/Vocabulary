@@ -2164,6 +2164,73 @@ export const ATTRACTIONS = {
     { name: 'Goðafoss', desc: '“Tanrılar Şelalesi” yarım daire çağlayan (yakın).' },
     { name: 'Mývatn Gölü', desc: 'Volkanik kraterler ve doğal hamamlar (yakın).' },
   ],
+
+  // --- Japonya genişletme ---
+  hakone: [
+    { name: 'Ashi Gölü & Korsan Gemisi', desc: 'Fuji manzaralı göl turu.' },
+    { name: 'Hakone Teleferiği & Owakudani', desc: 'Volkanik vadi ve kükürtlü kaynaklar.' },
+    { name: 'Onsen (Kaplıca)', desc: 'Geleneksel ryokan sıcak su banyoları.' },
+    { name: 'Hakone Açık Hava Müzesi', desc: 'Doğada heykel ve Picasso pavyonu.' },
+    { name: 'Hakone Tapınağı', desc: 'Gölde yükselen kırmızı torii kapısı.' },
+  ],
+  nikko: [
+    { name: 'Toshogu Tapınağı', desc: 'Altın işlemeli, “üç maymun” oymalı şogun türbesi.' },
+    { name: 'Kegon Şelalesi', desc: '97 m’den dökülen ünlü çağlayan.' },
+    { name: 'Chuzenji Gölü', desc: 'Dağ eteğinde sonbahar renkli göl.' },
+    { name: 'Shinkyo Köprüsü', desc: 'Nehir üzerinde kutsal kırmızı köprü.' },
+  ],
+  kanazawa: [
+    { name: 'Kenroku-en Bahçesi', desc: 'Japonya’nın en güzel üç bahçesinden biri.' },
+    { name: 'Higashi Chaya (Geyşa Semti)', desc: 'Ahşap çay evleri ve altın varak.' },
+    { name: 'Kanazawa Kalesi', desc: 'Bahçeye komşu görkemli kale.' },
+    { name: '21. Yüzyıl Çağdaş Sanat Müzesi', desc: 'Yüzen havuz eseriyle ünlü müze.' },
+    { name: 'Omicho Pazarı', desc: 'Taze deniz ürünleri çarşısı.' },
+  ],
+  takayama: [
+    { name: 'Sanmachi Eski Şehir', desc: 'Edo dönemi ahşap tüccar evleri, sake üreticileri.' },
+    { name: 'Sabah Pazarları', desc: 'Nehir kıyısı yerel ürün tezgâhları.' },
+    { name: 'Shirakawa-go', desc: 'Dik samanlı çatılı UNESCO köyü (yakın).' },
+    { name: 'Hida Folk Köyü', desc: 'Açık hava geleneksel ev müzesi.' },
+  ],
+  sapporo: [
+    { name: 'Odori Parkı & Kar Festivali', desc: 'Dev kar heykelleriyle ünlü şehir parkı.' },
+    { name: 'Sapporo Bira Müzesi', desc: 'Japonya’nın en eski birasının tarihi.' },
+    { name: 'Mount Moiwa', desc: 'Teleferikle gece manzarası.' },
+    { name: 'Nijo Pazarı & Ramen Sokağı', desc: 'Deniz ürünleri ve miso ramen.' },
+  ],
+  fukuoka: [
+    { name: 'Yatai (Sokak Tezgâhları)', desc: 'Nehir kıyısı açık hava ramen tezgâhları.' },
+    { name: 'Ohori Parkı & Kale', desc: 'Göllü park ve Fukuoka Kalesi kalıntıları.' },
+    { name: 'Kushida Tapınağı', desc: 'Hakata festivali arabalarının tapınağı.' },
+    { name: 'Canal City', desc: 'Su gösterili büyük alışveriş kompleksi.' },
+  ],
+  kamakura: [
+    { name: 'Büyük Buda (Daibutsu)', desc: 'Açık havada dev bronz Buda heykeli.' },
+    { name: 'Hase-dera Tapınağı', desc: 'Deniz manzaralı, ahşap Kannon heykelli tapınak.' },
+    { name: 'Tsurugaoka Hachimangu', desc: 'Kentin baş Şinto tapınağı.' },
+    { name: 'Hokokuji (Bambu Ormanı)', desc: 'Matcha içilen bambu bahçesi.' },
+    { name: 'Enoshima & Sahil', desc: 'Tramvayla ada tapınağı ve sörf plajı.' },
+  ],
+  kobe: [
+    { name: 'Kitano Ijinkan', desc: 'Yabancı tüccarların tarihî konakları.' },
+    { name: 'Liman & Kobe Kulesi', desc: 'Deniz kıyısı gece manzarası.' },
+    { name: 'Mount Rokko & Nunobiki', desc: 'Teleferik, şelale ve panorama.' },
+    { name: 'Kobe Eti', desc: 'Dünyaca ünlü mermer dokulu et deneyimi.' },
+    { name: 'Nada Sake Bölgesi', desc: 'Geleneksel pirinç şarabı üreticileri.' },
+  ],
+  nagoya: [
+    { name: 'Nagoya Kalesi', desc: 'Altın orka (shachihoko) süslü kale.' },
+    { name: 'Atsuta Tapınağı', desc: 'Kutsal kılıcı barındıran köklü tapınak.' },
+    { name: 'Toyota Sanayi & Teknoloji Müzesi', desc: 'Otomobil ve dokuma teknolojisi.' },
+    { name: 'Osu Çarşısı', desc: 'Tapınak çevresi canlı alışveriş sokakları.' },
+  ],
+  fuji: [
+    { name: 'Kawaguchiko Gölü', desc: 'Fuji’nin suya yansıdığı en ünlü göl.' },
+    { name: 'Chureito Pagoda', desc: 'Pagoda + Fuji + kiraz çiçeği ikonik manzarası.' },
+    { name: 'Fuji Tırmanışı (Yoshida)', desc: 'Yaz sezonunda zirveye çıkış rotası.' },
+    { name: 'Oshino Hakkai', desc: 'Berrak kaynak havuzlu geleneksel köy.' },
+    { name: 'Fuji Panorama Teleferiği', desc: 'Göl ve dağa panoramik bakış.' },
+  ],
 };
 
 export function attractionsFor(placeId) {

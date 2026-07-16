@@ -31,7 +31,7 @@ sıradakine geç; hepsi bitince zamanlayıcıyı durdur.
 ## 2. Tur — İskandinavya + Japonya + Avrupa derinleştirme
 
 - [x] S1 — İskandinavya: Norveç (Oslo, Bergen, Tromsø, Stavanger, Ålesund, Geiranger, Lofoten), İsveç (Stockholm, Göteborg, Malmö, Uppsala, Kiruna, Visby), Danimarka (Kopenhag, Aarhus, Odense, Skagen), Finlandiya (Helsinki, Rovaniemi, Turku, Tampere), İzlanda (Reykjavik, Vík, Akureyri)
-- [ ] J1 — Japonya genişletme: Hakone, Nikko, Kanazawa, Takayama, Sapporo, Fukuoka, Kamakura, Kobe, Nagoya, Fuji-Kawaguchiko
+- [x] J1 — Japonya genişletme: Hakone, Nikko, Kanazawa, Takayama, Sapporo, Fukuoka, Kamakura, Kobe, Nagoya, Fuji-Kawaguchiko
 - [ ] EU1 — İspanya + Portekiz derinleştirme
 - [ ] EU2 — Birleşik Krallık + İrlanda + Hollanda + Belçika derinleştirme
 
