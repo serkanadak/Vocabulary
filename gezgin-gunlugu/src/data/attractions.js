@@ -1109,6 +1109,9 @@ export const ATTRACTIONS = {
     { name: 'Son Akşam Yemeği', desc: 'Leonardo’nun ünlü freski (rezervasyonlu).' },
     { name: 'Sforza Kalesi', desc: 'Müzeleriyle Rönesans kalesi.' },
     { name: 'La Scala', desc: 'Dünyaca ünlü opera binası.' },
+    { name: 'Brera Galerisi & Semti', desc: 'İtalyan resmi koleksiyonu ve bohem mahalle.' },
+    { name: 'Navigli', desc: 'Kanallar boyunca aperitivo ve gece hayatı.' },
+    { name: 'Moda Dörtgeni (Montenapoleone)', desc: 'Dünyanın önde gelen lüks alışveriş bölgesi.' },
   ],
   napoli: [
     { name: 'Spaccanapoli (Tarihî Merkez)', desc: 'Kenti ikiye bölen antik cadde; UNESCO.' },
@@ -1116,6 +1119,9 @@ export const ATTRACTIONS = {
     { name: 'Napoli Yeraltı', desc: 'Antik su kemerleri ve tüneller.' },
     { name: 'Castel dell’Ovo', desc: 'Denize uzanan tarihî kale.' },
     { name: 'Kraliyet Sarayı & Plebiscito', desc: 'Bourbon sarayı ve meydan.' },
+    { name: 'Ulusal Arkeoloji Müzesi', desc: 'Pompeii ve Herculaneum’un hazineleri.' },
+    { name: 'Cappella Sansevero', desc: '“Örtülü İsa” mermer heykeliyle ünlü şapel.' },
+    { name: 'Certosa di San Martino', desc: 'Tepeden körfeze bakan manastır-müze.' },
   ],
   barselona: [
     { name: 'Sagrada Família', desc: 'Gaudí’nin bitmemiş dev bazilikası.' },
@@ -1134,6 +1140,9 @@ export const ATTRACTIONS = {
     { name: 'Plaza Mayor', desc: 'Tarihî kemerli meydan.' },
     { name: 'Retiro Parkı', desc: 'Göllü, cam saraylı büyük park.' },
     { name: 'Reina Sofía (Guernica)', desc: 'Picasso’nun Guernica’sı; modern sanat.' },
+    { name: 'Gran Vía', desc: 'Işıltılı tiyatro ve alışveriş bulvarı.' },
+    { name: 'Templo de Debod', desc: 'Madrid’e taşınan antik Mısır tapınağı; gün batımı.' },
+    { name: 'Mercado San Miguel', desc: 'Cam yapıda tapas ve lezzet pazarı.' },
   ],
   sevilla: [
     { name: 'Real Alcázar', desc: 'Mağribi bahçeli görkemli kraliyet sarayı.' },
@@ -1141,12 +1150,18 @@ export const ATTRACTIONS = {
     { name: 'Plaza de España', desc: 'Yarım daire çinili görkemli meydan.' },
     { name: 'Metropol Parasol', desc: '“Mantarlar” dev ahşap modern yapı.' },
     { name: 'Triana', desc: 'Flamenko ve seramik mahallesi.' },
+    { name: 'Altın Kule (Torre del Oro)', desc: 'Guadalquivir kıyısı Mağribi savunma kulesi.' },
+    { name: 'Casa de Pilatos', desc: 'Mudéjar-Rönesans avlulu görkemli saray.' },
+    { name: 'Santa Cruz Mahallesi', desc: 'Portakal ağaçlı dar sokaklar, eski Yahudi semti.' },
   ],
   granada: [
     { name: 'Elhamra & Generalife', desc: 'İslam sanatının doruğu saray ve bahçeler.' },
     { name: 'Albaicín', desc: 'Elhamra manzaralı tarihî Mağribi mahalle.' },
     { name: 'Sacromonte', desc: 'Mağara evler ve flamenko.' },
     { name: 'Granada Katedrali & Kraliyet Şapeli', desc: 'Rönesans katedrali ve kral mezarları.' },
+    { name: 'Mirador San Nicolás', desc: 'Elhamra ve Sierra Nevada’ya en ünlü bakış.' },
+    { name: 'El Bañuelo (Arap Hamamı)', desc: 'İyi korunmuş 11. yy Mağribi hamamı.' },
+    { name: 'Alcaicería Çarşısı', desc: 'Eski ipek çarşısının dar, renkli sokakları.' },
   ],
   valensiya: [
     { name: 'Sanat ve Bilim Şehri', desc: 'Calatrava’nın fütüristik yapı topluluğu.' },
@@ -1161,6 +1176,9 @@ export const ATTRACTIONS = {
     { name: 'East Side Gallery', desc: 'Berlin Duvarı üzerine resimler.' },
     { name: 'Müze Adası', desc: 'Bergama Müzesi dahil müzeler topluluğu; UNESCO.' },
     { name: 'Checkpoint Charlie & Holokost Anıtı', desc: 'Soğuk Savaş ve anma alanları.' },
+    { name: 'Fernsehturm & Alexanderplatz', desc: 'TV kulesinden panorama ve canlı meydan.' },
+    { name: 'Charlottenburg Sarayı', desc: 'Berlin’in en büyük barok sarayı ve bahçesi.' },
+    { name: 'Potsdamer Platz & Sony Center', desc: 'Modern Berlin’in cam-çelik meydanı.' },
   ],
   munih: [
     { name: 'Marienplatz & Glockenspiel', desc: 'Belediye sarayı ve figürlü saat gösterisi.' },
@@ -1168,6 +1186,9 @@ export const ATTRACTIONS = {
     { name: 'English Garden', desc: 'Dünyanın en büyük şehir parklarından; bira bahçeleri.' },
     { name: 'Viktualienmarkt', desc: 'Geleneksel açık gıda pazarı.' },
     { name: 'Neuschwanstein Şatosu', desc: 'Alplerde masal şatosu (yakın).' },
+    { name: 'Deutsches Museum', desc: 'Dünyanın en büyük bilim-teknoloji müzesi.' },
+    { name: 'BMW Welt & Müze', desc: 'Fütüristik otomobil deneyim merkezi.' },
+    { name: 'Olympiapark', desc: '1972 olimpiyat alanı, kule ve park.' },
   ],
   koln: [
     { name: 'Köln Katedrali', desc: 'İki kuleli devasa gotik katedral; UNESCO.' },
@@ -1196,6 +1217,9 @@ export const ATTRACTIONS = {
     { name: 'Ano Poli (Üst Şehir)', desc: 'Bizans surları ve panoramik sokaklar.' },
     { name: 'Aya Dimitrios Kilisesi', desc: 'Kentin baş azizine adanmış Bizans kilisesi.' },
     { name: 'Atatürk Evi', desc: 'Mustafa Kemal Atatürk’ün doğduğu ev-müze.' },
+    { name: 'Galerius Takı (Kamara)', desc: 'Roma imparatoru için dikilmiş anıtsal tak.' },
+    { name: 'Ladadika', desc: 'Renkli tarihî depolardan meyhane-restoran semti.' },
+    { name: 'Arkeoloji Müzesi', desc: 'Makedonya altın hazineleriyle zengin müze.' },
   ],
   santorini: [
     { name: 'Oia', desc: 'Mavi kubbeler ve dünyaca ünlü gün batımı.' },
@@ -1227,6 +1251,9 @@ export const ATTRACTIONS = {
     { name: 'Alfama & Fado', desc: 'Dar sokaklar ve fado müziği.' },
     { name: '28 Numaralı Tramvay', desc: 'Tepeleri aşan tarihî sarı tramvay.' },
     { name: 'São Jorge Kalesi', desc: 'Şehre hâkim ortaçağ kalesi.' },
+    { name: 'Praça do Comércio', desc: 'Tejo’ya açılan görkemli nehir meydanı.' },
+    { name: 'Miradouro’lar', desc: 'Senhora do Monte gibi panoramik teraslar.' },
+    { name: 'Time Out Market & LX Factory', desc: 'Gastronomi pazarı ve yaratıcı sanayi semti.' },
   ],
   porto: [
     { name: 'Ribeira & Douro', desc: 'Renkli nehir kıyısı mahalle; UNESCO.' },
@@ -1234,6 +1261,9 @@ export const ATTRACTIONS = {
     { name: 'Livraria Lello', desc: 'Dünyanın en güzel kitapçılarından.' },
     { name: 'Porto Şarap Mahzenleri (Gaia)', desc: 'Karşı yakada porto tadımı.' },
     { name: 'São Bento Garı', desc: 'Azulejo çinileriyle kaplı tren garı.' },
+    { name: 'Clérigos Kulesi', desc: 'Kente panoramik barok çan kulesi.' },
+    { name: 'Bolsa Sarayı', desc: 'Görkemli Arap Salonu’yla eski borsa binası.' },
+    { name: 'Foz & Atlantik Kıyısı', desc: 'Douro’nun okyanusa döküldüğü sahil şeridi.' },
   ],
   londra: [
     { name: 'Big Ben & Parlamento', desc: 'Thames kıyısında simge saat kulesi.' },
@@ -1294,6 +1324,9 @@ export const ATTRACTIONS = {
     { name: 'St. Mary Bazilikası', desc: 'Ahşap sunağı ve her saat trompetiyle ünlü.' },
     { name: 'Kazimierz', desc: 'Tarihî Yahudi mahallesi, kafeler.' },
     { name: 'Wieliczka Tuz Madeni', desc: 'Yeraltı tuz katedrali; UNESCO (yakın).' },
+    { name: 'Auschwitz-Birkenau', desc: 'Toplama kampı anıt-müzesi (yakın).' },
+    { name: 'Schindler Fabrikası Müzesi', desc: 'İşgal altında Krakov’u anlatan müze.' },
+    { name: 'Planty & Barbakan', desc: 'Eski şehri saran yeşil kuşak ve kale kapısı.' },
   ],
   varsova: [
     { name: 'Eski Şehir & Kraliyet Kalesi', desc: 'Yeniden inşa edilmiş tarihî merkez; UNESCO.' },
@@ -1301,6 +1334,9 @@ export const ATTRACTIONS = {
     { name: 'Wilanów Sarayı', desc: '“Polonya’nın Versay’ı” barok saray.' },
     { name: 'Kültür ve Bilim Sarayı', desc: 'Şehre hâkim kule, seyir terası.' },
     { name: 'POLIN Müzesi', desc: 'Polonya Yahudileri tarihi müzesi.' },
+    { name: 'Kraliyet Yolu (Nowy Świat)', desc: 'Saraylardan geçen zarif ana cadde.' },
+    { name: 'Varşova Ayaklanması Müzesi', desc: '1944 direnişini anlatan etkileyici müze.' },
+    { name: 'Praga Semti', desc: 'Vistül’ün karşı yakasında sanatçı ve stüdyo mahallesi.' },
   ],
 
   // --- Balkanlar & Orta Avrupa ---
