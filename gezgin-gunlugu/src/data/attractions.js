@@ -2006,6 +2006,164 @@ export const ATTRACTIONS = {
     { name: 'Mali Ston & İstiridye', desc: 'Körfezde taze istiridye-midye tadımı.' },
     { name: 'Pelješac Bağ Yolu', desc: 'Dingač şaraplarına açılan bağ rotası (yakın).' },
   ],
+
+  // --- İskandinavya: Norveç ---
+  oslo: [
+    { name: 'Opera Binası', desc: 'Çatısına yürünen, fiyorda uzanan mimari simge.' },
+    { name: 'Vigeland Heykel Parkı', desc: 'Yüzlerce insan figürlü açık hava park.' },
+    { name: 'Viking Gemisi & Fram Müzeleri', desc: 'Bygdøy’de kutup ve Viking denizciliği.' },
+    { name: 'Munch Müzesi', desc: '“Çığlık”ın da bulunduğu sanat müzesi.' },
+    { name: 'Holmenkollen', desc: 'Atlama kulesi ve şehre panoramik manzara.' },
+  ],
+  bergen: [
+    { name: 'Bryggen', desc: 'Renkli ahşap Hansa rıhtımı (UNESCO).' },
+    { name: 'Fløibanen & Fløyen', desc: 'Fünikülerle şehir ve fiyort panoraması.' },
+    { name: 'Balık Hali (Fisketorget)', desc: 'Taze deniz ürünleri açık pazarı.' },
+    { name: 'Ulriken Teleferiği', desc: 'Kentin en yüksek tepesine çıkış.' },
+    { name: 'Fiyort Turları', desc: 'Nærøyfjord/Hardanger’a tekne başlangıcı.' },
+  ],
+  tromso: [
+    { name: 'Kuzey Işıkları Turu', desc: 'Kış aylarında aurora avı.' },
+    { name: 'Arktik Katedrali', desc: 'Buzul biçimli beyaz modern kilise.' },
+    { name: 'Fjellheisen Teleferiği', desc: 'Kente ve adalara panoramik bakış.' },
+    { name: 'Polaria & Kutup Müzesi', desc: 'Arktik doğa ve keşif tarihi.' },
+    { name: 'Gece Yarısı Güneşi', desc: 'Yazın batmayan güneş deneyimi.' },
+  ],
+  stavanger: [
+    { name: 'Preikestolen', desc: '604 m uçurumda ünlü “Vaiz Kürsüsü” yürüyüşü.' },
+    { name: 'Gamle Stavanger', desc: 'Beyaz ahşap evli tarihî sokaklar.' },
+    { name: 'Lysefjord Turu', desc: 'Fiyort boyunca tekneyle Kjerag’a.' },
+    { name: 'Petrol Müzesi', desc: 'Norveç’in petrol tarihini anlatan müze.' },
+  ],
+  alesund: [
+    { name: 'Aksla Tepesi (Fjellstua)', desc: '418 basamakla kent ve adalar panoraması.' },
+    { name: 'Jugendstil Merkezi', desc: 'Art nouveau mimarisi müzesi.' },
+    { name: 'Atlantik Deniz Parkı', desc: 'İskandinavya’nın büyük akvaryumlarından.' },
+    { name: 'Geiranger Kapısı', desc: 'Fiyortlara açılan liman turları.' },
+  ],
+  geiranger: [
+    { name: 'Yedi Kızkardeş Şelalesi', desc: 'Fiyort duvarından dökülen ünlü çağlayan.' },
+    { name: 'Dalsnibba Bakı Terası', desc: '1.500 m’den fiyorda tepeden bakış.' },
+    { name: 'Fiyort Tekne Turu', desc: 'Terk edilmiş çiftlikler arasında seyir.' },
+    { name: 'Ørnevegen (Kartal Yolu)', desc: 'Serpantinlerle manzaralı dağ yolu.' },
+  ],
+  lofoten: [
+    { name: 'Reine & Hamnøy', desc: 'Sivri dağlar altında kırmızı balıkçı köyleri.' },
+    { name: 'Rorbu Konaklama', desc: 'Deniz üstü geleneksel balıkçı kulübeleri.' },
+    { name: 'Haukland & Kvalvika Plajları', desc: 'Arktik turkuaz kumsallar.' },
+    { name: 'Kuzey Işıkları / Gece Güneşi', desc: 'Mevsime göre aurora veya batmayan güneş.' },
+  ],
+  // --- İskandinavya: İsveç ---
+  stockholm: [
+    { name: 'Gamla Stan', desc: 'Ortaçağ ada eski şehri ve dar sokaklar.' },
+    { name: 'Vasa Müzesi', desc: 'Batıp çıkarılan 17. yy savaş gemisi.' },
+    { name: 'Kraliyet Sarayı', desc: 'Nöbet töreniyle görkemli saray.' },
+    { name: 'Skansen & Djurgården', desc: 'Açık hava müzesi ve yeşil ada.' },
+    { name: 'Belediye Sarayı (Stadshuset)', desc: 'Nobel balosunun yapıldığı kule.' },
+  ],
+  goteborg: [
+    { name: 'Haga Semti', desc: 'Ahşap evleri ve dev tarçınlı çörekleriyle ünlü.' },
+    { name: 'Liseberg', desc: 'İskandinavya’nın en büyük lunaparklarından.' },
+    { name: 'Kanal & Paddan Turu', desc: 'Tekneyle şehir kanalları gezisi.' },
+    { name: 'Feskekôrka (Balık Kilisesi)', desc: 'Kilise biçimli balık hali.' },
+    { name: 'Takımada (Skärgård)', desc: 'Feribotla otomobilsiz adalar.' },
+  ],
+  malmo: [
+    { name: 'Turning Torso', desc: 'Calatrava’nın burgulu simge gökdeleni.' },
+    { name: 'Stortorget & Lilla Torg', desc: 'Tarihî meydanlar ve kafeler.' },
+    { name: 'Malmöhus Kalesi', desc: 'İskandinavya’nın en eski ayakta kalelerinden.' },
+    { name: 'Öresund Köprüsü', desc: 'Kopenhag’a uzanan köprü-tünel (yakın).' },
+  ],
+  uppsala: [
+    { name: 'Uppsala Katedrali', desc: 'İskandinavya’nın en yüksek katedrali.' },
+    { name: 'Uppsala Kalesi', desc: 'Tepeden şehre bakan pembe kale.' },
+    { name: 'Gamla Uppsala', desc: 'Viking dönemi kraliyet höyükleri.' },
+    { name: 'Linnaeus Bahçesi', desc: 'Botanikçi Linnaeus’un tarihî bahçesi.' },
+  ],
+  kiruna: [
+    { name: 'Icehotel (Jukkasjärvi)', desc: 'Her yıl buzdan yeniden inşa edilen otel.' },
+    { name: 'Abisko & Aurora Sky', desc: 'Kuzey ışıkları için en iyi noktalardan.' },
+    { name: 'Sami Kültürü', desc: 'Ren geyiği ve yerli halk gelenekleri.' },
+    { name: 'Kebnekaise', desc: 'İsveç’in en yüksek dağına yürüyüş (yakın).' },
+  ],
+  visby: [
+    { name: 'Ortaçağ Surları', desc: 'Kuleleriyle tam korunmuş kent surları.' },
+    { name: 'Kilise Kalıntıları', desc: 'Hansa döneminden çatısız kiliseler.' },
+    { name: 'Gül Bahçeleri', desc: '“Güller ve Harabeler Kenti” sokakları.' },
+    { name: 'Gotland Plaj & Rauk’lar', desc: 'Deniz aşınmasıyla oluşan taş sütunlar.' },
+  ],
+  // --- İskandinavya: Danimarka ---
+  kopenhag: [
+    { name: 'Nyhavn', desc: 'Renkli evler ve teknelerle ünlü kanal.' },
+    { name: 'Küçük Deniz Kızı', desc: 'Andersen masalının simge heykeli.' },
+    { name: 'Tivoli Bahçeleri', desc: 'Dünyanın en eski lunaparklarından.' },
+    { name: 'Rosenborg & Amalienborg', desc: 'Kraliyet sarayları ve mücevherler.' },
+    { name: 'Christiania & Christiansborg', desc: 'Özgür semt ve parlamento sarayı.' },
+  ],
+  aarhus: [
+    { name: 'ARoS Sanat Müzesi', desc: 'Gökkuşağı panoramalı çatısıyla ünlü.' },
+    { name: 'Den Gamle By', desc: 'Danimarka evlerinden açık hava kent müzesi.' },
+    { name: 'Katedral & Latin Mahallesi', desc: 'Ülkenin en uzun kilisesi ve butik sokaklar.' },
+    { name: 'Moesgaard Müzesi', desc: 'Çim çatılı, bataklık adamı arkeoloji müzesi.' },
+  ],
+  odense: [
+    { name: 'H. C. Andersen Evi & Müzesi', desc: 'Masal yazarının doğduğu ev.' },
+    { name: 'Eski Şehir', desc: 'Arnavut kaldırımlı renkli tarihî sokaklar.' },
+    { name: 'Egeskov Şatosu', desc: 'Su hendekli Rönesans şatosu (yakın).' },
+    { name: 'Nehir Yürüyüşü', desc: 'Odense Nehri boyunca yeşil rota.' },
+  ],
+  skagen: [
+    { name: 'Grenen', desc: 'İki denizin dalgalarının çarpıştığı kum dili.' },
+    { name: 'Skagen Müzesi', desc: 'Ünlü Skagen ressamlarının eserleri.' },
+    { name: 'Kum Altındaki Kilise', desc: 'Kumullara gömülmüş kule.' },
+    { name: 'Sarı Evler & Liman', desc: 'Kentin simgesi sarı boyalı evleri.' },
+  ],
+  // --- İskandinavya: Finlandiya ---
+  helsinki: [
+    { name: 'Senato Meydanı & Katedral', desc: 'Beyaz neoklasik simge kilise.' },
+    { name: 'Temppeliaukio (Kaya Kilisesi)', desc: 'Granit kayaya oyulmuş kilise.' },
+    { name: 'Suomenlinna', desc: 'Deniz kalesi adası (UNESCO).' },
+    { name: 'Pazar Meydanı & Esplanadi', desc: 'Liman pazarı ve ağaçlı bulvar.' },
+    { name: 'Oodi Kütüphanesi & Tasarım', desc: 'Modern mimari ve tasarım semti.' },
+  ],
+  rovaniemi: [
+    { name: 'Noel Baba Köyü', desc: 'Kutup dairesinde Santa ofisi ve postane.' },
+    { name: 'Kuzey Işıkları', desc: 'Karanlık mevsimde aurora avı.' },
+    { name: 'Ren Geyiği & Husky Safari', desc: 'Kar üstünde kızak turları.' },
+    { name: 'Arktikum', desc: 'Laponya ve Arktik doğa-kültür müzesi.' },
+  ],
+  turku: [
+    { name: 'Turku Kalesi', desc: 'İskandinavya’nın en büyük ortaçağ kalelerinden.' },
+    { name: 'Turku Katedrali', desc: 'Finlandiya’nın ulusal kutsal yapısı.' },
+    { name: 'Nehir Kıyısı (Aura)', desc: 'Kafe-tekne barlarla canlı rıhtım.' },
+    { name: 'Takımada Yolu', desc: 'Feribotlarla adadan adaya rota (yakın).' },
+  ],
+  tampere: [
+    { name: 'Näsinneula Kulesi', desc: 'Göllere bakan döner restoranlı kule.' },
+    { name: 'Vapriikki & Moomin Müzesi', desc: 'Fabrika kompleksinde müzeler.' },
+    { name: 'Pyynikki Sauna & Gözlem Kulesi', desc: 'Dünyanın en eski kamu odun saunası.' },
+    { name: 'Tuğla Fabrika Semti', desc: 'Finlayson/Tampella dönüşüm mekânları.' },
+  ],
+  // --- İskandinavya: İzlanda ---
+  reykjavik: [
+    { name: 'Hallgrímskirkja', desc: 'Bazalt sütun biçimli kule ve panorama.' },
+    { name: 'Harpa', desc: 'Bal peteği camlı konser salonu.' },
+    { name: 'Altın Çember', desc: 'Þingvellir, Geysir ve Gullfoss turu (yakın).' },
+    { name: 'Mavi Lagün', desc: 'Süt mavisi jeotermal spa (yakın).' },
+    { name: 'Sun Voyager & Sahil', desc: 'Deniz kıyısı Viking gemisi heykeli.' },
+  ],
+  vik: [
+    { name: 'Reynisfjara', desc: 'Siyah kumlu plaj ve bazalt sütunlar.' },
+    { name: 'Reynisdrangar', desc: 'Denizden yükselen sivri kaya kuleleri.' },
+    { name: 'Dyrhólaey', desc: 'Deniz kemeri ve martı/puffin kayalıkları.' },
+    { name: 'Skógafoss & Sólheimajökull', desc: 'Şelale ve buzul dili (yakın).' },
+  ],
+  akureyri: [
+    { name: 'Akureyri Kilisesi', desc: 'Fiyorda bakan modernist beyaz kilise.' },
+    { name: 'Botanik Bahçesi', desc: 'Bu enlemde şaşırtan zengin bahçe.' },
+    { name: 'Goðafoss', desc: '“Tanrılar Şelalesi” yarım daire çağlayan (yakın).' },
+    { name: 'Mývatn Gölü', desc: 'Volkanik kraterler ve doğal hamamlar (yakın).' },
+  ],
 };
 
 export function attractionsFor(placeId) {
