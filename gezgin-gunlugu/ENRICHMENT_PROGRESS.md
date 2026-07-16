@@ -22,8 +22,10 @@ sıradakine geç; hepsi bitince zamanlayıcıyı durdur.
 - [x] E1 — İtalya: Napoli, Milano
 - [x] E2 — İspanya/Portekiz: Sevilla, Granada, Lizbon, Porto, Madrid
 - [x] E3 — Almanya/Orta Avrupa: Münih, Berlin, Selanik, Krakow, Varşova
-- [ ] E4 — Asya üst sıra: Kyoto, Pekin, Bangkok, Singapur, Delhi, Dubai
-- [ ] E5 — Amerika üst sıra: New York, Rio, Buenos Aires, Meksiko, Havana
-- [ ] E6 — Afrika/Okyanusya: Marakeş, Cape Town, Sydney
+- [x] E4 — Asya üst sıra: Kyoto, Pekin, Bangkok, Singapur, Delhi, Dubai
+- [x] E5 — Amerika üst sıra: New York, Rio, Buenos Aires, Meksiko, Havana
+- [x] E6 — Afrika/Okyanusya: Marakeş, Cape Town, Sydney
+
+## DURUM: Plandaki tüm batch'ler tamamlandı (B1-B6, E1-E6).
 
 Not: "var" = zaten arşivde. Tamamlanınca bu dosyayı da güncelle.
