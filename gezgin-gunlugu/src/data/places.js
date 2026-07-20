@@ -1125,7 +1125,7 @@ export const PLACES = [
     lng: 116.4074,
     aliases: ['pekin', 'beijing', 'peking'],
     summary:
-      'Çin’in başkenti Pekin, imparatorluk mirasının merkezidir; Yasak Şehir, Tiananmen Meydanı ve Cennet Tapınağı buradadır. Kentin hemen dışında dünyanın en görkemli yapısı Çin Seddi uzanır.',
+      'Çin’in başkenti Pekin, yüzyıllardır imparatorlukların ve modern Çin’in merkezi olarak ülkenin siyasi ve kültürel kalbidir. Anıtsal yapıları, geniş meydanları ve katmanlı tarihiyle adeta bir açık hava tarih kitabıdır.\n\nİmparatorların yaşadığı devasa saray kompleksi Yasak Şehir, dünyanın en büyük meydanlarından Tiananmen, gökyüzüne adanan Cennet Tapınağı ve tarihî hutong sokakları başlıca duraklardır. Kentin hemen dışında ise tepeler boyunca uzanan görkemli Çin Seddi, insan elinden çıkma en büyük yapılardan biri olarak yükselir.',
     sources: ['UNESCO World Heritage List — Imperial Palace / Great Wall', 'Lonely Planet — Beijing'],
   },
   {
@@ -1137,7 +1137,7 @@ export const PLACES = [
     lng: 121.4737,
     aliases: ['sanghay', 'şanghay', 'shanghai'],
     summary:
-      'Çin’in fütüristik vitrini Şanghay; tarihî Bund rıhtımının karşısında yükselen Pudong gökdelenleri, klasik Yu Bahçesi ve canlı çarşılarıyla geçmiş ile geleceği aynı silüette birleştirir.',
+      'Çin’in en büyük kenti ve finans başkenti Şanghay, bir yüzyıl önceki sömürge geçmişini baş döndürücü bir modernlikle birleştiren fütüristik bir metropoldür. Doğu ile Batı’nın buluştuğu kozmopolit bir enerji taşır.\n\nNehrin bir yakasında 1920’lerin Avrupai binalarıyla tarihî Bund rıhtımı, karşı yakasında ise ışıl ışıl Pudong gökdelenleri (Şanghay Kulesi) yükselir. Klasik Çin bahçesi Yu Bahçesi, canlı çarşıları ve Fransız Konsesyonu’nun ağaçlı sokaklarıyla Şanghay geçmiş ile geleceği aynı silüette buluşturur.',
     sources: ['Lonely Planet — Shanghai', 'Çin Turizm — Shanghai'],
   },
   {
@@ -1149,7 +1149,7 @@ export const PLACES = [
     lng: 108.9398,
     aliases: ['xian', "xi'an", 'sian'],
     summary:
-      'İpek Yolu’nun doğu ucundaki antik başkent Xi’an, binlerce pişmiş toprak asker ve atın koruduğu Terracotta Ordusu’na (UNESCO) ev sahipliği yapar. İyi korunmuş şehir surları ve Müslüman çarşısıyla köklü bir merkezdir.',
+      'İpek Yolu’nun doğu ucundaki Xi’an, Çin’in ilk birleşik imparatorluğuna başkentlik yapmış, ülkenin en eski ve en önemli tarihî kentlerinden biridir. On üç hanedana ev sahipliği yapan bu kent, Çin uygarlığının beşiği sayılır.\n\nİlk imparator Qin Shi Huang’ın mezarını korumak için yapılan, binlerce gerçek boyutta pişmiş toprak asker ve attan oluşan Terracotta Ordusu (UNESCO), kentin dünyaca ünlü hazinesidir. Tümüyle korunmuş görkemli şehir surları, Büyük Yaban Kazı Pagodası ve canlı Müslüman Çarşısı da başlıca duraklardır.',
     sources: ['UNESCO World Heritage List — Mausoleum of the First Qin Emperor (Terracotta Army)', 'Lonely Planet — Xi’an'],
   },
   {
@@ -1161,7 +1161,7 @@ export const PLACES = [
     lng: 110.2907,
     aliases: ['guilin', 'yangshuo'],
     summary:
-      'Guilin ve çevresi, Li Nehri boyunca sisler içinde yükselen karst tepeleriyle Çin resimlerinden fırlamış gibidir. Yangshuo’ya tekne turu, dünyanın en ikonik doğa manzaralarından birini sunar.',
+      'Güney Çin’deki Guilin ve çevresi, Li Nehri boyunca sisler içinde yükselen kubbe biçimli karst tepeleriyle geleneksel Çin resimlerinden fırlamış gibi büyüleyici bir manzara sunar. Bu peyzaj, yüzyıllardır şairlere ve ressamlara ilham vermiştir.\n\nGuilin’den Yangshuo’ya Li Nehri üzerinde yapılan tekne turu, dünyanın en ikonik doğa manzaralarından birini gözler önüne serer. Pirinç terasları, mağaraları ve bisikletle keşfedilen kırsalıyla bölge, doğa tutkunları için Çin’in en büyüleyici köşelerinden biridir.',
     sources: ['Lonely Planet — Guilin', 'Çin Turizm — Guilin'],
   },
 
@@ -1175,7 +1175,7 @@ export const PLACES = [
     lng: 77.209,
     aliases: ['delhi', 'yeni delhi', 'new delhi'],
     summary:
-      'Hindistan’ın başkenti Delhi, Babür ihtişamı ile modern başkentin buluştuğu bir zıtlıklar şehridir. Kızıl Kale, Kutub Minar ve Humayun Türbesi (UNESCO) ile Eski Delhi’nin kaotik çarşıları aynı kentte yaşar.',
+      'Hindistan’ın başkenti Delhi, binlerce yıllık tarihi, Babür İmparatorluğu’nun ihtişamı ve modern başkentin buluştuğu bir zıtlıklar kentidir. Kaotik enerjisi, renkleri ve kokularıyla Hindistan’ın tüm yoğunluğunu tek bir kentte sunar.\n\nBabür döneminin kızıl kumtaşı Kızıl Kale’si, göğe uzanan Kutub Minar, mimari bir başyapıt olan Humayun Türbesi (hepsi UNESCO) ve devasa Cuma Camii başlıca duraklardır. Eski Delhi’nin dar çarşıları ile Yeni Delhi’nin geniş bulvarları, kentin ikili ruhunu yansıtır.',
     sources: ['UNESCO World Heritage List — Humayun’s Tomb / Qutb Minar', 'Lonely Planet — Delhi'],
   },
   {
@@ -1187,7 +1187,7 @@ export const PLACES = [
     lng: 78.0081,
     aliases: ['agra', 'tac mahal', 'taj mahal'],
     summary:
-      'Agra, dünyanın en ünlü aşk anıtı Tac Mahal’in şehridir; beyaz mermer türbe, gün doğumunda büyüleyici bir görüntü sunar. Agra Kalesi ve yakındaki Fatehpur Sikri de UNESCO Dünya Mirası’dır.',
+      'Hindistan’ın kuzeyindeki Agra, dünyanın en ünlü anıtı sayılan Tac Mahal’e ev sahipliği yapmasıyla milyonlarca ziyaretçiyi çeker. Bir zamanlar Babür İmparatorluğu’nun başkenti olan kent, görkemli bir mimari mirasa sahiptir.\n\nBabür imparatoru Şah Cihan’ın eşinin anısına yaptırdığı, gün doğumunda büyülü bir görüntü sunan beyaz mermer Tac Mahal, kentin kalbidir. Kızıl kumtaşından Agra Kalesi ve yakınlardaki terk edilmiş görkemli başkent Fatehpur Sikri de UNESCO Dünya Mirası Listesi’ndedir.',
     sources: ['UNESCO World Heritage List — Taj Mahal', 'Lonely Planet — Agra'],
   },
   {
@@ -1199,7 +1199,7 @@ export const PLACES = [
     lng: 75.7873,
     aliases: ['jaipur', 'pembe sehir'],
     summary:
-      'Racastan’ın “Pembe Şehri” Jaipur; Amber Kalesi, Rüzgâr Sarayı (Hawa Mahal) ve Şehir Sarayı’yla masalsı bir maharaja başkentidir (UNESCO). Renkli çarşıları ve kraliyet mirasıyla büyüler.',
+      'Racastan eyaletinin başkenti Jaipur, tarihî merkezindeki binaların rengi nedeniyle “Pembe Şehir” olarak anılır ve Hindistan’ın masalsı maharaja mirasını yaşatır. Görkemli sarayları ve renkli çarşılarıyla büyüleyicidir.\n\nBir tepeye kurulu görkemli Amber Kalesi, yüzlerce kafesli pencereden oluşan Rüzgâr Sarayı (Hawa Mahal), Şehir Sarayı ve devasa güneş saatleriyle Jantar Mantar gözlemevi (UNESCO) başlıca duraklardır. Kumaş, mücevher ve el sanatları çarşılarıyla Jaipur, renk dolu bir kraliyet kentidir.',
     sources: ['UNESCO World Heritage List — Jaipur City', 'Lonely Planet — Jaipur'],
   },
   {
@@ -1211,7 +1211,7 @@ export const PLACES = [
     lng: 82.9739,
     aliases: ['varanasi', 'benares', 'kasi'],
     summary:
-      'Ganj kıyısındaki Varanasi, Hinduizmin en kutsal şehri ve dünyanın kesintisiz yaşayan en eski kentlerindendir. Şafakta nehir üzerindeki ritüeller (ghat’lar) ve akşam Ganga Aarti töreni derin bir manevi deneyim sunar.',
+      'Kutsal Ganj Nehri’nin kıyısındaki Varanasi, Hinduizmin en kutsal kenti ve dünyanın kesintisiz yaşayan en eski yerleşimlerinden biridir. Hindular için en kutsal yerlerden sayılan kent, derin bir manevi yoğunluk taşır.\n\nNehir kıyısındaki basamaklarda (ghat) şafak vakti yapılan yıkanma ve dua ritüelleri, akşamları düzenlenen ışıklı ve müzikli Ganga Aarti töreni ve nehir üzerinde tekne gezisi eşsiz bir deneyim sunar. Dar sokakları, tapınakları ve ipeğiyle Varanasi, Hindistan’ın ruhunu yansıtır.',
     sources: ['Lonely Planet — Varanasi', 'Hindistan Turizm — Varanasi'],
   },
   {
@@ -1223,7 +1223,7 @@ export const PLACES = [
     lng: 72.8777,
     aliases: ['mumbai', 'bombay'],
     summary:
-      'Hindistan’ın enerjik metropolü ve Bollywood’un evi Mumbai; Hindistan Kapısı, Victoria Terminus (UNESCO) ve deniz kıyısı Marine Drive ile sömürge mimarisini modern yaşamla birleştirir.',
+      'Hindistan’ın batı kıyısındaki Mumbai, ülkenin finans başkenti ve dünyaca ünlü Bollywood film endüstrisinin evi olan enerjik bir metropoldür. Zenginlik ile yoksulluğun, gelenek ile hırsın iç içe geçtiği bir hayaller şehridir.\n\nDenize bakan tak Hindistan Kapısı, görkemli Viktorya dönemi tren garı Chhatrapati Shivaji Terminus (UNESCO) ve gün batımında yürünen sahil bulvarı Marine Drive başlıca duraklardır. Sömürge mimarisi, çarşıları ve durmak bilmeyen enerjisiyle Mumbai, modern Hindistan’ın kalbidir.',
     sources: ['UNESCO World Heritage List — Chhatrapati Shivaji Terminus', 'Lonely Planet — Mumbai'],
   },
 
@@ -1263,7 +1263,7 @@ export const PLACES = [
     lng: 100.5018,
     aliases: ['bangkok', 'krung thep'],
     summary:
-      'Tayland’ın canlı başkenti Bangkok; ışıltılı Büyük Saray ve Zümrüt Buda, nehir üzerindeki Wat Arun tapınağı ve hareketli sokak pazarlarıyla duyulara ziyafet çeker. Efsanevi sokak yemekleriyle de ünlüdür.',
+      'Tayland’ın canlı başkenti Bangkok, ışıltılı tapınakları, hareketli kanalları ve durmak bilmeyen sokak yaşamıyla duyulara ziyafet çeken bir Güneydoğu Asya metropolüdür. Geleneksel maneviyat ile modern eğlenceyi çarpıcı biçimde birleştirir.\n\nİçinde Zümrüt Buda’nın bulunduğu görkemli Büyük Saray, nehir kıyısındaki Şafak Tapınağı Wat Arun, uzanan altın Buda’sıyla Wat Pho ve yüzen pazarlar başlıca duraklardır. Efsanevi sokak yemekleri, tuk-tuk’ları ve gece pazarlarıyla Bangkok, coşkulu ve baş döndürücü bir kenttir.',
     sources: ['Tourism Authority of Thailand — Bangkok', 'Lonely Planet — Bangkok'],
   },
   {
@@ -1275,7 +1275,7 @@ export const PLACES = [
     lng: 98.9853,
     aliases: ['chiang mai', 'chiangmai'],
     summary:
-      'Kuzey Tayland’ın dağlık kültür başkenti Chiang Mai; surlarla çevrili eski şehrindeki yüzlerce tapınak, tepedeki Doi Suthep ve etik fil kampları ile huzurlu bir kaçış sunar.',
+      'Kuzey Tayland’ın dağlık kültür başkenti Chiang Mai, bir zamanlar bağımsız Lanna Krallığı’nın merkeziydi; bu miras, kente Bangkok’tan çok farklı, huzurlu ve gelenekli bir atmosfer kazandırmıştır. Ormanlarla çevrili konumu da onu cazip kılar.\n\nSurlar ve hendekle çevrili eski şehirdeki yüzlerce antik tapınak, kente tepeden bakan kutsal Doi Suthep Tapınağı ve etik fil bakım kampları başlıca öne çıkanlardır. Gece pazarları, dağ köyleri ve Yi Peng fener festivaliyle Chiang Mai, sakin ve otantik bir kaçış sunar.',
     sources: ['Tourism Authority of Thailand — Chiang Mai', 'Lonely Planet — Chiang Mai'],
   },
   {
@@ -1287,7 +1287,7 @@ export const PLACES = [
     lng: 98.3923,
     aliases: ['phuket', 'puket'],
     summary:
-      'Tayland’ın en büyük adası Phuket; turkuaz koyları, çevredeki Phi Phi ve Phang Nga (James Bond Adası) manzaraları ve canlı sahil hayatıyla tropik bir tatil merkezidir.',
+      'Andaman Denizi’ndeki Phuket, Tayland’ın en büyük adası ve ülkenin en popüler tropik tatil merkezidir. Beyaz kumlu plajları, turkuaz koyları ve canlı gece hayatıyla her tür gezgine hitap eder.\n\nGeniş plajları ve sahil beldelerinin yanı sıra, çevredeki masalsı Phi Phi Adaları ve dev kayaların yükseldiği Phang Nga Körfezi (James Bond Adası) tekne turlarının gözdesidir. Portekiz-Çin karışımı mimarisiyle Eski Phuket Kasabası ve tepedeki Büyük Buda heykeliyle ada, deniz ile kültürü birleştirir.',
     sources: ['Tourism Authority of Thailand — Phuket', 'Lonely Planet — Phuket'],
   },
 
@@ -1301,7 +1301,7 @@ export const PLACES = [
     lng: 115.2625,
     aliases: ['bali', 'ubud', 'denpasar'],
     summary:
-      '“Tanrılar Adası” Bali; pirinç teraslarıyla yeşeren Ubud, deniz kenarındaki Tanah Lot ve Uluwatu tapınakları ve manevi atmosferiyle Endonezya’nın en sevilen tropik cennetidir.',
+      'Endonezya’nın en ünlü adası Bali, yemyeşil pirinç terasları, volkanik dağları, tapınakları ve kendine özgü Hindu kültürüyle bir “Tanrılar Adası” olarak anılır. Manevi atmosferi ve doğal güzelliğiyle dünyanın en sevilen tropik cennetlerindendir.\n\nSanat ve maneviyat merkezi Ubud’un pirinç terasları ve maymun ormanı, denizin ortasındaki kayaya kurulu Tanah Lot ve uçurumdaki Uluwatu tapınakları başlıca duraklardır. Sörf plajları, spa gelenekleri ve günlük adaklarla süslü sokaklarıyla Bali, dinlence ve ruhun buluştuğu bir adadır.',
     sources: ['UNESCO World Heritage List — Cultural Landscape of Bali Province', 'Lonely Planet — Bali'],
   },
   {
@@ -1313,7 +1313,7 @@ export const PLACES = [
     lng: 110.3695,
     aliases: ['yogyakarta', 'jogja', 'yogya'],
     summary:
-      'Java’nın kültür kalbi Yogyakarta; dünyanın en büyük Budist tapınağı Borobudur ve görkemli Hindu tapınağı Prambanan’a (her ikisi UNESCO) açılan kapıdır. Sultan Sarayı ve batik geleneğiyle de zengindir.',
+      'Endonezya’nın Java adasındaki Yogyakarta, hâlâ bir sultanın yönettiği, ülkenin sanat, batik ve klasik dans geleneklerinin kalbi sayılan bir kültür kentidir. Aynı zamanda dünyanın en görkemli iki antik tapınağına açılan kapıdır.\n\nDünyanın en büyük Budist anıtı olan devasa Borobudur ve zarif kuleleriyle Hindu tapınağı Prambanan (her ikisi de UNESCO), gün doğumunda büyüleyici bir görüntü sunar. Sultan Sarayı (Kraton), gölge kuklası (wayang) gösterileri ve batik atölyeleriyle Yogyakarta, Java kültürünün özüdür.',
     sources: ['UNESCO World Heritage List — Borobudur / Prambanan Temple Compounds', 'Lonely Planet — Yogyakarta'],
   },
 
@@ -1327,7 +1327,7 @@ export const PLACES = [
     lng: 105.8342,
     aliases: ['hanoi'],
     summary:
-      'Vietnam’ın bin yıllık başkenti Hanoi; dar sokaklı Eski Mahalle, Hoan Kiem Gölü ve sömürge mimarisiyle çarpıcı bir Doğu-Batı karışımı sunar. Ünlü Ha Long Körfezi’ne açılan kapıdır.',
+      'Vietnam’ın bin yıllık başkenti Hanoi, dar sokaklı tarihî mahalleleri, huzurlu gölleri ve Fransız sömürge mimarisiyle Doğu ile Batı’nın çarpıcı bir karışımını sunar. Ülkenin siyasi ve kültürel kalbidir.\n\nHer biri bir zanaata adanmış dükkânlarla dolu hareketli Eski Mahalle, efsanevi Hoan Kiem Gölü ve tapınağı, anıtsal yapıları ve sokak kahvesi kültürü başlıca öne çıkanlardır. Ünlü pho çorbası, su kuklası gösterileri ve dünya harikası Ha Long Körfezi’ne yakınlığıyla Hanoi zengin bir duraktır.',
     sources: ['Lonely Planet — Hanoi', 'Vietnam Turizm — Hanoi'],
   },
   {
@@ -1339,7 +1339,7 @@ export const PLACES = [
     lng: 106.6297,
     aliases: ['ho chi minh', 'saigon', 'hochiminh'],
     summary:
-      'Vietnam’ın en canlı kenti Ho Chi Minh (Saigon); sömürge yapıları, Savaş Kalıntıları Müzesi, hareketli pazarları ve yakınındaki Cu Chi tünelleriyle ülkenin dinamik yüzüdür.',
+      'Vietnam’ın güneyindeki en büyük ve en canlı kenti Ho Chi Minh (eski adıyla Saigon), motosiklet selleri, hareketli pazarları ve durmak bilmeyen enerjisiyle ülkenin ekonomik dinamosudur. Sömürge geçmişi ile modern hırsı iç içe yaşar.\n\nFransız döneminden kalma Notre-Dame Bazilikası ve Merkez Postane, Vietnam Savaşı’nın acılarını anlatan Savaş Kalıntıları Müzesi, tarihî Ben Thanh Pazarı ve yakınındaki Cu Chi yeraltı tünelleri başlıca duraklardır. Sokak yemekleri ve gece hayatıyla kent coşkuludur.',
     sources: ['Lonely Planet — Ho Chi Minh City', 'Vietnam Turizm — Ho Chi Minh'],
   },
   {
@@ -1351,7 +1351,7 @@ export const PLACES = [
     lng: 107.1839,
     aliases: ['ha long', 'halong', 'ha long korfezi'],
     summary:
-      'Zümrüt sulardan yükselen binlerce kireçtaşı adasıyla Ha Long Körfezi, dünyanın en büyüleyici deniz manzaralarından biridir (UNESCO). Geleneksel yelkenli teknelerle yapılan turlar bölgenin ruhunu yansıtır.',
+      'Kuzey Vietnam’da, Tonkin Körfezi’nde zümrüt yeşili sulardan yükselen binlerce sarp kireçtaşı adası ve kayalığıyla Ha Long Körfezi, dünyanın en büyüleyici deniz manzaralarından biridir ve UNESCO Dünya Mirası Listesi’ndedir. Adı “alçalan ejderha” anlamına gelir.\n\nGeleneksel yelkenli (junk) teknelerle yapılan bir veya birkaç günlük turlar, adalar arasında süzülmeyi, gizli mağaraları ve deniz mağaralarını keşfetmeyi sağlar. Kano turları, yüzen balıkçı köyleri ve sisli gün doğumlarıyla körfez, unutulmaz bir doğa deneyimi sunar.',
     sources: ['UNESCO World Heritage List — Ha Long Bay', 'Lonely Planet — Ha Long Bay'],
   },
 
@@ -1365,7 +1365,7 @@ export const PLACES = [
     lng: 103.8448,
     aliases: ['siem reap', 'angkor', 'angkor wat', 'siemreap'],
     summary:
-      'Siem Reap, dünyanın en büyük dinî anıtı Angkor Wat’a ve Khmer İmparatorluğu’nun devasa tapınak-şehrine (UNESCO) açılan kapıdır. Ağaç kökleriyle sarılı Ta Prohm ve gülümseyen yüzleriyle Bayon büyüleyicidir.',
+      'Kamboçya’daki Siem Reap, dünyanın en büyük dinî yapısı olan görkemli Angkor Wat’a ve bir zamanlar güçlü Khmer İmparatorluğu’nun devasa tapınak-şehrine açılan kapıdır. Bu kalıntılar, Güneydoğu Asya’nın en büyüleyici arkeolojik hazinesidir.\n\nGün doğumunda gölete yansıyan beş kuleli Angkor Wat (UNESCO), dev taş yüzlerle bezeli Bayon Tapınağı ve ağaç kökleriyle sarılıp doğaya karışmış Ta Prohm başlıca duraklardır. Canlı gece pazarları ve rahat havasıyla Siem Reap, tarih tutkunları için bir başnoktadır.',
     sources: ['UNESCO World Heritage List — Angkor', 'Lonely Planet — Siem Reap'],
   },
 
@@ -1379,7 +1379,7 @@ export const PLACES = [
     lng: 103.8198,
     aliases: ['singapur', 'singapore'],
     summary:
-      'Şehir-devlet Singapur; gökdelenlerin arasındaki fütüristik Gardens by the Bay, çatısında havuz olan Marina Bay Sands ve çok kültürlü mahalleleriyle temizlik, düzen ve modernliğin simgesidir.',
+      'Güneydoğu Asya’nın ucundaki şehir-devlet Singapur, tertemiz sokakları, kusursuz düzeni ve fütüristik mimarisiyle bir modernlik simgesidir. Çin, Malay, Hint ve Batı kültürlerini harmanlayan gerçek bir kavşak noktasıdır.\n\nDev yapay “Süper Ağaçları” ve seralarıyla Gardens by the Bay, çatısında gemi biçimli sonsuzluk havuzu bulunan Marina Bay Sands ve renkli Çin, Hint ve Arap mahalleleri başlıca duraklardır. Dünya çapındaki sokak lezzetleri (hawker center) ve yeşiliyle Singapur, geleceğin bahçe-kentidir.',
     sources: ['Visit Singapore — resmi turizm portalı', 'Lonely Planet — Singapore'],
   },
 
@@ -1483,7 +1483,7 @@ export const PLACES = [
     lng: 85.324,
     aliases: ['katmandu', 'kathmandu'],
     summary:
-      'Himalayalar’ın eteğindeki Katmandu; oymalı tapınaklarla dolu Durbar Meydanları, kutsal Pashupatinath ve gözlü Boudhanath stupasıyla (UNESCO) Hindu ve Budist mirasın buluştuğu manevi bir vadidir. Everest treklerine açılan kapıdır.',
+      'Himalayalar’ın eteğinde bir vadide kurulu Katmandu, Nepal’in başkenti ve Hindu ile Budist kültürlerinin yüzyıllardır iç içe yaşadığı manevi bir merkezdir. Oymalı ahşap tapınakları ve canlı sokaklarıyla eşsiz bir atmosfer sunar.\n\nUsta işçilikli saray ve tapınaklarla dolu Durbar Meydanları, kutsal Hindu yakma alanı Pashupatinath ve dev gözleriyle bakan Boudhanath Budist stupası (hepsi UNESCO) başlıca duraklardır. Aynı zamanda Everest ve Annapurna trekleri ile Himalaya maceralarına açılan ana kapıdır.',
     sources: ['UNESCO World Heritage List — Kathmandu Valley', 'Lonely Planet — Kathmandu'],
   },
 
@@ -1497,7 +1497,7 @@ export const PLACES = [
     lng: 126.978,
     aliases: ['seul', 'seoul'],
     summary:
-      'Güney Kore’nin başkenti Seul; görkemli Gyeongbokgung Sarayı ve nöbet töreni, geleneksel Bukchon Hanok köyü ve N Seoul Kulesi ile K-pop çağının parıltısını asırlık mirasla birleştirir.',
+      'Güney Kore’nin başkenti Seul, beş yüzyıllık saraylarını göğe uzanan gökdelenlerle ve K-pop çağının parıltısıyla birleştiren, sürekli hareket hâlindeki bir metropoldür. Han Nehri’nin iki yakasına yayılan kent, gelenek ile teknolojiyi ustaca harmanlar.\n\nGörkemli Gyeongbokgung Sarayı ve renkli nöbet değişim töreni, geleneksel hanok evleriyle Bukchon köyü, kente tepeden bakan N Seoul Kulesi ve canlı çarşıları başlıca duraklardır. Gece hayatı, alışverişi, Kore mutfağı ve teknoloji tutkusuyla Seul, dinamik bir Asya başkentidir.',
     sources: ['Korea Tourism Organization — Seoul', 'Lonely Planet — Seoul'],
   },
 
