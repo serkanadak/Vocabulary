@@ -7,6 +7,7 @@ import { attractionsFor, attractionToDiscovery } from '../data/attractions';
 import { todayKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { Card, SectionHeader, EmptyState, Pill } from '../components/common';
+import PlacePhoto from '../components/PlacePhoto';
 
 const norm = (s) => (s || '').toLocaleLowerCase('tr').replace(/\s+/g, ' ').trim();
 
@@ -74,6 +75,7 @@ function StopSection({ trip, stop, navigation }) {
 
       {open ? (
         <View style={styles.stopBody}>
+          {place ? <PlacePhoto place={place} height={170} /> : null}
           {attractions.length ? (
             <>
               <Text style={styles.subLabel}>Gezilecek yerler — gidileni işaretle</Text>

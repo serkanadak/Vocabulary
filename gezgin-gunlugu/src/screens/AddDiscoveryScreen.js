@@ -9,6 +9,7 @@ import { preparePhotos } from '../logic/imageStore';
 import { todayKey, formatLongDate } from '../logic/date';
 import { colors } from '../theme';
 import { Card, Field, PrimaryButton, SecondaryButton, SectionHeader, Pill } from '../components/common';
+import PlacePhoto from '../components/PlacePhoto';
 
 const SOURCE_LABEL = {
   [ENRICH_SOURCE.LOCAL]: { label: 'Yerel arşiv', color: colors.success },
@@ -90,6 +91,7 @@ export default function AddDiscoveryScreen({ route, navigation }) {
     if (!result) return;
     addDiscovery(tripId, {
       placeName: result.placeName,
+      placeId: result.placeId ?? null,
       city: result.city || presetCity || '',
       country: result.country || presetCountry || '',
       date: result.date,
@@ -184,6 +186,10 @@ export default function AddDiscoveryScreen({ route, navigation }) {
             </View>
 
             <Text style={styles.resultDate}>📅 Keşif Tarihi: {formatLongDate(result.date)}</Text>
+
+            <PlacePhoto
+              place={{ id: result.placeId, name: result.placeName, city: result.city, country: result.country }}
+            />
 
             <Text style={styles.h}>🏛️ Tarihi ve Kültürel Özet</Text>
             {result.summary ? (
