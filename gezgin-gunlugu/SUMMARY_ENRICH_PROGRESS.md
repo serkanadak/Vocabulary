@@ -28,7 +28,7 @@ ikinci paragraf gezilecek yerler/atmosfer. `\n\n` ile ayır. id/name/coords/alia
 
 ## DÜNYA (Avrupa sonrası)
 
-- [ ] TR1..TRn — Türkiye 81 il (84 thin) — batchler halinde
+- [x] TR-A..TR-E — Türkiye 71 il özeti zenginleştirildi (Akdeniz/Ege, Marmara, İç Anadolu, Karadeniz, Doğu/Güneydoğu). Sınır kapısı girdileri (13) işlevsel bırakıldı.
 - [ ] AS1 — Asya (Japonya 15, Çin, Hindistan, GD Asya, Orta Asya)
 - [ ] ME1 — Orta Doğu & Kafkas (İran, Ürdün, BAE, Özbekistan)
 - [ ] AM1 — Amerika (ABD, Kanada, Latin Amerika)
