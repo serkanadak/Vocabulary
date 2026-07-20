@@ -1237,7 +1237,7 @@ export const PLACES = [
     lng: 55.2708,
     aliases: ['dubai'],
     summary:
-      'Çölün ortasında yükselen ihtişam kenti Dubai; dünyanın en yüksek binası Burj Khalifa, yapay ada Palm Jumeirah ve dev alışveriş merkezleriyle mühendislik ve lüksün sınırlarını zorlar. Tarihî Al Fahidi semti eski Dubai’yi yaşatır.',
+      'Basra Körfezi kıyısında, çölün ortasında yükselen Dubai, birkaç on yılda küçük bir balıkçı kasabasından baş döndürücü bir lüks ve mimari harika kentine dönüşmüştür. Ölçek ve ihtişam tutkusuyla mühendislik sınırlarını zorlar.\n\nDünyanın en yüksek binası Burj Khalifa, palmiye biçimli yapay ada Palm Jumeirah, dev alışveriş merkezleri ve gösterişli otelleriyle kent, modern lüksün simgesidir. Öte yandan, rüzgâr kuleleri ve dar sokaklarıyla tarihî Al Fahidi semti ile geleneksel çarşıları, eski Dubai’nin ruhunu yaşatır.',
     sources: ['Visit Dubai — resmi turizm portalı', 'Lonely Planet — Dubai'],
   },
   {
@@ -1249,7 +1249,7 @@ export const PLACES = [
     lng: 54.3773,
     aliases: ['abu dabi', 'abu dhabi', 'abudabi'],
     summary:
-      'BAE’nin başkenti Abu Dabi; göz kamaştıran beyaz Şeyh Zayed Camii, Louvre Abu Dhabi ve Ferrari World ile kültür, sanat ve eğlenceyi bir araya getirir.',
+      'Birleşik Arap Emirlikleri’nin başkenti Abu Dabi, petrol zenginliğini kültür, sanat ve mimariye yatıran, Dubai’ye göre daha sakin ve görkemli bir körfez kentidir. Geniş bulvarları ve ada konumuyla ferah bir dokuya sahiptir.\n\nDünyanın en büyük ve en göz kamaştırıcı camilerinden bembeyaz Şeyh Zayed Camii, çölün ışığını mimariyle buluşturan Louvre Abu Dhabi müzesi ve heyecan dolu Ferrari World başlıca duraklardır. Corniche sahil bulvarı ve lüks otelleriyle Abu Dabi, kültür ve eğlenceyi bir araya getirir.',
     sources: ['Visit Abu Dhabi — resmi turizm portalı', 'Lonely Planet — Abu Dhabi'],
   },
 
@@ -1393,7 +1393,7 @@ export const PLACES = [
     lng: 51.668,
     aliases: ['isfahan', 'i̇sfahan', 'esfahan'],
     summary:
-      '“Dünyanın yarısı” denen İsfahan, İran’ın en görkemli kentidir; dünyanın en büyük meydanlarından Nakş-ı Cihan (UNESCO), çini kubbeli camiler ve tarihî köprüleriyle İslam sanatının doruğunu sergiler.',
+      'İran’ın merkezindeki İsfahan, Safevi İmparatorluğu döneminde başkent olarak yaşadığı görkemli çağ nedeniyle “Dünyanın Yarısı” (Nesf-e Cahan) olarak anılır. Mavi-turkuaz çinileri ve zarif mimarisiyle İslam sanatının doruğunu temsil eder.\n\nDünyanın en büyük meydanlarından biri olan Nakş-ı Cihan (İmam Meydanı, UNESCO), onu çevreleyen çini kubbeli İmam ve Şeyh Lütfullah camileri, Ali Kapı Sarayı ve tarihî kapalı çarşı başlıca duraklardır. Zayanderud Nehri üzerindeki zarif çok gözlü köprüler (Si-o-se Pol) ise akşamları buluşma noktasıdır.',
     sources: ['UNESCO World Heritage List — Meidan Emam, Esfahan', 'Lonely Planet — Esfahan'],
   },
   {
@@ -1405,7 +1405,7 @@ export const PLACES = [
     lng: 52.5837,
     aliases: ['siraz', 'şiraz', 'shiraz'],
     summary:
-      'Şairlerin, güllerin ve şarabın şehri Şiraz; ışıkla oynayan Pembe Cami (Nasır el-Mülk), Hafız ve Sadi’nin türbeleri ve yakınındaki antik Pers başkenti Persepolis’le (UNESCO) İran kültürünün kalbidir.',
+      'İran’ın güneyindeki Şiraz, yüzyıllardır şairlerin, güllerin, bülbüllerin ve şarabın kenti olarak anılan, İran kültürünün ve edebiyatının kalbidir. Ilıman iklimi ve zarif bahçeleriyle romantik bir atmosfer taşır.\n\nSabah güneşiyle içi rengârenk ışıklarla dolan Nasır el-Mülk Camii (Pembe Cami), ünlü şairler Hafız ile Sadi’nin türbeleri ve Eram gibi klasik İran bahçeleri başlıca duraklardır. Şiraz aynı zamanda, Pers İmparatorluğu’nun görkemli başkenti antik Persepolis’e (UNESCO) açılan kapıdır.',
     sources: ['UNESCO World Heritage List — Persepolis', 'Lonely Planet — Shiraz'],
   },
   {
@@ -1417,7 +1417,7 @@ export const PLACES = [
     lng: 51.389,
     aliases: ['tahran', 'tehran', 'teheran'],
     summary:
-      'İran’ın başkenti Tahran; Golestan Sarayı (UNESCO), zengin mücevher ve müzeleri ve Elburz Dağları manzarasıyla modern İran’ın canlı merkezidir.',
+      'İran’ın başkenti ve en büyük kenti Tahran, karlı Elburz Dağları’nın eteğinde kurulu, geleneksel çarşılar ile modern bulvarların iç içe geçtiği canlı bir metropoldür. Ülkenin siyasi, ekonomik ve kültürel merkezidir.\n\nKaçar hanedanından kalma görkemli çini ve ayna işçilikli Golestan Sarayı (UNESCO), dünyanın en değerli mücevher koleksiyonlarından birini barındıran hazine, çağdaş sanat müzeleri ve devasa Büyük Çarşı (Bazar) başlıca duraklardır. Dağ manzarası ve kafeleriyle Tahran modern İran’ı yansıtır.',
     sources: ['UNESCO World Heritage List — Golestan Palace', 'Lonely Planet — Tehran'],
   },
 
@@ -1431,7 +1431,7 @@ export const PLACES = [
     lng: 35.4444,
     aliases: ['petra', 'wadi musa'],
     summary:
-      'Kızıl kayalara oyulmuş antik Nebati kenti Petra, dar bir kanyonun (Siq) sonunda beliren görkemli Hazine (Al-Khazneh) cephesiyle dünyanın yeni yedi harikasından biridir (UNESCO).',
+      'Ürdün’ün güneyindeki Petra, iki bin yıldan uzun süre önce Nebatiler tarafından pembe-kızıl kaya duvarlarına oyulmuş görkemli bir antik kenttir. Bir zamanlar zengin bir kervan ticareti başkenti olan kent, dünyanın yeni yedi harikasından biri sayılır (UNESCO).\n\nKilometrelerce uzunluğundaki dar ve yüksek bir kanyonun (Siq) sonunda aniden beliren, kayaya oyulmuş görkemli Hazine (Al-Khazneh) cephesi, Petra’nın ikonik görüntüsüdür. Manastır (Ad-Deir), kraliyet mezarları ve antik tiyatrosuyla kent, keşfedilmeyi bekleyen devasa bir açık hava müzesidir.',
     sources: ['UNESCO World Heritage List — Petra', 'Lonely Planet — Petra'],
   },
   {
@@ -1443,7 +1443,7 @@ export const PLACES = [
     lng: 35.9284,
     aliases: ['amman'],
     summary:
-      'Ürdün’ün başkenti Amman; tepedeki antik Kale (Citadel), iyi korunmuş Roma Tiyatrosu ve canlı çarşılarıyla köklü bir tarihi modern yaşamla birleştirir. Petra, Wadi Rum ve Ölü Deniz’e açılan üstür.',
+      'Ürdün’ün başkenti Amman, yedi tepe üzerine kurulu, antik geçmişini modern bir Ortadoğu metropolüyle birleştiren canlı bir kenttir. Bölgeyi keşfetmek için ideal bir üs ve giriş noktası işlevi görür.\n\nKente tepeden bakan, Roma ve Emevi kalıntılarını barındıran antik Kale (Citadel), iyi korunmuş devasa Roma Tiyatrosu ve hareketli çarşıları (souk) başlıca duraklardır. Amman aynı zamanda görkemli Petra’ya, çöl manzaralı Wadi Rum’a ve dünyanın en tuzlu sularından Ölü Deniz’e açılan kapıdır.',
     sources: ['Visit Jordan — resmi turizm portalı', 'Lonely Planet — Amman'],
   },
 
@@ -1457,7 +1457,7 @@ export const PLACES = [
     lng: 66.975,
     aliases: ['semerkand', 'samarkand', 'samarkant'],
     summary:
-      'İpek Yolu’nun incisi Semerkand; turkuaz kubbeleri ve devasa çinili medreseleriyle Registan Meydanı, Timur’un türbesi ve Bibi-Hanım Camii’yle (UNESCO) Orta Asya İslam sanatının en görkemli örneklerini sunar.',
+      'Özbekistan’daki Semerkand, İpek Yolu’nun en görkemli duraklarından biri ve büyük hükümdar Timur’un imparatorluğunun parlayan başkentiydi. Turkuaz kubbeleri ve devasa çinili yapılarıyla Orta Asya İslam sanatının doruğunu temsil eder.\n\nÜç görkemli medresenin çevrelediği efsanevi Registan Meydanı, Timur’un türbesi Gur-ı Emir, dev Bibi-Hanım Camii ve mavi çinilerle bezeli Şah-ı Zinde mezar sokağı başlıca duraklardır (hepsi UNESCO). İpek Yolu’nun ihtişamını yaşatan Semerkand, adeta açık hava bir sanat galerisidir.',
     sources: ['UNESCO World Heritage List — Samarkand – Crossroad of Cultures', 'Lonely Planet — Samarkand'],
   },
   {
@@ -1469,7 +1469,7 @@ export const PLACES = [
     lng: 64.4286,
     aliases: ['buhara', 'bukhara', 'buchara'],
     summary:
-      'İki bin yıllık kutsal kervan şehri Buhara; kesintisiz ayakta kalan tarihî merkezi (UNESCO), minareleri, medreseleri ve kubbeli çarşılarıyla âdeta yaşayan bir açık hava müzesidir.',
+      'Özbekistan’daki Buhara, iki bin yılı aşkın geçmişiyle İpek Yolu’nun en kutsal kervan şehirlerinden biridir; bir zamanlar İslam dünyasının önemli bir ilim ve maneviyat merkeziydi. Tarihî merkezi, çağlar boyunca dokusunu koruyarak bugüne ulaşmıştır.\n\nGöğe uzanan Kalyan Minaresi ve camisi, medreseleri, kervansarayları ve kubbeli ticaret çarşılarıyla kentin tamamı UNESCO Dünya Mirası Listesi’ndedir. Dar toprak sokakları, havuz başındaki (Lyabi-Hauz) çınar gölgeli meydanı ve el sanatları dükkânlarıyla Buhara, yaşayan bir açık hava müzesidir.',
     sources: ['UNESCO World Heritage List — Historic Centre of Bukhara', 'Lonely Planet — Bukhara'],
   },
 
