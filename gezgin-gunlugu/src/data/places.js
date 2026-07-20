@@ -868,7 +868,7 @@ export const PLACES = [
     lng: 31.2357,
     aliases: ['kahire', 'cairo', 'kahira', 'giza', 'gize'],
     summary:
-      'Nil kıyısındaki uçsuz bucaksız Kahire, hemen yanı başındaki Giza Piramitleri ve Sfenks ile antik dünyanın tek ayakta kalan harikasına ev sahipliği yapar. Han el-Halili çarşısı, İslami Kahire’nin camileri ve dünyaca ünlü Mısır Müzesi ile firavunlardan bugüne uzanan bir tarih sunar.',
+      'Nil Nehri kıyısına yayılan devasa Kahire, Afrika ve Arap dünyasının en büyük kentlerinden biri olup binlerce yıllık firavun mirasını hareketli modern yaşamla birleştirir. “Bin minareli şehir” olarak da anılan kaotik ve büyüleyici bir metropoldür.\n\nHemen yanı başındaki Giza Piramitleri ve Sfenks, antik dünyanın ayakta kalan tek harikasıdır; firavun hazinelerini barındıran müzeleri, labirent gibi Han el-Halili çarşısı ve İslami Kahire’nin tarihî camileri başlıca duraklardır. Nil üzerindeki tekne gezileriyle Kahire, çağları bir arada sunar.',
     sources: ['UNESCO World Heritage List — Memphis and its Necropolis (Pyramids of Giza)', 'Lonely Planet — Cairo'],
   },
   {
@@ -880,7 +880,7 @@ export const PLACES = [
     lng: 32.6396,
     aliases: ['luksor', 'luxor', 'teb', 'thebes'],
     summary:
-      'Antik Teb’in üzerine kurulu Luksor, “dünyanın en büyük açık hava müzesi” sayılır. Karnak ve Luksor tapınakları, Nil’in batı yakasındaki Krallar Vadisi ve Hatşepsut Tapınağı ile firavunların ihtişamını bugüne taşır.',
+      'Nil Nehri kıyısında, antik Mısır’ın görkemli başkenti Teb’in üzerine kurulu Luksor, açık havada bu kadar çok anıt barındırması nedeniyle “dünyanın en büyük açık hava müzesi” olarak anılır. Firavunların ihtişamının en yoğun hissedildiği yerdir.\n\nSütunlu salonlarıyla devasa Karnak ve Luksor tapınakları, Nil’in batı yakasındaki kayalara oyulmuş kral mezarlarıyla Krallar Vadisi ve teraslı Hatşepsut Tapınağı başlıca duraklardır. Sıcak hava balonuyla gün doğumunda uçmak, bu antik manzarayı görmenin en büyüleyici yoludur.',
     sources: ['UNESCO World Heritage List — Ancient Thebes with its Necropolis', 'Lonely Planet — Luxor'],
   },
   {
@@ -892,7 +892,7 @@ export const PLACES = [
     lng: 32.8998,
     aliases: ['asvan', 'aswan', 'assuan'],
     summary:
-      'Nil’in en güzel manzaralarına sahip Asvan; feluka yelkenlileri, Philae Tapınağı ve adalarıyla huzurlu bir Nubya kentidir. Güneyindeki devasa Abu Simbel tapınakları bölgenin en görkemli hazinesidir.',
+      'Mısır’ın güneyinde, Nil’in en dingin ve en güzel manzaralarına sahip Asvan, tarihî Nubya kültürünün merkezi ve rahat atmosferiyle sevilen bir kenttir. Nehir üzerindeki granit adaları ve yelkenlileriyle huzur dolu bir dokuya sahiptir.\n\nBeyaz yelkenli geleneksel feluka tekneleriyle nehir gezisi, bir adaya taşınan zarif Philae Tapınağı ve renkli Nubya köyleri başlıca öne çıkanlardır. Kentin güneyindeki, kayalara oyulmuş dev heykelleriyle Abu Simbel tapınakları ise Mısır’ın en görkemli anıtlarından biridir.',
     sources: ['UNESCO World Heritage List — Nubian Monuments from Abu Simbel to Philae', 'Lonely Planet — Aswan'],
   },
   {
@@ -904,7 +904,7 @@ export const PLACES = [
     lng: 29.9187,
     aliases: ['iskenderiye', 'alexandria', 'iskandariya'],
     summary:
-      'Büyük İskender’in kurduğu Akdeniz kenti İskenderiye, antik dünyanın ünlü kütüphanesine ve deniz fenerine ev sahipliği yapmıştı. Bugün modern Bibliotheca Alexandrina, Kaitbay Kalesi ve yeraltı mezarlarıyla köklü geçmişini yaşatır.',
+      'Büyük İskender’in MÖ 331’de kurduğu Akdeniz kenti İskenderiye, antik çağda dünyanın ünlü kütüphanesine ve deniz fenerine (dünyanın yedi harikasından biri) ev sahipliği yapmış köklü bir liman kentidir. Mısır’ın “ikinci başkenti” ve yaz merkezidir.\n\nAntik kütüphanenin anısına inşa edilen görkemli modern Bibliotheca Alexandrina, eski deniz fenerinin yerinde yükselen Kaitbay Kalesi, Roma dönemi yeraltı mezarları ve deniz kıyısı Corniche başlıca duraklardır. Akdeniz esintisi ve katmanlı tarihiyle İskenderiye zarif bir kenttir.',
     sources: ['Lonely Planet — Alexandria', 'Bibliotheca Alexandrina — resmi portal'],
   },
 
@@ -918,7 +918,7 @@ export const PLACES = [
     lng: -7.9811,
     aliases: ['marakes', 'marakeş', 'marrakech', 'marrakesh'],
     summary:
-      '“Kızıl Şehir” Marakeş, canlı Jemaa el-Fnaa meydanı, labirent souk’ları ve Koutoubia Camii’nin minaresiyle duyulara hitap eden bir Fas kentidir. Bahia Sarayı ve Majorelle Bahçesi gibi vahalarıyla renk ve dinginliği bir arada sunar.',
+      'Fas’ın Atlas Dağları eteğindeki Marakeş, kızıl toprak rengi binaları nedeniyle “Kızıl Şehir” olarak anılan, duyulara hitap eden büyüleyici bir kenttir. Bir zamanlar önemli bir kervan ticareti başkentiydi ve bu miras onu bir kültür merkezi kılar.\n\nYılan oynatıcıları, hikâye anlatıcıları ve yemek tezgâhlarıyla dolan efsanevi Jemaa el-Fnaa meydanı, labirent gibi çarşıları (souk) ve Koutoubia Camii’nin minaresi başlıca duraklardır. Bahia Sarayı, mavi Majorelle Bahçesi ve geleneksel avlulu riad otelleriyle Marakeş, renk ile dinginliği birleştirir.',
     sources: ['UNESCO World Heritage List — Medina of Marrakesh', 'Lonely Planet — Marrakesh'],
   },
   {
@@ -930,7 +930,7 @@ export const PLACES = [
     lng: -5.0078,
     aliases: ['fes', 'fez', 'fès'],
     summary:
-      'Fas’ın manevi ve kültürel başkenti Fes, dünyanın en büyük ve en iyi korunmuş ortaçağ medinalarından birine sahiptir (UNESCO). Dar dokuma sokakları, dünyanın en eski üniversitesi Al-Karaouine ve renkli Chouara tabakhanesiyle zamanda yolculuk yaşatır.',
+      'Fas’ın manevi ve kültürel başkenti Fes, dünyanın en büyük ve en iyi korunmuş ortaçağ kent merkezlerinden birine (medina) ev sahipliği yapar. Bu labirent gibi doku, adeta yaşayan bir Orta Çağ şehridir ve UNESCO korumasındadır.\n\nBinlerce dar sokağın kesiştiği, araçların giremediği medinada; dünyanın en eski üniversitelerinden Al-Karaouine, süslü medreseler ve derilerin asırlık yöntemlerle renklendirildiği rengârenk Chouara tabakhanesi başlıca duraklardır. El sanatları ve zanaat gelenekleriyle Fes, zamanda yolculuk yaşatır.',
     sources: ['UNESCO World Heritage List — Medina of Fez', 'Lonely Planet — Fez'],
   },
   {
@@ -942,7 +942,7 @@ export const PLACES = [
     lng: -5.2636,
     aliases: ['safsavan', 'şafşavan', 'chefchaouen', 'chaouen', 'mavi sehir'],
     summary:
-      'Rif Dağları’na yaslanan Şafşavan, mavinin her tonuna boyanmış sokaklarıyla “Mavi Şehir” olarak ünlüdür. Fotojenik medinası ve dağ manzaralarıyla Fas’ın en sevilen kaçış noktalarından biridir.',
+      'Fas’ın kuzeyinde, Rif Dağları’na yaslanmış Şafşavan, sokaklarının, duvarlarının ve evlerinin mavinin her tonuna boyanmış olmasıyla “Mavi Şehir” olarak dünyaca ünlüdür. Bu düşsel görüntü, onu Fas’ın en fotojenik köşesi kılar.\n\nMavi rengin hâkim olduğu dar sokakları, çiçekli avluları, tepedeki İspanyol Camii’nden panoraması ve el yapımı ürünler satan dükkânları başlıca cazibelerdir. Dağ havası, sakin atmosferi ve masalsı renkleriyle Şafşavan, huzurlu ve keyifli bir kaçış noktasıdır.',
     sources: ['Lonely Planet — Chefchaouen', 'Fas Turizm — Chefchaouen'],
   },
   {
@@ -954,7 +954,7 @@ export const PLACES = [
     lng: -7.5898,
     aliases: ['kazablanka', 'casablanca', 'dar el beida'],
     summary:
-      'Fas’ın modern yüzü Kazablanka; denize uzanan devasa II. Hassan Camii, art deco mimarisi ve Corniche sahiliyle Atlantik kıyısında canlı bir metropoldür.',
+      'Atlantik kıyısındaki Kazablanka, Fas’ın en büyük kenti ve ekonomik başkentidir; art deco mimarisi ve modern dokusuyla ülkenin çağdaş yüzünü temsil eder. Aynı adı taşıyan klasik filmle de dünya belleğine kazınmıştır.\n\nDenizin üzerine uzanan, göğe yükselen minaresiyle dünyanın en büyük camilerinden II. Hassan Camii kentin görkemli simgesidir. Sömürge dönemi art deco binaları, hareketli Corniche sahili ve medinasıyla Kazablanka, gelenek ile moderni buluşturan canlı bir metropoldür.',
     sources: ['Lonely Planet — Casablanca', 'Fas Turizm — Casablanca'],
   },
 
@@ -968,7 +968,7 @@ export const PLACES = [
     lng: 18.4241,
     aliases: ['cape town', 'capetown', 'kaapstad', 'kap sehri'],
     summary:
-      'Table Mountain’ın eteğinde iki okyanusun buluştuğu Cape Town, dünyanın en güzel konumlu kentlerinden biridir. Ümit Burnu, V&A Waterfront, penguen kolonili plajlar ve şarap bağlarıyla doğa ve şehri kusursuz birleştirir.',
+      'Table Mountain’ın (Masa Dağı) eteğinde, iki okyanusun buluştuğu bir yarımadaya kurulu Cape Town, çarpıcı doğası ve zengin tarihiyle dünyanın en güzel konumlu kentlerinden biridir. Güney Afrika’nın en sevilen destinasyonudur.\n\nTeleferikle çıkılan düz zirveli Table Mountain, iki okyanusun buluştuğu efsanevi Ümit Burnu, canlı V&A Waterfront limanı ve penguen kolonili plajları başlıca duraklardır. Çevredeki dünyaca ünlü şarap bağları (Stellenbosch) ile Cape Town, doğa, tarih ve lezzeti kusursuzca birleştirir.',
     sources: ['UNESCO World Heritage List — Cape Floral Region', 'Lonely Planet — Cape Town'],
   },
   {
@@ -980,7 +980,7 @@ export const PLACES = [
     lng: 28.0473,
     aliases: ['johannesburg', 'joburg', 'jozi'],
     summary:
-      'Güney Afrika’nın en büyük kenti Johannesburg; Apartheid Müzesi, Mandela’nın izlerini taşıyan Soweto ve yakınındaki “İnsanlığın Beşiği” fosil alanlarıyla ülkenin tarihini ve dönüşümünü anlatır.',
+      'Güney Afrika’nın en büyük kenti Johannesburg, bir zamanlar altın madenciliğiyle yoktan var olmuş, bugün ülkenin ekonomik dinamosu olan enerjik bir metropoldür. Ülkenin çalkantılı yakın tarihinin de merkezinde yer alır.\n\nApartheid rejiminin acılarını ve sona erişini anlatan çarpıcı Apartheid Müzesi ile Nelson Mandela’nın yaşadığı, mücadelenin simgesi Soweto mahallesi başlıca duraklardır. Yakınındaki, ilk insan atalarının fosillerinin bulunduğu UNESCO korumalı “İnsanlığın Beşiği” ise kentin en köklü hazinesidir.',
     sources: ['UNESCO World Heritage List — Fossil Hominid Sites (Cradle of Humankind)', 'Lonely Planet — Johannesburg'],
   },
 
@@ -994,7 +994,7 @@ export const PLACES = [
     lng: 39.2026,
     aliases: ['zanzibar', 'stone town', 'unguja'],
     summary:
-      'Hint Okyanusu’nun baharat adası Zanzibar; Afrika, Arap ve Hint kültürlerinin kaynaştığı tarihî Stone Town (UNESCO), oymalı ahşap kapıları ve bembeyaz plajlarıyla büyüler.',
+      'Tanzanya kıyılarının açığında, Hint Okyanusu’ndaki Zanzibar, yüzyıllarca baharat ticaretinin merkezi olmuş, Afrika, Arap, Fars ve Hint kültürlerinin kaynaştığı büyüleyici bir adadır. Tarihî dokusu ve plajlarıyla eşsiz bir cazibe sunar.\n\nDaracık sokakları, oymalı ahşap kapıları, çarşıları ve sultan saraylarıyla tarihî başkenti Stone Town (UNESCO), adanın kalbidir. Baharat çiftlikleri, bembeyaz kumlu turkuaz plajları ve yelkenli tekne (dhow) turlarıyla Zanzibar, tarih ile tropik cenneti birleştirir.',
     sources: ['UNESCO World Heritage List — Stone Town of Zanzibar', 'Lonely Planet — Zanzibar'],
   },
   {
@@ -1006,7 +1006,7 @@ export const PLACES = [
     lng: 36.683,
     aliases: ['arusha', 'serengeti', 'ngorongoro'],
     summary:
-      'Kuzey Tanzanya safari turlarının kapısı Arusha; Serengeti Milli Parkı, Ngorongoro Krateri ve Kilimanjaro’ya açılan bir üstür. Büyük göç ve vahşi yaşamın kalbine buradan ulaşılır.',
+      'Kuzey Tanzanya’da, Meru Dağı’nın eteğinde kurulu Arusha, ülkenin efsanevi safari parklarına açılan kapı olarak “safari başkenti” diye anılır. Serin iklimi ve yeşil dokusuyla maceraların başlangıç noktasıdır.\n\nUçsuz bucaksız ovaları ve büyük göçüyle Serengeti Milli Parkı, dünyanın en büyük sağlam volkanik kalderası Ngorongoro Krateri ve Afrika’nın çatısı Kilimanjaro Dağı buradan yola çıkılarak keşfedilir. Vahşi yaşamın ve doğa harikalarının kalbine açılan Arusha, unutulmaz maceraların üssüdür.',
     sources: ['UNESCO World Heritage List — Serengeti National Park', 'Lonely Planet — Arusha'],
   },
 
@@ -1020,7 +1020,7 @@ export const PLACES = [
     lng: 36.8219,
     aliases: ['nairobi'],
     summary:
-      'Kenya’nın başkenti Nairobi, şehrin hemen yanındaki milli parkta safari yapılabilen ender metropoldür. Fil yetimhanesi ve Zürafa Merkezi gibi deneyimlerle vahşi yaşamı kent hayatına taşır; Maasai Mara’ya açılan kapıdır.',
+      'Kenya’nın başkenti Nairobi, gökdelenlerinin hemen yanı başındaki milli parkta aslan ve gergedanların dolaştığı, dünyada eşi az bulunan bir metropoldür. Doğu Afrika’nın ekonomik ve ulaşım merkezi olarak canlı bir kenttir.\n\nŞehrin sınırındaki Nairobi Milli Parkı’nda safari yapmak, öksüz fil yavrularının bakıldığı yetimhane ve zürafaların elden beslendiği Zürafa Merkezi başlıca deneyimlerdir. Nairobi aynı zamanda, büyük göçün yaşandığı ünlü Maasai Mara rezervine açılan ana kapıdır.',
     sources: ['Kenya Wildlife Service — Nairobi National Park', 'Lonely Planet — Nairobi'],
   },
 
@@ -1034,7 +1034,7 @@ export const PLACES = [
     lng: 10.1815,
     aliases: ['tunus', 'tunis', 'kartaca', 'carthage'],
     summary:
-      'Tunus’un başkenti; UNESCO listesindeki tarihî medinası, yakınındaki antik Kartaca kalıntıları ve mavi-beyaz Sidi Bou Said köyüyle Akdeniz, Arap ve Roma mirasını bir arada sunar. Bardo Müzesi eşsiz mozaik koleksiyonuyla ünlüdür.',
+      'Tunus’un başkenti Tunus, antik Kartaca’nın komşuluğunda, Akdeniz, Arap ve Roma miraslarını bir arada barındıran zarif bir kenttir. Ülkenin siyasi ve kültürel kalbi olarak tarih ile modern yaşamı harmanlar.\n\nUNESCO korumasındaki tarihî medinası ve çarşıları, hemen dışındaki antik Kartaca kalıntıları ve tepede denize bakan mavi-beyaz köy Sidi Bou Said başlıca duraklardır. Dünyanın en zengin Roma mozaiği koleksiyonlarından birini barındıran Bardo Müzesi ise kentin en görkemli hazinesidir.',
     sources: ['UNESCO World Heritage List — Medina of Tunis / Carthage', 'Lonely Planet — Tunis'],
   },
 
@@ -1048,7 +1048,7 @@ export const PLACES = [
     lng: 39.0413,
     aliases: ['lalibela'],
     summary:
-      'Etiyopya’nın kutsal kenti Lalibela, 12.-13. yüzyılda tek parça kayadan oyularak inşa edilen 11 anıtsal kilisesiyle dünyada eşi olmayan bir hac merkezidir (UNESCO). “Yeni Kudüs” olarak da anılır.',
+      'Etiyopya’nın dağlık kuzeyindeki Lalibela, 12.-13. yüzyıllarda tek parça kayanın içine oyularak inşa edilen on bir anıtsal kilisesiyle dünyada eşi olmayan bir Hristiyan hac merkezidir. Bu olağanüstü yapılar UNESCO Dünya Mirası Listesi’ndedir.\n\nHaç biçiminde yerin altına oyulmuş, tünel ve geçitlerle birbirine bağlı kaya kiliseleri, hâlâ aktif birer ibadet yeridir ve “Yeni Kudüs” olarak anılır. Beyaz cübbeli hacıları, kaya oyma işçiliği ve manevi atmosferiyle Lalibela, insanı hayrete düşüren bir kutsal kenttir.',
     sources: ['UNESCO World Heritage List — Rock-Hewn Churches, Lalibela', 'Lonely Planet — Lalibela'],
   },
 
@@ -1063,7 +1063,7 @@ export const PLACES = [
     lng: 139.6503,
     aliases: ['tokyo', 'tokio', 'edo'],
     summary:
-      'Gelenek ile ultra-modernliğin baş döndürücü bir uyumla buluştuğu Tokyo; neon ışıklı Shibuya kavşağından sakin Meiji Tapınağı’na, gökdelenlerden çiçek açan bahçelere uzanır. Dünyanın en büyük ve en dinamik metropollerinden biridir.',
+      'Japonya’nın başkenti Tokyo, geleneksel kültür ile baş döndürücü modernliğin eşsiz bir uyumla buluştuğu, dünyanın en büyük ve en dinamik metropollerinden biridir. Bir zamanlar Edo adıyla balıkçı köyüyken, bugün küresel bir merkezdir.\n\nDünyanın en kalabalık yaya geçidi Shibuya, huzurlu Meiji Tapınağı ve ormanı, tarihî Asakusa’daki Senso-ji Tapınağı, elektronik cenneti Akihabara ve gökdelen manzaraları başlıca duraklardır. Michelin yıldızlı restoranları, sokak lezzetleri ve baharda çiçek açan kiraz ağaçlarıyla Tokyo tükenmez bir keşif sunar.',
     sources: ['Japan National Tourism Organization — Tokyo', 'Lonely Planet — Tokyo'],
   },
   {
@@ -1075,7 +1075,7 @@ export const PLACES = [
     lng: 135.7681,
     aliases: ['kyoto', 'kioto'],
     summary:
-      'Japonya’nın eski başkenti Kyoto, bin yılı aşkın geçmişiyle geleneksel Japonya’nın kalbidir. Altın Pavyon, kırmızı torii tünelli Fushimi Inari ve geyşaların dolaştığı Gion mahallesiyle UNESCO mirası tapınaklarla doludur.',
+      'Japonya’nın bin yıldan uzun süre başkentliğini yapan Kyoto, ülkenin kültürel ve manevi kalbi olarak binlerce tapınak, saray ve geleneksel bahçeye ev sahipliği yapar. İkinci Dünya Savaşı’ndan büyük ölçüde hasarsız çıkması, eski Japonya’nın ruhunu bugüne taşımıştır.\n\nAltın kaplama Kinkaku-ji (Altın Pavyon), binlerce kırmızı torii kapısıyla Fushimi Inari Tapınağı, bambu ormanıyla Arashiyama ve geyşaların dolaştığı tarihî Gion mahallesi başlıca duraklardır (birçoğu UNESCO). Çay evleri, zen bahçeleri ve mevsimsel güzellikleriyle Kyoto zarafetin simgesidir.',
     sources: ['UNESCO World Heritage List — Historic Monuments of Ancient Kyoto', 'Lonely Planet — Kyoto'],
   },
   {
@@ -1087,7 +1087,7 @@ export const PLACES = [
     lng: 135.5023,
     aliases: ['osaka'],
     summary:
-      'Japonya’nın sokak lezzetleri başkenti Osaka; görkemli Osaka Kalesi, neon dolu Dotonbori eğlence bölgesi ve samimi ruhuyla ünlüdür. Nara ve Kyoto’ya kolay ulaşımıyla bölgenin canlı merkezidir.',
+      'Japonya’nın üçüncü büyük kenti Osaka, sıcakkanlı halkı, canlı enerjisi ve efsanevi sokak mutfağıyla ülkenin “mutfağı” olarak anılır. Tarihî bir ticaret merkezi olan kent, Tokyo’ya göre daha rahat ve samimi bir atmosfer sunar.\n\nGörkemli Osaka Kalesi, dev neon tabelaları ve kanalıyla ünlü Dotonbori eğlence bölgesi ve gökten manzara sunan Umeda Sky Building başlıca duraklardır. Takoyaki ve okonomiyaki gibi sokak lezzetleriyle Osaka, aynı zamanda Kyoto, Nara ve Kobe’ye açılan bir üstür.',
     sources: ['Japan National Tourism Organization — Osaka', 'Lonely Planet — Osaka'],
   },
   {
@@ -1099,7 +1099,7 @@ export const PLACES = [
     lng: 132.4553,
     aliases: ['hiroshima', 'hiroşima'],
     summary:
-      'Hiroşima, atom bombasının izlerini barış mesajına dönüştüren Barış Anıtı (Genbaku Dome, UNESCO) ve müzesiyle dünyaya umut sunar. Yakınındaki Miyajima Adası’nda denizin ortasında yükselen ünlü torii kapısı yer alır.',
+      'Batı Japonya’daki Hiroşima, 1945’te atom bombasının atıldığı kent olarak insanlık tarihinin en trajik anlarından birine tanıklık etmiş; bu acıyı evrensel bir barış mesajına dönüştürmüştür. Bugün canlı, modern ve umut dolu bir kenttir.\n\nBombanın izlerini taşıyan, ayakta kalan tek yapı Genbaku Dome (Barış Anıtı, UNESCO), Barış Anıt Parkı ve müzesi kentin en anlamlı duraklarıdır. Yakınındaki Miyajima Adası’nda, gelgitle denizin ortasında yükseliyormuş gibi görünen ünlü kırmızı torii kapısı ise Japonya’nın en ikonik manzaralarındandır.',
     sources: ['UNESCO World Heritage List — Hiroshima Peace Memorial', 'Lonely Planet — Hiroshima'],
   },
   {
@@ -1111,7 +1111,7 @@ export const PLACES = [
     lng: 135.8048,
     aliases: ['nara'],
     summary:
-      'Japonya’nın ilk kalıcı başkenti Nara; özgürce dolaşan geyikleri, dev Buda heykelini barındıran Todai-ji ve fenerlerle bezeli Kasuga Tapınağı’yla (UNESCO) huzurlu bir açık hava müzesidir.',
+      'Japonya’nın ilk kalıcı başkenti olan Nara, 8. yüzyıldaki bu görkemli döneminden kalan anıtsal tapınakları ve kutsal geyikleriyle huzurlu bir açık hava müzesi gibidir. Kyoto ve Osaka’ya yakınlığıyla kolayca gezilebilir.\n\nDünyanın en büyük bronz Buda heykellerinden birini barındıran devasa ahşap Todai-ji Tapınağı, yüzlerce taş ve bronz fenerle bezeli Kasuga Tapınağı ve bu yapıları çevreleyen geniş park (UNESCO) başlıca duraklardır. Parkta özgürce dolaşan, ziyaretçilere selam veren evcil geyikler kentin sevimli simgesidir.',
     sources: ['UNESCO World Heritage List — Historic Monuments of Ancient Nara', 'Lonely Planet — Nara'],
   },
 
@@ -1125,7 +1125,7 @@ export const PLACES = [
     lng: 116.4074,
     aliases: ['pekin', 'beijing', 'peking'],
     summary:
-      'Çin’in başkenti Pekin, imparatorluk mirasının merkezidir; Yasak Şehir, Tiananmen Meydanı ve Cennet Tapınağı buradadır. Kentin hemen dışında dünyanın en görkemli yapısı Çin Seddi uzanır.',
+      'Çin’in başkenti Pekin, yüzyıllardır imparatorlukların ve modern Çin’in merkezi olarak ülkenin siyasi ve kültürel kalbidir. Anıtsal yapıları, geniş meydanları ve katmanlı tarihiyle adeta bir açık hava tarih kitabıdır.\n\nİmparatorların yaşadığı devasa saray kompleksi Yasak Şehir, dünyanın en büyük meydanlarından Tiananmen, gökyüzüne adanan Cennet Tapınağı ve tarihî hutong sokakları başlıca duraklardır. Kentin hemen dışında ise tepeler boyunca uzanan görkemli Çin Seddi, insan elinden çıkma en büyük yapılardan biri olarak yükselir.',
     sources: ['UNESCO World Heritage List — Imperial Palace / Great Wall', 'Lonely Planet — Beijing'],
   },
   {
@@ -1137,7 +1137,7 @@ export const PLACES = [
     lng: 121.4737,
     aliases: ['sanghay', 'şanghay', 'shanghai'],
     summary:
-      'Çin’in fütüristik vitrini Şanghay; tarihî Bund rıhtımının karşısında yükselen Pudong gökdelenleri, klasik Yu Bahçesi ve canlı çarşılarıyla geçmiş ile geleceği aynı silüette birleştirir.',
+      'Çin’in en büyük kenti ve finans başkenti Şanghay, bir yüzyıl önceki sömürge geçmişini baş döndürücü bir modernlikle birleştiren fütüristik bir metropoldür. Doğu ile Batı’nın buluştuğu kozmopolit bir enerji taşır.\n\nNehrin bir yakasında 1920’lerin Avrupai binalarıyla tarihî Bund rıhtımı, karşı yakasında ise ışıl ışıl Pudong gökdelenleri (Şanghay Kulesi) yükselir. Klasik Çin bahçesi Yu Bahçesi, canlı çarşıları ve Fransız Konsesyonu’nun ağaçlı sokaklarıyla Şanghay geçmiş ile geleceği aynı silüette buluşturur.',
     sources: ['Lonely Planet — Shanghai', 'Çin Turizm — Shanghai'],
   },
   {
@@ -1149,7 +1149,7 @@ export const PLACES = [
     lng: 108.9398,
     aliases: ['xian', "xi'an", 'sian'],
     summary:
-      'İpek Yolu’nun doğu ucundaki antik başkent Xi’an, binlerce pişmiş toprak asker ve atın koruduğu Terracotta Ordusu’na (UNESCO) ev sahipliği yapar. İyi korunmuş şehir surları ve Müslüman çarşısıyla köklü bir merkezdir.',
+      'İpek Yolu’nun doğu ucundaki Xi’an, Çin’in ilk birleşik imparatorluğuna başkentlik yapmış, ülkenin en eski ve en önemli tarihî kentlerinden biridir. On üç hanedana ev sahipliği yapan bu kent, Çin uygarlığının beşiği sayılır.\n\nİlk imparator Qin Shi Huang’ın mezarını korumak için yapılan, binlerce gerçek boyutta pişmiş toprak asker ve attan oluşan Terracotta Ordusu (UNESCO), kentin dünyaca ünlü hazinesidir. Tümüyle korunmuş görkemli şehir surları, Büyük Yaban Kazı Pagodası ve canlı Müslüman Çarşısı da başlıca duraklardır.',
     sources: ['UNESCO World Heritage List — Mausoleum of the First Qin Emperor (Terracotta Army)', 'Lonely Planet — Xi’an'],
   },
   {
@@ -1161,7 +1161,7 @@ export const PLACES = [
     lng: 110.2907,
     aliases: ['guilin', 'yangshuo'],
     summary:
-      'Guilin ve çevresi, Li Nehri boyunca sisler içinde yükselen karst tepeleriyle Çin resimlerinden fırlamış gibidir. Yangshuo’ya tekne turu, dünyanın en ikonik doğa manzaralarından birini sunar.',
+      'Güney Çin’deki Guilin ve çevresi, Li Nehri boyunca sisler içinde yükselen kubbe biçimli karst tepeleriyle geleneksel Çin resimlerinden fırlamış gibi büyüleyici bir manzara sunar. Bu peyzaj, yüzyıllardır şairlere ve ressamlara ilham vermiştir.\n\nGuilin’den Yangshuo’ya Li Nehri üzerinde yapılan tekne turu, dünyanın en ikonik doğa manzaralarından birini gözler önüne serer. Pirinç terasları, mağaraları ve bisikletle keşfedilen kırsalıyla bölge, doğa tutkunları için Çin’in en büyüleyici köşelerinden biridir.',
     sources: ['Lonely Planet — Guilin', 'Çin Turizm — Guilin'],
   },
 
@@ -1175,7 +1175,7 @@ export const PLACES = [
     lng: 77.209,
     aliases: ['delhi', 'yeni delhi', 'new delhi'],
     summary:
-      'Hindistan’ın başkenti Delhi, Babür ihtişamı ile modern başkentin buluştuğu bir zıtlıklar şehridir. Kızıl Kale, Kutub Minar ve Humayun Türbesi (UNESCO) ile Eski Delhi’nin kaotik çarşıları aynı kentte yaşar.',
+      'Hindistan’ın başkenti Delhi, binlerce yıllık tarihi, Babür İmparatorluğu’nun ihtişamı ve modern başkentin buluştuğu bir zıtlıklar kentidir. Kaotik enerjisi, renkleri ve kokularıyla Hindistan’ın tüm yoğunluğunu tek bir kentte sunar.\n\nBabür döneminin kızıl kumtaşı Kızıl Kale’si, göğe uzanan Kutub Minar, mimari bir başyapıt olan Humayun Türbesi (hepsi UNESCO) ve devasa Cuma Camii başlıca duraklardır. Eski Delhi’nin dar çarşıları ile Yeni Delhi’nin geniş bulvarları, kentin ikili ruhunu yansıtır.',
     sources: ['UNESCO World Heritage List — Humayun’s Tomb / Qutb Minar', 'Lonely Planet — Delhi'],
   },
   {
@@ -1187,7 +1187,7 @@ export const PLACES = [
     lng: 78.0081,
     aliases: ['agra', 'tac mahal', 'taj mahal'],
     summary:
-      'Agra, dünyanın en ünlü aşk anıtı Tac Mahal’in şehridir; beyaz mermer türbe, gün doğumunda büyüleyici bir görüntü sunar. Agra Kalesi ve yakındaki Fatehpur Sikri de UNESCO Dünya Mirası’dır.',
+      'Hindistan’ın kuzeyindeki Agra, dünyanın en ünlü anıtı sayılan Tac Mahal’e ev sahipliği yapmasıyla milyonlarca ziyaretçiyi çeker. Bir zamanlar Babür İmparatorluğu’nun başkenti olan kent, görkemli bir mimari mirasa sahiptir.\n\nBabür imparatoru Şah Cihan’ın eşinin anısına yaptırdığı, gün doğumunda büyülü bir görüntü sunan beyaz mermer Tac Mahal, kentin kalbidir. Kızıl kumtaşından Agra Kalesi ve yakınlardaki terk edilmiş görkemli başkent Fatehpur Sikri de UNESCO Dünya Mirası Listesi’ndedir.',
     sources: ['UNESCO World Heritage List — Taj Mahal', 'Lonely Planet — Agra'],
   },
   {
@@ -1199,7 +1199,7 @@ export const PLACES = [
     lng: 75.7873,
     aliases: ['jaipur', 'pembe sehir'],
     summary:
-      'Racastan’ın “Pembe Şehri” Jaipur; Amber Kalesi, Rüzgâr Sarayı (Hawa Mahal) ve Şehir Sarayı’yla masalsı bir maharaja başkentidir (UNESCO). Renkli çarşıları ve kraliyet mirasıyla büyüler.',
+      'Racastan eyaletinin başkenti Jaipur, tarihî merkezindeki binaların rengi nedeniyle “Pembe Şehir” olarak anılır ve Hindistan’ın masalsı maharaja mirasını yaşatır. Görkemli sarayları ve renkli çarşılarıyla büyüleyicidir.\n\nBir tepeye kurulu görkemli Amber Kalesi, yüzlerce kafesli pencereden oluşan Rüzgâr Sarayı (Hawa Mahal), Şehir Sarayı ve devasa güneş saatleriyle Jantar Mantar gözlemevi (UNESCO) başlıca duraklardır. Kumaş, mücevher ve el sanatları çarşılarıyla Jaipur, renk dolu bir kraliyet kentidir.',
     sources: ['UNESCO World Heritage List — Jaipur City', 'Lonely Planet — Jaipur'],
   },
   {
@@ -1211,7 +1211,7 @@ export const PLACES = [
     lng: 82.9739,
     aliases: ['varanasi', 'benares', 'kasi'],
     summary:
-      'Ganj kıyısındaki Varanasi, Hinduizmin en kutsal şehri ve dünyanın kesintisiz yaşayan en eski kentlerindendir. Şafakta nehir üzerindeki ritüeller (ghat’lar) ve akşam Ganga Aarti töreni derin bir manevi deneyim sunar.',
+      'Kutsal Ganj Nehri’nin kıyısındaki Varanasi, Hinduizmin en kutsal kenti ve dünyanın kesintisiz yaşayan en eski yerleşimlerinden biridir. Hindular için en kutsal yerlerden sayılan kent, derin bir manevi yoğunluk taşır.\n\nNehir kıyısındaki basamaklarda (ghat) şafak vakti yapılan yıkanma ve dua ritüelleri, akşamları düzenlenen ışıklı ve müzikli Ganga Aarti töreni ve nehir üzerinde tekne gezisi eşsiz bir deneyim sunar. Dar sokakları, tapınakları ve ipeğiyle Varanasi, Hindistan’ın ruhunu yansıtır.',
     sources: ['Lonely Planet — Varanasi', 'Hindistan Turizm — Varanasi'],
   },
   {
@@ -1223,7 +1223,7 @@ export const PLACES = [
     lng: 72.8777,
     aliases: ['mumbai', 'bombay'],
     summary:
-      'Hindistan’ın enerjik metropolü ve Bollywood’un evi Mumbai; Hindistan Kapısı, Victoria Terminus (UNESCO) ve deniz kıyısı Marine Drive ile sömürge mimarisini modern yaşamla birleştirir.',
+      'Hindistan’ın batı kıyısındaki Mumbai, ülkenin finans başkenti ve dünyaca ünlü Bollywood film endüstrisinin evi olan enerjik bir metropoldür. Zenginlik ile yoksulluğun, gelenek ile hırsın iç içe geçtiği bir hayaller şehridir.\n\nDenize bakan tak Hindistan Kapısı, görkemli Viktorya dönemi tren garı Chhatrapati Shivaji Terminus (UNESCO) ve gün batımında yürünen sahil bulvarı Marine Drive başlıca duraklardır. Sömürge mimarisi, çarşıları ve durmak bilmeyen enerjisiyle Mumbai, modern Hindistan’ın kalbidir.',
     sources: ['UNESCO World Heritage List — Chhatrapati Shivaji Terminus', 'Lonely Planet — Mumbai'],
   },
 
@@ -1237,7 +1237,7 @@ export const PLACES = [
     lng: 55.2708,
     aliases: ['dubai'],
     summary:
-      'Çölün ortasında yükselen ihtişam kenti Dubai; dünyanın en yüksek binası Burj Khalifa, yapay ada Palm Jumeirah ve dev alışveriş merkezleriyle mühendislik ve lüksün sınırlarını zorlar. Tarihî Al Fahidi semti eski Dubai’yi yaşatır.',
+      'Basra Körfezi kıyısında, çölün ortasında yükselen Dubai, birkaç on yılda küçük bir balıkçı kasabasından baş döndürücü bir lüks ve mimari harika kentine dönüşmüştür. Ölçek ve ihtişam tutkusuyla mühendislik sınırlarını zorlar.\n\nDünyanın en yüksek binası Burj Khalifa, palmiye biçimli yapay ada Palm Jumeirah, dev alışveriş merkezleri ve gösterişli otelleriyle kent, modern lüksün simgesidir. Öte yandan, rüzgâr kuleleri ve dar sokaklarıyla tarihî Al Fahidi semti ile geleneksel çarşıları, eski Dubai’nin ruhunu yaşatır.',
     sources: ['Visit Dubai — resmi turizm portalı', 'Lonely Planet — Dubai'],
   },
   {
@@ -1249,7 +1249,7 @@ export const PLACES = [
     lng: 54.3773,
     aliases: ['abu dabi', 'abu dhabi', 'abudabi'],
     summary:
-      'BAE’nin başkenti Abu Dabi; göz kamaştıran beyaz Şeyh Zayed Camii, Louvre Abu Dhabi ve Ferrari World ile kültür, sanat ve eğlenceyi bir araya getirir.',
+      'Birleşik Arap Emirlikleri’nin başkenti Abu Dabi, petrol zenginliğini kültür, sanat ve mimariye yatıran, Dubai’ye göre daha sakin ve görkemli bir körfez kentidir. Geniş bulvarları ve ada konumuyla ferah bir dokuya sahiptir.\n\nDünyanın en büyük ve en göz kamaştırıcı camilerinden bembeyaz Şeyh Zayed Camii, çölün ışığını mimariyle buluşturan Louvre Abu Dhabi müzesi ve heyecan dolu Ferrari World başlıca duraklardır. Corniche sahil bulvarı ve lüks otelleriyle Abu Dabi, kültür ve eğlenceyi bir araya getirir.',
     sources: ['Visit Abu Dhabi — resmi turizm portalı', 'Lonely Planet — Abu Dhabi'],
   },
 
@@ -1263,7 +1263,7 @@ export const PLACES = [
     lng: 100.5018,
     aliases: ['bangkok', 'krung thep'],
     summary:
-      'Tayland’ın canlı başkenti Bangkok; ışıltılı Büyük Saray ve Zümrüt Buda, nehir üzerindeki Wat Arun tapınağı ve hareketli sokak pazarlarıyla duyulara ziyafet çeker. Efsanevi sokak yemekleriyle de ünlüdür.',
+      'Tayland’ın canlı başkenti Bangkok, ışıltılı tapınakları, hareketli kanalları ve durmak bilmeyen sokak yaşamıyla duyulara ziyafet çeken bir Güneydoğu Asya metropolüdür. Geleneksel maneviyat ile modern eğlenceyi çarpıcı biçimde birleştirir.\n\nİçinde Zümrüt Buda’nın bulunduğu görkemli Büyük Saray, nehir kıyısındaki Şafak Tapınağı Wat Arun, uzanan altın Buda’sıyla Wat Pho ve yüzen pazarlar başlıca duraklardır. Efsanevi sokak yemekleri, tuk-tuk’ları ve gece pazarlarıyla Bangkok, coşkulu ve baş döndürücü bir kenttir.',
     sources: ['Tourism Authority of Thailand — Bangkok', 'Lonely Planet — Bangkok'],
   },
   {
@@ -1275,7 +1275,7 @@ export const PLACES = [
     lng: 98.9853,
     aliases: ['chiang mai', 'chiangmai'],
     summary:
-      'Kuzey Tayland’ın dağlık kültür başkenti Chiang Mai; surlarla çevrili eski şehrindeki yüzlerce tapınak, tepedeki Doi Suthep ve etik fil kampları ile huzurlu bir kaçış sunar.',
+      'Kuzey Tayland’ın dağlık kültür başkenti Chiang Mai, bir zamanlar bağımsız Lanna Krallığı’nın merkeziydi; bu miras, kente Bangkok’tan çok farklı, huzurlu ve gelenekli bir atmosfer kazandırmıştır. Ormanlarla çevrili konumu da onu cazip kılar.\n\nSurlar ve hendekle çevrili eski şehirdeki yüzlerce antik tapınak, kente tepeden bakan kutsal Doi Suthep Tapınağı ve etik fil bakım kampları başlıca öne çıkanlardır. Gece pazarları, dağ köyleri ve Yi Peng fener festivaliyle Chiang Mai, sakin ve otantik bir kaçış sunar.',
     sources: ['Tourism Authority of Thailand — Chiang Mai', 'Lonely Planet — Chiang Mai'],
   },
   {
@@ -1287,7 +1287,7 @@ export const PLACES = [
     lng: 98.3923,
     aliases: ['phuket', 'puket'],
     summary:
-      'Tayland’ın en büyük adası Phuket; turkuaz koyları, çevredeki Phi Phi ve Phang Nga (James Bond Adası) manzaraları ve canlı sahil hayatıyla tropik bir tatil merkezidir.',
+      'Andaman Denizi’ndeki Phuket, Tayland’ın en büyük adası ve ülkenin en popüler tropik tatil merkezidir. Beyaz kumlu plajları, turkuaz koyları ve canlı gece hayatıyla her tür gezgine hitap eder.\n\nGeniş plajları ve sahil beldelerinin yanı sıra, çevredeki masalsı Phi Phi Adaları ve dev kayaların yükseldiği Phang Nga Körfezi (James Bond Adası) tekne turlarının gözdesidir. Portekiz-Çin karışımı mimarisiyle Eski Phuket Kasabası ve tepedeki Büyük Buda heykeliyle ada, deniz ile kültürü birleştirir.',
     sources: ['Tourism Authority of Thailand — Phuket', 'Lonely Planet — Phuket'],
   },
 
@@ -1301,7 +1301,7 @@ export const PLACES = [
     lng: 115.2625,
     aliases: ['bali', 'ubud', 'denpasar'],
     summary:
-      '“Tanrılar Adası” Bali; pirinç teraslarıyla yeşeren Ubud, deniz kenarındaki Tanah Lot ve Uluwatu tapınakları ve manevi atmosferiyle Endonezya’nın en sevilen tropik cennetidir.',
+      'Endonezya’nın en ünlü adası Bali, yemyeşil pirinç terasları, volkanik dağları, tapınakları ve kendine özgü Hindu kültürüyle bir “Tanrılar Adası” olarak anılır. Manevi atmosferi ve doğal güzelliğiyle dünyanın en sevilen tropik cennetlerindendir.\n\nSanat ve maneviyat merkezi Ubud’un pirinç terasları ve maymun ormanı, denizin ortasındaki kayaya kurulu Tanah Lot ve uçurumdaki Uluwatu tapınakları başlıca duraklardır. Sörf plajları, spa gelenekleri ve günlük adaklarla süslü sokaklarıyla Bali, dinlence ve ruhun buluştuğu bir adadır.',
     sources: ['UNESCO World Heritage List — Cultural Landscape of Bali Province', 'Lonely Planet — Bali'],
   },
   {
@@ -1313,7 +1313,7 @@ export const PLACES = [
     lng: 110.3695,
     aliases: ['yogyakarta', 'jogja', 'yogya'],
     summary:
-      'Java’nın kültür kalbi Yogyakarta; dünyanın en büyük Budist tapınağı Borobudur ve görkemli Hindu tapınağı Prambanan’a (her ikisi UNESCO) açılan kapıdır. Sultan Sarayı ve batik geleneğiyle de zengindir.',
+      'Endonezya’nın Java adasındaki Yogyakarta, hâlâ bir sultanın yönettiği, ülkenin sanat, batik ve klasik dans geleneklerinin kalbi sayılan bir kültür kentidir. Aynı zamanda dünyanın en görkemli iki antik tapınağına açılan kapıdır.\n\nDünyanın en büyük Budist anıtı olan devasa Borobudur ve zarif kuleleriyle Hindu tapınağı Prambanan (her ikisi de UNESCO), gün doğumunda büyüleyici bir görüntü sunar. Sultan Sarayı (Kraton), gölge kuklası (wayang) gösterileri ve batik atölyeleriyle Yogyakarta, Java kültürünün özüdür.',
     sources: ['UNESCO World Heritage List — Borobudur / Prambanan Temple Compounds', 'Lonely Planet — Yogyakarta'],
   },
 
@@ -1327,7 +1327,7 @@ export const PLACES = [
     lng: 105.8342,
     aliases: ['hanoi'],
     summary:
-      'Vietnam’ın bin yıllık başkenti Hanoi; dar sokaklı Eski Mahalle, Hoan Kiem Gölü ve sömürge mimarisiyle çarpıcı bir Doğu-Batı karışımı sunar. Ünlü Ha Long Körfezi’ne açılan kapıdır.',
+      'Vietnam’ın bin yıllık başkenti Hanoi, dar sokaklı tarihî mahalleleri, huzurlu gölleri ve Fransız sömürge mimarisiyle Doğu ile Batı’nın çarpıcı bir karışımını sunar. Ülkenin siyasi ve kültürel kalbidir.\n\nHer biri bir zanaata adanmış dükkânlarla dolu hareketli Eski Mahalle, efsanevi Hoan Kiem Gölü ve tapınağı, anıtsal yapıları ve sokak kahvesi kültürü başlıca öne çıkanlardır. Ünlü pho çorbası, su kuklası gösterileri ve dünya harikası Ha Long Körfezi’ne yakınlığıyla Hanoi zengin bir duraktır.',
     sources: ['Lonely Planet — Hanoi', 'Vietnam Turizm — Hanoi'],
   },
   {
@@ -1339,7 +1339,7 @@ export const PLACES = [
     lng: 106.6297,
     aliases: ['ho chi minh', 'saigon', 'hochiminh'],
     summary:
-      'Vietnam’ın en canlı kenti Ho Chi Minh (Saigon); sömürge yapıları, Savaş Kalıntıları Müzesi, hareketli pazarları ve yakınındaki Cu Chi tünelleriyle ülkenin dinamik yüzüdür.',
+      'Vietnam’ın güneyindeki en büyük ve en canlı kenti Ho Chi Minh (eski adıyla Saigon), motosiklet selleri, hareketli pazarları ve durmak bilmeyen enerjisiyle ülkenin ekonomik dinamosudur. Sömürge geçmişi ile modern hırsı iç içe yaşar.\n\nFransız döneminden kalma Notre-Dame Bazilikası ve Merkez Postane, Vietnam Savaşı’nın acılarını anlatan Savaş Kalıntıları Müzesi, tarihî Ben Thanh Pazarı ve yakınındaki Cu Chi yeraltı tünelleri başlıca duraklardır. Sokak yemekleri ve gece hayatıyla kent coşkuludur.',
     sources: ['Lonely Planet — Ho Chi Minh City', 'Vietnam Turizm — Ho Chi Minh'],
   },
   {
@@ -1351,7 +1351,7 @@ export const PLACES = [
     lng: 107.1839,
     aliases: ['ha long', 'halong', 'ha long korfezi'],
     summary:
-      'Zümrüt sulardan yükselen binlerce kireçtaşı adasıyla Ha Long Körfezi, dünyanın en büyüleyici deniz manzaralarından biridir (UNESCO). Geleneksel yelkenli teknelerle yapılan turlar bölgenin ruhunu yansıtır.',
+      'Kuzey Vietnam’da, Tonkin Körfezi’nde zümrüt yeşili sulardan yükselen binlerce sarp kireçtaşı adası ve kayalığıyla Ha Long Körfezi, dünyanın en büyüleyici deniz manzaralarından biridir ve UNESCO Dünya Mirası Listesi’ndedir. Adı “alçalan ejderha” anlamına gelir.\n\nGeleneksel yelkenli (junk) teknelerle yapılan bir veya birkaç günlük turlar, adalar arasında süzülmeyi, gizli mağaraları ve deniz mağaralarını keşfetmeyi sağlar. Kano turları, yüzen balıkçı köyleri ve sisli gün doğumlarıyla körfez, unutulmaz bir doğa deneyimi sunar.',
     sources: ['UNESCO World Heritage List — Ha Long Bay', 'Lonely Planet — Ha Long Bay'],
   },
 
@@ -1365,7 +1365,7 @@ export const PLACES = [
     lng: 103.8448,
     aliases: ['siem reap', 'angkor', 'angkor wat', 'siemreap'],
     summary:
-      'Siem Reap, dünyanın en büyük dinî anıtı Angkor Wat’a ve Khmer İmparatorluğu’nun devasa tapınak-şehrine (UNESCO) açılan kapıdır. Ağaç kökleriyle sarılı Ta Prohm ve gülümseyen yüzleriyle Bayon büyüleyicidir.',
+      'Kamboçya’daki Siem Reap, dünyanın en büyük dinî yapısı olan görkemli Angkor Wat’a ve bir zamanlar güçlü Khmer İmparatorluğu’nun devasa tapınak-şehrine açılan kapıdır. Bu kalıntılar, Güneydoğu Asya’nın en büyüleyici arkeolojik hazinesidir.\n\nGün doğumunda gölete yansıyan beş kuleli Angkor Wat (UNESCO), dev taş yüzlerle bezeli Bayon Tapınağı ve ağaç kökleriyle sarılıp doğaya karışmış Ta Prohm başlıca duraklardır. Canlı gece pazarları ve rahat havasıyla Siem Reap, tarih tutkunları için bir başnoktadır.',
     sources: ['UNESCO World Heritage List — Angkor', 'Lonely Planet — Siem Reap'],
   },
 
@@ -1379,7 +1379,7 @@ export const PLACES = [
     lng: 103.8198,
     aliases: ['singapur', 'singapore'],
     summary:
-      'Şehir-devlet Singapur; gökdelenlerin arasındaki fütüristik Gardens by the Bay, çatısında havuz olan Marina Bay Sands ve çok kültürlü mahalleleriyle temizlik, düzen ve modernliğin simgesidir.',
+      'Güneydoğu Asya’nın ucundaki şehir-devlet Singapur, tertemiz sokakları, kusursuz düzeni ve fütüristik mimarisiyle bir modernlik simgesidir. Çin, Malay, Hint ve Batı kültürlerini harmanlayan gerçek bir kavşak noktasıdır.\n\nDev yapay “Süper Ağaçları” ve seralarıyla Gardens by the Bay, çatısında gemi biçimli sonsuzluk havuzu bulunan Marina Bay Sands ve renkli Çin, Hint ve Arap mahalleleri başlıca duraklardır. Dünya çapındaki sokak lezzetleri (hawker center) ve yeşiliyle Singapur, geleceğin bahçe-kentidir.',
     sources: ['Visit Singapore — resmi turizm portalı', 'Lonely Planet — Singapore'],
   },
 
@@ -1393,7 +1393,7 @@ export const PLACES = [
     lng: 51.668,
     aliases: ['isfahan', 'i̇sfahan', 'esfahan'],
     summary:
-      '“Dünyanın yarısı” denen İsfahan, İran’ın en görkemli kentidir; dünyanın en büyük meydanlarından Nakş-ı Cihan (UNESCO), çini kubbeli camiler ve tarihî köprüleriyle İslam sanatının doruğunu sergiler.',
+      'İran’ın merkezindeki İsfahan, Safevi İmparatorluğu döneminde başkent olarak yaşadığı görkemli çağ nedeniyle “Dünyanın Yarısı” (Nesf-e Cahan) olarak anılır. Mavi-turkuaz çinileri ve zarif mimarisiyle İslam sanatının doruğunu temsil eder.\n\nDünyanın en büyük meydanlarından biri olan Nakş-ı Cihan (İmam Meydanı, UNESCO), onu çevreleyen çini kubbeli İmam ve Şeyh Lütfullah camileri, Ali Kapı Sarayı ve tarihî kapalı çarşı başlıca duraklardır. Zayanderud Nehri üzerindeki zarif çok gözlü köprüler (Si-o-se Pol) ise akşamları buluşma noktasıdır.',
     sources: ['UNESCO World Heritage List — Meidan Emam, Esfahan', 'Lonely Planet — Esfahan'],
   },
   {
@@ -1405,7 +1405,7 @@ export const PLACES = [
     lng: 52.5837,
     aliases: ['siraz', 'şiraz', 'shiraz'],
     summary:
-      'Şairlerin, güllerin ve şarabın şehri Şiraz; ışıkla oynayan Pembe Cami (Nasır el-Mülk), Hafız ve Sadi’nin türbeleri ve yakınındaki antik Pers başkenti Persepolis’le (UNESCO) İran kültürünün kalbidir.',
+      'İran’ın güneyindeki Şiraz, yüzyıllardır şairlerin, güllerin, bülbüllerin ve şarabın kenti olarak anılan, İran kültürünün ve edebiyatının kalbidir. Ilıman iklimi ve zarif bahçeleriyle romantik bir atmosfer taşır.\n\nSabah güneşiyle içi rengârenk ışıklarla dolan Nasır el-Mülk Camii (Pembe Cami), ünlü şairler Hafız ile Sadi’nin türbeleri ve Eram gibi klasik İran bahçeleri başlıca duraklardır. Şiraz aynı zamanda, Pers İmparatorluğu’nun görkemli başkenti antik Persepolis’e (UNESCO) açılan kapıdır.',
     sources: ['UNESCO World Heritage List — Persepolis', 'Lonely Planet — Shiraz'],
   },
   {
@@ -1417,7 +1417,7 @@ export const PLACES = [
     lng: 51.389,
     aliases: ['tahran', 'tehran', 'teheran'],
     summary:
-      'İran’ın başkenti Tahran; Golestan Sarayı (UNESCO), zengin mücevher ve müzeleri ve Elburz Dağları manzarasıyla modern İran’ın canlı merkezidir.',
+      'İran’ın başkenti ve en büyük kenti Tahran, karlı Elburz Dağları’nın eteğinde kurulu, geleneksel çarşılar ile modern bulvarların iç içe geçtiği canlı bir metropoldür. Ülkenin siyasi, ekonomik ve kültürel merkezidir.\n\nKaçar hanedanından kalma görkemli çini ve ayna işçilikli Golestan Sarayı (UNESCO), dünyanın en değerli mücevher koleksiyonlarından birini barındıran hazine, çağdaş sanat müzeleri ve devasa Büyük Çarşı (Bazar) başlıca duraklardır. Dağ manzarası ve kafeleriyle Tahran modern İran’ı yansıtır.',
     sources: ['UNESCO World Heritage List — Golestan Palace', 'Lonely Planet — Tehran'],
   },
 
@@ -1431,7 +1431,7 @@ export const PLACES = [
     lng: 35.4444,
     aliases: ['petra', 'wadi musa'],
     summary:
-      'Kızıl kayalara oyulmuş antik Nebati kenti Petra, dar bir kanyonun (Siq) sonunda beliren görkemli Hazine (Al-Khazneh) cephesiyle dünyanın yeni yedi harikasından biridir (UNESCO).',
+      'Ürdün’ün güneyindeki Petra, iki bin yıldan uzun süre önce Nebatiler tarafından pembe-kızıl kaya duvarlarına oyulmuş görkemli bir antik kenttir. Bir zamanlar zengin bir kervan ticareti başkenti olan kent, dünyanın yeni yedi harikasından biri sayılır (UNESCO).\n\nKilometrelerce uzunluğundaki dar ve yüksek bir kanyonun (Siq) sonunda aniden beliren, kayaya oyulmuş görkemli Hazine (Al-Khazneh) cephesi, Petra’nın ikonik görüntüsüdür. Manastır (Ad-Deir), kraliyet mezarları ve antik tiyatrosuyla kent, keşfedilmeyi bekleyen devasa bir açık hava müzesidir.',
     sources: ['UNESCO World Heritage List — Petra', 'Lonely Planet — Petra'],
   },
   {
@@ -1443,7 +1443,7 @@ export const PLACES = [
     lng: 35.9284,
     aliases: ['amman'],
     summary:
-      'Ürdün’ün başkenti Amman; tepedeki antik Kale (Citadel), iyi korunmuş Roma Tiyatrosu ve canlı çarşılarıyla köklü bir tarihi modern yaşamla birleştirir. Petra, Wadi Rum ve Ölü Deniz’e açılan üstür.',
+      'Ürdün’ün başkenti Amman, yedi tepe üzerine kurulu, antik geçmişini modern bir Ortadoğu metropolüyle birleştiren canlı bir kenttir. Bölgeyi keşfetmek için ideal bir üs ve giriş noktası işlevi görür.\n\nKente tepeden bakan, Roma ve Emevi kalıntılarını barındıran antik Kale (Citadel), iyi korunmuş devasa Roma Tiyatrosu ve hareketli çarşıları (souk) başlıca duraklardır. Amman aynı zamanda görkemli Petra’ya, çöl manzaralı Wadi Rum’a ve dünyanın en tuzlu sularından Ölü Deniz’e açılan kapıdır.',
     sources: ['Visit Jordan — resmi turizm portalı', 'Lonely Planet — Amman'],
   },
 
@@ -1457,7 +1457,7 @@ export const PLACES = [
     lng: 66.975,
     aliases: ['semerkand', 'samarkand', 'samarkant'],
     summary:
-      'İpek Yolu’nun incisi Semerkand; turkuaz kubbeleri ve devasa çinili medreseleriyle Registan Meydanı, Timur’un türbesi ve Bibi-Hanım Camii’yle (UNESCO) Orta Asya İslam sanatının en görkemli örneklerini sunar.',
+      'Özbekistan’daki Semerkand, İpek Yolu’nun en görkemli duraklarından biri ve büyük hükümdar Timur’un imparatorluğunun parlayan başkentiydi. Turkuaz kubbeleri ve devasa çinili yapılarıyla Orta Asya İslam sanatının doruğunu temsil eder.\n\nÜç görkemli medresenin çevrelediği efsanevi Registan Meydanı, Timur’un türbesi Gur-ı Emir, dev Bibi-Hanım Camii ve mavi çinilerle bezeli Şah-ı Zinde mezar sokağı başlıca duraklardır (hepsi UNESCO). İpek Yolu’nun ihtişamını yaşatan Semerkand, adeta açık hava bir sanat galerisidir.',
     sources: ['UNESCO World Heritage List — Samarkand – Crossroad of Cultures', 'Lonely Planet — Samarkand'],
   },
   {
@@ -1469,7 +1469,7 @@ export const PLACES = [
     lng: 64.4286,
     aliases: ['buhara', 'bukhara', 'buchara'],
     summary:
-      'İki bin yıllık kutsal kervan şehri Buhara; kesintisiz ayakta kalan tarihî merkezi (UNESCO), minareleri, medreseleri ve kubbeli çarşılarıyla âdeta yaşayan bir açık hava müzesidir.',
+      'Özbekistan’daki Buhara, iki bin yılı aşkın geçmişiyle İpek Yolu’nun en kutsal kervan şehirlerinden biridir; bir zamanlar İslam dünyasının önemli bir ilim ve maneviyat merkeziydi. Tarihî merkezi, çağlar boyunca dokusunu koruyarak bugüne ulaşmıştır.\n\nGöğe uzanan Kalyan Minaresi ve camisi, medreseleri, kervansarayları ve kubbeli ticaret çarşılarıyla kentin tamamı UNESCO Dünya Mirası Listesi’ndedir. Dar toprak sokakları, havuz başındaki (Lyabi-Hauz) çınar gölgeli meydanı ve el sanatları dükkânlarıyla Buhara, yaşayan bir açık hava müzesidir.',
     sources: ['UNESCO World Heritage List — Historic Centre of Bukhara', 'Lonely Planet — Bukhara'],
   },
 
@@ -1483,7 +1483,7 @@ export const PLACES = [
     lng: 85.324,
     aliases: ['katmandu', 'kathmandu'],
     summary:
-      'Himalayalar’ın eteğindeki Katmandu; oymalı tapınaklarla dolu Durbar Meydanları, kutsal Pashupatinath ve gözlü Boudhanath stupasıyla (UNESCO) Hindu ve Budist mirasın buluştuğu manevi bir vadidir. Everest treklerine açılan kapıdır.',
+      'Himalayalar’ın eteğinde bir vadide kurulu Katmandu, Nepal’in başkenti ve Hindu ile Budist kültürlerinin yüzyıllardır iç içe yaşadığı manevi bir merkezdir. Oymalı ahşap tapınakları ve canlı sokaklarıyla eşsiz bir atmosfer sunar.\n\nUsta işçilikli saray ve tapınaklarla dolu Durbar Meydanları, kutsal Hindu yakma alanı Pashupatinath ve dev gözleriyle bakan Boudhanath Budist stupası (hepsi UNESCO) başlıca duraklardır. Aynı zamanda Everest ve Annapurna trekleri ile Himalaya maceralarına açılan ana kapıdır.',
     sources: ['UNESCO World Heritage List — Kathmandu Valley', 'Lonely Planet — Kathmandu'],
   },
 
@@ -1497,7 +1497,7 @@ export const PLACES = [
     lng: 126.978,
     aliases: ['seul', 'seoul'],
     summary:
-      'Güney Kore’nin başkenti Seul; görkemli Gyeongbokgung Sarayı ve nöbet töreni, geleneksel Bukchon Hanok köyü ve N Seoul Kulesi ile K-pop çağının parıltısını asırlık mirasla birleştirir.',
+      'Güney Kore’nin başkenti Seul, beş yüzyıllık saraylarını göğe uzanan gökdelenlerle ve K-pop çağının parıltısıyla birleştiren, sürekli hareket hâlindeki bir metropoldür. Han Nehri’nin iki yakasına yayılan kent, gelenek ile teknolojiyi ustaca harmanlar.\n\nGörkemli Gyeongbokgung Sarayı ve renkli nöbet değişim töreni, geleneksel hanok evleriyle Bukchon köyü, kente tepeden bakan N Seoul Kulesi ve canlı çarşıları başlıca duraklardır. Gece hayatı, alışverişi, Kore mutfağı ve teknoloji tutkusuyla Seul, dinamik bir Asya başkentidir.',
     sources: ['Korea Tourism Organization — Seoul', 'Lonely Planet — Seoul'],
   },
 
@@ -1511,7 +1511,7 @@ export const PLACES = [
     lng: 151.2093,
     aliases: ['sydney', 'sidney'],
     summary:
-      'Avustralya’nın simge kenti Sydney; yelken çatılı ikonik Opera Binası, dev Liman Köprüsü ve ünlü Bondi Plajı’yla dünyanın en güzel doğal limanlarından birine kuruludur.',
+      'Avustralya’nın en büyük ve en tanınmış kenti Sydney, dünyanın en güzel doğal limanlarından birine kurulu, güneşli yaşam tarzı ve simge yapılarıyla ünlüdür. Plajları, körfezi ve canlı dokusuyla ülkenin vitrini gibidir.\n\nYelken biçimli çatısıyla ikonik Sydney Opera Binası, dev çelik Liman Köprüsü (üzerine tırmanılabilir) ve sörfçülerin uğrağı ünlü Bondi Plajı başlıca duraklardır. Feribotla gezilen körfezi, Kraliyet Botanik Bahçesi ve rahat sahil semtleriyle Sydney, doğa ile kenti buluşturur.',
     sources: ['UNESCO World Heritage List — Sydney Opera House', 'Lonely Planet — Sydney'],
   },
   {
@@ -1523,7 +1523,7 @@ export const PLACES = [
     lng: 144.9631,
     aliases: ['melbourne'],
     summary:
-      'Avustralya’nın kültür ve kahve başkenti Melbourne; sokak sanatlı ara sokakları, viktoryen mimarisi, spor tutkusu ve canlı yeme-içme sahnesiyle sürekli “yaşanabilir şehir” seçilir.',
+      'Avustralya’nın güneyindeki Melbourne, sanat, kahve ve spor tutkusuyla ülkenin kültür başkenti sayılır; yıllarca “dünyanın en yaşanabilir kenti” seçilmiştir. Viktorya dönemi zarafetini modern yaratıcılıkla birleştiren zarif bir metropoldür.\n\nSokak sanatıyla bezeli gizli ara sokakları (laneway), butik kafeleri, görkemli viktoryen binaları ve Melbourne Cricket Ground gibi spor tapınakları başlıca öne çıkanlardır. Avustralya Açık tenis turnuvası ve Grand Prix gibi etkinlikleri, tramvayları ve yeme-içme sahnesiyle Melbourne dinamik bir kenttir.',
     sources: ['Lonely Planet — Melbourne', 'Visit Victoria — Melbourne'],
   },
   {
@@ -1535,7 +1535,7 @@ export const PLACES = [
     lng: 145.7781,
     aliases: ['cairns', 'great barrier reef', 'buyuk set resifi'],
     summary:
-      'Tropik kuzey Avustralya’daki Cairns, dünyanın en büyük mercan resifi Büyük Set Resifi’ne (UNESCO) ve yağmur ormanlarına açılan kapıdır. Dalış ve şnorkel cennetidir.',
+      'Avustralya’nın tropik kuzeydoğusundaki Cairns, dünyanın en büyük mercan resifi sistemi Büyük Set Resifi’ne (UNESCO) açılan kapı olarak dünyaca ünlüdür. Rahat havası ve doğa maceralarıyla gezginlerin üssüdür.\n\nRengârenk mercanları ve deniz yaşamıyla Büyük Set Resifi’nde dalış ve şnorkel, dünyanın en eski tropik yağmur ormanlarından Daintree ve teleferikle geçilen Kuranda başlıca cazibelerdir. Deniz kıyısı yürüyüş yolu (Esplanade) ve tropik iklimiyle Cairns, resif ve orman keşfinin merkezidir.',
     sources: ['UNESCO World Heritage List — Great Barrier Reef', 'Lonely Planet — Cairns'],
   },
   {
@@ -1547,7 +1547,7 @@ export const PLACES = [
     lng: 131.0369,
     aliases: ['uluru', 'ayers rock'],
     summary:
-      'Kızıl çölün ortasında yükselen devasa kutsal kaya Uluru, Aborjin kültürünün kalbi ve Avustralya’nın en ikonik doğa anıtıdır (UNESCO). Gün doğumu ve batımında renk değiştirir.',
+      'Avustralya’nın kızıl çölünün tam ortasında tek başına yükselen devasa kumtaşı kaya Uluru (Ayers Rock), kıtanın en ikonik doğa anıtı ve yerli Aborjin halkı için kutsal bir yerdir. Uçsuz bucaksız çölün ortasındaki bu görkemli oluşum, derin bir manevi anlam taşır (UNESCO).\n\nGün doğumu ve batımında kırmızıdan mora uzanan renk değişimiyle büyüleyen kaya, çevresindeki yürüyüş yolları, mağara resimleri ve Aborjin kültür merkeziyle keşfedilir. Yakınındaki kubbe biçimli Kata Tjuta oluşumlarıyla birlikte Uluru, Avustralya’nın ruhunu yansıtır.',
     sources: ['UNESCO World Heritage List — Uluru-Kata Tjuta National Park', 'Lonely Planet — Uluru'],
   },
   {
@@ -1559,7 +1559,7 @@ export const PLACES = [
     lng: 174.7633,
     aliases: ['auckland', 'okland'],
     summary:
-      '“Yelkenler Şehri” Auckland, iki limanı ve sönmüş volkan tepeleri arasına kurulu, Yeni Zelanda’nın en büyük kentidir. Sky Tower ve çevredeki adalarla doğa ile şehri birleştirir.',
+      'Yeni Zelanda’nın en büyük kenti Auckland, iki limanın arasına ve sönmüş volkan tepelerinin üzerine kurulu, teknelere olan tutkusu nedeniyle “Yelkenler Şehri” olarak anılır. Doğa ile kent yaşamının iç içe geçtiği çok kültürlü bir metropoldür.\n\nKente panoramik manzara sunan Sky Tower, hareketli liman bölgesi, volkanik tepeler (Mount Eden) ve çevredeki adalar başlıca duraklardır. Feribotla ulaşılan bağlı adaları, plajları ve yelkenli gezileriyle Auckland, Yeni Zelanda maceralarının canlı bir başlangıç noktasıdır.',
     sources: ['Lonely Planet — Auckland', 'Tourism New Zealand — Auckland'],
   },
   {
@@ -1571,7 +1571,7 @@ export const PLACES = [
     lng: 168.6626,
     aliases: ['queenstown'],
     summary:
-      'Dünyanın macera başkenti Queenstown; göl kıyısında, karlı Remarkables dağlarının eteğinde bungee jumping, kayak ve nefes kesen manzaralarıyla ünlüdür. Milford Sound’a açılan kapıdır.',
+      'Yeni Zelanda’nın Güney Adası’nda, karlı Remarkables dağlarının eteğinde ve berrak Wakatipu Gölü kıyısında kurulu Queenstown, nefes kesen manzaraları ve adrenalin dolu aktiviteleriyle dünyanın “macera başkenti” olarak anılır.\n\nBungee jumping’in doğduğu yer olan kent; jet bot turları, kayak merkezleri, göl gezileri ve dağ yürüyüşleriyle her mevsim heyecan sunar. Aynı zamanda, dünyanın en görkemli fiyortlarından Milford Sound’a ve “Yüzüklerin Efendisi” manzaralarına açılan bir üstür.',
     sources: ['Lonely Planet — Queenstown', 'Tourism New Zealand — Queenstown'],
   },
 
@@ -1586,7 +1586,7 @@ export const PLACES = [
     lng: -74.006,
     aliases: ['new york', 'newyork', 'nyc', 'manhattan'],
     summary:
-      '“Uyumayan Şehir” New York; Özgürlük Heykeli, Times Square’in ışıkları, Central Park ve gökdelen silüetiyle dünyanın kültür, sanat ve finans başkentlerinden biridir.',
+      'ABD’nin en büyük kenti New York, göçmenlerin kurduğu, dünyanın dört bir yanından kültürleri bir araya getiren bir “eritme potası” ve küresel kültür, sanat, moda ile finansın başkentlerinden biridir. Baş döndürücü enerjisiyle “Uyumayan Şehir” olarak anılır.\n\nÖzgürlük Heykeli, ışıl ışıl Times Square, kentin ortasındaki dev yeşil vaha Central Park, Empire State Binası ve dünya çapındaki müzeleri (Met, MoMA) başlıca duraklardır. Broadway tiyatroları, çok kültürlü semtleri ve gökdelen silüetiyle New York, tükenmez bir keşif sunar.',
     sources: ['UNESCO World Heritage List — Statue of Liberty', 'Lonely Planet — New York City'],
   },
   {
@@ -1598,7 +1598,7 @@ export const PLACES = [
     lng: -122.4194,
     aliases: ['san francisco', 'sanfrancisco', 'frisco'],
     summary:
-      'Tepeleri, tramvayları ve sisli körfeziyle San Francisco; simge Golden Gate Köprüsü, Alcatraz adası ve renkli mahalleleriyle Kaliforniya’nın en çekici kentlerinden biridir.',
+      'Kaliforniya’nın kuzeyinde, bir yarımada üzerine kurulu San Francisco, sisli körfezi, dik tepeleri ve tarihî tramvaylarıyla ABD’nin en özgün ve en güzel kentlerinden biridir. Özgür ruhu ve teknoloji dünyasına (Silikon Vadisi) yakınlığıyla da tanınır.\n\nKörfezin ağzında yükselen kızıl-turuncu Golden Gate Köprüsü, bir zamanlar hapishane olan Alcatraz adası, dönerek yol alan tramvayları ve renkli Victoria dönemi evleri başlıca duraklardır. Fisherman’s Wharf, Çin Mahallesi ve tepe manzaralarıyla San Francisco büyüleyicidir.',
     sources: ['Lonely Planet — San Francisco', 'Visit California — San Francisco'],
   },
   {
@@ -1610,7 +1610,7 @@ export const PLACES = [
     lng: -118.2437,
     aliases: ['los angeles', 'losangeles', 'la', 'hollywood'],
     summary:
-      'Sinemanın başkenti Los Angeles; Hollywood tabelası, Walk of Fame, sahilleri ve tema parklarıyla yıldız tozu ve Kaliforniya güneşini bir arada sunar.',
+      'Güney Kaliforniya’nın uçsuz bucaksız metropolü Los Angeles, sinemanın başkenti Hollywood’a ev sahipliği yapmasıyla yıldız tozu ve hayal fabrikası çağrışımı yapar. Yıl boyu süren güneşi, plajları ve rahat yaşam tarzıyla ünlüdür.\n\nTepedeki ünlü Hollywood tabelası, yıldızların adlarını taşıyan Walk of Fame, Getty ve LACMA müzeleri, Santa Monica sahili ve tema parkları (Disneyland, Universal) başlıca duraklardır. Otoyolları, sörf plajları ve çeşitliliğiyle Los Angeles, Kaliforniya rüyasının simgesidir.',
     sources: ['Lonely Planet — Los Angeles', 'Discover Los Angeles — resmi turizm'],
   },
   {
@@ -1622,7 +1622,7 @@ export const PLACES = [
     lng: -115.1398,
     aliases: ['las vegas', 'lasvegas', 'vegas'],
     summary:
-      'Çölün ortasındaki eğlence şehri Las Vegas; ışıltılı Strip’i, temalı dev otelleri ve gösterileriyle 7/24 canlıdır. Grand Canyon ve Hoover Barajı’na açılan üstür.',
+      'Nevada çölünün ortasında bir vaha gibi yükselen Las Vegas, gösterişli otelleri, kumarhaneleri ve durmak bilmeyen eğlencesiyle dünyanın gösteri ve eğlence başkentidir. Yoktan var edilmiş bu kent, abartının ve fantezinin cisimleşmiş hâlidir.\n\nDünyanın simge yapılarının kopyalarını barındıran temalı dev otelleriyle ışıltılı ana bulvar “Strip”, kumarhaneleri, sahne şovları ve konserleri kenti 7/24 canlı tutar. Las Vegas aynı zamanda görkemli Grand Canyon, Hoover Barajı ve çöl milli parklarına açılan bir üstür.',
     sources: ['Lonely Planet — Las Vegas', 'Visit Las Vegas — resmi turizm'],
   },
   {
@@ -1634,7 +1634,7 @@ export const PLACES = [
     lng: -77.0369,
     aliases: ['washington', 'washington dc', 'dc'],
     summary:
-      'ABD’nin başkenti Washington D.C.; Capitol, Beyaz Saray, Lincoln Anıtı ve National Mall boyunca sıralanan dünyaca ünlü (ve ücretsiz) Smithsonian müzeleriyle ulusal tarihin merkezidir.',
+      'Amerika Birleşik Devletleri’nin başkenti Washington D.C., anıtsal binaları, geniş bulvarları ve ulusun kurucu değerlerini simgeleyen yapılarıyla planlı bir başkenttir. Ülkenin siyasi kalbi olarak tarihe yön veren kararların alındığı yerdir.\n\nKongre binası Capitol, Beyaz Saray, Lincoln ve Washington anıtları ve bunların sıralandığı geniş yeşil National Mall başlıca duraklardır. Mall boyunca uzanan, uzay mekiklerinden sanata dünyaca ünlü ve ücretsiz Smithsonian müzeleri ise kenti bir bilgi hazinesine dönüştürür.',
     sources: ['Lonely Planet — Washington DC', 'Smithsonian — resmi portal'],
   },
 
@@ -1648,7 +1648,7 @@ export const PLACES = [
     lng: -79.3832,
     aliases: ['toronto'],
     summary:
-      'Kanada’nın en büyük kenti Toronto; simge CN Tower, göl kıyısı silüeti ve dünyanın en çok kültürlü metropollerinden biri oluşuyla öne çıkar. Niagara Şelalesi’ne açılan kapıdır.',
+      'Ontario Gölü kıyısındaki Toronto, Kanada’nın en büyük kenti ve dünyanın en çok kültürlü metropollerinden biridir; sakinlerinin yarısından fazlası ülke dışında doğmuştur. Bu çeşitlilik, kente canlı ve kozmopolit bir hava katar.\n\nGöl kıyısındaki silüete hâkim, camdan zeminli seyir terasıyla simge CN Kulesi, tarihî Distillery Bölgesi, çarşıları ve müzeleri başlıca duraklardır. Kent aynı zamanda, dünyanın en görkemli doğa harikalarından biri olan Niagara Şelalesi’ne açılan kapıdır.',
     sources: ['Lonely Planet — Toronto', 'Destination Toronto — resmi turizm'],
   },
   {
@@ -1660,7 +1660,7 @@ export const PLACES = [
     lng: -123.1207,
     aliases: ['vancouver'],
     summary:
-      'Okyanus ile karlı dağlar arasına kurulu Vancouver; Stanley Park, asma köprüleri ve doğa ile iç içe yaşam tarzıyla Kanada’nın en güzel konumlu kentlerindendir.',
+      'Kanada’nın batı kıyısında, Pasifik Okyanusu ile karlı Coast Dağları arasına kurulu Vancouver, doğa ile kent yaşamını eşsiz biçimde birleştiren dünyanın en yaşanası kentlerinden biridir. Ilıman iklimi ve yeşil dokusuyla dışarıda yaşama tutkusunu yansıtır.\n\nYağmur ormanı, plajları ve deniz kıyısı yürüyüş yoluyla devasa Stanley Park, tarihî Gastown semti, Capilano asma köprüsü ve yakındaki Grouse ile Whistler kayak merkezleri başlıca cazibelerdir. Aynı gün hem kayak hem sahil keyfi sunan Vancouver, doğa tutkunlarının cennetidir.',
     sources: ['Lonely Planet — Vancouver', 'Destination Vancouver — resmi turizm'],
   },
   {
@@ -1672,7 +1672,7 @@ export const PLACES = [
     lng: -73.5674,
     aliases: ['montreal', 'montréal'],
     summary:
-      'Kuzey Amerika’nın en Avrupai kentlerinden Montreal; arnavut kaldırımlı Eski Montreal, Notre-Dame Bazilikası ve canlı festival kültürüyle Fransız ve Kuzey Amerika ruhunu harmanlar.',
+      'Quebec’teki Montreal, Fransızcanın konuşulduğu, arnavut kaldırımlı sokakları ve zarif kiliseleriyle Kuzey Amerika’nın en Avrupai kentlerinden biridir. Fransız çekiciliğini Kuzey Amerika enerjisiyle birleştiren canlı bir kültür merkezidir.\n\nSt. Lawrence Nehri kıyısındaki tarihî Eski Montreal, mavi ışıklı görkemli Notre-Dame Bazilikası, tepedeki Mont-Royal Parkı ve yer altı şehri başlıca duraklardır. Caz ve komedi festivalleri, bistroları ve çok dilli atmosferiyle Montreal, coşkulu bir kenttir.',
     sources: ['Lonely Planet — Montréal', 'Tourisme Montréal — resmi turizm'],
   },
 
@@ -1686,7 +1686,7 @@ export const PLACES = [
     lng: -99.1332,
     aliases: ['meksiko', 'mexico city', 'mexico', 'cdmx'],
     summary:
-      'Meksika’nın canlı başkenti Meksiko; Aztek başkenti Tenochtitlan üzerine kuruludur. Zócalo meydanı, Antropoloji Müzesi ve yakınındaki dev Teotihuacan piramitleriyle (UNESCO) köklü bir uygarlığı yaşatır.',
+      'Meksika’nın devasa başkenti Meksiko, bir zamanlar bir gölün ortasındaki Aztek başkenti Tenochtitlan’ın üzerine kuruludur; katmanlı tarihiyle Amerika’nın en köklü ve en canlı metropollerinden biridir. Yüksek rakımlı geniş bir vadide yer alır.\n\nDevasa merkez meydanı Zócalo ve altındaki Aztek Templo Mayor kalıntıları, dünyanın en zengin arkeoloji müzelerinden Antropoloji Müzesi ve yakınlardaki devasa Güneş ve Ay piramitleriyle Teotihuacan (UNESCO) başlıca duraklardır. Renkli mahalleleri ve mutfağıyla kent büyüler.',
     sources: ['UNESCO World Heritage List — Historic Centre of Mexico City / Teotihuacan', 'Lonely Planet — Mexico City'],
   },
   {
@@ -1698,7 +1698,7 @@ export const PLACES = [
     lng: -86.8515,
     aliases: ['cancun', 'cancún', 'riviera maya'],
     summary:
-      'Karayipler’in turkuaz sularına açılan Cancún; bembeyaz plajları, Riviera Maya tatil beldeleri ve yakınındaki Maya harikası Chichén Itzá ve Tulum ile deniz ve tarihi birleştirir.',
+      'Meksika’nın Yucatán Yarımadası’nda, Karayip Denizi’nin turkuaz sularına açılan Cancún, bembeyaz kumlu plajları ve lüks tatil bölgeleriyle dünyanın en popüler deniz destinasyonlarından biridir. Modern otel şeridiyle keyifli bir tatil sunar.\n\nGeniş plajlarının ve Riviera Maya beldelerinin yanı sıra, dünyanın yeni yedi harikasından Maya piramidi Chichén Itzá, deniz kıyısındaki Tulum kalıntıları ve yüzülebilen doğal kuyular (cenote) çevredeki başlıca cazibelerdir. Cancún deniz ile antik tarihi birleştirir.',
     sources: ['UNESCO World Heritage List — Chichen-Itza', 'Lonely Planet — Cancún'],
   },
 
@@ -1712,7 +1712,7 @@ export const PLACES = [
     lng: -82.3666,
     aliases: ['havana', 'la habana'],
     summary:
-      'Zamanın durduğu Havana; klasik Amerikan arabaları, rengârenk sömürge cepheli Eski Havana (UNESCO), malecón sahili ve canlı salsa müziğiyle eşsiz bir atmosfer sunar.',
+      'Küba’nın başkenti Havana, 1950’lerden kalma klasik Amerikan arabaları, solmuş ama görkemli sömürge binaları ve canlı müziğiyle adeta zamanda donmuş büyüleyici bir Karayip kentidir. Nostaljik atmosferiyle benzersizdir.\n\nRengârenk sömürge cephelerinin sıralandığı, meydanları ve kaleleriyle tarihî Eski Havana (UNESCO), deniz kıyısı boyunca uzanan hareketli Malecón bulvarı ve tarihî barları başlıca duraklardır. Salsa ritimleri, puroları ve sıcakkanlı halkıyla Havana eşsiz bir deneyim sunar.',
     sources: ['UNESCO World Heritage List — Old Havana and its Fortifications', 'Lonely Planet — Havana'],
   },
 
@@ -1726,7 +1726,7 @@ export const PLACES = [
     lng: -43.1729,
     aliases: ['rio', 'rio de janeiro'],
     summary:
-      '“Muhteşem Şehir” Rio de Janeiro; kollarını açan dev Kurtarıcı İsa heykeli, Şeker Somunu Tepesi, Copacabana ve İpanema plajları ve karnavalıyla doğanın ve enerjinin buluştuğu yerdir.',
+      'Brezilya’nın “Muhteşem Şehir” (Cidade Maravilhosa) lakaplı Rio de Janeiro, dağların, ormanın ve okyanusun iç içe geçtiği çarpıcı doğasıyla dünyanın en güzel konumlu kentlerinden biridir. Coşkulu ruhu ve karnavalıyla ünlüdür.\n\nBir tepeden kollarını açmış dev Kurtarıcı İsa heykeli (Cristo Redentor), teleferikle çıkılan Şeker Somunu Tepesi ve dünyaca ünlü Copacabana ile İpanema plajları başlıca duraklardır. Samba ritimleri, futbol tutkusu ve görkemli karnavalıyla Rio, enerji doludur.',
     sources: ['UNESCO World Heritage List — Rio de Janeiro: Carioca Landscapes', 'Lonely Planet — Rio de Janeiro'],
   },
   {
@@ -1738,7 +1738,7 @@ export const PLACES = [
     lng: -46.6333,
     aliases: ['sao paulo', 'são paulo', 'saopaulo'],
     summary:
-      'Güney yarımkürenin en büyük metropolü São Paulo; dünya mutfakları, güçlü sanat sahnesi (MASP) ve sınırsız gece hayatıyla Brezilya’nın kültür ve iş merkezidir.',
+      'Brezilya’nın ve güney yarımkürenin en büyük kenti São Paulo, uçsuz bucaksız gökdelenleri, güçlü ekonomisi ve zengin kültür sahnesiyle ülkenin dinamosudur. Dünyanın her yerinden göçmenleri barındıran, kozmopolit bir metropoldür.\n\nCadde üzerinde asılı gibi duran mimarisiyle São Paulo Sanat Müzesi (MASP), hareketli Paulista Bulvarı, sokak sanatı ve sınırsız dünya mutfağı başlıca öne çıkanlardır. Sanat galerileri, restoranları ve durmak bilmeyen gece hayatıyla São Paulo, Brezilya’nın kültür ve iş merkezidir.',
     sources: ['Lonely Planet — São Paulo', 'Visit São Paulo — resmi turizm'],
   },
 
@@ -1752,7 +1752,7 @@ export const PLACES = [
     lng: -58.3816,
     aliases: ['buenos aires', 'buenosaires'],
     summary:
-      '“Güney Amerika’nın Parisi” Buenos Aires; tango tutkusu, zarif bulvarları, renkli La Boca mahallesi ve ünlü Recoleta Mezarlığı’yla Avrupa şıklığını Latin ruhuyla birleştirir.',
+      'Arjantin’in başkenti Buenos Aires, zarif bulvarları, Avrupai mimarisi ve tutkulu tango kültürüyle “Güney Amerika’nın Parisi” olarak anılır. Latin ateşini Avrupa şıklığıyla birleştiren büyüleyici bir metropoldür.\n\nRenkli teneke evleriyle La Boca mahallesi, görkemli anıt mezarlarıyla Recoleta Mezarlığı, geniş 9 Temmuz Bulvarı ve tarihî kafeleri başlıca duraklardır. Sokaklarda dans edilen tango, biftek kültürü (asado) ve gece geç saatlere uzanan yaşamıyla Buenos Aires, ihtiraslı bir kenttir.',
     sources: ['Lonely Planet — Buenos Aires', 'Turismo Buenos Aires — resmi'],
   },
 
@@ -1766,7 +1766,7 @@ export const PLACES = [
     lng: -71.9675,
     aliases: ['cusco', 'cuzco', 'machu picchu', 'machupicchu'],
     summary:
-      'İnka İmparatorluğu’nun başkenti Cusco, bulutların üzerindeki kayıp şehir Machu Picchu’ya (UNESCO) açılan kapıdır. İnka taş duvarları üzerine kurulu sömürge mimarisi ve Kutsal Vadi ile büyüler.',
+      'And Dağları’nda, yüksek bir vadide kurulu Cusco, bir zamanlar güçlü İnka İmparatorluğu’nun başkentiydi; İnka taş duvarları üzerine inşa edilen sömürge yapılarıyla iki uygarlığın iç içe geçtiği büyüleyici bir kenttir. Tarihî merkezi UNESCO korumasındadır.\n\nKusursuz işçilikli İnka duvarları, sömürge katedrali ve meydanı, çevredeki Kutsal Vadi ve renkli pazarları öne çıkar. Cusco her şeyden önce, bulutların üzerindeki efsanevi kayıp İnka şehri Machu Picchu’ya (UNESCO) açılan kapıdır; bu antik kent dünyanın en büyüleyici manzaralarından birini sunar.',
     sources: ['UNESCO World Heritage List — Historic Sanctuary of Machu Picchu', 'Lonely Planet — Cusco'],
   },
   {
@@ -1778,7 +1778,7 @@ export const PLACES = [
     lng: -77.0428,
     aliases: ['lima'],
     summary:
-      'Peru’nun başkenti Lima; sömürge dönemi tarihî merkezi (UNESCO), okyanusa bakan Miraflores yamaçları ve dünyaca ünlü mutfağıyla (ceviche) Güney Amerika’nın gastronomi merkezidir.',
+      'Peru’nun başkenti Lima, Pasifik Okyanusu’na bakan uçurumlara kurulu, sömürge geçmişi ile modern yaşamı ve olağanüstü mutfağını birleştiren canlı bir kenttir. Bir zamanlar İspanyol sömürge imparatorluğunun Güney Amerika’daki merkeziydi.\n\nGörkemli meydanı, katedrali ve balkonlu sömürge yapılarıyla tarihî merkezi (UNESCO), okyanusa bakan zarif Miraflores ve sanatçı semti Barranco başlıca duraklardır. Ceviche gibi lezzetleri ve dünyanın en iyi restoranlarına ev sahipliği yapmasıyla Lima, Güney Amerika’nın gastronomi başkentidir.',
     sources: ['UNESCO World Heritage List — Historic Centre of Lima', 'Lonely Planet — Lima'],
   },
 
@@ -1792,7 +1792,7 @@ export const PLACES = [
     lng: -70.6693,
     aliases: ['santiago', 'santiago sili'],
     summary:
-      'And Dağları’nın karlı zirveleri altında uzanan Santiago; canlı meydanları, tepelerden panoramaları ve çevredeki şarap vadileriyle Şili’nin modern ve dinamik başkentidir.',
+      'Şili’nin başkenti Santiago, karlı And Dağları’nın nefes kesen zirveleri altında uzanan, modern ve canlı bir metropoldür. Ülkenin siyasi, kültürel ve ekonomik kalbi olarak dinamik bir enerji taşır.\n\nTarihî Plaza de Armas meydanı, kente panoramik manzara sunan San Cristóbal ve Santa Lucía tepeleri, müzeleri ve çağdaş semtleri başlıca duraklardır. Santiago aynı zamanda dünyaca ünlü Şili şaraplarının üretildiği çevre vadilere, kayak merkezlerine ve Pasifik sahiline açılan bir üstür.',
     sources: ['Lonely Planet — Santiago', 'Chile Travel — Santiago'],
   },
 
@@ -1806,7 +1806,7 @@ export const PLACES = [
     lng: -75.4794,
     aliases: ['cartagena', 'kartagena'],
     summary:
-      'Karayip kıyısındaki Cartagena; surlarla çevrili rengârenk sömürge Eski Şehri (UNESCO), çiçekli balkonları ve sıcak Latin atmosferiyle Kolombiya’nın en büyüleyici kentidir.',
+      'Kolombiya’nın Karayip kıyısındaki Cartagena, surlarla çevrili rengârenk sömürge eski şehri ve sıcak Latin atmosferiyle ülkenin en büyüleyici kentidir. Bir zamanlar İspanyol hazine gemilerinin ve korsanların uğrağı olan stratejik bir liman kalesiydi.\n\nÇiçekli balkonları, arnavut kaldırımlı sokakları ve renkli evleriyle surlarla çevrili tarihî merkez (UNESCO), görkemli San Felipe Kalesi ve canlı meydanları başlıca duraklardır. Deniz, müzik ve renk dolu havasıyla Cartagena, romantik bir Karayip kaçamağı sunar.',
     sources: ['UNESCO World Heritage List — Port, Fortresses and Group of Monuments, Cartagena', 'Lonely Planet — Cartagena'],
   },
 
@@ -2447,16 +2447,16 @@ export const PLACES = [
   { id: 'vik', name: 'Vík', city: 'Vík', country: 'İzlanda', lat: 63.4194, lng: -19.006, aliases: ['vik', 'vík', 'reynisfjara'], summary: 'İzlanda’nın güney kıyısındaki küçük Vík köyü, ülkenin en dramatik doğa manzaralarının ortasında yer alır. Atlantik’in dövdüğü ıssız kıyısı ve etrafındaki volkanik peyzajıyla adeta başka bir gezegen gibidir.\n\nSiyah volkanik kumlu Reynisfjara plajı, denizden yükselen sivri Reynisdrangar bazalt kayalıkları ve altıgen bazalt sütunları başlıca cazibelerdir. Yakınındaki Skógafoss ve Seljalandsfoss şelaleleri ile buzullar, Vík’i güney sahil turlarının vazgeçilmez bir durağı yapar.', sources: ['Visit South Iceland — Vík'] },
   { id: 'akureyri', name: 'Akureyri', city: 'Akureyri', country: 'İzlanda', lat: 65.6885, lng: -18.1262, aliases: ['akureyri'], summary: 'İzlanda’nın kuzeyinde, uzun bir fiyortun kıyısında kurulu Akureyri, ülkenin başkent dışındaki en büyük kenti olarak “Kuzeyin Başkenti” diye anılır. Şaşırtıcı derecede ılıman bahçeleri ve canlı kültür sahnesiyle sıcak bir atmosfer sunar.\n\nFiyort manzaralı konumu, dünyanın en kuzeydeki botanik bahçelerinden biri ve renkli merkezi kenti keyifli kılar. Görkemli Goðafoss (“Tanrılar Şelalesi”), balina gözlemiyle ünlü kıyısı ve volkanik Mývatn gölü bölgesine yakınlığıyla Akureyri, kuzey İzlanda’nın keşif üssüdür.', sources: ['Visit Akureyri — Akureyri'] },
   // --- Japonya genişletme ---
-  { id: 'hakone', name: 'Hakone', city: 'Hakone', country: 'Japonya', lat: 35.2325, lng: 139.1069, aliases: ['hakone'], summary: 'Tokyo’ya yakın dağ kaplıca kasabası Hakone; onsen’leri, Ashi Gölü’nden Fuji manzarası, korsan gemisi ve teleferiğiyle klasik bir kaçış noktasıdır.', sources: ['Japan.travel — Hakone'] },
-  { id: 'nikko', name: 'Nikko', city: 'Nikko', country: 'Japonya', lat: 36.7199, lng: 139.6982, aliases: ['nikko', 'nikkō'], summary: 'Ormanlık dağlardaki Nikko; şogun Tokugawa’nın altın işlemeli Toshogu Tapınağı (UNESCO), şelaleleri ve gölleriyle görkemli bir manevi duraktır.', sources: ['UNESCO World Heritage List — Shrines and Temples of Nikko'] },
-  { id: 'kanazawa', name: 'Kanazawa', city: 'Kanazawa', country: 'Japonya', lat: 36.5613, lng: 136.6562, aliases: ['kanazawa'], summary: 'Japon Denizi kıyısındaki Kanazawa; ülkenin en güzel bahçelerinden Kenroku-en, korunmuş samuray ve geyşa mahalleleri, altın varak sanatıyla bilinir.', sources: ['Japan.travel — Kanazawa'] },
-  { id: 'takayama', name: 'Takayama', city: 'Takayama', country: 'Japonya', lat: 36.1461, lng: 137.2522, aliases: ['takayama', 'shirakawa-go', 'shirakawago'], summary: 'Japon Alpleri’ndeki Takayama; korunmuş Edo dönemi eski şehri, sabah pazarları ve yakınındaki dik çatılı Shirakawa-go köyüyle (UNESCO) ünlüdür.', sources: ['Japan.travel — Takayama', 'UNESCO — Shirakawa-go'] },
-  { id: 'sapporo', name: 'Sapporo', city: 'Sapporo', country: 'Japonya', lat: 43.0618, lng: 141.3545, aliases: ['sapporo'], summary: 'Kuzey adası Hokkaido’nun başkenti Sapporo; kar festivali, biracılığı, ramen’i ve çevresindeki kayak merkezleri ile kış turizminin merkezidir.', sources: ['Japan.travel — Sapporo'] },
-  { id: 'fukuoka', name: 'Fukuoka', city: 'Fukuoka', country: 'Japonya', lat: 33.5904, lng: 130.4017, aliases: ['fukuoka', 'hakata'], summary: 'Kyushu adasının kapısı Fukuoka; sokak yemeği tezgâhları (yatai), tonkotsu ramen’i, tapınakları ve sahil parklarıyla canlı bir liman kentidir.', sources: ['Japan.travel — Fukuoka'] },
-  { id: 'kamakura', name: 'Kamakura', city: 'Kamakura', country: 'Japonya', lat: 35.3192, lng: 139.5466, aliases: ['kamakura'], summary: 'Tokyo’ya yakın sahil kenti Kamakura; devasa açık hava Büyük Buda (Daibutsu), tapınakları, bambu ormanı ve sörf plajlarıyla popüler bir gezidir.', sources: ['Japan.travel — Kamakura'] },
-  { id: 'kobe', name: 'Kobe', city: 'Kobe', country: 'Japonya', lat: 34.6901, lng: 135.1955, aliases: ['kobe'], summary: 'Osaka körfezindeki liman kenti Kobe; dünyaca ünlü Kobe eti, Kitano yabancı konakları, liman manzarası ve dağ teleferiğiyle bilinir.', sources: ['Japan.travel — Kobe'] },
-  { id: 'nagoya', name: 'Nagoya', city: 'Nagoya', country: 'Japonya', lat: 35.1815, lng: 136.9066, aliases: ['nagoya'], summary: 'Japonya’nın sanayi kalbi Nagoya; altın orkalı kalesi, Toyota müzeleri, Atsuta Tapınağı ve kendine özgü mutfağıyla (hitsumabushi) bir merkez kenttir.', sources: ['Japan.travel — Nagoya'] },
-  { id: 'fuji', name: 'Fuji (Kawaguchiko)', city: 'Fujikawaguchiko', country: 'Japonya', lat: 35.5171, lng: 138.753, aliases: ['fuji', 'fuji dagi', 'mount fuji', 'kawaguchiko', 'fujiyama'], summary: 'Japonya’nın simgesi Fuji Dağı’nın (3.776 m) eteğindeki Beş Göl bölgesi (Kawaguchiko); göl yansımaları, pagoda manzaraları ve tırmanış rotalarıyla ünlüdür.', sources: ['UNESCO World Heritage List — Fujisan', 'Japan.travel — Mt. Fuji'] },
+  { id: 'hakone', name: 'Hakone', city: 'Hakone', country: 'Japonya', lat: 35.2325, lng: 139.1069, aliases: ['hakone'], summary: 'Tokyo’ya yakın dağlık bir bölgede, Fuji Dağı manzarasına ve şifalı sıcak su kaynaklarına sahip Hakone, Japonların en sevdiği kaplıca (onsen) kaçamaklarından biridir. Volkanik doğası ve manzaralarıyla dinlendirici bir atmosfer sunar.\n\nGeleneksel onsen otelleri, Ashi Gölü üzerinde korsan gemisi turu, göl kıyısındaki Hakone Tapınağı’nın sudaki torii kapısı ve volkanik buharların yükseldiği Owakudani vadisine çıkan teleferik başlıca deneyimlerdir. Açık hava heykel müzesi ve Fuji manzarasıyla Hakone çok yönlü bir duraktır.', sources: ['Japan.travel — Hakone'] },
+  { id: 'nikko', name: 'Nikko', city: 'Nikko', country: 'Japonya', lat: 36.7199, lng: 139.6982, aliases: ['nikko', 'nikkō'], summary: 'Tokyo’nun kuzeyinde, ormanlık dağların içinde yer alan Nikko, görkemli tapınakları ve etkileyici doğasıyla önemli bir manevi ve doğal duraktır. “Nikko’yu görmeden ‘muhteşem’ deme” sözü, kentin güzelliğini anlatır.\n\nJaponya’yı yüzyıllarca yöneten Tokugawa şogunlarının kurucusuna adanmış, altın işleme ve oymalarla bezeli gösterişli Toshogu Tapınağı (UNESCO) başlıca duraktır. Kegon Şelalesi, Chuzenji Gölü ve sonbaharda kızıla bürünen ormanlarıyla Nikko, tarih ile doğayı birleştirir.', sources: ['UNESCO World Heritage List — Shrines and Temples of Nikko'] },
+  { id: 'kanazawa', name: 'Kanazawa', city: 'Kanazawa', country: 'Japonya', lat: 36.5613, lng: 136.6562, aliases: ['kanazawa'], summary: 'Japon Denizi kıyısındaki Kanazawa, İkinci Dünya Savaşı’ndan hasarsız çıkması sayesinde samuray ve geyşa mahallelerini, geleneksel dokusunu koruyan zarif bir kültür kentidir. Bir zamanlar güçlü Maeda klanının zengin merkeziydi.\n\nJaponya’nın “en güzel üç bahçesinden” biri sayılan Kenroku-en, korunmuş Nagamachi samuray mahallesi, Higashi Chaya geyşa semti ve altın varak (ülke üretiminin neredeyse tamamı burada yapılır) sanatı başlıca öne çıkanlardır. Çağdaş 21. Yüzyıl Müzesi ile Kanazawa geleneği ve moderni birleştirir.', sources: ['Japan.travel — Kanazawa'] },
+  { id: 'takayama', name: 'Takayama', city: 'Takayama', country: 'Japonya', lat: 36.1461, lng: 137.2522, aliases: ['takayama', 'shirakawa-go', 'shirakawago'], summary: 'Japon Alpleri’nin dağları arasında yer alan Takayama, olağanüstü korunmuş Edo dönemi eski şehri ve zengin gelenekleriyle “Küçük Kyoto” olarak anılır. İzole konumu, ona özgün bir kültür ve mutfak kazandırmıştır.\n\nAhşap tüccar evleriyle dizili tarihî Sanmachi sokakları, nehir kıyısında kurulan renkli sabah pazarları ve görkemli festival arabaları başlıca cazibelerdir. Yakınındaki, dik saz çatılı geleneksel çiftlik evleriyle ünlü UNESCO korumalı Shirakawa-go köyü de kısa mesafededir.', sources: ['Japan.travel — Takayama', 'UNESCO — Shirakawa-go'] },
+  { id: 'sapporo', name: 'Sapporo', city: 'Sapporo', country: 'Japonya', lat: 43.0618, lng: 141.3545, aliases: ['sapporo'], summary: 'Japonya’nın kuzey adası Hokkaido’nun başkenti Sapporo, geniş caddeleri, ferah dokusu ve sert kışlarıyla ülkenin diğer kentlerinden ayrılan modern bir merkezdir. 1972 Kış Olimpiyatları’na ev sahipliği yapmıştır.\n\nHer şubat düzenlenen, devasa kar ve buz heykelleriyle ünlü Sapporo Kar Festivali kentin en büyük çekim noktasıdır. Sapporo birası, zengin miso ramen’i, tarihî saat kulesi ve çevredeki dünya çapında kayak merkezleriyle kent, kış turizminin başkentidir.', sources: ['Japan.travel — Sapporo'] },
+  { id: 'fukuoka', name: 'Fukuoka', city: 'Fukuoka', country: 'Japonya', lat: 33.5904, lng: 130.4017, aliases: ['fukuoka', 'hakata'], summary: 'Japonya’nın güney adası Kyushu’nun en büyük kenti Fukuoka, canlı sokak yemeği kültürü, sıcakkanlı atmosferi ve deniz kıyısı konumuyla sevilen bir liman kentidir. Asya anakarasına yakınlığı, ona kozmopolit bir hava katar.\n\nNehir kıyılarında ve sokaklarda kurulan geleneksel açık hava yemek tezgâhları (yatai) ve dünyaca ünlü tonkotsu (domuz kemiği) ramen’i kentin simgesidir. Tarihî tapınakları, sahil parkları ve modern alışveriş bölgeleriyle Fukuoka, rahat ve lezzet dolu bir duraktır.', sources: ['Japan.travel — Fukuoka'] },
+  { id: 'kamakura', name: 'Kamakura', city: 'Kamakura', country: 'Japonya', lat: 35.3192, lng: 139.5466, aliases: ['kamakura'], summary: 'Tokyo’nun hemen güneyinde, sahil kenarındaki Kamakura, 12.-14. yüzyıllarda Japonya’nın fiilî başkenti (ilk şogunluk merkezi) olarak köklü bir tarihe sahiptir. Tapınakları ve rahat sahil havasıyla popüler bir günübirlik kaçamaktır.\n\nAçık havada oturan devasa bronz Büyük Buda heykeli (Daibutsu), denize bakan Hase-dera Tapınağı, bambu ormanıyla Hokoku-ji ve sörfçülerin uğrağı plajları başlıca duraklardır. Manzaralı yürüyüş yolları ve nostaljik tramvayıyla Kamakura, tarih ile deniz keyfini birleştirir.', sources: ['Japan.travel — Kamakura'] },
+  { id: 'kobe', name: 'Kobe', city: 'Kobe', country: 'Japonya', lat: 34.6901, lng: 135.1955, aliases: ['kobe'], summary: 'Osaka Körfezi’nde, dağlar ile deniz arasına sıkışmış zarif liman kenti Kobe, Japonya’nın dışa açılan ilk limanlarından biri olarak kozmopolit bir kimlik taşır. Dünyaca ünlü mermerimsi Kobe eti de adını buradan alır.\n\n19. yüzyıl yabancı tüccar konaklarının bulunduğu Kitano semti, canlı liman manzarası, Çin Mahallesi ve gece ışıklarıyla parıldayan kent silueti başlıca cazibelerdir. Arkasındaki Rokko ve Maya dağlarına çıkan teleferikler ise “milyon dolarlık gece manzarasını” sunar.', sources: ['Japan.travel — Kobe'] },
+  { id: 'nagoya', name: 'Nagoya', city: 'Nagoya', country: 'Japonya', lat: 35.1815, lng: 136.9066, aliases: ['nagoya'], summary: 'Japonya’nın sanayi ve otomotiv kalbi olan Nagoya, ülkenin dördüncü büyük kenti ve önemli bir ekonomik merkezdir; aynı zamanda köklü bir tarihe ve özgün bir mutfağa sahiptir. Toyota’nın anavatanı olarak da bilinir.\n\nÇatısında altın kaplama balık figürleri (kinshachi) bulunan görkemli Nagoya Kalesi, Japonya’nın en kutsal tapınaklarından Atsuta Tapınağı ve otomotiv tarihini anlatan Toyota müzeleri başlıca duraklardır. Kızarmış tavuk kanadı ve hitsumabushi (yılan balığı) gibi kendine özgü lezzetleriyle Nagoya öne çıkar.', sources: ['Japan.travel — Nagoya'] },
+  { id: 'fuji', name: 'Fuji (Kawaguchiko)', city: 'Fujikawaguchiko', country: 'Japonya', lat: 35.5171, lng: 138.753, aliases: ['fuji', 'fuji dagi', 'mount fuji', 'kawaguchiko', 'fujiyama'], summary: 'Japonya’nın kutsal simgesi, kusursuz koni biçimli Fuji Dağı’nın (3.776 m) eteğindeki Beş Göl bölgesi, dağın en güzel manzaralarını sunan bir doğa cennetidir. Kawaguchiko gölü, bu bölgenin en popüler ve ulaşımı en kolay merkezidir.\n\nBerrak gölün suyuna yansıyan karlı Fuji manzarası, arkasında dağ yükselen Chureito Pagodası ve çevredeki onsen’ler başlıca cazibelerdir. Yaz aylarında dağın zirvesine tırmanışlar yapılır; ilkbaharda kiraz çiçekleri, sonbaharda kızıl yapraklarla bölge kartpostal gibidir.', sources: ['UNESCO World Heritage List — Fujisan', 'Japan.travel — Mt. Fuji'] },
   // --- İspanya derinleştirme ---
   { id: 'bilbao', name: 'Bilbao', city: 'Bilbao', country: 'İspanya', lat: 43.263, lng: -2.935, aliases: ['bilbao'], summary: 'İspanya’nın kuzeyinde, Bask Ülkesi’nin en büyük kenti Bilbao, bir zamanlar ağır sanayi limanıyken kültür odaklı çarpıcı bir dönüşümle yeniden doğmuştur. Bu değişim “Bilbao etkisi” olarak dünya kentçiliğine örnek gösterilir.\n\nFrank Gehry’nin tasarladığı, parlak titanyum kıvrımlarıyla ünlü Guggenheim Modern Sanat Müzesi bu dönüşümün simgesidir. Nervión Nehri kıyısı yürüyüşleri, dar sokaklı eski şehir Casco Viejo ve dünyaca ünlü pintxos (Bask tapası) barlarıyla Bilbao gastronomi tutkunlarının da gözdesidir.', sources: ['Spain.info — Bilbao'] },
   { id: 'sansebastian', name: 'San Sebastián', city: 'San Sebastián', country: 'İspanya', lat: 43.3183, lng: -1.9812, aliases: ['san sebastian', 'donostia'], summary: 'Bask Ülkesi’nin Atlantik kıyısındaki San Sebastián (Donostia), belle époque zarafeti ve olağanüstü mutfağıyla İspanya’nın en şık sahil kentlerinden biridir. Bir zamanlar İspanyol kraliyetinin gözde yazlık merkeziydi.\n\nDeniz kabuğu biçimli, altın kumlu La Concha plajı kentin simgesidir; körfezi çevreleyen tepeler panoramik manzaralar sunar. Dünyanın en yoğun Michelin yıldızlı restoran ağına ve efsanevi pintxos barlarına ev sahipliği yapan San Sebastián, bir gurme başkentidir.', sources: ['Spain.info — San Sebastián'] },
