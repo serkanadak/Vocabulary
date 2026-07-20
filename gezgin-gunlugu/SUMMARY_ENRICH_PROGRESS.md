@@ -29,10 +29,14 @@ ikinci paragraf gezilecek yerler/atmosfer. `\n\n` ile ayır. id/name/coords/alia
 ## DÜNYA (Avrupa sonrası)
 
 - [x] TR-A..TR-E — Türkiye 71 il özeti zenginleştirildi (Akdeniz/Ege, Marmara, İç Anadolu, Karadeniz, Doğu/Güneydoğu). Sınır kapısı girdileri (13) işlevsel bırakıldı.
-- [ ] AS1 — Asya (Japonya 15, Çin, Hindistan, GD Asya, Orta Asya)
-- [ ] ME1 — Orta Doğu & Kafkas (İran, Ürdün, BAE, Özbekistan)
-- [ ] AM1 — Amerika (ABD, Kanada, Latin Amerika)
-- [ ] AF1 — Afrika (Mısır, Fas, Tunus, G.Afrika, Doğu Afrika)
-- [ ] OC1 — Okyanusya (Avustralya, Yeni Zelanda, Endonezya)
+- [x] AS1 — Asya (Japonya 15, Çin 4, Hindistan 5, GD Asya 10, Kore, Nepal)
+- [x] ME1 — Orta Doğu & Orta Asya (İran 3, Ürdün 2, BAE 2, Özbekistan 2)
+- [x] AM1 — Amerika (ABD 5, Kanada 3, Latin Amerika 10)
+- [x] AF1 — Afrika (Mısır 4, Fas 4, Tunus 1, G.Afrika 2, Doğu Afrika 4)
+- [x] OC1 — Okyanusya (Avustralya 4, Yeni Zelanda 2, Endonezya)
+
+## DURUM: GÖREV TAMAMLANDI. Tüm ülkelerdeki tüm turistik mekânların özeti
+iki paragraflı zengin biçime çıkarıldı (368 mekân; 0 thin turistik özet kaldı).
+Yalnızca 13 sınır kapısı girdisi işlevsel açıklamalarıyla bırakıldı.
 
 Not: "kontrol" = zaten yeterince zengin olabilir, kontrol edip gerekiyorsa genişlet.

@@ -868,7 +868,7 @@ export const PLACES = [
     lng: 31.2357,
     aliases: ['kahire', 'cairo', 'kahira', 'giza', 'gize'],
     summary:
-      'Nil kıyısındaki uçsuz bucaksız Kahire, hemen yanı başındaki Giza Piramitleri ve Sfenks ile antik dünyanın tek ayakta kalan harikasına ev sahipliği yapar. Han el-Halili çarşısı, İslami Kahire’nin camileri ve dünyaca ünlü Mısır Müzesi ile firavunlardan bugüne uzanan bir tarih sunar.',
+      'Nil Nehri kıyısına yayılan devasa Kahire, Afrika ve Arap dünyasının en büyük kentlerinden biri olup binlerce yıllık firavun mirasını hareketli modern yaşamla birleştirir. “Bin minareli şehir” olarak da anılan kaotik ve büyüleyici bir metropoldür.\n\nHemen yanı başındaki Giza Piramitleri ve Sfenks, antik dünyanın ayakta kalan tek harikasıdır; firavun hazinelerini barındıran müzeleri, labirent gibi Han el-Halili çarşısı ve İslami Kahire’nin tarihî camileri başlıca duraklardır. Nil üzerindeki tekne gezileriyle Kahire, çağları bir arada sunar.',
     sources: ['UNESCO World Heritage List — Memphis and its Necropolis (Pyramids of Giza)', 'Lonely Planet — Cairo'],
   },
   {
@@ -880,7 +880,7 @@ export const PLACES = [
     lng: 32.6396,
     aliases: ['luksor', 'luxor', 'teb', 'thebes'],
     summary:
-      'Antik Teb’in üzerine kurulu Luksor, “dünyanın en büyük açık hava müzesi” sayılır. Karnak ve Luksor tapınakları, Nil’in batı yakasındaki Krallar Vadisi ve Hatşepsut Tapınağı ile firavunların ihtişamını bugüne taşır.',
+      'Nil Nehri kıyısında, antik Mısır’ın görkemli başkenti Teb’in üzerine kurulu Luksor, açık havada bu kadar çok anıt barındırması nedeniyle “dünyanın en büyük açık hava müzesi” olarak anılır. Firavunların ihtişamının en yoğun hissedildiği yerdir.\n\nSütunlu salonlarıyla devasa Karnak ve Luksor tapınakları, Nil’in batı yakasındaki kayalara oyulmuş kral mezarlarıyla Krallar Vadisi ve teraslı Hatşepsut Tapınağı başlıca duraklardır. Sıcak hava balonuyla gün doğumunda uçmak, bu antik manzarayı görmenin en büyüleyici yoludur.',
     sources: ['UNESCO World Heritage List — Ancient Thebes with its Necropolis', 'Lonely Planet — Luxor'],
   },
   {
@@ -892,7 +892,7 @@ export const PLACES = [
     lng: 32.8998,
     aliases: ['asvan', 'aswan', 'assuan'],
     summary:
-      'Nil’in en güzel manzaralarına sahip Asvan; feluka yelkenlileri, Philae Tapınağı ve adalarıyla huzurlu bir Nubya kentidir. Güneyindeki devasa Abu Simbel tapınakları bölgenin en görkemli hazinesidir.',
+      'Mısır’ın güneyinde, Nil’in en dingin ve en güzel manzaralarına sahip Asvan, tarihî Nubya kültürünün merkezi ve rahat atmosferiyle sevilen bir kenttir. Nehir üzerindeki granit adaları ve yelkenlileriyle huzur dolu bir dokuya sahiptir.\n\nBeyaz yelkenli geleneksel feluka tekneleriyle nehir gezisi, bir adaya taşınan zarif Philae Tapınağı ve renkli Nubya köyleri başlıca öne çıkanlardır. Kentin güneyindeki, kayalara oyulmuş dev heykelleriyle Abu Simbel tapınakları ise Mısır’ın en görkemli anıtlarından biridir.',
     sources: ['UNESCO World Heritage List — Nubian Monuments from Abu Simbel to Philae', 'Lonely Planet — Aswan'],
   },
   {
@@ -904,7 +904,7 @@ export const PLACES = [
     lng: 29.9187,
     aliases: ['iskenderiye', 'alexandria', 'iskandariya'],
     summary:
-      'Büyük İskender’in kurduğu Akdeniz kenti İskenderiye, antik dünyanın ünlü kütüphanesine ve deniz fenerine ev sahipliği yapmıştı. Bugün modern Bibliotheca Alexandrina, Kaitbay Kalesi ve yeraltı mezarlarıyla köklü geçmişini yaşatır.',
+      'Büyük İskender’in MÖ 331’de kurduğu Akdeniz kenti İskenderiye, antik çağda dünyanın ünlü kütüphanesine ve deniz fenerine (dünyanın yedi harikasından biri) ev sahipliği yapmış köklü bir liman kentidir. Mısır’ın “ikinci başkenti” ve yaz merkezidir.\n\nAntik kütüphanenin anısına inşa edilen görkemli modern Bibliotheca Alexandrina, eski deniz fenerinin yerinde yükselen Kaitbay Kalesi, Roma dönemi yeraltı mezarları ve deniz kıyısı Corniche başlıca duraklardır. Akdeniz esintisi ve katmanlı tarihiyle İskenderiye zarif bir kenttir.',
     sources: ['Lonely Planet — Alexandria', 'Bibliotheca Alexandrina — resmi portal'],
   },
 
@@ -918,7 +918,7 @@ export const PLACES = [
     lng: -7.9811,
     aliases: ['marakes', 'marakeş', 'marrakech', 'marrakesh'],
     summary:
-      '“Kızıl Şehir” Marakeş, canlı Jemaa el-Fnaa meydanı, labirent souk’ları ve Koutoubia Camii’nin minaresiyle duyulara hitap eden bir Fas kentidir. Bahia Sarayı ve Majorelle Bahçesi gibi vahalarıyla renk ve dinginliği bir arada sunar.',
+      'Fas’ın Atlas Dağları eteğindeki Marakeş, kızıl toprak rengi binaları nedeniyle “Kızıl Şehir” olarak anılan, duyulara hitap eden büyüleyici bir kenttir. Bir zamanlar önemli bir kervan ticareti başkentiydi ve bu miras onu bir kültür merkezi kılar.\n\nYılan oynatıcıları, hikâye anlatıcıları ve yemek tezgâhlarıyla dolan efsanevi Jemaa el-Fnaa meydanı, labirent gibi çarşıları (souk) ve Koutoubia Camii’nin minaresi başlıca duraklardır. Bahia Sarayı, mavi Majorelle Bahçesi ve geleneksel avlulu riad otelleriyle Marakeş, renk ile dinginliği birleştirir.',
     sources: ['UNESCO World Heritage List — Medina of Marrakesh', 'Lonely Planet — Marrakesh'],
   },
   {
@@ -930,7 +930,7 @@ export const PLACES = [
     lng: -5.0078,
     aliases: ['fes', 'fez', 'fès'],
     summary:
-      'Fas’ın manevi ve kültürel başkenti Fes, dünyanın en büyük ve en iyi korunmuş ortaçağ medinalarından birine sahiptir (UNESCO). Dar dokuma sokakları, dünyanın en eski üniversitesi Al-Karaouine ve renkli Chouara tabakhanesiyle zamanda yolculuk yaşatır.',
+      'Fas’ın manevi ve kültürel başkenti Fes, dünyanın en büyük ve en iyi korunmuş ortaçağ kent merkezlerinden birine (medina) ev sahipliği yapar. Bu labirent gibi doku, adeta yaşayan bir Orta Çağ şehridir ve UNESCO korumasındadır.\n\nBinlerce dar sokağın kesiştiği, araçların giremediği medinada; dünyanın en eski üniversitelerinden Al-Karaouine, süslü medreseler ve derilerin asırlık yöntemlerle renklendirildiği rengârenk Chouara tabakhanesi başlıca duraklardır. El sanatları ve zanaat gelenekleriyle Fes, zamanda yolculuk yaşatır.',
     sources: ['UNESCO World Heritage List — Medina of Fez', 'Lonely Planet — Fez'],
   },
   {
@@ -942,7 +942,7 @@ export const PLACES = [
     lng: -5.2636,
     aliases: ['safsavan', 'şafşavan', 'chefchaouen', 'chaouen', 'mavi sehir'],
     summary:
-      'Rif Dağları’na yaslanan Şafşavan, mavinin her tonuna boyanmış sokaklarıyla “Mavi Şehir” olarak ünlüdür. Fotojenik medinası ve dağ manzaralarıyla Fas’ın en sevilen kaçış noktalarından biridir.',
+      'Fas’ın kuzeyinde, Rif Dağları’na yaslanmış Şafşavan, sokaklarının, duvarlarının ve evlerinin mavinin her tonuna boyanmış olmasıyla “Mavi Şehir” olarak dünyaca ünlüdür. Bu düşsel görüntü, onu Fas’ın en fotojenik köşesi kılar.\n\nMavi rengin hâkim olduğu dar sokakları, çiçekli avluları, tepedeki İspanyol Camii’nden panoraması ve el yapımı ürünler satan dükkânları başlıca cazibelerdir. Dağ havası, sakin atmosferi ve masalsı renkleriyle Şafşavan, huzurlu ve keyifli bir kaçış noktasıdır.',
     sources: ['Lonely Planet — Chefchaouen', 'Fas Turizm — Chefchaouen'],
   },
   {
@@ -954,7 +954,7 @@ export const PLACES = [
     lng: -7.5898,
     aliases: ['kazablanka', 'casablanca', 'dar el beida'],
     summary:
-      'Fas’ın modern yüzü Kazablanka; denize uzanan devasa II. Hassan Camii, art deco mimarisi ve Corniche sahiliyle Atlantik kıyısında canlı bir metropoldür.',
+      'Atlantik kıyısındaki Kazablanka, Fas’ın en büyük kenti ve ekonomik başkentidir; art deco mimarisi ve modern dokusuyla ülkenin çağdaş yüzünü temsil eder. Aynı adı taşıyan klasik filmle de dünya belleğine kazınmıştır.\n\nDenizin üzerine uzanan, göğe yükselen minaresiyle dünyanın en büyük camilerinden II. Hassan Camii kentin görkemli simgesidir. Sömürge dönemi art deco binaları, hareketli Corniche sahili ve medinasıyla Kazablanka, gelenek ile moderni buluşturan canlı bir metropoldür.',
     sources: ['Lonely Planet — Casablanca', 'Fas Turizm — Casablanca'],
   },
 
@@ -968,7 +968,7 @@ export const PLACES = [
     lng: 18.4241,
     aliases: ['cape town', 'capetown', 'kaapstad', 'kap sehri'],
     summary:
-      'Table Mountain’ın eteğinde iki okyanusun buluştuğu Cape Town, dünyanın en güzel konumlu kentlerinden biridir. Ümit Burnu, V&A Waterfront, penguen kolonili plajlar ve şarap bağlarıyla doğa ve şehri kusursuz birleştirir.',
+      'Table Mountain’ın (Masa Dağı) eteğinde, iki okyanusun buluştuğu bir yarımadaya kurulu Cape Town, çarpıcı doğası ve zengin tarihiyle dünyanın en güzel konumlu kentlerinden biridir. Güney Afrika’nın en sevilen destinasyonudur.\n\nTeleferikle çıkılan düz zirveli Table Mountain, iki okyanusun buluştuğu efsanevi Ümit Burnu, canlı V&A Waterfront limanı ve penguen kolonili plajları başlıca duraklardır. Çevredeki dünyaca ünlü şarap bağları (Stellenbosch) ile Cape Town, doğa, tarih ve lezzeti kusursuzca birleştirir.',
     sources: ['UNESCO World Heritage List — Cape Floral Region', 'Lonely Planet — Cape Town'],
   },
   {
@@ -980,7 +980,7 @@ export const PLACES = [
     lng: 28.0473,
     aliases: ['johannesburg', 'joburg', 'jozi'],
     summary:
-      'Güney Afrika’nın en büyük kenti Johannesburg; Apartheid Müzesi, Mandela’nın izlerini taşıyan Soweto ve yakınındaki “İnsanlığın Beşiği” fosil alanlarıyla ülkenin tarihini ve dönüşümünü anlatır.',
+      'Güney Afrika’nın en büyük kenti Johannesburg, bir zamanlar altın madenciliğiyle yoktan var olmuş, bugün ülkenin ekonomik dinamosu olan enerjik bir metropoldür. Ülkenin çalkantılı yakın tarihinin de merkezinde yer alır.\n\nApartheid rejiminin acılarını ve sona erişini anlatan çarpıcı Apartheid Müzesi ile Nelson Mandela’nın yaşadığı, mücadelenin simgesi Soweto mahallesi başlıca duraklardır. Yakınındaki, ilk insan atalarının fosillerinin bulunduğu UNESCO korumalı “İnsanlığın Beşiği” ise kentin en köklü hazinesidir.',
     sources: ['UNESCO World Heritage List — Fossil Hominid Sites (Cradle of Humankind)', 'Lonely Planet — Johannesburg'],
   },
 
@@ -994,7 +994,7 @@ export const PLACES = [
     lng: 39.2026,
     aliases: ['zanzibar', 'stone town', 'unguja'],
     summary:
-      'Hint Okyanusu’nun baharat adası Zanzibar; Afrika, Arap ve Hint kültürlerinin kaynaştığı tarihî Stone Town (UNESCO), oymalı ahşap kapıları ve bembeyaz plajlarıyla büyüler.',
+      'Tanzanya kıyılarının açığında, Hint Okyanusu’ndaki Zanzibar, yüzyıllarca baharat ticaretinin merkezi olmuş, Afrika, Arap, Fars ve Hint kültürlerinin kaynaştığı büyüleyici bir adadır. Tarihî dokusu ve plajlarıyla eşsiz bir cazibe sunar.\n\nDaracık sokakları, oymalı ahşap kapıları, çarşıları ve sultan saraylarıyla tarihî başkenti Stone Town (UNESCO), adanın kalbidir. Baharat çiftlikleri, bembeyaz kumlu turkuaz plajları ve yelkenli tekne (dhow) turlarıyla Zanzibar, tarih ile tropik cenneti birleştirir.',
     sources: ['UNESCO World Heritage List — Stone Town of Zanzibar', 'Lonely Planet — Zanzibar'],
   },
   {
@@ -1006,7 +1006,7 @@ export const PLACES = [
     lng: 36.683,
     aliases: ['arusha', 'serengeti', 'ngorongoro'],
     summary:
-      'Kuzey Tanzanya safari turlarının kapısı Arusha; Serengeti Milli Parkı, Ngorongoro Krateri ve Kilimanjaro’ya açılan bir üstür. Büyük göç ve vahşi yaşamın kalbine buradan ulaşılır.',
+      'Kuzey Tanzanya’da, Meru Dağı’nın eteğinde kurulu Arusha, ülkenin efsanevi safari parklarına açılan kapı olarak “safari başkenti” diye anılır. Serin iklimi ve yeşil dokusuyla maceraların başlangıç noktasıdır.\n\nUçsuz bucaksız ovaları ve büyük göçüyle Serengeti Milli Parkı, dünyanın en büyük sağlam volkanik kalderası Ngorongoro Krateri ve Afrika’nın çatısı Kilimanjaro Dağı buradan yola çıkılarak keşfedilir. Vahşi yaşamın ve doğa harikalarının kalbine açılan Arusha, unutulmaz maceraların üssüdür.',
     sources: ['UNESCO World Heritage List — Serengeti National Park', 'Lonely Planet — Arusha'],
   },
 
@@ -1020,7 +1020,7 @@ export const PLACES = [
     lng: 36.8219,
     aliases: ['nairobi'],
     summary:
-      'Kenya’nın başkenti Nairobi, şehrin hemen yanındaki milli parkta safari yapılabilen ender metropoldür. Fil yetimhanesi ve Zürafa Merkezi gibi deneyimlerle vahşi yaşamı kent hayatına taşır; Maasai Mara’ya açılan kapıdır.',
+      'Kenya’nın başkenti Nairobi, gökdelenlerinin hemen yanı başındaki milli parkta aslan ve gergedanların dolaştığı, dünyada eşi az bulunan bir metropoldür. Doğu Afrika’nın ekonomik ve ulaşım merkezi olarak canlı bir kenttir.\n\nŞehrin sınırındaki Nairobi Milli Parkı’nda safari yapmak, öksüz fil yavrularının bakıldığı yetimhane ve zürafaların elden beslendiği Zürafa Merkezi başlıca deneyimlerdir. Nairobi aynı zamanda, büyük göçün yaşandığı ünlü Maasai Mara rezervine açılan ana kapıdır.',
     sources: ['Kenya Wildlife Service — Nairobi National Park', 'Lonely Planet — Nairobi'],
   },
 
@@ -1034,7 +1034,7 @@ export const PLACES = [
     lng: 10.1815,
     aliases: ['tunus', 'tunis', 'kartaca', 'carthage'],
     summary:
-      'Tunus’un başkenti; UNESCO listesindeki tarihî medinası, yakınındaki antik Kartaca kalıntıları ve mavi-beyaz Sidi Bou Said köyüyle Akdeniz, Arap ve Roma mirasını bir arada sunar. Bardo Müzesi eşsiz mozaik koleksiyonuyla ünlüdür.',
+      'Tunus’un başkenti Tunus, antik Kartaca’nın komşuluğunda, Akdeniz, Arap ve Roma miraslarını bir arada barındıran zarif bir kenttir. Ülkenin siyasi ve kültürel kalbi olarak tarih ile modern yaşamı harmanlar.\n\nUNESCO korumasındaki tarihî medinası ve çarşıları, hemen dışındaki antik Kartaca kalıntıları ve tepede denize bakan mavi-beyaz köy Sidi Bou Said başlıca duraklardır. Dünyanın en zengin Roma mozaiği koleksiyonlarından birini barındıran Bardo Müzesi ise kentin en görkemli hazinesidir.',
     sources: ['UNESCO World Heritage List — Medina of Tunis / Carthage', 'Lonely Planet — Tunis'],
   },
 
@@ -1048,7 +1048,7 @@ export const PLACES = [
     lng: 39.0413,
     aliases: ['lalibela'],
     summary:
-      'Etiyopya’nın kutsal kenti Lalibela, 12.-13. yüzyılda tek parça kayadan oyularak inşa edilen 11 anıtsal kilisesiyle dünyada eşi olmayan bir hac merkezidir (UNESCO). “Yeni Kudüs” olarak da anılır.',
+      'Etiyopya’nın dağlık kuzeyindeki Lalibela, 12.-13. yüzyıllarda tek parça kayanın içine oyularak inşa edilen on bir anıtsal kilisesiyle dünyada eşi olmayan bir Hristiyan hac merkezidir. Bu olağanüstü yapılar UNESCO Dünya Mirası Listesi’ndedir.\n\nHaç biçiminde yerin altına oyulmuş, tünel ve geçitlerle birbirine bağlı kaya kiliseleri, hâlâ aktif birer ibadet yeridir ve “Yeni Kudüs” olarak anılır. Beyaz cübbeli hacıları, kaya oyma işçiliği ve manevi atmosferiyle Lalibela, insanı hayrete düşüren bir kutsal kenttir.',
     sources: ['UNESCO World Heritage List — Rock-Hewn Churches, Lalibela', 'Lonely Planet — Lalibela'],
   },
 
@@ -1511,7 +1511,7 @@ export const PLACES = [
     lng: 151.2093,
     aliases: ['sydney', 'sidney'],
     summary:
-      'Avustralya’nın simge kenti Sydney; yelken çatılı ikonik Opera Binası, dev Liman Köprüsü ve ünlü Bondi Plajı’yla dünyanın en güzel doğal limanlarından birine kuruludur.',
+      'Avustralya’nın en büyük ve en tanınmış kenti Sydney, dünyanın en güzel doğal limanlarından birine kurulu, güneşli yaşam tarzı ve simge yapılarıyla ünlüdür. Plajları, körfezi ve canlı dokusuyla ülkenin vitrini gibidir.\n\nYelken biçimli çatısıyla ikonik Sydney Opera Binası, dev çelik Liman Köprüsü (üzerine tırmanılabilir) ve sörfçülerin uğrağı ünlü Bondi Plajı başlıca duraklardır. Feribotla gezilen körfezi, Kraliyet Botanik Bahçesi ve rahat sahil semtleriyle Sydney, doğa ile kenti buluşturur.',
     sources: ['UNESCO World Heritage List — Sydney Opera House', 'Lonely Planet — Sydney'],
   },
   {
@@ -1523,7 +1523,7 @@ export const PLACES = [
     lng: 144.9631,
     aliases: ['melbourne'],
     summary:
-      'Avustralya’nın kültür ve kahve başkenti Melbourne; sokak sanatlı ara sokakları, viktoryen mimarisi, spor tutkusu ve canlı yeme-içme sahnesiyle sürekli “yaşanabilir şehir” seçilir.',
+      'Avustralya’nın güneyindeki Melbourne, sanat, kahve ve spor tutkusuyla ülkenin kültür başkenti sayılır; yıllarca “dünyanın en yaşanabilir kenti” seçilmiştir. Viktorya dönemi zarafetini modern yaratıcılıkla birleştiren zarif bir metropoldür.\n\nSokak sanatıyla bezeli gizli ara sokakları (laneway), butik kafeleri, görkemli viktoryen binaları ve Melbourne Cricket Ground gibi spor tapınakları başlıca öne çıkanlardır. Avustralya Açık tenis turnuvası ve Grand Prix gibi etkinlikleri, tramvayları ve yeme-içme sahnesiyle Melbourne dinamik bir kenttir.',
     sources: ['Lonely Planet — Melbourne', 'Visit Victoria — Melbourne'],
   },
   {
@@ -1535,7 +1535,7 @@ export const PLACES = [
     lng: 145.7781,
     aliases: ['cairns', 'great barrier reef', 'buyuk set resifi'],
     summary:
-      'Tropik kuzey Avustralya’daki Cairns, dünyanın en büyük mercan resifi Büyük Set Resifi’ne (UNESCO) ve yağmur ormanlarına açılan kapıdır. Dalış ve şnorkel cennetidir.',
+      'Avustralya’nın tropik kuzeydoğusundaki Cairns, dünyanın en büyük mercan resifi sistemi Büyük Set Resifi’ne (UNESCO) açılan kapı olarak dünyaca ünlüdür. Rahat havası ve doğa maceralarıyla gezginlerin üssüdür.\n\nRengârenk mercanları ve deniz yaşamıyla Büyük Set Resifi’nde dalış ve şnorkel, dünyanın en eski tropik yağmur ormanlarından Daintree ve teleferikle geçilen Kuranda başlıca cazibelerdir. Deniz kıyısı yürüyüş yolu (Esplanade) ve tropik iklimiyle Cairns, resif ve orman keşfinin merkezidir.',
     sources: ['UNESCO World Heritage List — Great Barrier Reef', 'Lonely Planet — Cairns'],
   },
   {
@@ -1547,7 +1547,7 @@ export const PLACES = [
     lng: 131.0369,
     aliases: ['uluru', 'ayers rock'],
     summary:
-      'Kızıl çölün ortasında yükselen devasa kutsal kaya Uluru, Aborjin kültürünün kalbi ve Avustralya’nın en ikonik doğa anıtıdır (UNESCO). Gün doğumu ve batımında renk değiştirir.',
+      'Avustralya’nın kızıl çölünün tam ortasında tek başına yükselen devasa kumtaşı kaya Uluru (Ayers Rock), kıtanın en ikonik doğa anıtı ve yerli Aborjin halkı için kutsal bir yerdir. Uçsuz bucaksız çölün ortasındaki bu görkemli oluşum, derin bir manevi anlam taşır (UNESCO).\n\nGün doğumu ve batımında kırmızıdan mora uzanan renk değişimiyle büyüleyen kaya, çevresindeki yürüyüş yolları, mağara resimleri ve Aborjin kültür merkeziyle keşfedilir. Yakınındaki kubbe biçimli Kata Tjuta oluşumlarıyla birlikte Uluru, Avustralya’nın ruhunu yansıtır.',
     sources: ['UNESCO World Heritage List — Uluru-Kata Tjuta National Park', 'Lonely Planet — Uluru'],
   },
   {
@@ -1559,7 +1559,7 @@ export const PLACES = [
     lng: 174.7633,
     aliases: ['auckland', 'okland'],
     summary:
-      '“Yelkenler Şehri” Auckland, iki limanı ve sönmüş volkan tepeleri arasına kurulu, Yeni Zelanda’nın en büyük kentidir. Sky Tower ve çevredeki adalarla doğa ile şehri birleştirir.',
+      'Yeni Zelanda’nın en büyük kenti Auckland, iki limanın arasına ve sönmüş volkan tepelerinin üzerine kurulu, teknelere olan tutkusu nedeniyle “Yelkenler Şehri” olarak anılır. Doğa ile kent yaşamının iç içe geçtiği çok kültürlü bir metropoldür.\n\nKente panoramik manzara sunan Sky Tower, hareketli liman bölgesi, volkanik tepeler (Mount Eden) ve çevredeki adalar başlıca duraklardır. Feribotla ulaşılan bağlı adaları, plajları ve yelkenli gezileriyle Auckland, Yeni Zelanda maceralarının canlı bir başlangıç noktasıdır.',
     sources: ['Lonely Planet — Auckland', 'Tourism New Zealand — Auckland'],
   },
   {
@@ -1571,7 +1571,7 @@ export const PLACES = [
     lng: 168.6626,
     aliases: ['queenstown'],
     summary:
-      'Dünyanın macera başkenti Queenstown; göl kıyısında, karlı Remarkables dağlarının eteğinde bungee jumping, kayak ve nefes kesen manzaralarıyla ünlüdür. Milford Sound’a açılan kapıdır.',
+      'Yeni Zelanda’nın Güney Adası’nda, karlı Remarkables dağlarının eteğinde ve berrak Wakatipu Gölü kıyısında kurulu Queenstown, nefes kesen manzaraları ve adrenalin dolu aktiviteleriyle dünyanın “macera başkenti” olarak anılır.\n\nBungee jumping’in doğduğu yer olan kent; jet bot turları, kayak merkezleri, göl gezileri ve dağ yürüyüşleriyle her mevsim heyecan sunar. Aynı zamanda, dünyanın en görkemli fiyortlarından Milford Sound’a ve “Yüzüklerin Efendisi” manzaralarına açılan bir üstür.',
     sources: ['Lonely Planet — Queenstown', 'Tourism New Zealand — Queenstown'],
   },
 
@@ -1712,7 +1712,7 @@ export const PLACES = [
     lng: -82.3666,
     aliases: ['havana', 'la habana'],
     summary:
-      'Zamanın durduğu Havana; klasik Amerikan arabaları, rengârenk sömürge cepheli Eski Havana (UNESCO), malecón sahili ve canlı salsa müziğiyle eşsiz bir atmosfer sunar.',
+      'Küba’nın başkenti Havana, 1950’lerden kalma klasik Amerikan arabaları, solmuş ama görkemli sömürge binaları ve canlı müziğiyle adeta zamanda donmuş büyüleyici bir Karayip kentidir. Nostaljik atmosferiyle benzersizdir.\n\nRengârenk sömürge cephelerinin sıralandığı, meydanları ve kaleleriyle tarihî Eski Havana (UNESCO), deniz kıyısı boyunca uzanan hareketli Malecón bulvarı ve tarihî barları başlıca duraklardır. Salsa ritimleri, puroları ve sıcakkanlı halkıyla Havana eşsiz bir deneyim sunar.',
     sources: ['UNESCO World Heritage List — Old Havana and its Fortifications', 'Lonely Planet — Havana'],
   },
 
