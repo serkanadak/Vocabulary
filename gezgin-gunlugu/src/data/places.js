@@ -1586,7 +1586,7 @@ export const PLACES = [
     lng: -74.006,
     aliases: ['new york', 'newyork', 'nyc', 'manhattan'],
     summary:
-      '“Uyumayan Şehir” New York; Özgürlük Heykeli, Times Square’in ışıkları, Central Park ve gökdelen silüetiyle dünyanın kültür, sanat ve finans başkentlerinden biridir.',
+      'ABD’nin en büyük kenti New York, göçmenlerin kurduğu, dünyanın dört bir yanından kültürleri bir araya getiren bir “eritme potası” ve küresel kültür, sanat, moda ile finansın başkentlerinden biridir. Baş döndürücü enerjisiyle “Uyumayan Şehir” olarak anılır.\n\nÖzgürlük Heykeli, ışıl ışıl Times Square, kentin ortasındaki dev yeşil vaha Central Park, Empire State Binası ve dünya çapındaki müzeleri (Met, MoMA) başlıca duraklardır. Broadway tiyatroları, çok kültürlü semtleri ve gökdelen silüetiyle New York, tükenmez bir keşif sunar.',
     sources: ['UNESCO World Heritage List — Statue of Liberty', 'Lonely Planet — New York City'],
   },
   {
@@ -1598,7 +1598,7 @@ export const PLACES = [
     lng: -122.4194,
     aliases: ['san francisco', 'sanfrancisco', 'frisco'],
     summary:
-      'Tepeleri, tramvayları ve sisli körfeziyle San Francisco; simge Golden Gate Köprüsü, Alcatraz adası ve renkli mahalleleriyle Kaliforniya’nın en çekici kentlerinden biridir.',
+      'Kaliforniya’nın kuzeyinde, bir yarımada üzerine kurulu San Francisco, sisli körfezi, dik tepeleri ve tarihî tramvaylarıyla ABD’nin en özgün ve en güzel kentlerinden biridir. Özgür ruhu ve teknoloji dünyasına (Silikon Vadisi) yakınlığıyla da tanınır.\n\nKörfezin ağzında yükselen kızıl-turuncu Golden Gate Köprüsü, bir zamanlar hapishane olan Alcatraz adası, dönerek yol alan tramvayları ve renkli Victoria dönemi evleri başlıca duraklardır. Fisherman’s Wharf, Çin Mahallesi ve tepe manzaralarıyla San Francisco büyüleyicidir.',
     sources: ['Lonely Planet — San Francisco', 'Visit California — San Francisco'],
   },
   {
@@ -1610,7 +1610,7 @@ export const PLACES = [
     lng: -118.2437,
     aliases: ['los angeles', 'losangeles', 'la', 'hollywood'],
     summary:
-      'Sinemanın başkenti Los Angeles; Hollywood tabelası, Walk of Fame, sahilleri ve tema parklarıyla yıldız tozu ve Kaliforniya güneşini bir arada sunar.',
+      'Güney Kaliforniya’nın uçsuz bucaksız metropolü Los Angeles, sinemanın başkenti Hollywood’a ev sahipliği yapmasıyla yıldız tozu ve hayal fabrikası çağrışımı yapar. Yıl boyu süren güneşi, plajları ve rahat yaşam tarzıyla ünlüdür.\n\nTepedeki ünlü Hollywood tabelası, yıldızların adlarını taşıyan Walk of Fame, Getty ve LACMA müzeleri, Santa Monica sahili ve tema parkları (Disneyland, Universal) başlıca duraklardır. Otoyolları, sörf plajları ve çeşitliliğiyle Los Angeles, Kaliforniya rüyasının simgesidir.',
     sources: ['Lonely Planet — Los Angeles', 'Discover Los Angeles — resmi turizm'],
   },
   {
@@ -1622,7 +1622,7 @@ export const PLACES = [
     lng: -115.1398,
     aliases: ['las vegas', 'lasvegas', 'vegas'],
     summary:
-      'Çölün ortasındaki eğlence şehri Las Vegas; ışıltılı Strip’i, temalı dev otelleri ve gösterileriyle 7/24 canlıdır. Grand Canyon ve Hoover Barajı’na açılan üstür.',
+      'Nevada çölünün ortasında bir vaha gibi yükselen Las Vegas, gösterişli otelleri, kumarhaneleri ve durmak bilmeyen eğlencesiyle dünyanın gösteri ve eğlence başkentidir. Yoktan var edilmiş bu kent, abartının ve fantezinin cisimleşmiş hâlidir.\n\nDünyanın simge yapılarının kopyalarını barındıran temalı dev otelleriyle ışıltılı ana bulvar “Strip”, kumarhaneleri, sahne şovları ve konserleri kenti 7/24 canlı tutar. Las Vegas aynı zamanda görkemli Grand Canyon, Hoover Barajı ve çöl milli parklarına açılan bir üstür.',
     sources: ['Lonely Planet — Las Vegas', 'Visit Las Vegas — resmi turizm'],
   },
   {
@@ -1634,7 +1634,7 @@ export const PLACES = [
     lng: -77.0369,
     aliases: ['washington', 'washington dc', 'dc'],
     summary:
-      'ABD’nin başkenti Washington D.C.; Capitol, Beyaz Saray, Lincoln Anıtı ve National Mall boyunca sıralanan dünyaca ünlü (ve ücretsiz) Smithsonian müzeleriyle ulusal tarihin merkezidir.',
+      'Amerika Birleşik Devletleri’nin başkenti Washington D.C., anıtsal binaları, geniş bulvarları ve ulusun kurucu değerlerini simgeleyen yapılarıyla planlı bir başkenttir. Ülkenin siyasi kalbi olarak tarihe yön veren kararların alındığı yerdir.\n\nKongre binası Capitol, Beyaz Saray, Lincoln ve Washington anıtları ve bunların sıralandığı geniş yeşil National Mall başlıca duraklardır. Mall boyunca uzanan, uzay mekiklerinden sanata dünyaca ünlü ve ücretsiz Smithsonian müzeleri ise kenti bir bilgi hazinesine dönüştürür.',
     sources: ['Lonely Planet — Washington DC', 'Smithsonian — resmi portal'],
   },
 
@@ -1648,7 +1648,7 @@ export const PLACES = [
     lng: -79.3832,
     aliases: ['toronto'],
     summary:
-      'Kanada’nın en büyük kenti Toronto; simge CN Tower, göl kıyısı silüeti ve dünyanın en çok kültürlü metropollerinden biri oluşuyla öne çıkar. Niagara Şelalesi’ne açılan kapıdır.',
+      'Ontario Gölü kıyısındaki Toronto, Kanada’nın en büyük kenti ve dünyanın en çok kültürlü metropollerinden biridir; sakinlerinin yarısından fazlası ülke dışında doğmuştur. Bu çeşitlilik, kente canlı ve kozmopolit bir hava katar.\n\nGöl kıyısındaki silüete hâkim, camdan zeminli seyir terasıyla simge CN Kulesi, tarihî Distillery Bölgesi, çarşıları ve müzeleri başlıca duraklardır. Kent aynı zamanda, dünyanın en görkemli doğa harikalarından biri olan Niagara Şelalesi’ne açılan kapıdır.',
     sources: ['Lonely Planet — Toronto', 'Destination Toronto — resmi turizm'],
   },
   {
@@ -1660,7 +1660,7 @@ export const PLACES = [
     lng: -123.1207,
     aliases: ['vancouver'],
     summary:
-      'Okyanus ile karlı dağlar arasına kurulu Vancouver; Stanley Park, asma köprüleri ve doğa ile iç içe yaşam tarzıyla Kanada’nın en güzel konumlu kentlerindendir.',
+      'Kanada’nın batı kıyısında, Pasifik Okyanusu ile karlı Coast Dağları arasına kurulu Vancouver, doğa ile kent yaşamını eşsiz biçimde birleştiren dünyanın en yaşanası kentlerinden biridir. Ilıman iklimi ve yeşil dokusuyla dışarıda yaşama tutkusunu yansıtır.\n\nYağmur ormanı, plajları ve deniz kıyısı yürüyüş yoluyla devasa Stanley Park, tarihî Gastown semti, Capilano asma köprüsü ve yakındaki Grouse ile Whistler kayak merkezleri başlıca cazibelerdir. Aynı gün hem kayak hem sahil keyfi sunan Vancouver, doğa tutkunlarının cennetidir.',
     sources: ['Lonely Planet — Vancouver', 'Destination Vancouver — resmi turizm'],
   },
   {
@@ -1672,7 +1672,7 @@ export const PLACES = [
     lng: -73.5674,
     aliases: ['montreal', 'montréal'],
     summary:
-      'Kuzey Amerika’nın en Avrupai kentlerinden Montreal; arnavut kaldırımlı Eski Montreal, Notre-Dame Bazilikası ve canlı festival kültürüyle Fransız ve Kuzey Amerika ruhunu harmanlar.',
+      'Quebec’teki Montreal, Fransızcanın konuşulduğu, arnavut kaldırımlı sokakları ve zarif kiliseleriyle Kuzey Amerika’nın en Avrupai kentlerinden biridir. Fransız çekiciliğini Kuzey Amerika enerjisiyle birleştiren canlı bir kültür merkezidir.\n\nSt. Lawrence Nehri kıyısındaki tarihî Eski Montreal, mavi ışıklı görkemli Notre-Dame Bazilikası, tepedeki Mont-Royal Parkı ve yer altı şehri başlıca duraklardır. Caz ve komedi festivalleri, bistroları ve çok dilli atmosferiyle Montreal, coşkulu bir kenttir.',
     sources: ['Lonely Planet — Montréal', 'Tourisme Montréal — resmi turizm'],
   },
 
@@ -1686,7 +1686,7 @@ export const PLACES = [
     lng: -99.1332,
     aliases: ['meksiko', 'mexico city', 'mexico', 'cdmx'],
     summary:
-      'Meksika’nın canlı başkenti Meksiko; Aztek başkenti Tenochtitlan üzerine kuruludur. Zócalo meydanı, Antropoloji Müzesi ve yakınındaki dev Teotihuacan piramitleriyle (UNESCO) köklü bir uygarlığı yaşatır.',
+      'Meksika’nın devasa başkenti Meksiko, bir zamanlar bir gölün ortasındaki Aztek başkenti Tenochtitlan’ın üzerine kuruludur; katmanlı tarihiyle Amerika’nın en köklü ve en canlı metropollerinden biridir. Yüksek rakımlı geniş bir vadide yer alır.\n\nDevasa merkez meydanı Zócalo ve altındaki Aztek Templo Mayor kalıntıları, dünyanın en zengin arkeoloji müzelerinden Antropoloji Müzesi ve yakınlardaki devasa Güneş ve Ay piramitleriyle Teotihuacan (UNESCO) başlıca duraklardır. Renkli mahalleleri ve mutfağıyla kent büyüler.',
     sources: ['UNESCO World Heritage List — Historic Centre of Mexico City / Teotihuacan', 'Lonely Planet — Mexico City'],
   },
   {
@@ -1698,7 +1698,7 @@ export const PLACES = [
     lng: -86.8515,
     aliases: ['cancun', 'cancún', 'riviera maya'],
     summary:
-      'Karayipler’in turkuaz sularına açılan Cancún; bembeyaz plajları, Riviera Maya tatil beldeleri ve yakınındaki Maya harikası Chichén Itzá ve Tulum ile deniz ve tarihi birleştirir.',
+      'Meksika’nın Yucatán Yarımadası’nda, Karayip Denizi’nin turkuaz sularına açılan Cancún, bembeyaz kumlu plajları ve lüks tatil bölgeleriyle dünyanın en popüler deniz destinasyonlarından biridir. Modern otel şeridiyle keyifli bir tatil sunar.\n\nGeniş plajlarının ve Riviera Maya beldelerinin yanı sıra, dünyanın yeni yedi harikasından Maya piramidi Chichén Itzá, deniz kıyısındaki Tulum kalıntıları ve yüzülebilen doğal kuyular (cenote) çevredeki başlıca cazibelerdir. Cancún deniz ile antik tarihi birleştirir.',
     sources: ['UNESCO World Heritage List — Chichen-Itza', 'Lonely Planet — Cancún'],
   },
 
@@ -1726,7 +1726,7 @@ export const PLACES = [
     lng: -43.1729,
     aliases: ['rio', 'rio de janeiro'],
     summary:
-      '“Muhteşem Şehir” Rio de Janeiro; kollarını açan dev Kurtarıcı İsa heykeli, Şeker Somunu Tepesi, Copacabana ve İpanema plajları ve karnavalıyla doğanın ve enerjinin buluştuğu yerdir.',
+      'Brezilya’nın “Muhteşem Şehir” (Cidade Maravilhosa) lakaplı Rio de Janeiro, dağların, ormanın ve okyanusun iç içe geçtiği çarpıcı doğasıyla dünyanın en güzel konumlu kentlerinden biridir. Coşkulu ruhu ve karnavalıyla ünlüdür.\n\nBir tepeden kollarını açmış dev Kurtarıcı İsa heykeli (Cristo Redentor), teleferikle çıkılan Şeker Somunu Tepesi ve dünyaca ünlü Copacabana ile İpanema plajları başlıca duraklardır. Samba ritimleri, futbol tutkusu ve görkemli karnavalıyla Rio, enerji doludur.',
     sources: ['UNESCO World Heritage List — Rio de Janeiro: Carioca Landscapes', 'Lonely Planet — Rio de Janeiro'],
   },
   {
@@ -1738,7 +1738,7 @@ export const PLACES = [
     lng: -46.6333,
     aliases: ['sao paulo', 'são paulo', 'saopaulo'],
     summary:
-      'Güney yarımkürenin en büyük metropolü São Paulo; dünya mutfakları, güçlü sanat sahnesi (MASP) ve sınırsız gece hayatıyla Brezilya’nın kültür ve iş merkezidir.',
+      'Brezilya’nın ve güney yarımkürenin en büyük kenti São Paulo, uçsuz bucaksız gökdelenleri, güçlü ekonomisi ve zengin kültür sahnesiyle ülkenin dinamosudur. Dünyanın her yerinden göçmenleri barındıran, kozmopolit bir metropoldür.\n\nCadde üzerinde asılı gibi duran mimarisiyle São Paulo Sanat Müzesi (MASP), hareketli Paulista Bulvarı, sokak sanatı ve sınırsız dünya mutfağı başlıca öne çıkanlardır. Sanat galerileri, restoranları ve durmak bilmeyen gece hayatıyla São Paulo, Brezilya’nın kültür ve iş merkezidir.',
     sources: ['Lonely Planet — São Paulo', 'Visit São Paulo — resmi turizm'],
   },
 
@@ -1752,7 +1752,7 @@ export const PLACES = [
     lng: -58.3816,
     aliases: ['buenos aires', 'buenosaires'],
     summary:
-      '“Güney Amerika’nın Parisi” Buenos Aires; tango tutkusu, zarif bulvarları, renkli La Boca mahallesi ve ünlü Recoleta Mezarlığı’yla Avrupa şıklığını Latin ruhuyla birleştirir.',
+      'Arjantin’in başkenti Buenos Aires, zarif bulvarları, Avrupai mimarisi ve tutkulu tango kültürüyle “Güney Amerika’nın Parisi” olarak anılır. Latin ateşini Avrupa şıklığıyla birleştiren büyüleyici bir metropoldür.\n\nRenkli teneke evleriyle La Boca mahallesi, görkemli anıt mezarlarıyla Recoleta Mezarlığı, geniş 9 Temmuz Bulvarı ve tarihî kafeleri başlıca duraklardır. Sokaklarda dans edilen tango, biftek kültürü (asado) ve gece geç saatlere uzanan yaşamıyla Buenos Aires, ihtiraslı bir kenttir.',
     sources: ['Lonely Planet — Buenos Aires', 'Turismo Buenos Aires — resmi'],
   },
 
@@ -1766,7 +1766,7 @@ export const PLACES = [
     lng: -71.9675,
     aliases: ['cusco', 'cuzco', 'machu picchu', 'machupicchu'],
     summary:
-      'İnka İmparatorluğu’nun başkenti Cusco, bulutların üzerindeki kayıp şehir Machu Picchu’ya (UNESCO) açılan kapıdır. İnka taş duvarları üzerine kurulu sömürge mimarisi ve Kutsal Vadi ile büyüler.',
+      'And Dağları’nda, yüksek bir vadide kurulu Cusco, bir zamanlar güçlü İnka İmparatorluğu’nun başkentiydi; İnka taş duvarları üzerine inşa edilen sömürge yapılarıyla iki uygarlığın iç içe geçtiği büyüleyici bir kenttir. Tarihî merkezi UNESCO korumasındadır.\n\nKusursuz işçilikli İnka duvarları, sömürge katedrali ve meydanı, çevredeki Kutsal Vadi ve renkli pazarları öne çıkar. Cusco her şeyden önce, bulutların üzerindeki efsanevi kayıp İnka şehri Machu Picchu’ya (UNESCO) açılan kapıdır; bu antik kent dünyanın en büyüleyici manzaralarından birini sunar.',
     sources: ['UNESCO World Heritage List — Historic Sanctuary of Machu Picchu', 'Lonely Planet — Cusco'],
   },
   {
@@ -1778,7 +1778,7 @@ export const PLACES = [
     lng: -77.0428,
     aliases: ['lima'],
     summary:
-      'Peru’nun başkenti Lima; sömürge dönemi tarihî merkezi (UNESCO), okyanusa bakan Miraflores yamaçları ve dünyaca ünlü mutfağıyla (ceviche) Güney Amerika’nın gastronomi merkezidir.',
+      'Peru’nun başkenti Lima, Pasifik Okyanusu’na bakan uçurumlara kurulu, sömürge geçmişi ile modern yaşamı ve olağanüstü mutfağını birleştiren canlı bir kenttir. Bir zamanlar İspanyol sömürge imparatorluğunun Güney Amerika’daki merkeziydi.\n\nGörkemli meydanı, katedrali ve balkonlu sömürge yapılarıyla tarihî merkezi (UNESCO), okyanusa bakan zarif Miraflores ve sanatçı semti Barranco başlıca duraklardır. Ceviche gibi lezzetleri ve dünyanın en iyi restoranlarına ev sahipliği yapmasıyla Lima, Güney Amerika’nın gastronomi başkentidir.',
     sources: ['UNESCO World Heritage List — Historic Centre of Lima', 'Lonely Planet — Lima'],
   },
 
@@ -1792,7 +1792,7 @@ export const PLACES = [
     lng: -70.6693,
     aliases: ['santiago', 'santiago sili'],
     summary:
-      'And Dağları’nın karlı zirveleri altında uzanan Santiago; canlı meydanları, tepelerden panoramaları ve çevredeki şarap vadileriyle Şili’nin modern ve dinamik başkentidir.',
+      'Şili’nin başkenti Santiago, karlı And Dağları’nın nefes kesen zirveleri altında uzanan, modern ve canlı bir metropoldür. Ülkenin siyasi, kültürel ve ekonomik kalbi olarak dinamik bir enerji taşır.\n\nTarihî Plaza de Armas meydanı, kente panoramik manzara sunan San Cristóbal ve Santa Lucía tepeleri, müzeleri ve çağdaş semtleri başlıca duraklardır. Santiago aynı zamanda dünyaca ünlü Şili şaraplarının üretildiği çevre vadilere, kayak merkezlerine ve Pasifik sahiline açılan bir üstür.',
     sources: ['Lonely Planet — Santiago', 'Chile Travel — Santiago'],
   },
 
@@ -1806,7 +1806,7 @@ export const PLACES = [
     lng: -75.4794,
     aliases: ['cartagena', 'kartagena'],
     summary:
-      'Karayip kıyısındaki Cartagena; surlarla çevrili rengârenk sömürge Eski Şehri (UNESCO), çiçekli balkonları ve sıcak Latin atmosferiyle Kolombiya’nın en büyüleyici kentidir.',
+      'Kolombiya’nın Karayip kıyısındaki Cartagena, surlarla çevrili rengârenk sömürge eski şehri ve sıcak Latin atmosferiyle ülkenin en büyüleyici kentidir. Bir zamanlar İspanyol hazine gemilerinin ve korsanların uğrağı olan stratejik bir liman kalesiydi.\n\nÇiçekli balkonları, arnavut kaldırımlı sokakları ve renkli evleriyle surlarla çevrili tarihî merkez (UNESCO), görkemli San Felipe Kalesi ve canlı meydanları başlıca duraklardır. Deniz, müzik ve renk dolu havasıyla Cartagena, romantik bir Karayip kaçamağı sunar.',
     sources: ['UNESCO World Heritage List — Port, Fortresses and Group of Monuments, Cartagena', 'Lonely Planet — Cartagena'],
   },
 
