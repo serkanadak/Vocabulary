@@ -8,6 +8,7 @@ import { ENRICH_SOURCE } from '../logic/enrich';
 import { formatLongDate, isValidDateKey } from '../logic/date';
 import { colors } from '../theme';
 import { Field, PrimaryButton, SecondaryButton, ConfirmModal, EmptyState, Pill } from '../components/common';
+import PlacePhoto from '../components/PlacePhoto';
 
 const SOURCE_LABEL = {
   [ENRICH_SOURCE.LOCAL]: { label: 'Yerel arşiv', color: colors.success },
@@ -169,6 +170,10 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
               </View>
             </View>
           )}
+
+          <PlacePhoto
+            place={{ id: disc.placeId, name: disc.placeName, city: disc.city, country: disc.country }}
+          />
 
           <Text style={styles.h}>🏛️ Tarihi ve Kültürel Özet</Text>
           {disc.summary ? (

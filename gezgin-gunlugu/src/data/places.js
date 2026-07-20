@@ -2490,6 +2490,12 @@ export const PLACES = [
 ];
 
 // Basit normalleştirme: küçük harf + Türkçe/aksan sadeleştirme + boşluk temizliği.
+// Bir yeri id'siyle bulur (temel foto/amblem gibi yerlerde takma ad aramak için).
+export function placeById(id) {
+  if (!id) return null;
+  return PLACES.find((p) => p.id === id) || null;
+}
+
 export function normalize(text) {
   return (text || '')
     .toLocaleLowerCase('tr')
