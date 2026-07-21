@@ -1,25 +1,25 @@
-# Mekân (attraction) açıklama zenginleştirme
+# Mekân (attraction) açıklama zenginleştirme — ✅ TAMAMLANDI
 
 Amaç: `attractions.js` içindeki her mekânın (şehir içi tarihi/turistik yer) `desc`
 alanını birkaç kelimelik ifadeden 2 cümlelik zengin tarihi/kültürel özete çıkarmak.
 Hedef: ~150–300 karakter; ne olduğu + tarihi/kültürel önemi + dikkat çeken bir ayrıntı.
 
-Kapsam: 341 şehir anahtarı, toplam 1.661 mekân. Şehir bloğu bazında batch:
-düzenle → `node --check` → commit → PR → merge → deploy → sıradaki.
+**Durum: 1.661 / 1.661 mekân (%100) tamamlandı.**
 
-İşaretleme: [x] tamamlandı. (Kaldığın yeri veriden de anlayabilirsin: desc uzunluğu
-kısa kalan şehirler henüz işlenmemiştir.)
+## Türkiye — ✅ 81 il tamam
+İstanbul'dan Ağrı'ya kadar tüm iller (T1–T10 batch'leri).
 
-## Türkiye
-- [x] Batch T1: istanbul, edirne, izmir, bursa, canakkale, antalya, ankara, konya, trabzon, gaziantep
-- [ ] Batch T2: mugla, aydin, nevsehir + diğer yüksek cazibe iller
-- [ ] Batch T3+: kalan tüm iller (il başına ~5 mekân)
+## Avrupa — ✅ tamam
+Fransa, İtalya (ana + ikincil), İspanya (ana + ikincil), Almanya (ana + ikincil),
+Yunanistan, Hollanda, Portekiz, BK, İrlanda, İsviçre, Belçika, Polonya,
+Bulgaristan/Sırbistan, Orta Avrupa (Çekya/Macaristan/Slovakya), Bosna,
+İskandinavya (Norveç/İsveç/Danimarka/Finlandiya/İzlanda). (Avrupa batch 1–16.)
 
-## Avrupa
-- [ ] İtalya, Almanya, Fransa/İsviçre, İspanya/Portekiz, Yunanistan/Balkan,
-      Hırvatistan/Slovenya, BK/İrlanda/Benelüks, İskandinavya, Orta Avrupa
+## Dünya — ✅ tamam
+Okyanusya + Yeni Zelanda, Kuzey Amerika, Latin Amerika, Japonya (ana + kalanı),
+Çin, Hindistan, Körfez, Güneydoğu Asya, Vietnam/Kamboçya/Singapur/Kore,
+İran/Ürdün/Orta Asya/Nepal, Mısır + Fas, Sahra-altı Afrika + Tunus.
+(Dünya batch 1–12.)
 
-## Dünya
-- [ ] Asya, Orta Doğu/Orta Asya, Amerika, Afrika, Okyanusya
-
-Not: Bu çok büyük bir içerik görevi; batch batch ilerler ve birden çok oturuma yayılır.
+Not: Yol boyunca marakeş'teki yinelenen "Bahia Sarayı" girdisi "Saadi Türbeleri"
+ile düzeltildi.
