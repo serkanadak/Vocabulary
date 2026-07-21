@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Image, Platform, Alert, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { matchPlace } from '../data/places';
 import { attractionsFor, attractionToDiscovery } from '../data/attractions';
+import { exportDiscoveryPdf } from '../logic/tripDoc';
 import { todayKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { Card, SectionHeader, EmptyState, Pill } from '../components/common';
@@ -76,6 +77,7 @@ function StopSection({ trip, stop, navigation }) {
       {open ? (
         <View style={styles.stopBody}>
           {place ? <PlacePhoto place={place} height={170} /> : null}
+          {place?.summary ? <Text style={styles.stopSummary}>{place.summary}</Text> : null}
           {attractions.length ? (
             <>
               <Text style={styles.subLabel}>Gezilecek yerler — gidileni işaretle</Text>
@@ -153,6 +155,25 @@ export default function DiscoveryHubScreen({ route, navigation }) {
   const { tripId } = route.params;
   const { getTrip } = useJournal();
   const trip = getTrip(tripId);
+  const [pdfBusy, setPdfBusy] = useState(false);
+
+  const makePdf = async () => {
+    if (Platform.OS !== 'web') {
+      Alert.alert('PDF web sürümünde', 'Keşif PDF’i, uygulamanın tarayıcı (web) sürümünde oluşturulur. Aynı seyahat linkini tarayıcıda açıp tekrar dene.');
+      return;
+    }
+    setPdfBusy(true);
+    try {
+      const res = await exportDiscoveryPdf(trip);
+      if (res && !res.ok && res.reason === 'popup') {
+        Alert.alert('Açılır pencere engellendi', 'PDF için yeni bir sekme açılması gerekiyor. Tarayıcının açılır pencere iznini verip tekrar dene.');
+      }
+    } catch (e) {
+      Alert.alert('PDF oluşturulamadı', 'Beklenmedik bir hata oluştu. Tekrar deneyebilirsin.');
+    } finally {
+      setPdfBusy(false);
+    }
+  };
 
   if (!trip) {
     return (
@@ -175,6 +196,14 @@ export default function DiscoveryHubScreen({ route, navigation }) {
           title="Keşif Günlüğü"
           subtitle="Güzergah noktalarını tek tek aç; gezdiğin yerleri işaretle, not ve fotoğraflarını ekle. Rota dışı yer/aktiviteleri en alttan ekle."
         />
+
+        <Pressable style={[styles.pdfBtn, pdfBusy && { opacity: 0.7 }]} onPress={makePdf} disabled={pdfBusy}>
+          {pdfBusy ? (
+            <ActivityIndicator color="#0b1a2b" />
+          ) : (
+            <Text style={styles.pdfText}>📄 Keşif günlüğünü PDF olarak al (tüm duraklar açık)</Text>
+          )}
+        </Pressable>
 
         {stops.length ? (
           stops.map((s) => <StopSection key={s.id} trip={trip} stop={s} navigation={navigation} />)
@@ -234,6 +263,18 @@ const styles = StyleSheet.create({
   stopSub: { color: colors.textMuted, fontSize: 12, marginTop: 3 },
   chevronDown: { color: colors.textMuted, fontSize: 12 },
   stopBody: { paddingHorizontal: 16, paddingBottom: 16, gap: 8 },
+  stopSummary: { color: colors.textMuted, fontSize: 13, lineHeight: 19 },
+  pdfBtn: {
+    marginHorizontal: 16,
+    marginBottom: 6,
+    backgroundColor: colors.primary,
+    borderRadius: 10,
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 44,
+  },
+  pdfText: { color: '#0b1a2b', fontWeight: '800', fontSize: 14 },
   subLabel: {
     color: colors.textMuted,
     fontSize: 11,
