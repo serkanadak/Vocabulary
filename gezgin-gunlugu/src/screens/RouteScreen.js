@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, Image, useWindowDimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Image, useWindowDimensions, Platform, Alert, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { VEHICLES, getVehicle } from '../data/vehicles';
@@ -8,9 +8,11 @@ import { fetchRoadKm } from '../logic/roadRoute';
 import { matchPlace } from '../data/places';
 import { attractionsFor, attractionToDiscovery } from '../data/attractions';
 import { routeSvgDataUri, mappableStopCount } from '../logic/routeMap';
+import { exportRoutePdf } from '../logic/tripDoc';
 import { todayKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { ChipPicker, ConfirmModal, EmptyState } from '../components/common';
+import PlacePhoto from '../components/PlacePhoto';
 
 // Güzergah haritası (koyu tema paletiyle) — koordinatlı duraklar SVG üzerinde.
 function RouteMap({ stops }) {
@@ -86,6 +88,25 @@ export default function RouteScreen({ route, navigation }) {
   const [pendingRemove, setPendingRemove] = useState(null);
   const [roadKm, setRoadKm] = useState(null); // OSRM gerçek yol mesafeleri
   const [roadState, setRoadState] = useState('idle'); // idle | loading | ok | error
+  const [pdfBusy, setPdfBusy] = useState(false);
+
+  const makePdf = async () => {
+    if (Platform.OS !== 'web') {
+      Alert.alert('PDF web sürümünde', 'Güzergah PDF’i, uygulamanın tarayıcı (web) sürümünde oluşturulur. Aynı seyahat linkini tarayıcıda açıp tekrar dene.');
+      return;
+    }
+    setPdfBusy(true);
+    try {
+      const res = await exportRoutePdf(trip);
+      if (res && !res.ok && res.reason === 'popup') {
+        Alert.alert('Açılır pencere engellendi', 'PDF için yeni bir sekme açılması gerekiyor. Tarayıcının açılır pencere iznini verip tekrar dene.');
+      }
+    } catch (e) {
+      Alert.alert('PDF oluşturulamadı', 'Beklenmedik bir hata oluştu. Tekrar deneyebilirsin.');
+    } finally {
+      setPdfBusy(false);
+    }
+  };
 
   const stopsKey = (trip?.stops || [])
     .map((s) => `${s.id}:${s.lat},${s.lng}`)
@@ -187,6 +208,16 @@ export default function RouteScreen({ route, navigation }) {
 
         <RouteMap stops={stops} />
 
+        {stops.length ? (
+          <Pressable style={[styles.pdfBtn, pdfBusy && { opacity: 0.7 }]} onPress={makePdf} disabled={pdfBusy}>
+            {pdfBusy ? (
+              <ActivityIndicator color="#0b1a2b" />
+            ) : (
+              <Text style={styles.pdfText}>📄 Güzergahı PDF olarak al (detaylı)</Text>
+            )}
+          </Pressable>
+        ) : null}
+
         {result.hasAny ? (
           <Text style={styles.sourceBadge}>
             {usingRoad
@@ -254,6 +285,13 @@ export default function RouteScreen({ route, navigation }) {
                   </View>
 
                   {place ? (
+                    <View style={styles.stopInfo}>
+                      <PlacePhoto place={place} height={150} />
+                      {place.summary ? <Text style={styles.stopSummary}>{place.summary}</Text> : null}
+                    </View>
+                  ) : null}
+
+                  {place ? (
                     <StopAttractions place={place} discoveries={trip.discoveries} onAdd={addAttraction} />
                   ) : null}
 
@@ -319,6 +357,19 @@ const styles = StyleSheet.create({
   totalLabel: { color: colors.textMuted, fontSize: 11, marginTop: 4 },
   mapWrap: { alignItems: 'center', marginTop: 16, marginHorizontal: 16 },
   mapHint: { color: colors.textMuted, fontSize: 11, marginTop: 6, textAlign: 'center' },
+  pdfBtn: {
+    marginHorizontal: 16,
+    marginTop: 16,
+    backgroundColor: colors.primary,
+    borderRadius: 10,
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 44,
+  },
+  pdfText: { color: '#0b1a2b', fontWeight: '800', fontSize: 15 },
+  stopInfo: { marginHorizontal: 16, marginTop: 8 },
+  stopSummary: { color: colors.textMuted, fontSize: 13, lineHeight: 19, marginTop: 2 },
   timeline: { marginTop: 16 },
   stopRow: {
     flexDirection: 'row',

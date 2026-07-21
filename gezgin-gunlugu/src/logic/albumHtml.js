@@ -9,6 +9,11 @@
 import { generateAlbumPlan } from './publish';
 import { buildRouteSvg } from './routeMap';
 import { formatLongDate } from './date';
+import { matchPlace } from '../data/places';
+import { printDocument } from './printDoc';
+import { resolveBasePhotos, routeDetailHtml, discoveryDetailHtml, DETAIL_CSS } from './tripDoc';
+
+const norm = (s) => (s || '').toLocaleLowerCase('tr').replace(/\s+/g, ' ').trim();
 
 function photosOf(d) {
   if (Array.isArray(d?.photos) && d.photos.length) return d.photos;
@@ -72,6 +77,9 @@ export async function buildAlbumHtml(trip) {
   const stopName = new Map(stops.map((s) => [s.id, s.name]));
   const ranked = orderByRoute(trip);
 
+  // Duraklar/keşifler için serbest lisanslı temel fotolar (varsa) — çevrimdışıysa boş.
+  const basePhotos = await resolveBasePhotos(trip);
+
   // Tüm fotoğrafların yönünü (dik/yatay) ölç.
   const allPhotos = [];
   for (const { d } of ranked) for (const p of photosOf(d)) allPhotos.push(p);
@@ -105,6 +113,7 @@ export async function buildAlbumHtml(trip) {
       cur = {
         key,
         title: inStop ? `${stopOrder.get(key) + 1}. ${stopName.get(key)}` : 'Rota dışı · Diğer',
+        stopName: inStop ? stopName.get(key) : null,
         items: [],
       };
       groups.push(cur);
@@ -139,11 +148,28 @@ export async function buildAlbumHtml(trip) {
   };
 
   // Her durak (güzergah) YENİ SAYFADAN başlar → ayrı .page section.
+  // Durak başına: canlı arşiv özeti (zenginleştirilmiş) + temel foto — kullanıcının
+  // kendi fotoğrafları olsa bile gösterilir.
+  const stopIntro = (g) => {
+    if (!g.stopName) return '';
+    const place = matchPlace(g.stopName);
+    const bp = place ? basePhotos['id:' + place.id] || basePhotos['nm:' + norm(place.name)] : basePhotos['nm:' + norm(g.stopName)];
+    const summary = place && place.summary ? place.summary : '';
+    if (!bp && !summary) return '';
+    return (
+      `<div class="stop-intro">` +
+      (bp ? `<img class="stop-intro-photo" src="${bp}" />` : '') +
+      (summary ? `<div class="place-summary">${esc(summary)}</div>` : '') +
+      `</div>`
+    );
+  };
+
   const journalSections = groups
     .map(
       (g) =>
         `<section class="page stop-section">` +
         `<div class="stop-head">🗺️ ${esc(g.title)}</div>` +
+        stopIntro(g) +
         g.items.map(placeBlock).join('') +
         `</section>`
     )
@@ -204,6 +230,9 @@ export async function buildAlbumHtml(trip) {
   .mapbox svg { width: 100%; height: auto; border: 1px solid #e6ebf0; border-radius: 8px; }
   .route { font-size: 15px; font-weight: 600; line-height: 1.6; }
   .dist { font-size: 13px; color: #7a8791; margin-top: 6px; }
+  .stop-intro { break-inside: avoid; margin-bottom: 12px; }
+  .stop-intro-photo { width: 100%; max-height: 82mm; object-fit: cover; border-radius: 6px; margin-bottom: 8px; display: block; }
+  ${DETAIL_CSS}
   @media print {
     html, body { background: #fff; }
     .page { box-shadow: none; margin: 0; width: auto; min-height: auto; padding: 0; page-break-after: always; }
@@ -227,89 +256,19 @@ export async function buildAlbumHtml(trip) {
     <div class="route">${routeText}</div>
     ${totalDist ? `<div class="dist">Toplam mesafe: ${totalDist}</div>` : ''}
   </section>
+  <section class="page">
+    <h2>Güzergah Detayı</h2>
+    ${routeDetailHtml(trip, basePhotos)}
+  </section>
+  <section class="page">
+    <h2>Keşif Detayı — tüm duraklar</h2>
+    ${discoveryDetailHtml(trip, basePhotos)}
+  </section>
   ${journalSections || '<section class="page"><div class="intro-text">Henüz keşif eklenmemiş.</div></section>'}
 </body></html>`;
 }
 
-// Bir belge (yeni sekme ya da iframe) içindeki görseller yüklenince yazdırır.
-function printWhenReady(targetWin, targetDoc, onDone) {
-  const doPrint = () => {
-    try {
-      targetWin.focus();
-      targetWin.print();
-    } catch (e) {
-      // kullanıcı elle yazdırabilir
-    }
-    if (onDone) setTimeout(onDone, 1000);
-  };
-  const start = Date.now();
-  const tick = () => {
-    const imgs = Array.from(targetDoc.images || []);
-    if (imgs.every((im) => im.complete) || Date.now() - start > 8000) setTimeout(doPrint, 300);
-    else setTimeout(tick, 150);
-  };
-  if (targetDoc.readyState === 'complete') tick();
-  else targetWin.onload = tick;
-}
-
-// Popup engellenirse gizli iframe ile yazdır (açılır pencere gerektirmez).
-function printViaIframe(html) {
-  try {
-    const iframe = window.document.createElement('iframe');
-    iframe.setAttribute('aria-hidden', 'true');
-    iframe.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;';
-    window.document.body.appendChild(iframe);
-    const doc = iframe.contentWindow.document;
-    doc.open();
-    doc.write(html);
-    doc.close();
-    printWhenReady(iframe.contentWindow, doc, () => {
-      try {
-        window.document.body.removeChild(iframe);
-      } catch (e) {
-        // yok say
-      }
-    });
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
 // Web'de albümü yazdır/PDF olarak kaydet diyaloğunu açar.
-// ÖNEMLİ: açılır pencere, kullanıcı tıklamasıyla aynı anda (await'ten ÖNCE)
-// açılmalı; yoksa tarayıcı engeller.
-export async function exportAlbumPdf(trip) {
-  let win = null;
-  try {
-    win = window.open('', '_blank');
-  } catch (e) {
-    win = null;
-  }
-  if (win) {
-    try {
-      win.document.write(
-        '<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Albüm hazırlanıyor…</title></head>' +
-          '<body style="font-family:sans-serif;padding:24px;color:#333">📖 Albüm hazırlanıyor…</body></html>'
-      );
-    } catch (e) {
-      // yok say
-    }
-  }
-
-  const html = await buildAlbumHtml(trip);
-
-  if (win && !win.closed) {
-    try {
-      win.document.open();
-      win.document.write(html);
-      win.document.close();
-      printWhenReady(win, win.document);
-      return { ok: true };
-    } catch (e) {
-      // popup yazımı başarısız → iframe dene
-    }
-  }
-
-  return printViaIframe(html) ? { ok: true, fallback: 'iframe' } : { ok: false, reason: 'popup' };
+export function exportAlbumPdf(trip) {
+  return printDocument(() => buildAlbumHtml(trip), '📖 Albüm hazırlanıyor…');
 }
