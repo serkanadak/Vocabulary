@@ -42,11 +42,13 @@ function RouteMap({ stops }) {
 
 // Bir durağın şehrindeki önemli mekanları açılır liste olarak gösterir; her biri
 // tek dokunuşla keşfe eklenebilir. Zaten eklenmişse "Eklendi" olarak işaretlenir.
-function StopAttractions({ place, discoveries, onAdd }) {
+function StopAttractions({ place, discoveries, onAdd, onRemove }) {
   const [open, setOpen] = useState(false);
   const list = attractionsFor(place.id);
   if (!list.length) return null;
-  const added = new Set((discoveries || []).map((d) => (d.placeName || '').toLocaleLowerCase('tr')));
+  const addedMap = new Map(
+    (discoveries || []).map((d) => [(d.placeName || '').toLocaleLowerCase('tr'), d])
+  );
   return (
     <View style={styles.attrWrap}>
       <Pressable onPress={() => setOpen((o) => !o)} style={styles.attrToggle}>
@@ -58,15 +60,22 @@ function StopAttractions({ place, discoveries, onAdd }) {
       {open ? (
         <View style={styles.attrList}>
           {list.map((a) => {
-            const isAdded = added.has(a.name.toLocaleLowerCase('tr'));
+            const existing = addedMap.get(a.name.toLocaleLowerCase('tr'));
             return (
               <View key={a.name} style={styles.attrItem}>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.attrName}>{a.name}</Text>
                   <Text style={styles.attrDesc}>{a.desc}</Text>
                 </View>
-                {isAdded ? (
-                  <Text style={styles.attrAdded}>✓ Eklendi</Text>
+                {existing ? (
+                  <Pressable
+                    onPress={() => onRemove(existing)}
+                    style={styles.attrRemoveBtn}
+                    hitSlop={6}
+                  >
+                    <Text style={styles.attrAdded}>✓ Eklendi</Text>
+                    <Text style={styles.attrRemoveHint}>↩︎ geri al</Text>
+                  </Pressable>
                 ) : (
                   <Pressable onPress={() => onAdd(a, place)} style={styles.attrAddBtn} hitSlop={6}>
                     <Text style={styles.attrAddText}>＋ Keşfe</Text>
@@ -83,9 +92,10 @@ function StopAttractions({ place, discoveries, onAdd }) {
 
 export default function RouteScreen({ route, navigation }) {
   const { tripId } = route.params;
-  const { getTrip, updateTrip, removeStop, reorderStops, addDiscovery, settings } = useJournal();
+  const { getTrip, updateTrip, removeStop, reorderStops, addDiscovery, removeDiscovery, settings } = useJournal();
   const trip = getTrip(tripId);
   const [pendingRemove, setPendingRemove] = useState(null);
+  const [pendingUnadd, setPendingUnadd] = useState(null);
   const [roadKm, setRoadKm] = useState(null); // OSRM gerçek yol mesafeleri
   const [roadState, setRoadState] = useState('idle'); // idle | loading | ok | error
   const [pdfBusy, setPdfBusy] = useState(false);
@@ -174,6 +184,15 @@ export default function RouteScreen({ route, navigation }) {
 
   const addAttraction = (attraction, place) => {
     addDiscovery(tripId, attractionToDiscovery(attraction, place, todayKey()));
+  };
+
+  // Keşfe eklemeyi geri al. Not/fotoğraf varsa önce onay iste; boş kaydı doğrudan sil.
+  const removeAttraction = (disc) => {
+    if (disc.userNotes || disc.photoUri) {
+      setPendingUnadd(disc);
+    } else {
+      removeDiscovery(tripId, disc.id);
+    }
   };
 
   return (
@@ -292,7 +311,12 @@ export default function RouteScreen({ route, navigation }) {
                   ) : null}
 
                   {place ? (
-                    <StopAttractions place={place} discoveries={trip.discoveries} onAdd={addAttraction} />
+                    <StopAttractions
+                      place={place}
+                      discoveries={trip.discoveries}
+                      onAdd={addAttraction}
+                      onRemove={removeAttraction}
+                    />
                   ) : null}
 
                   {i < stops.length - 1 ? (
@@ -334,6 +358,23 @@ export default function RouteScreen({ route, navigation }) {
           setPendingRemove(null);
         }}
         onCancel={() => setPendingRemove(null)}
+      />
+
+      <ConfirmModal
+        visible={!!pendingUnadd}
+        title="Keşfe eklemeyi geri al?"
+        message={
+          pendingUnadd
+            ? `“${pendingUnadd.placeName}” için eklediğin not ve fotoğraf da silinecek.`
+            : ''
+        }
+        confirmLabel="Geri al"
+        destructive
+        onConfirm={() => {
+          removeDiscovery(tripId, pendingUnadd.id);
+          setPendingUnadd(null);
+        }}
+        onCancel={() => setPendingUnadd(null)}
       />
     </SafeAreaView>
   );
@@ -444,7 +485,9 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   attrAddText: { color: colors.primary, fontSize: 12, fontWeight: '800' },
+  attrRemoveBtn: { alignItems: 'flex-end', paddingHorizontal: 4, paddingVertical: 2 },
   attrAdded: { color: colors.success, fontSize: 12, fontWeight: '700' },
+  attrRemoveHint: { color: colors.danger, fontSize: 11, fontWeight: '700', marginTop: 2 },
   legRow: { flexDirection: 'row', alignItems: 'center', paddingLeft: 30, paddingVertical: 6 },
   legLine: { width: 2, height: 22, backgroundColor: colors.border, marginRight: 12, marginLeft: 12 },
   legText: { color: colors.textMuted, fontSize: 12 },

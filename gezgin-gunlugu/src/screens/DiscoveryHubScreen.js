@@ -7,7 +7,7 @@ import { attractionsFor, attractionToDiscovery } from '../data/attractions';
 import { exportDiscoveryPdf } from '../logic/tripDoc';
 import { todayKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
-import { Card, SectionHeader, EmptyState, Pill } from '../components/common';
+import { Card, SectionHeader, EmptyState, Pill, ConfirmModal } from '../components/common';
 import PlacePhoto from '../components/PlacePhoto';
 
 const norm = (s) => (s || '').toLocaleLowerCase('tr').replace(/\s+/g, ' ').trim();
@@ -38,8 +38,9 @@ function DiscoveryRow({ disc, onPress }) {
 
 // Rotadaki bir durağın açılır kartı: gezilecek mekanlar + eklenen keşifler.
 function StopSection({ trip, stop, navigation }) {
-  const { addDiscovery } = useJournal();
+  const { addDiscovery, removeDiscovery } = useJournal();
   const [open, setOpen] = useState(false);
+  const [pendingUnmark, setPendingUnmark] = useState(null);
 
   const place = matchPlace(stop.name);
   const attractions = place ? attractionsFor(place.id) : [];
@@ -54,6 +55,16 @@ function StopSection({ trip, stop, navigation }) {
 
   const markVisited = (attraction) => {
     addDiscovery(trip.id, { ...attractionToDiscovery(attraction, place, dateForAdd), stopId: stop.id });
+  };
+
+  // "Gidildi" işaretini geri al. Not/fotoğraf eklenmişse silmeden önce onay iste;
+  // sadece hızlıca işaretlenmiş (boş) keşifleri doğrudan kaldır.
+  const unmarkVisited = (disc) => {
+    if (disc.userNotes || disc.photoUri) {
+      setPendingUnmark(disc);
+    } else {
+      removeDiscovery(trip.id, disc.id);
+    }
   };
 
   const openDisc = (d) => navigation.navigate('DiscoveryDetail', { tripId: trip.id, discoveryId: d.id });
@@ -85,20 +96,27 @@ function StopSection({ trip, stop, navigation }) {
                 const existing = discByName.get(norm(a.name));
                 if (existing) {
                   return (
-                    <Pressable
-                      key={a.name}
-                      onPress={() => openDisc(existing)}
-                      style={({ pressed }) => [styles.attrRow, styles.attrVisited, pressed && { opacity: 0.85 }]}
-                    >
-                      <Text style={styles.check}>✓</Text>
-                      <View style={{ flex: 1 }}>
-                        <Text style={styles.attrName}>{a.name}</Text>
-                        <Text style={styles.attrVisitedHint}>
-                          Gidildi · {existing.userNotes ? 'notlu' : 'not ekle'} {existing.photoUri ? '· 📷' : ''} →
-                        </Text>
-                      </View>
-                      <Text style={styles.chevron}>›</Text>
-                    </Pressable>
+                    <View key={a.name} style={[styles.attrRow, styles.attrVisited]}>
+                      <Pressable
+                        onPress={() => openDisc(existing)}
+                        style={({ pressed }) => [styles.attrVisitedMain, pressed && { opacity: 0.85 }]}
+                      >
+                        <Text style={styles.check}>✓</Text>
+                        <View style={{ flex: 1 }}>
+                          <Text style={styles.attrName}>{a.name}</Text>
+                          <Text style={styles.attrVisitedHint}>
+                            Gidildi · {existing.userNotes ? 'notlu' : 'not ekle'} {existing.photoUri ? '· 📷' : ''} →
+                          </Text>
+                        </View>
+                      </Pressable>
+                      <Pressable
+                        onPress={() => unmarkVisited(existing)}
+                        style={styles.unmarkBtn}
+                        hitSlop={6}
+                      >
+                        <Text style={styles.unmarkBtnText}>↩︎ Geri al</Text>
+                      </Pressable>
+                    </View>
                   );
                 }
                 return (
@@ -147,6 +165,23 @@ function StopSection({ trip, stop, navigation }) {
           </Pressable>
         </View>
       ) : null}
+
+      <ConfirmModal
+        visible={!!pendingUnmark}
+        title="Gidildi işaretini geri al?"
+        message={
+          pendingUnmark
+            ? `“${pendingUnmark.placeName}” için eklediğin not ve fotoğraf da silinecek.`
+            : ''
+        }
+        confirmLabel="Geri al"
+        destructive
+        onConfirm={() => {
+          removeDiscovery(trip.id, pendingUnmark.id);
+          setPendingUnmark(null);
+        }}
+        onCancel={() => setPendingUnmark(null)}
+      />
     </View>
   );
 }
@@ -293,6 +328,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   attrVisited: { borderWidth: 1, borderColor: colors.success + '66' },
+  attrVisitedMain: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 },
+  unmarkBtn: {
+    borderWidth: 1,
+    borderColor: colors.danger + '99',
+    borderRadius: 16,
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+  },
+  unmarkBtnText: { color: colors.danger, fontSize: 12, fontWeight: '700' },
   attrName: { color: colors.text, fontSize: 14, fontWeight: '600' },
   attrDesc: { color: colors.textMuted, fontSize: 12, marginTop: 2, lineHeight: 16 },
   attrVisitedHint: { color: colors.success, fontSize: 12, marginTop: 2, fontWeight: '600' },
