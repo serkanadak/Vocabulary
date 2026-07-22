@@ -16,6 +16,7 @@ const DEFAULT_SETTINGS = {
   apiKey: '',
   apiModel: '',
   roadOnline: true, // çevrimiçiyken gerçek yol mesafesi (OSRM); kapalıysa yalnızca tahmin
+  theme: 'deniz', // ekran renk paleti: 'deniz' | 'gunes' | 'dag' | 'kar' (palet önyüklemede localStorage'dan uygulanır)
 };
 
 const initialState = {
