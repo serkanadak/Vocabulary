@@ -1,11 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { PLACES } from '../data/places';
 import { storageEstimate } from '../logic/storage';
-import { colors } from '../theme';
-import { Card, Field, ChipPicker, SectionHeader, ProgressBar } from '../components/common';
+import { colors, THEMES, getThemeId, saveThemeId } from '../theme';
+import { Card, Field, ChipPicker, SectionHeader, ProgressBar, ConfirmModal } from '../components/common';
+
+// Bir renk paleti önizleme kartı — zemin, yazı ve iki vurgu rengini gösterir.
+function ThemeOption({ theme, selected, onPress }) {
+  const p = theme.palette;
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.themeCard,
+        { backgroundColor: p.bg, borderColor: selected ? p.primary : colors.border },
+        selected && styles.themeCardSelected,
+        pressed && { opacity: 0.9 },
+      ]}
+    >
+      <View style={styles.themeSwatches}>
+        <View style={[styles.swatch, { backgroundColor: p.surfaceAlt }]} />
+        <View style={[styles.swatch, { backgroundColor: p.primary }]} />
+        <View style={[styles.swatch, { backgroundColor: p.accent }]} />
+      </View>
+      <Text style={[styles.themeLabel, { color: p.text }]}>
+        {theme.emoji} {theme.label}
+      </Text>
+      <Text style={[styles.themeCheck, { color: p.primary }]}>{selected ? '● Seçili' : '○ Seç'}</Text>
+    </Pressable>
+  );
+}
 
 function fmtBytes(n) {
   if (!n) return '0 MB';
@@ -45,12 +71,52 @@ export default function SettingsScreen() {
   const ratio = storage && storage.quota ? Math.min(1, storage.usage / storage.quota) : 0;
   const barColor = ratio > 0.9 ? colors.danger : ratio > 0.7 ? colors.primary : colors.success;
 
+  // Aktif palet önyüklemede localStorage'dan gelir; seçim onun kimliğiyle eşleşir.
+  const activeTheme = getThemeId();
+  const [pendingTheme, setPendingTheme] = useState(null);
+
+  const chooseTheme = (id) => {
+    if (id === activeTheme) return;
+    setPendingTheme(id);
+  };
+
+  const applyTheme = (id) => {
+    saveThemeId(id); // önyüklemede uygulanacak palet
+    updateSettings({ theme: id }); // durum/dışa aktarma için de sakla
+    setPendingTheme(null);
+    // Palet, StyleSheet'ler modül yüklenirken oluştuğundan sayfa yenilenince uygulanır.
+    if (Platform.OS === 'web' && typeof window !== 'undefined') {
+      window.location.reload();
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         <View style={styles.header}>
           <Text style={styles.appName}>⚙️ Ayarlar</Text>
         </View>
+
+        <SectionHeader
+          title="Ekran Renk Teması"
+          subtitle="Uygulamanın renk paletini seç. Seçince palet uygulanır."
+        />
+        <Card>
+          <View style={styles.themeGrid}>
+            {Object.values(THEMES).map((t) => (
+              <ThemeOption
+                key={t.id}
+                theme={t}
+                selected={t.id === activeTheme}
+                onPress={() => chooseTheme(t.id)}
+              />
+            ))}
+          </View>
+          <Text style={styles.hint}>
+            Dört tema: 🌊 Deniz, ☀️ Güneş, 🏔️ Dağ, ❄️ Kar. Yeni tema, uygulanması için ekranı bir kez
+            yeniler; verilerin ve seyahatlerin korunur.
+          </Text>
+        </Card>
 
         <SectionHeader
           title="Güzergah Mesafesi"
@@ -189,6 +255,19 @@ export default function SettingsScreen() {
           saklanır.
         </Text>
       </ScrollView>
+
+      <ConfirmModal
+        visible={!!pendingTheme}
+        title="Temayı değiştir?"
+        message={
+          pendingTheme
+            ? `${THEMES[pendingTheme].emoji} ${THEMES[pendingTheme].label} teması uygulanacak. Uygulama bir kez yenilenecek; tüm verilerin korunur.`
+            : ''
+        }
+        confirmLabel="Uygula"
+        onConfirm={() => applyTheme(pendingTheme)}
+        onCancel={() => setPendingTheme(null)}
+      />
     </SafeAreaView>
   );
 }
@@ -203,6 +282,20 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.border,
   },
   appName: { color: colors.text, fontSize: 22, fontWeight: '800' },
+  themeGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
+  themeCard: {
+    width: '47%',
+    flexGrow: 1,
+    borderWidth: 2,
+    borderRadius: 12,
+    padding: 12,
+    gap: 8,
+  },
+  themeCardSelected: { borderWidth: 2 },
+  themeSwatches: { flexDirection: 'row', gap: 6 },
+  swatch: { width: 26, height: 26, borderRadius: 6 },
+  themeLabel: { fontSize: 15, fontWeight: '800' },
+  themeCheck: { fontSize: 12, fontWeight: '700' },
   label: { color: colors.textMuted, fontSize: 12, marginBottom: 6, marginTop: 12 },
   hint: { color: colors.textMuted, fontSize: 12, marginTop: 12, lineHeight: 18 },
   warn: { color: colors.primary, fontSize: 12, marginTop: 12, lineHeight: 17 },
