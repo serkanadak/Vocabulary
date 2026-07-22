@@ -6,17 +6,18 @@ import { useJournal } from '../state/JournalContext';
 import { preparePhoto } from '../logic/imageStore';
 import { readReceipt } from '../logic/receipt';
 import { getRates, convertAll, formatMoney, currencySymbol, CURRENCIES, TARGETS } from '../logic/fx';
+import {
+  EXPENSE_CATEGORIES,
+  DEFAULT_EXPENSE_CATEGORY,
+  categoryLabel,
+  categoryIcon,
+} from '../data/expenseCategories';
 import { todayKey, isValidDateKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { Field, ChipPicker, PrimaryButton, SecondaryButton, ConfirmModal, EmptyState, Card } from '../components/common';
 
-const KINDS = [
-  { value: 'service', label: '🧾 Hizmet' },
-  { value: 'goods', label: '🛍️ Mal / Ürün' },
-];
-
 function emptyForm() {
-  return { kind: 'service', label: '', amount: '', currency: 'EUR', date: todayKey(), receiptPhoto: null };
+  return { kind: DEFAULT_EXPENSE_CATEGORY, label: '', amount: '', currency: 'EUR', date: todayKey(), receiptPhoto: null };
 }
 
 export default function ExpensesScreen({ route, navigation }) {
@@ -63,7 +64,7 @@ export default function ExpensesScreen({ route, navigation }) {
   };
   const openEdit = (e) => {
     setForm({
-      kind: e.kind || 'service',
+      kind: e.kind || DEFAULT_EXPENSE_CATEGORY,
       label: e.label || '',
       amount: e.amount != null ? String(e.amount) : '',
       currency: e.currency || 'EUR',
@@ -236,7 +237,12 @@ export default function ExpensesScreen({ route, navigation }) {
             {notice ? <Text style={styles.notice}>{notice}</Text> : null}
 
             <Text style={styles.fieldLabel}>Tür</Text>
-            <ChipPicker options={KINDS} value={form.kind} onChange={(v) => patchForm({ kind: v })} renderLabel={(o) => o.label} />
+            <ChipPicker
+              options={EXPENSE_CATEGORIES.map((c) => ({ value: c.value }))}
+              value={form.kind}
+              onChange={(v) => patchForm({ kind: v })}
+              renderLabel={(o) => `${categoryIcon(o.value)} ${categoryLabel(o.value)}`}
+            />
 
             <Field label="Alınan hizmet / mal" value={form.label} onChangeText={(v) => patchForm({ label: v })} placeholder="Akşam yemeği, müze bileti, hediyelik…" />
 
@@ -275,13 +281,13 @@ export default function ExpensesScreen({ route, navigation }) {
                   <Image source={{ uri: e.receiptPhoto }} style={styles.thumb} resizeMode="cover" />
                 ) : (
                   <View style={styles.thumbIcon}>
-                    <Text style={{ fontSize: 20 }}>{e.kind === 'goods' ? '🛍️' : '🧾'}</Text>
+                    <Text style={{ fontSize: 20 }}>{categoryIcon(e.kind)}</Text>
                   </View>
                 )}
                 <View style={{ flex: 1 }}>
                   <Text style={styles.rowLabel} numberOfLines={1}>{e.label}</Text>
                   <Text style={styles.rowMeta}>
-                    {formatShortDate(e.date)} · {e.kind === 'goods' ? 'Mal' : 'Hizmet'}
+                    {formatShortDate(e.date)} · {categoryLabel(e.kind)}
                   </Text>
                   {e.eq ? (
                     <Text style={styles.rowEq} numberOfLines={1}>

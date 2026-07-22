@@ -5,18 +5,20 @@
 // olarak ayıklanır. Anahtar yoksa veya çağrı başarısızsa hata fırlatır; çağıran
 // ekran kullanıcıyı elle doldurmaya yönlendirir.
 import { CURRENCIES } from './fx';
+import { EXPENSE_CATEGORIES, EXPENSE_CATEGORY_VALUES } from '../data/expenseCategories';
 
 const CODES = CURRENCIES.map((c) => c.code).join(', ');
+const CATS = EXPENSE_CATEGORIES.map((c) => `${c.value} (${c.label})`).join(', ');
 
 const PROMPT =
   `Bu bir alışveriş/hizmet fişi ya da fatura fotoğrafı. Görüntüyü incele ve ` +
   `harcamayı çıkar. Alınan mal veya hizmetin kısa Türkçe adını, ödenen TOPLAM ` +
   `tutarı (sayı) ve para birimini belirle. Para birimi şu kodlardan biri olmalı: ` +
   `${CODES} (fişteki sembol/ülkeye göre; ₺/TL→TRY, €→EUR, $→USD, £→GBP). ` +
-  `Harcama bir hizmet mi (yemek, konaklama, ulaşım, bilet…) yoksa mal/ürün mü ` +
-  `belirle (service/goods).\n` +
+  `Harcamayı şu kategorilerden EN UYGUN olanına yerleştir ve anahtar değerini ("value") döndür: ` +
+  `${CATS}. Emin değilsen "diger" kullan.\n` +
   `Yanıtı SADECE şu JSON şemasıyla ver, başka metin yazma:\n` +
-  `{"label":"kısa ad","amount":123.45,"currency":"TRY","kind":"service"}`;
+  `{"label":"kısa ad","amount":123.45,"currency":"TRY","kind":"yemek"}`;
 
 // data URI ("data:image/jpeg;base64,....") → { mediaType, base64 }.
 function splitDataUri(uri) {
@@ -117,7 +119,7 @@ export async function readReceipt(dataUri, settings) {
   const parsed = safeParseJson(text);
   const amount = Number(String(parsed.amount).replace(',', '.'));
   const currency = VALID_CODES.has(parsed.currency) ? parsed.currency : 'TRY';
-  const kind = parsed.kind === 'goods' ? 'goods' : 'service';
+  const kind = EXPENSE_CATEGORY_VALUES.includes(parsed.kind) ? parsed.kind : 'diger';
   return {
     label: (parsed.label || '').toString().trim(),
     amount: isFinite(amount) ? amount : null,
