@@ -14,6 +14,7 @@ import AddStopScreen from '../screens/AddStopScreen';
 import DiscoveryHubScreen from '../screens/DiscoveryHubScreen';
 import AddDiscoveryScreen from '../screens/AddDiscoveryScreen';
 import DiscoveryDetailScreen from '../screens/DiscoveryDetailScreen';
+import ExpensesScreen from '../screens/ExpensesScreen';
 import AlbumScreen from '../screens/AlbumScreen';
 import VideoScriptScreen from '../screens/VideoScriptScreen';
 import { colors } from '../theme';
@@ -75,6 +76,7 @@ export default function RootNavigator() {
         <Stack.Screen name="DiscoveryHub" component={DiscoveryHubScreen} options={{ title: 'Keşif Günlüğü' }} />
         <Stack.Screen name="AddDiscovery" component={AddDiscoveryScreen} options={{ title: 'Keşif Ekle' }} />
         <Stack.Screen name="DiscoveryDetail" component={DiscoveryDetailScreen} options={{ title: 'Keşif' }} />
+        <Stack.Screen name="Expenses" component={ExpensesScreen} options={{ title: 'Harcamalar' }} />
         <Stack.Screen name="Album" component={AlbumScreen} options={{ title: 'Albüm / Yayın' }} />
         <Stack.Screen name="VideoScript" component={VideoScriptScreen} options={{ title: 'Video Senaryosu' }} />
       </Stack.Navigator>

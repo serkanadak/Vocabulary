@@ -146,6 +146,34 @@ function reducer(state, action) {
         })),
       };
 
+    // --- Harcamalar ---
+    case 'ADD_EXPENSE':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          expenses: [...(t.expenses || []), action.expense],
+        })),
+      };
+    case 'UPDATE_EXPENSE':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          expenses: (t.expenses || []).map((e) =>
+            e.id === action.expenseId ? { ...e, ...action.patch } : e
+          ),
+        })),
+      };
+    case 'REMOVE_EXPENSE':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          expenses: (t.expenses || []).filter((e) => e.id !== action.expenseId),
+        })),
+      };
+
     case 'UPDATE_SETTINGS':
       return { ...state, settings: { ...state.settings, ...action.patch } };
 
@@ -194,6 +222,7 @@ export function JournalProvider({ children }) {
         checklist: createDefaultChecklist(vehicle || DEFAULT_VEHICLE),
         stops: [],
         discoveries: [],
+        expenses: [],
       };
       dispatch({ type: 'ADD_TRIP', trip });
       return trip.id;
@@ -230,6 +259,12 @@ export function JournalProvider({ children }) {
       updateDiscovery: (tripId, discoveryId, patch) =>
         dispatch({ type: 'UPDATE_DISCOVERY', tripId, discoveryId, patch }),
       removeDiscovery: (tripId, discoveryId) => dispatch({ type: 'REMOVE_DISCOVERY', tripId, discoveryId }),
+      // expenses
+      addExpense: (tripId, expense) =>
+        dispatch({ type: 'ADD_EXPENSE', tripId, expense: { id: uid('exp'), ...expense } }),
+      updateExpense: (tripId, expenseId, patch) =>
+        dispatch({ type: 'UPDATE_EXPENSE', tripId, expenseId, patch }),
+      removeExpense: (tripId, expenseId) => dispatch({ type: 'REMOVE_EXPENSE', tripId, expenseId }),
       // settings
       updateSettings: (patch) => dispatch({ type: 'UPDATE_SETTINGS', patch }),
     };

@@ -136,6 +136,20 @@ export default function TripDetailScreen({ route, navigation }) {
           onPress={() => navigation.navigate('DiscoveryHub', { tripId })}
         />
 
+        {/* Harcamalar */}
+        <Text style={styles.sectionLabel}>BÜTÇE</Text>
+        <NavCard
+          icon="🧾"
+          title="Harcamalar"
+          subtitle={
+            (trip.expenses || []).length
+              ? `${trip.expenses.length} kayıt · fiş okut ya da elle ekle · EUR/USD/TL karşılığı`
+              : 'Fiş okutarak veya elle harcama ekle, EUR/USD/TL karşılığını gör'
+          }
+          badge={(trip.expenses || []).length || null}
+          onPress={() => navigation.navigate('Expenses', { tripId })}
+        />
+
         {/* Çıktılar */}
         <Text style={styles.sectionLabel}>SEYAHATİ BİTİR · ÇIKTILAR</Text>
         <NavCard
