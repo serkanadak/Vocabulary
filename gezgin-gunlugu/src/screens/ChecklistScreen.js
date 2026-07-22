@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 9,
   },
-  noteSaveText: { color: '#0b1a2b', fontWeight: '800', fontSize: 13 },
+  noteSaveText: { color: colors.onPrimary, fontWeight: '800', fontSize: 13 },
   statusBtn: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -304,5 +304,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     justifyContent: 'center',
   },
-  addBtnText: { color: '#0b1a2b', fontWeight: '800' },
+  addBtnText: { color: colors.onPrimary, fontWeight: '800' },
 });

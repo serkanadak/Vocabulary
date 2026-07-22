@@ -91,7 +91,7 @@ export default function AlbumScreen({ route }) {
           </Text>
           <Pressable style={[styles.pdfBtn, pdfBusy && { opacity: 0.7 }]} onPress={makePdf} disabled={pdfBusy}>
             {pdfBusy ? (
-              <ActivityIndicator color="#0b1a2b" />
+              <ActivityIndicator color={colors.onPrimary} />
             ) : (
               <Text style={styles.pdfText}>📄 PDF olarak kaydet</Text>
             )}
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     minHeight: 44,
   },
-  pdfText: { color: '#0b1a2b', fontWeight: '800', fontSize: 15 },
+  pdfText: { color: colors.onPrimary, fontWeight: '800', fontSize: 15 },
   copyBtn: {
     marginTop: 10,
     backgroundColor: colors.surfaceAlt,
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  coverCheckText: { color: '#0b1a2b', fontWeight: '800', fontSize: 13 },
+  coverCheckText: { color: colors.onPrimary, fontWeight: '800', fontSize: 13 },
   coverAuto: {
     width: 84,
     height: 84,
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  pageNoText: { color: '#0b1a2b', fontWeight: '800', fontSize: 13 },
+  pageNoText: { color: colors.onPrimary, fontWeight: '800', fontSize: 13 },
   pageDate: { color: colors.text, fontSize: 14, fontWeight: '700' },
   entry: { marginTop: 10, paddingTop: 10, borderTopWidth: 1, borderTopColor: colors.border },
   entryTitle: { color: colors.text, fontSize: 14, fontWeight: '600' },

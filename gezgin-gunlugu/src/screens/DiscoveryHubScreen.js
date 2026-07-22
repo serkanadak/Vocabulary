@@ -234,7 +234,7 @@ export default function DiscoveryHubScreen({ route, navigation }) {
 
         <Pressable style={[styles.pdfBtn, pdfBusy && { opacity: 0.7 }]} onPress={makePdf} disabled={pdfBusy}>
           {pdfBusy ? (
-            <ActivityIndicator color="#0b1a2b" />
+            <ActivityIndicator color={colors.onPrimary} />
           ) : (
             <Text style={styles.pdfText}>📄 Keşif günlüğünü PDF olarak al (tüm duraklar açık)</Text>
           )}
@@ -309,7 +309,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     minHeight: 44,
   },
-  pdfText: { color: '#0b1a2b', fontWeight: '800', fontSize: 14 },
+  pdfText: { color: colors.onPrimary, fontWeight: '800', fontSize: 14 },
   subLabel: {
     color: colors.textMuted,
     fontSize: 11,

@@ -107,5 +107,5 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
   },
-  fabText: { color: '#0b1a2b', fontWeight: '800', fontSize: 15 },
+  fabText: { color: colors.onPrimary, fontWeight: '800', fontSize: 15 },
 });

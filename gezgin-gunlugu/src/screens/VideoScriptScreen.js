@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     paddingVertical: 11,
     alignItems: 'center',
   },
-  copyText: { color: '#0b1a2b', fontWeight: '800', fontSize: 14 },
+  copyText: { color: colors.onPrimary, fontWeight: '800', fontSize: 14 },
   stage: {
     color: colors.textMuted,
     fontSize: 12,
