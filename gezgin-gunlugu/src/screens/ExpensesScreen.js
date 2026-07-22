@@ -33,8 +33,15 @@ export default function ExpensesScreen({ route, navigation }) {
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
   useLayoutEffect(() => {
-    navigation.setOptions({ title: 'Harcamalar' });
-  }, [navigation]);
+    navigation.setOptions({
+      title: 'Harcamalar',
+      headerRight: () => (
+        <Pressable onPress={() => navigation.navigate('ExpenseReport', { tripId })} hitSlop={10}>
+          <Text style={{ color: colors.primary, fontWeight: '700' }}>📊 Rapor</Text>
+        </Pressable>
+      ),
+    });
+  }, [navigation, tripId]);
 
   if (!trip) {
     return (
