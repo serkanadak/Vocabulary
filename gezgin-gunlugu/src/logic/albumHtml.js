@@ -130,14 +130,25 @@ export async function buildAlbumHtml(trip) {
       (d.userNotes ? `<div class="place-note">✍️ ${esc(d.userNotes)}</div>` : '');
 
     const photos = photosOf(d);
+    // Kullanıcı bir fotoğrafı "büyük göster" (featured) seçtiyse onu solo/büyük ver,
+    // kalanları ikişerli/küçük diz.
+    const featured = d.featuredPhoto && photos.includes(d.featuredPhoto) ? d.featuredPhoto : null;
+    const soloRow = (src) => {
+      const o = orient.get(src) || 'land';
+      return `<div class="prow ${o} solo"><figure class="ph"><img src="${src}" /></figure></div>`;
+    };
+    const gridRows = (list) => {
+      const land = list.filter((p) => (orient.get(p) || 'land') === 'land');
+      const port = list.filter((p) => orient.get(p) === 'port');
+      return [...rowsArr(land, 'land'), ...rowsArr(port, 'port')];
+    };
     let rows = [];
-    if (photos.length === 1) {
-      const o = orient.get(photos[0]) || 'land';
-      rows = [`<div class="prow ${o} solo"><figure class="ph"><img src="${photos[0]}" /></figure></div>`];
+    if (featured) {
+      rows = [soloRow(featured), ...gridRows(photos.filter((p) => p !== featured))];
+    } else if (photos.length === 1) {
+      rows = [soloRow(photos[0])];
     } else if (photos.length) {
-      const land = photos.filter((p) => (orient.get(p) || 'land') === 'land');
-      const port = photos.filter((p) => orient.get(p) === 'port');
-      rows = [...rowsArr(land, 'land'), ...rowsArr(port, 'port')];
+      rows = gridRows(photos);
     }
 
     // Mekan bilgisi + İLK fotoğraf satırı bölünmez bir gruptur → başlık asla
