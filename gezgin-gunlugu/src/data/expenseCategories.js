@@ -13,6 +13,7 @@ export const EXPENSE_CATEGORIES = [
   { value: 'iletisim', label: 'İletişim', icon: '📱' },
   { value: 'tamir_bakim', label: 'Tamir Bakım', icon: '🔧' },
   { value: 'sigorta', label: 'Sigorta', icon: '🛡️' },
+  { value: 'bilet', label: 'Bilet', icon: '🎫' },
   { value: 'diger', label: 'Diğer', icon: '🔖' },
 ];
 
