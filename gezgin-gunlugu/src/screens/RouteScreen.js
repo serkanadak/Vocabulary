@@ -26,9 +26,9 @@ function RouteMap({ stops }) {
     sea: colors.bg,
     land: colors.surfaceAlt,
     line: colors.primary,
-    dot: colors.accent,
-    dotStroke: colors.bg,
-    dotText: colors.bg,
+    dot: colors.primary,
+    dotStroke: colors.surface,
+    dotText: colors.onPrimary,
     text: colors.text,
   });
   if (!uri) return null;
@@ -230,7 +230,7 @@ export default function RouteScreen({ route, navigation }) {
         {stops.length ? (
           <Pressable style={[styles.pdfBtn, pdfBusy && { opacity: 0.7 }]} onPress={makePdf} disabled={pdfBusy}>
             {pdfBusy ? (
-              <ActivityIndicator color="#0b1a2b" />
+              <ActivityIndicator color={colors.onPrimary} />
             ) : (
               <Text style={styles.pdfText}>📄 Güzergahı PDF olarak al (detaylı)</Text>
             )}
@@ -408,7 +408,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     minHeight: 44,
   },
-  pdfText: { color: '#0b1a2b', fontWeight: '800', fontSize: 15 },
+  pdfText: { color: colors.onPrimary, fontWeight: '800', fontSize: 15 },
   stopInfo: { marginHorizontal: 16, marginTop: 8 },
   stopSummary: { color: colors.textMuted, fontSize: 13, lineHeight: 19, marginTop: 2 },
   timeline: { marginTop: 16 },
@@ -431,7 +431,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  stopIndexText: { color: '#0b1a2b', fontWeight: '800' },
+  stopIndexText: { color: colors.onPrimary, fontWeight: '800' },
   sourceBadge: {
     color: colors.textMuted,
     fontSize: 11,

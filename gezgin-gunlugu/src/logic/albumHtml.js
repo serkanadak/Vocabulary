@@ -242,8 +242,8 @@ export async function buildAlbumHtml(trip) {
   .page { background: #fff; width: 210mm; min-height: 297mm; margin: 10px auto; padding: 18mm 16mm;
     box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
   .cover { display: flex; flex-direction: column; }
-  /* Kapak görseli KIRPILMAZ (kubbe vb. üst kısımlar kesilmesin) — sığdırılır. */
-  .cover-img { width: 100%; height: 150mm; object-fit: contain; background: #eaeef2; border-radius: 6px; }
+  /* Kapak görseli KIRPILMAZ ve bant/çerçeve oluşmaz — kendi oranında, ortalı. */
+  .cover-img { max-width: 100%; max-height: 150mm; width: auto; height: auto; display: block; margin: 0 auto; border-radius: 6px; }
   .cover-title { font-size: 34px; font-weight: 800; color: #0b3a5b; margin-top: 22mm; }
   .cover-sub { font-size: 16px; color: #55636e; margin-top: 8px; }
   .cover-meta { font-size: 13px; color: #7a8791; margin-top: auto; }
@@ -259,14 +259,15 @@ export async function buildAlbumHtml(trip) {
   .place-loc { font-size: 13px; color: #7a8791; margin-top: 1px; }
   .place-summary { font-size: 13.5px; line-height: 1.55; color: #33404b; margin-top: 6px; }
   .place-note { font-size: 13px; color: #55636e; font-style: italic; margin-top: 5px; }
-  /* Fotoğraflar: yöne göre gruplanır; satırda EN FAZLA 2 foto (bölünmez, yüksekliği
-     bir sayfayı aşmaz → sığmazsa komple sonraki sayfaya iner). object-fit: contain
-     olduğundan fotoğraflar KIRPILMAZ, yalnızca sığdırılır (küçültülür). */
+  /* Fotoğraflar: satırda EN FAZLA 2 foto (bölünmez satır; sığmazsa komple sonraki
+     sayfaya iner). Fotoğraflar KENDİ ORANINDA gösterilir (max-width/max-height +
+     width/height:auto) → ne kırpma ne de yandan/üstten bant/çerçeve oluşur; yalnızca
+     sığmazsa orantılı küçültülür ve ortalanır. */
   .prow { display: flex; gap: 8px; margin-top: 10px; align-items: flex-start;
-    break-inside: avoid; page-break-inside: avoid; }
-  .prow figure.ph { flex: 0 1 calc(50% - 4px); margin: 0; }
+    justify-content: center; break-inside: avoid; page-break-inside: avoid; }
+  .prow figure.ph { flex: 0 1 calc(50% - 4px); margin: 0; text-align: center; }
   .prow.solo figure.ph { flex-basis: 100%; }
-  .prow img { width: 100%; height: auto; object-fit: contain; border-radius: 4px; display: block; }
+  .prow img { max-width: 100%; width: auto; height: auto; border-radius: 4px; display: block; margin: 0 auto; }
   .prow.land img { max-height: 130mm; }
   .prow.port img { max-height: 175mm; }
   .prow.solo.land img { max-height: 185mm; }
@@ -276,9 +277,9 @@ export async function buildAlbumHtml(trip) {
   .route { font-size: 15px; font-weight: 600; line-height: 1.6; }
   .dist { font-size: 13px; color: #7a8791; margin-top: 6px; }
   .stop-intro { break-inside: avoid; margin-bottom: 12px; }
-  /* Şehir temel fotoğrafı da KIRPILMAZ (kubbeli yapılar kesilmesin). */
-  .stop-intro-photo { width: 100%; max-height: 92mm; object-fit: contain; background: #eaeef2;
-    border-radius: 6px; margin-bottom: 8px; display: block; }
+  /* Şehir temel fotoğrafı da KIRPILMAZ ve bant oluşturmaz — kendi oranında, ortalı. */
+  .stop-intro-photo { max-width: 100%; max-height: 92mm; width: auto; height: auto;
+    border-radius: 6px; margin: 0 auto 8px; display: block; }
   /* Sade güzergah listesi: ülke / şehir / mekan adları (açıklamasız). */
   .route-list { margin: 0; padding-left: 22px; }
   .rl-stop { margin-bottom: 12px; }

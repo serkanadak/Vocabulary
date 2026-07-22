@@ -1,11 +1,11 @@
-// Ortak tema/renkler — kullanıcı Ayarlar'dan 4 renk paleti seçebilir:
-// Deniz (varsayılan), Güneş, Dağ, Kar. Hepsi koyu zeminli/açık metinlidir; böylece
-// tüm ekranların StyleSheet varsayımları (koyu zemin + açık yazı + parlak vurgu
-// üzerinde koyu metin) her palette geçerli kalır.
+// Ortak tema/renkler — kullanıcı Ayarlar'dan 4 AÇIK ve NEŞELİ renk paleti seçebilir:
+// Deniz (varsayılan), Güneş, Dağ, Kar. Hepsi açık zeminli/koyu metinlidir; canlı ve
+// neşeli vurgu renkleri kullanır. Buton yazıları `onPrimary` (beyaz) ile yazılır,
+// böylece canlı primary üzerinde okunaklı kalır.
 //
-// StyleSheet.create modül yüklenirken çalıştığından palet, önyükleme sırasında
-// senkron okunabilen localStorage'dan seçilir. Seçim değişince Ayarlar sayfası
-// localStorage'a yazıp sayfayı yeniler; yeni palet böylece tüm ekranlara uygulanır.
+// StyleSheet.create modül yüklenirken çalıştığından palet, önyüklemede senkron
+// okunabilen localStorage'dan seçilir. Seçim değişince Ayarlar sayfası localStorage'a
+// yazıp sayfayı yeniler; yeni palet böylece tüm ekranlara uygulanır.
 
 export const THEMES = {
   deniz: {
@@ -13,16 +13,17 @@ export const THEMES = {
     label: 'Deniz',
     emoji: '🌊',
     palette: {
-      bg: '#0b1a2b',
-      surface: '#122a42',
-      surfaceAlt: '#1c3d5c',
-      text: '#eaf4ff',
-      textMuted: '#9bb8d3',
-      primary: '#f5a623',
-      accent: '#2dd4bf',
-      border: '#1c3d5c',
-      success: '#22c55e',
-      danger: '#ef4444',
+      bg: '#ecf7fe',
+      surface: '#ffffff',
+      surfaceAlt: '#d4ecfa',
+      text: '#0b3550',
+      textMuted: '#4a7391',
+      primary: '#0284c7',
+      onPrimary: '#ffffff',
+      accent: '#06b6d4',
+      border: '#bfe1f4',
+      success: '#16a34a',
+      danger: '#dc2626',
     },
   },
   gunes: {
@@ -30,16 +31,17 @@ export const THEMES = {
     label: 'Güneş',
     emoji: '☀️',
     palette: {
-      bg: '#1e1408',
-      surface: '#33240f',
-      surfaceAlt: '#4a3418',
-      text: '#fff5e8',
-      textMuted: '#e0b783',
-      primary: '#fbbf24',
-      accent: '#fb7185',
-      border: '#4a3418',
-      success: '#22c55e',
-      danger: '#ef4444',
+      bg: '#fff6e6',
+      surface: '#ffffff',
+      surfaceAlt: '#ffe6c2',
+      text: '#5c3a12',
+      textMuted: '#8a5a1e',
+      primary: '#ea580c',
+      onPrimary: '#ffffff',
+      accent: '#e11d48',
+      border: '#f7d9a8',
+      success: '#16a34a',
+      danger: '#dc2626',
     },
   },
   dag: {
@@ -47,16 +49,17 @@ export const THEMES = {
     label: 'Dağ',
     emoji: '🏔️',
     palette: {
-      bg: '#0e1a13',
-      surface: '#182a1e',
-      surfaceAlt: '#26402e',
-      text: '#eaf6ee',
-      textMuted: '#a2c3ad',
-      primary: '#34d399',
-      accent: '#a3e635',
-      border: '#26402e',
-      success: '#22c55e',
-      danger: '#ef4444',
+      bg: '#ecf9f2',
+      surface: '#ffffff',
+      surfaceAlt: '#d2f0e0',
+      text: '#0f3a2c',
+      textMuted: '#3f7561',
+      primary: '#0d9488',
+      onPrimary: '#ffffff',
+      accent: '#ea7317',
+      border: '#c0e8d3',
+      success: '#16a34a',
+      danger: '#dc2626',
     },
   },
   kar: {
@@ -64,16 +67,17 @@ export const THEMES = {
     label: 'Kar',
     emoji: '❄️',
     palette: {
-      bg: '#0f1720',
-      surface: '#1b2732',
-      surfaceAlt: '#2a3a48',
-      text: '#f2f8ff',
-      textMuted: '#adc6da',
-      primary: '#7dd3fc',
-      accent: '#c4b5fd',
-      border: '#2a3a48',
-      success: '#22c55e',
-      danger: '#ef4444',
+      bg: '#f0f4ff',
+      surface: '#ffffff',
+      surfaceAlt: '#e0e7fb',
+      text: '#1c2748',
+      textMuted: '#57648a',
+      primary: '#4f46e5',
+      onPrimary: '#ffffff',
+      accent: '#0ea5e9',
+      border: '#d2ddf6',
+      success: '#16a34a',
+      danger: '#dc2626',
     },
   },
 };

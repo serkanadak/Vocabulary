@@ -94,7 +94,7 @@ export function Pill({ label, color, filled }) {
   const c = color || colors.primary;
   return (
     <View style={[styles.pill, { borderColor: c, backgroundColor: filled ? c : c + '22' }]}>
-      <Text style={[styles.pillText, { color: filled ? '#0b1a2b' : c }]}>{label}</Text>
+      <Text style={[styles.pillText, { color: filled ? colors.onPrimary : c }]}>{label}</Text>
     </View>
   );
 }
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 8,
   },
-  buttonText: { color: '#0b1a2b', fontWeight: '800', fontSize: 15 },
+  buttonText: { color: colors.onPrimary, fontWeight: '800', fontSize: 15 },
   secondaryBtn: {
     borderRadius: 12,
     paddingVertical: 12,
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   },
   chipSelected: { backgroundColor: colors.primary, borderColor: colors.primary },
   chipText: { color: colors.textMuted, fontSize: 13, fontWeight: '600' },
-  chipTextSelected: { color: '#0b1a2b' },
+  chipTextSelected: { color: colors.onPrimary },
   pill: {
     borderWidth: 1,
     borderRadius: 999,
@@ -272,6 +272,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   modalConfirmBtnDestructive: { backgroundColor: colors.danger },
-  modalConfirmText: { color: '#0b1a2b', fontWeight: '800' },
+  modalConfirmText: { color: colors.onPrimary, fontWeight: '800' },
   modalConfirmTextDestructive: { color: '#fff' },
 });
