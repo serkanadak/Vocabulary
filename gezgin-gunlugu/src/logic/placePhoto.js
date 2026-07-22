@@ -10,7 +10,9 @@ import { storageGet, storageSet } from './storage';
 import { placeById } from '../data/places';
 
 // ------------------------------------------------------------------ önbellek
-const CACHE_KEY = 'gg_place_photo_cache_v2';
+// v3: artık DİK montaj/kolaj lider görseller yerine YATAY tek fotoğraf tercih
+// edilir; eski (montajlı) seçimler yeniden çözülsün diye sürüm yükseltildi.
+const CACHE_KEY = 'gg_place_photo_cache_v3';
 const FAIL_TTL = 7 * 24 * 3600 * 1000; // başarısız aramayı 7 gün sonra tekrar dene
 let mem = null;
 
@@ -70,6 +72,18 @@ function stripHtml(s) {
     .trim();
 }
 
+// Şehir infobox'larında sık kullanılan DİK montaj/kolaj dosya adları.
+const MONTAGE_RE = /montage|collage|composite|compilation|kolaj|combo|banner/i;
+// Fotoğraf olmayan (bayrak, harita, arma, logo, ikon…) dosyaları eler.
+const NONPHOTO_RE = /flag|\bmap\b|locator|coat[\s_-]?of[\s_-]?arms|logo|icon|seal|emblem|wappen|escudo|bandera|karte|harita/i;
+
+// Görsel YATAY mı? (temel foto için diklemesine uzun montajları ele). Boyut
+// bilinmiyorsa engelleme (true döner).
+function isLandscape(w, h) {
+  if (!w || !h) return true;
+  return w >= h * 0.95;
+}
+
 // extmetadata'dan lisansın serbest olup olmadığını belirler.
 function isFreeLicense(ext) {
   if (!ext) return false;
@@ -113,7 +127,58 @@ async function findLeadImage(lang, title) {
   const thumb = page.thumbnail && page.thumbnail.source;
   const file = page.pageimage; // "Ornek.jpg"
   if (!thumb || !file) return null;
-  return { thumb, file, pageUrl: page.fullurl, pageTitle: page.title };
+  return {
+    thumb,
+    file,
+    w: (page.thumbnail && page.thumbnail.width) || 0,
+    h: (page.thumbnail && page.thumbnail.height) || 0,
+    pageUrl: page.fullurl,
+    pageTitle: page.title,
+  };
+}
+
+// Sayfadaki görselleri tarayıp serbest lisanslı, YATAY, tercihen TEK (montaj
+// olmayan) ve büyük bir fotoğraf seçer. İkonik şehir/mekan fotoğrafı için kullanılır.
+async function findBetterImage(lang, title) {
+  const url =
+    `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1` +
+    `&generator=images&gimlimit=30&titles=${encodeURIComponent(title)}` +
+    `&prop=imageinfo&iiprop=extmetadata|url|size|mime&iiurlwidth=640`;
+  const data = await fetchJson(url);
+  const pages = data && data.query && data.query.pages;
+  if (!pages) return null;
+  const cands = [];
+  for (const p of Object.values(pages)) {
+    const info = p.imageinfo && p.imageinfo[0];
+    if (!info) continue;
+    if (!/image\/(jpeg|png)/.test(info.mime || '')) continue; // svg (bayrak/harita/logo) atla
+    const fileTitle = (p.title || '').replace(/^File:/i, '');
+    if (NONPHOTO_RE.test(fileTitle)) continue;
+    if (!isLandscape(info.width, info.height)) continue; // dik olanları alma
+    if (!isFreeLicense(info.extmetadata)) continue;
+    const thumb = info.thumburl || info.url;
+    if (!thumb) continue;
+    cands.push({
+      thumb,
+      file: fileTitle,
+      ext: info.extmetadata,
+      w: info.width || 0,
+      montage: MONTAGE_RE.test(fileTitle),
+      descUrl: info.descriptionurl,
+    });
+  }
+  if (!cands.length) return null;
+  // Önce montaj olmayanlar, sonra en geniş olan → ikonik tek fotoğraf.
+  cands.sort((a, b) => a.montage - b.montage || b.w - a.w);
+  const c = cands[0];
+  return {
+    thumb: c.thumb,
+    file: c.file,
+    license: stripHtml((c.ext.LicenseShortName && c.ext.LicenseShortName.value) || 'serbest lisans'),
+    artist: stripHtml((c.ext.Artist && c.ext.Artist.value) || (c.ext.Credit && c.ext.Credit.value) || ''),
+    licenseUrl: (c.ext.LicenseUrl && c.ext.LicenseUrl.value) || '',
+    descUrl: c.descUrl,
+  };
 }
 
 // Commons'ta dosyanın lisans + atıf bilgisini alır; serbestse döndürür, değilse null.
@@ -137,6 +202,19 @@ async function checkCommonsLicense(file) {
   return { license, artist, licenseUrl, descUrl };
 }
 
+function buildPhoto(uri, articlePage, title, lic, file) {
+  return {
+    uri,
+    source: 'wikimedia',
+    page: lic.descUrl || articlePage || `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file || '')}`,
+    articlePage,
+    title,
+    license: lic.license,
+    artist: lic.artist,
+    licenseUrl: lic.licenseUrl,
+  };
+}
+
 async function fetchFreePhoto(place) {
   const titles = titleCandidates(place);
   if (!titles.length) return null;
@@ -144,18 +222,14 @@ async function fetchFreePhoto(place) {
     for (const title of titles) {
       const lead = await findLeadImage(lang, title); // ağ hatası burada throw eder
       if (!lead) continue;
-      const lic = await checkCommonsLicense(lead.file);
-      if (!lic) continue; // görsel var ama lisansı serbest değil → bu mekâna foto yok
-      return {
-        uri: lead.thumb,
-        source: 'wikimedia',
-        page: lic.descUrl || lead.pageUrl,
-        articlePage: lead.pageUrl,
-        title: lead.pageTitle || title,
-        license: lic.license,
-        artist: lic.artist,
-        licenseUrl: lic.licenseUrl,
-      };
+      // Lider görsel YATAY ise (tek büyük foto ya da yatay kolaj) doğrudan onu kullan.
+      if (isLandscape(lead.w, lead.h)) {
+        const lic = await checkCommonsLicense(lead.file);
+        if (lic) return buildPhoto(lead.thumb, lead.pageUrl, lead.pageTitle || title, lic, lead.file);
+      }
+      // Lider görsel DİK/montaj → sayfadan YATAY, ikonik tek bir fotoğraf ara.
+      const better = await findBetterImage(lang, title);
+      if (better) return buildPhoto(better.thumb, lead.pageUrl, lead.pageTitle || title, better, better.file);
     }
   }
   return null;

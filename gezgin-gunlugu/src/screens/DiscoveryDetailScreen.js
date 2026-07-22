@@ -102,7 +102,13 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
   };
   const removePhotoAt = (uri) => {
     const next = photos.filter((u) => u !== uri);
-    updateDiscovery(tripId, discoveryId, { photos: next, photoUri: next[0] || null });
+    const patch = { photos: next, photoUri: next[0] || null };
+    if (disc.featuredPhoto === uri) patch.featuredPhoto = null; // büyük gösterilen silindiyse temizle
+    updateDiscovery(tripId, discoveryId, patch);
+  };
+  // Albümde BÜYÜK gösterilecek fotoğrafı seç/kaldır (mekana birden çok foto varken).
+  const toggleFeatured = (uri) => {
+    updateDiscovery(tripId, discoveryId, { featuredPhoto: disc.featuredPhoto === uri ? null : uri });
   };
 
   return (
@@ -110,14 +116,26 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         {photos.length ? (
           <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
-            {photos.map((uri) => (
-              <View key={uri}>
-                <Image source={{ uri }} style={styles.photo} resizeMode="cover" />
-                <Pressable style={styles.removePhotoBtn} onPress={() => removePhotoAt(uri)} hitSlop={8}>
-                  <Text style={styles.removePhotoText}>✕</Text>
-                </Pressable>
-              </View>
-            ))}
+            {photos.map((uri) => {
+              const isFeatured = disc.featuredPhoto === uri;
+              return (
+                <View key={uri}>
+                  <Image source={{ uri }} style={styles.photo} resizeMode="cover" />
+                  <Pressable style={styles.removePhotoBtn} onPress={() => removePhotoAt(uri)} hitSlop={8}>
+                    <Text style={styles.removePhotoText}>✕</Text>
+                  </Pressable>
+                  {photos.length > 1 ? (
+                    <Pressable
+                      style={[styles.featureBtn, isFeatured && styles.featureBtnOn]}
+                      onPress={() => toggleFeatured(uri)}
+                      hitSlop={8}
+                    >
+                      <Text style={styles.featureText}>{isFeatured ? '★ Büyük' : '☆ Büyük yap'}</Text>
+                    </Pressable>
+                  ) : null}
+                </View>
+              );
+            })}
           </ScrollView>
         ) : null}
 
@@ -128,7 +146,9 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
             style={{ marginHorizontal: 0, marginBottom: 12 }}
           />
           {photos.length > 1 ? (
-            <Text style={styles.photoHint}>← Fotoğraflar arasında kaydır · {photos.length} fotoğraf</Text>
+            <Text style={styles.photoHint}>
+              ← Fotoğraflar arasında kaydır · {photos.length} fotoğraf · ★ ile birini albümde büyük göster
+            </Text>
           ) : null}
 
           <View style={styles.headerRow}>
@@ -247,6 +267,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   removePhotoText: { color: '#fff', fontWeight: '800' },
+  featureBtn: {
+    position: 'absolute',
+    left: 10,
+    bottom: 10,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 14,
+  },
+  featureBtnOn: { backgroundColor: colors.primary },
+  featureText: { color: '#fff', fontWeight: '800', fontSize: 12 },
   photoHint: { color: colors.textMuted, fontSize: 12, marginBottom: 8 },
   body: { padding: 16 },
   headerRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 8 },
