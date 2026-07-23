@@ -47,14 +47,14 @@ export function categoryBreakdown(expenses, cur) {
 }
 
 // Seyahatler arası karşılaştırma: her seyahat için seçilen para biriminde toplam.
-// `category` verilirse yalnızca o tür (kategori) harcamaları toplanır; null/boş
-// ise tüm harcamalar.
-export function tripComparison(trips, cur, category) {
+// `category` verilirse yalnızca o tür (kategori); `payment` verilirse yalnızca o
+// ödeme şekli (nakit/kart) süzülür. İkisi de boşsa tüm harcamalar toplanır.
+export function tripComparison(trips, cur, category, payment) {
   return (trips || [])
     .map((t) => {
-      const list = category
-        ? (t.expenses || []).filter((e) => ((e && e.kind) || 'diger') === category)
-        : t.expenses || [];
+      let list = t.expenses || [];
+      if (category) list = list.filter((e) => ((e && e.kind) || 'diger') === category);
+      if (payment) list = list.filter((e) => e && e.payment === payment);
       const s = sumIn(list, cur);
       return {
         id: t.id,

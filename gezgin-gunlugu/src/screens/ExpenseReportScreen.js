@@ -5,6 +5,7 @@ import { useJournal } from '../state/JournalContext';
 import { sumIn, categoryBreakdown, tripComparison, paymentSplit } from '../logic/expenseReport';
 import { formatMoney, currencySymbol, TARGETS } from '../logic/fx';
 import { EXPENSE_CATEGORIES, categoryLabel, categoryIcon } from '../data/expenseCategories';
+import { PAYMENT_METHODS, paymentLabel, paymentIcon } from '../data/paymentMethods';
 import { formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { ChipPicker, EmptyState } from '../components/common';
@@ -20,6 +21,7 @@ export default function ExpenseReportScreen({ route, navigation }) {
   const trip = getTrip(tripId);
   const [cur, setCur] = useState('EUR');
   const [compCat, setCompCat] = useState('all'); // karşılaştırma türü: 'all' | kategori değeri
+  const [compPay, setCompPay] = useState('all'); // karşılaştırma ödeme şekli: 'all' | 'nakit' | 'kart'
 
   useLayoutEffect(() => {
     navigation.setOptions({ title: 'Harcama Raporu' });
@@ -39,9 +41,10 @@ export default function ExpenseReportScreen({ route, navigation }) {
   const cats = categoryBreakdown(expenses, cur).filter((c) => c.count > 0);
   const maxCat = cats.reduce((m, c) => Math.max(m, c.total), 0);
 
-  // Karşılaştırma: seyahat bazında; istenirse tek bir tür (kategori) süzülür.
+  // Karşılaştırma: seyahat bazında; istenirse tür (kategori) ve/veya ödeme şekli süzülür.
   const compCategory = compCat === 'all' ? null : compCat;
-  const comp = tripComparison(trips || [], cur, compCategory).filter((t) => t.count > 0);
+  const compPayment = compPay === 'all' ? null : compPay;
+  const comp = tripComparison(trips || [], cur, compCategory, compPayment).filter((t) => t.count > 0);
   const maxTrip = comp.reduce((m, t) => Math.max(m, t.total), 0);
   const grand = comp.reduce((a, t) => a + t.total, 0);
   const avg = comp.length ? grand / comp.length : 0;
@@ -118,8 +121,8 @@ export default function ExpenseReportScreen({ route, navigation }) {
 
         {/* Seyahat karşılaştırması */}
         <Text style={styles.sectionLabel}>SEYAHAT KARŞILAŞTIRMASI</Text>
-        <Text style={styles.compSub}>Tür seç: seyahatleri toplamda ya da tek bir türde karşılaştır</Text>
-        <View style={{ paddingHorizontal: 16, marginBottom: 10 }}>
+        <Text style={styles.compSub}>Tür ve ödeme şekli seç: seyahatleri toplamda ya da süzülmüş kümede karşılaştır</Text>
+        <View style={{ paddingHorizontal: 16, marginBottom: 8 }}>
           <ChipPicker
             options={compCatOptions}
             value={compCat}
@@ -127,14 +130,27 @@ export default function ExpenseReportScreen({ route, navigation }) {
             renderLabel={(o) => (o.value === 'all' ? '📊 Tümü' : `${categoryIcon(o.value)} ${categoryLabel(o.value)}`)}
           />
         </View>
+        <View style={{ paddingHorizontal: 16, marginBottom: 10 }}>
+          <ChipPicker
+            options={[{ value: 'all' }, ...PAYMENT_METHODS.map((p) => ({ value: p.value }))]}
+            value={compPay}
+            onChange={setCompPay}
+            renderLabel={(o) => (o.value === 'all' ? '💰 Tüm ödemeler' : `${paymentIcon(o.value)} ${paymentLabel(o.value)}`)}
+          />
+        </View>
         {comp.length ? (
           <Text style={styles.compHint}>
-            {compCategory ? `${categoryIcon(compCategory)} ${categoryLabel(compCategory)} · ` : ''}
-            {comp.length} seyahat · ortalama {formatMoney(avg, cur)} · toplam {formatMoney(grand, cur)}
+            {compCategory ? `${categoryIcon(compCategory)} ${categoryLabel(compCategory)}` : 'Tüm türler'}
+            {' · '}
+            {compPayment ? `${paymentIcon(compPayment)} ${paymentLabel(compPayment)}` : 'tüm ödemeler'}
+            {' · '}
+            {comp.length} seyahat · ort. {formatMoney(avg, cur)} · toplam {formatMoney(grand, cur)}
           </Text>
         ) : (
           <Text style={styles.compHint}>
-            {compCategory ? 'Bu türde harcaması olan seyahat yok.' : 'Karşılaştırmak için seyahatlere harcama ekle.'}
+            {compCategory || compPayment
+              ? 'Bu süzgeçte harcaması olan seyahat yok.'
+              : 'Karşılaştırmak için seyahatlere harcama ekle.'}
           </Text>
         )}
         {comp.map((t) => {
