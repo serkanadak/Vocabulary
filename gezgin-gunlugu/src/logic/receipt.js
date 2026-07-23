@@ -6,6 +6,7 @@
 // ekran kullanıcıyı elle doldurmaya yönlendirir.
 import { CURRENCIES } from './fx';
 import { EXPENSE_CATEGORIES, EXPENSE_CATEGORY_VALUES } from '../data/expenseCategories';
+import { PAYMENT_VALUES } from '../data/paymentMethods';
 
 const CODES = CURRENCIES.map((c) => c.code).join(', ');
 const CATS = EXPENSE_CATEGORIES.map((c) => `${c.value} (${c.label})`).join(', ');
@@ -17,8 +18,10 @@ const PROMPT =
   `${CODES} (fişteki sembol/ülkeye göre; ₺/TL→TRY, €→EUR, $→USD, £→GBP). ` +
   `Harcamayı şu kategorilerden EN UYGUN olanına yerleştir ve anahtar değerini ("value") döndür: ` +
   `${CATS}. Emin değilsen "diger" kullan.\n` +
+  `Ödeme şeklini belirle: fişte NAKİT/CASH yazıyorsa "nakit", KREDİ KARTI/KART/VISA/` +
+  `MASTERCARD/CARD yazıyorsa "kart". Anlaşılmıyorsa "payment" alanını boş bırak.\n` +
   `Yanıtı SADECE şu JSON şemasıyla ver, başka metin yazma:\n` +
-  `{"label":"kısa ad","amount":123.45,"currency":"TRY","kind":"yemek"}`;
+  `{"label":"kısa ad","amount":123.45,"currency":"TRY","kind":"yemek","payment":"kart"}`;
 
 // data URI ("data:image/jpeg;base64,....") → { mediaType, base64 }.
 function splitDataUri(uri) {
@@ -120,10 +123,12 @@ export async function readReceipt(dataUri, settings) {
   const amount = Number(String(parsed.amount).replace(',', '.'));
   const currency = VALID_CODES.has(parsed.currency) ? parsed.currency : 'TRY';
   const kind = EXPENSE_CATEGORY_VALUES.includes(parsed.kind) ? parsed.kind : 'diger';
+  const payment = PAYMENT_VALUES.includes(parsed.payment) ? parsed.payment : null;
   return {
     label: (parsed.label || '').toString().trim(),
     amount: isFinite(amount) ? amount : null,
     currency,
     kind,
+    payment,
   };
 }

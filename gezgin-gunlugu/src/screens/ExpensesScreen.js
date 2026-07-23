@@ -12,12 +12,21 @@ import {
   categoryLabel,
   categoryIcon,
 } from '../data/expenseCategories';
+import { PAYMENT_METHODS, DEFAULT_PAYMENT, paymentLabel, paymentIcon } from '../data/paymentMethods';
 import { todayKey, isValidDateKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { Field, ChipPicker, PrimaryButton, SecondaryButton, ConfirmModal, EmptyState, Card } from '../components/common';
 
 function emptyForm() {
-  return { kind: DEFAULT_EXPENSE_CATEGORY, label: '', amount: '', currency: 'EUR', date: todayKey(), receiptPhoto: null };
+  return {
+    kind: DEFAULT_EXPENSE_CATEGORY,
+    label: '',
+    amount: '',
+    currency: 'EUR',
+    payment: DEFAULT_PAYMENT,
+    date: todayKey(),
+    receiptPhoto: null,
+  };
 }
 
 export default function ExpensesScreen({ route, navigation }) {
@@ -75,6 +84,7 @@ export default function ExpensesScreen({ route, navigation }) {
       label: e.label || '',
       amount: e.amount != null ? String(e.amount) : '',
       currency: e.currency || 'EUR',
+      payment: e.payment || DEFAULT_PAYMENT,
       date: e.date || todayKey(),
       receiptPhoto: e.receiptPhoto || null,
     });
@@ -109,6 +119,7 @@ export default function ExpensesScreen({ route, navigation }) {
         if (parsed.amount != null) next.amount = String(parsed.amount);
         if (parsed.currency) next.currency = parsed.currency;
         if (parsed.kind) next.kind = parsed.kind;
+        if (parsed.payment) next.payment = parsed.payment;
         setNotice('Fiş okundu — bilgileri kontrol edip kaydedin.');
       } catch (err) {
         setNotice(
@@ -160,6 +171,7 @@ export default function ExpensesScreen({ route, navigation }) {
       label: form.label.trim(),
       amount: amountNum,
       currency: form.currency,
+      payment: form.payment,
       date: form.date.trim() || todayKey(),
       eq,
       receiptPhoto: form.receiptPhoto || null,
@@ -267,6 +279,14 @@ export default function ExpensesScreen({ route, navigation }) {
               renderLabel={(o) => `${currencySymbol(o.value)} ${o.value}`}
             />
 
+            <Text style={styles.fieldLabel}>Ödeme şekli</Text>
+            <ChipPicker
+              options={PAYMENT_METHODS.map((p) => ({ value: p.value }))}
+              value={form.payment}
+              onChange={(v) => patchForm({ payment: v })}
+              renderLabel={(o) => `${paymentIcon(o.value)} ${paymentLabel(o.value)}`}
+            />
+
             <Field label="📅 Tarih (YYYY-AA-GG)" value={form.date} onChangeText={(v) => patchForm({ date: v })} autoCapitalize="none" placeholder={todayKey()} />
             {!dateOk ? <Text style={styles.err}>Geçersiz tarih biçimi.</Text> : null}
 
@@ -295,6 +315,7 @@ export default function ExpensesScreen({ route, navigation }) {
                   <Text style={styles.rowLabel} numberOfLines={1}>{e.label}</Text>
                   <Text style={styles.rowMeta}>
                     {formatShortDate(e.date)} · {categoryLabel(e.kind)}
+                    {e.payment ? ` · ${paymentIcon(e.payment)} ${paymentLabel(e.payment)}` : ''}
                   </Text>
                   {e.eq ? (
                     <Text style={styles.rowEq} numberOfLines={1}>

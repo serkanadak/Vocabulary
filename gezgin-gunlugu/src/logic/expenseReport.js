@@ -19,6 +19,18 @@ export function sumIn(expenses, cur) {
   return { total, converted, missing, count: (expenses || []).length };
 }
 
+// Ödeme şekli kırılımı: seçilen para biriminde nakit / kart / diğer toplamları.
+export function paymentSplit(expenses, cur) {
+  const out = { nakit: 0, kart: 0, other: 0 };
+  for (const e of expenses || []) {
+    if (!(e && e.eq && typeof e.eq[cur] === 'number')) continue;
+    if (e.payment === 'nakit') out.nakit += e.eq[cur];
+    else if (e.payment === 'kart') out.kart += e.eq[cur];
+    else out.other += e.eq[cur];
+  }
+  return out;
+}
+
 // Tür (kategori) bazında kırılım: [{ value, label, icon, total, count }] tutara göre azalan.
 export function categoryBreakdown(expenses, cur) {
   const map = new Map();

@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
-import { sumIn, categoryBreakdown, tripComparison } from '../logic/expenseReport';
+import { sumIn, categoryBreakdown, tripComparison, paymentSplit } from '../logic/expenseReport';
 import { formatMoney, currencySymbol, TARGETS } from '../logic/fx';
 import { EXPENSE_CATEGORIES, categoryLabel, categoryIcon } from '../data/expenseCategories';
 import { formatShortDate } from '../logic/date';
@@ -35,6 +35,7 @@ export default function ExpenseReportScreen({ route, navigation }) {
 
   const expenses = trip.expenses || [];
   const s = sumIn(expenses, cur);
+  const pay = paymentSplit(expenses, cur);
   const cats = categoryBreakdown(expenses, cur).filter((c) => c.count > 0);
   const maxCat = cats.reduce((m, c) => Math.max(m, c.total), 0);
 
@@ -86,6 +87,11 @@ export default function ExpenseReportScreen({ route, navigation }) {
           <Text style={styles.totalMeta}>
             {s.count} harcama{s.missing ? ` · ${s.missing} kaydın karşılığı yok (çevrimdışı)` : ''}
           </Text>
+          <View style={styles.paySplit}>
+            <Text style={styles.payItem}>💵 Nakit {formatMoney(pay.nakit, cur)}</Text>
+            <Text style={styles.payItem}>💳 Kart {formatMoney(pay.kart, cur)}</Text>
+            {pay.other ? <Text style={styles.payItem}>• Diğer {formatMoney(pay.other, cur)}</Text> : null}
+          </View>
         </View>
 
         {/* Tür bazında özet */}
@@ -175,6 +181,16 @@ const styles = StyleSheet.create({
   totalCaption: { color: colors.onPrimary, fontSize: 13, fontWeight: '700', opacity: 0.9 },
   totalBig: { color: colors.onPrimary, fontSize: 26, fontWeight: '800', marginTop: 6 },
   totalMeta: { color: colors.onPrimary, fontSize: 12, opacity: 0.85, marginTop: 8 },
+  paySplit: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 14,
+    marginTop: 12,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255,255,255,0.25)',
+  },
+  payItem: { color: colors.onPrimary, fontSize: 13, fontWeight: '700' },
   sectionLabel: {
     color: colors.textMuted,
     fontSize: 12,
