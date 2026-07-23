@@ -35,10 +35,15 @@ export function categoryBreakdown(expenses, cur) {
 }
 
 // Seyahatler arası karşılaştırma: her seyahat için seçilen para biriminde toplam.
-export function tripComparison(trips, cur) {
+// `category` verilirse yalnızca o tür (kategori) harcamaları toplanır; null/boş
+// ise tüm harcamalar.
+export function tripComparison(trips, cur, category) {
   return (trips || [])
     .map((t) => {
-      const s = sumIn(t.expenses || [], cur);
+      const list = category
+        ? (t.expenses || []).filter((e) => ((e && e.kind) || 'diger') === category)
+        : t.expenses || [];
+      const s = sumIn(list, cur);
       return {
         id: t.id,
         title: t.title || 'Seyahat',

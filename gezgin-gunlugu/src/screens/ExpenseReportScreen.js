@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { sumIn, categoryBreakdown, tripComparison } from '../logic/expenseReport';
 import { formatMoney, currencySymbol, TARGETS } from '../logic/fx';
+import { EXPENSE_CATEGORIES, categoryLabel, categoryIcon } from '../data/expenseCategories';
 import { formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { ChipPicker, EmptyState } from '../components/common';
@@ -18,6 +19,7 @@ export default function ExpenseReportScreen({ route, navigation }) {
   const { getTrip, trips } = useJournal();
   const trip = getTrip(tripId);
   const [cur, setCur] = useState('EUR');
+  const [compCat, setCompCat] = useState('all'); // karşılaştırma türü: 'all' | kategori değeri
 
   useLayoutEffect(() => {
     navigation.setOptions({ title: 'Harcama Raporu' });
@@ -36,11 +38,20 @@ export default function ExpenseReportScreen({ route, navigation }) {
   const cats = categoryBreakdown(expenses, cur).filter((c) => c.count > 0);
   const maxCat = cats.reduce((m, c) => Math.max(m, c.total), 0);
 
-  // Karşılaştırma: harcaması olan tüm seyahatler.
-  const comp = tripComparison(trips || [], cur).filter((t) => t.count > 0);
+  // Karşılaştırma: seyahat bazında; istenirse tek bir tür (kategori) süzülür.
+  const compCategory = compCat === 'all' ? null : compCat;
+  const comp = tripComparison(trips || [], cur, compCategory).filter((t) => t.count > 0);
   const maxTrip = comp.reduce((m, t) => Math.max(m, t.total), 0);
   const grand = comp.reduce((a, t) => a + t.total, 0);
   const avg = comp.length ? grand / comp.length : 0;
+
+  // Karşılaştırma süzgecinde yalnızca herhangi bir seyahatte kullanılmış türleri göster.
+  const usedCats = new Set();
+  for (const t of trips || []) for (const e of t.expenses || []) usedCats.add((e && e.kind) || 'diger');
+  const compCatOptions = [
+    { value: 'all' },
+    ...EXPENSE_CATEGORIES.filter((c) => usedCats.has(c.value)).map((c) => ({ value: c.value })),
+  ];
 
   if (!expenses.length) {
     return (
@@ -101,12 +112,24 @@ export default function ExpenseReportScreen({ route, navigation }) {
 
         {/* Seyahat karşılaştırması */}
         <Text style={styles.sectionLabel}>SEYAHAT KARŞILAŞTIRMASI</Text>
-        {comp.length > 1 ? (
+        <Text style={styles.compSub}>Tür seç: seyahatleri toplamda ya da tek bir türde karşılaştır</Text>
+        <View style={{ paddingHorizontal: 16, marginBottom: 10 }}>
+          <ChipPicker
+            options={compCatOptions}
+            value={compCat}
+            onChange={setCompCat}
+            renderLabel={(o) => (o.value === 'all' ? '📊 Tümü' : `${categoryIcon(o.value)} ${categoryLabel(o.value)}`)}
+          />
+        </View>
+        {comp.length ? (
           <Text style={styles.compHint}>
+            {compCategory ? `${categoryIcon(compCategory)} ${categoryLabel(compCategory)} · ` : ''}
             {comp.length} seyahat · ortalama {formatMoney(avg, cur)} · toplam {formatMoney(grand, cur)}
           </Text>
         ) : (
-          <Text style={styles.compHint}>Karşılaştırmak için başka seyahatlere de harcama ekle.</Text>
+          <Text style={styles.compHint}>
+            {compCategory ? 'Bu türde harcaması olan seyahat yok.' : 'Karşılaştırmak için seyahatlere harcama ekle.'}
+          </Text>
         )}
         {comp.map((t) => {
           const isCurrent = t.id === tripId;
@@ -175,6 +198,7 @@ const styles = StyleSheet.create({
   barFill: { height: '100%', borderRadius: 999, backgroundColor: colors.accent },
   barFillCurrent: { backgroundColor: colors.primary },
   catMeta: { color: colors.textMuted, fontSize: 11, marginTop: 5 },
+  compSub: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginBottom: 10 },
   compHint: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginBottom: 12 },
   tripRow: {
     marginHorizontal: 16,
