@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
-import { sumIn, categoryBreakdown, tripComparison, paymentSplit } from '../logic/expenseReport';
+import { sumIn, categoryBreakdown, tripComparison, paymentSplit, categoryTripMatrix } from '../logic/expenseReport';
 import { formatMoney, currencySymbol, TARGETS } from '../logic/fx';
 import { EXPENSE_CATEGORIES, categoryLabel, categoryIcon } from '../data/expenseCategories';
 import { PAYMENT_METHODS, paymentLabel, paymentIcon } from '../data/paymentMethods';
@@ -40,6 +40,9 @@ export default function ExpenseReportScreen({ route, navigation }) {
   const pay = paymentSplit(expenses, cur);
   const cats = categoryBreakdown(expenses, cur).filter((c) => c.count > 0);
   const maxCat = cats.reduce((m, c) => Math.max(m, c.total), 0);
+
+  // Tür × Seyahat çapraz tablosu (harcaması olan tüm seyahatler üzerinden).
+  const matrix = categoryTripMatrix(trips || [], cur);
 
   // Karşılaştırma: seyahat bazında; istenirse tür (kategori) ve/veya ödeme şekli süzülür.
   const compCategory = compCat === 'all' ? null : compCat;
@@ -118,6 +121,75 @@ export default function ExpenseReportScreen({ route, navigation }) {
             </View>
           );
         })}
+
+        {/* Tür × Seyahat çapraz tablosu */}
+        <Text style={styles.sectionLabel}>TÜR × SEYAHAT TABLOSU</Text>
+        {matrix.cols.length && matrix.cats.length ? (
+          <>
+            <Text style={styles.compSub}>
+              Kolon = seyahat · satır = tür · değer = {currencySymbol(cur)} {cur} harcama
+            </Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator style={styles.tableScroll}>
+              <View>
+                {/* başlık */}
+                <View style={[styles.trow, styles.trowHead]}>
+                  <View style={styles.thCat}>
+                    <Text style={styles.thText}>Tür</Text>
+                  </View>
+                  {matrix.cols.map((col) => (
+                    <View key={col.id} style={[styles.tcell, col.id === tripId && styles.tcellCurrent]}>
+                      <Text style={styles.thText} numberOfLines={1}>
+                        {col.id === tripId ? '➤ ' : ''}
+                        {col.title}
+                      </Text>
+                      {col.startDate ? <Text style={styles.thSub}>{formatShortDate(col.startDate)}</Text> : null}
+                    </View>
+                  ))}
+                  <View style={[styles.tcell, styles.tcellTotal]}>
+                    <Text style={styles.thText}>Toplam</Text>
+                  </View>
+                </View>
+                {/* satırlar */}
+                {matrix.cats.map((cat) => (
+                  <View key={cat.value} style={styles.trow}>
+                    <View style={styles.thCat}>
+                      <Text style={styles.tdCat} numberOfLines={1}>
+                        {cat.icon} {cat.label}
+                      </Text>
+                    </View>
+                    {matrix.cols.map((col) => {
+                      const v = (matrix.data[cat.value] && matrix.data[cat.value][col.id]) || 0;
+                      return (
+                        <View key={col.id} style={[styles.tcell, col.id === tripId && styles.tcellCurrent]}>
+                          <Text style={styles.td}>{v ? formatMoney(v, cur) : '–'}</Text>
+                        </View>
+                      );
+                    })}
+                    <View style={[styles.tcell, styles.tcellTotal]}>
+                      <Text style={styles.tdTotal}>{formatMoney(cat.total, cur)}</Text>
+                    </View>
+                  </View>
+                ))}
+                {/* toplam satırı */}
+                <View style={[styles.trow, styles.trowTotal]}>
+                  <View style={styles.thCat}>
+                    <Text style={styles.tdTotal}>Toplam</Text>
+                  </View>
+                  {matrix.cols.map((col) => (
+                    <View key={col.id} style={[styles.tcell, col.id === tripId && styles.tcellCurrent]}>
+                      <Text style={styles.tdTotal}>{formatMoney(col.total, cur)}</Text>
+                    </View>
+                  ))}
+                  <View style={[styles.tcell, styles.tcellTotal]}>
+                    <Text style={styles.tdTotal}>{formatMoney(matrix.grand, cur)}</Text>
+                  </View>
+                </View>
+              </View>
+            </ScrollView>
+          </>
+        ) : (
+          <Text style={styles.compHint}>Tablo için seyahatlere harcama ekle.</Text>
+        )}
 
         {/* Seyahat karşılaştırması */}
         <Text style={styles.sectionLabel}>SEYAHAT KARŞILAŞTIRMASI</Text>
@@ -231,6 +303,28 @@ const styles = StyleSheet.create({
   barFillCurrent: { backgroundColor: colors.primary },
   catMeta: { color: colors.textMuted, fontSize: 11, marginTop: 5 },
   compSub: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginBottom: 10 },
+  tableScroll: { marginHorizontal: 16, marginBottom: 4 },
+  trow: { flexDirection: 'row', alignItems: 'stretch', borderBottomWidth: 1, borderBottomColor: colors.border },
+  trowHead: { borderBottomWidth: 2, borderBottomColor: colors.primary },
+  trowTotal: { borderBottomWidth: 0, borderTopWidth: 2, borderTopColor: colors.primary },
+  thCat: {
+    width: 132,
+    paddingVertical: 9,
+    paddingRight: 8,
+    justifyContent: 'center',
+    backgroundColor: colors.surfaceAlt,
+    borderRightWidth: 1,
+    borderRightColor: colors.border,
+    paddingLeft: 8,
+  },
+  tcell: { width: 96, paddingVertical: 9, paddingHorizontal: 8, justifyContent: 'center', alignItems: 'flex-end' },
+  tcellCurrent: { backgroundColor: colors.primary + '14' },
+  tcellTotal: { backgroundColor: colors.surfaceAlt },
+  thText: { color: colors.text, fontSize: 12, fontWeight: '800' },
+  thSub: { color: colors.textMuted, fontSize: 10, marginTop: 2 },
+  tdCat: { color: colors.text, fontSize: 12, fontWeight: '700' },
+  td: { color: colors.text, fontSize: 12 },
+  tdTotal: { color: colors.primary, fontSize: 12, fontWeight: '800' },
   compHint: { color: colors.textMuted, fontSize: 12, marginHorizontal: 16, marginBottom: 12 },
   tripRow: {
     marginHorizontal: 16,
