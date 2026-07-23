@@ -20,6 +20,13 @@ function photosOf(d) {
   return d?.photoUri ? [d.photoUri] : [];
 }
 
+// "Büyük göster" (featured) seçilen fotoğraflar. Yeni kayıtlarda çoklu
+// `featuredPhotos` dizisi; eski kayıtlarda tek `featuredPhoto`.
+function featuredListOf(d) {
+  if (Array.isArray(d?.featuredPhotos)) return d.featuredPhotos;
+  return d?.featuredPhoto ? [d.featuredPhoto] : [];
+}
+
 function esc(s) {
   return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
@@ -130,9 +137,11 @@ export async function buildAlbumHtml(trip) {
       (d.userNotes ? `<div class="place-note">✍️ ${esc(d.userNotes)}</div>` : '');
 
     const photos = photosOf(d);
-    // Kullanıcı bir fotoğrafı "büyük göster" (featured) seçtiyse onu solo/büyük ver,
-    // kalanları ikişerli/küçük diz.
-    const featured = d.featuredPhoto && photos.includes(d.featuredPhoto) ? d.featuredPhoto : null;
+    // Kullanıcı bir veya birden fazla fotoğrafı "büyük göster" (featured) seçtiyse
+    // her birini solo/büyük ver, kalanları ikişerli/küçük diz. Hepsi seçilmişse
+    // hepsi büyük olur.
+    const featuredSet = new Set(featuredListOf(d));
+    const featured = photos.filter((p) => featuredSet.has(p)); // karesel sırayı korur
     const soloRow = (src) => {
       const o = orient.get(src) || 'land';
       return `<div class="prow ${o} solo"><figure class="ph"><img src="${src}" /></figure></div>`;
@@ -143,8 +152,9 @@ export async function buildAlbumHtml(trip) {
       return [...rowsArr(land, 'land'), ...rowsArr(port, 'port')];
     };
     let rows = [];
-    if (featured) {
-      rows = [soloRow(featured), ...gridRows(photos.filter((p) => p !== featured))];
+    if (featured.length) {
+      const rest = photos.filter((p) => !featuredSet.has(p));
+      rows = [...featured.map(soloRow), ...gridRows(rest)];
     } else if (photos.length === 1) {
       rows = [soloRow(photos[0])];
     } else if (photos.length) {

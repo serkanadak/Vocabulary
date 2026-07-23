@@ -22,6 +22,12 @@ function photosOf(disc) {
   return disc?.photoUri ? [disc.photoUri] : [];
 }
 
+// "Büyük göster" seçilen fotoğraflar: yeni çoklu `featuredPhotos` ya da eski tek `featuredPhoto`.
+function featuredOf(disc) {
+  if (Array.isArray(disc?.featuredPhotos)) return disc.featuredPhotos;
+  return disc?.featuredPhoto ? [disc.featuredPhoto] : [];
+}
+
 export default function DiscoveryDetailScreen({ route, navigation }) {
   const { tripId, discoveryId } = route.params;
   const { getTrip, updateDiscovery, removeDiscovery } = useJournal();
@@ -61,6 +67,8 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
 
   const meta = SOURCE_LABEL[disc.enrichSource] || SOURCE_LABEL[ENRICH_SOURCE.TEMPLATE];
   const photos = photosOf(disc);
+  const featured = featuredOf(disc).filter((u) => photos.includes(u));
+  const allBig = photos.length > 0 && featured.length === photos.length;
 
   const saveNotes = () => {
     updateDiscovery(tripId, discoveryId, { userNotes: notes.trim() });
@@ -102,13 +110,27 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
   };
   const removePhotoAt = (uri) => {
     const next = photos.filter((u) => u !== uri);
-    const patch = { photos: next, photoUri: next[0] || null };
-    if (disc.featuredPhoto === uri) patch.featuredPhoto = null; // büyük gösterilen silindiyse temizle
-    updateDiscovery(tripId, discoveryId, patch);
+    // Silinen foto büyük listesindeyse oradan da çıkar; eski tek alanı da temizle.
+    const nextFeatured = featured.filter((u) => u !== uri && next.includes(u));
+    updateDiscovery(tripId, discoveryId, {
+      photos: next,
+      photoUri: next[0] || null,
+      featuredPhotos: nextFeatured,
+      featuredPhoto: null,
+    });
   };
-  // Albümde BÜYÜK gösterilecek fotoğrafı seç/kaldır (mekana birden çok foto varken).
+  // Albümde BÜYÜK gösterilecek fotoğrafları seç/kaldır (çoklu seçim mümkün).
   const toggleFeatured = (uri) => {
-    updateDiscovery(tripId, discoveryId, { featuredPhoto: disc.featuredPhoto === uri ? null : uri });
+    const next = featured.includes(uri) ? featured.filter((u) => u !== uri) : [...featured, uri];
+    updateDiscovery(tripId, discoveryId, { featuredPhotos: next, featuredPhoto: null });
+  };
+  // Hepsini büyük yap / hiçbirini (toggle).
+  const toggleAllFeatured = () => {
+    const allBig = photos.length > 0 && featured.length === photos.length;
+    updateDiscovery(tripId, discoveryId, {
+      featuredPhotos: allBig ? [] : [...photos],
+      featuredPhoto: null,
+    });
   };
 
   return (
@@ -117,7 +139,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
         {photos.length ? (
           <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
             {photos.map((uri) => {
-              const isFeatured = disc.featuredPhoto === uri;
+              const isFeatured = featured.includes(uri);
               return (
                 <View key={uri}>
                   <Image source={{ uri }} style={styles.photo} resizeMode="cover" />
@@ -146,9 +168,17 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
             style={{ marginHorizontal: 0, marginBottom: 12 }}
           />
           {photos.length > 1 ? (
-            <Text style={styles.photoHint}>
-              ← Fotoğraflar arasında kaydır · {photos.length} fotoğraf · ★ ile birini albümde büyük göster
-            </Text>
+            <>
+              <View style={styles.featAllRow}>
+                <Text style={styles.photoHint}>
+                  ← Kaydır · {photos.length} fotoğraf · ★ ile albümde büyük göster
+                  {featured.length ? ` (${featured.length} büyük)` : ''}
+                </Text>
+                <Pressable onPress={toggleAllFeatured} hitSlop={8}>
+                  <Text style={styles.featAllBtn}>{allBig ? 'Hiçbiri büyük' : '★ Hepsi büyük'}</Text>
+                </Pressable>
+              </View>
+            </>
           ) : null}
 
           <View style={styles.headerRow}>
@@ -278,7 +308,9 @@ const styles = StyleSheet.create({
   },
   featureBtnOn: { backgroundColor: colors.primary },
   featureText: { color: '#fff', fontWeight: '800', fontSize: 12 },
-  photoHint: { color: colors.textMuted, fontSize: 12, marginBottom: 8 },
+  photoHint: { color: colors.textMuted, fontSize: 12, marginBottom: 8, flex: 1, marginRight: 10 },
+  featAllRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  featAllBtn: { color: colors.primary, fontSize: 13, fontWeight: '800', marginBottom: 8 },
   body: { padding: 16 },
   headerRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 8 },
   pin: { fontSize: 20 },
