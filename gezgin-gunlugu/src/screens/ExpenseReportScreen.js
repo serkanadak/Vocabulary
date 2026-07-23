@@ -2,7 +2,14 @@ import React, { useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
-import { sumIn, categoryBreakdown, tripComparison, paymentSplit, categoryTripMatrix } from '../logic/expenseReport';
+import {
+  sumIn,
+  categoryBreakdown,
+  tripComparison,
+  paymentSplit,
+  categoryTripMatrix,
+  paymentTripMatrix,
+} from '../logic/expenseReport';
 import { formatMoney, currencySymbol, TARGETS } from '../logic/fx';
 import { EXPENSE_CATEGORIES, categoryLabel, categoryIcon } from '../data/expenseCategories';
 import { PAYMENT_METHODS, paymentLabel, paymentIcon } from '../data/paymentMethods';
@@ -13,6 +20,66 @@ import { ChipPicker, EmptyState } from '../components/common';
 function pct(part, whole) {
   if (!whole) return 0;
   return Math.max(0, Math.min(1, part / whole));
+}
+
+// Satır = { value, label, icon, total }, kolon = seyahat; hücre seçilen birimde harcama.
+function MatrixTable({ rows, cols, data, grand, currentId, cur, headerLabel }) {
+  return (
+    <ScrollView horizontal showsHorizontalScrollIndicator style={styles.tableScroll}>
+      <View>
+        <View style={[styles.trow, styles.trowHead]}>
+          <View style={styles.thCat}>
+            <Text style={styles.thText}>{headerLabel}</Text>
+          </View>
+          {cols.map((col) => (
+            <View key={col.id} style={[styles.tcell, col.id === currentId && styles.tcellCurrent]}>
+              <Text style={styles.thText} numberOfLines={1}>
+                {col.id === currentId ? '➤ ' : ''}
+                {col.title}
+              </Text>
+              {col.startDate ? <Text style={styles.thSub}>{formatShortDate(col.startDate)}</Text> : null}
+            </View>
+          ))}
+          <View style={[styles.tcell, styles.tcellTotal]}>
+            <Text style={styles.thText}>Toplam</Text>
+          </View>
+        </View>
+        {rows.map((r) => (
+          <View key={r.value} style={styles.trow}>
+            <View style={styles.thCat}>
+              <Text style={styles.tdCat} numberOfLines={1}>
+                {r.icon} {r.label}
+              </Text>
+            </View>
+            {cols.map((col) => {
+              const v = (data[r.value] && data[r.value][col.id]) || 0;
+              return (
+                <View key={col.id} style={[styles.tcell, col.id === currentId && styles.tcellCurrent]}>
+                  <Text style={styles.td}>{v ? formatMoney(v, cur) : '–'}</Text>
+                </View>
+              );
+            })}
+            <View style={[styles.tcell, styles.tcellTotal]}>
+              <Text style={styles.tdTotal}>{formatMoney(r.total, cur)}</Text>
+            </View>
+          </View>
+        ))}
+        <View style={[styles.trow, styles.trowTotal]}>
+          <View style={styles.thCat}>
+            <Text style={styles.tdTotal}>Toplam</Text>
+          </View>
+          {cols.map((col) => (
+            <View key={col.id} style={[styles.tcell, col.id === currentId && styles.tcellCurrent]}>
+              <Text style={styles.tdTotal}>{formatMoney(col.total, cur)}</Text>
+            </View>
+          ))}
+          <View style={[styles.tcell, styles.tcellTotal]}>
+            <Text style={styles.tdTotal}>{formatMoney(grand, cur)}</Text>
+          </View>
+        </View>
+      </View>
+    </ScrollView>
+  );
 }
 
 export default function ExpenseReportScreen({ route, navigation }) {
@@ -41,8 +108,9 @@ export default function ExpenseReportScreen({ route, navigation }) {
   const cats = categoryBreakdown(expenses, cur).filter((c) => c.count > 0);
   const maxCat = cats.reduce((m, c) => Math.max(m, c.total), 0);
 
-  // Tür × Seyahat çapraz tablosu (harcaması olan tüm seyahatler üzerinden).
+  // Tür × Seyahat ve Ödeme × Seyahat çapraz tabloları (harcaması olan tüm seyahatler).
   const matrix = categoryTripMatrix(trips || [], cur);
+  const payMatrix = paymentTripMatrix(trips || [], cur);
 
   // Karşılaştırma: seyahat bazında; istenirse tür (kategori) ve/veya ödeme şekli süzülür.
   const compCategory = compCat === 'all' ? null : compCat;
@@ -129,63 +197,36 @@ export default function ExpenseReportScreen({ route, navigation }) {
             <Text style={styles.compSub}>
               Kolon = seyahat · satır = tür · değer = {currencySymbol(cur)} {cur} harcama
             </Text>
-            <ScrollView horizontal showsHorizontalScrollIndicator style={styles.tableScroll}>
-              <View>
-                {/* başlık */}
-                <View style={[styles.trow, styles.trowHead]}>
-                  <View style={styles.thCat}>
-                    <Text style={styles.thText}>Tür</Text>
-                  </View>
-                  {matrix.cols.map((col) => (
-                    <View key={col.id} style={[styles.tcell, col.id === tripId && styles.tcellCurrent]}>
-                      <Text style={styles.thText} numberOfLines={1}>
-                        {col.id === tripId ? '➤ ' : ''}
-                        {col.title}
-                      </Text>
-                      {col.startDate ? <Text style={styles.thSub}>{formatShortDate(col.startDate)}</Text> : null}
-                    </View>
-                  ))}
-                  <View style={[styles.tcell, styles.tcellTotal]}>
-                    <Text style={styles.thText}>Toplam</Text>
-                  </View>
-                </View>
-                {/* satırlar */}
-                {matrix.cats.map((cat) => (
-                  <View key={cat.value} style={styles.trow}>
-                    <View style={styles.thCat}>
-                      <Text style={styles.tdCat} numberOfLines={1}>
-                        {cat.icon} {cat.label}
-                      </Text>
-                    </View>
-                    {matrix.cols.map((col) => {
-                      const v = (matrix.data[cat.value] && matrix.data[cat.value][col.id]) || 0;
-                      return (
-                        <View key={col.id} style={[styles.tcell, col.id === tripId && styles.tcellCurrent]}>
-                          <Text style={styles.td}>{v ? formatMoney(v, cur) : '–'}</Text>
-                        </View>
-                      );
-                    })}
-                    <View style={[styles.tcell, styles.tcellTotal]}>
-                      <Text style={styles.tdTotal}>{formatMoney(cat.total, cur)}</Text>
-                    </View>
-                  </View>
-                ))}
-                {/* toplam satırı */}
-                <View style={[styles.trow, styles.trowTotal]}>
-                  <View style={styles.thCat}>
-                    <Text style={styles.tdTotal}>Toplam</Text>
-                  </View>
-                  {matrix.cols.map((col) => (
-                    <View key={col.id} style={[styles.tcell, col.id === tripId && styles.tcellCurrent]}>
-                      <Text style={styles.tdTotal}>{formatMoney(col.total, cur)}</Text>
-                    </View>
-                  ))}
-                  <View style={[styles.tcell, styles.tcellTotal]}>
-                    <Text style={styles.tdTotal}>{formatMoney(matrix.grand, cur)}</Text>
-                  </View>
-                </View>
-              </View>
-            </ScrollView>
+            <MatrixTable
+              rows={matrix.cats}
+              cols={matrix.cols}
+              data={matrix.data}
+              grand={matrix.grand}
+              currentId={tripId}
+              cur={cur}
+              headerLabel="Tür"
+            />
+          </>
+        ) : (
+          <Text style={styles.compHint}>Tablo için seyahatlere harcama ekle.</Text>
+        )}
+
+        {/* Ödeme şekli × Seyahat çapraz tablosu */}
+        <Text style={styles.sectionLabel}>ÖDEME ŞEKLİ × SEYAHAT TABLOSU</Text>
+        {payMatrix.cols.length && payMatrix.rows.length ? (
+          <>
+            <Text style={styles.compSub}>
+              Kolon = seyahat · satır = ödeme şekli · değer = {currencySymbol(cur)} {cur} harcama
+            </Text>
+            <MatrixTable
+              rows={payMatrix.rows}
+              cols={payMatrix.cols}
+              data={payMatrix.data}
+              grand={payMatrix.grand}
+              currentId={tripId}
+              cur={cur}
+              headerLabel="Ödeme"
+            />
           </>
         ) : (
           <Text style={styles.compHint}>Tablo için seyahatlere harcama ekle.</Text>

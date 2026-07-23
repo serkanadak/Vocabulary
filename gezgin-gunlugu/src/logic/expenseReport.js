@@ -3,6 +3,7 @@
 // biriminde tutarlı toplamlar üretir. Karşılığı olmayan (çevrimdışı eklenmiş)
 // kayıtlar `missing` olarak sayılır ama toplama katılmaz.
 import { EXPENSE_CATEGORIES, categoryLabel, categoryIcon } from '../data/expenseCategories';
+import { paymentLabel, paymentIcon } from '../data/paymentMethods';
 
 export function sumIn(expenses, cur) {
   let total = 0;
@@ -83,6 +84,51 @@ export function categoryTripMatrix(trips, cur) {
   }
 
   return { cats, cols, data, grand };
+}
+
+// Ödeme şekli × Seyahat çapraz tablosu (pivot): satır = ödeme şekli
+// (nakit / kart / belirsiz), kolon = seyahat, hücre = seçilen para biriminde
+// harcama. Kullanılmayan satırlar gizlenir.
+export function paymentTripMatrix(trips, cur) {
+  const cols = (trips || [])
+    .filter((t) => (t.expenses || []).length)
+    .map((t) => ({ id: t.id, title: t.title || 'Seyahat', startDate: t.startDate || '', total: 0 }));
+
+  const used = new Set();
+  const data = {};
+  for (const t of trips || []) {
+    if (!(t.expenses || []).length) continue;
+    for (const e of t.expenses || []) {
+      const key = e && (e.payment === 'nakit' || e.payment === 'kart') ? e.payment : 'other';
+      used.add(key);
+      if (!(e && e.eq && typeof e.eq[cur] === 'number')) continue;
+      data[key] = data[key] || {};
+      data[key][t.id] = (data[key][t.id] || 0) + e.eq[cur];
+    }
+  }
+
+  const defs = [
+    { value: 'nakit', label: paymentLabel('nakit'), icon: paymentIcon('nakit') },
+    { value: 'kart', label: paymentLabel('kart'), icon: paymentIcon('kart') },
+    { value: 'other', label: 'Belirsiz', icon: '💰' },
+  ];
+  const rows = defs
+    .filter((d) => used.has(d.value))
+    .map((d) => {
+      const row = data[d.value] || {};
+      const total = Object.values(row).reduce((a, b) => a + b, 0);
+      return { ...d, total };
+    });
+
+  let grand = 0;
+  for (const col of cols) {
+    let s = 0;
+    for (const r of rows) s += (data[r.value] && data[r.value][col.id]) || 0;
+    col.total = s;
+    grand += s;
+  }
+
+  return { rows, cols, data, grand };
 }
 
 // Seyahatler arası karşılaştırma: her seyahat için seçilen para biriminde toplam.
