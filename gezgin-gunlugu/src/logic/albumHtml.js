@@ -152,11 +152,12 @@ export async function buildAlbumHtml(trip) {
       return [...rowsArr(land, 'land'), ...rowsArr(port, 'port')];
     };
     let rows = [];
-    if (featured.length) {
+    if (photos.length === 1) {
+      // Tek foto: kullanıcı seçimi. Varsayılan büyük; `soloSmall` ile küçük.
+      rows = d.soloSmall ? gridRows(photos) : [soloRow(photos[0])];
+    } else if (featured.length) {
       const rest = photos.filter((p) => !featuredSet.has(p));
       rows = [...featured.map(soloRow), ...gridRows(rest)];
-    } else if (photos.length === 1) {
-      rows = [soloRow(photos[0])];
     } else if (photos.length) {
       rows = gridRows(photos);
     }

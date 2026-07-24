@@ -124,6 +124,10 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
     const next = featured.includes(uri) ? featured.filter((u) => u !== uri) : [...featured, uri];
     updateDiscovery(tripId, discoveryId, { featuredPhotos: next, featuredPhoto: null });
   };
+  // Tek fotoğraflı mekan: PDF'de büyük mü küçük mü gösterilsin (varsayılan büyük).
+  const toggleSoloSmall = () => {
+    updateDiscovery(tripId, discoveryId, { soloSmall: !disc.soloSmall, featuredPhotos: [], featuredPhoto: null });
+  };
   // Hepsini büyük yap / hiçbirini (toggle).
   const toggleAllFeatured = () => {
     const allBig = photos.length > 0 && featured.length === photos.length;
@@ -139,22 +143,23 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
         {photos.length ? (
           <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
             {photos.map((uri) => {
-              const isFeatured = featured.includes(uri);
+              const single = photos.length === 1;
+              const isBig = single ? !disc.soloSmall : featured.includes(uri);
               return (
                 <View key={uri}>
                   <Image source={{ uri }} style={styles.photo} resizeMode="cover" />
                   <Pressable style={styles.removePhotoBtn} onPress={() => removePhotoAt(uri)} hitSlop={8}>
                     <Text style={styles.removePhotoText}>✕</Text>
                   </Pressable>
-                  {photos.length > 1 ? (
-                    <Pressable
-                      style={[styles.featureBtn, isFeatured && styles.featureBtnOn]}
-                      onPress={() => toggleFeatured(uri)}
-                      hitSlop={8}
-                    >
-                      <Text style={styles.featureText}>{isFeatured ? '★ Büyük' : '☆ Büyük yap'}</Text>
-                    </Pressable>
-                  ) : null}
+                  <Pressable
+                    style={[styles.featureBtn, isBig && styles.featureBtnOn]}
+                    onPress={single ? toggleSoloSmall : () => toggleFeatured(uri)}
+                    hitSlop={8}
+                  >
+                    <Text style={styles.featureText}>
+                      {isBig ? '★ Büyük' : single ? '☆ Küçük' : '☆ Büyük yap'}
+                    </Text>
+                  </Pressable>
                 </View>
               );
             })}
@@ -170,7 +175,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
           {photos.length > 1 ? (
             <>
               <View style={styles.featAllRow}>
-                <Text style={styles.photoHint}>
+                <Text style={[styles.photoHint, styles.hintFlex]}>
                   ← Kaydır · {photos.length} fotoğraf · ★ ile albümde büyük göster
                   {featured.length ? ` (${featured.length} büyük)` : ''}
                 </Text>
@@ -179,6 +184,10 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
                 </Pressable>
               </View>
             </>
+          ) : photos.length === 1 ? (
+            <Text style={styles.photoHint}>
+              ★ ile bu fotoğrafın albümde (PDF) büyük mü küçük mü çıkacağını seç
+            </Text>
           ) : null}
 
           <View style={styles.headerRow}>
@@ -308,7 +317,8 @@ const styles = StyleSheet.create({
   },
   featureBtnOn: { backgroundColor: colors.primary },
   featureText: { color: '#fff', fontWeight: '800', fontSize: 12 },
-  photoHint: { color: colors.textMuted, fontSize: 12, marginBottom: 8, flex: 1, marginRight: 10 },
+  photoHint: { color: colors.textMuted, fontSize: 12, marginBottom: 8 },
+  hintFlex: { flex: 1, marginRight: 10 },
   featAllRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   featAllBtn: { color: colors.primary, fontSize: 13, fontWeight: '800', marginBottom: 8 },
   body: { padding: 16 },
