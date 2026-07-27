@@ -4,8 +4,18 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { PLACES } from '../data/places';
 import { storageEstimate } from '../logic/storage';
+import { resolveCategories } from '../data/expenseCategories';
+import { categoryUsage } from '../logic/expenseReport';
 import { colors, THEMES, getThemeId, saveThemeId } from '../theme';
-import { Card, Field, ChipPicker, SectionHeader, ProgressBar, ConfirmModal } from '../components/common';
+import {
+  Card,
+  Field,
+  ChipPicker,
+  SectionHeader,
+  ProgressBar,
+  ConfirmModal,
+  SecondaryButton,
+} from '../components/common';
 
 // Bir renk paleti önizleme kartı — zemin, yazı ve iki vurgu rengini gösterir.
 function ThemeOption({ theme, selected, onPress }) {
@@ -52,7 +62,29 @@ function photoCountOf(trips) {
 }
 
 export default function SettingsScreen() {
-  const { settings, updateSettings, trips } = useJournal();
+  const {
+    settings,
+    updateSettings,
+    trips,
+    addExpenseCategory,
+    deleteExpenseCategory,
+    setExpenseCategoryActive,
+  } = useJournal();
+
+  // --- Harcama türleri ---
+  const catalog = resolveCategories(settings);
+  const usage = categoryUsage(trips);
+  const [newCatLabel, setNewCatLabel] = useState('');
+  const [newCatIcon, setNewCatIcon] = useState('');
+  const [pendingCatDelete, setPendingCatDelete] = useState(null); // silinecek tür
+
+  const addCat = () => {
+    const name = newCatLabel.trim();
+    if (!name) return;
+    addExpenseCategory(name, newCatIcon);
+    setNewCatLabel('');
+    setNewCatIcon('');
+  };
 
   const totalDiscoveries = trips.reduce((n, t) => n + (t.discoveries || []).length, 0);
   const photoCount = photoCountOf(trips);
@@ -115,6 +147,69 @@ export default function SettingsScreen() {
           <Text style={styles.hint}>
             Dört tema: 🌊 Deniz, ☀️ Güneş, 🏔️ Dağ, ❄️ Kar. Yeni tema, uygulanması için ekranı bir kez
             yeniler; verilerin ve seyahatlerin korunur.
+          </Text>
+        </Card>
+
+        <SectionHeader
+          title="Harcama Türleri"
+          subtitle="Seyahatlerde seçilebilen tür listesini yönet."
+        />
+        <Card>
+          {catalog.map((c) => {
+            const used = usage[c.value] || 0;
+            const canDelete = !c.builtin && used === 0; // kullanılmamış kullanıcı türü tamamen silinir
+            return (
+              <View key={c.value} style={styles.catRow}>
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.catName, !c.active && styles.catNamePassive]}>
+                    {c.icon} {c.label}
+                    {c.builtin ? '' : ' ·  eklenen'}
+                  </Text>
+                  <Text style={styles.catMeta}>
+                    {c.active ? 'Aktif' : 'Pasif — seyahatlerde seçilemez'}
+                    {used ? ` · ${used} harcama` : ' · hiç kullanılmadı'}
+                  </Text>
+                </View>
+                <Pressable onPress={() => setExpenseCategoryActive(c.value, !c.active)} hitSlop={8}>
+                  <Text style={[styles.catAction, c.active && styles.catActionMuted]}>
+                    {c.active ? 'Pasifleştir' : 'Aktifleştir'}
+                  </Text>
+                </Pressable>
+                {canDelete ? (
+                  <Pressable onPress={() => setPendingCatDelete(c)} hitSlop={8}>
+                    <Text style={styles.catDelete}>Sil</Text>
+                  </Pressable>
+                ) : null}
+              </View>
+            );
+          })}
+
+          <View style={styles.catAddBox}>
+            <Text style={styles.label}>Yeni tür ekle</Text>
+            <View style={styles.catAddRow}>
+              <View style={{ flex: 1 }}>
+                <Field
+                  value={newCatLabel}
+                  onChangeText={setNewCatLabel}
+                  placeholder="Tür adı (ör. Otopark)"
+                />
+              </View>
+              <View style={{ width: 88 }}>
+                <Field value={newCatIcon} onChangeText={setNewCatIcon} placeholder="🅿️" />
+              </View>
+            </View>
+            <SecondaryButton
+              title="＋ Türü ekle"
+              onPress={addCat}
+              disabled={!newCatLabel.trim()}
+              style={{ marginHorizontal: 0, marginTop: 4 }}
+            />
+          </View>
+
+          <Text style={styles.hint}>
+            Harcama girilmiş türler silinemez; “Pasifleştir” ile seyahatlerde seçilmekten çıkarılır ve geçmiş
+            kayıtları/raporları bozulmadan kalır. Tekrar “Aktifleştir” dediğinde yeniden seçilebilir hâle gelir.
+            Hiç kullanılmamış, kendi eklediğin türler tamamen silinebilir.
           </Text>
         </Card>
 
@@ -257,6 +352,23 @@ export default function SettingsScreen() {
       </ScrollView>
 
       <ConfirmModal
+        visible={!!pendingCatDelete}
+        title="Türü sil?"
+        message={
+          pendingCatDelete
+            ? `“${pendingCatDelete.label}” türü listeden kaldırılacak. Bu türde hiç harcama girilmediği için veri kaybı olmaz.`
+            : ''
+        }
+        confirmLabel="Sil"
+        destructive
+        onConfirm={() => {
+          deleteExpenseCategory(pendingCatDelete.value);
+          setPendingCatDelete(null);
+        }}
+        onCancel={() => setPendingCatDelete(null)}
+      />
+
+      <ConfirmModal
         visible={!!pendingTheme}
         title="Temayı değiştir?"
         message={
@@ -297,6 +409,22 @@ const styles = StyleSheet.create({
   themeLabel: { fontSize: 15, fontWeight: '800' },
   themeCheck: { fontSize: 12, fontWeight: '700' },
   label: { color: colors.textMuted, fontSize: 12, marginBottom: 6, marginTop: 12 },
+  catRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 9,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  catName: { color: colors.text, fontSize: 14, fontWeight: '700' },
+  catNamePassive: { color: colors.textMuted, textDecorationLine: 'line-through' },
+  catMeta: { color: colors.textMuted, fontSize: 11, marginTop: 2 },
+  catAction: { color: colors.primary, fontSize: 12, fontWeight: '800' },
+  catActionMuted: { color: colors.textMuted },
+  catDelete: { color: colors.danger, fontSize: 12, fontWeight: '800' },
+  catAddBox: { marginTop: 6 },
+  catAddRow: { flexDirection: 'row', gap: 10, alignItems: 'flex-start' },
   hint: { color: colors.textMuted, fontSize: 12, marginTop: 12, lineHeight: 18 },
   warn: { color: colors.primary, fontSize: 12, marginTop: 12, lineHeight: 17 },
   statRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6 },

@@ -7,10 +7,11 @@ import { preparePhoto } from '../logic/imageStore';
 import { readReceipt } from '../logic/receipt';
 import { getRates, convertAll, formatMoney, currencySymbol, CURRENCIES, TARGETS } from '../logic/fx';
 import {
-  EXPENSE_CATEGORIES,
   DEFAULT_EXPENSE_CATEGORY,
-  categoryLabel,
-  categoryIcon,
+  resolveCategories,
+  activeCategories,
+  catLabel,
+  catIcon,
 } from '../data/expenseCategories';
 import { PAYMENT_METHODS, DEFAULT_PAYMENT, paymentLabel, paymentIcon } from '../data/paymentMethods';
 import { todayKey, isValidDateKey, formatShortDate } from '../logic/date';
@@ -62,6 +63,22 @@ export default function ExpensesScreen({ route, navigation }) {
 
   const expenses = [...(trip.expenses || [])].sort((a, b) => ((a.date || '') < (b.date || '') ? 1 : -1));
 
+  // Tüm türler (etiket okumak için) ve yalnızca aktif olanlar (seçim için).
+  const catalog = resolveCategories(settings);
+  const activeList = activeCategories(settings);
+  // Hepsi pasifleştirilmişse kilitlenmemek için tüm katalogu göster.
+  const active = activeList.length ? activeList : catalog;
+  // Düzenlenen kayıt pasif bir türdeyse onu da seçenekler arasında tut ki
+  // kullanıcı istemeden türü değiştirmek zorunda kalmasın.
+  const pickable =
+    form && form.kind && !active.some((c) => c.value === form.kind)
+      ? [...active, ...catalog.filter((c) => c.value === form.kind)]
+      : active;
+  // Yeni kayıt için varsayılan tür: aktifse 'yemek', değilse ilk aktif tür.
+  const defaultKind = active.some((c) => c.value === DEFAULT_EXPENSE_CATEGORY)
+    ? DEFAULT_EXPENSE_CATEGORY
+    : (active[0] && active[0].value) || DEFAULT_EXPENSE_CATEGORY;
+
   // EUR/USD/TL toplamları (çevrimi olan harcamalar üzerinden).
   const totals = { EUR: 0, USD: 0, TRY: 0 };
   let missing = 0;
@@ -74,7 +91,7 @@ export default function ExpensesScreen({ route, navigation }) {
   }
 
   const openAdd = () => {
-    setForm(emptyForm());
+    setForm({ ...emptyForm(), kind: defaultKind });
     setEditingId(null);
     setNotice('');
   };
@@ -111,7 +128,7 @@ export default function ExpensesScreen({ route, navigation }) {
       setReading(true);
       setNotice('');
       const photo = await preparePhoto(res.assets[0].uri, { maxPx: 1400, quality: 0.7 });
-      const base = form || emptyForm();
+      const base = form || { ...emptyForm(), kind: defaultKind };
       const next = { ...base, receiptPhoto: photo };
       try {
         const parsed = await readReceipt(photo, settings);
@@ -209,7 +226,7 @@ export default function ExpensesScreen({ route, navigation }) {
             <SecondaryButton
               title="📷 Fiş oku"
               onPress={() => {
-                setForm(emptyForm());
+                setForm({ ...emptyForm(), kind: defaultKind });
                 setEditingId(null);
                 setTimeout(scanReceipt, 0);
               }}
@@ -257,10 +274,10 @@ export default function ExpensesScreen({ route, navigation }) {
 
             <Text style={styles.fieldLabel}>Tür</Text>
             <ChipPicker
-              options={EXPENSE_CATEGORIES.map((c) => ({ value: c.value }))}
+              options={pickable.map((c) => ({ value: c.value }))}
               value={form.kind}
               onChange={(v) => patchForm({ kind: v })}
-              renderLabel={(o) => `${categoryIcon(o.value)} ${categoryLabel(o.value)}`}
+              renderLabel={(o) => `${catIcon(catalog, o.value)} ${catLabel(catalog, o.value)}`}
             />
 
             <Field label="Alınan hizmet / mal" value={form.label} onChangeText={(v) => patchForm({ label: v })} placeholder="Akşam yemeği, müze bileti, hediyelik…" />
@@ -308,13 +325,13 @@ export default function ExpensesScreen({ route, navigation }) {
                   <Image source={{ uri: e.receiptPhoto }} style={styles.thumb} resizeMode="cover" />
                 ) : (
                   <View style={styles.thumbIcon}>
-                    <Text style={{ fontSize: 20 }}>{categoryIcon(e.kind)}</Text>
+                    <Text style={{ fontSize: 20 }}>{catIcon(catalog, e.kind)}</Text>
                   </View>
                 )}
                 <View style={{ flex: 1 }}>
                   <Text style={styles.rowLabel} numberOfLines={1}>{e.label}</Text>
                   <Text style={styles.rowMeta}>
-                    {formatShortDate(e.date)} · {categoryLabel(e.kind)}
+                    {formatShortDate(e.date)} · {catLabel(catalog, e.kind)}
                     {e.payment ? ` · ${paymentIcon(e.payment)} ${paymentLabel(e.payment)}` : ''}
                   </Text>
                   {e.eq ? (

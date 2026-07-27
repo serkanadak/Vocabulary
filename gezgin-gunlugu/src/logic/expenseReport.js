@@ -2,8 +2,26 @@
 // Her harcamanın eq = { EUR, USD, TRY } karşılığı üzerinden, seçilen hedef para
 // biriminde tutarlı toplamlar üretir. Karşılığı olmayan (çevrimdışı eklenmiş)
 // kayıtlar `missing` olarak sayılır ama toplama katılmaz.
-import { EXPENSE_CATEGORIES, categoryLabel, categoryIcon } from '../data/expenseCategories';
+import { BUILTIN_EXPENSE_CATEGORIES, catLabel, catIcon } from '../data/expenseCategories';
 import { paymentLabel, paymentIcon } from '../data/paymentMethods';
+
+// Katalog verilmezse yerleşik türlere düşer (etiket/sıra için).
+function catalogOf(catalog) {
+  return catalog && catalog.length ? catalog : BUILTIN_EXPENSE_CATEGORIES;
+}
+
+// Tür başına harcama sayısı (tüm seyahatlerde): { [kind]: adet }.
+// Ayarlar'da bir türün silinebilir mi (hiç kullanılmamış) olduğunu belirlemek için.
+export function categoryUsage(trips) {
+  const out = {};
+  for (const t of trips || []) {
+    for (const e of t.expenses || []) {
+      const key = (e && e.kind) || 'diger';
+      out[key] = (out[key] || 0) + 1;
+    }
+  }
+  return out;
+}
 
 export function sumIn(expenses, cur) {
   let total = 0;
@@ -33,7 +51,9 @@ export function paymentSplit(expenses, cur) {
 }
 
 // Tür (kategori) bazında kırılım: [{ value, label, icon, total, count }] tutara göre azalan.
-export function categoryBreakdown(expenses, cur) {
+// `catalog` verilirse etiket/ikon oradan (kullanıcı türleri dahil) okunur.
+export function categoryBreakdown(expenses, cur, catalog) {
+  const cat = catalogOf(catalog);
   const map = new Map();
   for (const e of expenses || []) {
     const key = (e && e.kind) || 'diger';
@@ -42,7 +62,7 @@ export function categoryBreakdown(expenses, cur) {
     if (e && e.eq && typeof e.eq[cur] === 'number') row.total += e.eq[cur];
     map.set(key, row);
   }
-  const rows = [...map.values()].map((r) => ({ ...r, label: categoryLabel(r.value), icon: categoryIcon(r.value) }));
+  const rows = [...map.values()].map((r) => ({ ...r, label: catLabel(cat, r.value), icon: catIcon(cat, r.value) }));
   rows.sort((a, b) => b.total - a.total || b.count - a.count);
   return rows;
 }
@@ -51,7 +71,8 @@ export function categoryBreakdown(expenses, cur) {
 // hücre = seçilen para biriminde harcama. Yalnızca harcaması olan seyahatler
 // (kolon) ve kullanılmış türler (satır) yer alır. Satır/kolon toplamları ve
 // genel toplam da döner.
-export function categoryTripMatrix(trips, cur) {
+export function categoryTripMatrix(trips, cur, catalog) {
+  const cat = catalogOf(catalog);
   const cols = (trips || [])
     .filter((t) => (t.expenses || []).length)
     .map((t) => ({ id: t.id, title: t.title || 'Seyahat', startDate: t.startDate || '', total: 0 }));
@@ -69,11 +90,18 @@ export function categoryTripMatrix(trips, cur) {
     }
   }
 
-  const cats = EXPENSE_CATEGORIES.filter((c) => used.has(c.value)).map((c) => {
-    const row = data[c.value] || {};
+  const rowOf = (value) => {
+    const row = data[value] || {};
     const total = Object.values(row).reduce((a, b) => a + b, 0);
-    return { value: c.value, label: categoryLabel(c.value), icon: categoryIcon(c.value), total };
-  });
+    return { value, label: catLabel(cat, value), icon: catIcon(cat, value), total };
+  };
+  // Katalog sırasında kullanılmış türler + katalogda olmayan (ör. sonradan
+  // kaldırılmış) türler sonda → hiçbir harcama tablodan düşmez.
+  const known = new Set(cat.map((c) => c.value));
+  const cats = [
+    ...cat.filter((c) => used.has(c.value)).map((c) => rowOf(c.value)),
+    ...[...used].filter((v) => !known.has(v)).map(rowOf),
+  ];
 
   let grand = 0;
   for (const col of cols) {

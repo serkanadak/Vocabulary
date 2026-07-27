@@ -5,6 +5,7 @@ import React, { createContext, useContext, useEffect, useMemo, useReducer } from
 import { storageGet, storageSet } from '../logic/storage';
 import { createDefaultChecklist, createChecklistItem, dedupeChecklist } from '../data/checklist';
 import { DEFAULT_VEHICLE } from '../data/vehicles';
+import { BUILTIN_EXPENSE_CATEGORIES, slugifyCategory } from '../data/expenseCategories';
 import { todayKey } from '../logic/date';
 
 const STORAGE_KEY = '@gezgin_gunlugu_v1';
@@ -17,6 +18,8 @@ const DEFAULT_SETTINGS = {
   apiModel: '',
   roadOnline: true, // çevrimiçiyken gerçek yol mesafesi (OSRM); kapalıysa yalnızca tahmin
   theme: 'deniz', // ekran renk paleti: 'deniz' | 'gunes' | 'dag' | 'kar' (palet önyüklemede localStorage'dan uygulanır)
+  expenseCatsCustom: [], // Ayarlar'dan eklenen harcama türleri: [{ value, label, icon }]
+  expenseCatsInactive: [], // pasif türler (seyahatlerde seçilemez, geçmiş kayıtlarda görünür)
 };
 
 const initialState = {
@@ -267,6 +270,48 @@ export function JournalProvider({ children }) {
       removeExpense: (tripId, expenseId) => dispatch({ type: 'REMOVE_EXPENSE', tripId, expenseId }),
       // settings
       updateSettings: (patch) => dispatch({ type: 'UPDATE_SETTINGS', patch }),
+      // harcama türleri (Ayarlar) — pasif tür seyahatlerde seçilemez ama geçmişte kalır
+      addExpenseCategory: (label, icon) => {
+        const name = (label || '').trim();
+        if (!name) return null;
+        const value = slugifyCategory(name);
+        const custom = Array.isArray(state.settings.expenseCatsCustom) ? state.settings.expenseCatsCustom : [];
+        const builtinHit = BUILTIN_EXPENSE_CATEGORIES.some((c) => c.value === value);
+        const customHit = custom.some((c) => c.value === value);
+        // Zaten varsa yeniden ekleme; pasifse aktifleştir.
+        if (builtinHit || customHit) {
+          dispatch({
+            type: 'UPDATE_SETTINGS',
+            patch: {
+              expenseCatsInactive: (state.settings.expenseCatsInactive || []).filter((v) => v !== value),
+            },
+          });
+          return value;
+        }
+        dispatch({
+          type: 'UPDATE_SETTINGS',
+          patch: {
+            expenseCatsCustom: [...custom, { value, label: name, icon: (icon || '').trim() || '🔖' }],
+            expenseCatsInactive: (state.settings.expenseCatsInactive || []).filter((v) => v !== value),
+          },
+        });
+        return value;
+      },
+      // Kullanıcı türünü tamamen kaldırır (yalnızca hiç harcama girilmemişse çağrılmalı).
+      deleteExpenseCategory: (value) =>
+        dispatch({
+          type: 'UPDATE_SETTINGS',
+          patch: {
+            expenseCatsCustom: (state.settings.expenseCatsCustom || []).filter((c) => c.value !== value),
+            expenseCatsInactive: (state.settings.expenseCatsInactive || []).filter((v) => v !== value),
+          },
+        }),
+      // Türü pasifleştir / yeniden aktifleştir.
+      setExpenseCategoryActive: (value, active) => {
+        const cur = state.settings.expenseCatsInactive || [];
+        const next = active ? cur.filter((v) => v !== value) : cur.includes(value) ? cur : [...cur, value];
+        dispatch({ type: 'UPDATE_SETTINGS', patch: { expenseCatsInactive: next } });
+      },
     };
   }, [state]);
 

@@ -11,7 +11,7 @@ import {
   paymentTripMatrix,
 } from '../logic/expenseReport';
 import { formatMoney, currencySymbol, TARGETS } from '../logic/fx';
-import { EXPENSE_CATEGORIES, categoryLabel, categoryIcon } from '../data/expenseCategories';
+import { resolveCategories, catLabel, catIcon } from '../data/expenseCategories';
 import { PAYMENT_METHODS, paymentLabel, paymentIcon } from '../data/paymentMethods';
 import { formatShortDate } from '../logic/date';
 import { colors } from '../theme';
@@ -84,7 +84,7 @@ function MatrixTable({ rows, cols, data, grand, currentId, cur, headerLabel }) {
 
 export default function ExpenseReportScreen({ route, navigation }) {
   const { tripId } = route.params;
-  const { getTrip, trips } = useJournal();
+  const { getTrip, trips, settings } = useJournal();
   const trip = getTrip(tripId);
   const [cur, setCur] = useState('EUR');
   const [compCat, setCompCat] = useState('all'); // karşılaştırma türü: 'all' | kategori değeri
@@ -105,11 +105,12 @@ export default function ExpenseReportScreen({ route, navigation }) {
   const expenses = trip.expenses || [];
   const s = sumIn(expenses, cur);
   const pay = paymentSplit(expenses, cur);
-  const cats = categoryBreakdown(expenses, cur).filter((c) => c.count > 0);
+  const catalog = resolveCategories(settings);
+  const cats = categoryBreakdown(expenses, cur, catalog).filter((c) => c.count > 0);
   const maxCat = cats.reduce((m, c) => Math.max(m, c.total), 0);
 
   // Tür × Seyahat ve Ödeme × Seyahat çapraz tabloları (harcaması olan tüm seyahatler).
-  const matrix = categoryTripMatrix(trips || [], cur);
+  const matrix = categoryTripMatrix(trips || [], cur, catalog);
   const payMatrix = paymentTripMatrix(trips || [], cur);
 
   // Karşılaştırma: seyahat bazında; istenirse tür (kategori) ve/veya ödeme şekli süzülür.
@@ -125,7 +126,7 @@ export default function ExpenseReportScreen({ route, navigation }) {
   for (const t of trips || []) for (const e of t.expenses || []) usedCats.add((e && e.kind) || 'diger');
   const compCatOptions = [
     { value: 'all' },
-    ...EXPENSE_CATEGORIES.filter((c) => usedCats.has(c.value)).map((c) => ({ value: c.value })),
+    ...catalog.filter((c) => usedCats.has(c.value)).map((c) => ({ value: c.value })),
   ];
 
   if (!expenses.length) {
@@ -240,7 +241,9 @@ export default function ExpenseReportScreen({ route, navigation }) {
             options={compCatOptions}
             value={compCat}
             onChange={setCompCat}
-            renderLabel={(o) => (o.value === 'all' ? '📊 Tümü' : `${categoryIcon(o.value)} ${categoryLabel(o.value)}`)}
+            renderLabel={(o) =>
+              o.value === 'all' ? '📊 Tümü' : `${catIcon(catalog, o.value)} ${catLabel(catalog, o.value)}`
+            }
           />
         </View>
         <View style={{ paddingHorizontal: 16, marginBottom: 10 }}>
@@ -253,7 +256,7 @@ export default function ExpenseReportScreen({ route, navigation }) {
         </View>
         {comp.length ? (
           <Text style={styles.compHint}>
-            {compCategory ? `${categoryIcon(compCategory)} ${categoryLabel(compCategory)}` : 'Tüm türler'}
+            {compCategory ? `${catIcon(catalog, compCategory)} ${catLabel(catalog, compCategory)}` : 'Tüm türler'}
             {' · '}
             {compPayment ? `${paymentIcon(compPayment)} ${paymentLabel(compPayment)}` : 'tüm ödemeler'}
             {' · '}

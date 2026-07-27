@@ -5,23 +5,28 @@
 // olarak ayıklanır. Anahtar yoksa veya çağrı başarısızsa hata fırlatır; çağıran
 // ekran kullanıcıyı elle doldurmaya yönlendirir.
 import { CURRENCIES } from './fx';
-import { EXPENSE_CATEGORIES, EXPENSE_CATEGORY_VALUES } from '../data/expenseCategories';
+import { activeCategories, FALLBACK_EXPENSE_CATEGORY } from '../data/expenseCategories';
 import { PAYMENT_VALUES } from '../data/paymentMethods';
 
 const CODES = CURRENCIES.map((c) => c.code).join(', ');
-const CATS = EXPENSE_CATEGORIES.map((c) => `${c.value} (${c.label})`).join(', ');
 
-const PROMPT =
-  `Bu bir alışveriş/hizmet fişi ya da fatura fotoğrafı. Görüntüyü incele ve ` +
-  `harcamayı çıkar. Alınan mal veya hizmetin kısa Türkçe adını, ödenen TOPLAM ` +
-  `tutarı (sayı) ve para birimini belirle. Para birimi şu kodlardan biri olmalı: ` +
-  `${CODES} (fişteki sembol/ülkeye göre; ₺/TL→TRY, €→EUR, $→USD, £→GBP). ` +
-  `Harcamayı şu kategorilerden EN UYGUN olanına yerleştir ve anahtar değerini ("value") döndür: ` +
-  `${CATS}. Emin değilsen "diger" kullan.\n` +
-  `Ödeme şeklini belirle: fişte NAKİT/CASH yazıyorsa "nakit", KREDİ KARTI/KART/VISA/` +
-  `MASTERCARD/CARD yazıyorsa "kart". Anlaşılmıyorsa "payment" alanını boş bırak.\n` +
-  `Yanıtı SADECE şu JSON şemasıyla ver, başka metin yazma:\n` +
-  `{"label":"kısa ad","amount":123.45,"currency":"TRY","kind":"yemek","payment":"kart"}`;
+// İstem, kullanıcının o an AKTİF türlerine göre kurulur (kendi eklediği türler
+// dahil, pasifleştirdikleri hariç) — fiş otomatik olarak doğru türe düşsün.
+function buildPrompt(cats) {
+  const list = cats.map((c) => `${c.value} (${c.label})`).join(', ');
+  return (
+    `Bu bir alışveriş/hizmet fişi ya da fatura fotoğrafı. Görüntüyü incele ve ` +
+    `harcamayı çıkar. Alınan mal veya hizmetin kısa Türkçe adını, ödenen TOPLAM ` +
+    `tutarı (sayı) ve para birimini belirle. Para birimi şu kodlardan biri olmalı: ` +
+    `${CODES} (fişteki sembol/ülkeye göre; ₺/TL→TRY, €→EUR, $→USD, £→GBP). ` +
+    `Harcamayı şu kategorilerden EN UYGUN olanına yerleştir ve anahtar değerini ("value") döndür: ` +
+    `${list}. Emin değilsen "${FALLBACK_EXPENSE_CATEGORY}" kullan.\n` +
+    `Ödeme şeklini belirle: fişte NAKİT/CASH yazıyorsa "nakit", KREDİ KARTI/KART/VISA/` +
+    `MASTERCARD/CARD yazıyorsa "kart". Anlaşılmıyorsa "payment" alanını boş bırak.\n` +
+    `Yanıtı SADECE şu JSON şemasıyla ver, başka metin yazma:\n` +
+    `{"label":"kısa ad","amount":123.45,"currency":"TRY","kind":"${cats[0]?.value || FALLBACK_EXPENSE_CATEGORY}","payment":"kart"}`
+  );
+}
 
 // data URI ("data:image/jpeg;base64,....") → { mediaType, base64 }.
 function splitDataUri(uri) {
@@ -48,7 +53,7 @@ function safeParseJson(text) {
   }
 }
 
-async function callOpenAIVision(dataUri, settings) {
+async function callOpenAIVision(dataUri, settings, prompt) {
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -61,7 +66,7 @@ async function callOpenAIVision(dataUri, settings) {
         {
           role: 'user',
           content: [
-            { type: 'text', text: PROMPT },
+            { type: 'text', text: prompt },
             { type: 'image_url', image_url: { url: dataUri } },
           ],
         },
@@ -74,7 +79,7 @@ async function callOpenAIVision(dataUri, settings) {
   return data?.choices?.[0]?.message?.content || '';
 }
 
-async function callClaudeVision(dataUri, settings) {
+async function callClaudeVision(dataUri, settings, prompt) {
   const parts = splitDataUri(dataUri);
   if (!parts) throw new Error('Fiş görüntüsü okunamadı.');
   const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -93,7 +98,7 @@ async function callClaudeVision(dataUri, settings) {
           role: 'user',
           content: [
             { type: 'image', source: { type: 'base64', media_type: parts.mediaType, data: parts.base64 } },
-            { type: 'text', text: PROMPT },
+            { type: 'text', text: prompt },
           ],
         },
       ],
@@ -114,15 +119,19 @@ export async function readReceipt(dataUri, settings) {
   if (!dataUri || !/^data:image\//.test(dataUri)) {
     throw new Error('Geçerli bir fiş görüntüsü gerekli (web).');
   }
+  // Yalnızca aktif türler önerilir; hepsi pasifse yerleşiklere düşülür.
+  const cats = activeCategories(settings);
+  const usable = cats.length ? cats : [{ value: FALLBACK_EXPENSE_CATEGORY, label: 'Diğer' }];
+  const prompt = buildPrompt(usable);
   const provider = settings.apiProvider || 'openai';
   const text = provider === 'claude'
-    ? await callClaudeVision(dataUri, settings)
-    : await callOpenAIVision(dataUri, settings);
+    ? await callClaudeVision(dataUri, settings, prompt)
+    : await callOpenAIVision(dataUri, settings, prompt);
 
   const parsed = safeParseJson(text);
   const amount = Number(String(parsed.amount).replace(',', '.'));
   const currency = VALID_CODES.has(parsed.currency) ? parsed.currency : 'TRY';
-  const kind = EXPENSE_CATEGORY_VALUES.includes(parsed.kind) ? parsed.kind : 'diger';
+  const kind = usable.some((c) => c.value === parsed.kind) ? parsed.kind : FALLBACK_EXPENSE_CATEGORY;
   const payment = PAYMENT_VALUES.includes(parsed.payment) ? parsed.payment : null;
   return {
     label: (parsed.label || '').toString().trim(),
