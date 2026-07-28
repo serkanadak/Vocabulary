@@ -101,7 +101,7 @@ export default function AddDiscoveryScreen({ route, navigation }) {
       sources: result.sources,
       userNotes: userNotes.trim(),
       photos,
-      photoUri: photos[0] || null, // kapak (geri uyumluluk)
+      photoUri: null, // kapak `photos[0]`tan okunur; kopyalamak veriyi iki katına çıkarıyordu
       enrichSource: result.source,
       stopId: stopId ?? null,
     });

@@ -6,6 +6,7 @@ import { matchPlace } from '../data/places';
 import { attractionsFor, attractionToDiscovery } from '../data/attractions';
 import { exportDiscoveryPdf } from '../logic/tripDoc';
 import { todayKey, formatShortDate } from '../logic/date';
+import { coverOf, hasPhoto } from '../logic/photos';
 import { colors } from '../theme';
 import { Card, SectionHeader, EmptyState, Pill, ConfirmModal } from '../components/common';
 import PlacePhoto from '../components/PlacePhoto';
@@ -16,8 +17,8 @@ const norm = (s) => (s || '').toLocaleLowerCase('tr').replace(/\s+/g, ' ').trim(
 function DiscoveryRow({ disc, onPress }) {
   return (
     <Pressable onPress={onPress} style={({ pressed }) => [styles.discRow, pressed && { opacity: 0.85 }]}>
-      {disc.photoUri ? (
-        <Image source={{ uri: disc.photoUri }} style={styles.thumb} resizeMode="cover" />
+      {coverOf(disc) ? (
+        <Image source={{ uri: coverOf(disc) }} style={styles.thumb} resizeMode="cover" />
       ) : (
         <Text style={styles.discIcon}>📍</Text>
       )}
@@ -28,7 +29,7 @@ function DiscoveryRow({ disc, onPress }) {
         <Text style={styles.discMeta} numberOfLines={1}>
           {disc.userNotes ? '📝 ' : ''}
           {disc.date ? formatShortDate(disc.date) : '—'}
-          {disc.photoUri ? ' · 📷' : ''}
+          {hasPhoto(disc) ? ' · 📷' : ''}
         </Text>
       </View>
       <Text style={styles.chevron}>›</Text>
@@ -60,7 +61,7 @@ function StopSection({ trip, stop, navigation }) {
   // "Gidildi" işaretini geri al. Not/fotoğraf eklenmişse silmeden önce onay iste;
   // sadece hızlıca işaretlenmiş (boş) keşifleri doğrudan kaldır.
   const unmarkVisited = (disc) => {
-    if (disc.userNotes || disc.photoUri) {
+    if (disc.userNotes || hasPhoto(disc)) {
       setPendingUnmark(disc);
     } else {
       removeDiscovery(trip.id, disc.id);
@@ -105,7 +106,7 @@ function StopSection({ trip, stop, navigation }) {
                         <View style={{ flex: 1 }}>
                           <Text style={styles.attrName}>{a.name}</Text>
                           <Text style={styles.attrVisitedHint}>
-                            Gidildi · {existing.userNotes ? 'notlu' : 'not ekle'} {existing.photoUri ? '· 📷' : ''} →
+                            Gidildi · {existing.userNotes ? 'notlu' : 'not ekle'} {hasPhoto(existing) ? '· 📷' : ''} →
                           </Text>
                         </View>
                       </Pressable>

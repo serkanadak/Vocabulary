@@ -103,7 +103,8 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
       if (res.canceled || !res.assets?.length) return;
       const prepared = await preparePhotos(res.assets.map((a) => a.uri));
       const next = [...photos, ...prepared];
-      updateDiscovery(tripId, discoveryId, { photos: next, photoUri: next[0] || null });
+      // Kapak `photos[0]`tan okunur; photoUri'ye KOPYALAMA (aynı veriyi iki kez saklardı).
+      updateDiscovery(tripId, discoveryId, { photos: next, photoUri: null });
     } catch (e) {
       // sessizce geç
     }
@@ -114,7 +115,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
     const nextFeatured = featured.filter((u) => u !== uri && next.includes(u));
     updateDiscovery(tripId, discoveryId, {
       photos: next,
-      photoUri: next[0] || null,
+      photoUri: null,
       featuredPhotos: nextFeatured,
       featuredPhoto: null,
     });

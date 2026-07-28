@@ -10,6 +10,7 @@ import { attractionsFor, attractionToDiscovery } from '../data/attractions';
 import { routeSvgDataUri, mappableStopCount } from '../logic/routeMap';
 import { exportRoutePdf } from '../logic/tripDoc';
 import { todayKey, formatShortDate } from '../logic/date';
+import { hasPhoto } from '../logic/photos';
 import { colors } from '../theme';
 import { ChipPicker, ConfirmModal, EmptyState } from '../components/common';
 import PlacePhoto from '../components/PlacePhoto';
@@ -188,7 +189,7 @@ export default function RouteScreen({ route, navigation }) {
 
   // Keşfe eklemeyi geri al. Not/fotoğraf varsa önce onay iste; boş kaydı doğrudan sil.
   const removeAttraction = (disc) => {
-    if (disc.userNotes || disc.photoUri) {
+    if (disc.userNotes || hasPhoto(disc)) {
       setPendingUnadd(disc);
     } else {
       removeDiscovery(tripId, disc.id);

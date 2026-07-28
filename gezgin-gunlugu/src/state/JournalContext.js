@@ -1,7 +1,8 @@
 // Gezgin Günlüğü durumu: seyahatler (her biri kendi hazırlık checklist'i, durakları,
 // keşifleri ile) ve genel ayarlar. AsyncStorage ile cihazda kalıcı saklanır.
 
-import React, { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef } from 'react';
+import { Platform } from 'react-native';
 import { storageGet, storageSet } from '../logic/storage';
 import { createDefaultChecklist, createChecklistItem, dedupeChecklist } from '../data/checklist';
 import { DEFAULT_VEHICLE } from '../data/vehicles';
@@ -42,7 +43,17 @@ function reducer(state, action) {
     case 'HYDRATE': {
       const rawTrips = Array.isArray(action.payload?.trips) ? action.payload.trips : [];
       // Eski kayıtlarda oluşmuş yinelenen hazırlık maddelerini (ör. çift E-SIM) temizle.
-      const trips = rawTrips.map((t) => ({ ...t, checklist: dedupeChecklist(t.checklist || []) }));
+      // Ayrıca kapak fotoğrafının `photoUri` kopyasını düşür: aynı base64 verisi
+      // hem photos[0] hem photoUri'de duruyordu ve kayıtlı veriyi (dolayısıyla
+      // her yazmadaki JSON boyutunu) gereksiz yere iki katına çıkarıyordu.
+      // Veri kaybı yok: aynı fotoğraf photos[0]'da duruyor.
+      const trips = rawTrips.map((t) => ({
+        ...t,
+        checklist: dedupeChecklist(t.checklist || []),
+        discoveries: (t.discoveries || []).map((d) =>
+          Array.isArray(d.photos) && d.photos.length && d.photoUri ? { ...d, photoUri: null } : d
+        ),
+      }));
       return {
         ...state,
         loaded: true,
@@ -199,18 +210,55 @@ export function JournalProvider({ children }) {
     })();
   }, []);
 
+  // Kalıcılaştırma GECİKTİRİLİR (debounce).
+  // Tüm seyahatler (fotoğraflar base64 gömülü) tek bir JSON olarak yazılır; bu
+  // veri onlarca MB olabilir ve JSON.stringify ana iş parçacığını kilitler.
+  // Her tuş vuruşunda/işaretlemede yazmak telefonda donmaya ve sekmenin
+  // bellek yetersizliğinden çökip yeniden başlamasına yol açıyordu. Bu yüzden
+  // hızlı ardışık değişiklikler tek bir yazmada birleştirilir; sekme
+  // kapanırken/arka plana alınırken bekleyen yazma hemen boşaltılır.
+  const pendingRef = useRef(null);
+  const timerRef = useRef(null);
+
+  const flushNow = useCallback(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    const data = pendingRef.current;
+    if (!data) return;
+    pendingRef.current = null;
+    try {
+      storageSet(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+      // Yazılamadıysa (ör. depolama dolu) mevcut kayıt bozulmaz.
+    }
+  }, []);
+
   useEffect(() => {
-    if (!state.loaded) return;
-    (async () => {
-      try {
-        await storageSet(STORAGE_KEY, JSON.stringify({ trips: state.trips, settings: state.settings }));
-      } catch (e) {
-        // Yazılamadıysa (ör. depolama dolu) mevcut kayıt bozulmaz; bellekteki
-        // durum çalışmaya devam eder. Fotoğraflar artık IndexedDB'de tutulduğu
-        // için bu durum normal kullanımda görülmez.
-      }
-    })();
-  }, [state.trips, state.settings, state.loaded]);
+    if (!state.loaded) return undefined;
+    pendingRef.current = { trips: state.trips, settings: state.settings };
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(flushNow, 800);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [state.trips, state.settings, state.loaded, flushNow]);
+
+  // Sekme kapanırken / gizlenirken bekleyen yazmayı kaybetme.
+  useEffect(() => {
+    if (Platform.OS !== 'web' || typeof window === 'undefined') return undefined;
+    const onHide = () => flushNow();
+    window.addEventListener('pagehide', onHide);
+    window.addEventListener('beforeunload', onHide);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') flushNow();
+    });
+    return () => {
+      window.removeEventListener('pagehide', onHide);
+      window.removeEventListener('beforeunload', onHide);
+    };
+  }, [flushNow]);
 
   const value = useMemo(() => {
     const createTrip = ({ title, startDate, endDate, vehicle }) => {

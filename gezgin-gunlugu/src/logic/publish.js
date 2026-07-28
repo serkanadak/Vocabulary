@@ -46,7 +46,7 @@ export function generateAlbumPlan(trip) {
       .join(' – '),
     colorIdea: 'Gün batımı altını (#f5a623) yazı + gece mavisi (#0b1a2b) zemin; en etkileyici manzara fotoğrafı tam kapak.',
     imageIdea:
-      discoveries[0]?.photoUri
+      photosOf(discoveries[0]).length
         ? 'Kapak için ilk/en güçlü keşif fotoğrafını tam sayfa kullan, üstüne yarı saydam koyu degrade + başlık.'
         : 'Kapak için rota haritasını arka plan dokusu olarak kullan, ortada başlık.',
   };

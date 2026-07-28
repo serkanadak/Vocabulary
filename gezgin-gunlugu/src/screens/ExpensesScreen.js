@@ -18,6 +18,9 @@ import { todayKey, isValidDateKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { Field, ChipPicker, PrimaryButton, SecondaryButton, ConfirmModal, EmptyState, Card } from '../components/common';
 
+// Saklanan fiş görüntüsü ayarı: okunaklı ama küçük (veri tek JSON blob'unda tutulur).
+const RECEIPT_STORE_OPTS = { maxPx: 900, quality: 0.5 };
+
 function emptyForm() {
   return {
     kind: DEFAULT_EXPENSE_CATEGORY,
@@ -127,11 +130,15 @@ export default function ExpensesScreen({ route, navigation }) {
       if (res.canceled || !res.assets?.length) return;
       setReading(true);
       setNotice('');
-      const photo = await preparePhoto(res.assets[0].uri, { maxPx: 1400, quality: 0.7 });
+      // OCR'a okunaklı (büyük) kopya gider; SAKLANAN kopya küçüktür. Fiş
+      // görüntüleri tüm seyahat verisiyle aynı JSON'da tutulduğu için büyük
+      // saklamak uygulamayı yavaşlatıp çökmesine yol açıyordu.
+      const ocrPhoto = await preparePhoto(res.assets[0].uri, { maxPx: 1400, quality: 0.7 });
+      const photo = await preparePhoto(res.assets[0].uri, RECEIPT_STORE_OPTS);
       const base = form || { ...emptyForm(), kind: defaultKind };
       const next = { ...base, receiptPhoto: photo };
       try {
-        const parsed = await readReceipt(photo, settings);
+        const parsed = await readReceipt(ocrPhoto, settings);
         if (parsed.label) next.label = parsed.label;
         if (parsed.amount != null) next.amount = String(parsed.amount);
         if (parsed.currency) next.currency = parsed.currency;
@@ -162,7 +169,7 @@ export default function ExpensesScreen({ route, navigation }) {
         quality: 0.8,
       });
       if (res.canceled || !res.assets?.length) return;
-      const photo = await preparePhoto(res.assets[0].uri, { maxPx: 1400, quality: 0.7 });
+      const photo = await preparePhoto(res.assets[0].uri, RECEIPT_STORE_OPTS);
       patchForm({ receiptPhoto: photo });
     } catch (e) {
       /* yoksay */
