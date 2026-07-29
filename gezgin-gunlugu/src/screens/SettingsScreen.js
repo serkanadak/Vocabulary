@@ -69,6 +69,8 @@ export default function SettingsScreen() {
     addExpenseCategory,
     deleteExpenseCategory,
     setExpenseCategoryActive,
+    renameExpenseCategory,
+    resetExpenseCategoryName,
   } = useJournal();
 
   // --- Harcama türleri ---
@@ -77,6 +79,14 @@ export default function SettingsScreen() {
   const [newCatLabel, setNewCatLabel] = useState('');
   const [newCatIcon, setNewCatIcon] = useState('');
   const [pendingCatDelete, setPendingCatDelete] = useState(null); // silinecek tür
+  const [editCat, setEditCat] = useState(null); // { value, label, icon } — adı düzenlenen tür
+
+  const startEdit = (c) => setEditCat({ value: c.value, label: c.label, icon: c.icon });
+  const saveEdit = () => {
+    if (!editCat || !editCat.label.trim()) return;
+    renameExpenseCategory(editCat.value, editCat.label, editCat.icon);
+    setEditCat(null);
+  };
 
   const addCat = () => {
     const name = newCatLabel.trim();
@@ -158,9 +168,57 @@ export default function SettingsScreen() {
           {catalog.map((c) => {
             const used = usage[c.value] || 0;
             const canDelete = !c.builtin && used === 0; // kullanılmamış kullanıcı türü tamamen silinir
+            const editing = editCat && editCat.value === c.value;
+
+            if (editing) {
+              return (
+                <View key={c.value} style={styles.catEditBox}>
+                  <Text style={styles.catEditTitle}>Türün adını değiştir</Text>
+                  <View style={styles.catAddRow}>
+                    <View style={{ flex: 1 }}>
+                      <Field
+                        value={editCat.label}
+                        onChangeText={(v) => setEditCat((s) => ({ ...s, label: v }))}
+                        placeholder="Tür adı"
+                      />
+                    </View>
+                    <View style={{ width: 88 }}>
+                      <Field
+                        value={editCat.icon}
+                        onChangeText={(v) => setEditCat((s) => ({ ...s, icon: v }))}
+                        placeholder="🔖"
+                      />
+                    </View>
+                  </View>
+                  <Text style={styles.catMeta}>
+                    Yalnızca görünen ad değişir; bu türde girilmiş {used || 0} harcama yeni adla görünür.
+                  </Text>
+                  <View style={styles.catEditActions}>
+                    <Pressable onPress={saveEdit} hitSlop={8} disabled={!editCat.label.trim()}>
+                      <Text style={[styles.catAction, !editCat.label.trim() && styles.catActionMuted]}>Kaydet</Text>
+                    </Pressable>
+                    <Pressable onPress={() => setEditCat(null)} hitSlop={8}>
+                      <Text style={styles.catActionMuted}>Vazgeç</Text>
+                    </Pressable>
+                    {c.renamed ? (
+                      <Pressable
+                        onPress={() => {
+                          resetExpenseCategoryName(c.value);
+                          setEditCat(null);
+                        }}
+                        hitSlop={8}
+                      >
+                        <Text style={styles.catActionMuted}>↺ Özgün ad</Text>
+                      </Pressable>
+                    ) : null}
+                  </View>
+                </View>
+              );
+            }
+
             return (
               <View key={c.value} style={styles.catRow}>
-                <View style={{ flex: 1 }}>
+                <Pressable style={{ flex: 1 }} onPress={() => startEdit(c)}>
                   <Text style={[styles.catName, !c.active && styles.catNamePassive]}>
                     {c.icon} {c.label}
                     {c.builtin ? '' : ' ·  eklenen'}
@@ -169,7 +227,10 @@ export default function SettingsScreen() {
                     {c.active ? 'Aktif' : 'Pasif — seyahatlerde seçilemez'}
                     {used ? ` · ${used} harcama` : ' · hiç kullanılmadı'}
                   </Text>
-                </View>
+                </Pressable>
+                <Pressable onPress={() => startEdit(c)} hitSlop={8}>
+                  <Text style={styles.catAction}>✏️</Text>
+                </Pressable>
                 <Pressable onPress={() => setExpenseCategoryActive(c.value, !c.active)} hitSlop={8}>
                   <Text style={[styles.catAction, c.active && styles.catActionMuted]}>
                     {c.active ? 'Pasifleştir' : 'Aktifleştir'}
@@ -423,6 +484,16 @@ const styles = StyleSheet.create({
   catAction: { color: colors.primary, fontSize: 12, fontWeight: '800' },
   catActionMuted: { color: colors.textMuted },
   catDelete: { color: colors.danger, fontSize: 12, fontWeight: '800' },
+  catEditBox: {
+    borderWidth: 1,
+    borderColor: colors.primary,
+    borderRadius: 12,
+    padding: 12,
+    marginVertical: 8,
+    backgroundColor: colors.surfaceAlt,
+  },
+  catEditTitle: { color: colors.text, fontSize: 13, fontWeight: '800' },
+  catEditActions: { flexDirection: 'row', alignItems: 'center', gap: 18, marginTop: 12 },
   catAddBox: { marginTop: 6 },
   catAddRow: { flexDirection: 'row', gap: 10, alignItems: 'flex-start' },
   hint: { color: colors.textMuted, fontSize: 12, marginTop: 12, lineHeight: 18 },

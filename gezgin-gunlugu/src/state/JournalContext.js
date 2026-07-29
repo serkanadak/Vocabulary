@@ -21,6 +21,7 @@ const DEFAULT_SETTINGS = {
   theme: 'deniz', // ekran renk paleti: 'deniz' | 'gunes' | 'dag' | 'kar' (palet önyüklemede localStorage'dan uygulanır)
   expenseCatsCustom: [], // Ayarlar'dan eklenen harcama türleri: [{ value, label, icon }]
   expenseCatsInactive: [], // pasif türler (seyahatlerde seçilemez, geçmiş kayıtlarda görünür)
+  expenseCatsOverrides: {}, // yeniden adlandırma: { [value]: { label, icon } } — anahtar sabit kalır
 };
 
 const initialState = {
@@ -345,15 +346,34 @@ export function JournalProvider({ children }) {
         });
         return value;
       },
+      // Türün adını/ikonunu değiştirir. ANAHTAR (value) korunur; bu yüzden o
+      // türde girilmiş harcamalar yeni adla görünmeye devam eder.
+      renameExpenseCategory: (value, label, icon) => {
+        const name = (label || '').trim();
+        if (!value || !name) return;
+        const ov = { ...(state.settings.expenseCatsOverrides || {}) };
+        ov[value] = { label: name, icon: (icon || '').trim() || ov[value]?.icon || '' };
+        dispatch({ type: 'UPDATE_SETTINGS', patch: { expenseCatsOverrides: ov } });
+      },
+      // Yeniden adlandırmayı kaldırıp özgün ada döner.
+      resetExpenseCategoryName: (value) => {
+        const ov = { ...(state.settings.expenseCatsOverrides || {}) };
+        delete ov[value];
+        dispatch({ type: 'UPDATE_SETTINGS', patch: { expenseCatsOverrides: ov } });
+      },
       // Kullanıcı türünü tamamen kaldırır (yalnızca hiç harcama girilmemişse çağrılmalı).
-      deleteExpenseCategory: (value) =>
+      deleteExpenseCategory: (value) => {
+        const ov = { ...(state.settings.expenseCatsOverrides || {}) };
+        delete ov[value];
         dispatch({
           type: 'UPDATE_SETTINGS',
           patch: {
             expenseCatsCustom: (state.settings.expenseCatsCustom || []).filter((c) => c.value !== value),
             expenseCatsInactive: (state.settings.expenseCatsInactive || []).filter((v) => v !== value),
+            expenseCatsOverrides: ov,
           },
-        }),
+        });
+      },
       // Türü pasifleştir / yeniden aktifleştir.
       setExpenseCategoryActive: (value, active) => {
         const cur = state.settings.expenseCatsInactive || [];

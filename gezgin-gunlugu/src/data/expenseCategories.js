@@ -45,26 +45,45 @@ function inactiveOf(settings) {
   return arr.filter((v) => typeof v === 'string' && v);
 }
 
+// Yeniden adlandırmalar: { [value]: { label, icon } }.
+// Ad/ikon değişse de ANAHTAR (value) sabit kalır; böylece o türdeki mevcut
+// harcamalar kategorisini kaybetmez. Yerleşik türler de bu yolla adlandırılır.
+function overridesOf(settings) {
+  const o = settings && settings.expenseCatsOverrides;
+  return o && typeof o === 'object' ? o : {};
+}
+
+// Bir türün yerleşik (özgün) adı — yeniden adlandırma sonrası geri dönmek için.
+export function builtinDefaultOf(value) {
+  return BUILTIN_BY_VALUE[value] || null;
+}
+
 // Yerleşik + kullanıcı türlerinin tamamı (pasifler de dahil), `active` bayrağıyla.
 // [{ value, label, icon, builtin, active }]
 export function resolveCategories(settings) {
   const inactive = new Set(inactiveOf(settings));
+  const ov = overridesOf(settings);
   const seen = new Set();
   const out = [];
+  const apply = (c, builtin) => {
+    const o = ov[c.value] || {};
+    return {
+      value: c.value,
+      label: (o.label || c.label || c.value).trim() || c.value,
+      icon: o.icon || c.icon || '🔖',
+      builtin,
+      active: !inactive.has(c.value),
+      renamed: !!(o.label || o.icon),
+    };
+  };
   for (const c of BUILTIN_EXPENSE_CATEGORIES) {
     seen.add(c.value);
-    out.push({ ...c, builtin: true, active: !inactive.has(c.value) });
+    out.push(apply(c, true));
   }
   for (const c of customOf(settings)) {
     if (seen.has(c.value)) continue; // yerleşikle çakışmayı yoksay
     seen.add(c.value);
-    out.push({
-      value: c.value,
-      label: c.label || c.value,
-      icon: c.icon || '🔖',
-      builtin: false,
-      active: !inactive.has(c.value),
-    });
+    out.push(apply(c, false));
   }
   return out;
 }
