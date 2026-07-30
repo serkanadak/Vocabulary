@@ -6,6 +6,7 @@ import { getVehicle } from '../data/vehicles';
 import { checklistProgress } from '../data/checklist';
 import { formatShortDate, daysBetween } from '../logic/date';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { Card, EmptyState, Pill, ProgressBar } from '../components/common';
 
 function TripCard({ trip, onPress }) {
@@ -22,19 +23,19 @@ function TripCard({ trip, onPress }) {
         <Text style={styles.tripTitle} numberOfLines={1}>
           {trip.title}
         </Text>
-        {trip.finished ? <Pill label="Tamamlandı" color={colors.success} /> : <Pill label="Aktif" color={colors.accent} />}
+        {trip.finished ? <Pill label={t('trips.finished')} color={colors.success} /> : <Pill label={t('trips.active')} color={colors.accent} />}
       </View>
       <View style={styles.metaRow}>
         <Text style={styles.meta}>
           {vehicle.icon} {vehicle.label}
         </Text>
         {dateLabel ? <Text style={styles.meta}>📅 {dateLabel}</Text> : null}
-        {span ? <Text style={styles.meta}>⏳ {span} gün</Text> : null}
+        {span ? <Text style={styles.meta}>⏳ {span} {t('date.dayShort')}</Text> : null}
       </View>
       <View style={styles.statsRow}>
-        <Text style={styles.stat}>📍 {(trip.discoveries || []).length} keşif</Text>
-        <Text style={styles.stat}>🗺️ {(trip.stops || []).length} durak</Text>
-        <Text style={styles.stat}>✅ %{Math.round(prog.ratio * 100)} hazır</Text>
+        <Text style={styles.stat}>📍 {t('trips.discoveryCount', { n: (trip.discoveries || []).length })}</Text>
+        <Text style={styles.stat}>🗺️ {t('trips.stopCount', { n: (trip.stops || []).length })}</Text>
+        <Text style={styles.stat}>✅ {t('trips.readyPct', { n: Math.round(prog.ratio * 100) })}</Text>
       </View>
       <View style={{ marginTop: 10 }}>
         <ProgressBar ratio={prog.ratio} color={trip.finished ? colors.success : colors.primary} />
@@ -50,8 +51,8 @@ export default function TripsScreen({ navigation }) {
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <View>
-          <Text style={styles.appName}>🧭 Gezgin Günlüğü</Text>
-          <Text style={styles.appSub}>Seyahatlerin, anıların ve rotaların</Text>
+          <Text style={styles.appName}>🧭 {t('trips.appName')}</Text>
+          <Text style={styles.appSub}>{t('trips.tagline')}</Text>
         </View>
       </View>
 
@@ -59,18 +60,18 @@ export default function TripsScreen({ navigation }) {
         {!loaded ? null : trips.length === 0 ? (
           <EmptyState
             icon="✈️"
-            title="Henüz seyahat yok"
-            subtitle="İlk seyahatini başlat: hazırlık listesi, güzergah planı ve keşif günlüğü seni bekliyor."
+            title={t('trips.empty.title')}
+            subtitle={t('trips.empty.sub')}
           />
         ) : (
-          trips.map((t) => (
-            <TripCard key={t.id} trip={t} onPress={() => navigation.navigate('TripDetail', { tripId: t.id })} />
+          trips.map((trip) => (
+            <TripCard key={trip.id} trip={trip} onPress={() => navigation.navigate('TripDetail', { tripId: trip.id })} />
           ))
         )}
       </ScrollView>
 
       <Pressable style={styles.fab} onPress={() => navigation.navigate('NewTrip')}>
-        <Text style={styles.fabText}>＋ Yeni Seyahat</Text>
+        <Text style={styles.fabText}>{t('trips.new')}</Text>
       </Pressable>
     </SafeAreaView>
   );

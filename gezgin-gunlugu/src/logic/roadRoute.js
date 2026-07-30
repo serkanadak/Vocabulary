@@ -17,7 +17,7 @@ export async function fetchRoadKm(stops, { signal } = {}) {
   const res = await fetch(url, { signal });
   if (!res.ok) throw new Error(`OSRM ${res.status}`);
   const data = await res.json();
-  if (data.code !== 'Ok' || !data.routes?.[0]?.legs) throw new Error('OSRM: rota bulunamadı');
+  if (data.code !== 'Ok' || !data.routes?.[0]?.legs) throw new Error('OSRM: route not found');
 
   const legs = data.routes[0].legs;
   const map = {};

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { t } from '../i18n';
 import { View, Text, StyleSheet, ScrollView, Pressable, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
@@ -10,6 +11,7 @@ import {
   checklistProgress,
   checklistNeedsUpdate,
   mergeChecklistWithDefaults,
+  itemTitle,
 } from '../data/checklist';
 import { CHECK_COLORS, colors } from '../theme';
 import { ProgressBar, ConfirmModal, EmptyState } from '../components/common';
@@ -42,7 +44,7 @@ function ChecklistRow({ item, onCycle, onSetStatus, onSetNote, onRemove }) {
       <Pressable onPress={onCycle} onLongPress={() => setExpanded((e) => !e)} style={styles.rowMain}>
         <Text style={styles.rowIcon}>{item.icon}</Text>
         <View style={{ flex: 1 }}>
-          <Text style={[styles.rowTitle, done && styles.rowTitleDone]}>{item.title}</Text>
+          <Text style={[styles.rowTitle, done && styles.rowTitleDone]}>{itemTitle(item)}</Text>
           {!expanded && item.note ? (
             <Text style={styles.notePreview} numberOfLines={1}>
               📝 {item.note}
@@ -64,13 +66,13 @@ function ChecklistRow({ item, onCycle, onSetStatus, onSetNote, onRemove }) {
             ))}
           </View>
 
-          <Text style={styles.noteLabel}>📝 Not</Text>
+          <Text style={styles.noteLabel}>{t('check.note')}</Text>
           <TextInput
             style={styles.noteInput}
             value={note}
             onChangeText={setNote}
             onBlur={saveNote}
-            placeholder="ör. Rezervasyon no, bütçe, hatırlatma…"
+            placeholder={t('check.notePlaceholder')}
             placeholderTextColor={colors.textMuted}
             multiline
           />
@@ -130,25 +132,18 @@ export default function ChecklistScreen({ route }) {
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         <View style={styles.summary}>
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryTitle}>Hazırlık ilerlemesi</Text>
-            <Text style={styles.summaryPct}>%{Math.round(prog.ratio * 100)}</Text>
+            <Text style={styles.summaryTitle}>{t('check.progress')}</Text>
+            <Text style={styles.summaryPct}>{t('common.pct', { n: Math.round(prog.ratio * 100) })}</Text>
           </View>
           <ProgressBar ratio={prog.ratio} color={colors.primary} />
-          <Text style={styles.hint}>
-            Bir maddeye <Text style={styles.bold}>dokun</Text>: durum sırayla değişir (Bekliyor → Tamam → Kısmen →
-            Gerek Yok). <Text style={styles.bold}>Uzun bas</Text>: durum seç, <Text style={styles.bold}>not ekle</Text> veya sil.
-          </Text>
+          <Text style={styles.hint}>{t('check.hint')}{' '}{t('check.hintLong')}</Text>
         </View>
 
         {needsUpdate ? (
           <Pressable style={styles.updateBox} onPress={updateList}>
-            <Text style={styles.updateTitle}>🔄 Hazırlık listesini güncelle</Text>
-            <Text style={styles.updateText}>
-              Bu seyahatin listesi güncel değil. Güncel varsayılan maddeleri (ör. çıkış harcı, ayrıştırılmış vize/
-              sigorta, araca özel yeşil kart & kasko) getirir. Mevcut maddelerinin durumu, notların ve elle
-              eklediklerin korunur.
-            </Text>
-            <Text style={styles.updateCta}>Listeyi güncelle →</Text>
+            <Text style={styles.updateTitle}>{t('check.update')}</Text>
+            <Text style={styles.updateText}>{t('check.outdated')}</Text>
+            <Text style={styles.updateCta}>{t('check.updateLink')}</Text>
           </Pressable>
         ) : null}
 
@@ -165,13 +160,13 @@ export default function ChecklistScreen({ route }) {
 
         {/* Elle madde ekleme */}
         <View style={styles.addBox}>
-          <Text style={styles.addLabel}>Kendi maddeni ekle</Text>
+          <Text style={styles.addLabel}>{t('check.addOwn')}</Text>
           <View style={styles.addRow}>
             <TextInput
               style={styles.addInput}
               value={newTitle}
               onChangeText={setNewTitle}
-              placeholder="ör. Yerel SIM kart al"
+              placeholder={t('check.newItem')}
               placeholderTextColor={colors.textMuted}
               onSubmitEditing={addItem}
               returnKeyType="done"
@@ -186,7 +181,7 @@ export default function ChecklistScreen({ route }) {
       <ConfirmModal
         visible={!!pendingRemove}
         title="Maddeyi sil?"
-        message={pendingRemove?.title}
+        message={pendingRemove ? itemTitle(pendingRemove) : ''}
         confirmLabel="Sil"
         destructive
         onConfirm={() => {

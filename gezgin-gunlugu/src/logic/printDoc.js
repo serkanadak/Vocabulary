@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 // Ortak yazdırma/PDF makinesi (web). Bir HTML belgesini yeni sekmede (ya da
 // açılır pencere engellenirse gizli iframe'de) açıp yazdır/PDF diyaloğunu açar.
 // ÖNEMLİ: açılır pencere, kullanıcı tıklamasıyla aynı anda (await'ten ÖNCE)
@@ -50,7 +51,7 @@ function printViaIframe(html) {
 }
 
 // builder: async () => string(html). busyMsg: pencere hazırlanırken gösterilecek not.
-export async function printDocument(builder, busyMsg = 'Hazırlanıyor…') {
+export async function printDocument(builder, busyMsg = t('common.preparing')) {
   let win = null;
   try {
     win = window.open('', '_blank');

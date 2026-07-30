@@ -18,6 +18,7 @@ const DEFAULT_SETTINGS = {
   apiKey: '',
   apiModel: '',
   roadOnline: true, // çevrimiçiyken gerçek yol mesafesi (OSRM); kapalıysa yalnızca tahmin
+  lang: 'tr', // arayüz dili: 'tr' | 'en' | 'de' (dil önyüklemede localStorage'dan uygulanır)
   theme: 'deniz', // ekran renk paleti: 'deniz' | 'gunes' | 'dag' | 'kar' (palet önyüklemede localStorage'dan uygulanır)
   expenseCatsCustom: [], // Ayarlar'dan eklenen harcama türleri: [{ value, label, icon }]
   expenseCatsInactive: [], // pasif türler (seyahatlerde seçilemez, geçmiş kayıtlarda görünür)

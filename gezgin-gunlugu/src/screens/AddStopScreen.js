@@ -5,6 +5,7 @@ import { useJournal } from '../state/JournalContext';
 import { matchPlace } from '../data/places';
 import { isValidDateKey } from '../logic/date';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { Card, Field, PrimaryButton, SectionHeader } from '../components/common';
 
 export default function AddStopScreen({ route, navigation }) {
@@ -23,7 +24,7 @@ export default function AddStopScreen({ route, navigation }) {
   const [note, setNote] = useState(existing?.note || '');
 
   useLayoutEffect(() => {
-    navigation.setOptions({ title: isEdit ? 'Durağı Düzenle' : 'Durak Ekle' });
+    navigation.setOptions({ title: isEdit ? t('stop.editTitle') : t('stop.addTitle') });
   }, [navigation, isEdit]);
 
   // Girilen isim bilinen bir yerse koordinat önerisi sun.
@@ -66,16 +67,16 @@ export default function AddStopScreen({ route, navigation }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         <SectionHeader
-          title={isEdit ? 'Durağı Düzenle' : 'Durak Ekle'}
-          subtitle="Şehir/mekan adı gir. Bilinen bir yerse koordinatı otomatik önerilir. Kalacak yer ve notunu da ekleyebilirsin."
+          title={isEdit ? t('stop.editTitle') : t('stop.addTitle')}
+          subtitle={t('stop.sub')}
         />
         <Card>
-          <Field label="Durak adı" value={name} onChangeText={setName} placeholder="ör. Efes, İzmir" />
+          <Field label={t('stop.name')} value={name} onChangeText={setName} placeholder={t('stop.namePlaceholder')} />
 
           {showSuggestion ? (
             <Pressable style={styles.suggestion} onPress={applySuggestion}>
               <Text style={styles.suggestionText}>
-                📍 <Text style={styles.bold}>{suggestion.name}</Text> ({suggestion.city}) bulundu — koordinatı kullan (
+                {t('stop.suggestion', { name: suggestion.name, city: suggestion.city })} (
                 {suggestion.lat.toFixed(3)}, {suggestion.lng.toFixed(3)})
               </Text>
             </Pressable>
@@ -91,7 +92,7 @@ export default function AddStopScreen({ route, navigation }) {
                 keyboardType="numbers-and-punctuation"
                 autoCapitalize="none"
               />
-              {!latOk ? <Text style={styles.err}>-90 ile 90 arası olmalı.</Text> : null}
+              {!latOk ? <Text style={styles.err}>{t('stop.latRange')}</Text> : null}
             </View>
             <View style={{ flex: 1 }}>
               <Field
@@ -102,7 +103,7 @@ export default function AddStopScreen({ route, navigation }) {
                 keyboardType="numbers-and-punctuation"
                 autoCapitalize="none"
               />
-              {!lngOk ? <Text style={styles.err}>-180 ile 180 arası olmalı.</Text> : null}
+              {!lngOk ? <Text style={styles.err}>{t('stop.lngRange')}</Text> : null}
             </View>
           </View>
         </Card>
@@ -110,40 +111,40 @@ export default function AddStopScreen({ route, navigation }) {
         <SectionHeader title="Tarih, Konaklama & Notlar" />
         <Card>
           <Field
-            label="📅 Tarih (YYYY-AA-GG, opsiyonel)"
+            label={t('stop.dateField')}
             value={date}
             onChangeText={setDate}
-            placeholder="ör. 2026-08-03"
+            placeholder={t('stop.datePlaceholder')}
             autoCapitalize="none"
           />
-          {!dateOk ? <Text style={styles.err}>Geçersiz tarih biçimi.</Text> : null}
+          {!dateOk ? <Text style={styles.err}>{t('common.invalidDate')}</Text> : null}
           <Field
-            label="🏨 Kalacak yer (otel / adres)"
+            label={t('stop.stay')}
             value={accommodation}
             onChangeText={setAccommodation}
-            placeholder="ör. Hotel Kaya, Merkez Mah."
+            placeholder={t('stop.stayPlaceholder')}
           />
           <Field
-            label="🌙 Gece sayısı (opsiyonel)"
+            label={t('stop.nights')}
             value={nights}
             onChangeText={setNights}
-            placeholder="ör. 2"
+            placeholder={t('stop.nightsPlaceholder')}
             keyboardType="number-pad"
           />
-          {!nightsOk ? <Text style={styles.err}>0-365 arası bir sayı olmalı.</Text> : null}
+          {!nightsOk ? <Text style={styles.err}>{t('stop.nightsRange')}</Text> : null}
           <Field
-            label="📝 Not (opsiyonel)"
+            label={t('stop.note')}
             value={note}
             onChangeText={setNote}
-            placeholder="ör. Rezervasyon no, giriş saati, bütçe…"
+            placeholder={t('stop.notePlaceholder')}
             multiline
           />
           <Text style={styles.hint}>
-            Koordinat girmezsen durak listeye eklenir ama bu bacağın mesafesi hesaplanamaz.
+          {t('stop.coordHint')}
           </Text>
         </Card>
 
-        <PrimaryButton title={isEdit ? 'Değişiklikleri Kaydet' : 'Durağı Kaydet'} onPress={save} disabled={!canSave} />
+        <PrimaryButton title={isEdit ? t('common.saveChanges') : t('stop.save')} onPress={save} disabled={!canSave} />
       </ScrollView>
     </SafeAreaView>
   );

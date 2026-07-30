@@ -7,13 +7,14 @@ import { preparePhotos } from '../logic/imageStore';
 import { ENRICH_SOURCE } from '../logic/enrich';
 import { formatLongDate, isValidDateKey } from '../logic/date';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { Field, PrimaryButton, SecondaryButton, ConfirmModal, EmptyState, Pill } from '../components/common';
 import PlacePhoto from '../components/PlacePhoto';
 
 const SOURCE_LABEL = {
-  [ENRICH_SOURCE.LOCAL]: { label: 'Yerel arşiv', color: colors.success },
-  [ENRICH_SOURCE.AI]: { label: 'Canlı AI', color: colors.accent },
-  [ENRICH_SOURCE.TEMPLATE]: { label: 'Elle', color: colors.textMuted },
+  [ENRICH_SOURCE.LOCAL]: { label: t('disc.source.local'), color: colors.success },
+  [ENRICH_SOURCE.AI]: { label: t('disc.source.ai'), color: colors.accent },
+  [ENRICH_SOURCE.TEMPLATE]: { label: t('disc.source.manual'), color: colors.textMuted },
 };
 
 // Geriye uyumlu foto listesi: yeni kayıtlarda `photos`, eskilerde tek `photoUri`.
@@ -51,7 +52,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
       headerRight: () =>
         disc ? (
           <Pressable onPress={() => setConfirmDelete(true)} hitSlop={10}>
-            <Text style={{ color: colors.danger, fontWeight: '700' }}>Sil</Text>
+            <Text style={{ color: colors.danger, fontWeight: '700' }}>{t('common.delete')}</Text>
           </Pressable>
         ) : null,
     });
@@ -60,7 +61,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
   if (!disc) {
     return (
       <SafeAreaView style={styles.container} edges={['bottom']}>
-        <EmptyState icon="📍" title="Keşif bulunamadı" />
+        <EmptyState icon="📍" title={t('disc.notFound')} />
       </SafeAreaView>
     );
   }
@@ -158,7 +159,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
                     hitSlop={8}
                   >
                     <Text style={styles.featureText}>
-                      {isBig ? '★ Büyük' : single ? '☆ Küçük' : '☆ Büyük yap'}
+                      {isBig ? t('disc.big') : single ? t('disc.small') : t('disc.makeBig')}
                     </Text>
                   </Pressable>
                 </View>
@@ -169,7 +170,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
 
         <View style={styles.body}>
           <SecondaryButton
-            title={photos.length ? `📷 Fotoğraf ekle (${photos.length})` : '📷 Fotoğraf ekle'}
+            title={photos.length ? t('addDisc.addPhotoN', { n: photos.length }) : t('disc.addPhoto')}
             onPress={addPhotos}
             style={{ marginHorizontal: 0, marginBottom: 12 }}
           />
@@ -177,17 +178,17 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
             <>
               <View style={styles.featAllRow}>
                 <Text style={[styles.photoHint, styles.hintFlex]}>
-                  ← Kaydır · {photos.length} fotoğraf · ★ ile albümde büyük göster
-                  {featured.length ? ` (${featured.length} büyük)` : ''}
+                  {t('disc.photoHint', { n: photos.length })}
+                  {featured.length ? t('disc.bigCount', { n: featured.length }) : ''}
                 </Text>
                 <Pressable onPress={toggleAllFeatured} hitSlop={8}>
-                  <Text style={styles.featAllBtn}>{allBig ? 'Hiçbiri büyük' : '★ Hepsi büyük'}</Text>
+                  <Text style={styles.featAllBtn}>{allBig ? t('disc.noneBig') : t('disc.allBig')}</Text>
                 </Pressable>
               </View>
             </>
           ) : photos.length === 1 ? (
             <Text style={styles.photoHint}>
-              ★ ile bu fotoğrafın albümde (PDF) büyük mü küçük mü çıkacağını seç
+              {t('disc.soloHint')}
             </Text>
           ) : null}
 
@@ -202,7 +203,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
             <Pill label={meta.label} color={meta.color} />
           </View>
 
-          <Text style={styles.date}>📅 Keşif Tarihi: {formatLongDate(disc.date)}</Text>
+          <Text style={styles.date}>{t('disc.dateLabel', { date: formatLongDate(disc.date) })}</Text>
           {disc.lat != null && disc.lng != null ? (
             <Text style={styles.coord}>
               🧭 {disc.lat.toFixed(4)}, {disc.lng.toFixed(4)}
@@ -212,20 +213,20 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
           {/* Bilgileri düzenle */}
           {!editInfo ? (
             <Pressable onPress={() => setEditInfo(true)} hitSlop={8} style={styles.editInfoLink}>
-              <Text style={styles.editLink}>✏️ Bilgileri düzenle</Text>
+              <Text style={styles.editLink}>{t('trip.editInfo')}</Text>
             </Pressable>
           ) : (
             <View style={styles.editBox}>
-              <Field label="Mekan / aktivite adı" value={placeName} onChangeText={setPlaceName} />
-              <Field label="📅 Tarih (YYYY-AA-GG)" value={date} onChangeText={setDate} autoCapitalize="none" placeholder="2026-08-03" />
-              {!dateOk ? <Text style={styles.err}>Geçersiz tarih biçimi.</Text> : null}
-              <Field label="Şehir" value={city} onChangeText={setCity} />
-              <Field label="Ülke" value={country} onChangeText={setCountry} />
-              <Field label="🏛️ Özet" value={summary} onChangeText={setSummary} multiline />
+              <Field label={t('disc.placeName')} value={placeName} onChangeText={setPlaceName} />
+              <Field label={t('disc.dateField')} value={date} onChangeText={setDate} autoCapitalize="none" placeholder="2026-08-03" />
+              {!dateOk ? <Text style={styles.err}>{t('common.invalidDate')}</Text> : null}
+              <Field label={t('common.city')} value={city} onChangeText={setCity} />
+              <Field label={t('common.country')} value={country} onChangeText={setCountry} />
+              <Field label={t('disc.summaryShort')} value={summary} onChangeText={setSummary} multiline />
               <View style={styles.editActions}>
-                <PrimaryButton title="Kaydet" onPress={saveInfo} disabled={!canSaveInfo} style={{ marginHorizontal: 0, flex: 1 }} />
+                <PrimaryButton title={t('common.save')} onPress={saveInfo} disabled={!canSaveInfo} style={{ marginHorizontal: 0, flex: 1 }} />
                 <Pressable onPress={() => setEditInfo(false)} style={styles.cancelBtn}>
-                  <Text style={styles.cancelText}>Vazgeç</Text>
+                  <Text style={styles.cancelText}>{t('common.cancel')}</Text>
                 </Pressable>
               </View>
             </View>
@@ -235,16 +236,16 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
             place={{ id: disc.placeId, name: disc.placeName, city: disc.city, country: disc.country }}
           />
 
-          <Text style={styles.h}>🏛️ Tarihi ve Kültürel Özet</Text>
+          <Text style={styles.h}>{t('disc.summaryHead')}</Text>
           {disc.summary ? (
             <Text style={styles.summary}>{disc.summary}</Text>
           ) : (
-            <Text style={styles.summaryEmpty}>Bu keşif için özet girilmedi. “Bilgileri düzenle” ile ekleyebilirsin.</Text>
+            <Text style={styles.summaryEmpty}>{t('disc.noSummary')}</Text>
           )}
 
           {disc.sources?.length ? (
             <>
-              <Text style={styles.h}>📚 Kaynakça & Referanslar</Text>
+              <Text style={styles.h}>{t('disc.sourcesHead')}</Text>
               {disc.sources.map((s, i) => (
                 <Text key={i} style={styles.source}>
                   • {s}
@@ -254,32 +255,32 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
           ) : null}
 
           <View style={styles.notesHeader}>
-            <Text style={styles.h}>✍️ Gezginin Notları</Text>
+            <Text style={styles.h}>{t('disc.notesHead')}</Text>
             {!editing ? (
               <Pressable onPress={() => setEditing(true)} hitSlop={8}>
-                <Text style={styles.editLink}>Düzenle</Text>
+                <Text style={styles.editLink}>{t('common.edit')}</Text>
               </Pressable>
             ) : null}
           </View>
 
           {editing ? (
             <>
-              <Field value={notes} onChangeText={setNotes} placeholder="Anını, duygunu, notunu yaz…" multiline />
-              <PrimaryButton title="Notu Kaydet" onPress={saveNotes} style={{ marginHorizontal: 0, marginTop: 12 }} />
+              <Field value={notes} onChangeText={setNotes} placeholder={t('disc.notePlaceholder')} multiline />
+              <PrimaryButton title={t('disc.saveNote')} onPress={saveNotes} style={{ marginHorizontal: 0, marginTop: 12 }} />
             </>
           ) : disc.userNotes ? (
             <Text style={styles.notes}>{disc.userNotes}</Text>
           ) : (
-            <Text style={styles.summaryEmpty}>Henüz not eklenmedi. “Düzenle” ile ekleyebilirsin.</Text>
+            <Text style={styles.summaryEmpty}>{t('disc.noNotes')}</Text>
           )}
         </View>
       </ScrollView>
 
       <ConfirmModal
         visible={confirmDelete}
-        title="Keşfi sil?"
+        title={t('disc.deleteConfirm')}
         message={disc.placeName}
-        confirmLabel="Sil"
+        confirmLabel={t('common.delete')}
         destructive
         onConfirm={() => {
           setConfirmDelete(false);

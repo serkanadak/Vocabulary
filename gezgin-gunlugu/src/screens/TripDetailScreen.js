@@ -7,6 +7,7 @@ import { checklistProgress } from '../data/checklist';
 import { computeRoute, formatKm, formatDuration } from '../logic/geo';
 import { formatLongDate, formatShortDate, daysBetween } from '../logic/date';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { Card, ProgressBar, Pill, ConfirmModal, EmptyState } from '../components/common';
 
 function NavCard({ icon, title, subtitle, onPress, badge }) {
@@ -32,15 +33,15 @@ export default function TripDetailScreen({ route, navigation }) {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: trip?.title || 'Seyahat',
+      title: trip?.title || t('nav.trip'),
       headerRight: () =>
         trip ? (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
             <Pressable onPress={() => navigation.navigate('NewTrip', { tripId })} hitSlop={10}>
-              <Text style={{ color: colors.primary, fontWeight: '700' }}>Düzenle</Text>
+              <Text style={{ color: colors.primary, fontWeight: '700' }}>{t('common.edit')}</Text>
             </Pressable>
             <Pressable onPress={() => setConfirmDelete(true)} hitSlop={10}>
-              <Text style={{ color: colors.danger, fontWeight: '700' }}>Sil</Text>
+              <Text style={{ color: colors.danger, fontWeight: '700' }}>{t('common.delete')}</Text>
             </Pressable>
           </View>
         ) : null,
@@ -50,7 +51,7 @@ export default function TripDetailScreen({ route, navigation }) {
   if (!trip) {
     return (
       <SafeAreaView style={styles.container} edges={['bottom']}>
-        <EmptyState icon="🧳" title="Seyahat bulunamadı" subtitle="Bu seyahat silinmiş olabilir." />
+        <EmptyState icon="🧳" title={t('trip.notFound')} subtitle={t('trip.notFoundSub')} />
       </SafeAreaView>
     );
   }
@@ -74,94 +75,94 @@ export default function TripDetailScreen({ route, navigation }) {
               {vehicle.icon} {vehicle.label}
             </Text>
             {trip.finished ? (
-              <Pill label="Tamamlandı" color={colors.success} filled />
+              <Pill label={t('trips.finished')} color={colors.success} filled />
             ) : (
-              <Pill label="Aktif" color={colors.accent} />
+              <Pill label={t('trips.active')} color={colors.accent} />
             )}
           </View>
           <Text style={styles.heroDates}>
-            {trip.startDate ? formatLongDate(trip.startDate) : 'Tarih yok'}
+            {trip.startDate ? formatLongDate(trip.startDate) : t('trips.noDate')}
             {trip.endDate ? `  →  ${formatShortDate(trip.endDate)}` : ''}
-            {span ? `  ·  ${span} gün` : ''}
+            {span ? `  ·  ${span} ${t('date.dayShort')}` : ''}
           </Text>
           {route2.hasAny ? (
             <Text style={styles.heroRoute}>
               🗺️ {formatKm(route2.totalKm)} · ⏱️ {formatDuration(route2.totalHours)}
             </Text>
           ) : null}
-          <Text style={styles.heroEditHint}>✏️ Bilgileri düzenle</Text>
+          <Text style={styles.heroEditHint}>{t('trip.editInfo')}</Text>
         </Pressable>
 
         {/* Hazırlık */}
-        <Text style={styles.sectionLabel}>HAZIRLIK</Text>
+        <Text style={styles.sectionLabel}>{t('trip.section.prep')}</Text>
         <Card>
           <View style={styles.progRow}>
-            <Text style={styles.progTitle}>Hazırlık Listesi</Text>
-            <Text style={styles.progPct}>%{Math.round(prog.ratio * 100)}</Text>
+            <Text style={styles.progTitle}>{t('trip.checklistCard')}</Text>
+            <Text style={styles.progPct}>{t('common.pct', { n: Math.round(prog.ratio * 100) })}</Text>
           </View>
           <ProgressBar ratio={prog.ratio} color={colors.primary} />
           <Text style={styles.progMeta}>
-            ✅ {prog.done} tamam · 🟡 {prog.partial} kısmen · ⛔ {prog.skip} gerek yok · ⬜ {prog.todo} bekliyor
+            {t('trip.checklistMeta', { done: prog.done, partial: prog.partial, skip: prog.skip, todo: prog.todo })}
           </Text>
           <Pressable style={styles.linkBtn} onPress={() => navigation.navigate('Checklist', { tripId })}>
-            <Text style={styles.linkText}>Listeyi aç →</Text>
+            <Text style={styles.linkText}>{t('trip.openList')}</Text>
           </Pressable>
         </Card>
 
         {/* Planlama */}
-        <Text style={styles.sectionLabel}>PLANLAMA</Text>
+        <Text style={styles.sectionLabel}>{t('trip.section.plan')}</Text>
         <NavCard
           icon="🗺️"
-          title="Güzergah Planı"
+          title={t('trip.routeCard')}
           subtitle={
             (trip.stops || []).length
-              ? `${trip.stops.length} durak · ${route2.hasAny ? formatKm(route2.totalKm) : 'mesafe için koordinat ekle'}`
-              : 'Durak ekle, mesafe & süre hesaplansın'
+              ? t('trip.routeCardSub', { n: trip.stops.length, dist: route2.hasAny ? formatKm(route2.totalKm) : t('trip.routeNeedCoords') })
+              : t('trip.routeCardEmpty')
           }
           badge={(trip.stops || []).length || null}
           onPress={() => navigation.navigate('Route', { tripId })}
         />
 
         {/* Günlük / Keşifler — detaylar keşif günlüğünün içinde */}
-        <Text style={styles.sectionLabel}>GÜNLÜK · KEŞİFLER</Text>
+        <Text style={styles.sectionLabel}>{t('trip.section.journal')}</Text>
         <NavCard
           icon="🧭"
-          title="Keşif Günlüğü"
+          title={t('trip.journalCard')}
           subtitle={
             sortedDisc.length
-              ? `${sortedDisc.length} keşif · duraklara göre düzenle, fotoğraf & not ekle`
-              : 'Güzergah noktalarını aç, gezdiğin yerleri işaretle & ekle'
+              ? t('trip.journalCardSub', { n: sortedDisc.length })
+              : t('trip.journalCardEmpty')
           }
           badge={sortedDisc.length || null}
           onPress={() => navigation.navigate('DiscoveryHub', { tripId })}
         />
 
         {/* Harcamalar */}
-        <Text style={styles.sectionLabel}>BÜTÇE</Text>
+        <Text style={styles.sectionLabel}>{t('trip.section.budget')}</Text>
         <NavCard
           icon="🧾"
-          title="Harcamalar"
+          title={t('trip.expensesCard')}
           subtitle={
             (trip.expenses || []).length
-              ? `${trip.expenses.length} kayıt · fiş okut ya da elle ekle · EUR/USD/TL karşılığı`
-              : 'Fiş okutarak veya elle harcama ekle, EUR/USD/TL karşılığını gör'
+              ? t('trip.expensesCardSub', { n: trip.expenses.length })
+              : t('trip.expensesCardEmpty')
           }
           badge={(trip.expenses || []).length || null}
           onPress={() => navigation.navigate('Expenses', { tripId })}
         />
 
         {/* Çıktılar */}
-        <Text style={styles.sectionLabel}>SEYAHATİ BİTİR · ÇIKTILAR</Text>
+        <Text style={styles.sectionLabel}>{t('trip.section.outputs')}</Text>
         <NavCard
           icon="📖"
-          title="Albüm / Yayın Planı"
-          subtitle="Kronolojik kitapçık & PDF mizanpaj taslağı"
+          title={t('trip.albumCard')}
+          subtitle={t('trip.albumCardSub')}
           onPress={() => navigation.navigate('Album', { tripId })}
         />
         <NavCard
           icon="🎬"
-          title="Video Kolaj Senaryosu"
-          subtitle="Sahne sahne timeline, harita geçişleri, müzik & alt yazı"
+          title={t('trip.videoCard')}
+          subtitle={t('trip.videoCardSub')}
           onPress={() => navigation.navigate('VideoScript', { tripId })}
         />
 
@@ -170,16 +171,16 @@ export default function TripDetailScreen({ route, navigation }) {
           onPress={() => (trip.finished ? reopenTrip(tripId) : setConfirmFinish(true))}
         >
           <Text style={styles.finishText}>
-            {trip.finished ? '↩︎ Seyahati yeniden aç' : '🏁 Seyahati Bitir'}
+            {trip.finished ? t('trip.reopen') : t('trip.finish')}
           </Text>
         </Pressable>
       </ScrollView>
 
       <ConfirmModal
         visible={confirmFinish}
-        title="Seyahati bitir?"
-        message="Seyahat tamamlandı olarak işaretlenecek. Albüm ve video çıktılarını yine de oluşturabilirsin."
-        confirmLabel="Bitir"
+        title={t('trip.finishConfirm')}
+        message={t('trip.finishConfirmMsg')}
+        confirmLabel={t('trip.finishBtn')}
         onConfirm={() => {
           finishTrip(tripId);
           setConfirmFinish(false);
@@ -188,9 +189,9 @@ export default function TripDetailScreen({ route, navigation }) {
       />
       <ConfirmModal
         visible={confirmDelete}
-        title="Seyahati sil?"
-        message="Bu seyahat, tüm keşifleri, durakları ve notlarıyla kalıcı olarak silinecek."
-        confirmLabel="Sil"
+        title={t('trip.deleteConfirm')}
+        message={t('trip.deleteConfirmMsg')}
+        confirmLabel={t('common.delete')}
         destructive
         onConfirm={() => {
           setConfirmDelete(false);

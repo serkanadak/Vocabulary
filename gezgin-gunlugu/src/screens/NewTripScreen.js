@@ -6,6 +6,7 @@ import { VEHICLES, DEFAULT_VEHICLE } from '../data/vehicles';
 import { mergeChecklistWithDefaults, checklistNeedsUpdate } from '../data/checklist';
 import { isValidDateKey, todayKey } from '../logic/date';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { Card, Field, ChipPicker, PrimaryButton, SectionHeader } from '../components/common';
 
 export default function NewTripScreen({ route, navigation }) {
@@ -21,7 +22,7 @@ export default function NewTripScreen({ route, navigation }) {
   const [vehicle, setVehicle] = useState(existing?.vehicle || DEFAULT_VEHICLE);
 
   useLayoutEffect(() => {
-    navigation.setOptions({ title: isEdit ? 'Seyahati Düzenle' : 'Yeni Seyahat' });
+    navigation.setOptions({ title: isEdit ? t('newTrip.editTitle') : t('newTrip.title') });
   }, [navigation, isEdit]);
 
   const startOk = !startDate || isValidDateKey(startDate);
@@ -56,38 +57,36 @@ export default function NewTripScreen({ route, navigation }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         <SectionHeader
-          title={isEdit ? 'Seyahati Düzenle' : 'Yeni Seyahat'}
+          title={isEdit ? t('newTrip.editTitle') : t('newTrip.title')}
           subtitle={
-            isEdit
-              ? 'Seyahatin temel bilgilerini güncelle. Durak, keşif ve notların korunur.'
-              : 'Temel bilgileri gir; hazırlık listesi otomatik oluşturulacak.'
+            isEdit ? t('newTrip.editSub') : t('newTrip.sub')
           }
         />
         <Card>
           <Field
-            label="Seyahat adı"
+            label={t('newTrip.name')}
             value={title}
             onChangeText={setTitle}
-            placeholder="ör. Ege Turu 2026"
+            placeholder={t('newTrip.namePlaceholder')}
           />
           <Field
-            label="Başlangıç tarihi (YYYY-AA-GG)"
+            label={t('newTrip.start')}
             value={startDate}
             onChangeText={setStartDate}
             placeholder="2026-07-11"
             autoCapitalize="none"
           />
-          {!startOk ? <Text style={styles.err}>Geçersiz tarih biçimi.</Text> : null}
+          {!startOk ? <Text style={styles.err}>{t('common.invalidDate')}</Text> : null}
           <Field
-            label="Bitiş tarihi (opsiyonel)"
+            label={t('newTrip.end')}
             value={endDate}
             onChangeText={setEndDate}
             placeholder="2026-07-20"
             autoCapitalize="none"
           />
-          {!endOk ? <Text style={styles.err}>Geçersiz tarih biçimi.</Text> : null}
+          {!endOk ? <Text style={styles.err}>{t('common.invalidDate')}</Text> : null}
 
-          <Text style={styles.label}>Seyahat aracı</Text>
+          <Text style={styles.label}>{t('newTrip.vehicle')}</Text>
           <ChipPicker
             options={VEHICLES.map((v) => ({ value: v.id, ...v }))}
             value={vehicle}
@@ -95,19 +94,17 @@ export default function NewTripScreen({ route, navigation }) {
             renderLabel={(o) => `${o.icon} ${o.label}`}
           />
           <Text style={styles.hint}>
-            Araç, duraklar arası mesafe ve süre hesabında kullanılır (uçak kuş uçuşu, kara/ray araçları yol
-            payıyla).
+            {t('newTrip.vehicleHint')}
           </Text>
           {willUpdateChecklist ? (
             <Text style={styles.notice}>
-              ℹ️ Araç değişti: hazırlık listesindeki araca özel maddeler (yeşil kart, kasko, vinyet) buna göre
-              güncellenecek. İşaretlediğin durumlar ve eklediğin maddeler korunur.
+          {t('newTrip.vehicleChanged')}
             </Text>
           ) : null}
         </Card>
 
         <PrimaryButton
-          title={isEdit ? 'Değişiklikleri Kaydet' : 'Seyahati Başlat 🌍'}
+          title={isEdit ? t('common.saveChanges') : t('newTrip.start.cta')}
           onPress={save}
           disabled={!canSave}
         />

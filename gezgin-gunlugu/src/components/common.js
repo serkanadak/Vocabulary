@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable, TextInput, Modal, StyleSheet } from 'react-native';
 import { colors } from '../theme';
+import { t } from '../i18n';
 
 export function SectionHeader({ title, subtitle, right }) {
   return (
@@ -125,8 +126,8 @@ export function ConfirmModal({
   visible,
   title,
   message,
-  confirmLabel = 'Onayla',
-  cancelLabel = 'Vazgeç',
+  confirmLabel,
+  cancelLabel,
   destructive,
   onConfirm,
   onCancel,
@@ -139,14 +140,14 @@ export function ConfirmModal({
           {message ? <Text style={styles.modalMessage}>{message}</Text> : null}
           <View style={styles.modalButtonRow}>
             <Pressable style={styles.modalCancelBtn} onPress={onCancel}>
-              <Text style={styles.modalCancelText}>{cancelLabel}</Text>
+              <Text style={styles.modalCancelText}>{cancelLabel || t('common.cancel')}</Text>
             </Pressable>
             <Pressable
               style={[styles.modalConfirmBtn, destructive && styles.modalConfirmBtnDestructive]}
               onPress={onConfirm}
             >
               <Text style={[styles.modalConfirmText, destructive && styles.modalConfirmTextDestructive]}>
-                {confirmLabel}
+                {confirmLabel || t('common.confirm')}
               </Text>
             </Pressable>
           </View>

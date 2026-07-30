@@ -5,6 +5,7 @@ import * as Clipboard from 'expo-clipboard';
 import { useJournal } from '../state/JournalContext';
 import { generateVideoScript, videoScriptToText, SCENE_TYPE } from '../logic/video';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { EmptyState } from '../components/common';
 
 const TYPE_COLOR = {
@@ -35,7 +36,7 @@ export default function VideoScriptScreen({ route }) {
   if (!trip) {
     return (
       <SafeAreaView style={styles.container} edges={['bottom']}>
-        <EmptyState icon="🎬" title="Seyahat bulunamadı" />
+        <EmptyState icon="🎬" title={t('trip.notFound')} />
       </SafeAreaView>
     );
   }
@@ -45,8 +46,8 @@ export default function VideoScriptScreen({ route }) {
       <SafeAreaView style={styles.container} edges={['bottom']}>
         <EmptyState
           icon="🎬"
-          title="Senaryo için içerik yok"
-          subtitle="Önce birkaç keşif/fotoğraf ekle; sonra sahne sahne video kolaj senaryosunu kurgulayayım."
+          title={t('vidScr.empty')}
+          subtitle={t('vidScr.emptySub')}
         />
       </SafeAreaView>
     );
@@ -64,13 +65,13 @@ export default function VideoScriptScreen({ route }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         <View style={styles.intro}>
-          <Text style={styles.introTitle}>🎬 Video Kolaj Senaryosu</Text>
+          <Text style={styles.introTitle}>{t('vidScr.title')}</Text>
           <Text style={styles.introSub}>
-            {script.meta.totalScenes} sahne · ~{script.meta.totalDurationLabel} süre
+            {script.meta.totalScenes} sahne · ~{t('vidScr.duration', { dur: script.meta.totalDurationLabel })}
           </Text>
           <Text style={styles.music}>🎵 {script.meta.musicMood}</Text>
           <Pressable style={styles.copyBtn} onPress={copy}>
-            <Text style={styles.copyText}>{copied ? '✓ Kopyalandı' : '📋 Senaryoyu metin olarak kopyala'}</Text>
+            <Text style={styles.copyText}>{copied ? t('common.copied') : t('vidScr.copy')}</Text>
           </Pressable>
         </View>
 
@@ -85,27 +86,27 @@ export default function VideoScriptScreen({ route }) {
               <Text style={styles.dur}>{s.duration}s</Text>
             </View>
             <Text style={styles.field}>
-              <Text style={styles.fieldLabel}>🎥 Görsel: </Text>
+              <Text style={styles.fieldLabel}>{t('vidScr.visual')}</Text>
               {s.visual}
             </Text>
             <Text style={styles.field}>
-              <Text style={styles.fieldLabel}>🔀 Geçiş: </Text>
+              <Text style={styles.fieldLabel}>{t('vidScr.transition')}</Text>
               {s.transition}
             </Text>
             {s.onScreenText ? (
               <Text style={styles.field}>
-                <Text style={styles.fieldLabel}>💬 Alt yazı: </Text>
+                <Text style={styles.fieldLabel}>{t('vidScr.subtitle')}</Text>
                 {s.onScreenText}
               </Text>
             ) : null}
             {s.voiceover ? (
               <Text style={styles.field}>
-                <Text style={styles.fieldLabel}>🎙️ Dış ses: </Text>
+                <Text style={styles.fieldLabel}>{t('vidScr.voiceover')}</Text>
                 {s.voiceover}
               </Text>
             ) : null}
             <Text style={styles.field}>
-              <Text style={styles.fieldLabel}>🎵 Müzik: </Text>
+              <Text style={styles.fieldLabel}>{t('vidScr.music')}</Text>
               {s.music}
             </Text>
           </View>

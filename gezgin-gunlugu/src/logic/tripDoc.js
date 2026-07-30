@@ -3,6 +3,7 @@
 // PDF'inin içine gömülü olarak kullanılır. Mekân özetleri arşivden CANLI okunur
 // (kaydedilmiş eski kopya değil), böylece zenginleştirilmiş açıklamalar görünür.
 import { computeRoute, formatKm, formatDuration, hasCoords } from './geo';
+import { LANG_TAG, getLang, t } from '../i18n';
 import { getVehicle } from '../data/vehicles';
 import { matchPlace } from '../data/places';
 import { attractionsFor } from '../data/attractions';
@@ -29,7 +30,7 @@ function tripTitle(trip) {
   const s = trip?.stops || [];
   if (s.length >= 2) return `${s[0].name} → ${s[s.length - 1].name}`;
   if (s.length === 1) return s[0].name;
-  return 'Seyahat Günlüğü';
+  return t('doc.journal');
 }
 
 // --------------------------------------------------------- temel foto çözümleme
@@ -135,7 +136,7 @@ export function routeDetailHtml(trip, basePhotos) {
   const totals = result.hasAny
     ? `<div class="totals">` +
       `<div class="tot"><b>${esc(formatKm(result.totalKm))}</b><span>Toplam mesafe</span></div>` +
-      `<div class="tot"><b>${esc(formatDuration(result.totalHours))}</b><span>Tahmini süre</span></div>` +
+      `<div class="tot"><b>${esc(formatDuration(result.totalHours))}</b><span>${t('doc.estDuration')}</span></div>` +
       `<div class="tot"><b>${stops.length}</b><span>Durak</span></div>` +
       `</div>`
     : '';
@@ -158,7 +159,7 @@ export function routeDetailHtml(trip, basePhotos) {
       const legHtml =
         i < stops.length - 1
           ? `<div class="leg">${esc(vehicle.icon)} ${
-              leg && leg.km != null ? `${esc(formatKm(leg.km))} · ${esc(formatDuration(leg.hours))}` : 'mesafe için koordinat gerekir'
+              leg && leg.km != null ? `${esc(formatKm(leg.km))} · ${esc(formatDuration(leg.hours))}` : t('doc.needCoords')
             }</div>`
           : '';
       return (
@@ -181,7 +182,7 @@ export function routeDetailHtml(trip, basePhotos) {
   return (
     (svg ? `<div class="mapbox">${svg}</div>` : '') +
     totals +
-    (stopsHtml || '<div class="muted">Henüz durak yok.</div>')
+    (stopsHtml || `<div class="muted">${t('doc.noStops')}</div>`)
   );
 }
 
@@ -214,11 +215,11 @@ export function discoveryDetailHtml(trip, basePhotos) {
               );
             })
             .join('')
-        : '<div class="muted">Bu durak için arşivde öneri yok.</div>';
+        : `<div class="muted">${t('doc.noSuggestions')}</div>`;
 
       const attrNames = new Set(attractions.map((a) => norm(a.name)));
       const extra = stopDisc.filter((d) => !attrNames.has(norm(d.placeName)));
-      const extraHtml = extra.length ? `<div class="attrs-label">Eklenen diğer yerler</div>` + extra.map(discBlock).join('') : '';
+      const extraHtml = extra.length ? `<div class="attrs-label">${t('doc.otherPlaces')}</div>` + extra.map(discBlock).join('') : '';
 
       return (
         `<div class="stopd">` +
@@ -239,10 +240,10 @@ export function discoveryDetailHtml(trip, basePhotos) {
 
   const free = (trip.discoveries || []).filter((d) => !d.stopId || !stopIds.has(d.stopId));
   const freeHtml = free.length
-    ? `<div class="stopd"><div class="stopd-head">🌟 Rotadan bağımsız yerler & aktiviteler</div>${free.map(discBlock).join('')}</div>`
+    ? `<div class="stopd"><div class="stopd-head">${t('doc.freePlaces')}</div>${free.map(discBlock).join('')}</div>`
     : '';
 
-  return (stopsHtml || '<div class="muted">Henüz durak yok.</div>') + freeHtml;
+  return (stopsHtml || `<div class="muted">${t('doc.noStops')}</div>`) + freeHtml;
 }
 
 // Detay bileşen stilleri — hem bağımsız belgelerde hem albümde kullanılır.
@@ -300,7 +301,7 @@ const BASE_DOC_CSS = `
 
 function wrapDoc(title, innerHtml) {
   return (
-    `<!doctype html><html lang="tr"><head><meta charset="utf-8" />` +
+    `<!doctype html><html lang="${LANG_TAG[getLang()] || 'tr'}"><head><meta charset="utf-8" />` +
     `<meta name="viewport" content="width=device-width, initial-scale=1" />` +
     `<title>${esc(title)}</title><style>${BASE_DOC_CSS}${DETAIL_CSS}</style></head><body>` +
     `<div class="doc">${innerHtml}</div></body></html>`
@@ -309,25 +310,25 @@ function wrapDoc(title, innerHtml) {
 
 export async function buildRouteDoc(trip) {
   const basePhotos = await resolveBasePhotos(trip);
-  const inner = `<div class="doc-title">🗺️ Güzergah</div><div class="doc-sub">${esc(tripTitle(trip))} · ${esc(
+  const inner = `<div class="doc-title">${t('doc.routeHead')}</div><div class="doc-sub">${esc(tripTitle(trip))} · ${esc(
     getVehicle(trip.vehicle).icon
   )} ${esc(getVehicle(trip.vehicle).label)}</div>${routeDetailHtml(trip, basePhotos)}`;
-  return wrapDoc(`${tripTitle(trip)} — Güzergah`, inner);
+  return wrapDoc(`${tripTitle(trip)} — ${t('doc.route')}`, inner);
 }
 
 export async function buildDiscoveryDoc(trip) {
   const basePhotos = await resolveBasePhotos(trip);
-  const inner = `<div class="doc-title">🧭 Keşif Günlüğü</div><div class="doc-sub">${esc(tripTitle(trip))}</div>${discoveryDetailHtml(
+  const inner = `<div class="doc-title">${t('doc.discHead')}</div><div class="doc-sub">${esc(tripTitle(trip))}</div>${discoveryDetailHtml(
     trip,
     basePhotos
   )}`;
-  return wrapDoc(`${tripTitle(trip)} — Keşif`, inner);
+  return wrapDoc(`${tripTitle(trip)} — ${t('nav.discovery')}`, inner);
 }
 
 export function exportRoutePdf(trip) {
-  return printDocument(() => buildRouteDoc(trip), '🗺️ Güzergah hazırlanıyor…');
+  return printDocument(() => buildRouteDoc(trip), '🗺️ ' + t('common.preparing'));
 }
 
 export function exportDiscoveryPdf(trip) {
-  return printDocument(() => buildDiscoveryDoc(trip), '🧭 Keşif günlüğü hazırlanıyor…');
+  return printDocument(() => buildDiscoveryDoc(trip), '🧭 ' + t('common.preparing'));
 }

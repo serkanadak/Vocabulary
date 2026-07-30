@@ -4,6 +4,7 @@
 // kayıtlar `missing` olarak sayılır ama toplama katılmaz.
 import { BUILTIN_EXPENSE_CATEGORIES, catLabel, catIcon } from '../data/expenseCategories';
 import { paymentLabel, paymentIcon } from '../data/paymentMethods';
+import { t } from '../i18n';
 
 // Katalog verilmezse yerleşik türlere düşer (etiket/sıra için).
 function catalogOf(catalog) {
@@ -14,8 +15,8 @@ function catalogOf(catalog) {
 // Ayarlar'da bir türün silinebilir mi (hiç kullanılmamış) olduğunu belirlemek için.
 export function categoryUsage(trips) {
   const out = {};
-  for (const t of trips || []) {
-    for (const e of t.expenses || []) {
+  for (const tr of trips || []) {
+    for (const e of tr.expenses || []) {
       const key = (e && e.kind) || 'diger';
       out[key] = (out[key] || 0) + 1;
     }
@@ -74,19 +75,19 @@ export function categoryBreakdown(expenses, cur, catalog) {
 export function categoryTripMatrix(trips, cur, catalog) {
   const cat = catalogOf(catalog);
   const cols = (trips || [])
-    .filter((t) => (t.expenses || []).length)
-    .map((t) => ({ id: t.id, title: t.title || 'Seyahat', startDate: t.startDate || '', total: 0 }));
+    .filter((tr) => (tr.expenses || []).length)
+    .map((tr) => ({ id: tr.id, title: tr.title || t('nav.trip'), startDate: tr.startDate || '', total: 0 }));
 
   const used = new Set();
   const data = {}; // data[catValue][tripId] = toplam
-  for (const t of trips || []) {
-    if (!(t.expenses || []).length) continue;
-    for (const e of t.expenses || []) {
+  for (const tr of trips || []) {
+    if (!(tr.expenses || []).length) continue;
+    for (const e of tr.expenses || []) {
       const key = (e && e.kind) || 'diger';
       used.add(key);
       if (!(e && e.eq && typeof e.eq[cur] === 'number')) continue;
       data[key] = data[key] || {};
-      data[key][t.id] = (data[key][t.id] || 0) + e.eq[cur];
+      data[key][tr.id] = (data[key][tr.id] || 0) + e.eq[cur];
     }
   }
 
@@ -119,26 +120,26 @@ export function categoryTripMatrix(trips, cur, catalog) {
 // harcama. Kullanılmayan satırlar gizlenir.
 export function paymentTripMatrix(trips, cur) {
   const cols = (trips || [])
-    .filter((t) => (t.expenses || []).length)
-    .map((t) => ({ id: t.id, title: t.title || 'Seyahat', startDate: t.startDate || '', total: 0 }));
+    .filter((tr) => (tr.expenses || []).length)
+    .map((tr) => ({ id: tr.id, title: tr.title || t('nav.trip'), startDate: tr.startDate || '', total: 0 }));
 
   const used = new Set();
   const data = {};
-  for (const t of trips || []) {
-    if (!(t.expenses || []).length) continue;
-    for (const e of t.expenses || []) {
+  for (const tr of trips || []) {
+    if (!(tr.expenses || []).length) continue;
+    for (const e of tr.expenses || []) {
       const key = e && (e.payment === 'nakit' || e.payment === 'kart') ? e.payment : 'other';
       used.add(key);
       if (!(e && e.eq && typeof e.eq[cur] === 'number')) continue;
       data[key] = data[key] || {};
-      data[key][t.id] = (data[key][t.id] || 0) + e.eq[cur];
+      data[key][tr.id] = (data[key][tr.id] || 0) + e.eq[cur];
     }
   }
 
   const defs = [
     { value: 'nakit', label: paymentLabel('nakit'), icon: paymentIcon('nakit') },
     { value: 'kart', label: paymentLabel('kart'), icon: paymentIcon('kart') },
-    { value: 'other', label: 'Belirsiz', icon: '💰' },
+    { value: 'other', label: t('pay.unknown'), icon: '💰' },
   ];
   const rows = defs
     .filter((d) => used.has(d.value))
@@ -164,16 +165,16 @@ export function paymentTripMatrix(trips, cur) {
 // ödeme şekli (nakit/kart) süzülür. İkisi de boşsa tüm harcamalar toplanır.
 export function tripComparison(trips, cur, category, payment) {
   return (trips || [])
-    .map((t) => {
-      let list = t.expenses || [];
+    .map((tr) => {
+      let list = tr.expenses || [];
       if (category) list = list.filter((e) => ((e && e.kind) || 'diger') === category);
       if (payment) list = list.filter((e) => e && e.payment === payment);
       const s = sumIn(list, cur);
       return {
-        id: t.id,
-        title: t.title || 'Seyahat',
-        startDate: t.startDate || '',
-        finished: !!t.finished,
+        id: tr.id,
+        title: tr.title || t('nav.trip'),
+        startDate: tr.startDate || '',
+        finished: !!tr.finished,
         total: s.total,
         count: s.count,
         missing: s.missing,

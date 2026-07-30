@@ -5,6 +5,7 @@
 //   3) Aksi hâlde kullanıcının elle dolduracağı boş şablon üret.
 import { matchPlace } from '../data/places';
 import { todayKey } from './date';
+import { LANG_NAME, getLang } from '../i18n';
 
 export const ENRICH_SOURCE = {
   LOCAL: 'local',
@@ -69,7 +70,7 @@ const PROMPT = (place, hint, coords) => {
     .filter(Boolean)
     .join(' — ');
   return (
-    `Bir seyahat günlüğü için "${place}"${loc ? ' (' + loc + ')' : ''} hakkında Türkçe bir bölüm hazırla.\n` +
+    `Bir seyahat günlüğü için "${place}"${loc ? ' (' + loc + ')' : ''} hakkında ${LANG_NAME[getLang()] || 'Türkçe'} bir bölüm hazırla.\n` +
     `Kurallar: Akıcı, ilgi çekici, edebi ama bilgilendirici; en fazla 3 paragraf. ` +
     `Yerin tarihi önemini, mitolojisini veya kültürel mirasını vurgula.\n` +
     `Yanıtı SADECE şu JSON şemasıyla ver (başka metin yok):\n` +

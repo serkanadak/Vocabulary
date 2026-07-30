@@ -5,18 +5,19 @@
 // günde bir önbelleğe yazılır. Çevrimdışıysa en son önbellek kullanılır; hiç
 // kur yoksa çevrim yapılamaz (null döner) ama harcama yine de kaydedilir.
 import { storageGet, storageSet } from './storage';
+import { t, LOCALE, getLang } from '../i18n';
 
 const CACHE_KEY = 'gg_fx_rates_v1';
 const API_URL = 'https://open.er-api.com/v6/latest/USD';
 
 // Uygulamada seçilebilen para birimleri (sembol + ad). Kur uçları hepsini kapsar.
 export const CURRENCIES = [
-  { code: 'TRY', symbol: '₺', label: 'Türk Lirası' },
-  { code: 'EUR', symbol: '€', label: 'Euro' },
-  { code: 'USD', symbol: '$', label: 'ABD Doları' },
-  { code: 'GBP', symbol: '£', label: 'İngiliz Sterlini' },
-  { code: 'CHF', symbol: 'CHF', label: 'İsviçre Frangı' },
-  { code: 'JPY', symbol: '¥', label: 'Japon Yeni' },
+  { code: 'TRY', symbol: '₺', label: t('cur.TRY') },
+  { code: 'EUR', symbol: '€', label: t('cur.EUR') },
+  { code: 'USD', symbol: '$', label: t('cur.USD') },
+  { code: 'GBP', symbol: '£', label: t('cur.GBP') },
+  { code: 'CHF', symbol: 'CHF', label: t('cur.CHF') },
+  { code: 'JPY', symbol: '¥', label: t('cur.JPY') },
 ];
 
 // Harcamalarda özet gösterilen üç hedef para birimi.
@@ -84,8 +85,8 @@ export function convertAll(amount, currency, ratesObj) {
   const n = Number(amount);
   if (!rates || !isFinite(n)) return null;
   const out = {};
-  for (const t of TARGETS) out[t] = convertOne(n, currency, t, rates);
-  if (TARGETS.every((t) => out[t] == null)) return null;
+  for (const code of TARGETS) out[code] = convertOne(n, currency, code, rates);
+  if (TARGETS.every((code) => out[code] == null)) return null;
   return out;
 }
 
@@ -96,7 +97,7 @@ export function formatMoney(amount, currency) {
   const frac = currency === 'JPY' ? 0 : 2;
   let num;
   try {
-    num = n.toLocaleString('tr-TR', { minimumFractionDigits: frac, maximumFractionDigits: frac });
+    num = n.toLocaleString(LOCALE[getLang()] || 'tr-TR', { minimumFractionDigits: frac, maximumFractionDigits: frac });
   } catch (e) {
     num = n.toFixed(frac);
   }

@@ -1,7 +1,9 @@
 // Ödeme şekli: harcamanın nakit mi yoksa kredi kartıyla mı yapıldığı.
+import { t } from '../i18n';
+
 export const PAYMENT_METHODS = [
-  { value: 'nakit', label: 'Nakit', icon: '💵' },
-  { value: 'kart', label: 'Kredi Kartı', icon: '💳' },
+  { value: 'nakit', label: t('pay.cash'), icon: '💵' },
+  { value: 'kart', label: t('pay.card'), icon: '💳' },
 ];
 
 export const DEFAULT_PAYMENT = 'kart';

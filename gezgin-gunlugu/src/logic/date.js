@@ -1,4 +1,6 @@
 // Yerel tarih yardımcıları (saat dilimi kaymasını önlemek için Date.toISOString yerine elle biçimlendirme).
+// Ay/gün adları seçili arayüz dilinden gelir.
+import { t } from '../i18n';
 
 export function todayKey(d = new Date()) {
   const y = d.getFullYear();
@@ -7,11 +9,9 @@ export function todayKey(d = new Date()) {
   return `${y}-${m}-${day}`;
 }
 
-const AYLAR = [
-  'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
-  'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık',
-];
-const GUNLER = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+const AYLAR = t('date.months').split(',');
+const AYLAR_KISA = t('date.monthsShort').split(',');
+const GUNLER = t('date.days').split(',');
 
 // 'YYYY-MM-DD' -> '9 Temmuz 2026, Perşembe'
 export function formatLongDate(key) {
@@ -27,7 +27,7 @@ export function formatShortDate(key) {
   if (!key) return '';
   const [y, m, d] = key.split('-').map(Number);
   if (!y || !m || !d) return key;
-  return `${d} ${AYLAR[m - 1].slice(0, 3)}`;
+  return `${d} ${AYLAR_KISA[m - 1] || AYLAR[m - 1].slice(0, 3)}`;
 }
 
 // İki tarih arasındaki gün sayısı (dahil). Geçersizse null.

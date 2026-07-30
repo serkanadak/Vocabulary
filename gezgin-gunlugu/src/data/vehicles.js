@@ -8,16 +8,18 @@
 // HIZ: Uzun yol ortalamaları (otoyol + şehir içi + sınır dahil) esas alındı. Süre =
 // (gerçek/tahmini yol km) / etkin hız. Karavanlar arabaya göre ~%15 yavaş; çekme
 // karavan ayrıca ≤ 90 km/sa (maxSpeed) ile sınırlı.
+import { t } from '../i18n';
+
 export const VEHICLES = [
-  { id: 'plane', label: 'Uçak', icon: '✈️', speed: 750, detour: 1.0 },
-  { id: 'car', label: 'Araba', icon: '🚗', speed: 95, detour: 1.2 },
-  { id: 'motokaravan', label: 'Motokaravan', icon: '🚐', speed: 81, detour: 1.2 },
-  { id: 'cekme_karavan', label: 'Çekme Karavan', icon: '🚙', speed: 81, detour: 1.2, maxSpeed: 90 },
-  { id: 'bus', label: 'Otobüs', icon: '🚌', speed: 78, detour: 1.2 },
-  { id: 'train', label: 'Tren', icon: '🚆', speed: 105, detour: 1.15 },
-  { id: 'motorbike', label: 'Motosiklet', icon: '🏍️', speed: 92, detour: 1.2 },
-  { id: 'bike', label: 'Bisiklet', icon: '🚲', speed: 16, detour: 1.25 },
-  { id: 'walk', label: 'Yürüyüş', icon: '🚶', speed: 4.5, detour: 1.3 },
+  { id: 'plane', label: t('vehicle.plane'), icon: '✈️', speed: 750, detour: 1.0 },
+  { id: 'car', label: t('vehicle.car'), icon: '🚗', speed: 95, detour: 1.2 },
+  { id: 'motokaravan', label: t('vehicle.motorhome'), icon: '🚐', speed: 81, detour: 1.2 },
+  { id: 'cekme_karavan', label: t('vehicle.caravan'), icon: '🚙', speed: 81, detour: 1.2, maxSpeed: 90 },
+  { id: 'bus', label: t('vehicle.bus'), icon: '🚌', speed: 78, detour: 1.2 },
+  { id: 'train', label: t('vehicle.train'), icon: '🚆', speed: 105, detour: 1.15 },
+  { id: 'motorbike', label: t('vehicle.motorcycle'), icon: '🏍️', speed: 92, detour: 1.2 },
+  { id: 'bike', label: t('vehicle.bicycle'), icon: '🚲', speed: 16, detour: 1.25 },
+  { id: 'walk', label: t('vehicle.walk'), icon: '🚶', speed: 4.5, detour: 1.3 },
 ];
 
 // Bir aracın rota planında kullanılacak etkin seyir hızı (varsa maxSpeed tavanı uygulanır).

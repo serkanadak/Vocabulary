@@ -7,6 +7,7 @@
 import { CURRENCIES } from './fx';
 import { activeCategories, FALLBACK_EXPENSE_CATEGORY } from '../data/expenseCategories';
 import { PAYMENT_VALUES } from '../data/paymentMethods';
+import { LANG_NAME, getLang } from '../i18n';
 
 const CODES = CURRENCIES.map((c) => c.code).join(', ');
 
@@ -16,7 +17,7 @@ function buildPrompt(cats) {
   const list = cats.map((c) => `${c.value} (${c.label})`).join(', ');
   return (
     `Bu bir alışveriş/hizmet fişi ya da fatura fotoğrafı. Görüntüyü incele ve ` +
-    `harcamayı çıkar. Alınan mal veya hizmetin kısa Türkçe adını, ödenen TOPLAM ` +
+    `harcamayı çıkar. Alınan mal veya hizmetin kısa ${LANG_NAME[getLang()] || 'Türkçe'} adını, ödenen TOPLAM ` +
     `tutarı (sayı) ve para birimini belirle. Para birimi şu kodlardan biri olmalı: ` +
     `${CODES} (fişteki sembol/ülkeye göre; ₺/TL→TRY, €→EUR, $→USD, £→GBP). ` +
     `Harcamayı şu kategorilerden EN UYGUN olanına yerleştir ve anahtar değerini ("value") döndür: ` +

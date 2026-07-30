@@ -6,6 +6,7 @@ import { useJournal } from '../state/JournalContext';
 import { generateAlbumPlan, albumPlanToText } from '../logic/publish';
 import { exportAlbumPdf } from '../logic/albumHtml';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { EmptyState } from '../components/common';
 
 function tripPhotos(trip) {
@@ -31,7 +32,7 @@ export default function AlbumScreen({ route }) {
   if (!trip) {
     return (
       <SafeAreaView style={styles.container} edges={['bottom']}>
-        <EmptyState icon="📖" title="Seyahat bulunamadı" />
+        <EmptyState icon="📖" title={t('trip.notFound')} />
       </SafeAreaView>
     );
   }
@@ -41,8 +42,8 @@ export default function AlbumScreen({ route }) {
       <SafeAreaView style={styles.container} edges={['bottom']}>
         <EmptyState
           icon="📖"
-          title="Albüm için içerik yok"
-          subtitle="Önce birkaç keşif ekle; sonra buradan kronolojik albüm/PDF mizanpaj planını oluşturayım."
+          title={t('album.empty')}
+          subtitle={t('album.emptySub')}
         />
       </SafeAreaView>
     );
@@ -59,23 +60,17 @@ export default function AlbumScreen({ route }) {
 
   const makePdf = async () => {
     if (Platform.OS !== 'web') {
-      Alert.alert(
-        'PDF web sürümünde',
-        'Fotoğraflı PDF albümü, uygulamanın tarayıcı (web) sürümünde oluşturulur. Aynı seyahat linkini telefonun tarayıcısında açıp “📄 PDF olarak kaydet” diyebilirsin.'
-      );
+      Alert.alert(t('pdf.webOnly'), t('album.pdfWebOnlyMsg'));
       return;
     }
     setPdfBusy(true);
     try {
       const res = await exportAlbumPdf(trip);
       if (!res.ok && res.reason === 'popup') {
-        Alert.alert(
-          'Açılır pencere engellendi',
-          'PDF için yeni bir sekme açılması gerekiyor. Tarayıcının açılır pencere (popup) iznini verip tekrar dene.'
-        );
+        Alert.alert(t('pdf.popupBlocked'), t('pdf.popupBlockedMsg'));
       }
     } catch (e) {
-      Alert.alert('PDF oluşturulamadı', 'Beklenmedik bir hata oluştu. Tekrar deneyebilirsin.');
+      Alert.alert(t('pdf.failed'), t('common.unexpectedError'));
     } finally {
       setPdfBusy(false);
     }
@@ -85,7 +80,7 @@ export default function AlbumScreen({ route }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         <View style={styles.intro}>
-          <Text style={styles.introTitle}>📖 Albüm / Yayın Planı</Text>
+          <Text style={styles.introTitle}>{t('album.title')}</Text>
           <Text style={styles.introSub}>
             {plan.discoveryCount} keşif · {plan.pages.length} sayfa · {plan.vehicle.icon} {plan.vehicle.label}
           </Text>
@@ -97,7 +92,7 @@ export default function AlbumScreen({ route }) {
             )}
           </Pressable>
           <Pressable style={styles.copyBtn} onPress={copyPlan}>
-            <Text style={styles.copyText}>{copied ? '✓ Kopyalandı' : '📋 Planı metin olarak kopyala'}</Text>
+            <Text style={styles.copyText}>{copied ? t('common.copied') : t('album.copyPlan')}</Text>
           </Pressable>
           <Text style={styles.pdfHint}>
             PDF, fotoğrafların gömülü olarak baskıya hazır sayfalara dizilir; açılan pencerede “PDF olarak kaydet”i
@@ -108,7 +103,7 @@ export default function AlbumScreen({ route }) {
         {/* Kapak fotoğrafı seçimi */}
         {photos.length ? (
           <>
-            <Text style={styles.stage}>KAPAK FOTOĞRAFI</Text>
+            <Text style={styles.stage}>{t('album.coverPhoto')}</Text>
             <View style={styles.coverPick}>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingRight: 8 }}>
                 <Pressable
@@ -133,7 +128,7 @@ export default function AlbumScreen({ route }) {
                 ))}
               </ScrollView>
               <Text style={styles.coverHint}>
-                Albüm kapağında görünecek fotoğrafı seç. “Otomatik”: güzergahtaki ilk fotoğraf.
+          {t('album.coverHint')}
               </Text>
             </View>
           </>
@@ -146,19 +141,19 @@ export default function AlbumScreen({ route }) {
           {plan.cover.subtitle ? <Text style={styles.coverSub}>{plan.cover.subtitle}</Text> : null}
           <Text style={styles.ideaLabel}>🎨 Renk/Tema</Text>
           <Text style={styles.idea}>{plan.cover.colorIdea}</Text>
-          <Text style={styles.ideaLabel}>🖼️ Görsel</Text>
+          <Text style={styles.ideaLabel}>{t('album.visual')}</Text>
           <Text style={styles.idea}>{plan.cover.imageIdea}</Text>
         </Block>
 
         {/* Giriş */}
-        <Text style={styles.stage}>GİRİŞ SAYFASI</Text>
+        <Text style={styles.stage}>{t('album.introPage')}</Text>
         <Block>
           <Text style={styles.introText}>{plan.intro.text}</Text>
           <Text style={styles.layout}>📐 {plan.intro.layout}</Text>
         </Block>
 
         {/* Sayfalar */}
-        <Text style={styles.stage}>SAYFALAR (KRONOLOJİK)</Text>
+        <Text style={styles.stage}>{t('album.pages')}</Text>
         {plan.pages.map((p) => (
           <Block key={p.pageNo}>
             <View style={styles.pageHead}>
@@ -184,7 +179,7 @@ export default function AlbumScreen({ route }) {
         ))}
 
         {/* Harita */}
-        <Text style={styles.stage}>SEYAHAT HARİTASI</Text>
+        <Text style={styles.stage}>{t('album.mapPage')}</Text>
         <Block>
           <Text style={styles.mapRoute}>{plan.mapPage.routeText}</Text>
           {plan.mapPage.totalDistance ? (

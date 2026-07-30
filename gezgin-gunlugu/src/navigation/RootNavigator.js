@@ -19,6 +19,7 @@ import ExpenseReportScreen from '../screens/ExpenseReportScreen';
 import AlbumScreen from '../screens/AlbumScreen';
 import VideoScriptScreen from '../screens/VideoScriptScreen';
 import { colors } from '../theme';
+import { t } from '../i18n';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -36,6 +37,7 @@ const navTheme = {
 };
 
 const TAB_ICONS = { Seyahatler: '🧭', Ayarlar: '⚙️' };
+const TAB_LABELS = { Seyahatler: t('nav.trips'), Ayarlar: t('nav.settings') };
 
 function icon(routeName) {
   return ({ color }) => <Text style={{ fontSize: 18, color }}>{TAB_ICONS[routeName]}</Text>;
@@ -50,10 +52,11 @@ function Tabs() {
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
         tabBarIcon: icon(route.name),
+        tabBarLabel: TAB_LABELS[route.name] || route.name,
       })}
     >
-      <Tab.Screen name="Seyahatler" component={TripsScreen} />
-      <Tab.Screen name="Ayarlar" component={SettingsScreen} />
+      <Tab.Screen name="Seyahatler" component={TripsScreen} options={{ title: t('nav.trips') }} />
+      <Tab.Screen name="Ayarlar" component={SettingsScreen} options={{ title: t('nav.settings') }} />
     </Tab.Navigator>
   );
 }
@@ -69,18 +72,18 @@ export default function RootNavigator() {
         }}
       >
         <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
-        <Stack.Screen name="NewTrip" component={NewTripScreen} options={{ title: 'Yeni Seyahat' }} />
-        <Stack.Screen name="TripDetail" component={TripDetailScreen} options={{ title: 'Seyahat' }} />
-        <Stack.Screen name="Checklist" component={ChecklistScreen} options={{ title: 'Hazırlık Listesi' }} />
-        <Stack.Screen name="Route" component={RouteScreen} options={{ title: 'Güzergah Planı' }} />
-        <Stack.Screen name="AddStop" component={AddStopScreen} options={{ title: 'Durak Ekle' }} />
-        <Stack.Screen name="DiscoveryHub" component={DiscoveryHubScreen} options={{ title: 'Keşif Günlüğü' }} />
-        <Stack.Screen name="AddDiscovery" component={AddDiscoveryScreen} options={{ title: 'Keşif Ekle' }} />
-        <Stack.Screen name="DiscoveryDetail" component={DiscoveryDetailScreen} options={{ title: 'Keşif' }} />
-        <Stack.Screen name="Expenses" component={ExpensesScreen} options={{ title: 'Harcamalar' }} />
-        <Stack.Screen name="ExpenseReport" component={ExpenseReportScreen} options={{ title: 'Harcama Raporu' }} />
-        <Stack.Screen name="Album" component={AlbumScreen} options={{ title: 'Albüm / Yayın' }} />
-        <Stack.Screen name="VideoScript" component={VideoScriptScreen} options={{ title: 'Video Senaryosu' }} />
+        <Stack.Screen name="NewTrip" component={NewTripScreen} options={{ title: t('nav.newTrip') }} />
+        <Stack.Screen name="TripDetail" component={TripDetailScreen} options={{ title: t('nav.trip') }} />
+        <Stack.Screen name="Checklist" component={ChecklistScreen} options={{ title: t('nav.checklist') }} />
+        <Stack.Screen name="Route" component={RouteScreen} options={{ title: t('nav.route') }} />
+        <Stack.Screen name="AddStop" component={AddStopScreen} options={{ title: t('nav.addStop') }} />
+        <Stack.Screen name="DiscoveryHub" component={DiscoveryHubScreen} options={{ title: t('nav.discoveryHub') }} />
+        <Stack.Screen name="AddDiscovery" component={AddDiscoveryScreen} options={{ title: t('nav.addDiscovery') }} />
+        <Stack.Screen name="DiscoveryDetail" component={DiscoveryDetailScreen} options={{ title: t('nav.discovery') }} />
+        <Stack.Screen name="Expenses" component={ExpensesScreen} options={{ title: t('nav.expenses') }} />
+        <Stack.Screen name="ExpenseReport" component={ExpenseReportScreen} options={{ title: t('nav.expenseReport') }} />
+        <Stack.Screen name="Album" component={AlbumScreen} options={{ title: t('nav.album') }} />
+        <Stack.Screen name="VideoScript" component={VideoScriptScreen} options={{ title: t('nav.videoScript') }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

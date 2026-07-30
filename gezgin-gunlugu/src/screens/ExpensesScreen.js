@@ -16,6 +16,7 @@ import {
 import { PAYMENT_METHODS, DEFAULT_PAYMENT, paymentLabel, paymentIcon } from '../data/paymentMethods';
 import { todayKey, isValidDateKey, formatShortDate } from '../logic/date';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { Field, ChipPicker, PrimaryButton, SecondaryButton, ConfirmModal, EmptyState, Card } from '../components/common';
 
 // Saklanan fiş görüntüsü ayarı: okunaklı ama küçük (veri tek JSON blob'unda tutulur).
@@ -47,10 +48,10 @@ export default function ExpensesScreen({ route, navigation }) {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Harcamalar',
+      title: t('nav.expenses'),
       headerRight: () => (
         <Pressable onPress={() => navigation.navigate('ExpenseReport', { tripId })} hitSlop={10}>
-          <Text style={{ color: colors.primary, fontWeight: '700' }}>📊 Rapor</Text>
+          <Text style={{ color: colors.primary, fontWeight: '700' }}>{t('exp.report')}</Text>
         </Pressable>
       ),
     });
@@ -59,7 +60,7 @@ export default function ExpensesScreen({ route, navigation }) {
   if (!trip) {
     return (
       <SafeAreaView style={styles.container} edges={['bottom']}>
-        <EmptyState icon="🧾" title="Seyahat bulunamadı" />
+        <EmptyState icon="🧾" title={t('exp.notFound')} />
       </SafeAreaView>
     );
   }
@@ -87,7 +88,7 @@ export default function ExpensesScreen({ route, navigation }) {
   let missing = 0;
   for (const e of expenses) {
     if (e.eq) {
-      for (const t of TARGETS) if (typeof e.eq[t] === 'number') totals[t] += e.eq[t];
+      for (const code of TARGETS) if (typeof e.eq[code] === 'number') totals[code] += e.eq[code];
     } else {
       missing += 1;
     }
@@ -144,17 +145,17 @@ export default function ExpensesScreen({ route, navigation }) {
         if (parsed.currency) next.currency = parsed.currency;
         if (parsed.kind) next.kind = parsed.kind;
         if (parsed.payment) next.payment = parsed.payment;
-        setNotice('Fiş okundu — bilgileri kontrol edip kaydedin.');
+        setNotice(t('exp.scanned'));
       } catch (err) {
         setNotice(
           /AI kapalı/.test(err.message)
-            ? 'Fiş eklendi. Otomatik okuma için Ayarlar’dan “Canlı AI”yı açın; şimdilik elle doldurun.'
-            : 'Fiş okunamadı — bilgileri elle doldurun. (Fotoğraf eklendi.)'
+            ? t('exp.scanAiOff')
+            : t('exp.scanFailed')
         );
       }
       setForm(next);
     } catch (e) {
-      setNotice('Fotoğraf seçilemedi.');
+      setNotice(t('exp.photoFailed'));
     } finally {
       setReading(false);
     }
@@ -211,27 +212,27 @@ export default function ExpensesScreen({ route, navigation }) {
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         {/* Toplam özeti */}
         <View style={styles.totalsCard}>
-          <Text style={styles.totalsTitle}>Toplam Harcama</Text>
+          <Text style={styles.totalsTitle}>{t('exp.totalTitle')}</Text>
           <View style={styles.totalsRow}>
-            {TARGETS.map((t) => (
-              <View key={t} style={styles.totalCell}>
-                <Text style={styles.totalCur}>{currencySymbol(t)} {t}</Text>
-                <Text style={styles.totalVal}>{formatMoney(totals[t], t)}</Text>
+            {TARGETS.map((code) => (
+              <View key={code} style={styles.totalCell}>
+                <Text style={styles.totalCur}>{currencySymbol(code)} {code}</Text>
+                <Text style={styles.totalVal}>{formatMoney(totals[code], code)}</Text>
               </View>
             ))}
           </View>
           <Text style={styles.totalsMeta}>
-            {expenses.length} kayıt
-            {missing ? ` · ${missing} kaydın karşılığı hesaplanamadı (çevrimdışı)` : ' · canlı kurla çevrildi'}
+            {t('exp.recordCount', { n: expenses.length })}
+            {missing ? t('exp.missingSome', { n: missing }) : t('exp.convertedLive')}
           </Text>
         </View>
 
         {/* Ekle / Fiş oku eylemleri */}
         {!form ? (
           <View style={styles.actions}>
-            <PrimaryButton title="＋ Harcama ekle" onPress={openAdd} style={{ flex: 1, marginHorizontal: 0 }} />
+            <PrimaryButton title={t('exp.add')} onPress={openAdd} style={{ flex: 1, marginHorizontal: 0 }} />
             <SecondaryButton
-              title="📷 Fiş oku"
+              title={t('exp.scan')}
               onPress={() => {
                 setForm({ ...emptyForm(), kind: defaultKind });
                 setEditingId(null);
@@ -245,12 +246,12 @@ export default function ExpensesScreen({ route, navigation }) {
         {/* Form */}
         {form ? (
           <Card style={{ marginTop: 14 }}>
-            <Text style={styles.formTitle}>{editingId ? 'Harcamayı düzenle' : 'Yeni harcama'}</Text>
+            <Text style={styles.formTitle}>{editingId ? t('exp.editTitle') : t('exp.newTitle')}</Text>
 
             {reading ? (
               <View style={styles.readingRow}>
                 <ActivityIndicator color={colors.primary} />
-                <Text style={styles.readingText}>Fiş okunuyor…</Text>
+                <Text style={styles.readingText}>{t('exp.reading')}</Text>
               </View>
             ) : null}
 
@@ -265,13 +266,13 @@ export default function ExpensesScreen({ route, navigation }) {
 
             <View style={styles.receiptBtns}>
               <SecondaryButton
-                title={reading ? '…' : '📷 Fiş oku'}
+                title={reading ? '…' : t('exp.scan')}
                 onPress={scanReceipt}
                 disabled={reading}
                 style={{ flex: 1, marginHorizontal: 0 }}
               />
               <SecondaryButton
-                title="🖼️ Foto ekle"
+                title={t('exp.attachPhoto')}
                 onPress={attachPhotoOnly}
                 style={{ flex: 1, marginHorizontal: 0, marginLeft: 8 }}
               />
@@ -279,7 +280,7 @@ export default function ExpensesScreen({ route, navigation }) {
 
             {notice ? <Text style={styles.notice}>{notice}</Text> : null}
 
-            <Text style={styles.fieldLabel}>Tür</Text>
+            <Text style={styles.fieldLabel}>{t('exp.kind')}</Text>
             <ChipPicker
               options={pickable.map((c) => ({ value: c.value }))}
               value={form.kind}
@@ -287,15 +288,15 @@ export default function ExpensesScreen({ route, navigation }) {
               renderLabel={(o) => `${catIcon(catalog, o.value)} ${catLabel(catalog, o.value)}`}
             />
 
-            <Field label="Alınan hizmet / mal" value={form.label} onChangeText={(v) => patchForm({ label: v })} placeholder="Akşam yemeği, müze bileti, hediyelik…" />
+            <Field label={t('exp.label')} value={form.label} onChangeText={(v) => patchForm({ label: v })} placeholder={t('exp.labelPlaceholder')} />
 
             <View style={styles.amountRow}>
               <View style={{ flex: 1 }}>
-                <Field label="Tutar" value={form.amount} onChangeText={(v) => patchForm({ amount: v })} placeholder="0,00" keyboardType="decimal-pad" />
+                <Field label={t('exp.amount')} value={form.amount} onChangeText={(v) => patchForm({ amount: v })} placeholder="0,00" keyboardType="decimal-pad" />
               </View>
             </View>
 
-            <Text style={styles.fieldLabel}>Para birimi</Text>
+            <Text style={styles.fieldLabel}>{t('exp.currency')}</Text>
             <ChipPicker
               options={CURRENCIES.map((c) => ({ value: c.code }))}
               value={form.currency}
@@ -303,7 +304,7 @@ export default function ExpensesScreen({ route, navigation }) {
               renderLabel={(o) => `${currencySymbol(o.value)} ${o.value}`}
             />
 
-            <Text style={styles.fieldLabel}>Ödeme şekli</Text>
+            <Text style={styles.fieldLabel}>{t('exp.payment')}</Text>
             <ChipPicker
               options={PAYMENT_METHODS.map((p) => ({ value: p.value }))}
               value={form.payment}
@@ -311,13 +312,13 @@ export default function ExpensesScreen({ route, navigation }) {
               renderLabel={(o) => `${paymentIcon(o.value)} ${paymentLabel(o.value)}`}
             />
 
-            <Field label="📅 Tarih (YYYY-AA-GG)" value={form.date} onChangeText={(v) => patchForm({ date: v })} autoCapitalize="none" placeholder={todayKey()} />
-            {!dateOk ? <Text style={styles.err}>Geçersiz tarih biçimi.</Text> : null}
+            <Field label={t('disc.dateField')} value={form.date} onChangeText={(v) => patchForm({ date: v })} autoCapitalize="none" placeholder={todayKey()} />
+            {!dateOk ? <Text style={styles.err}>{t('common.invalidDate')}</Text> : null}
 
             <View style={styles.formActions}>
-              <PrimaryButton title={saving ? 'Kaydediliyor…' : 'Kaydet'} onPress={save} disabled={!canSave || saving} style={{ flex: 1, marginHorizontal: 0 }} />
+              <PrimaryButton title={saving ? t('exp.saving') : t('common.save')} onPress={save} disabled={!canSave || saving} style={{ flex: 1, marginHorizontal: 0 }} />
               <Pressable onPress={closeForm} style={styles.cancelBtn}>
-                <Text style={styles.cancelText}>Vazgeç</Text>
+                <Text style={styles.cancelText}>{t('common.cancel')}</Text>
               </Pressable>
             </View>
           </Card>
@@ -343,10 +344,10 @@ export default function ExpensesScreen({ route, navigation }) {
                   </Text>
                   {e.eq ? (
                     <Text style={styles.rowEq} numberOfLines={1}>
-                      {TARGETS.map((t) => formatMoney(e.eq[t], t)).join('  ·  ')}
+                      {TARGETS.map((code) => formatMoney(e.eq[code], code)).join('  ·  ')}
                     </Text>
                   ) : (
-                    <Text style={styles.rowEqMissing}>karşılık hesaplanamadı</Text>
+                    <Text style={styles.rowEqMissing}>{t('exp.noConversion')}</Text>
                   )}
                 </View>
                 <View style={styles.rowRight}>
@@ -361,16 +362,16 @@ export default function ExpensesScreen({ route, navigation }) {
         ) : !form ? (
           <EmptyState
             icon="🧾"
-            title="Henüz harcama yok"
-            subtitle="Fiş okutarak veya elle ekleyerek harcamalarını EUR / USD / TL karşılığıyla takip et."
+            title={t('exp.empty')}
+            subtitle={t('exp.emptySub')}
           />
         ) : null}
       </ScrollView>
 
       <ConfirmModal
         visible={!!confirmDeleteId}
-        title="Harcamayı sil?"
-        confirmLabel="Sil"
+        title={t('exp.deleteConfirm')}
+        confirmLabel={t('common.delete')}
         destructive
         onConfirm={() => {
           removeExpense(tripId, confirmDeleteId);

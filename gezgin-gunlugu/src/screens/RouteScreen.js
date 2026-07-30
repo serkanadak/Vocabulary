@@ -12,6 +12,7 @@ import { exportRoutePdf } from '../logic/tripDoc';
 import { todayKey, formatShortDate } from '../logic/date';
 import { hasPhoto } from '../logic/photos';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { ChipPicker, ConfirmModal, EmptyState } from '../components/common';
 import PlacePhoto from '../components/PlacePhoto';
 
@@ -36,7 +37,7 @@ function RouteMap({ stops }) {
   return (
     <View style={styles.mapWrap}>
       <Image source={{ uri }} style={{ width: W, height: H, borderRadius: 12 }} resizeMode="contain" />
-      <Text style={styles.mapHint}>Duraklar sırasıyla; numaralar durak sırasını gösterir (şematik harita).</Text>
+      <Text style={styles.mapHint}>{t('route.schematic')}</Text>
     </View>
   );
 }
@@ -54,7 +55,7 @@ function StopAttractions({ place, discoveries, onAdd, onRemove }) {
     <View style={styles.attrWrap}>
       <Pressable onPress={() => setOpen((o) => !o)} style={styles.attrToggle}>
         <Text style={styles.attrToggleText}>
-          🏛️ Gezilecek yerler ({list.length})
+          {t('route.attractions', { n: list.length })}
         </Text>
         <Text style={styles.attrChevron}>{open ? '▲' : '▼'}</Text>
       </Pressable>
@@ -74,12 +75,12 @@ function StopAttractions({ place, discoveries, onAdd, onRemove }) {
                     style={styles.attrRemoveBtn}
                     hitSlop={6}
                   >
-                    <Text style={styles.attrAdded}>✓ Eklendi</Text>
+                    <Text style={styles.attrAdded}>{t('route.added')}</Text>
                     <Text style={styles.attrRemoveHint}>↩︎ geri al</Text>
                   </Pressable>
                 ) : (
                   <Pressable onPress={() => onAdd(a, place)} style={styles.attrAddBtn} hitSlop={6}>
-                    <Text style={styles.attrAddText}>＋ Keşfe</Text>
+                    <Text style={styles.attrAddText}>{t('route.addToDisc')}</Text>
                   </Pressable>
                 )}
               </View>
@@ -103,17 +104,17 @@ export default function RouteScreen({ route, navigation }) {
 
   const makePdf = async () => {
     if (Platform.OS !== 'web') {
-      Alert.alert('PDF web sürümünde', 'Güzergah PDF’i, uygulamanın tarayıcı (web) sürümünde oluşturulur. Aynı seyahat linkini tarayıcıda açıp tekrar dene.');
+      Alert.alert(t('pdf.webOnly'), t('route.pdfWebOnlyMsg'));
       return;
     }
     setPdfBusy(true);
     try {
       const res = await exportRoutePdf(trip);
       if (res && !res.ok && res.reason === 'popup') {
-        Alert.alert('Açılır pencere engellendi', 'PDF için yeni bir sekme açılması gerekiyor. Tarayıcının açılır pencere iznini verip tekrar dene.');
+        Alert.alert(t('pdf.popupBlocked'), t('pdf.popupBlockedMsg'));
       }
     } catch (e) {
-      Alert.alert('PDF oluşturulamadı', 'Beklenmedik bir hata oluştu. Tekrar deneyebilirsin.');
+      Alert.alert(t('pdf.failed'), t('common.unexpectedError'));
     } finally {
       setPdfBusy(false);
     }
@@ -156,7 +157,7 @@ export default function RouteScreen({ route, navigation }) {
     navigation.setOptions({
       headerRight: () => (
         <Pressable onPress={() => navigation.navigate('AddStop', { tripId })} hitSlop={10}>
-          <Text style={{ color: colors.primary, fontWeight: '800' }}>＋ Durak</Text>
+          <Text style={{ color: colors.primary, fontWeight: '800' }}>{t('route.addStopShort')}</Text>
         </Pressable>
       ),
     });
@@ -165,7 +166,7 @@ export default function RouteScreen({ route, navigation }) {
   if (!trip) {
     return (
       <SafeAreaView style={styles.container} edges={['bottom']}>
-        <EmptyState icon="🧳" title="Seyahat bulunamadı" />
+        <EmptyState icon="🧳" title={t('trip.notFound')} />
       </SafeAreaView>
     );
   }
@@ -199,7 +200,7 @@ export default function RouteScreen({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
-        <Text style={styles.label}>Seyahat aracı</Text>
+        <Text style={styles.label}>{t('route.vehicle')}</Text>
         <View style={{ paddingHorizontal: 16 }}>
           <ChipPicker
             options={VEHICLES.map((v) => ({ value: v.id, ...v }))}
@@ -217,7 +218,7 @@ export default function RouteScreen({ route, navigation }) {
             </View>
             <View style={styles.totalItem}>
               <Text style={styles.totalNum}>{formatDuration(result.totalHours)}</Text>
-              <Text style={styles.totalLabel}>Tahmini süre</Text>
+              <Text style={styles.totalLabel}>{t('route.estDuration')}</Text>
             </View>
             <View style={styles.totalItem}>
               <Text style={styles.totalNum}>{stops.length}</Text>
@@ -233,7 +234,7 @@ export default function RouteScreen({ route, navigation }) {
             {pdfBusy ? (
               <ActivityIndicator color={colors.onPrimary} />
             ) : (
-              <Text style={styles.pdfText}>📄 Güzergahı PDF olarak al (detaylı)</Text>
+              <Text style={styles.pdfText}>{t('route.pdfBtn')}</Text>
             )}
           </Pressable>
         ) : null}
@@ -241,12 +242,12 @@ export default function RouteScreen({ route, navigation }) {
         {result.hasAny ? (
           <Text style={styles.sourceBadge}>
             {usingRoad
-              ? '🛰️ Gerçek yol mesafesi (çevrimiçi)'
+              ? t('route.modeReal')
               : roadState === 'loading'
-              ? '… gerçek yol mesafesi alınıyor'
+              ? t('route.fetchingRoad')
               : settings?.roadOnline
-              ? '≈ Tahmini mesafe (kuş uçuşu × yol payı) — çevrimiçi olunca gerçek yola geçer'
-              : '≈ Tahmini mesafe (kuş uçuşu × yol payı) — gerçek yol Ayarlar’dan açılabilir'}
+              ? t('route.modeEstOnline')
+              : t('route.modeEstOffline')}
           </Text>
         ) : null}
 
@@ -254,7 +255,7 @@ export default function RouteScreen({ route, navigation }) {
           <EmptyState
             icon="🗺️"
             title="Durak yok"
-            subtitle="Rotanı oluşturmak için durak ekle. Koordinat girersen (veya bilinen bir şehir yazarsan) duraklar arası mesafe ve süre otomatik hesaplanır."
+            subtitle={t('route.empty')}
           />
         ) : (
           <View style={styles.timeline}>
@@ -278,7 +279,7 @@ export default function RouteScreen({ route, navigation }) {
                       <Text style={styles.stopMeta}>
                         {hasCoords(stop)
                           ? `${stop.lat.toFixed(3)}, ${stop.lng.toFixed(3)}`
-                          : 'Koordinat yok — mesafe hesaplanamıyor'}
+                          : t('route.noCoords')}
                       </Text>
                       {stop.accommodation ? (
                         <Text style={styles.stopExtra}>
@@ -286,10 +287,10 @@ export default function RouteScreen({ route, navigation }) {
                           {stop.nights ? ` · ${stop.nights} gece` : ''}
                         </Text>
                       ) : stop.nights ? (
-                        <Text style={styles.stopExtra}>🌙 {stop.nights} gece</Text>
+                        <Text style={styles.stopExtra}>{t('route.nightsN', { n: stop.nights })}</Text>
                       ) : null}
                       {stop.note ? <Text style={styles.stopNote}>📝 {stop.note}</Text> : null}
-                      <Text style={styles.editHint}>Düzenlemek için dokun ›</Text>
+                      <Text style={styles.editHint}>{t('route.tapToEdit')}</Text>
                     </Pressable>
                     <View style={styles.stopActions}>
                       <Pressable onPress={() => move(i, -1)} hitSlop={6} disabled={i === 0}>
@@ -327,7 +328,7 @@ export default function RouteScreen({ route, navigation }) {
                         {vehicle.icon}{' '}
                         {leg && leg.km != null
                           ? `${formatKm(leg.km)} · ${formatDuration(leg.hours)}`
-                          : 'mesafe için iki durakta da koordinat gerekir'}
+                          : t('route.needBothCoords')}
                       </Text>
                     </View>
                   ) : null}
@@ -338,7 +339,7 @@ export default function RouteScreen({ route, navigation }) {
         )}
 
         <Pressable style={styles.addStopBtn} onPress={() => navigation.navigate('AddStop', { tripId })}>
-          <Text style={styles.addStopText}>＋ Durak Ekle</Text>
+          <Text style={styles.addStopText}>{t('route.addStopBtn')}</Text>
         </Pressable>
 
         {result.unknownLegs > 0 && result.hasAny ? (
@@ -350,9 +351,9 @@ export default function RouteScreen({ route, navigation }) {
 
       <ConfirmModal
         visible={!!pendingRemove}
-        title="Durağı sil?"
+        title={t('route.deleteStop')}
         message={pendingRemove?.name}
-        confirmLabel="Sil"
+        confirmLabel={t('common.delete')}
         destructive
         onConfirm={() => {
           removeStop(tripId, pendingRemove.id);
@@ -363,13 +364,9 @@ export default function RouteScreen({ route, navigation }) {
 
       <ConfirmModal
         visible={!!pendingUnadd}
-        title="Keşfe eklemeyi geri al?"
-        message={
-          pendingUnadd
-            ? `“${pendingUnadd.placeName}” için eklediğin not ve fotoğraf da silinecek.`
-            : ''
-        }
-        confirmLabel="Geri al"
+        title={t('route.undoAdd')}
+        message={pendingUnadd ? t('route.undoAddMsg', { name: pendingUnadd.placeName }) : ''}
+        confirmLabel={t('route.undoBtn')}
         destructive
         onConfirm={() => {
           removeDiscovery(tripId, pendingUnadd.id);

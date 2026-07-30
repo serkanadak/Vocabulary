@@ -7,6 +7,7 @@ import { storageEstimate } from '../logic/storage';
 import { resolveCategories } from '../data/expenseCategories';
 import { categoryUsage } from '../logic/expenseReport';
 import { colors, THEMES, getThemeId, saveThemeId } from '../theme';
+import { t, LANGS, getLang, saveLang } from '../i18n';
 import {
   Card,
   Field,
@@ -36,9 +37,9 @@ function ThemeOption({ theme, selected, onPress }) {
         <View style={[styles.swatch, { backgroundColor: p.accent }]} />
       </View>
       <Text style={[styles.themeLabel, { color: p.text }]}>
-        {theme.emoji} {theme.label}
+        {theme.emoji} {t('theme.' + theme.id)}
       </Text>
-      <Text style={[styles.themeCheck, { color: p.primary }]}>{selected ? '● Seçili' : '○ Seç'}</Text>
+      <Text style={[styles.themeCheck, { color: p.primary }]}>{selected ? t('set.themeSelected') : t('set.themeSelect')}</Text>
     </Pressable>
   );
 }
@@ -52,8 +53,8 @@ function fmtBytes(n) {
 
 function photoCountOf(trips) {
   let n = 0;
-  for (const t of trips) {
-    for (const d of t.discoveries || []) {
+  for (const tr of trips) {
+    for (const d of tr.discoveries || []) {
       const arr = Array.isArray(d.photos) && d.photos.length ? d.photos : d.photoUri ? [d.photoUri] : [];
       n += arr.length;
     }
@@ -96,7 +97,7 @@ export default function SettingsScreen() {
     setNewCatIcon('');
   };
 
-  const totalDiscoveries = trips.reduce((n, t) => n + (t.discoveries || []).length, 0);
+  const totalDiscoveries = trips.reduce((n, tr) => n + (tr.discoveries || []).length, 0);
   const photoCount = photoCountOf(trips);
 
   const [storage, setStorage] = useState(undefined); // undefined: yükleniyor, null: yok
@@ -117,6 +118,16 @@ export default function SettingsScreen() {
   const activeTheme = getThemeId();
   const [pendingTheme, setPendingTheme] = useState(null);
 
+  // Dil: tema gibi önyüklemede okunur; seçim değişince sayfa bir kez yenilenir.
+  const activeLangId = getLang();
+  const [pendingLang, setPendingLang] = useState(null);
+  const applyLang = (id) => {
+    saveLang(id);
+    updateSettings({ lang: id });
+    setPendingLang(null);
+    if (Platform.OS === 'web' && typeof window !== 'undefined') window.location.reload();
+  };
+
   const chooseTheme = (id) => {
     if (id === activeTheme) return;
     setPendingTheme(id);
@@ -136,33 +147,48 @@ export default function SettingsScreen() {
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         <View style={styles.header}>
-          <Text style={styles.appName}>⚙️ Ayarlar</Text>
+          <Text style={styles.appName}>{t('set.title')}</Text>
         </View>
 
+        <SectionHeader title={t('set.lang')} subtitle={t('set.langSub')} />
+        <Card>
+          <ChipPicker
+            options={LANGS.map((l) => ({ value: l.id }))}
+            value={activeLangId}
+            onChange={(id) => {
+              if (id !== activeLangId) setPendingLang(id);
+            }}
+            renderLabel={(o) => {
+              const l = LANGS.find((x) => x.id === o.value);
+              return `${l.flag} ${l.label}`;
+            }}
+          />
+          <Text style={styles.hint}>{t('set.langNote')}</Text>
+        </Card>
+
         <SectionHeader
-          title="Ekran Renk Teması"
-          subtitle="Uygulamanın renk paletini seç. Seçince palet uygulanır."
+          title={t('set.theme')}
+          subtitle={t('set.themeSub')}
         />
         <Card>
           <View style={styles.themeGrid}>
-            {Object.values(THEMES).map((t) => (
+            {Object.values(THEMES).map((th) => (
               <ThemeOption
-                key={t.id}
-                theme={t}
-                selected={t.id === activeTheme}
-                onPress={() => chooseTheme(t.id)}
+                key={th.id}
+                theme={th}
+                selected={th.id === activeTheme}
+                onPress={() => chooseTheme(th.id)}
               />
             ))}
           </View>
           <Text style={styles.hint}>
-            Dört tema: 🌊 Deniz, ☀️ Güneş, 🏔️ Dağ, ❄️ Kar. Yeni tema, uygulanması için ekranı bir kez
-            yeniler; verilerin ve seyahatlerin korunur.
+            {t('set.themeHint')}
           </Text>
         </Card>
 
         <SectionHeader
-          title="Harcama Türleri"
-          subtitle="Seyahatlerde seçilebilen tür listesini yönet."
+          title={t('catmgr.title')}
+          subtitle={t('catmgr.sub')}
         />
         <Card>
           {catalog.map((c) => {
@@ -173,13 +199,13 @@ export default function SettingsScreen() {
             if (editing) {
               return (
                 <View key={c.value} style={styles.catEditBox}>
-                  <Text style={styles.catEditTitle}>Türün adını değiştir</Text>
+                  <Text style={styles.catEditTitle}>{t('catmgr.renameTitle')}</Text>
                   <View style={styles.catAddRow}>
                     <View style={{ flex: 1 }}>
                       <Field
                         value={editCat.label}
                         onChangeText={(v) => setEditCat((s) => ({ ...s, label: v }))}
-                        placeholder="Tür adı"
+                        placeholder={t('catmgr.nameField')}
                       />
                     </View>
                     <View style={{ width: 88 }}>
@@ -191,14 +217,14 @@ export default function SettingsScreen() {
                     </View>
                   </View>
                   <Text style={styles.catMeta}>
-                    Yalnızca görünen ad değişir; bu türde girilmiş {used || 0} harcama yeni adla görünür.
+                    {t('catmgr.renameHint', { n: used || 0 })}
                   </Text>
                   <View style={styles.catEditActions}>
                     <Pressable onPress={saveEdit} hitSlop={8} disabled={!editCat.label.trim()}>
-                      <Text style={[styles.catAction, !editCat.label.trim() && styles.catActionMuted]}>Kaydet</Text>
+                      <Text style={[styles.catAction, !editCat.label.trim() && styles.catActionMuted]}>{t('common.save')}</Text>
                     </Pressable>
                     <Pressable onPress={() => setEditCat(null)} hitSlop={8}>
-                      <Text style={styles.catActionMuted}>Vazgeç</Text>
+                      <Text style={styles.catActionMuted}>{t('common.cancel')}</Text>
                     </Pressable>
                     {c.renamed ? (
                       <Pressable
@@ -208,7 +234,7 @@ export default function SettingsScreen() {
                         }}
                         hitSlop={8}
                       >
-                        <Text style={styles.catActionMuted}>↺ Özgün ad</Text>
+                        <Text style={styles.catActionMuted}>{t('catmgr.resetName')}</Text>
                       </Pressable>
                     ) : null}
                   </View>
@@ -221,11 +247,11 @@ export default function SettingsScreen() {
                 <Pressable style={{ flex: 1 }} onPress={() => startEdit(c)}>
                   <Text style={[styles.catName, !c.active && styles.catNamePassive]}>
                     {c.icon} {c.label}
-                    {c.builtin ? '' : ' ·  eklenen'}
+                    {c.builtin ? '' : t('catmgr.added')}
                   </Text>
                   <Text style={styles.catMeta}>
-                    {c.active ? 'Aktif' : 'Pasif — seyahatlerde seçilemez'}
-                    {used ? ` · ${used} harcama` : ' · hiç kullanılmadı'}
+                    {c.active ? t('catmgr.active') : t('catmgr.passive')}
+                    {used ? t('catmgr.usedN', { n: used }) : t('catmgr.unused')}
                   </Text>
                 </Pressable>
                 <Pressable onPress={() => startEdit(c)} hitSlop={8}>
@@ -233,12 +259,12 @@ export default function SettingsScreen() {
                 </Pressable>
                 <Pressable onPress={() => setExpenseCategoryActive(c.value, !c.active)} hitSlop={8}>
                   <Text style={[styles.catAction, c.active && styles.catActionMuted]}>
-                    {c.active ? 'Pasifleştir' : 'Aktifleştir'}
+                    {c.active ? t('catmgr.deactivate') : t('catmgr.activate')}
                   </Text>
                 </Pressable>
                 {canDelete ? (
                   <Pressable onPress={() => setPendingCatDelete(c)} hitSlop={8}>
-                    <Text style={styles.catDelete}>Sil</Text>
+                    <Text style={styles.catDelete}>{t('common.delete')}</Text>
                   </Pressable>
                 ) : null}
               </View>
@@ -246,13 +272,13 @@ export default function SettingsScreen() {
           })}
 
           <View style={styles.catAddBox}>
-            <Text style={styles.label}>Yeni tür ekle</Text>
+            <Text style={styles.label}>{t('catmgr.newLabel')}</Text>
             <View style={styles.catAddRow}>
               <View style={{ flex: 1 }}>
                 <Field
                   value={newCatLabel}
                   onChangeText={setNewCatLabel}
-                  placeholder="Tür adı (ör. Otopark)"
+                  placeholder={t('catmgr.namePlaceholder')}
                 />
               </View>
               <View style={{ width: 88 }}>
@@ -260,7 +286,7 @@ export default function SettingsScreen() {
               </View>
             </View>
             <SecondaryButton
-              title="＋ Türü ekle"
+              title={t('catmgr.addBtn')}
               onPress={addCat}
               disabled={!newCatLabel.trim()}
               style={{ marginHorizontal: 0, marginTop: 4 }}
@@ -268,42 +294,38 @@ export default function SettingsScreen() {
           </View>
 
           <Text style={styles.hint}>
-            Harcama girilmiş türler silinemez; “Pasifleştir” ile seyahatlerde seçilmekten çıkarılır ve geçmiş
-            kayıtları/raporları bozulmadan kalır. Tekrar “Aktifleştir” dediğinde yeniden seçilebilir hâle gelir.
-            Hiç kullanılmamış, kendi eklediğin türler tamamen silinebilir.
+            {t('catmgr.hint')}
           </Text>
         </Card>
 
         <SectionHeader
-          title="Güzergah Mesafesi"
-          subtitle="Duraklar arası mesafe nasıl hesaplansın?"
+          title={t('set.roadTitle')}
+          subtitle={t('set.roadSub')}
         />
         <Card>
           <ChipPicker
             options={[
-              { value: 'on', label: '🛰️ Gerçek yol (çevrimiçi)' },
-              { value: 'off', label: '≈ Tahmini (çevrimdışı)' },
+              { value: 'on', label: t('set.roadOn') },
+              { value: 'off', label: t('set.roadOff') },
             ]}
             value={settings.roadOnline ? 'on' : 'off'}
             onChange={(v) => updateSettings({ roadOnline: v === 'on' })}
             renderLabel={(o) => o.label}
           />
           <Text style={styles.hint}>
-            {settings.roadOnline
-              ? 'Çevrimiçiyken gerçek karayolu mesafesi (OSRM) kullanılır; Google Haritalar’a yakın olur. İnternet yoksa otomatik olarak tahmine düşer.'
-              : 'Yalnızca kuş uçuşu mesafe × yol payı çarpanıyla tahmin yapılır (internet kullanmaz). Gerçek yola göre sapma olabilir.'}
+            {settings.roadOnline ? t('set.roadOnHint') : t('set.roadOffHint')}
           </Text>
         </Card>
 
         <SectionHeader
-          title="Tarihi/Kültürel Özet Kaynağı"
-          subtitle="Keşif eklerken özetler nasıl üretilsin?"
+          title={t('set.aiTitle')}
+          subtitle={t('set.aiSub')}
         />
         <Card>
           <ChipPicker
             options={[
-              { value: 'local', label: '🗄️ Yerel arşiv' },
-              { value: 'ai', label: '🤖 Canlı AI' },
+              { value: 'local', label: t('set.aiLocal') },
+              { value: 'ai', label: t('set.aiLive') },
             ]}
             value={settings.aiMode}
             onChange={(v) => updateSettings({ aiMode: v })}
@@ -311,22 +333,20 @@ export default function SettingsScreen() {
           />
           {settings.aiMode === 'local' ? (
             <Text style={styles.hint}>
-              Çevrimdışı çalışır. {PLACES.length} tanınmış yer için hazır tarihi/kültürel özet ve kaynakça sunar.
-              Arşivde olmayan yerlerde boş şablon üretilir.
+              {t('set.aiLocalHint', { n: PLACES.length })}
             </Text>
           ) : (
             <Text style={styles.hint}>
-              Arşivde bulunmayan yerler için gerçek AI özeti istenir. İnternet ve geçerli bir API anahtarı gerekir;
-              yine de önce yerel arşiv denenir.
+              {t('set.aiLiveHint')}
             </Text>
           )}
         </Card>
 
         {settings.aiMode === 'ai' ? (
           <>
-            <SectionHeader title="AI Sağlayıcı" subtitle="Anahtar yalnızca bu cihazda saklanır." />
+            <SectionHeader title={t('set.providerTitle')} subtitle={t('set.providerSub')} />
             <Card>
-              <Text style={styles.label}>Sağlayıcı</Text>
+              <Text style={styles.label}>{t('set.provider')}</Text>
               <ChipPicker
                 options={[
                   { value: 'openai', label: 'OpenAI' },
@@ -337,34 +357,34 @@ export default function SettingsScreen() {
                 renderLabel={(o) => o.label}
               />
               <Field
-                label="API Anahtarı"
+                label={t('set.apiKey')}
                 value={settings.apiKey}
                 onChangeText={(v) => updateSettings({ apiKey: v })}
                 placeholder={settings.apiProvider === 'claude' ? 'sk-ant-...' : 'sk-...'}
                 autoCapitalize="none"
               />
               <Field
-                label="Model (opsiyonel)"
+                label={t('set.model')}
                 value={settings.apiModel}
                 onChangeText={(v) => updateSettings({ apiModel: v })}
                 placeholder={settings.apiProvider === 'claude' ? 'claude-3-5-sonnet-latest' : 'gpt-4o-mini'}
                 autoCapitalize="none"
               />
               <Text style={styles.warn}>
-                ⚠️ API anahtarı cihazda düz metin olarak tutulur. Ortak/paylaşılan cihazlarda dikkatli ol.
+                {t('set.keyWarn')}
               </Text>
             </Card>
           </>
         ) : null}
 
-        <SectionHeader title="Depolama" subtitle="Fotoğraflar ve tüm veriler yalnızca bu cihazda tutulur." />
+        <SectionHeader title={t('set.storage')} subtitle={t('set.storageSub')} />
         <Card>
           {storage === undefined ? (
-            <Text style={styles.hint}>Depolama bilgisi hesaplanıyor…</Text>
+            <Text style={styles.hint}>{t('set.storageCalc')}</Text>
           ) : storage && storage.quota ? (
             <>
               <View style={styles.statRow}>
-                <Text style={styles.statLabel}>Kullanılan</Text>
+                <Text style={styles.statLabel}>{t('set.used')}</Text>
                 <Text style={styles.statVal}>
                   {fmtBytes(storage.usage)} / {fmtBytes(storage.quota)}
                 </Text>
@@ -373,54 +393,64 @@ export default function SettingsScreen() {
                 <ProgressBar ratio={ratio} color={barColor} />
               </View>
               <Text style={styles.hint}>
-                %{Math.round(ratio * 100)} dolu · {photoCount} fotoğraf · {totalDiscoveries} keşif
+                {t('set.storageMeta', { pct: Math.round(ratio * 100), photos: photoCount, disc: totalDiscoveries })}
               </Text>
               {ratio > 0.85 ? (
                 <Text style={styles.warn}>
-                  ⚠️ Depolama doluyor. Yeni fotoğraflar kaydedilemeyebilir; eski/gereksiz fotoğrafları silerek yer
-                  açabilirsin.
+                  {t('set.storageWarn')}
                 </Text>
               ) : null}
             </>
           ) : (
             <Text style={styles.hint}>
-              Bu cihaz/tarayıcı depolama tahminini sağlamıyor. Yine de {photoCount} fotoğraf ve {totalDiscoveries}{' '}
-              keşif kayıtlı.
+              {t('set.storageNoEstimate', { photos: photoCount, disc: totalDiscoveries })}
             </Text>
           )}
         </Card>
 
-        <SectionHeader title="Özet" />
+        <SectionHeader title={t('set.summary')} />
         <Card>
           <View style={styles.statRow}>
-            <Text style={styles.statLabel}>Seyahat</Text>
+            <Text style={styles.statLabel}>{t('set.tripCount')}</Text>
             <Text style={styles.statVal}>{trips.length}</Text>
           </View>
           <View style={styles.statRow}>
-            <Text style={styles.statLabel}>Toplam keşif</Text>
+            <Text style={styles.statLabel}>{t('set.discTotal')}</Text>
             <Text style={styles.statVal}>{totalDiscoveries}</Text>
           </View>
           <View style={styles.statRow}>
-            <Text style={styles.statLabel}>Yerel arşiv (yer)</Text>
+            <Text style={styles.statLabel}>{t('set.archiveCount')}</Text>
             <Text style={styles.statVal}>{PLACES.length}</Text>
           </View>
         </Card>
 
         <Text style={styles.about}>
-          Gezgin Günlüğü · Seyahat notu, dijital albüm ve video kolaj asistanı. Tüm veriler yalnızca bu cihazda
-          saklanır.
+          {t('set.about')}
         </Text>
       </ScrollView>
 
       <ConfirmModal
-        visible={!!pendingCatDelete}
-        title="Türü sil?"
+        visible={!!pendingLang}
+        title={t('set.langConfirm')}
         message={
-          pendingCatDelete
-            ? `“${pendingCatDelete.label}” türü listeden kaldırılacak. Bu türde hiç harcama girilmediği için veri kaybı olmaz.`
+          pendingLang
+            ? t('set.langConfirmMsg', {
+                lang: `${(LANGS.find((l) => l.id === pendingLang) || {}).flag || ''} ${
+                  (LANGS.find((l) => l.id === pendingLang) || {}).label || ''
+                }`.trim(),
+              })
             : ''
         }
-        confirmLabel="Sil"
+        confirmLabel={t('set.apply')}
+        onConfirm={() => applyLang(pendingLang)}
+        onCancel={() => setPendingLang(null)}
+      />
+
+      <ConfirmModal
+        visible={!!pendingCatDelete}
+        title={t('catmgr.deleteConfirm')}
+        message={pendingCatDelete ? t('catmgr.deleteConfirmMsg', { name: pendingCatDelete.label }) : ''}
+        confirmLabel={t('common.delete')}
         destructive
         onConfirm={() => {
           deleteExpenseCategory(pendingCatDelete.value);
@@ -431,13 +461,15 @@ export default function SettingsScreen() {
 
       <ConfirmModal
         visible={!!pendingTheme}
-        title="Temayı değiştir?"
+        title={t('set.themeConfirm')}
         message={
           pendingTheme
-            ? `${THEMES[pendingTheme].emoji} ${THEMES[pendingTheme].label} teması uygulanacak. Uygulama bir kez yenilenecek; tüm verilerin korunur.`
+            ? t('set.themeConfirmMsg', {
+                theme: `${THEMES[pendingTheme].emoji} ${t('theme.' + pendingTheme)}`,
+              })
             : ''
         }
-        confirmLabel="Uygula"
+        confirmLabel={t('set.apply')}
         onConfirm={() => applyTheme(pendingTheme)}
         onCancel={() => setPendingTheme(null)}
       />

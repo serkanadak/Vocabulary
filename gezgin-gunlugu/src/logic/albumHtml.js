@@ -7,6 +7,7 @@
 // böylece bir foto sayfada yarıda kesilmez, sığmıyorsa komple sonraki sayfaya
 // geçer.
 import { generateAlbumPlan } from './publish';
+import { LANG_TAG, getLang, t } from '../i18n';
 import { buildRouteSvg } from './routeMap';
 import { formatLongDate } from './date';
 import { matchPlace } from '../data/places';
@@ -119,7 +120,7 @@ export async function buildAlbumHtml(trip) {
     if (!cur || cur.key !== key) {
       cur = {
         key,
-        title: inStop ? `${stopOrder.get(key) + 1}. ${stopName.get(key)}` : 'Rota dışı · Diğer',
+        title: inStop ? `${stopOrder.get(key) + 1}. ${stopName.get(key)}` : t('doc.offRoute'),
         stopName: inStop ? stopName.get(key) : null,
         items: [],
       };
@@ -223,7 +224,7 @@ export async function buildAlbumHtml(trip) {
         })
         .join('');
       rows.push(
-        `<li class="rl-stop"><div class="rl-city">Rota dışı · Diğer</div><ul class="rl-places">${items}</ul></li>`
+        `<li class="rl-stop"><div class="rl-city">${t('doc.offRoute')}</div><ul class="rl-places">${items}</ul></li>`
       );
     }
     return rows.length ? `<ol class="route-list">${rows.join('')}</ol>` : '';
@@ -254,7 +255,7 @@ export async function buildAlbumHtml(trip) {
     text: '#14202b',
   });
 
-  return `<!doctype html><html lang="tr"><head><meta charset="utf-8" />
+  return `<!doctype html><html lang="${LANG_TAG[getLang()] || 'tr'}"><head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>${esc(plan.cover.title)} — Albüm</title>
 <style>
@@ -334,14 +335,14 @@ export async function buildAlbumHtml(trip) {
     ${totalDist ? `<div class="dist">Toplam mesafe: ${totalDist}</div>` : ''}
   </section>
   <section class="page">
-    <h2>Güzergah</h2>
-    ${simpleRouteHtml() || '<div class="intro-text">Durak eklenmedi.</div>'}
+    <h2>${t('doc.route')}</h2>
+    ${simpleRouteHtml() || `<div class="intro-text">${t('pub.noStops')}</div>`}
   </section>
-  ${journalSections || '<section class="page"><div class="intro-text">Henüz keşif eklenmemiş.</div></section>'}
+  ${journalSections || `<section class="page"><div class="intro-text">${t('doc.noDiscoveries')}</div></section>`}
 </body></html>`;
 }
 
 // Web'de albümü yazdır/PDF olarak kaydet diyaloğunu açar.
 export function exportAlbumPdf(trip) {
-  return printDocument(() => buildAlbumHtml(trip), '📖 Albüm hazırlanıyor…');
+  return printDocument(() => buildAlbumHtml(trip), '📖 ' + t('common.preparing'));
 }

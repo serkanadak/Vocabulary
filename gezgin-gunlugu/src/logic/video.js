@@ -2,6 +2,7 @@
 // Yüklenen fotoğraf/keşiflerden sahne sahne (timeline) sinematik bir kurgu çıkarır;
 // harita geçişlerini, müzik/ritim ve alt yazı/dış ses metinlerini planlar.
 import { formatShortDate } from './date';
+import { t } from '../i18n';
 import { getVehicle } from '../data/vehicles';
 import { computeRoute, formatKm } from './geo';
 
@@ -12,12 +13,12 @@ function photosOf(d) {
 }
 
 const MUSIC_MOODS = {
-  plane: 'Ferah, yükselen orkestral / cinematic (BPM ~90)',
+  plane: t('vid.moodCinematic'),
   car: 'Yol hissi veren indie-folk, gitar riff (BPM ~110)',
-  bus: 'Sıcak lo-fi, yumuşak ritim (BPM ~95)',
-  train: 'Ritmik, tekrarlı tren tıkırtısına oturan elektronik (BPM ~100)',
-  motorbike: 'Enerjik rock/electro, güçlü davul (BPM ~125)',
-  bike: 'Neşeli akustik pop (BPM ~115)',
+  bus: t('vid.moodLofi'),
+  train: t('vid.moodTrain'),
+  motorbike: t('vid.moodRock'),
+  bike: t('vid.moodPop'),
   walk: 'Sakin ambient / piyano (BPM ~75)',
 };
 
@@ -50,15 +51,15 @@ export function generateVideoScript(trip, opts = {}) {
     index: scenes.length + 1,
     start: t,
     type: SCENE_TYPE.INTRO,
-    title: 'Açılış',
+    title: t('vid.opening'),
     duration: 3,
     visual: photosOf(trip.discoveries?.[0]).length
-      ? 'İlk keşif fotoğrafına yavaş zoom-in (Ken Burns), üstüne başlık yazısı belirir.'
-      : 'Karartılmış dünya haritasında başlangıç noktasına doğru kamera dalışı.',
+      ? t('vid.visFirstPhoto')
+      : t('vid.visOpening'),
     transition: 'Fade-in',
     onScreenText: `${trip.title || 'Seyahat'} · ${vehicle.icon} ${vehicle.label}`,
-    voiceover: `${trip.title || 'Yolculuğumuz'} başlıyor...`,
-    music: 'Yumuşak giriş, tema henüz kurulurken',
+    voiceover: t('vid.startsNow', { title: trip.title || t('vid.ourJourney') }),
+    music: t('vid.musSoft'),
   });
   t += 3;
 
@@ -69,16 +70,16 @@ export function generateVideoScript(trip, opts = {}) {
       index: scenes.length + 1,
       start: t,
       type: SCENE_TYPE.TRANSITION,
-      title: `Harita Geçişi → ${d.placeName}`,
+      title: t('vid.mapTransition', { place: d.placeName }),
       duration: transition,
       visual:
         prev && prev.lat != null && d.lat != null
-          ? `3B harita fly-through: ${prev.placeName} pininden ${d.placeName} pinine kavisli uçuş; rota çizgisi çizilir.`
-          : `3B harita: kamera ${d.placeName} konumuna dünya üzerinden dalış yapar, pin düşer.`,
+          ? t('vid.visFly', { from: prev.placeName, to: d.placeName })
+          : t('vid.visDive', { place: d.placeName }),
       transition: 'Map fly-through (3D)',
       onScreenText: [d.city, d.country].filter(Boolean).join(', '),
       voiceover: '',
-      music: 'Vuruş yükselir (build-up)',
+      music: t('vid.musBuild'),
     });
     t += transition;
 
@@ -90,10 +91,10 @@ export function generateVideoScript(trip, opts = {}) {
       duration: perPlace,
       visual:
         photosOf(d).length > 1
-          ? `${photosOf(d).length} fotoğraflı hızlı kolaj/mozaik (beat’e senkron kesme) + hafif Ken Burns.`
+          ? t('vid.visCollage', { n: photosOf(d).length })
           : photosOf(d).length === 1
-          ? 'Keşif fotoğrafı tam ekran; hafif Ken Burns + kenarlarda sinematik letterbox.'
-          : 'Konum adı büyük tipografiyle; arka planda ilgili harita dokusu kayar.',
+          ? t('vid.visFullscreen')
+          : t('vid.visPlaceName'),
       transition: i % 2 === 0 ? 'Whip-pan' : 'Cross-dissolve',
       onScreenText: `${d.placeName}${d.date ? ' · ' + formatShortDate(d.date) : ''}`,
       voiceover: shortLine(d),
@@ -107,15 +108,15 @@ export function generateVideoScript(trip, opts = {}) {
     index: scenes.length + 1,
     start: t,
     type: SCENE_TYPE.OUTRO,
-    title: 'Kapanış',
+    title: t('vid.closing'),
     duration: 4,
-    visual: 'Tüm rotanın haritada tek seferde çizilmesi (hızlandırılmış), ardından karartma.',
+    visual: t('vid.visClosing'),
     transition: 'Zoom-out + fade',
     onScreenText: route.hasAny
-      ? `${(trip.stops || []).length} durak · ${formatKm(route.totalKm)} · ${discoveries.length} anı`
-      : `${discoveries.length} anı`,
+      ? t('vid.tripMeta', { stops: (trip.stops || []).length, km: formatKm(route.totalKm), disc: discoveries.length })
+      : t('vid.memories', { n: discoveries.length }),
     voiceover: 'Ve yolculuk burada son buldu — bir sonrakine kadar.',
-    music: 'Tema doruğa çıkar, sonra yumuşak kapanış',
+    music: t('vid.musPeak'),
   });
   t += 4;
 
@@ -144,18 +145,18 @@ export function videoScriptToText(trip) {
   const L = [];
   L.push(`# ${script.meta.title} — Video Kolaj Senaryosu`);
   L.push(
-    `Toplam ${script.meta.totalScenes} sahne · ~${script.meta.totalDurationLabel} · Müzik: ${script.meta.musicMood}`
+    t('vid.totalMeta', { n: script.meta.totalScenes, dur: script.meta.totalDurationLabel, mood: script.meta.musicMood })
   );
   L.push('');
   L.push('## Timeline');
   script.scenes.forEach((s) => {
     L.push('');
     L.push(`### ${ts(s.start)} — Sahne ${s.index}: ${s.title} (${s.duration}s)`);
-    L.push(`- Görsel: ${s.visual}`);
-    L.push(`- Geçiş: ${s.transition}`);
-    if (s.onScreenText) L.push(`- Alt yazı: ${s.onScreenText}`);
-    if (s.voiceover) L.push(`- Dış ses: ${s.voiceover}`);
-    L.push(`- Müzik: ${s.music}`);
+    L.push(t('vid.visual', { v: s.visual }));
+    L.push(t('vid.transition', { v: s.transition }));
+    if (s.onScreenText) L.push(t('vid.subtitle', { v: s.onScreenText }));
+    if (s.voiceover) L.push(t('vid.voiceover', { v: s.voiceover }));
+    L.push(t('vid.music', { v: s.music }));
   });
   return L.join('\n');
 }

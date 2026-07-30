@@ -8,6 +8,7 @@ import { exportDiscoveryPdf } from '../logic/tripDoc';
 import { todayKey, formatShortDate } from '../logic/date';
 import { coverOf, hasPhoto } from '../logic/photos';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { Card, SectionHeader, EmptyState, Pill, ConfirmModal } from '../components/common';
 import PlacePhoto from '../components/PlacePhoto';
 
@@ -79,8 +80,8 @@ function StopSection({ trip, stop, navigation }) {
           <Text style={styles.stopName}>🗺️ {stop.name}</Text>
           <Text style={styles.stopSub}>
             {stop.date ? `${formatShortDate(stop.date)} · ` : ''}
-            {visitedCount > 0 ? `${visitedCount} keşif` : 'henüz keşif yok'}
-            {attractions.length ? ` · ${attractions.length} önerilen yer` : ''}
+            {visitedCount > 0 ? t('disc.visitedCount', { n: visitedCount }) : t('disc.noneYet')}
+            {attractions.length ? t('disc.suggestedCount', { n: attractions.length }) : ''}
           </Text>
         </View>
         <Text style={styles.chevronDown}>{open ? '▲' : '▼'}</Text>
@@ -92,7 +93,7 @@ function StopSection({ trip, stop, navigation }) {
           {place?.summary ? <Text style={styles.stopSummary}>{place.summary}</Text> : null}
           {attractions.length ? (
             <>
-              <Text style={styles.subLabel}>Gezilecek yerler — gidileni işaretle</Text>
+              <Text style={styles.subLabel}>{t('disc.toVisit')}</Text>
               {attractions.map((a) => {
                 const existing = discByName.get(norm(a.name));
                 if (existing) {
@@ -106,7 +107,7 @@ function StopSection({ trip, stop, navigation }) {
                         <View style={{ flex: 1 }}>
                           <Text style={styles.attrName}>{a.name}</Text>
                           <Text style={styles.attrVisitedHint}>
-                            Gidildi · {existing.userNotes ? 'notlu' : 'not ekle'} {hasPhoto(existing) ? '· 📷' : ''} →
+                            {t('disc.visitedHint', { noteState: existing.userNotes ? t('disc.noted') : t('disc.addNote') })} {hasPhoto(existing) ? '· 📷' : ''} →
                           </Text>
                         </View>
                       </Pressable>
@@ -127,21 +128,19 @@ function StopSection({ trip, stop, navigation }) {
                       <Text style={styles.attrDesc}>{a.desc}</Text>
                     </View>
                     <Pressable onPress={() => markVisited(a)} style={styles.markBtn} hitSlop={6}>
-                      <Text style={styles.markBtnText}>＋ Gidildi</Text>
+                      <Text style={styles.markBtnText}>{t('disc.markVisited')}</Text>
                     </Pressable>
                   </View>
                 );
               })}
             </>
           ) : (
-            <Text style={styles.noAttr}>
-              Bu durak için arşivde öneri yok. Aşağıdan gidilen yer(ler)i ekleyebilirsin.
-            </Text>
+            <Text style={styles.noAttr}>{t('disc.noSuggestions')}</Text>
           )}
 
           {extraDiscoveries.length ? (
             <>
-              <Text style={styles.subLabel}>Listede olmayan, eklediğin yerler</Text>
+              <Text style={styles.subLabel}>{t('disc.addedPlaces')}</Text>
               {extraDiscoveries.map((d) => (
                 <DiscoveryRow key={d.id} disc={d} onPress={() => openDisc(d)} />
               ))}
@@ -162,20 +161,16 @@ function StopSection({ trip, stop, navigation }) {
               })
             }
           >
-            <Text style={styles.addUnderStopText}>＋ Bu durağa listede olmayan bir yer / fotoğraf ekle</Text>
+            <Text style={styles.addUnderStopText}>{t('disc.addToStop')}</Text>
           </Pressable>
         </View>
       ) : null}
 
       <ConfirmModal
         visible={!!pendingUnmark}
-        title="Gidildi işaretini geri al?"
-        message={
-          pendingUnmark
-            ? `“${pendingUnmark.placeName}” için eklediğin not ve fotoğraf da silinecek.`
-            : ''
-        }
-        confirmLabel="Geri al"
+        title={t('disc.unmark')}
+        message={pendingUnmark ? t('disc.unmarkMsg', { name: pendingUnmark.placeName }) : ''}
+        confirmLabel={t('route.undoBtn')}
         destructive
         onConfirm={() => {
           removeDiscovery(trip.id, pendingUnmark.id);
@@ -195,17 +190,17 @@ export default function DiscoveryHubScreen({ route, navigation }) {
 
   const makePdf = async () => {
     if (Platform.OS !== 'web') {
-      Alert.alert('PDF web sürümünde', 'Keşif PDF’i, uygulamanın tarayıcı (web) sürümünde oluşturulur. Aynı seyahat linkini tarayıcıda açıp tekrar dene.');
+      Alert.alert(t('pdf.webOnly'), t('disc.pdfWebOnlyMsg'));
       return;
     }
     setPdfBusy(true);
     try {
       const res = await exportDiscoveryPdf(trip);
       if (res && !res.ok && res.reason === 'popup') {
-        Alert.alert('Açılır pencere engellendi', 'PDF için yeni bir sekme açılması gerekiyor. Tarayıcının açılır pencere iznini verip tekrar dene.');
+        Alert.alert(t('pdf.popupBlocked'), t('pdf.popupBlockedMsg'));
       }
     } catch (e) {
-      Alert.alert('PDF oluşturulamadı', 'Beklenmedik bir hata oluştu. Tekrar deneyebilirsin.');
+      Alert.alert(t('pdf.failed'), t('common.unexpectedError'));
     } finally {
       setPdfBusy(false);
     }
@@ -229,15 +224,15 @@ export default function DiscoveryHubScreen({ route, navigation }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         <SectionHeader
-          title="Keşif Günlüğü"
-          subtitle="Güzergah noktalarını tek tek aç; gezdiğin yerleri işaretle, not ve fotoğraflarını ekle. Rota dışı yer/aktiviteleri en alttan ekle."
+          title={t('disc.hubTitle')}
+          subtitle={t('disc.hubSub')}
         />
 
         <Pressable style={[styles.pdfBtn, pdfBusy && { opacity: 0.7 }]} onPress={makePdf} disabled={pdfBusy}>
           {pdfBusy ? (
             <ActivityIndicator color={colors.onPrimary} />
           ) : (
-            <Text style={styles.pdfText}>📄 Keşif günlüğünü PDF olarak al (tüm duraklar açık)</Text>
+            <Text style={styles.pdfText}>{t('disc.pdfAll')}</Text>
           )}
         </Pressable>
 
@@ -254,7 +249,7 @@ export default function DiscoveryHubScreen({ route, navigation }) {
 
         {/* Rotadan bağımsız */}
         <View style={styles.freeHeader}>
-          <Text style={styles.freeTitle}>🌟 Rotadan bağımsız yerler & aktiviteler</Text>
+          <Text style={styles.freeTitle}>{t('disc.freeSection')}</Text>
         </View>
         {sortedFree.length ? (
           <View style={{ marginHorizontal: 16 }}>
@@ -268,15 +263,14 @@ export default function DiscoveryHubScreen({ route, navigation }) {
           </View>
         ) : (
           <Text style={styles.freeEmpty}>
-            Güzergahta olmayan bir yere gittiysen veya bir aktivite yaptıysan (konser, tekne turu…) buradan
-            ekle.
+            {t('disc.freeSectionSub')}
           </Text>
         )}
         <Pressable
           style={styles.addFree}
           onPress={() => navigation.navigate('AddDiscovery', { tripId, stopId: null })}
         >
-          <Text style={styles.addFreeText}>＋ Rotadan bağımsız keşif / aktivite ekle</Text>
+          <Text style={styles.addFreeText}>{t('disc.addFree')}</Text>
         </Pressable>
       </ScrollView>
     </SafeAreaView>

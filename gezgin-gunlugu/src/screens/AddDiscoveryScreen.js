@@ -8,13 +8,14 @@ import { exifDateKey, exifCoords } from '../logic/exif';
 import { preparePhotos } from '../logic/imageStore';
 import { todayKey, formatLongDate } from '../logic/date';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { Card, Field, PrimaryButton, SecondaryButton, SectionHeader, Pill } from '../components/common';
 import PlacePhoto from '../components/PlacePhoto';
 
 const SOURCE_LABEL = {
-  [ENRICH_SOURCE.LOCAL]: { label: 'Yerel arşiv', color: colors.success },
-  [ENRICH_SOURCE.AI]: { label: 'Canlı AI', color: colors.accent },
-  [ENRICH_SOURCE.TEMPLATE]: { label: 'Boş şablon', color: colors.textMuted },
+  [ENRICH_SOURCE.LOCAL]: { label: t('disc.source.local'), color: colors.success },
+  [ENRICH_SOURCE.AI]: { label: t('disc.source.ai'), color: colors.accent },
+  [ENRICH_SOURCE.TEMPLATE]: { label: t('addDisc.emptyTemplate'), color: colors.textMuted },
 };
 
 export default function AddDiscoveryScreen({ route, navigation }) {
@@ -30,7 +31,7 @@ export default function AddDiscoveryScreen({ route, navigation }) {
   const { addDiscovery, settings } = useJournal();
 
   useLayoutEffect(() => {
-    navigation.setOptions({ title: stopName ? `Keşif · ${stopName}` : 'Keşif Ekle' });
+    navigation.setOptions({ title: stopName ? t('addDisc.forStop', { stop: stopName }) : t('addDisc.title') });
   }, [navigation, stopName]);
 
   const [query, setQuery] = useState('');
@@ -114,16 +115,16 @@ export default function AddDiscoveryScreen({ route, navigation }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         <SectionHeader
-          title={stopName ? 'Bu durağa keşif ekle' : 'Rotadan bağımsız keşif'}
+          title={stopName ? t('addDisc.stopTitle') : t('addDisc.freeTitle')}
           subtitle={
             stopName
-              ? `“${stopName}” durağında gezdiğin, listede olmayan bir yeri veya fotoğrafları ekle.`
-              : 'Güzergahta olmayan bir yer ya da aktivite. Fotoğraf(lar) yükle ve/veya adını gir; özeti hazırlayayım.'
+              ? t('addDisc.stopSub', { stop: stopName })
+              : t('addDisc.freeSub')
           }
         />
         {stopName ? (
           <View style={styles.ctxBanner}>
-            <Text style={styles.ctxText}>🗺️ Durak: {stopName}</Text>
+            <Text style={styles.ctxText}>{t('addDisc.stopCtx', { stop: stopName })}</Text>
           </View>
         ) : null}
 
@@ -142,7 +143,7 @@ export default function AddDiscoveryScreen({ route, navigation }) {
           ) : null}
 
           <SecondaryButton
-            title={photos.length ? `📷 Fotoğraf ekle (${photos.length})` : '📷 Fotoğraf yükle'}
+            title={photos.length ? t('addDisc.addPhotoN', { n: photos.length }) : t('addDisc.uploadPhoto')}
             onPress={pickPhoto}
             style={{ marginHorizontal: 0 }}
           />
@@ -156,14 +157,14 @@ export default function AddDiscoveryScreen({ route, navigation }) {
           ) : null}
 
           <Field
-            label="Mekan / konum / aktivite adı"
+            label={t('addDisc.name')}
             value={query}
             onChangeText={setQuery}
-            placeholder="ör. Ayasofya  ·  Tekne turu  ·  Yerel pazar"
+            placeholder={t('addDisc.namePlaceholder')}
           />
 
           <PrimaryButton
-            title={analyzing ? 'Analiz ediliyor…' : '🔎 Analiz Et & Özet Oluştur'}
+            title={analyzing ? t('addDisc.analysing') : t('addDisc.analyse')}
             onPress={analyze}
             disabled={analyzing || (!query.trim() && !photos.length)}
             style={{ marginHorizontal: 0, marginTop: 16 }}
@@ -185,26 +186,25 @@ export default function AddDiscoveryScreen({ route, navigation }) {
               {meta ? <Pill label={meta.label} color={meta.color} /> : null}
             </View>
 
-            <Text style={styles.resultDate}>📅 Keşif Tarihi: {formatLongDate(result.date)}</Text>
+            <Text style={styles.resultDate}>{t('disc.dateLabel', { date: formatLongDate(result.date) })}</Text>
 
             <PlacePhoto
               place={{ id: result.placeId, name: result.placeName, city: result.city, country: result.country }}
             />
 
-            <Text style={styles.h}>🏛️ Tarihi ve Kültürel Özet</Text>
+            <Text style={styles.h}>{t('disc.summaryHead')}</Text>
             {result.summary ? (
               <Text style={styles.summary}>{result.summary}</Text>
             ) : (
               <Text style={styles.summaryEmpty}>
-                Bu yer yerel arşivde bulunamadı. Ayarlar'dan "Canlı AI"yı açıp API anahtarı girerek otomatik özet
-                aldırabilir ya da özeti aşağıdaki nota kendin yazabilirsin.
+                {t('addDisc.notInArchive')}
               </Text>
             )}
-            {result.aiError ? <Text style={styles.err}>AI hatası: {result.aiError}</Text> : null}
+            {result.aiError ? <Text style={styles.err}>{t('addDisc.aiError', { msg: result.aiError })}</Text> : null}
 
             {result.sources?.length ? (
               <>
-                <Text style={styles.h}>📚 Kaynakça & Referanslar</Text>
+                <Text style={styles.h}>{t('disc.sourcesHead')}</Text>
                 {result.sources.map((s, i) => (
                   <Text key={i} style={styles.source}>
                     • {s}
@@ -213,15 +213,15 @@ export default function AddDiscoveryScreen({ route, navigation }) {
               </>
             ) : null}
 
-            <Text style={styles.h}>✍️ Gezginin Notları</Text>
+            <Text style={styles.h}>{t('disc.notesHead')}</Text>
             <Field
               value={userNotes}
               onChangeText={setUserNotes}
-              placeholder="Kendi anını, duygunu, bütçe notunu buraya yaz…"
+              placeholder={t('addDisc.notePlaceholder')}
               multiline
             />
 
-            <PrimaryButton title="Keşfi Günlüğe Kaydet 💾" onPress={save} style={{ marginHorizontal: 0, marginTop: 16 }} />
+            <PrimaryButton title={t('addDisc.save')} onPress={save} style={{ marginHorizontal: 0, marginTop: 16 }} />
           </View>
         ) : null}
       </ScrollView>

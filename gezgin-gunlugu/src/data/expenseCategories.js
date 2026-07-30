@@ -7,21 +7,23 @@
 // Pasif türler (settings.expenseCatsInactive) seyahatlerde SEÇİLEMEZ; ancak
 // daha önce girilmiş harcamaların türü olarak okunmaya devam eder (raporlarda
 // ve listede etiketi görünür). Böylece geçmiş veri bozulmaz.
+import { t } from '../i18n';
+
 export const BUILTIN_EXPENSE_CATEGORIES = [
-  { value: 'yemek', label: 'Yemek', icon: '🍽️' },
-  { value: 'yiyecek_icecek', label: 'Yiyecek/İçecek', icon: '🥤' },
-  { value: 'hediye', label: 'Hediye', icon: '🎁' },
-  { value: 'giyim', label: 'Giyim', icon: '👕' },
-  { value: 'akaryakit', label: 'Akaryakıt', icon: '⛽' },
-  { value: 'konaklama', label: 'Konaklama', icon: '🏨' },
-  { value: 'vergi_harc', label: 'Vergi ve Harç', icon: '🧾' },
-  { value: 'ulasim', label: 'Diğer Ulaşım', icon: '🚌' },
-  { value: 'demirbas', label: 'Demirbaş', icon: '📦' },
-  { value: 'iletisim', label: 'İletişim', icon: '📱' },
-  { value: 'tamir_bakim', label: 'Tamir Bakım', icon: '🔧' },
-  { value: 'sigorta', label: 'Sigorta', icon: '🛡️' },
-  { value: 'bilet', label: 'Bilet', icon: '🎫' },
-  { value: 'diger', label: 'Diğer', icon: '🔖' },
+  { value: 'yemek', label: t('cat.yemek'), icon: '🍽️' },
+  { value: 'yiyecek_icecek', label: t('cat.yiyecek_icecek'), icon: '🥤' },
+  { value: 'hediye', label: t('cat.hediye'), icon: '🎁' },
+  { value: 'giyim', label: t('cat.giyim'), icon: '👕' },
+  { value: 'akaryakit', label: t('cat.akaryakit'), icon: '⛽' },
+  { value: 'konaklama', label: t('cat.konaklama'), icon: '🏨' },
+  { value: 'vergi_harc', label: t('cat.vergi_harc'), icon: '🧾' },
+  { value: 'ulasim', label: t('cat.ulasim'), icon: '🚌' },
+  { value: 'demirbas', label: t('cat.demirbas'), icon: '📦' },
+  { value: 'iletisim', label: t('cat.iletisim'), icon: '📱' },
+  { value: 'tamir_bakim', label: t('cat.tamir_bakim'), icon: '🔧' },
+  { value: 'sigorta', label: t('cat.sigorta'), icon: '🛡️' },
+  { value: 'bilet', label: t('cat.bilet'), icon: '🎫' },
+  { value: 'diger', label: t('cat.diger'), icon: '🔖' },
 ];
 
 // Geriye uyumluluk: eskiden tek sabit liste ihraç ediliyordu.
@@ -97,7 +99,7 @@ export function activeCategories(settings) {
 export function catLabel(catalog, value) {
   const hit = (catalog || []).find((c) => c.value === value);
   if (hit) return hit.label;
-  return (BUILTIN_BY_VALUE[value] && BUILTIN_BY_VALUE[value].label) || 'Diğer';
+  return (BUILTIN_BY_VALUE[value] && BUILTIN_BY_VALUE[value].label) || t('cat.diger');
 }
 
 export function catIcon(catalog, value) {
@@ -108,7 +110,7 @@ export function catIcon(catalog, value) {
 
 // Yerleşik liste üzerinden etiket/ikon (katalog elde yokken kullanılır).
 export function categoryLabel(value) {
-  return (BUILTIN_BY_VALUE[value] && BUILTIN_BY_VALUE[value].label) || 'Diğer';
+  return (BUILTIN_BY_VALUE[value] && BUILTIN_BY_VALUE[value].label) || t('cat.diger');
 }
 
 export function categoryIcon(value) {

@@ -15,6 +15,7 @@ import { resolveCategories, catLabel, catIcon } from '../data/expenseCategories'
 import { PAYMENT_METHODS, paymentLabel, paymentIcon } from '../data/paymentMethods';
 import { formatShortDate } from '../logic/date';
 import { colors } from '../theme';
+import { t } from '../i18n';
 import { ChipPicker, EmptyState } from '../components/common';
 
 function pct(part, whole) {
@@ -41,7 +42,7 @@ function MatrixTable({ rows, cols, data, grand, currentId, cur, headerLabel }) {
             </View>
           ))}
           <View style={[styles.tcell, styles.tcellTotal]}>
-            <Text style={styles.thText}>Toplam</Text>
+            <Text style={styles.thText}>{t('common.total')}</Text>
           </View>
         </View>
         {rows.map((r) => (
@@ -66,7 +67,7 @@ function MatrixTable({ rows, cols, data, grand, currentId, cur, headerLabel }) {
         ))}
         <View style={[styles.trow, styles.trowTotal]}>
           <View style={styles.thCat}>
-            <Text style={styles.tdTotal}>Toplam</Text>
+            <Text style={styles.tdTotal}>{t('common.total')}</Text>
           </View>
           {cols.map((col) => (
             <View key={col.id} style={[styles.tcell, col.id === currentId && styles.tcellCurrent]}>
@@ -91,13 +92,13 @@ export default function ExpenseReportScreen({ route, navigation }) {
   const [compPay, setCompPay] = useState('all'); // karşılaştırma ödeme şekli: 'all' | 'nakit' | 'kart'
 
   useLayoutEffect(() => {
-    navigation.setOptions({ title: 'Harcama Raporu' });
+    navigation.setOptions({ title: t('nav.expenseReport') });
   }, [navigation]);
 
   if (!trip) {
     return (
       <SafeAreaView style={styles.container} edges={['bottom']}>
-        <EmptyState icon="📊" title="Seyahat bulunamadı" />
+        <EmptyState icon="📊" title={t('exp.notFound')} />
       </SafeAreaView>
     );
   }
@@ -116,14 +117,14 @@ export default function ExpenseReportScreen({ route, navigation }) {
   // Karşılaştırma: seyahat bazında; istenirse tür (kategori) ve/veya ödeme şekli süzülür.
   const compCategory = compCat === 'all' ? null : compCat;
   const compPayment = compPay === 'all' ? null : compPay;
-  const comp = tripComparison(trips || [], cur, compCategory, compPayment).filter((t) => t.count > 0);
-  const maxTrip = comp.reduce((m, t) => Math.max(m, t.total), 0);
-  const grand = comp.reduce((a, t) => a + t.total, 0);
+  const comp = tripComparison(trips || [], cur, compCategory, compPayment).filter((x) => x.count > 0);
+  const maxTrip = comp.reduce((m, x) => Math.max(m, x.total), 0);
+  const grand = comp.reduce((a, x) => a + x.total, 0);
   const avg = comp.length ? grand / comp.length : 0;
 
   // Karşılaştırma süzgecinde yalnızca herhangi bir seyahatte kullanılmış türleri göster.
   const usedCats = new Set();
-  for (const t of trips || []) for (const e of t.expenses || []) usedCats.add((e && e.kind) || 'diger');
+  for (const tr of trips || []) for (const e of tr.expenses || []) usedCats.add((e && e.kind) || 'diger');
   const compCatOptions = [
     { value: 'all' },
     ...catalog.filter((c) => usedCats.has(c.value)).map((c) => ({ value: c.value })),
@@ -134,8 +135,8 @@ export default function ExpenseReportScreen({ route, navigation }) {
       <SafeAreaView style={styles.container} edges={['bottom']}>
         <EmptyState
           icon="📊"
-          title="Rapor için harcama yok"
-          subtitle="Bu seyahate harcama ekledikçe tür bazında özet ve diğer seyahatlerle karşılaştırma burada görünür."
+          title={t('rep.empty')}
+          subtitle={t('rep.emptySub')}
         />
       </SafeAreaView>
     );
@@ -145,10 +146,10 @@ export default function ExpenseReportScreen({ route, navigation }) {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         {/* Para birimi seçimi */}
-        <Text style={styles.curLabel}>Rapor para birimi</Text>
+        <Text style={styles.curLabel}>{t('rep.currency')}</Text>
         <View style={{ paddingHorizontal: 16 }}>
           <ChipPicker
-            options={TARGETS.map((t) => ({ value: t }))}
+            options={TARGETS.map((code) => ({ value: code }))}
             value={cur}
             onChange={setCur}
             renderLabel={(o) => `${currencySymbol(o.value)} ${o.value}`}
@@ -157,20 +158,20 @@ export default function ExpenseReportScreen({ route, navigation }) {
 
         {/* Bu seyahat toplamı */}
         <View style={styles.totalCard}>
-          <Text style={styles.totalCaption}>{trip.title} · toplam</Text>
+          <Text style={styles.totalCaption}>{t('rep.tripTotal', { trip: trip.title })}</Text>
           <Text style={styles.totalBig}>{formatMoney(s.total, cur)}</Text>
           <Text style={styles.totalMeta}>
-            {s.count} harcama{s.missing ? ` · ${s.missing} kaydın karşılığı yok (çevrimdışı)` : ''}
+            {t('rep.expenseCount', { n: s.count })}{s.missing ? t('rep.missing', { n: s.missing }) : ''}
           </Text>
           <View style={styles.paySplit}>
-            <Text style={styles.payItem}>💵 Nakit {formatMoney(pay.nakit, cur)}</Text>
-            <Text style={styles.payItem}>💳 Kart {formatMoney(pay.kart, cur)}</Text>
-            {pay.other ? <Text style={styles.payItem}>• Diğer {formatMoney(pay.other, cur)}</Text> : null}
+            <Text style={styles.payItem}>💵 {paymentLabel('nakit')} {formatMoney(pay.nakit, cur)}</Text>
+            <Text style={styles.payItem}>💳 {paymentLabel('kart')} {formatMoney(pay.kart, cur)}</Text>
+            {pay.other ? <Text style={styles.payItem}>• {t('pay.unknown')} {formatMoney(pay.other, cur)}</Text> : null}
           </View>
         </View>
 
         {/* Tür bazında özet */}
-        <Text style={styles.sectionLabel}>TÜR BAZINDA ÖZET</Text>
+        <Text style={styles.sectionLabel}>{t('rep.byCategory')}</Text>
         {cats.map((c) => {
           const share = s.total ? c.total / s.total : 0;
           return (
@@ -185,18 +186,18 @@ export default function ExpenseReportScreen({ route, navigation }) {
                 <View style={[styles.barFill, { width: `${pct(c.total, maxCat) * 100}%` }]} />
               </View>
               <Text style={styles.catMeta}>
-                %{Math.round(share * 100)} · {c.count} kayıt
+                {t('rep.catShare', { pct: Math.round(share * 100), n: c.count })}
               </Text>
             </View>
           );
         })}
 
         {/* Tür × Seyahat çapraz tablosu */}
-        <Text style={styles.sectionLabel}>TÜR × SEYAHAT TABLOSU</Text>
+        <Text style={styles.sectionLabel}>{t('rep.catTable')}</Text>
         {matrix.cols.length && matrix.cats.length ? (
           <>
             <Text style={styles.compSub}>
-              Kolon = seyahat · satır = tür · değer = {currencySymbol(cur)} {cur} harcama
+              {t('rep.catTableHint', { cur: currencySymbol(cur) + ' ' + cur })}
             </Text>
             <MatrixTable
               rows={matrix.cats}
@@ -205,19 +206,19 @@ export default function ExpenseReportScreen({ route, navigation }) {
               grand={matrix.grand}
               currentId={tripId}
               cur={cur}
-              headerLabel="Tür"
+              headerLabel={t('rep.colCategory')}
             />
           </>
         ) : (
-          <Text style={styles.compHint}>Tablo için seyahatlere harcama ekle.</Text>
+          <Text style={styles.compHint}>{t('rep.tableEmpty')}</Text>
         )}
 
         {/* Ödeme şekli × Seyahat çapraz tablosu */}
-        <Text style={styles.sectionLabel}>ÖDEME ŞEKLİ × SEYAHAT TABLOSU</Text>
+        <Text style={styles.sectionLabel}>{t('rep.payTable')}</Text>
         {payMatrix.cols.length && payMatrix.rows.length ? (
           <>
             <Text style={styles.compSub}>
-              Kolon = seyahat · satır = ödeme şekli · değer = {currencySymbol(cur)} {cur} harcama
+              {t('rep.payTableHint', { cur: currencySymbol(cur) + ' ' + cur })}
             </Text>
             <MatrixTable
               rows={payMatrix.rows}
@@ -226,23 +227,23 @@ export default function ExpenseReportScreen({ route, navigation }) {
               grand={payMatrix.grand}
               currentId={tripId}
               cur={cur}
-              headerLabel="Ödeme"
+              headerLabel={t('rep.colPayment')}
             />
           </>
         ) : (
-          <Text style={styles.compHint}>Tablo için seyahatlere harcama ekle.</Text>
+          <Text style={styles.compHint}>{t('rep.tableEmpty')}</Text>
         )}
 
         {/* Seyahat karşılaştırması */}
-        <Text style={styles.sectionLabel}>SEYAHAT KARŞILAŞTIRMASI</Text>
-        <Text style={styles.compSub}>Tür ve ödeme şekli seç: seyahatleri toplamda ya da süzülmüş kümede karşılaştır</Text>
+        <Text style={styles.sectionLabel}>{t('rep.compare')}</Text>
+        <Text style={styles.compSub}>{t('rep.compareSub')}</Text>
         <View style={{ paddingHorizontal: 16, marginBottom: 8 }}>
           <ChipPicker
             options={compCatOptions}
             value={compCat}
             onChange={setCompCat}
             renderLabel={(o) =>
-              o.value === 'all' ? '📊 Tümü' : `${catIcon(catalog, o.value)} ${catLabel(catalog, o.value)}`
+              o.value === 'all' ? t('rep.allChip') : `${catIcon(catalog, o.value)} ${catLabel(catalog, o.value)}`
             }
           />
         </View>
@@ -251,36 +252,34 @@ export default function ExpenseReportScreen({ route, navigation }) {
             options={[{ value: 'all' }, ...PAYMENT_METHODS.map((p) => ({ value: p.value }))]}
             value={compPay}
             onChange={setCompPay}
-            renderLabel={(o) => (o.value === 'all' ? '💰 Tüm ödemeler' : `${paymentIcon(o.value)} ${paymentLabel(o.value)}`)}
+            renderLabel={(o) => (o.value === 'all' ? t('rep.allPaymentsChip') : `${paymentIcon(o.value)} ${paymentLabel(o.value)}`)}
           />
         </View>
         {comp.length ? (
           <Text style={styles.compHint}>
-            {compCategory ? `${catIcon(catalog, compCategory)} ${catLabel(catalog, compCategory)}` : 'Tüm türler'}
+            {compCategory ? `${catIcon(catalog, compCategory)} ${catLabel(catalog, compCategory)}` : t('rep.allCategories')}
             {' · '}
-            {compPayment ? `${paymentIcon(compPayment)} ${paymentLabel(compPayment)}` : 'tüm ödemeler'}
+            {compPayment ? `${paymentIcon(compPayment)} ${paymentLabel(compPayment)}` : t('rep.allPayments')}
             {' · '}
-            {comp.length} seyahat · ort. {formatMoney(avg, cur)} · toplam {formatMoney(grand, cur)}
+            {t('rep.compareMeta', { n: comp.length, avg: formatMoney(avg, cur), total: formatMoney(grand, cur) })}
           </Text>
         ) : (
           <Text style={styles.compHint}>
-            {compCategory || compPayment
-              ? 'Bu süzgeçte harcaması olan seyahat yok.'
-              : 'Karşılaştırmak için seyahatlere harcama ekle.'}
+            {compCategory || compPayment ? t('rep.compareEmptyFiltered') : t('rep.compareEmpty')}
           </Text>
         )}
-        {comp.map((t) => {
-          const isCurrent = t.id === tripId;
+        {comp.map((tr) => {
+          const isCurrent = tr.id === tripId;
           return (
-            <View key={t.id} style={[styles.tripRow, isCurrent && styles.tripRowCurrent]}>
+            <View key={tr.id} style={[styles.tripRow, isCurrent && styles.tripRowCurrent]}>
               <View style={styles.catHead}>
                 <Text style={[styles.tripName, isCurrent && styles.tripNameCurrent]} numberOfLines={1}>
                   {isCurrent ? '➤ ' : ''}
-                  {t.title}
-                  {t.startDate ? `  ·  ${formatShortDate(t.startDate)}` : ''}
+                  {tr.title}
+                  {tr.startDate ? `  ·  ${formatShortDate(tr.startDate)}` : ''}
                 </Text>
                 <Text style={[styles.tripAmt, isCurrent && styles.tripNameCurrent]}>
-                  {formatMoney(t.total, cur)}
+                  {formatMoney(tr.total, cur)}
                 </Text>
               </View>
               <View style={styles.barTrack}>
@@ -288,7 +287,7 @@ export default function ExpenseReportScreen({ route, navigation }) {
                   style={[
                     styles.barFill,
                     isCurrent && styles.barFillCurrent,
-                    { width: `${pct(t.total, maxTrip) * 100}%` },
+                    { width: `${pct(tr.total, maxTrip) * 100}%` },
                   ]}
                 />
               </View>
