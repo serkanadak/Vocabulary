@@ -111,6 +111,13 @@ export default {
   },
 
   // --- Keşif detayı (ortak etiketler) ---
+  'placeText.source': { tr: 'Kaynak: Wikipedia →', en: 'Source: Wikipedia →', de: 'Quelle: Wikipedia →' },
+  'placeText.loading': { tr: 'Özet getiriliyor…', en: 'Fetching summary…', de: 'Zusammenfassung wird geladen…' },
+  'placeText.turkishOnly': {
+    tr: '',
+    en: '(Archive summary — Turkish. A localized summary was not available offline.)',
+    de: '(Archiv-Zusammenfassung — Türkisch. Offline war keine übersetzte Fassung verfügbar.)',
+  },
   'disc.notFound': { tr: 'Keşif bulunamadı', en: 'Discovery not found', de: 'Entdeckung nicht gefunden' },
   'disc.source.local': { tr: 'Yerel arşiv', en: 'Local archive', de: 'Lokales Archiv' },
   'disc.source.ai': { tr: 'Canlı AI', en: 'Live AI', de: 'Live-KI' },

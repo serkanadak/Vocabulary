@@ -10,6 +10,7 @@ import { colors } from '../theme';
 import { t } from '../i18n';
 import { Field, PrimaryButton, SecondaryButton, ConfirmModal, EmptyState, Pill } from '../components/common';
 import PlacePhoto from '../components/PlacePhoto';
+import PlaceSummary from '../components/PlaceSummary';
 
 const SOURCE_LABEL = {
   [ENRICH_SOURCE.LOCAL]: { label: t('disc.source.local'), color: colors.success },
@@ -238,7 +239,11 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
 
           <Text style={styles.h}>{t('disc.summaryHead')}</Text>
           {disc.summary ? (
-            <Text style={styles.summary}>{disc.summary}</Text>
+            <PlaceSummary
+              place={{ id: disc.placeId, name: disc.placeName, city: disc.city, country: disc.country }}
+              fallback={disc.summary}
+              style={styles.summary}
+            />
           ) : (
             <Text style={styles.summaryEmpty}>{t('disc.noSummary')}</Text>
           )}
