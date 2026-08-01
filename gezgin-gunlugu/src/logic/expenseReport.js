@@ -5,6 +5,7 @@
 import { BUILTIN_EXPENSE_CATEGORIES, catLabel, catIcon } from '../data/expenseCategories';
 import { paymentLabel, paymentIcon } from '../data/paymentMethods';
 import { t } from '../i18n';
+import { currencySymbol } from './fx';
 
 // Katalog verilmezse yerleşik türlere düşer (etiket/sıra için).
 function catalogOf(catalog) {
@@ -66,6 +67,93 @@ export function categoryBreakdown(expenses, cur, catalog) {
   const rows = [...map.values()].map((r) => ({ ...r, label: catLabel(cat, r.value), icon: catIcon(cat, r.value) }));
   rows.sort((a, b) => b.total - a.total || b.count - a.count);
   return rows;
+}
+
+// Ödendiği (özgün) para birimine göre kırılım.
+//  native : o para biriminde ödenen HAM toplam (asıl merak edilen: kaç euro
+//           nakit/kart çıktı, kaç lira harcandı…)
+//  total  : seçilen rapor para birimindeki karşılığı (çubuk/sıralama için —
+//           farklı para birimleri ancak böyle kıyaslanabilir)
+export function currencyBreakdown(expenses, cur) {
+  const map = new Map();
+  for (const e of expenses || []) {
+    const code = (e && e.currency) || '?';
+    const row = map.get(code) || { value: code, native: 0, total: 0, count: 0, missing: 0 };
+    row.count += 1;
+    const amt = Number(e && e.amount);
+    if (isFinite(amt)) row.native += amt;
+    if (e && e.eq && typeof e.eq[cur] === 'number') row.total += e.eq[cur];
+    else row.missing += 1;
+    map.set(code, row);
+  }
+  const rows = [...map.values()].map((r) => ({ ...r, label: `${currencySymbol(r.value)} ${r.value}` }));
+  rows.sort((a, b) => b.total - a.total || b.count - a.count);
+  return rows;
+}
+
+// Para birimi × Seyahat çapraz tablosu. Hücreler SEÇİLEN rapor para biriminde
+// (farklı birimler ancak çevrilmiş hâlde toplanabilir); satır etiketi harcamanın
+// ödendiği özgün para birimidir.
+export function currencyTripMatrix(trips, cur) {
+  const cols = (trips || [])
+    .filter((tr) => (tr.expenses || []).length)
+    .map((tr) => ({ id: tr.id, title: tr.title || t('nav.trip'), startDate: tr.startDate || '', total: 0 }));
+
+  const used = new Set();
+  const data = {};
+  for (const tr of trips || []) {
+    if (!(tr.expenses || []).length) continue;
+    for (const e of tr.expenses || []) {
+      const code = (e && e.currency) || '?';
+      used.add(code);
+      if (!(e && e.eq && typeof e.eq[cur] === 'number')) continue;
+      data[code] = data[code] || {};
+      data[code][tr.id] = (data[code][tr.id] || 0) + e.eq[cur];
+    }
+  }
+
+  const rows = [...used]
+    .map((code) => {
+      const row = data[code] || {};
+      const total = Object.values(row).reduce((a, b) => a + b, 0);
+      return { value: code, label: `${currencySymbol(code)} ${code}`, icon: '💱', total };
+    })
+    .sort((a, b) => b.total - a.total);
+
+  let grand = 0;
+  for (const col of cols) {
+    let s = 0;
+    for (const r of rows) s += (data[r.value] && data[r.value][col.id]) || 0;
+    col.total = s;
+    grand += s;
+  }
+
+  return { rows, cols, data, grand };
+}
+
+// Güzergah durağına göre kırılım (TEK seyahat içinde).
+// Duraklar seyahate özgü olduğu için bu bir çapraz tablo değil, o seyahatin
+// durak listesidir; durağa bağlanmamış harcamalar sonda "rota dışı" satırında.
+export function stopBreakdown(trip, cur) {
+  const stops = (trip && trip.stops) || [];
+  const expenses = (trip && trip.expenses) || [];
+  const rows = stops.map((st, i) => ({
+    value: st.id,
+    label: `${i + 1}. ${st.name}`,
+    icon: '🗺️',
+    total: 0,
+    count: 0,
+  }));
+  const byId = new Map(rows.map((r) => [r.value, r]));
+  const free = { value: '__free__', label: t('doc.offRoute'), icon: '🌟', total: 0, count: 0 };
+  for (const e of expenses) {
+    const row = (e && e.stopId && byId.get(e.stopId)) || free;
+    row.count += 1;
+    if (e && e.eq && typeof e.eq[cur] === 'number') row.total += e.eq[cur];
+  }
+  const out = rows.filter((r) => r.count > 0);
+  if (free.count) out.push(free);
+  return out;
 }
 
 // Tür × Seyahat çapraz tablosu (pivot): satır = tür, kolon = seyahat,

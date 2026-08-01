@@ -29,6 +29,7 @@ function emptyForm() {
     amount: '',
     currency: 'EUR',
     payment: DEFAULT_PAYMENT,
+    stopId: null,
     date: todayKey(),
     receiptPhoto: null,
   };
@@ -78,6 +79,13 @@ export default function ExpensesScreen({ route, navigation }) {
     form && form.kind && !active.some((c) => c.value === form.kind)
       ? [...active, ...catalog.filter((c) => c.value === form.kind)]
       : active;
+  // Harcamanın bağlanabileceği güzergah durakları.
+  const stops = trip.stops || [];
+  const stopName = (id) => {
+    const i = stops.findIndex((st) => st.id === id);
+    return i >= 0 ? `${i + 1}. ${stops[i].name}` : null;
+  };
+
   // Yeni kayıt için varsayılan tür: aktifse 'yemek', değilse ilk aktif tür.
   const defaultKind = active.some((c) => c.value === DEFAULT_EXPENSE_CATEGORY)
     ? DEFAULT_EXPENSE_CATEGORY
@@ -106,6 +114,7 @@ export default function ExpensesScreen({ route, navigation }) {
       amount: e.amount != null ? String(e.amount) : '',
       currency: e.currency || 'EUR',
       payment: e.payment || DEFAULT_PAYMENT,
+      stopId: e.stopId || null,
       date: e.date || todayKey(),
       receiptPhoto: e.receiptPhoto || null,
     });
@@ -197,6 +206,7 @@ export default function ExpensesScreen({ route, navigation }) {
       amount: amountNum,
       currency: form.currency,
       payment: form.payment,
+      stopId: form.stopId || null,
       date: form.date.trim() || todayKey(),
       eq,
       receiptPhoto: form.receiptPhoto || null,
@@ -312,6 +322,19 @@ export default function ExpensesScreen({ route, navigation }) {
               renderLabel={(o) => `${paymentIcon(o.value)} ${paymentLabel(o.value)}`}
             />
 
+            {stops.length ? (
+              <>
+                <Text style={styles.fieldLabel}>{t('exp.stop')}</Text>
+                <ChipPicker
+                  options={[{ value: '' }, ...stops.map((st) => ({ value: st.id }))]}
+                  value={form.stopId || ''}
+                  onChange={(v) => patchForm({ stopId: v || null })}
+                  renderLabel={(o) => (o.value ? `🗺️ ${stopName(o.value)}` : t('exp.stopNone'))}
+                />
+                <Text style={styles.stopHint}>{t('exp.stopHint')}</Text>
+              </>
+            ) : null}
+
             <Field label={t('disc.dateField')} value={form.date} onChangeText={(v) => patchForm({ date: v })} autoCapitalize="none" placeholder={todayKey()} />
             {!dateOk ? <Text style={styles.err}>{t('common.invalidDate')}</Text> : null}
 
@@ -341,6 +364,7 @@ export default function ExpensesScreen({ route, navigation }) {
                   <Text style={styles.rowMeta}>
                     {formatShortDate(e.date)} · {catLabel(catalog, e.kind)}
                     {e.payment ? ` · ${paymentIcon(e.payment)} ${paymentLabel(e.payment)}` : ''}
+                    {e.stopId && stopName(e.stopId) ? ` · 🗺️ ${stopName(e.stopId)}` : ''}
                   </Text>
                   {e.eq ? (
                     <Text style={styles.rowEq} numberOfLines={1}>
@@ -419,6 +443,7 @@ const styles = StyleSheet.create({
   receiptBtns: { flexDirection: 'row', marginTop: 12 },
   notice: { color: colors.accent, fontSize: 12, marginTop: 10, lineHeight: 17 },
   fieldLabel: { color: colors.textMuted, fontSize: 12, marginTop: 14, marginBottom: 8 },
+  stopHint: { color: colors.textMuted, fontSize: 11, marginTop: 8, lineHeight: 16 },
   amountRow: { flexDirection: 'row', gap: 10 },
   err: { color: colors.danger, fontSize: 11, marginTop: 4 },
   formActions: { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 16 },

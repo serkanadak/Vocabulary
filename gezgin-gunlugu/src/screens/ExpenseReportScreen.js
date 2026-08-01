@@ -9,6 +9,9 @@ import {
   paymentSplit,
   categoryTripMatrix,
   paymentTripMatrix,
+  currencyBreakdown,
+  currencyTripMatrix,
+  stopBreakdown,
 } from '../logic/expenseReport';
 import { formatMoney, currencySymbol, TARGETS } from '../logic/fx';
 import { resolveCategories, catLabel, catIcon } from '../data/expenseCategories';
@@ -110,9 +113,18 @@ export default function ExpenseReportScreen({ route, navigation }) {
   const cats = categoryBreakdown(expenses, cur, catalog).filter((c) => c.count > 0);
   const maxCat = cats.reduce((m, c) => Math.max(m, c.total), 0);
 
-  // Tür × Seyahat ve Ödeme × Seyahat çapraz tabloları (harcaması olan tüm seyahatler).
+  // Güzergah durağına göre kırılım (bu seyahat içinde).
+  const stopRows = stopBreakdown(trip, cur);
+  const maxStop = stopRows.reduce((m, r) => Math.max(m, r.total), 0);
+
+  // Ödendiği para birimine göre kırılım (ham tutar + seçilen birimde karşılığı).
+  const curRows = currencyBreakdown(expenses, cur);
+  const maxCur = curRows.reduce((m, c) => Math.max(m, c.total), 0);
+
+  // Tür × Seyahat, Ödeme × Seyahat ve Para birimi × Seyahat çapraz tabloları.
   const matrix = categoryTripMatrix(trips || [], cur, catalog);
   const payMatrix = paymentTripMatrix(trips || [], cur);
+  const curMatrix = currencyTripMatrix(trips || [], cur);
 
   // Karşılaştırma: seyahat bazında; istenirse tür (kategori) ve/veya ödeme şekli süzülür.
   const compCategory = compCat === 'all' ? null : compCat;
@@ -191,6 +203,74 @@ export default function ExpenseReportScreen({ route, navigation }) {
             </View>
           );
         })}
+
+        {/* Güzergah durağına göre */}
+        {stopRows.length > 1 || (stopRows.length === 1 && stopRows[0].value !== '__free__') ? (
+          <>
+            <Text style={styles.sectionLabel}>{t('rep.byStop')}</Text>
+            <Text style={styles.compSub}>{t('rep.byStopSub')}</Text>
+            {stopRows.map((r) => (
+              <View key={r.value} style={styles.catRow}>
+                <View style={styles.catHead}>
+                  <Text style={styles.catName} numberOfLines={1}>
+                    {r.icon} {r.label}
+                  </Text>
+                  <Text style={styles.catAmt}>{formatMoney(r.total, cur)}</Text>
+                </View>
+                <View style={styles.barTrack}>
+                  <View style={[styles.barFill, { width: `${pct(r.total, maxStop) * 100}%` }]} />
+                </View>
+                <Text style={styles.catMeta}>
+                  {t('rep.catShare', { pct: Math.round((s.total ? r.total / s.total : 0) * 100), n: r.count })}
+                </Text>
+              </View>
+            ))}
+          </>
+        ) : null}
+
+        {/* Ödendiği para birimine göre */}
+        {curRows.length > 1 || (curRows.length === 1 && curRows[0].value !== cur) ? (
+          <>
+            <Text style={styles.sectionLabel}>{t('rep.byCurrency')}</Text>
+            <Text style={styles.compSub}>
+              {t('rep.byCurrencySub', { cur: `${currencySymbol(cur)} ${cur}` })}
+            </Text>
+            {curRows.map((c) => (
+              <View key={c.value} style={styles.catRow}>
+                <View style={styles.catHead}>
+                  <Text style={styles.catName}>{c.label}</Text>
+                  <Text style={styles.catAmt}>{formatMoney(c.native, c.value)}</Text>
+                </View>
+                <View style={styles.barTrack}>
+                  <View style={[styles.barFill, { width: `${pct(c.total, maxCur) * 100}%` }]} />
+                </View>
+                <Text style={styles.catMeta}>
+                  {t('rep.curMeta', { n: c.count, conv: formatMoney(c.total, cur) })}
+                  {c.missing ? t('rep.curMissing', { n: c.missing }) : ''}
+                </Text>
+              </View>
+            ))}
+          </>
+        ) : null}
+
+        {/* Para birimi × Seyahat çapraz tablosu */}
+        {curMatrix.cols.length && curMatrix.rows.length > 1 ? (
+          <>
+            <Text style={styles.sectionLabel}>{t('rep.curTable')}</Text>
+            <Text style={styles.compSub}>
+              {t('rep.curTableHint', { cur: `${currencySymbol(cur)} ${cur}` })}
+            </Text>
+            <MatrixTable
+              rows={curMatrix.rows}
+              cols={curMatrix.cols}
+              data={curMatrix.data}
+              grand={curMatrix.grand}
+              currentId={tripId}
+              cur={cur}
+              headerLabel={t('rep.colCurrency')}
+            />
+          </>
+        ) : null}
 
         {/* Tür × Seyahat çapraz tablosu */}
         <Text style={styles.sectionLabel}>{t('rep.catTable')}</Text>
