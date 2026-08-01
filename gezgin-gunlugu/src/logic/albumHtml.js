@@ -178,13 +178,36 @@ export async function buildAlbumHtml(trip) {
     const place = matchPlace(g.stopName);
     const bp = place ? basePhotos['id:' + place.id] || basePhotos['nm:' + norm(place.name)] : basePhotos['nm:' + norm(g.stopName)];
     const summary = place && place.summary ? place.summary : '';
-    if (!bp && !summary) return '';
+    // Kullanıcının o şehir/durak için yazdığı günlük notu (mekan notlarından ayrı).
+    const st = (trip.stops || []).find((x) => x.id === g.key);
+    const cityNote = (st && st.journalNote) || '';
+    if (!bp && !summary && !cityNote) return '';
     return (
       `<div class="stop-intro">` +
       (bp ? `<img class="stop-intro-photo" src="${bp}" />` : '') +
       (summary ? `<div class="place-summary">${esc(summary)}</div>` : '') +
+      (cityNote ? `<div class="place-note">✍️ ${esc(cityNote)}</div>` : '') +
       `</div>`
     );
+  };
+
+  // --- Günlük notlar: albümde AYRI bir bölüm (tarih sırasına göre) ---
+  const dayNotesHtml = () => {
+    const notes = [...(trip.dayNotes || [])]
+      .filter((n) => (n.text || '').trim())
+      .sort((a, b) => ((a.date || '') < (b.date || '') ? -1 : 1));
+    if (!notes.length) return '';
+    const blocks = notes
+      .map(
+        (n) =>
+          `<div class="daynote">` +
+          `<div class="daynote-date">${esc(formatLongDate(n.date))}</div>` +
+          (n.title ? `<div class="daynote-title">${esc(n.title)}</div>` : '') +
+          `<div class="daynote-text">${esc(n.text).replace(/\n+/g, '</p><p>')}</div>` +
+          `</div>`
+      )
+      .join('');
+    return `<section class="page"><h2>${t('doc.dayNotes')}</h2>${blocks}</section>`;
   };
 
   // Sade güzergah özeti: ülke / şehir / mekan adları — AÇIKLAMASIZ. Mekan
@@ -282,6 +305,11 @@ export async function buildAlbumHtml(trip) {
   .place-loc { font-size: 13px; color: #7a8791; margin-top: 1px; }
   .place-summary { font-size: 13.5px; line-height: 1.55; color: #33404b; margin-top: 6px; }
   .place-note { font-size: 13px; color: #55636e; font-style: italic; margin-top: 5px; }
+  /* Günlük notlar bölümü */
+  .daynote { break-inside: avoid; page-break-inside: avoid; margin-bottom: 14mm; }
+  .daynote-date { font-size: 12px; font-weight: 800; color: #0f6fa8; letter-spacing: .3px; }
+  .daynote-title { font-size: 16px; font-weight: 800; color: #16202a; margin-top: 3px; }
+  .daynote-text { font-size: 13.5px; line-height: 1.6; color: #26313b; margin-top: 5px; white-space: pre-wrap; }
   /* Fotoğraflar: satırda EN FAZLA 2 foto (bölünmez satır; sığmazsa komple sonraki
      sayfaya iner). Fotoğraflar KENDİ ORANINDA gösterilir (max-width/max-height +
      width/height:auto) → ne kırpma ne de yandan/üstten bant/çerçeve oluşur; yalnızca
@@ -338,6 +366,7 @@ export async function buildAlbumHtml(trip) {
     <h2>${t('doc.route')}</h2>
     ${simpleRouteHtml() || `<div class="intro-text">${t('pub.noStops')}</div>`}
   </section>
+  ${dayNotesHtml()}
   ${journalSections || `<section class="page"><div class="intro-text">${t('doc.noDiscoveries')}</div></section>`}
 </body></html>`;
 }

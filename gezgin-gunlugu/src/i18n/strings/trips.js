@@ -141,6 +141,43 @@ export default {
     de: 'Diese Reise wird mit allen Entdeckungen, Halten und Notizen dauerhaft gelöscht.',
   },
 
+  // --- Günlük notlar ---
+  'day.title': { tr: 'Günlük Notlar', en: 'Daily notes', de: 'Tagesnotizen' },
+  'day.card': { tr: 'Günlük Notlar', en: 'Daily notes', de: 'Tagesnotizen' },
+  'day.cardSub': { tr: '{n} gün yazıldı · gün gün seyahat günlüğün', en: '{n} days written · your day-by-day journal', de: '{n} Tage geschrieben · dein Tagebuch Tag für Tag' },
+  'day.cardEmpty': {
+    tr: 'Gün gün serbest günlük tut; albüme ayrı bölüm olarak eklenir',
+    en: 'Keep a free-form day-by-day journal; added to the album as its own section',
+    de: 'Führe ein freies Tagebuch Tag für Tag; kommt als eigener Abschnitt ins Album',
+  },
+  'day.empty': { tr: 'Henüz günlük notu yok', en: 'No daily notes yet', de: 'Noch keine Tagesnotizen' },
+  'day.emptySub': {
+    tr: 'Bugünü yaz: neler yaşadın, ne hissettin? Bu notlar albümde ayrı bir bölüm olarak yer alır.',
+    en: 'Write about today: what happened, how did it feel? These notes get their own section in the album.',
+    de: 'Schreibe über heute: Was ist passiert, wie war es? Diese Notizen erhalten einen eigenen Abschnitt im Album.',
+  },
+  'day.add': { tr: '＋ Gün ekle', en: '＋ Add a day', de: '＋ Tag hinzufügen' },
+  'day.newTitle': { tr: 'Yeni gün notu', en: 'New day note', de: 'Neue Tagesnotiz' },
+  'day.editTitle': { tr: 'Gün notunu düzenle', en: 'Edit day note', de: 'Tagesnotiz bearbeiten' },
+  'day.titleField': { tr: 'Başlık (opsiyonel)', en: 'Title (optional)', de: 'Titel (optional)' },
+  'day.titlePlaceholder': {
+    tr: 'ör. Roma’da ilk gün',
+    en: 'e.g. First day in Rome',
+    de: 'z. B. Erster Tag in Rom',
+  },
+  'day.text': { tr: 'Bugün', en: 'Today', de: 'Heute' },
+  'day.textPlaceholder': {
+    tr: 'Bugün neler yaşadın? Ne gördün, ne hissettin, ne yedin…',
+    en: 'What happened today? What did you see, feel, eat…',
+    de: 'Was war heute? Was hast du gesehen, gefühlt, gegessen…',
+  },
+  'day.deleteConfirm': { tr: 'Gün notunu sil?', en: 'Delete day note?', de: 'Tagesnotiz löschen?' },
+  'day.exists': {
+    tr: 'Bu tarihte zaten bir not var — düzenlemek için ona dokun.',
+    en: 'A note already exists for this date — tap it to edit.',
+    de: 'Für dieses Datum gibt es bereits eine Notiz — zum Bearbeiten antippen.',
+  },
+
   // --- Hazırlık listesi ---
   'check.progress': { tr: 'Hazırlık ilerlemesi', en: 'Preparation progress', de: 'Vorbereitungsfortschritt' },
   'check.status.todo': { tr: 'Bekliyor', en: 'Pending', de: 'Offen' },

@@ -10,6 +10,8 @@ export default {
     en: '🧭 Building discovery journal…',
     de: '🧭 Entdeckungstagebuch wird erstellt…',
   },
+  'doc.dayNotes': { tr: 'Günlük Notlar', en: 'Daily notes', de: 'Tagesnotizen' },
+  'doc.cityNote': { tr: 'Şehir notu', en: 'City note', de: 'Stadtnotiz' },
   'doc.intro': { tr: 'Giriş', en: 'Introduction', de: 'Einleitung' },
   'doc.tripMap': { tr: 'Seyahat Haritası', en: 'Trip map', de: 'Reisekarte' },
   'doc.noStops': { tr: 'Henüz durak yok.', en: 'No stops yet.', de: 'Noch keine Halte.' },

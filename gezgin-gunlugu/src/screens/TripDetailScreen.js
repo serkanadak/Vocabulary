@@ -137,6 +137,18 @@ export default function TripDetailScreen({ route, navigation }) {
           onPress={() => navigation.navigate('DiscoveryHub', { tripId })}
         />
 
+        <NavCard
+          icon="📔"
+          title={t('day.card')}
+          subtitle={
+            (trip.dayNotes || []).length
+              ? t('day.cardSub', { n: trip.dayNotes.length })
+              : t('day.cardEmpty')
+          }
+          badge={(trip.dayNotes || []).length || null}
+          onPress={() => navigation.navigate('DayNotes', { tripId })}
+        />
+
         {/* Harcamalar */}
         <Text style={styles.sectionLabel}>{t('trip.section.budget')}</Text>
         <NavCard

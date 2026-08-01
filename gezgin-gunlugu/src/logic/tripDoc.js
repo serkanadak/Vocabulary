@@ -229,8 +229,9 @@ export function discoveryDetailHtml(trip, basePhotos) {
         }</div>` +
         (bp ? `<img class="stopd-photo" src="${bp}" />` : '') +
         (summary ? `<div class="stopd-summary">${esc(summary)}</div>` : '') +
+        (s.journalNote ? `<div class="stopd-note">✍️ ${esc(s.journalNote)}</div>` : '') +
         `</div>` +
-        `<div class="attrs-label">🏛️ Gezilecek yerler${attractions.length ? ` (${attractions.length})` : ''}</div>` +
+        `<div class="attrs-label">🏛️ ${t('disc.toVisit')}${attractions.length ? ` (${attractions.length})` : ''}</div>` +
         `<div class="attrs">${attrHtml}</div>` +
         extraHtml +
         `</div>`
@@ -264,6 +265,7 @@ export const DETAIL_CSS = `
   .stopd-meta { font-size: 12px; color: #7a8791; margin-bottom: 6px; }
   .stopd-photo { width: 100%; max-height: 78mm; object-fit: cover; border-radius: 6px; margin: 4px 0 8px; display: block; }
   .stopd-summary { font-size: 13px; line-height: 1.55; color: #33404b; margin-bottom: 8px; }
+  .stopd-note { font-size: 12.5px; line-height: 1.5; color: #55636e; font-style: italic; margin-bottom: 8px; }
   .attrs-label { font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: #9aa4ad; font-weight: 800; margin: 8px 0 5px; }
   .attrs { display: flex; flex-direction: column; gap: 5px; }
   .attr { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;

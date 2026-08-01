@@ -48,6 +48,13 @@ export default {
     de: 'Wenn du einen Ort außerhalb der Route besucht oder eine Aktivität gemacht hast (Konzert, Bootstour…), füge sie hier hinzu.',
   },
   'disc.markVisited': { tr: '＋ Gidildi', en: '＋ Visited', de: '＋ Besucht' },
+  'disc.cityNote': { tr: '✍️ Bu şehir/durak için notun', en: '✍️ Your note for this city/stop', de: '✍️ Deine Notiz zu dieser Stadt/diesem Halt' },
+  'disc.cityNotePlaceholder': {
+    tr: 'Şehir hakkında genel izlenimin, atmosfer, ulaşım, nerede kaldın…',
+    en: 'Your overall impression of the city, atmosphere, transport, where you stayed…',
+    de: 'Dein Gesamteindruck der Stadt, Atmosphäre, Verkehr, wo du gewohnt hast…',
+  },
+  'disc.cityNoteAdd': { tr: '✍️ Şehir/durak notu ekle', en: '✍️ Add city/stop note', de: '✍️ Stadt-/Haltnotiz hinzufügen' },
   'disc.noneYet': { tr: 'henüz keşif yok', en: 'no discoveries yet', de: 'noch keine Entdeckungen' },
   'disc.suggestedCount': { tr: '· {n} önerilen yer', en: '· {n} suggested places', de: '· {n} vorgeschlagene Orte' },
   'disc.visitedCount': { tr: '{n} keşif', en: '{n} discoveries', de: '{n} Entdeckungen' },

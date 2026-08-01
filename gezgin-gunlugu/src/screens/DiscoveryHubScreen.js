@@ -9,7 +9,7 @@ import { todayKey, formatShortDate } from '../logic/date';
 import { coverOf, hasPhoto } from '../logic/photos';
 import { colors } from '../theme';
 import { t } from '../i18n';
-import { Card, SectionHeader, EmptyState, Pill, ConfirmModal } from '../components/common';
+import { Card, SectionHeader, EmptyState, Pill, ConfirmModal, Field } from '../components/common';
 import PlacePhoto from '../components/PlacePhoto';
 
 const norm = (s) => (s || '').toLocaleLowerCase('tr').replace(/\s+/g, ' ').trim();
@@ -40,9 +40,16 @@ function DiscoveryRow({ disc, onPress }) {
 
 // Rotadaki bir durağın açılır kartı: gezilecek mekanlar + eklenen keşifler.
 function StopSection({ trip, stop, navigation }) {
-  const { addDiscovery, removeDiscovery } = useJournal();
+  const { addDiscovery, removeDiscovery, updateStop } = useJournal();
   const [open, setOpen] = useState(false);
   const [pendingUnmark, setPendingUnmark] = useState(null);
+  // Şehir/durak notu: mekanlardan bağımsız, durağın kendisine yazılan günlük notu.
+  const [cityNote, setCityNote] = useState(stop.journalNote || '');
+  const [editCityNote, setEditCityNote] = useState(false);
+  const saveCityNote = () => {
+    updateStop(trip.id, stop.id, { journalNote: cityNote.trim() });
+    setEditCityNote(false);
+  };
 
   const place = matchPlace(stop.name);
   const attractions = place ? attractionsFor(place.id) : [];
@@ -91,6 +98,43 @@ function StopSection({ trip, stop, navigation }) {
         <View style={styles.stopBody}>
           {place ? <PlacePhoto place={place} height={170} /> : null}
           {place?.summary ? <Text style={styles.stopSummary}>{place.summary}</Text> : null}
+
+          {/* Şehir/durak notu — mekana değil, durağın kendisine */}
+          {editCityNote ? (
+            <View style={styles.cityNoteBox}>
+              <Text style={styles.subLabel}>{t('disc.cityNote')}</Text>
+              <Field
+                value={cityNote}
+                onChangeText={setCityNote}
+                placeholder={t('disc.cityNotePlaceholder')}
+                multiline
+              />
+              <View style={styles.cityNoteActions}>
+                <Pressable onPress={saveCityNote} hitSlop={8}>
+                  <Text style={styles.cityNoteSave}>{t('common.save')}</Text>
+                </Pressable>
+                <Pressable
+                  onPress={() => {
+                    setCityNote(stop.journalNote || '');
+                    setEditCityNote(false);
+                  }}
+                  hitSlop={8}
+                >
+                  <Text style={styles.cityNoteCancel}>{t('common.cancel')}</Text>
+                </Pressable>
+              </View>
+            </View>
+          ) : stop.journalNote ? (
+            <Pressable style={styles.cityNoteBox} onPress={() => setEditCityNote(true)}>
+              <Text style={styles.subLabel}>{t('disc.cityNote')}</Text>
+              <Text style={styles.cityNoteText}>{stop.journalNote}</Text>
+              <Text style={styles.cityNoteEdit}>{t('common.edit')} ›</Text>
+            </Pressable>
+          ) : (
+            <Pressable style={styles.cityNoteAdd} onPress={() => setEditCityNote(true)}>
+              <Text style={styles.cityNoteAddText}>{t('disc.cityNoteAdd')}</Text>
+            </Pressable>
+          )}
           {attractions.length ? (
             <>
               <Text style={styles.subLabel}>{t('disc.toVisit')}</Text>
@@ -278,6 +322,19 @@ export default function DiscoveryHubScreen({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
+  cityNoteBox: {
+    backgroundColor: colors.surfaceAlt,
+    borderRadius: 12,
+    padding: 12,
+    marginTop: 12,
+  },
+  cityNoteText: { color: colors.text, fontSize: 14, lineHeight: 21 },
+  cityNoteEdit: { color: colors.primary, fontSize: 12, fontWeight: '700', marginTop: 8 },
+  cityNoteActions: { flexDirection: 'row', gap: 18, marginTop: 12 },
+  cityNoteSave: { color: colors.primary, fontSize: 13, fontWeight: '800' },
+  cityNoteCancel: { color: colors.textMuted, fontSize: 13, fontWeight: '700' },
+  cityNoteAdd: { marginTop: 12, paddingVertical: 8 },
+  cityNoteAddText: { color: colors.primary, fontSize: 13, fontWeight: '700' },
   container: { flex: 1, backgroundColor: colors.bg },
   stopCard: {
     backgroundColor: colors.surface,

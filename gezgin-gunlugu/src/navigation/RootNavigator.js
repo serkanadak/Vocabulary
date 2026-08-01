@@ -14,6 +14,7 @@ import AddStopScreen from '../screens/AddStopScreen';
 import DiscoveryHubScreen from '../screens/DiscoveryHubScreen';
 import AddDiscoveryScreen from '../screens/AddDiscoveryScreen';
 import DiscoveryDetailScreen from '../screens/DiscoveryDetailScreen';
+import DayNotesScreen from '../screens/DayNotesScreen';
 import ExpensesScreen from '../screens/ExpensesScreen';
 import ExpenseReportScreen from '../screens/ExpenseReportScreen';
 import AlbumScreen from '../screens/AlbumScreen';
@@ -80,6 +81,7 @@ export default function RootNavigator() {
         <Stack.Screen name="DiscoveryHub" component={DiscoveryHubScreen} options={{ title: t('nav.discoveryHub') }} />
         <Stack.Screen name="AddDiscovery" component={AddDiscoveryScreen} options={{ title: t('nav.addDiscovery') }} />
         <Stack.Screen name="DiscoveryDetail" component={DiscoveryDetailScreen} options={{ title: t('nav.discovery') }} />
+        <Stack.Screen name="DayNotes" component={DayNotesScreen} options={{ title: t('day.title') }} />
         <Stack.Screen name="Expenses" component={ExpensesScreen} options={{ title: t('nav.expenses') }} />
         <Stack.Screen name="ExpenseReport" component={ExpenseReportScreen} options={{ title: t('nav.expenseReport') }} />
         <Stack.Screen name="Album" component={AlbumScreen} options={{ title: t('nav.album') }} />

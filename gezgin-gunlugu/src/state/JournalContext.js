@@ -190,6 +190,32 @@ function reducer(state, action) {
         })),
       };
 
+    // --- Günlük notlar (tarihe bağlı serbest günlük) ---
+    case 'ADD_DAY_NOTE':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          dayNotes: [...(t.dayNotes || []), action.note],
+        })),
+      };
+    case 'UPDATE_DAY_NOTE':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          dayNotes: (t.dayNotes || []).map((n) => (n.id === action.noteId ? { ...n, ...action.patch } : n)),
+        })),
+      };
+    case 'REMOVE_DAY_NOTE':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          dayNotes: (t.dayNotes || []).filter((n) => n.id !== action.noteId),
+        })),
+      };
+
     case 'UPDATE_SETTINGS':
       return { ...state, settings: { ...state.settings, ...action.patch } };
 
@@ -276,6 +302,7 @@ export function JournalProvider({ children }) {
         stops: [],
         discoveries: [],
         expenses: [],
+        dayNotes: [],
       };
       dispatch({ type: 'ADD_TRIP', trip });
       return trip.id;
@@ -318,6 +345,11 @@ export function JournalProvider({ children }) {
       updateExpense: (tripId, expenseId, patch) =>
         dispatch({ type: 'UPDATE_EXPENSE', tripId, expenseId, patch }),
       removeExpense: (tripId, expenseId) => dispatch({ type: 'REMOVE_EXPENSE', tripId, expenseId }),
+      // günlük notlar
+      addDayNote: (tripId, note) =>
+        dispatch({ type: 'ADD_DAY_NOTE', tripId, note: { id: uid('day'), createdAt: new Date().toISOString(), ...note } }),
+      updateDayNote: (tripId, noteId, patch) => dispatch({ type: 'UPDATE_DAY_NOTE', tripId, noteId, patch }),
+      removeDayNote: (tripId, noteId) => dispatch({ type: 'REMOVE_DAY_NOTE', tripId, noteId }),
       // settings
       updateSettings: (patch) => dispatch({ type: 'UPDATE_SETTINGS', patch }),
       // harcama türleri (Ayarlar) — pasif tür seyahatlerde seçilemez ama geçmişte kalır
