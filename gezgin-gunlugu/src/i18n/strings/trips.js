@@ -336,6 +336,11 @@ export default {
   'stop.name': { tr: 'Durak adı', en: 'Stop name', de: 'Name des Halts' },
   'stop.namePlaceholder': { tr: 'ör. Efes, İzmir', en: 'e.g. Ephesus, İzmir', de: 'z. B. Ephesos, İzmir' },
   'stop.nights': { tr: '🌙 Gece sayısı (opsiyonel)', en: '🌙 Number of nights (optional)', de: '🌙 Anzahl Nächte (optional)' },
+  'stop.nightsHint': {
+    tr: '0 yazarsan bu şehir aynı gün geçilir; program o güne hem bu şehri hem sonrakini sırayla yerleştirir.',
+    en: 'Enter 0 for a same-day stop; the plan then fits this city and the next one into the same day, in order.',
+    de: 'Gib 0 ein für einen Halt am selben Tag; der Plan setzt diese und die nächste Stadt nacheinander in denselben Tag.',
+  },
   'stop.nightsPlaceholder': { tr: 'ör. 2', en: 'e.g. 2', de: 'z. B. 2' },
   'stop.datePlaceholder': { tr: 'ör. 2026-08-03', en: 'e.g. 2026-08-03', de: 'z. B. 2026-08-03' },
   'stop.stayPlaceholder': {

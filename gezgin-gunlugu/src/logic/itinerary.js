@@ -11,6 +11,8 @@
 //   attraction   -> henüz keşfe eklenmemiş öneri (dokununca keşfe dönüşür)
 import { attractionsFor } from '../data/attractions';
 import { matchPlace } from '../data/places';
+import { haversineKm, hasCoords } from './geo';
+import { getVehicle, effectiveSpeed } from '../data/vehicles';
 import { todayKey } from './date';
 
 export const ITEM_KIND = {
@@ -61,19 +63,26 @@ function uid() {
 }
 
 // Durakları günlere dağıtır: [{ date, stop, dayIndexInStop, isArrival }]
-// Durakta tarih varsa o tarihten başlar; yoksa seyahat başlangıcından itibaren
-// `nights` (en az 1 gün) kadar sırayla ilerler.
+// Durakta tarih varsa o tarihten başlar; yoksa seyahat başlangıcından devam eder.
+//
+// Gece sayısı:
+//   belirtilmemiş -> 1 gece (durak kendi gününü alır, ertesi gün sonraki durak)
+//   0             -> AYNI GÜN geçilen şehir: o günü paylaşır, takvim ilerlemez
+//                    (böylece bir güne birden fazla şehir düşebilir)
+//   n>1           -> durak n gün boyunca sürer
 export function assignDays(trip) {
   const stops = trip.stops || [];
   const out = [];
   let cursor = trip.startDate || todayKey();
   for (const stop of stops) {
     const start = stop.date || cursor;
-    const days = Math.max(1, Number(stop.nights) || 1);
+    const raw = stop.nights;
+    const nights = raw === undefined || raw === null || raw === '' ? 1 : Math.max(0, Number(raw) || 0);
+    const days = Math.max(1, nights); // 0 gece de olsa o gün ziyaret edilir
     for (let i = 0; i < days; i += 1) {
       out.push({ date: addDays(start, i), stop, dayIndexInStop: i, isArrival: i === 0 });
     }
-    cursor = addDays(start, days);
+    cursor = addDays(start, nights); // 0 gece -> aynı günde kal
   }
   return out;
 }
@@ -85,93 +94,130 @@ const DEFAULTS = {
   lunchAt: '13:00',
   lunchMin: 60,
   maxVisitsPerDay: 4,
-  travelStart: '09:00',
+  settleMin: 30, // varışta yerleşme/mola
+  minTravelMin: 60, // koordinat yoksa varsayılan yolculuk süresi
 };
 
+// İki durak arası tahmini yolculuk süresi (dakika). Koordinat yoksa varsayılan.
+function travelMinutes(from, to, vehicleId, o) {
+  if (!hasCoords(from) || !hasCoords(to)) return o.minTravelMin;
+  const straight = haversineKm(from, to);
+  if (straight == null) return o.minTravelMin;
+  const vehicle = getVehicle(vehicleId);
+  const speed = effectiveSpeed(vehicle) || 80;
+  const km = straight * (vehicle.detour || 1);
+  return Math.max(15, Math.round((km / speed) * 60));
+}
+
 // Bir seyahat için gün gün saatlik program üretir.
-// Zaten keşfe eklenmiş yerler önce gelir; kalan slotlar arşiv önerileriyle dolar.
+//
+// ÖNEMLİ: Bir güne birden fazla durak düşebilir (ör. sabah bir şehir, öğleden
+// sonra diğeri). Bu durumda saatler çakışmasın diye gün içinde TEK bir saat
+// akışı yürütülür ve duraklar GÜZERGAH SIRASIYLA işlenir: önce ilk durağın
+// aktiviteleri, sonra aradaki yolculuk, sonra sonraki durağın aktiviteleri.
 export function generateItinerary(trip, opts = {}) {
   const o = { ...DEFAULTS, ...opts };
-  const days = assignDays(trip);
-  if (!days.length) return [];
+  const dayEntries = assignDays(trip);
+  if (!dayEntries.length) return [];
 
   const discoveries = trip.discoveries || [];
+  const stopsOrder = new Map((trip.stops || []).map((s, i) => [s.id, i]));
+
+  // Günlere göre grupla; gün içinde duraklar güzergah sırasında kalsın.
+  const byDate = new Map();
+  for (const e of dayEntries) {
+    if (!byDate.has(e.date)) byDate.set(e.date, []);
+    byDate.get(e.date).push(e);
+  }
+  const dates = [...byDate.keys()].sort();
+
   const items = [];
-  let prevStop = null;
+  let prevStop = null; // genel sırada bir önceki durak (gün değişse de geçerli)
 
-  for (const day of days) {
-    const { date, stop } = day;
+  for (const date of dates) {
+    const entries = byDate
+      .get(date)
+      .slice()
+      .sort((a, b) => (stopsOrder.get(a.stop.id) ?? 0) - (stopsOrder.get(b.stop.id) ?? 0));
+
     let clock = parseTime(o.dayStart);
-
-    // Yeni durağa varış günü → önce yolculuk maddesi.
-    if (day.isArrival && prevStop && prevStop.id !== stop.id) {
-      items.push({
-        id: uid(),
-        date,
-        time: fmtTime(parseTime(o.travelStart)),
-        durationMin: 0,
-        kind: ITEM_KIND.TRAVEL,
-        title: `${prevStop.name} → ${stop.name}`,
-        stopId: stop.id,
-        fromStopId: prevStop.id,
-        note: '',
-        done: false,
-      });
-      clock = parseTime(o.travelStart) + 120; // yolculuk sonrası varsayılan tampon
-    }
-
-    // Bu durağa ait keşifler (kullanıcı eklemiş) + arşiv önerileri.
-    const stopDisc = discoveries.filter((d) => d.stopId === stop.id);
-    const place = matchPlace(stop.name);
-    const suggestions = place ? attractionsFor(place.id) : [];
-    const usedNames = new Set(stopDisc.map((d) => (d.placeName || '').toLocaleLowerCase('tr')));
-    const fresh = suggestions.filter((a) => !usedNames.has((a.name || '').toLocaleLowerCase('tr')));
-
-    // Durakta birden fazla gün varsa ziyaretleri günlere bölüştür.
-    const pool = [
-      ...stopDisc.map((d) => ({ title: d.placeName, discoveryId: d.id, placeId: d.placeId })),
-      ...fresh.map((a) => ({ title: a.name, attractionId: a.id, placeId: place ? place.id : null })),
-    ];
-    const perDay = o.maxVisitsPerDay;
-    const slice = pool.slice(day.dayIndexInStop * perDay, day.dayIndexInStop * perDay + perDay);
-
     let lunchDone = false;
-    const lunch = parseTime(o.lunchAt);
-    for (const p of slice) {
-      // Öğle saatini geçtiysek bir kez yemek molası koy.
-      if (!lunchDone && clock >= lunch) {
+    const lunchAt = parseTime(o.lunchAt);
+    // Gün içindeki ziyaret bütçesi duraklar arasında PAYLAŞILIR.
+    const perStopBudget = Math.max(1, Math.floor(o.maxVisitsPerDay / entries.length));
+
+    for (const entry of entries) {
+      const stop = entry.stop;
+
+      // Bu durağa YENİ geliniyorsa önce yolculuk maddesi (aynı gün içinde de).
+      if (entry.isArrival && prevStop && prevStop.id !== stop.id) {
+        const mins = travelMinutes(prevStop, stop, trip.vehicle, o);
         items.push({
           id: uid(),
           date,
           time: fmtTime(clock),
-          durationMin: o.lunchMin,
-          kind: ITEM_KIND.MEAL,
-          title: '',
+          durationMin: mins,
+          kind: ITEM_KIND.TRAVEL,
+          title: `${prevStop.name} → ${stop.name}`,
           stopId: stop.id,
+          fromStopId: prevStop.id,
           note: '',
           done: false,
         });
-        clock += o.lunchMin + o.gapMin;
-        lunchDone = true;
+        clock += mins + o.settleMin;
       }
-      items.push({
-        id: uid(),
-        date,
-        time: fmtTime(clock),
-        durationMin: o.visitMin,
-        kind: ITEM_KIND.VISIT,
-        title: p.title,
-        stopId: stop.id,
-        discoveryId: p.discoveryId || null,
-        attractionId: p.attractionId || null,
-        placeId: p.placeId || null,
-        note: '',
-        done: false,
-      });
-      clock += o.visitMin + o.gapMin;
-    }
 
-    prevStop = stop;
+      // Bu durağa ait keşifler + arşiv önerileri.
+      const stopDisc = discoveries.filter((d) => d.stopId === stop.id);
+      const place = matchPlace(stop.name);
+      const suggestions = place ? attractionsFor(place.id) : [];
+      const usedNames = new Set(stopDisc.map((d) => (d.placeName || '').toLocaleLowerCase('tr')));
+      const fresh = suggestions.filter((a) => !usedNames.has((a.name || '').toLocaleLowerCase('tr')));
+
+      const pool = [
+        ...stopDisc.map((d) => ({ title: d.placeName, discoveryId: d.id, placeId: d.placeId })),
+        ...fresh.map((a) => ({ title: a.name, attractionId: a.id, placeId: place ? place.id : null })),
+      ];
+      // Durakta birden çok gün varsa ziyaretleri o günlere bölüştür.
+      const start = entry.dayIndexInStop * perStopBudget;
+      const slice = pool.slice(start, start + perStopBudget);
+
+      for (const pItem of slice) {
+        // Öğle saatini geçtiysek GÜNDE BİR KEZ yemek molası koy.
+        if (!lunchDone && clock >= lunchAt) {
+          items.push({
+            id: uid(),
+            date,
+            time: fmtTime(clock),
+            durationMin: o.lunchMin,
+            kind: ITEM_KIND.MEAL,
+            title: '',
+            stopId: stop.id,
+            note: '',
+            done: false,
+          });
+          clock += o.lunchMin + o.gapMin;
+          lunchDone = true;
+        }
+        items.push({
+          id: uid(),
+          date,
+          time: fmtTime(clock),
+          durationMin: o.visitMin,
+          kind: ITEM_KIND.VISIT,
+          title: pItem.title,
+          stopId: stop.id,
+          discoveryId: pItem.discoveryId || null,
+          attractionId: pItem.attractionId || null,
+          placeId: pItem.placeId || null,
+          note: '',
+          done: false,
+        });
+        clock += o.visitMin + o.gapMin;
+      }
+
+      prevStop = stop;
+    }
   }
 
   return items;

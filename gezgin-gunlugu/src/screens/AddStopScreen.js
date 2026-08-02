@@ -132,6 +132,7 @@ export default function AddStopScreen({ route, navigation }) {
             keyboardType="number-pad"
           />
           {!nightsOk ? <Text style={styles.err}>{t('stop.nightsRange')}</Text> : null}
+          <Text style={styles.nightsHint}>{t('stop.nightsHint')}</Text>
           <Field
             label={t('stop.note')}
             value={note}
@@ -151,6 +152,7 @@ export default function AddStopScreen({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
+  nightsHint: { color: colors.textMuted, fontSize: 11, marginTop: 6, lineHeight: 16 },
   container: { flex: 1, backgroundColor: colors.bg },
   suggestion: {
     marginTop: 12,
