@@ -190,6 +190,31 @@ function reducer(state, action) {
         })),
       };
 
+    // --- Günlük saatlik program ---
+    case 'SET_PLAN':
+      return { ...state, trips: mapTrip(state.trips, action.tripId, (t) => ({ ...t, plan: action.plan })) };
+    case 'ADD_PLAN_ITEM':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({ ...t, plan: [...(t.plan || []), action.item] })),
+      };
+    case 'UPDATE_PLAN_ITEM':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          plan: (t.plan || []).map((i) => (i.id === action.itemId ? { ...i, ...action.patch } : i)),
+        })),
+      };
+    case 'REMOVE_PLAN_ITEM':
+      return {
+        ...state,
+        trips: mapTrip(state.trips, action.tripId, (t) => ({
+          ...t,
+          plan: (t.plan || []).filter((i) => i.id !== action.itemId),
+        })),
+      };
+
     // --- Günlük notlar (tarihe bağlı serbest günlük) ---
     case 'ADD_DAY_NOTE':
       return {
@@ -303,6 +328,7 @@ export function JournalProvider({ children }) {
         discoveries: [],
         expenses: [],
         dayNotes: [],
+        plan: [],
       };
       dispatch({ type: 'ADD_TRIP', trip });
       return trip.id;
@@ -334,8 +360,13 @@ export function JournalProvider({ children }) {
       removeStop: (tripId, stopId) => dispatch({ type: 'REMOVE_STOP', tripId, stopId }),
       reorderStops: (tripId, stops) => dispatch({ type: 'REORDER_STOPS', tripId, stops }),
       // discoveries
-      addDiscovery: (tripId, discovery) =>
-        dispatch({ type: 'ADD_DISCOVERY', tripId, discovery: { id: uid('disc'), ...discovery } }),
+      // Yeni keşfin KİMLİĞİNİ döndürür: çağıran (ör. günlük program) hemen o
+      // keşfin detayına gidebilsin ve maddesini ona bağlayabilsin.
+      addDiscovery: (tripId, discovery) => {
+        const id = uid('disc');
+        dispatch({ type: 'ADD_DISCOVERY', tripId, discovery: { ...discovery, id } });
+        return id;
+      },
       updateDiscovery: (tripId, discoveryId, patch) =>
         dispatch({ type: 'UPDATE_DISCOVERY', tripId, discoveryId, patch }),
       removeDiscovery: (tripId, discoveryId) => dispatch({ type: 'REMOVE_DISCOVERY', tripId, discoveryId }),
@@ -345,6 +376,11 @@ export function JournalProvider({ children }) {
       updateExpense: (tripId, expenseId, patch) =>
         dispatch({ type: 'UPDATE_EXPENSE', tripId, expenseId, patch }),
       removeExpense: (tripId, expenseId) => dispatch({ type: 'REMOVE_EXPENSE', tripId, expenseId }),
+      // günlük saatlik program
+      setPlan: (tripId, plan) => dispatch({ type: 'SET_PLAN', tripId, plan }),
+      addPlanItem: (tripId, item) => dispatch({ type: 'ADD_PLAN_ITEM', tripId, item }),
+      updatePlanItem: (tripId, itemId, patch) => dispatch({ type: 'UPDATE_PLAN_ITEM', tripId, itemId, patch }),
+      removePlanItem: (tripId, itemId) => dispatch({ type: 'REMOVE_PLAN_ITEM', tripId, itemId }),
       // günlük notlar
       addDayNote: (tripId, note) =>
         dispatch({ type: 'ADD_DAY_NOTE', tripId, note: { id: uid('day'), createdAt: new Date().toISOString(), ...note } }),

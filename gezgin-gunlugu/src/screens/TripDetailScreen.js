@@ -123,6 +123,16 @@ export default function TripDetailScreen({ route, navigation }) {
           onPress={() => navigation.navigate('Route', { tripId })}
         />
 
+        <NavCard
+          icon="🗓️"
+          title={t('plan.card')}
+          subtitle={
+            (trip.plan || []).length ? t('plan.cardSub', { n: trip.plan.length }) : t('plan.cardEmpty')
+          }
+          badge={(trip.plan || []).length || null}
+          onPress={() => navigation.navigate('Itinerary', { tripId })}
+        />
+
         {/* Günlük / Keşifler — detaylar keşif günlüğünün içinde */}
         <Text style={styles.sectionLabel}>{t('trip.section.journal')}</Text>
         <NavCard
