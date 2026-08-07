@@ -54,6 +54,7 @@ export default function ParentScreen() {
   const [newPin, setNewPin] = useState('');
   const [confirmPin, setConfirmPin] = useState('');
   const [error, setError] = useState('');
+  const [resetArmed, setResetArmed] = useState(false);
 
   if (!planner.parentPinHash) {
     return (
@@ -191,6 +192,34 @@ export default function ParentScreen() {
           </Text>
         </Card>
       )}
+
+      <SectionTitle>Tehlikeli bölge</SectionTitle>
+      <Card>
+        <Text style={styles.mutedText}>
+          Uygulamadaki tüm hedefleri, görevleri, deneme sonuçlarını, rozetleri ve seriyi siler; sınıf ve
+          veli PIN'i dahil her şey sıfırdan başlar. Bu işlem geri alınamaz.
+        </Text>
+        {!resetArmed ? (
+          <View style={{ marginTop: 10 }}>
+            <GhostButton label="Tüm verileri sıfırla" danger onPress={() => setResetArmed(true)} />
+          </View>
+        ) : (
+          <View style={{ marginTop: 10 }}>
+            <Text style={styles.error}>Emin misin? Tüm ilerleme kalıcı olarak silinecek.</Text>
+            <PrimaryButton
+              label="Evet, her şeyi sil"
+              color={colors.danger}
+              onPress={() => {
+                planner.reset();
+                setResetArmed(false);
+              }}
+            />
+            <View style={{ marginTop: 8 }}>
+              <GhostButton label="Vazgeç" onPress={() => setResetArmed(false)} />
+            </View>
+          </View>
+        )}
+      </Card>
     </ScrollView>
   );
 }
