@@ -11,7 +11,7 @@ import { buildSubjectTrends } from '../logic/examTrends';
 import SubjectTrend from '../components/SubjectTrend';
 import { SUBJECTS_BY_GRADE } from '../data/curriculum';
 
-function PeriodRow({ row }) {
+function PeriodRow({ row, onDeleteTask }) {
   const [open, setOpen] = useState(false);
   const total = row.completed.length + row.missing.length;
   const ratio = total === 0 ? 0 : row.completed.length / total;
@@ -32,14 +32,20 @@ function PeriodRow({ row }) {
         <View style={{ marginTop: 10 }}>
           {total === 0 && <Text style={styles.mutedText}>Bu dönemde görev yok.</Text>}
           {row.completed.map((t) => (
-            <Text key={t.id} style={styles.doneItem}>
-              ✓ {t.title}
-            </Text>
+            <View key={t.id} style={styles.taskRow}>
+              <Text style={[styles.doneItem, { flex: 1 }]}>✓ {t.title}</Text>
+              <TouchableOpacity onPress={() => onDeleteTask(t.id)}>
+                <Text style={styles.deleteLink}>Sil</Text>
+              </TouchableOpacity>
+            </View>
           ))}
           {row.missing.map((t) => (
-            <Text key={t.id} style={styles.missingItem}>
-              • {t.title}
-            </Text>
+            <View key={t.id} style={styles.taskRow}>
+              <Text style={[styles.missingItem, { flex: 1 }]}>• {t.title}</Text>
+              <TouchableOpacity onPress={() => onDeleteTask(t.id)}>
+                <Text style={styles.deleteLink}>Sil</Text>
+              </TouchableOpacity>
+            </View>
           ))}
         </View>
       )}
@@ -62,7 +68,8 @@ export default function ParentScreen() {
         <SectionTitle>Veli modu kurulumu</SectionTitle>
         <Card>
           <Text style={styles.mutedText}>
-            Veli modu, öğrencinin ilerlemesini salt okunur olarak gösterir. Bir PIN belirleyerek koru.
+            Veli modu, öğrencinin ilerlemesini gösterir ve gerekirse görev silmene imkan tanır. Bir PIN
+            belirleyerek koru.
           </Text>
           <Field label="PIN (4 haneli)" value={newPin} onChangeText={setNewPin} keyboardType="numeric" secureTextEntry />
           <Field label="PIN (tekrar)" value={confirmPin} onChangeText={setConfirmPin} keyboardType="numeric" secureTextEntry />
@@ -163,17 +170,17 @@ export default function ParentScreen() {
 
       <SectionTitle>Gün gün görev takibi</SectionTitle>
       {dailyRows.map((row) => (
-        <PeriodRow key={row.key} row={row} />
+        <PeriodRow key={row.key} row={row} onDeleteTask={planner.deleteTask} />
       ))}
 
       <SectionTitle>Hafta hafta görev takibi</SectionTitle>
       {weeklyRows.map((row) => (
-        <PeriodRow key={row.key} row={row} />
+        <PeriodRow key={row.key} row={row} onDeleteTask={planner.deleteTask} />
       ))}
 
       <SectionTitle>Ay ay görev takibi</SectionTitle>
       {monthlyRows.map((row) => (
-        <PeriodRow key={row.key} row={row} />
+        <PeriodRow key={row.key} row={row} onDeleteTask={planner.deleteTask} />
       ))}
 
       <SectionTitle>Ders ders deneme trendi</SectionTitle>
@@ -235,4 +242,6 @@ const styles = StyleSheet.create({
   periodLabel: { color: colors.text, fontSize: 14, fontWeight: '700' },
   doneItem: { color: colors.textMuted, fontSize: 13, marginTop: 4, textDecorationLine: 'line-through' },
   missingItem: { color: colors.danger, fontSize: 13, marginTop: 4 },
+  taskRow: { flexDirection: 'row', alignItems: 'center', marginTop: 4 },
+  deleteLink: { color: colors.danger, fontSize: 12, fontWeight: '700', marginLeft: 10, paddingVertical: 2, paddingHorizontal: 4 },
 });
