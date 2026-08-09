@@ -46,6 +46,7 @@ export default function ExpensesScreen({ route, navigation }) {
   const [reading, setReading] = useState(false);
   const [notice, setNotice] = useState('');
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [filterKind, setFilterKind] = useState('all'); // 'all' | kategori değeri
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -66,7 +67,15 @@ export default function ExpensesScreen({ route, navigation }) {
     );
   }
 
-  const expenses = [...(trip.expenses || [])].sort((a, b) => ((a.date || '') < (b.date || '') ? 1 : -1));
+  const allExpenses = [...(trip.expenses || [])].sort((a, b) => ((a.date || '') < (b.date || '') ? 1 : -1));
+  // Bu seyahatte GERÇEKTEN kullanılmış türler (adetleriyle) — filtre şeridi için.
+  const usedCounts = allExpenses.reduce((m, e) => {
+    const k = e.kind || 'diger';
+    m[k] = (m[k] || 0) + 1;
+    return m;
+  }, {});
+  // Türe göre süzülmüş liste; toplamlar da bu listeden hesaplanır.
+  const expenses = filterKind === 'all' ? allExpenses : allExpenses.filter((e) => (e.kind || 'diger') === filterKind);
 
   // Tüm türler (etiket okumak için) ve yalnızca aktif olanlar (seçim için).
   const catalog = resolveCategories(settings);
@@ -222,7 +231,11 @@ export default function ExpensesScreen({ route, navigation }) {
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         {/* Toplam özeti */}
         <View style={styles.totalsCard}>
-          <Text style={styles.totalsTitle}>{t('exp.totalTitle')}</Text>
+          <Text style={styles.totalsTitle}>
+            {filterKind === 'all'
+              ? t('exp.totalTitle')
+              : t('exp.filteredTitle', { cat: `${catIcon(catalog, filterKind)} ${catLabel(catalog, filterKind)}` })}
+          </Text>
           <View style={styles.totalsRow}>
             {TARGETS.map((code) => (
               <View key={code} style={styles.totalCell}>
@@ -236,6 +249,26 @@ export default function ExpensesScreen({ route, navigation }) {
             {missing ? t('exp.missingSome', { n: missing }) : t('exp.convertedLive')}
           </Text>
         </View>
+
+        {/* Türe göre filtre — türe dokununca sadece o tür listelenir */}
+        {Object.keys(usedCounts).length > 1 ? (
+          <View style={styles.filterWrap}>
+            <ChipPicker
+              options={[
+                { value: 'all' },
+                ...catalog.filter((c) => usedCounts[c.value]).map((c) => ({ value: c.value })),
+              ]}
+              value={filterKind}
+              onChange={setFilterKind}
+              renderLabel={(o) =>
+                o.value === 'all'
+                  ? t('exp.filterAll', { n: allExpenses.length })
+                  : `${catIcon(catalog, o.value)} ${catLabel(catalog, o.value)} (${usedCounts[o.value]})`
+              }
+            />
+            <Text style={styles.filterHint}>{t('exp.filterHint')}</Text>
+          </View>
+        ) : null}
 
         {/* Ekle / Fiş oku eylemleri */}
         {!form ? (
@@ -376,19 +409,39 @@ export default function ExpensesScreen({ route, navigation }) {
                 </View>
                 <View style={styles.rowRight}>
                   <Text style={styles.rowAmount}>{formatMoney(e.amount, e.currency)}</Text>
-                  <Pressable onPress={() => setConfirmDeleteId(e.id)} hitSlop={8} style={styles.delBtn}>
-                    <Text style={styles.delText}>Sil</Text>
-                  </Pressable>
+                  <View style={styles.rowActions}>
+                    <Pressable
+                      onPress={() => openEdit(e)}
+                      hitSlop={10}
+                      style={styles.actBtn}
+                      accessibilityLabel={t('exp.editAction')}
+                    >
+                      <Text style={styles.actEdit}>✏️</Text>
+                    </Pressable>
+                    <Pressable
+                      onPress={() => setConfirmDeleteId(e.id)}
+                      hitSlop={10}
+                      style={styles.actBtn}
+                      accessibilityLabel={t('common.delete')}
+                    >
+                      <Text style={styles.actDel}>✕</Text>
+                    </Pressable>
+                  </View>
                 </View>
               </Pressable>
             ))}
           </View>
         ) : !form ? (
-          <EmptyState
-            icon="🧾"
-            title={t('exp.empty')}
-            subtitle={t('exp.emptySub')}
-          />
+          filterKind !== 'all' ? (
+            <View style={styles.filterEmpty}>
+              <Text style={styles.filterEmptyText}>{t('exp.filterEmpty')}</Text>
+              <Pressable onPress={() => setFilterKind('all')} hitSlop={8}>
+                <Text style={styles.clearFilter}>{t('exp.clearFilter')}</Text>
+              </Pressable>
+            </View>
+          ) : (
+            <EmptyState icon="🧾" title={t('exp.empty')} subtitle={t('exp.emptySub')} />
+          )
         ) : null}
       </ScrollView>
 
@@ -475,7 +528,14 @@ const styles = StyleSheet.create({
   rowEq: { color: colors.textMuted, fontSize: 11, marginTop: 3 },
   rowEqMissing: { color: colors.danger, fontSize: 11, marginTop: 3, fontStyle: 'italic' },
   rowRight: { alignItems: 'flex-end' },
+  rowActions: { flexDirection: 'row', alignItems: 'center', gap: 14, marginTop: 8 },
+  actBtn: { paddingHorizontal: 2 },
+  actEdit: { fontSize: 15 },
+  actDel: { color: colors.danger, fontSize: 16, fontWeight: '800' },
+  filterWrap: { marginHorizontal: 16, marginTop: 14 },
+  filterHint: { color: colors.textMuted, fontSize: 11, marginTop: 8, lineHeight: 16 },
+  filterEmpty: { alignItems: 'center', paddingTop: 36, paddingHorizontal: 32 },
+  filterEmptyText: { color: colors.textMuted, fontSize: 14 },
+  clearFilter: { color: colors.primary, fontSize: 13, fontWeight: '800', marginTop: 12 },
   rowAmount: { color: colors.primary, fontSize: 15, fontWeight: '800' },
-  delBtn: { marginTop: 8 },
-  delText: { color: colors.danger, fontSize: 12, fontWeight: '700' },
 });
