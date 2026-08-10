@@ -1,9 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Image, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as ImagePicker from 'expo-image-picker';
 import { useJournal } from '../state/JournalContext';
-import { preparePhotos } from '../logic/imageStore';
+import { pickImages } from '../logic/imagePicker';
 import { ENRICH_SOURCE } from '../logic/enrich';
 import { formatLongDate, isValidDateKey } from '../logic/date';
 import { colors } from '../theme';
@@ -38,6 +37,8 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
 
   const [notes, setNotes] = useState(disc?.userNotes || '');
   const [editing, setEditing] = useState(false);
+  const [picking, setPicking] = useState(null); // { done, total } — hazırlama göstergesi
+  const [photoWarn, setPhotoWarn] = useState('');
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   // Bilgi düzenleme (ad/tarih/şehir/ülke/özet)
@@ -92,23 +93,25 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
   };
 
   // Aynı mekana birden fazla foto: seçilenleri mevcut listeye ekler.
+  // Fotoğraflar TEK TEK küçültülerek alınır (bkz. logic/imagePicker.js).
   const addPhotos = async () => {
+    setPhotoWarn('');
     try {
-      const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (!perm.granted) return;
-      const res = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        quality: 0.7,
-        allowsMultipleSelection: true,
-        selectionLimit: 0,
+      const res = await pickImages({
+        multiple: true,
+        onProgress: (done, total) => setPicking(total > 1 ? { done, total } : null),
       });
-      if (res.canceled || !res.assets?.length) return;
-      const prepared = await preparePhotos(res.assets.map((a) => a.uri));
-      const next = [...photos, ...prepared];
-      // Kapak `photos[0]`tan okunur; photoUri'ye KOPYALAMA (aynı veriyi iki kez saklardı).
-      updateDiscovery(tripId, discoveryId, { photos: next, photoUri: null });
+      if (res.canceled) return;
+      if (res.assets.length) {
+        const next = [...photos, ...res.assets.map((a) => a.uri)];
+        // Kapak `photos[0]`tan okunur; photoUri'ye KOPYALAMA (aynı veriyi iki kez saklardı).
+        updateDiscovery(tripId, discoveryId, { photos: next, photoUri: null });
+      }
+      if (res.failed) setPhotoWarn(t('photo.someFailed', { n: res.failed }));
     } catch (e) {
-      // sessizce geç
+      setPhotoWarn(t('photo.failed'));
+    } finally {
+      setPicking(null);
     }
   };
   const removePhotoAt = (uri) => {
@@ -173,8 +176,16 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
           <SecondaryButton
             title={photos.length ? t('addDisc.addPhotoN', { n: photos.length }) : t('disc.addPhoto')}
             onPress={addPhotos}
+            disabled={!!picking}
             style={{ marginHorizontal: 0, marginBottom: 12 }}
           />
+          {picking ? (
+            <View style={styles.pickingRow}>
+              <ActivityIndicator color={colors.primary} />
+              <Text style={styles.pickingText}>{t('photo.preparing', picking)}</Text>
+            </View>
+          ) : null}
+          {photoWarn ? <Text style={styles.photoWarn}>{photoWarn}</Text> : null}
           {photos.length > 1 ? (
             <>
               <View style={styles.featAllRow}>
@@ -324,6 +335,9 @@ const styles = StyleSheet.create({
   },
   featureBtnOn: { backgroundColor: colors.primary },
   featureText: { color: '#fff', fontWeight: '800', fontSize: 12 },
+  pickingRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 },
+  pickingText: { color: colors.textMuted, fontSize: 13 },
+  photoWarn: { color: colors.danger, fontSize: 12, marginBottom: 12, lineHeight: 17 },
   photoHint: { color: colors.textMuted, fontSize: 12, marginBottom: 8 },
   hintFlex: { flex: 1, marginRight: 10 },
   featAllRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },

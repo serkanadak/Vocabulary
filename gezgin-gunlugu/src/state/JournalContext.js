@@ -1,7 +1,7 @@
 // Gezgin Günlüğü durumu: seyahatler (her biri kendi hazırlık checklist'i, durakları,
 // keşifleri ile) ve genel ayarlar. AsyncStorage ile cihazda kalıcı saklanır.
 
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { storageGet, storageSet } from '../logic/storage';
 import { createDefaultChecklist, createChecklistItem, dedupeChecklist } from '../data/checklist';
@@ -273,6 +273,12 @@ export function JournalProvider({ children }) {
   const pendingRef = useRef(null);
   const timerRef = useRef(null);
 
+  // Yazma başarısız olursa (depolama dolu / tarayıcı engeli) kullanıcıya
+  // söylenir. Eskiden storageSet'in Promise'i yakalanmıyordu: kota aşımında
+  // "unhandled rejection" oluşuyor, kullanıcı verisinin kaydedilmediğini
+  // hiç öğrenemiyordu.
+  const [writeFailed, setWriteFailed] = useState(false);
+
   const flushNow = useCallback(() => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
@@ -282,9 +288,16 @@ export function JournalProvider({ children }) {
     if (!data) return;
     pendingRef.current = null;
     try {
-      storageSet(STORAGE_KEY, JSON.stringify(data));
+      const p = storageSet(STORAGE_KEY, JSON.stringify(data));
+      if (p && typeof p.then === 'function') {
+        p.then(
+          () => setWriteFailed(false),
+          () => setWriteFailed(true)
+        );
+      }
     } catch (e) {
-      // Yazılamadıysa (ör. depolama dolu) mevcut kayıt bozulmaz.
+      // JSON.stringify bile başarısız olduysa (veri çok büyük) da bildir.
+      setWriteFailed(true);
     }
   }, []);
 
@@ -340,6 +353,8 @@ export function JournalProvider({ children }) {
       loaded: state.loaded,
       trips: state.trips,
       settings: state.settings,
+      // son kaydetme denemesi başarısız mı? (depolama dolu vb.)
+      writeFailed,
       // trip
       createTrip,
       getTrip,
@@ -450,7 +465,7 @@ export function JournalProvider({ children }) {
         dispatch({ type: 'UPDATE_SETTINGS', patch: { expenseCatsInactive: next } });
       },
     };
-  }, [state]);
+  }, [state, writeFailed]);
 
   return <JournalContext.Provider value={value}>{children}</JournalContext.Provider>;
 }

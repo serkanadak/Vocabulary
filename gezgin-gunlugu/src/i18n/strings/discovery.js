@@ -319,6 +319,11 @@ export default {
     en: '⚠️ Storage is filling up. New photos may not be saved; free space by deleting old/unneeded photos.',
     de: '⚠️ Der Speicher füllt sich. Neue Fotos werden möglicherweise nicht gespeichert; lösche alte/unnötige Fotos.',
   },
+  'set.writeFailed': {
+    tr: '⛔ Son değişiklikler cihaza KAYDEDİLEMEDİ (depolama dolu olabilir). Yer açmadan yeni fotoğraf eklemeyin.',
+    en: '⛔ The latest changes could NOT be saved to this device (storage may be full). Free up space before adding more photos.',
+    de: '⛔ Die letzten Änderungen konnten NICHT gespeichert werden (Speicher evtl. voll). Bitte erst Platz schaffen, bevor Sie weitere Fotos hinzufügen.',
+  },
   'set.storageNoEstimate': {
     tr: 'Bu cihaz/tarayıcı depolama tahminini sağlamıyor. Yine de {photos} fotoğraf ve {disc} keşif kayıtlı.',
     en: 'This device/browser doesn’t provide a storage estimate. Still, {photos} photos and {disc} discoveries are stored.',

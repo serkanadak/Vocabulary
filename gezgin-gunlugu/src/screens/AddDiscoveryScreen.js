@@ -1,11 +1,10 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, Image, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as ImagePicker from 'expo-image-picker';
 import { useJournal } from '../state/JournalContext';
 import { enrichPlace, ENRICH_SOURCE } from '../logic/enrich';
 import { exifDateKey, exifCoords } from '../logic/exif';
-import { preparePhotos } from '../logic/imageStore';
+import { pickImages } from '../logic/imagePicker';
 import { todayKey, formatLongDate } from '../logic/date';
 import { colors } from '../theme';
 import { t } from '../i18n';
@@ -38,34 +37,35 @@ export default function AddDiscoveryScreen({ route, navigation }) {
   const [photos, setPhotos] = useState([]); // uri listesi — aynı mekana birden fazla foto
   const [photoCoords, setPhotoCoords] = useState(null);
   const [photoDate, setPhotoDate] = useState(null);
+  const [picking, setPicking] = useState(null); // { done, total } — hazırlama göstergesi
+  const [photoWarn, setPhotoWarn] = useState('');
   const [analyzing, setAnalyzing] = useState(false);
   const [result, setResult] = useState(null);
   const [userNotes, setUserNotes] = useState('');
 
+  // Fotoğraflar TEK TEK küçültülerek alınır (bkz. logic/imagePicker.js):
+  // tam boy base64 hiç oluşmadığı için telefonda bellek taşması / hata olmaz.
   const pickPhoto = async () => {
+    setPhotoWarn('');
     try {
-      const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (!perm.granted) return;
-      const res = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        quality: 0.7,
-        exif: true,
-        allowsMultipleSelection: true,
-        selectionLimit: 0,
+      const res = await pickImages({
+        multiple: true,
+        onProgress: (done, total) => setPicking(total > 1 ? { done, total } : null),
       });
-      if (res.canceled || !res.assets?.length) return;
-      // Meta veriyi (tarih/konum) küçültmeden önce orijinal asset'lerden oku.
+      if (res.canceled) return;
+      // Meta veriyi (tarih/konum) asset'lerden oku (native'de EXIF gelir).
       for (const a of res.assets) {
         const coords = exifCoords(a.exif);
         const date = exifDateKey(a.exif);
         if (coords && !photoCoords) setPhotoCoords(coords);
         if (date && !photoDate) setPhotoDate(date);
       }
-      // Kalıcı/gömülebilir hâle getir (web'de küçültülmüş data URI).
-      const prepared = await preparePhotos(res.assets.map((a) => a.uri));
-      setPhotos((prev) => [...prev, ...prepared]);
+      if (res.assets.length) setPhotos((prev) => [...prev, ...res.assets.map((a) => a.uri)]);
+      if (res.failed) setPhotoWarn(t('photo.someFailed', { n: res.failed }));
     } catch (e) {
-      // sessizce geç — kullanıcı elle konum girebilir
+      setPhotoWarn(t('photo.failed'));
+    } finally {
+      setPicking(null);
     }
   };
 
@@ -145,12 +145,21 @@ export default function AddDiscoveryScreen({ route, navigation }) {
           <SecondaryButton
             title={photos.length ? t('addDisc.addPhotoN', { n: photos.length }) : t('addDisc.uploadPhoto')}
             onPress={pickPhoto}
+            disabled={!!picking}
             style={{ marginHorizontal: 0 }}
           />
 
+          {picking ? (
+            <View style={styles.pickingRow}>
+              <ActivityIndicator color={colors.primary} />
+              <Text style={styles.pickingText}>{t('photo.preparing', picking)}</Text>
+            </View>
+          ) : null}
+          {photoWarn ? <Text style={styles.photoWarn}>{photoWarn}</Text> : null}
+
           {photos.length && (photoCoords || photoDate) ? (
             <Text style={styles.exifNote}>
-              Meta veriden okundu:
+              {t('photo.exifNote')}
               {photoDate ? ` 📅 ${photoDate}` : ''}
               {photoCoords ? ` · 📍 ${photoCoords.lat.toFixed(3)}, ${photoCoords.lng.toFixed(3)}` : ''}
             </Text>
@@ -258,6 +267,9 @@ const styles = StyleSheet.create({
   },
   removeThumbText: { color: '#fff', fontWeight: '800', fontSize: 12 },
   exifNote: { color: colors.accent, fontSize: 12, marginTop: 10 },
+  pickingRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 12 },
+  pickingText: { color: colors.textMuted, fontSize: 13 },
+  photoWarn: { color: colors.danger, fontSize: 12, marginTop: 10, lineHeight: 17 },
   resultCard: {
     backgroundColor: colors.surface,
     borderRadius: 14,

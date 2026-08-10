@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, Image, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as ImagePicker from 'expo-image-picker';
 import { useJournal } from '../state/JournalContext';
+import { pickImages } from '../logic/imagePicker';
 import { preparePhoto } from '../logic/imageStore';
 import { readReceipt } from '../logic/receipt';
 import { getRates, convertAll, formatMoney, currencySymbol, CURRENCIES, TARGETS } from '../logic/fx';
@@ -140,20 +140,21 @@ export default function ExpensesScreen({ route, navigation }) {
   // Fiş fotoğrafı seç + (AI açıksa) tutarları otomatik oku.
   const scanReceipt = async () => {
     try {
-      const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (!perm.granted) return;
-      const res = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        quality: 0.8,
-      });
-      if (res.canceled || !res.assets?.length) return;
+      // Seçici fotoğrafı zaten OCR için okunaklı boyutta küçültür; tam boy
+      // base64 hiç oluşmadığı için bellek taşması / okuma hatası yaşanmaz.
+      const res = await pickImages({ multiple: false, maxPx: 1400, quality: 0.7 });
+      if (res.canceled) return;
+      if (!res.assets.length) {
+        setNotice(res.failed ? t('photo.someFailed', { n: res.failed }) : t('photo.failed'));
+        return;
+      }
       setReading(true);
       setNotice('');
-      // OCR'a okunaklı (büyük) kopya gider; SAKLANAN kopya küçüktür. Fiş
+      // OCR'a okunaklı kopya gider; SAKLANAN kopya daha da küçüktür. Fiş
       // görüntüleri tüm seyahat verisiyle aynı JSON'da tutulduğu için büyük
       // saklamak uygulamayı yavaşlatıp çökmesine yol açıyordu.
-      const ocrPhoto = await preparePhoto(res.assets[0].uri, { maxPx: 1400, quality: 0.7 });
-      const photo = await preparePhoto(res.assets[0].uri, RECEIPT_STORE_OPTS);
+      const ocrPhoto = res.assets[0].uri;
+      const photo = await preparePhoto(ocrPhoto, RECEIPT_STORE_OPTS);
       const base = form || { ...emptyForm(), kind: defaultKind };
       const next = { ...base, receiptPhoto: photo };
       try {
@@ -173,7 +174,7 @@ export default function ExpensesScreen({ route, navigation }) {
       }
       setForm(next);
     } catch (e) {
-      setNotice(t('exp.photoFailed'));
+      setNotice(t('photo.failed'));
     } finally {
       setReading(false);
     }
@@ -181,17 +182,16 @@ export default function ExpensesScreen({ route, navigation }) {
 
   const attachPhotoOnly = async () => {
     try {
-      const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (!perm.granted) return;
-      const res = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        quality: 0.8,
-      });
-      if (res.canceled || !res.assets?.length) return;
-      const photo = await preparePhoto(res.assets[0].uri, RECEIPT_STORE_OPTS);
-      patchForm({ receiptPhoto: photo });
+      const res = await pickImages({ multiple: false, ...RECEIPT_STORE_OPTS });
+      if (res.canceled) return;
+      if (!res.assets.length) {
+        setNotice(res.failed ? t('photo.someFailed', { n: res.failed }) : t('photo.failed'));
+        return;
+      }
+      patchForm({ receiptPhoto: res.assets[0].uri });
+      setNotice('');
     } catch (e) {
-      /* yoksay */
+      setNotice(t('photo.failed'));
     }
   };
 

@@ -72,6 +72,7 @@ export default function SettingsScreen() {
     setExpenseCategoryActive,
     renameExpenseCategory,
     resetExpenseCategoryName,
+    writeFailed,
   } = useJournal();
 
   // --- Harcama türleri ---
@@ -379,6 +380,7 @@ export default function SettingsScreen() {
 
         <SectionHeader title={t('set.storage')} subtitle={t('set.storageSub')} />
         <Card>
+          {writeFailed ? <Text style={styles.warn}>{t('set.writeFailed')}</Text> : null}
           {storage === undefined ? (
             <Text style={styles.hint}>{t('set.storageCalc')}</Text>
           ) : storage && storage.quota ? (

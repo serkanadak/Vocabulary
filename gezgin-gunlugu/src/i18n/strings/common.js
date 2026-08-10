@@ -11,6 +11,23 @@ export default {
   'common.close': { tr: 'Kapat', en: 'Close', de: 'Schließen' },
   'common.back': { tr: 'Geri', en: 'Back', de: 'Zurück' },
   'common.preparing': { tr: 'Hazırlanıyor…', en: 'Preparing…', de: 'Wird vorbereitet…' },
+  // --- fotoğraf seçme ---
+  'photo.preparing': {
+    tr: '📷 Fotoğraflar hazırlanıyor… {done}/{total}',
+    en: '📷 Preparing photos… {done}/{total}',
+    de: '📷 Fotos werden vorbereitet… {done}/{total}',
+  },
+  'photo.someFailed': {
+    tr: '{n} fotoğraf okunamadı ve atlandı. Çok büyük veya desteklenmeyen bir biçim olabilir.',
+    en: '{n} photo(s) could not be read and were skipped. They may be too large or in an unsupported format.',
+    de: '{n} Foto(s) konnten nicht gelesen werden und wurden übersprungen. Möglicherweise zu groß oder ein nicht unterstütztes Format.',
+  },
+  'photo.failed': {
+    tr: 'Fotoğraf alınamadı. Lütfen tekrar deneyin.',
+    en: 'Could not add the photo. Please try again.',
+    de: 'Foto konnte nicht hinzugefügt werden. Bitte erneut versuchen.',
+  },
+  'photo.exifNote': { tr: 'Meta veriden okundu:', en: 'Read from metadata:', de: 'Aus Metadaten gelesen:' },
   'common.copied': { tr: '✓ Kopyalandı', en: '✓ Copied', de: '✓ Kopiert' },
   'common.invalidDate': { tr: 'Geçersiz tarih biçimi.', en: 'Invalid date format.', de: 'Ungültiges Datumsformat.' },
   'common.optional': { tr: 'opsiyonel', en: 'optional', de: 'optional' },
