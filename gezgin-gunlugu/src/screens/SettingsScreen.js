@@ -73,6 +73,7 @@ export default function SettingsScreen() {
     renameExpenseCategory,
     resetExpenseCategoryName,
     writeFailed,
+    missingPhotos,
   } = useJournal();
 
   // --- Harcama türleri ---
@@ -401,6 +402,7 @@ export default function SettingsScreen() {
         <SectionHeader title={t('set.storage')} subtitle={t('set.storageSub')} />
         <Card>
           {writeFailed ? <Text style={styles.warn}>{t('set.writeFailed')}</Text> : null}
+          {missingPhotos ? <Text style={styles.warn}>{t('set.missingPhotos', { n: missingPhotos })}</Text> : null}
           {persisted === true ? (
             <Text style={styles.okLine}>{t('set.persistOn')}</Text>
           ) : persisted === false ? (

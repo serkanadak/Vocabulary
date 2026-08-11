@@ -340,6 +340,11 @@ export default {
     en: 'This data was updated in another window/tab, so the latest version was loaded. You may need to redo the last change you just made in this window.',
     de: 'Diese Daten wurden in einem anderen Fenster/Tab aktualisiert, daher wurde die neueste Version geladen. Die letzte Änderung in diesem Fenster musst du evtl. wiederholen.',
   },
+  'set.missingPhotos': {
+    tr: '⚠️ {n} fotoğrafın görüntüsü cihazda bulunamadı (tarayıcı silmiş olabilir). Kayıtların ve notların yerinde.',
+    en: '⚠️ {n} photo(s) could not be found on this device (the browser may have cleared them). Your records and notes are intact.',
+    de: '⚠️ {n} Foto(s) wurden auf diesem Gerät nicht gefunden (möglicherweise vom Browser gelöscht). Deine Einträge und Notizen sind unversehrt.',
+  },
   'set.writeFailed': {
     tr: '⛔ Son değişiklikler cihaza KAYDEDİLEMEDİ (depolama dolu olabilir). Yer açmadan yeni fotoğraf eklemeyin.',
     en: '⛔ The latest changes could NOT be saved to this device (storage may be full). Free up space before adding more photos.',

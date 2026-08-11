@@ -8,6 +8,11 @@ import { Platform } from 'react-native';
 
 const DB_NAME = 'gezgin_gunlugu';
 const STORE = 'kv';
+// Fotoğraflar artık AYRI kayıtlarda tutulur (bkz. logic/photoStore.js):
+// eskiden tüm fotoğraflar seyahat verisiyle aynı tek JSON'un içindeydi ve her
+// küçük değişiklikte 35 MB'lık metin baştan yazılıyordu.
+export const PHOTO_STORE = 'photos';
+const DB_VERSION = 2;
 
 function idbAvailable() {
   return Platform.OS === 'web' && typeof indexedDB !== 'undefined';
@@ -17,9 +22,11 @@ let dbPromise = null;
 function openDB() {
   if (!dbPromise) {
     dbPromise = new Promise((resolve, reject) => {
-      const req = indexedDB.open(DB_NAME, 1);
+      const req = indexedDB.open(DB_NAME, DB_VERSION);
       req.onupgradeneeded = () => {
+        // Mevcut 'kv' deposuna DOKUNULMAZ; yalnızca eksik depolar eklenir.
         if (!req.result.objectStoreNames.contains(STORE)) req.result.createObjectStore(STORE);
+        if (!req.result.objectStoreNames.contains(PHOTO_STORE)) req.result.createObjectStore(PHOTO_STORE);
       };
       req.onsuccess = () => resolve(req.result);
       req.onerror = () => reject(req.error);
@@ -31,25 +38,79 @@ function openDB() {
   return dbPromise;
 }
 
-async function idbGet(key) {
+async function idbGet(key, store = STORE) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
-    const tx = db.transaction(STORE, 'readonly');
-    const r = tx.objectStore(STORE).get(key);
+    const tx = db.transaction(store, 'readonly');
+    const r = tx.objectStore(store).get(key);
     r.onsuccess = () => resolve(r.result == null ? null : r.result);
     r.onerror = () => reject(r.error);
   });
 }
 
-async function idbSet(key, val) {
+async function idbSet(key, val, store = STORE) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
-    const tx = db.transaction(STORE, 'readwrite');
-    tx.objectStore(STORE).put(val, key);
+    const tx = db.transaction(store, 'readwrite');
+    tx.objectStore(store).put(val, key);
     tx.oncomplete = () => resolve();
     tx.onerror = () => reject(tx.error);
     tx.onabort = () => reject(tx.error);
   });
+}
+
+// --- Fotoğraf deposu için düşük seviye erişim (yalnızca web) ---
+export function idbUsable() {
+  return idbAvailable();
+}
+
+export function photoGet(id) {
+  return idbGet(id, PHOTO_STORE);
+}
+
+export function photoSet(id, val) {
+  return idbSet(id, val, PHOTO_STORE);
+}
+
+export async function photoDel(id) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(PHOTO_STORE, 'readwrite');
+    tx.objectStore(PHOTO_STORE).delete(id);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error);
+  });
+}
+
+export async function photoKeys() {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(PHOTO_STORE, 'readonly');
+    const r = tx.objectStore(PHOTO_STORE).getAllKeys();
+    r.onsuccess = () => resolve(r.result || []);
+    r.onerror = () => reject(r.error);
+  });
+}
+
+// Ana kaydı siler (göç yedeğini temizlemek için).
+export async function storageRemove(key) {
+  if (idbAvailable()) {
+    try {
+      const db = await openDB();
+      await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE, 'readwrite');
+        tx.objectStore(STORE).delete(key);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+        tx.onabort = () => reject(tx.error);
+      });
+      return;
+    } catch (e) {
+      /* AsyncStorage'a düş */
+    }
+  }
+  return AsyncStorage.removeItem(key);
 }
 
 export async function storageGet(key) {

@@ -3,7 +3,9 @@
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { Platform } from 'react-native';
-import { storageGet, storageSet, requestPersistentStorage } from '../logic/storage';
+import { storageGet, storageSet, storageRemove, requestPersistentStorage } from '../logic/storage';
+import { photoStoreUsable, writePhotos, readPhotos, pruneUnreferenced } from '../logic/photoStore';
+import { extractPhotos, commitAssigned, inlinePhotos, collectRefs, hasInlinePhotos } from '../logic/tripPhotos';
 import { createDefaultChecklist, createChecklistItem, dedupeChecklist } from '../data/checklist';
 import { DEFAULT_VEHICLE } from '../data/vehicles';
 import { BUILTIN_EXPENSE_CATEGORIES, slugifyCategory } from '../data/expenseCategories';
@@ -11,6 +13,9 @@ import { todayKey } from '../logic/date';
 
 const STORAGE_KEY = '@gezgin_gunlugu_v1';
 // Pencereler arası senkronizasyon: bir pencere yazınca diğerleri haberdar olur.
+// Fotoğrafları ayrı kayıtlara taşırken alınan geçici yedek. Göç doğrulanınca
+// silinir; doğrulanamazsa yerinde kalır ki hiçbir şey kaybolmasın.
+const BACKUP_KEY = '@gezgin_gunlugu_v1__yedek_foto_gocu';
 const SYNC_CHANNEL = 'gezgin_gunlugu_sync';
 const SYNC_KEY = 'gg_sync_rev';
 
@@ -303,13 +308,34 @@ export function JournalProvider({ children }) {
   // Başka bir pencere veri güncellediği için bu pencere tazelendi mi?
   const [refreshedFromOther, setRefreshedFromOther] = useState(false);
 
-  const applyRaw = useCallback((raw) => {
+  // Fotoğraf data URI'si -> kayıt referansı eşlemesi. Aynı fotoğrafın her
+  // kaydetmede yeniden yazılmasını engeller.
+  const uriToRefRef = useRef(new Map());
+  // Kayıtta referansı olup fotoğraf kaydı bulunamayanların sayısı.
+  const [missingPhotos, setMissingPhotos] = useState(0);
+
+  const applyRaw = useCallback(async (raw) => {
     const payload = raw ? JSON.parse(raw) : {};
     revRef.current = Number(payload.rev) || 0;
     savedAtRef.current = Number(payload.savedAt) || 0;
     const marker = readRevMarker();
     if (marker == null || marker < revRef.current) writeRevMarker(revRef.current);
-    dispatch({ type: 'HYDRATE', payload });
+
+    let trips = Array.isArray(payload.trips) ? payload.trips : [];
+    if (photoStoreUsable()) {
+      const refs = collectRefs(trips);
+      if (refs.size) {
+        const byId = await readPhotos(refs);
+        // Bu fotoğrafların referansı zaten var; yeniden yazmaya gerek yok.
+        byId.forEach((uri, id) => uriToRefRef.current.set(uri, id));
+        const res = inlinePhotos(trips, byId);
+        trips = res.trips;
+        setMissingPhotos(res.missing);
+      } else {
+        setMissingPhotos(0);
+      }
+    }
+    dispatch({ type: 'HYDRATE', payload: { ...payload, trips } });
   }, []);
 
   // Depodaki kayıt bizimkinden yeni mi? rev asıl ölçüt; rev'i olmayan eski
@@ -317,17 +343,71 @@ export function JournalProvider({ children }) {
   const isNewer = (rev, savedAt) =>
     rev > revRef.current || (rev === revRef.current && savedAt > savedAtRef.current);
 
+  // ESKİ KAYITTAN GÖÇ: fotoğraflar seyahat verisinin içindeyse ayrı
+  // kayıtlara taşınır. Sıra veri kaybı OLMAYACAK şekilde kurulmuştur:
+  //   1) mevcut kaydın tam kopyası yedeğe yazılır,
+  //   2) fotoğraflar ayrı kayıtlara yazılır,
+  //   3) ancak bunlar bittiyse ince kayıt ana anahtarın üzerine yazılır,
+  //   4) ince kayıt geri okunup TÜM referanslar çözülebiliyorsa yedek silinir.
+  // Herhangi bir adım başarısız olursa eski kayıt yerinde kalır (2. adımdan
+  // artakalan fotoğraf kayıtları zararsızdır, sonradan temizlenir).
+  const migrateInlinePhotos = useCallback(async (raw, payload) => {
+    const trips = Array.isArray(payload.trips) ? payload.trips : [];
+    if (!photoStoreUsable() || !hasInlinePhotos(trips)) return false;
+    try {
+      await storageSet(BACKUP_KEY, raw);
+      const { trips: slim, toWrite, refs, assigned } = extractPhotos(trips, uriToRefRef.current);
+      await writePhotos(toWrite);
+      commitAssigned(uriToRefRef.current, assigned);
+      const rev = (Number(payload.rev) || 0) + 1;
+      const savedAt = Date.now();
+      await storageSet(
+        STORAGE_KEY,
+        JSON.stringify({ ...payload, trips: slim, rev, savedAt, photoSplit: 1 })
+      );
+      // Doğrula: yazdığımızı geri oku, her referans çözülüyor mu?
+      const check = await storageGet(STORAGE_KEY);
+      const parsed = JSON.parse(check);
+      const backRefs = collectRefs(parsed.trips || []);
+      const byId = await readPhotos(backRefs);
+      if (backRefs.size !== refs.size || byId.size !== backRefs.size) {
+        return false; // yedek yerinde kalsın
+      }
+      revRef.current = rev;
+      savedAtRef.current = savedAt;
+      writeRevMarker(rev);
+      await storageRemove(BACKUP_KEY);
+      await pruneUnreferenced(refs);
+      return true;
+    } catch (e) {
+      return false; // eski kayıt ve yedek duruyor
+    }
+  }, []);
+
   useEffect(() => {
     (async () => {
       // Verinin tarayıcı tarafından silinmesini engelle (iOS'ta 7 gün kuralı).
       requestPersistentStorage().catch(() => {});
       try {
-        applyRaw(await storageGet(STORAGE_KEY));
+        let raw = await storageGet(STORAGE_KEY);
+        // Yarıda kalmış bir göçten sonra ana kayıt boşsa yedekten devam et.
+        if (!raw) {
+          const backup = await storageGet(BACKUP_KEY);
+          if (backup) raw = backup;
+        }
+        if (raw) {
+          const payload = JSON.parse(raw);
+          await migrateInlinePhotos(raw, payload);
+          // Göç başarılı olduysa ince kayıt, olmadıysa eski kayıt okunur.
+          await applyRaw(await storageGet(STORAGE_KEY));
+        } else {
+          dispatch({ type: 'HYDRATE', payload: {} });
+        }
       } catch (e) {
         dispatch({ type: 'HYDRATE', payload: {} });
       }
     })();
-  }, [applyRaw]);
+  }, [applyRaw, migrateInlinePhotos]);
 
   // Kalıcılaştırma GECİKTİRİLİR (debounce).
   // Tüm seyahatler (fotoğraflar base64 gömülü) tek bir JSON olarak yazılır; bu
@@ -408,7 +488,33 @@ export function JournalProvider({ children }) {
     const rev = revRef.current + 1;
     const savedAt = Date.now();
     try {
-      const p = storageSet(STORAGE_KEY, JSON.stringify({ ...data, rev, savedAt }));
+      // Fotoğraflar AYRI kayıtlara yazılır; kayda yalnızca kısa referansları
+      // girer. Böylece her kaydetmede üretilen JSON 35 MB değil kilobayt
+      // boyutunda olur. Fotoğraf yazımı başarısız olursa ince kayıt YAZILMAZ
+      // (yoksa referansı olup görüntüsü olmayan kayıt oluşurdu) ve değişiklik
+      // yeniden denenmek üzere bekletilir.
+      let toStore = data;
+      let refs = null;
+      if (photoStoreUsable()) {
+        const ex = extractPhotos(data.trips, uriToRefRef.current);
+        try {
+          await writePhotos(ex.toWrite);
+        } catch (photoErr) {
+          // Fotoğraflar yazılamadı: kimlik ataması İŞLENMEZ ki bir sonraki
+          // deneme yeniden yazmayı denesin. İnce kayıt da yazılmaz.
+          pendingRef.current = data;
+          setWriteFailed(true);
+          return;
+        }
+        commitAssigned(uriToRefRef.current, ex.assigned);
+        refs = ex.refs;
+        toStore = { ...data, trips: ex.trips, photoSplit: 1 };
+        // Artık kullanılmayan fotoğrafları eşlemeden düş (bellek sızmasın).
+        uriToRefRef.current.forEach((id, uri) => {
+          if (!refs.has(id)) uriToRefRef.current.delete(uri);
+        });
+      }
+      const p = storageSet(STORAGE_KEY, JSON.stringify({ ...toStore, rev, savedAt }));
       if (p && typeof p.then === 'function') {
         p.then(
           () => {
@@ -416,6 +522,8 @@ export function JournalProvider({ children }) {
             savedAtRef.current = savedAt;
             setWriteFailed(false);
             notifyOthers(rev);
+            // Silinen fotoğrafların kayıtlarını temizle (yer boşalsın).
+            if (refs) pruneUnreferenced(refs).catch(() => {});
           },
           () => setWriteFailed(true)
         );
@@ -423,6 +531,7 @@ export function JournalProvider({ children }) {
         revRef.current = rev;
         savedAtRef.current = savedAt;
         notifyOthers(rev);
+        if (refs) pruneUnreferenced(refs).catch(() => {});
       }
     } catch (e) {
       // JSON.stringify bile başarısız olduysa (veri çok büyük) da bildir.
@@ -513,6 +622,8 @@ export function JournalProvider({ children }) {
       writeFailed,
       // başka bir pencere veriyi güncellediği için bu pencere tazelendi mi?
       refreshedFromOther,
+      // kayıtta referansı olup görüntüsü bulunamayan fotoğraf sayısı
+      missingPhotos,
       ackRefreshed: () => setRefreshedFromOther(false),
       // trip
       createTrip,
@@ -624,7 +735,7 @@ export function JournalProvider({ children }) {
         dispatch({ type: 'UPDATE_SETTINGS', patch: { expenseCatsInactive: next } });
       },
     };
-  }, [state, writeFailed, refreshedFromOther]);
+  }, [state, writeFailed, refreshedFromOther, missingPhotos]);
 
   return <JournalContext.Provider value={value}>{children}</JournalContext.Provider>;
 }
