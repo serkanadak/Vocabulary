@@ -18,19 +18,51 @@ function idbAvailable() {
   return Platform.OS === 'web' && typeof indexedDB !== 'undefined';
 }
 
+// Veritabanını SÜRÜM ÇAKIŞMASI OLMADAN açar.
+//
+// Eskiden sabit bir sürüm numarası isteniyordu. Bu, veritabanı daha yüksek bir
+// sürümdeyse VersionError veriyor, açma başarısız olunca da okuma sessizce
+// localStorage'a düşüyordu — orada kalmış ÇOK ESKİ ve eksik bir kopya güncel
+// veri gibi gösterilebiliyordu. Artık: önce sürüm belirtmeden açılır, eksik
+// depo varsa yalnızca o zaman mevcut sürümün bir üstüne yükseltilir.
+function openRaw(version) {
+  return new Promise((resolve, reject) => {
+    const req = version ? indexedDB.open(DB_NAME, version) : indexedDB.open(DB_NAME);
+    req.onupgradeneeded = () => {
+      // Mevcut depolara DOKUNULMAZ; yalnızca eksik olanlar eklenir.
+      if (!req.result.objectStoreNames.contains(STORE)) req.result.createObjectStore(STORE);
+      if (!req.result.objectStoreNames.contains(PHOTO_STORE)) req.result.createObjectStore(PHOTO_STORE);
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error || new Error('indexedDB open failed'));
+    // Başka bir sekme eski sürümü açık tutuyorsa yükseltme "blocked" olur ve
+    // istek hiç sonuçlanmaz; süresiz beklemek yerine hata verilir.
+    req.onblocked = () => reject(new Error('indexedDB upgrade blocked'));
+  });
+}
+
 let dbPromise = null;
 function openDB() {
   if (!dbPromise) {
-    dbPromise = new Promise((resolve, reject) => {
-      const req = indexedDB.open(DB_NAME, DB_VERSION);
-      req.onupgradeneeded = () => {
-        // Mevcut 'kv' deposuna DOKUNULMAZ; yalnızca eksik depolar eklenir.
-        if (!req.result.objectStoreNames.contains(STORE)) req.result.createObjectStore(STORE);
-        if (!req.result.objectStoreNames.contains(PHOTO_STORE)) req.result.createObjectStore(PHOTO_STORE);
+    dbPromise = (async () => {
+      let db = await openRaw();
+      const missing = !db.objectStoreNames.contains(STORE) || !db.objectStoreNames.contains(PHOTO_STORE);
+      if (missing) {
+        const next = (db.version || 1) + 1;
+        db.close();
+        db = await openRaw(next);
+      }
+      // Başka bir sekme yükseltme isterse bağlantıyı bırak ki bloklamayalım.
+      db.onversionchange = () => {
+        try {
+          db.close();
+        } catch (e) {
+          /* yoksay */
+        }
+        dbPromise = null;
       };
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => reject(req.error);
-    }).catch((e) => {
+      return db;
+    })().catch((e) => {
       dbPromise = null;
       throw e;
     });
@@ -113,26 +145,34 @@ export async function storageRemove(key) {
   return AsyncStorage.removeItem(key);
 }
 
+// IndexedDB okunamadığında ne olduğunu çağıran taraf bilsin.
+export class StorageReadError extends Error {}
+
+// ÖNEMLİ: IndexedDB okunabildiği hâlde okuma HATA verirse localStorage'a
+// DÜŞÜLMEZ. Eskiden düşülüyordu ve localStorage'da kalmış çok eski, eksik bir
+// kopya (fotoğraflar 5 MB kotasına sığmadığı için yarım kalmış hâli) güncel
+// veri sanılıp yükleniyor, ardından da üstüne yazılabiliyordu. Artık hata
+// yükseltilir; uygulama kullanıcıya "veri okunamadı" der ve hiçbir şey yazmaz.
 export async function storageGet(key) {
   if (idbAvailable()) {
+    let v;
     try {
-      let v = await idbGet(key);
-      if (v == null) {
-        // Migrasyon: eski localStorage verisi varsa IndexedDB'ye taşı.
-        try {
-          const old = await AsyncStorage.getItem(key);
-          if (old != null) {
-            await idbSet(key, old);
-            v = old;
-          }
-        } catch (e) {
-          // yok say
-        }
-      }
-      return v;
+      v = await idbGet(key);
     } catch (e) {
-      // IndexedDB kullanılamıyorsa AsyncStorage'a düş.
+      throw new StorageReadError(e && e.message ? e.message : 'indexedDB read failed');
     }
+    if (v != null) return v;
+    // IndexedDB'de kayıt YOK: eski localStorage verisini bir kez taşı.
+    try {
+      const old = await AsyncStorage.getItem(key);
+      if (old != null) {
+        await idbSet(key, old);
+        return old;
+      }
+    } catch (e) {
+      /* yoksay */
+    }
+    return null;
   }
   return AsyncStorage.getItem(key);
 }

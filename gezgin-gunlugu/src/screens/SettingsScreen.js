@@ -4,6 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { PLACES } from '../data/places';
 import { storageEstimate, isStoragePersisted, requestPersistentStorage } from '../logic/storage';
+import { buildBackup, backupFileName, parseBackup, mergeTrips, backupStats } from '../logic/backup';
+import { canShareFiles, shareBackup, downloadBackup, pickBackupFile } from '../logic/backupFile';
+import { scanSources, readSource } from '../logic/recovery';
+import { readPhotos } from '../logic/photoStore';
+import { collectRefs, inlinePhotos } from '../logic/tripPhotos';
 import { resolveCategories } from '../data/expenseCategories';
 import { categoryUsage } from '../logic/expenseReport';
 import { colors, THEMES, getThemeId, saveThemeId } from '../theme';
@@ -74,6 +79,8 @@ export default function SettingsScreen() {
     resetExpenseCategoryName,
     writeFailed,
     missingPhotos,
+    importTrips,
+    blockedLoss,
   } = useJournal();
 
   // --- Harcama türleri ---
@@ -131,6 +138,117 @@ export default function SettingsScreen() {
     const r = await requestPersistentStorage();
     setPersisted(r.supported ? r.persisted : null);
     setAsking(false);
+  };
+
+  // --- YEDEKLE / TAŞI ---
+  // Ana ekrana eklenen uygulama ayrı bir depolama alanı kullanabildiği için
+  // veriyi tek dosyayla taşımak gerekiyor (bkz. logic/backup.js).
+  const [backupBusy, setBackupBusy] = useState('');
+  const [backupNote, setBackupNote] = useState('');
+  const [backupErr, setBackupErr] = useState('');
+  const [pendingImport, setPendingImport] = useState(null); // { trips, settings, stats, merge }
+  const currentTrips = trips;
+  const mineStats = backupStats(trips);
+
+  const doExport = async (share) => {
+    setBackupErr('');
+    setBackupNote('');
+    setBackupBusy(share ? 'share' : 'save');
+    try {
+      const text = buildBackup(trips, settings);
+      const name = backupFileName();
+      const ok = share ? await shareBackup(text, name) : downloadBackup(text, name);
+      if (ok) setBackupNote(t('backup.saved', { mb: (text.length / 1048576).toFixed(1) }));
+      else setBackupErr(t('backup.saveFailed'));
+    } catch (e) {
+      setBackupErr(t('backup.saveFailed'));
+    } finally {
+      setBackupBusy('');
+    }
+  };
+
+  const doPickImport = async () => {
+    setBackupErr('');
+    setBackupNote('');
+    setBackupBusy('pick');
+    try {
+      const text = await pickBackupFile();
+      if (!text) return;
+      const parsed = parseBackup(text, {
+        notJson: t('backup.errNotJson'),
+        notBackup: t('backup.errNotBackup'),
+        otherApp: t('backup.errOtherApp'),
+        empty: t('backup.errEmpty'),
+      });
+      const merged = mergeTrips(trips, parsed.trips);
+      setPendingImport({ ...parsed, merged, stats: backupStats(parsed.trips) });
+    } catch (e) {
+      setBackupErr(e.message || t('backup.errNotBackup'));
+    } finally {
+      setBackupBusy('');
+    }
+  };
+
+  const confirmImport = () => {
+    if (!pendingImport) return;
+    importTrips(pendingImport.merged.trips, pendingImport.settings);
+    setBackupNote(
+      t('backup.imported', { added: pendingImport.merged.added, updated: pendingImport.merged.updated })
+    );
+    setPendingImport(null);
+  };
+
+  // --- VERİ KURTARMA ---
+  // Veri birkaç ayrı yerde bulunabiliyor ve uygulama yanlış/eksik olanı
+  // yüklemiş olabilir. Burada hepsi listelenir, kullanıcı en zenginini geri
+  // yükleyebilir. Hiçbir kaynak silinmez.
+  const [scan, setScan] = useState(null);
+  const [scanning, setScanning] = useState(false);
+  const [recoverNote, setRecoverNote] = useState('');
+  const [pendingRecover, setPendingRecover] = useState(null);
+
+  const doScan = async () => {
+    setScanning(true);
+    setRecoverNote('');
+    try {
+      setScan(await scanSources('@gezgin_gunlugu_v1'));
+    } catch (e) {
+      setScan({ sources: [], photoRecords: null, error: e.message });
+    } finally {
+      setScanning(false);
+    }
+  };
+
+  const doRecover = async (src) => {
+    setRecoverNote('');
+    try {
+      const data = await readSource(src);
+      if (!data || !Array.isArray(data.trips) || !data.trips.length) {
+        setRecoverNote(t('rec.emptySource'));
+        return;
+      }
+      let trips = data.trips;
+      // Referanslı kayıtsa fotoğrafları ayrı kayıtlardan çöz.
+      const refs = collectRefs(trips);
+      if (refs.size) {
+        const byId = await readPhotos(refs);
+        trips = inlinePhotos(trips, byId).trips;
+      }
+      const merged = mergeTrips(currentTrips, trips);
+      setPendingRecover({ src, merged, count: trips.length });
+    } catch (e) {
+      setRecoverNote(t('rec.failed'));
+    }
+  };
+
+  const confirmRecover = () => {
+    if (!pendingRecover) return;
+    importTrips(pendingRecover.merged.trips, null);
+    setRecoverNote(
+      t('backup.imported', { added: pendingRecover.merged.added, updated: pendingRecover.merged.updated })
+    );
+    setPendingRecover(null);
+    setScan(null);
   };
 
   const ratio = storage && storage.quota ? Math.min(1, storage.usage / storage.quota) : 0;
@@ -399,6 +517,88 @@ export default function SettingsScreen() {
           </>
         ) : null}
 
+        <SectionHeader title={t('rec.title')} subtitle={t('rec.sub')} />
+        <Card>
+          {blockedLoss ? (
+            <Text style={styles.warn}>
+              {t('set.blockedLoss', { disc: blockedLoss.discoveries, exp: blockedLoss.expenses })}
+            </Text>
+          ) : null}
+          <SecondaryButton
+            title={scanning ? t('common.preparing') : t('rec.scan')}
+            onPress={doScan}
+            disabled={scanning}
+            style={{ marginHorizontal: 0 }}
+          />
+          {scan ? (
+            <View style={{ marginTop: 12 }}>
+              {scan.error ? <Text style={styles.warn}>{t('rec.scanError', { msg: scan.error })}</Text> : null}
+              <Text style={styles.hint}>
+                {t('rec.photoRecords', { n: scan.photoRecords == null ? '?' : scan.photoRecords })}
+              </Text>
+              {scan.sources.length ? (
+                scan.sources.map((src) => (
+                  <View key={src.source + src.key} style={styles.recRow}>
+                    <Text style={styles.recLabel}>{src.label}</Text>
+                    {src.ok ? (
+                      <Text style={styles.recMeta}>
+                        {t('rec.counts', {
+                          trips: src.counts.trips,
+                          disc: src.counts.discoveries,
+                          exp: src.counts.expenses,
+                          photos: src.counts.photos,
+                          mb: (src.bytes / 1048576).toFixed(2),
+                        })}
+                      </Text>
+                    ) : (
+                      <Text style={styles.recMeta}>{src.error}</Text>
+                    )}
+                    {src.ok ? (
+                      <Pressable onPress={() => doRecover(src)} hitSlop={6}>
+                        <Text style={styles.recBtn}>{t('rec.use')}</Text>
+                      </Pressable>
+                    ) : null}
+                  </View>
+                ))
+              ) : (
+                <Text style={styles.warn}>{t('rec.none')}</Text>
+              )}
+            </View>
+          ) : null}
+          {recoverNote ? <Text style={styles.okLine}>{recoverNote}</Text> : null}
+          <Text style={styles.hint}>{t('rec.howto')}</Text>
+        </Card>
+
+        <SectionHeader title={t('backup.title')} subtitle={t('backup.sub')} />
+        <Card>
+          <Text style={styles.hint}>
+            {t('backup.mine', { trips: mineStats.trips, disc: mineStats.discoveries, photos: mineStats.photos })}
+          </Text>
+          {canShareFiles() ? (
+            <SecondaryButton
+              title={backupBusy === 'share' ? t('common.preparing') : t('backup.share')}
+              onPress={() => doExport(true)}
+              disabled={!!backupBusy || !mineStats.trips}
+              style={{ marginHorizontal: 0, marginTop: 12 }}
+            />
+          ) : null}
+          <SecondaryButton
+            title={backupBusy === 'save' ? t('common.preparing') : t('backup.save')}
+            onPress={() => doExport(false)}
+            disabled={!!backupBusy || !mineStats.trips}
+            style={{ marginHorizontal: 0, marginTop: 10 }}
+          />
+          <SecondaryButton
+            title={backupBusy === 'pick' ? t('common.preparing') : t('backup.load')}
+            onPress={doPickImport}
+            disabled={!!backupBusy}
+            style={{ marginHorizontal: 0, marginTop: 10 }}
+          />
+          {backupNote ? <Text style={styles.okLine}>{backupNote}</Text> : null}
+          {backupErr ? <Text style={styles.warn}>{backupErr}</Text> : null}
+          <Text style={styles.hint}>{t('backup.howto')}</Text>
+        </Card>
+
         <SectionHeader title={t('set.storage')} subtitle={t('set.storageSub')} />
         <Card>
           {writeFailed ? <Text style={styles.warn}>{t('set.writeFailed')}</Text> : null}
@@ -467,6 +667,41 @@ export default function SettingsScreen() {
         </Text>
       </ScrollView>
 
+      <ConfirmModal
+        visible={!!pendingRecover}
+        title={t('rec.confirmTitle')}
+        message={
+          pendingRecover
+            ? t('rec.confirmMsg', {
+                label: pendingRecover.src.label,
+                trips: pendingRecover.count,
+                added: pendingRecover.merged.added,
+                updated: pendingRecover.merged.updated,
+              })
+            : ''
+        }
+        confirmLabel={t('rec.confirmBtn')}
+        onConfirm={confirmRecover}
+        onCancel={() => setPendingRecover(null)}
+      />
+      <ConfirmModal
+        visible={!!pendingImport}
+        title={t('backup.confirmTitle')}
+        message={
+          pendingImport
+            ? t('backup.confirmMsg', {
+                trips: pendingImport.stats.trips,
+                disc: pendingImport.stats.discoveries,
+                photos: pendingImport.stats.photos,
+                added: pendingImport.merged.added,
+                updated: pendingImport.merged.updated,
+              })
+            : ''
+        }
+        confirmLabel={t('backup.confirmBtn')}
+        onConfirm={confirmImport}
+        onCancel={() => setPendingImport(null)}
+      />
       <ConfirmModal
         visible={!!pendingLang}
         title={t('set.langConfirm')}
@@ -569,6 +804,10 @@ const styles = StyleSheet.create({
   hint: { color: colors.textMuted, fontSize: 12, marginTop: 12, lineHeight: 18 },
   warn: { color: colors.primary, fontSize: 12, marginTop: 12, lineHeight: 17 },
   okLine: { color: colors.success, fontSize: 12, marginTop: 12, lineHeight: 17 },
+  recRow: { borderTopWidth: 1, borderTopColor: colors.border, paddingVertical: 10 },
+  recLabel: { color: colors.text, fontSize: 13, fontWeight: '700' },
+  recMeta: { color: colors.textMuted, fontSize: 12, marginTop: 3, lineHeight: 17 },
+  recBtn: { color: colors.primary, fontSize: 13, fontWeight: '800', marginTop: 6 },
   statRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6 },
   statLabel: { color: colors.textMuted, fontSize: 14 },
   statVal: { color: colors.text, fontSize: 14, fontWeight: '700' },

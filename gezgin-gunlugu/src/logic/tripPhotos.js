@@ -126,6 +126,35 @@ export function collectRefs(trips) {
   return refs;
 }
 
+// Veri "zenginliği": kaç seyahat, keşif, harcama, program maddesi, not var.
+// Bir yazmanın kazara BÜYÜK veri kaybına yol açıp açmadığını anlamak için.
+export function richness(trips) {
+  const r = { trips: 0, stops: 0, discoveries: 0, expenses: 0, plan: 0, dayNotes: 0, photos: 0 };
+  (trips || []).forEach((t) => {
+    r.trips += 1;
+    r.stops += (t.stops || []).length;
+    r.discoveries += (t.discoveries || []).length;
+    r.expenses += (t.expenses || []).length;
+    r.plan += (t.plan || []).length;
+    r.dayNotes += (t.dayNotes || []).length;
+    (t.discoveries || []).forEach((d) => {
+      r.photos += (d.photos || []).length + (d.photoUri ? 1 : 0);
+    });
+    (t.expenses || []).forEach((e) => {
+      if (e.receiptPhoto) r.photos += 1;
+    });
+  });
+  return r;
+}
+
+// Yazılacak veri, depodakine göre CİDDİ kayıp içeriyor mu?
+// Kullanıcı elle silme yapmış olabileceği için küçük farklar sorun değildir;
+// burada aranan, bir kayıt türünün TAMAMEN yok olması gibi ağır kayıplardır.
+export function looksLikeDataLoss(stored, next) {
+  const keys = ['trips', 'discoveries', 'expenses', 'plan', 'dayNotes', 'photos'];
+  return keys.some((k) => stored[k] > 0 && next[k] === 0 && stored[k] >= 2);
+}
+
 // Kayıtta hiç fotoğraf gömülü kalmış mı? (göç gerekiyor mu?)
 export function hasInlinePhotos(trips) {
   let found = false;

@@ -5,7 +5,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useR
 import { Platform } from 'react-native';
 import { storageGet, storageSet, storageRemove, requestPersistentStorage } from '../logic/storage';
 import { photoStoreUsable, writePhotos, readPhotos, pruneUnreferenced } from '../logic/photoStore';
-import { extractPhotos, commitAssigned, inlinePhotos, collectRefs, hasInlinePhotos } from '../logic/tripPhotos';
+import { extractPhotos, commitAssigned, inlinePhotos, collectRefs, hasInlinePhotos, richness, looksLikeDataLoss } from '../logic/tripPhotos';
 import { createDefaultChecklist, createChecklistItem, dedupeChecklist } from '../data/checklist';
 import { DEFAULT_VEHICLE } from '../data/vehicles';
 import { BUILTIN_EXPENSE_CATEGORIES, slugifyCategory } from '../data/expenseCategories';
@@ -287,6 +287,15 @@ function reducer(state, action) {
         })),
       };
 
+    // Yedek dosyasından aktarım: aynı kimlikli seyahat dosyadaki hâliyle
+    // değişir, yenileri eklenir, dosyada olmayanlara DOKUNULMAZ.
+    case 'IMPORT_TRIPS':
+      return {
+        ...state,
+        trips: action.trips,
+        settings: action.settings ? { ...state.settings, ...action.settings } : state.settings,
+      };
+
     case 'UPDATE_SETTINGS':
       return { ...state, settings: { ...state.settings, ...action.patch } };
 
@@ -424,6 +433,8 @@ export function JournalProvider({ children }) {
   // "unhandled rejection" oluşuyor, kullanıcı verisinin kaydedilmediğini
   // hiç öğrenemiyordu.
   const [writeFailed, setWriteFailed] = useState(false);
+  // Ağır veri kaybı olacağı için engellenen yazma (depodaki zenginlik bilgisi).
+  const [blockedLoss, setBlockedLoss] = useState(null);
 
   // Diğer pencerelere "veri değişti" haberi verir.
   const notifyOthers = useCallback((rev) => {
@@ -485,6 +496,27 @@ export function JournalProvider({ children }) {
     pendingRef.current = null;
     // Depodaki GERÇEK sürümü oku (işarete güvenmeden): daha yeniyse ezme.
     if (await pullIfNewer(false)) return;
+    // AĞIR VERİ KAYBI KORUMASI.
+    // Depoda keşif/harcama/fotoğraf varken elimizdeki durumda hiç yoksa bu
+    // normal bir düzenleme değildir (ör. veri okunamadığı için boş/eksik bir
+    // durumla açılmışız). Böyle bir yazma sessizce yapılırsa kullanıcının
+    // günlüğü yok olur; bu yüzden yazma DURDURULUR ve kullanıcıya bildirilir.
+    try {
+      const storedRaw = await storageGet(STORAGE_KEY);
+      if (storedRaw) {
+        const stored = richness(JSON.parse(storedRaw).trips || []);
+        if (looksLikeDataLoss(stored, richness(data.trips))) {
+          pendingRef.current = null;
+          setBlockedLoss(stored);
+          return;
+        }
+      }
+    } catch (e) {
+      // Depo okunamıyorsa körlemesine yazmak yerine bekle.
+      pendingRef.current = data;
+      setWriteFailed(true);
+      return;
+    }
     const rev = revRef.current + 1;
     const savedAt = Date.now();
     try {
@@ -624,6 +656,10 @@ export function JournalProvider({ children }) {
       refreshedFromOther,
       // kayıtta referansı olup görüntüsü bulunamayan fotoğraf sayısı
       missingPhotos,
+      // depoda veri varken boş/eksik durumla üzerine yazma engellendi mi?
+      blockedLoss,
+      // yedek dosyasından aktarım (birleştirilmiş seyahat listesiyle)
+      importTrips: (trips, settings) => dispatch({ type: 'IMPORT_TRIPS', trips, settings }),
       ackRefreshed: () => setRefreshedFromOther(false),
       // trip
       createTrip,
@@ -735,7 +771,7 @@ export function JournalProvider({ children }) {
         dispatch({ type: 'UPDATE_SETTINGS', patch: { expenseCatsInactive: next } });
       },
     };
-  }, [state, writeFailed, refreshedFromOther, missingPhotos]);
+  }, [state, writeFailed, refreshedFromOther, missingPhotos, blockedLoss]);
 
   return <JournalContext.Provider value={value}>{children}</JournalContext.Provider>;
 }

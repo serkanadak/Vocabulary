@@ -340,6 +340,90 @@ export default {
     en: 'This data was updated in another window/tab, so the latest version was loaded. You may need to redo the last change you just made in this window.',
     de: 'Diese Daten wurden in einem anderen Fenster/Tab aktualisiert, daher wurde die neueste Version geladen. Die letzte Änderung in diesem Fenster musst du evtl. wiederholen.',
   },
+  // --- Veri kurtarma ---
+  'rec.title': { tr: '🔧 Veri kurtarma', en: '🔧 Data recovery', de: '🔧 Datenrettung' },
+  'rec.sub': {
+    tr: 'Verileriniz eksik görünüyorsa buradan cihazdaki TÜM kayıt yerlerini tarayıp en dolu olanı geri yükleyebilirsiniz. Hiçbir kaynak silinmez.',
+    en: 'If your data looks incomplete, scan ALL storage locations on this device and restore the fullest one. No source is deleted.',
+    de: 'Wenn Daten fehlen, kannst du hier ALLE Speicherorte des Geräts prüfen und den vollsten wiederherstellen. Keine Quelle wird gelöscht.',
+  },
+  'rec.scan': { tr: '🔍 Cihazı tara', en: '🔍 Scan this device', de: '🔍 Gerät durchsuchen' },
+  'rec.scanError': { tr: '⚠️ Tarama sırasında sorun: {msg}', en: '⚠️ Problem while scanning: {msg}', de: '⚠️ Problem beim Suchen: {msg}' },
+  'rec.photoRecords': { tr: 'Ayrı fotoğraf kaydı: {n}', en: 'Separate photo records: {n}', de: 'Separate Fotodatensätze: {n}' },
+  'rec.counts': {
+    tr: '{trips} seyahat · {disc} keşif · {exp} harcama · {photos} fotoğraf · {mb} MB',
+    en: '{trips} trips · {disc} discoveries · {exp} expenses · {photos} photos · {mb} MB',
+    de: '{trips} Reisen · {disc} Entdeckungen · {exp} Ausgaben · {photos} Fotos · {mb} MB',
+  },
+  'rec.use': { tr: '→ Bunu kullan', en: '→ Use this one', de: '→ Diese verwenden' },
+  'rec.none': { tr: 'Bu cihazda okunabilir bir kayıt bulunamadı.', en: 'No readable record found on this device.', de: 'Kein lesbarer Datensatz auf diesem Gerät gefunden.' },
+  'rec.emptySource': { tr: 'Bu kaynakta seyahat yok.', en: 'This source has no trips.', de: 'Diese Quelle enthält keine Reisen.' },
+  'rec.failed': { tr: 'Bu kaynak okunamadı.', en: 'This source could not be read.', de: 'Diese Quelle konnte nicht gelesen werden.' },
+  'rec.confirmTitle': { tr: 'Bu kaydı geri yükle?', en: 'Restore this record?', de: 'Diesen Datensatz wiederherstellen?' },
+  'rec.confirmMsg': {
+    tr: '{label}\n\n{trips} seyahat okunacak: {added} eklenecek, {updated} güncellenecek. Mevcut seyahatlerin silinmez.',
+    en: '{label}\n\n{trips} trips will be read: {added} added, {updated} updated. Your existing trips are not deleted.',
+    de: '{label}\n\n{trips} Reisen werden gelesen: {added} hinzugefügt, {updated} aktualisiert. Bestehende Reisen bleiben.',
+  },
+  'rec.confirmBtn': { tr: 'Kurtar', en: 'Recover', de: 'Retten' },
+  'rec.howto': {
+    tr: 'En üstteki kaynak genelde en dolu olanıdır. Geri yükledikten sonra “Yedek dosyasını indir” ile mutlaka bir kopya alın.',
+    en: 'The top source is usually the fullest. After restoring, always take a copy with “Download backup file”.',
+    de: 'Die obere Quelle ist meist die vollste. Nach dem Wiederherstellen unbedingt „Backup-Datei herunterladen“ nutzen.',
+  },
+  'set.blockedLoss': {
+    tr: '⛔ Bir kaydetme DURDURULDU: cihazdaki kayıtta {disc} keşif / {exp} harcama varken uygulamada görünmüyor. Verinizin üzerine yazılmasını engelledim. Aşağıdaki “Veri kurtarma”yı kullanın.',
+    en: '⛔ A save was BLOCKED: the record on this device has {disc} discoveries / {exp} expenses that aren’t visible in the app. Overwriting was prevented. Use “Data recovery” below.',
+    de: '⛔ Ein Speichern wurde GESTOPPT: der Datensatz enthält {disc} Entdeckungen / {exp} Ausgaben, die in der App fehlen. Überschreiben wurde verhindert. Nutze „Datenrettung“.',
+  },
+
+  // --- Yedekle / taşı ---
+  'backup.title': { tr: 'Yedekle / başka uygulamaya taşı', en: 'Back up / move to another app', de: 'Sichern / in andere App übertragen' },
+  'backup.sub': {
+    tr: 'Tarayıcı verisi, siteyi nasıl açtığınıza göre ayrı alanlarda tutulur: Safari sekmesindeki seyahatler ana ekrana eklenen uygulamada görünmeyebilir. Veri SİLİNMEZ; tek dosyayla taşınır.',
+    en: 'Browser data is kept in separate areas depending on how you open the site: trips in a Safari tab may not appear in the home-screen app. Nothing is deleted; move it with a single file.',
+    de: 'Browserdaten liegen je nach Öffnungsart in getrennten Bereichen: Reisen aus einem Safari-Tab erscheinen evtl. nicht in der Home-Bildschirm-App. Nichts wird gelöscht; mit einer Datei übertragen.',
+  },
+  'backup.mine': {
+    tr: 'Bu uygulamada: {trips} seyahat · {disc} keşif · {photos} fotoğraf',
+    en: 'In this app: {trips} trips · {disc} discoveries · {photos} photos',
+    de: 'In dieser App: {trips} Reisen · {disc} Entdeckungen · {photos} Fotos',
+  },
+  'backup.share': { tr: '📤 Yedeği paylaş (Dosyalara Kaydet)', en: '📤 Share backup (Save to Files)', de: '📤 Backup teilen (In Dateien speichern)' },
+  'backup.save': { tr: '💾 Yedek dosyasını indir', en: '💾 Download backup file', de: '💾 Backup-Datei herunterladen' },
+  'backup.load': { tr: '📥 Yedek dosyasından geri yükle', en: '📥 Restore from backup file', de: '📥 Aus Backup-Datei wiederherstellen' },
+  'backup.saved': {
+    tr: '✓ Yedek hazır ({mb} MB). Dosyayı kaybetmeyecek bir yere kaydet; sonra diğer uygulamada “📥 Yedek dosyasından geri yükle”yi kullan.',
+    en: '✓ Backup ready ({mb} MB). Save the file somewhere safe, then use “📥 Restore from backup file” in the other app.',
+    de: '✓ Backup bereit ({mb} MB). Speichere die Datei sicher und nutze dann „📥 Aus Backup-Datei wiederherstellen“ in der anderen App.',
+  },
+  'backup.saveFailed': {
+    tr: 'Yedek kaydedilemedi. Safari sekmesinden denemeyi veya “Paylaş” seçeneğini kullanmayı dene.',
+    en: 'Could not save the backup. Try from a Safari tab, or use the “Share” option.',
+    de: 'Backup konnte nicht gespeichert werden. Versuche es in einem Safari-Tab oder nutze „Teilen“.',
+  },
+  'backup.howto': {
+    tr: 'Taşıma sırası: verinin BULUNDUĞU yerde yedeği kaydet → yeni uygulamayı aç → “Geri yükle” ile dosyayı seç. Aynı seyahat iki tarafta da varsa dosyadaki hâli geçerli olur; dosyada olmayan seyahatler silinmez.',
+    en: 'To move: save the backup where the data IS → open the new app → choose the file with “Restore”. If a trip exists on both sides, the file’s version wins; trips missing from the file are not deleted.',
+    de: 'Übertragen: Backup dort speichern, wo die Daten SIND → neue App öffnen → Datei über „Wiederherstellen“ wählen. Bei doppelten Reisen gewinnt die Datei; fehlende Reisen werden nicht gelöscht.',
+  },
+  'backup.confirmTitle': { tr: 'Yedeği geri yükle?', en: 'Restore backup?', de: 'Backup wiederherstellen?' },
+  'backup.confirmMsg': {
+    tr: 'Dosyada {trips} seyahat · {disc} keşif · {photos} fotoğraf var.\n\n{added} seyahat eklenecek, {updated} seyahat dosyadaki hâliyle güncellenecek. Dosyada olmayan seyahatlerin silinmez.',
+    en: 'The file has {trips} trips · {disc} discoveries · {photos} photos.\n\n{added} trips will be added and {updated} updated from the file. Trips missing from the file are not deleted.',
+    de: 'Die Datei enthält {trips} Reisen · {disc} Entdeckungen · {photos} Fotos.\n\n{added} Reisen werden hinzugefügt, {updated} aus der Datei aktualisiert. Fehlende Reisen werden nicht gelöscht.',
+  },
+  'backup.confirmBtn': { tr: 'Aktar', en: 'Import', de: 'Importieren' },
+  'backup.imported': {
+    tr: '✓ Aktarım tamam: {added} seyahat eklendi, {updated} güncellendi.',
+    en: '✓ Import complete: {added} trips added, {updated} updated.',
+    de: '✓ Import fertig: {added} Reisen hinzugefügt, {updated} aktualisiert.',
+  },
+  'backup.errNotJson': { tr: 'Bu dosya okunamadı (geçerli bir yedek dosyası değil).', en: 'This file could not be read (not a valid backup file).', de: 'Diese Datei konnte nicht gelesen werden (kein gültiges Backup).' },
+  'backup.errNotBackup': { tr: 'Bu bir Gezgin Günlüğü yedeği gibi görünmüyor.', en: 'This doesn’t look like a Gezgin Günlüğü backup.', de: 'Das sieht nicht wie ein Gezgin-Günlüğü-Backup aus.' },
+  'backup.errOtherApp': { tr: 'Bu yedek başka bir uygulamaya ait.', en: 'This backup belongs to a different app.', de: 'Dieses Backup gehört zu einer anderen App.' },
+  'backup.errEmpty': { tr: 'Yedek dosyasında hiç seyahat yok.', en: 'The backup file contains no trips.', de: 'Die Backup-Datei enthält keine Reisen.' },
+
   'set.missingPhotos': {
     tr: '⚠️ {n} fotoğrafın görüntüsü cihazda bulunamadı (tarayıcı silmiş olabilir). Kayıtların ve notların yerinde.',
     en: '⚠️ {n} photo(s) could not be found on this device (the browser may have cleared them). Your records and notes are intact.',
