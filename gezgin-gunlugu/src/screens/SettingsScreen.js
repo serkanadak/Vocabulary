@@ -7,6 +7,7 @@ import { storageEstimate, isStoragePersisted, requestPersistentStorage } from '.
 import { buildBackup, backupFileName, parseBackup, mergeTrips, backupStats } from '../logic/backup';
 import { canShareFiles, shareBackup, downloadBackup, pickBackupFile } from '../logic/backupFile';
 import { scanSources, readSource } from '../logic/recovery';
+import { deepScan, reportText, candidates, readEntry } from '../logic/deepScan';
 import { readPhotos } from '../logic/photoStore';
 import { collectRefs, inlinePhotos } from '../logic/tripPhotos';
 import { resolveCategories } from '../data/expenseCategories';
@@ -206,6 +207,54 @@ export default function SettingsScreen() {
   const [scanning, setScanning] = useState(false);
   const [recoverNote, setRecoverNote] = useState('');
   const [pendingRecover, setPendingRecover] = useState(null);
+
+  // DERİN TARAMA: bu origin'deki her veritabanı, her depo, her anahtar.
+  const [deep, setDeep] = useState(null);
+  const [deepBusy, setDeepBusy] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const doDeepScan = async () => {
+    setDeepBusy(true);
+    setCopied(false);
+    setRecoverNote('');
+    try {
+      const r = await deepScan();
+      setDeep({ r, text: reportText(r), cands: candidates(r) });
+    } catch (e) {
+      setDeep({ r: null, text: 'Tarama başarısız: ' + (e.message || ''), cands: [] });
+    } finally {
+      setDeepBusy(false);
+    }
+  };
+  const copyReport = async () => {
+    if (!deep) return;
+    try {
+      await navigator.clipboard.writeText(deep.text);
+      setCopied(true);
+    } catch (e) {
+      setCopied(false);
+    }
+  };
+  // Rapordaki bir kaydı doğrudan geri yükle.
+  const recoverEntry = async (c) => {
+    setRecoverNote('');
+    try {
+      const data = c.source === 'local' ? JSON.parse(window.localStorage.getItem(c.key)) : await readEntry(c);
+      if (!data || !Array.isArray(data.trips) || !data.trips.length) {
+        setRecoverNote(t('rec.emptySource'));
+        return;
+      }
+      let trips = data.trips;
+      const refs = collectRefs(trips);
+      if (refs.size) {
+        const byId = await readPhotos(refs);
+        trips = inlinePhotos(trips, byId).trips;
+      }
+      const merged = mergeTrips(currentTrips, trips);
+      setPendingRecover({ src: { label: c.db + ' / ' + c.key }, merged, count: trips.length });
+    } catch (e) {
+      setRecoverNote(t('rec.failed'));
+    }
+  };
 
   const doScan = async () => {
     setScanning(true);
@@ -567,6 +616,42 @@ export default function SettingsScreen() {
           ) : null}
           {recoverNote ? <Text style={styles.okLine}>{recoverNote}</Text> : null}
           <Text style={styles.hint}>{t('rec.howto')}</Text>
+
+          <SecondaryButton
+            title={deepBusy ? t('common.preparing') : t('rec.deep')}
+            onPress={doDeepScan}
+            disabled={deepBusy}
+            style={{ marginHorizontal: 0, marginTop: 14 }}
+          />
+          {deep ? (
+            <View style={{ marginTop: 10 }}>
+              {deep.cands.length ? (
+                <>
+                  <Text style={styles.subLabel}>{t('rec.found', { n: deep.cands.length })}</Text>
+                  {deep.cands.map((c) => (
+                    <View key={c.db + c.store + c.key} style={styles.recRow}>
+                      <Text style={styles.recLabel}>{c.db} / {c.key}</Text>
+                      <Text style={styles.recMeta}>
+                        {t('rec.counts', {
+                          trips: c.peek.trips, disc: c.peek.disc, exp: c.peek.exp,
+                          photos: c.peek.photos, mb: (c.bytes / 1048576).toFixed(2),
+                        })}
+                      </Text>
+                      <Pressable onPress={() => recoverEntry(c)} hitSlop={6}>
+                        <Text style={styles.recBtn}>{t('rec.use')}</Text>
+                      </Pressable>
+                    </View>
+                  ))}
+                </>
+              ) : (
+                <Text style={styles.warn}>{t('rec.deepNone')}</Text>
+              )}
+              <Pressable onPress={copyReport} hitSlop={6}>
+                <Text style={styles.recBtn}>{copied ? t('common.copied') : t('rec.copy')}</Text>
+              </Pressable>
+              <Text style={styles.report} selectable>{deep.text}</Text>
+            </View>
+          ) : null}
         </Card>
 
         <SectionHeader title={t('backup.title')} subtitle={t('backup.sub')} />
@@ -808,6 +893,13 @@ const styles = StyleSheet.create({
   recLabel: { color: colors.text, fontSize: 13, fontWeight: '700' },
   recMeta: { color: colors.textMuted, fontSize: 12, marginTop: 3, lineHeight: 17 },
   recBtn: { color: colors.primary, fontSize: 13, fontWeight: '800', marginTop: 6 },
+  report: {
+    color: colors.textMuted,
+    fontSize: 10,
+    lineHeight: 15,
+    marginTop: 10,
+    fontFamily: Platform.OS === 'web' ? 'monospace' : undefined,
+  },
   statRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6 },
   statLabel: { color: colors.textMuted, fontSize: 14 },
   statVal: { color: colors.text, fontSize: 14, fontWeight: '700' },

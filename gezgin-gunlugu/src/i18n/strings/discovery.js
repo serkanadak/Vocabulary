@@ -366,6 +366,14 @@ export default {
     de: '{label}\n\n{trips} Reisen werden gelesen: {added} hinzugefügt, {updated} aktualisiert. Bestehende Reisen bleiben.',
   },
   'rec.confirmBtn': { tr: 'Kurtar', en: 'Recover', de: 'Retten' },
+  'rec.deep': { tr: '🧪 Derin tarama (her yeri ara)', en: '🧪 Deep scan (search everywhere)', de: '🧪 Tiefensuche (überall suchen)' },
+  'rec.found': { tr: 'Bulunan kayıtlar ({n})', en: 'Records found ({n})', de: 'Gefundene Datensätze ({n})' },
+  'rec.deepNone': {
+    tr: '⚠️ Bu depolama alanında seyahat içeren HİÇBİR kayıt bulunamadı. Aşağıdaki raporda “kullanılan alan” satırına bakın: birkaç MB’ın üzerindeyse veri başka bir yerde olabilir; ~0 ise tarayıcı silmiş demektir. Raporu kopyalayıp paylaşın.',
+    en: '⚠️ NO record containing trips was found in this storage area. Check the “used space” line in the report below: if it is more than a few MB the data may be elsewhere; if it is ~0 the browser has cleared it. Copy the report and share it.',
+    de: '⚠️ KEIN Datensatz mit Reisen in diesem Speicherbereich gefunden. Prüfe die Zeile „belegter Platz“ im Bericht: mehr als ein paar MB bedeutet, die Daten liegen woanders; ~0 heißt, der Browser hat sie gelöscht. Kopiere den Bericht und teile ihn.',
+  },
+  'rec.copy': { tr: '📋 Raporu kopyala', en: '📋 Copy report', de: '📋 Bericht kopieren' },
   'rec.howto': {
     tr: 'En üstteki kaynak genelde en dolu olanıdır. Geri yükledikten sonra “Yedek dosyasını indir” ile mutlaka bir kopya alın.',
     en: 'The top source is usually the fullest. After restoring, always take a copy with “Download backup file”.',
