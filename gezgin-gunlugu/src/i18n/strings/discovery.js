@@ -319,6 +319,27 @@ export default {
     en: '⚠️ Storage is filling up. New photos may not be saved; free space by deleting old/unneeded photos.',
     de: '⚠️ Der Speicher füllt sich. Neue Fotos werden möglicherweise nicht gespeichert; lösche alte/unnötige Fotos.',
   },
+  'set.persistOn': {
+    tr: '✅ Kalıcı depolama açık: tarayıcı verilerini kendiliğinden silmez.',
+    en: '✅ Persistent storage is on: the browser will not clear your data on its own.',
+    de: '✅ Dauerhafter Speicher ist aktiv: Der Browser löscht deine Daten nicht von selbst.',
+  },
+  'set.persistOff': {
+    tr: '⚠️ Kalıcı depolama KAPALI. Tarayıcı yer daralınca ya da siteye uzun süre girilmezse (iOS Safari’de 7 gün) fotoğraflarını silebilir.',
+    en: '⚠️ Persistent storage is OFF. The browser may delete your photos when space runs low or if you don’t visit for a while (7 days on iOS Safari).',
+    de: '⚠️ Dauerhafter Speicher ist AUS. Der Browser kann deine Fotos löschen, wenn der Platz knapp wird oder du die Seite länger nicht öffnest (7 Tage bei iOS Safari).',
+  },
+  'set.persistAsk': { tr: '🔒 Kalıcı depolama izni ver', en: '🔒 Enable persistent storage', de: '🔒 Dauerhaften Speicher aktivieren' },
+  'set.persistHint': {
+    tr: 'İzin verilmezse en kesin çözüm siteyi ana ekrana eklemektir (Safari’de Paylaş → Ana Ekrana Ekle). Ana ekrandan açılan uygulamanın verisi silinmez.',
+    en: 'If the browser declines, the surest fix is adding the site to your home screen (Safari: Share → Add to Home Screen). Data of a home-screen app is not cleared.',
+    de: 'Wenn der Browser ablehnt, hilft am sichersten das Hinzufügen zum Home-Bildschirm (Safari: Teilen → Zum Home-Bildschirm). Daten einer so installierten App werden nicht gelöscht.',
+  },
+  'sync.refreshed': {
+    tr: 'Bu veriler başka bir pencerede/sekmede güncellenmişti; en güncel hâli yüklendi. Bu pencerede az önce yaptığın son değişikliği tekrar yapman gerekebilir.',
+    en: 'This data was updated in another window/tab, so the latest version was loaded. You may need to redo the last change you just made in this window.',
+    de: 'Diese Daten wurden in einem anderen Fenster/Tab aktualisiert, daher wurde die neueste Version geladen. Die letzte Änderung in diesem Fenster musst du evtl. wiederholen.',
+  },
   'set.writeFailed': {
     tr: '⛔ Son değişiklikler cihaza KAYDEDİLEMEDİ (depolama dolu olabilir). Yer açmadan yeni fotoğraf eklemeyin.',
     en: '⛔ The latest changes could NOT be saved to this device (storage may be full). Free up space before adding more photos.',

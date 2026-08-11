@@ -76,6 +76,49 @@ export async function storageGet(key) {
   return AsyncStorage.getItem(key);
 }
 
+// KALICI DEPOLAMA İSTEĞİ.
+// Varsayılan olarak tarayıcı verimizi "best-effort" kovada tutar: disk
+// daralınca silebilir, iOS Safari ise siteye 7 gün girilmezse script ile
+// yazılmış tüm veriyi (IndexedDB dahil) SİLER. Bu yüzden fotoğraflar
+// "kendiliğinden" kaybolabiliyor. persist() izni verilirse veri kalıcı
+// kovaya taşınır ve otomatik silinmez.
+//
+// -> { supported, persisted } döner. İzin verilmezse persisted false kalır;
+//    (iOS'ta genellikle site ana ekrana eklenince veriliyor.)
+export async function requestPersistentStorage() {
+  if (Platform.OS !== 'web' || typeof navigator === 'undefined' || !navigator.storage) {
+    return { supported: false, persisted: false };
+  }
+  const { persist, persisted } = navigator.storage;
+  if (typeof persisted !== 'function') return { supported: false, persisted: false };
+  try {
+    let already = await navigator.storage.persisted();
+    if (!already && typeof persist === 'function') {
+      already = await navigator.storage.persist();
+    }
+    return { supported: true, persisted: !!already };
+  } catch (e) {
+    return { supported: true, persisted: false };
+  }
+}
+
+// Verinin kalıcı kovada olup olmadığını sadece OKUR (izin istemez).
+export async function isStoragePersisted() {
+  if (
+    Platform.OS !== 'web' ||
+    typeof navigator === 'undefined' ||
+    !navigator.storage ||
+    typeof navigator.storage.persisted !== 'function'
+  ) {
+    return null;
+  }
+  try {
+    return await navigator.storage.persisted();
+  } catch (e) {
+    return null;
+  }
+}
+
 // Tarayıcının verdiği depolama tahmini (kullanılan/kota, bayt). Web dışında null.
 export async function storageEstimate() {
   if (

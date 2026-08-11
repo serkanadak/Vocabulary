@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Pressable, Platform } from 'react-n
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import { PLACES } from '../data/places';
-import { storageEstimate } from '../logic/storage';
+import { storageEstimate, isStoragePersisted, requestPersistentStorage } from '../logic/storage';
 import { resolveCategories } from '../data/expenseCategories';
 import { categoryUsage } from '../logic/expenseReport';
 import { colors, THEMES, getThemeId, saveThemeId } from '../theme';
@@ -111,6 +111,26 @@ export default function SettingsScreen() {
       alive = false;
     };
   }, [photoCount, totalDiscoveries]);
+
+  // Veri kalıcı kovada mı? Değilse tarayıcı (özellikle iOS Safari, 7 gün
+  // kullanılmayan siteler için) fotoğrafları silebiliyor.
+  const [persisted, setPersisted] = useState(undefined);
+  const [asking, setAsking] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    isStoragePersisted().then((v) => {
+      if (alive) setPersisted(v);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  const askPersist = async () => {
+    setAsking(true);
+    const r = await requestPersistentStorage();
+    setPersisted(r.supported ? r.persisted : null);
+    setAsking(false);
+  };
 
   const ratio = storage && storage.quota ? Math.min(1, storage.usage / storage.quota) : 0;
   const barColor = ratio > 0.9 ? colors.danger : ratio > 0.7 ? colors.primary : colors.success;
@@ -381,6 +401,20 @@ export default function SettingsScreen() {
         <SectionHeader title={t('set.storage')} subtitle={t('set.storageSub')} />
         <Card>
           {writeFailed ? <Text style={styles.warn}>{t('set.writeFailed')}</Text> : null}
+          {persisted === true ? (
+            <Text style={styles.okLine}>{t('set.persistOn')}</Text>
+          ) : persisted === false ? (
+            <>
+              <Text style={styles.warn}>{t('set.persistOff')}</Text>
+              <SecondaryButton
+                title={asking ? t('common.preparing') : t('set.persistAsk')}
+                onPress={askPersist}
+                disabled={asking}
+                style={{ marginHorizontal: 0, marginTop: 10 }}
+              />
+              <Text style={styles.hint}>{t('set.persistHint')}</Text>
+            </>
+          ) : null}
           {storage === undefined ? (
             <Text style={styles.hint}>{t('set.storageCalc')}</Text>
           ) : storage && storage.quota ? (
@@ -532,6 +566,7 @@ const styles = StyleSheet.create({
   catAddRow: { flexDirection: 'row', gap: 10, alignItems: 'flex-start' },
   hint: { color: colors.textMuted, fontSize: 12, marginTop: 12, lineHeight: 18 },
   warn: { color: colors.primary, fontSize: 12, marginTop: 12, lineHeight: 17 },
+  okLine: { color: colors.success, fontSize: 12, marginTop: 12, lineHeight: 17 },
   statRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6 },
   statLabel: { color: colors.textMuted, fontSize: 14 },
   statVal: { color: colors.text, fontSize: 14, fontWeight: '700' },

@@ -3,13 +3,54 @@
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { Platform } from 'react-native';
-import { storageGet, storageSet } from '../logic/storage';
+import { storageGet, storageSet, requestPersistentStorage } from '../logic/storage';
 import { createDefaultChecklist, createChecklistItem, dedupeChecklist } from '../data/checklist';
 import { DEFAULT_VEHICLE } from '../data/vehicles';
 import { BUILTIN_EXPENSE_CATEGORIES, slugifyCategory } from '../data/expenseCategories';
 import { todayKey } from '../logic/date';
 
 const STORAGE_KEY = '@gezgin_gunlugu_v1';
+// Pencereler arası senkronizasyon: bir pencere yazınca diğerleri haberdar olur.
+const SYNC_CHANNEL = 'gezgin_gunlugu_sync';
+const SYNC_KEY = 'gg_sync_rev';
+
+// Bayatlık kontrolü UCUZ olmalı: her pencere odağında 35 MB'lık kaydı okuyup
+// JSON.parse etmek yeni bir yavaşlık kaynağı olurdu. Bu yüzden sürüm numarası
+// ayrıca küçücük bir localStorage anahtarında tutulur; büyük kayıt yalnızca
+// bu işaret gerçekten ilerlediyse okunur.
+function readRevMarker() {
+  if (Platform.OS !== 'web' || typeof window === 'undefined' || !window.localStorage) return null;
+  try {
+    const v = window.localStorage.getItem(SYNC_KEY);
+    return v == null ? null : Number(v) || 0;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Kayıttaki sürüm bilgisini TAM ÇÖZÜMLEME YAPMADAN okur: rev/savedAt her
+// zaman JSON'un sonuna yazılır, bu yüzden kuyruğa bakmak yeterli. 35 MB'lık
+// veriyi çözümlemeden sürüm karşılaştırması yapılabilir.
+function metaOf(raw) {
+  if (!raw) return { rev: 0, savedAt: 0 };
+  const m = /"rev":(\d+),"savedAt":(\d+)\}\s*$/.exec(raw);
+  if (m) return { rev: Number(m[1]) || 0, savedAt: Number(m[2]) || 0 };
+  try {
+    const o = JSON.parse(raw);
+    return { rev: Number(o.rev) || 0, savedAt: Number(o.savedAt) || 0 };
+  } catch (e) {
+    return { rev: 0, savedAt: 0 };
+  }
+}
+
+function writeRevMarker(rev) {
+  if (Platform.OS !== 'web' || typeof window === 'undefined' || !window.localStorage) return;
+  try {
+    window.localStorage.setItem(SYNC_KEY, String(rev));
+  } catch (e) {
+    /* işaret yazılamazsa büyük kaydın rev'i yine doğruyu söylüyor */
+  }
+}
 const JournalContext = createContext(null);
 
 const DEFAULT_SETTINGS = {
@@ -252,16 +293,41 @@ function reducer(state, action) {
 export function JournalProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Kayıtta tutulan sürüm numarası. Her yazma bunu bir artırır; böylece bir
+  // pencerenin elindeki verinin bayat mı olduğu anlaşılır.
+  const revRef = useRef(0);
+  // rev taşımayan ESKİ kayıtlar için ikinci ölçüt: son yazma zamanı.
+  const savedAtRef = useRef(0);
+  // Uzaktan gelen veriyle tazelendikten sonra aynı veriyi geri yazmayalım.
+  const skipWriteRef = useRef(false);
+  // Başka bir pencere veri güncellediği için bu pencere tazelendi mi?
+  const [refreshedFromOther, setRefreshedFromOther] = useState(false);
+
+  const applyRaw = useCallback((raw) => {
+    const payload = raw ? JSON.parse(raw) : {};
+    revRef.current = Number(payload.rev) || 0;
+    savedAtRef.current = Number(payload.savedAt) || 0;
+    const marker = readRevMarker();
+    if (marker == null || marker < revRef.current) writeRevMarker(revRef.current);
+    dispatch({ type: 'HYDRATE', payload });
+  }, []);
+
+  // Depodaki kayıt bizimkinden yeni mi? rev asıl ölçüt; rev'i olmayan eski
+  // kayıtlarda savedAt'e bakılır.
+  const isNewer = (rev, savedAt) =>
+    rev > revRef.current || (rev === revRef.current && savedAt > savedAtRef.current);
+
   useEffect(() => {
     (async () => {
+      // Verinin tarayıcı tarafından silinmesini engelle (iOS'ta 7 gün kuralı).
+      requestPersistentStorage().catch(() => {});
       try {
-        const raw = await storageGet(STORAGE_KEY);
-        dispatch({ type: 'HYDRATE', payload: raw ? JSON.parse(raw) : {} });
+        applyRaw(await storageGet(STORAGE_KEY));
       } catch (e) {
         dispatch({ type: 'HYDRATE', payload: {} });
       }
     })();
-  }, []);
+  }, [applyRaw]);
 
   // Kalıcılaştırma GECİKTİRİLİR (debounce).
   // Tüm seyahatler (fotoğraflar base64 gömülü) tek bir JSON olarak yazılır; bu
@@ -279,7 +345,57 @@ export function JournalProvider({ children }) {
   // hiç öğrenemiyordu.
   const [writeFailed, setWriteFailed] = useState(false);
 
-  const flushNow = useCallback(() => {
+  // Diğer pencerelere "veri değişti" haberi verir.
+  const notifyOthers = useCallback((rev) => {
+    if (Platform.OS !== 'web' || typeof window === 'undefined') return;
+    // İşaret her zaman yazılır: hem ucuz bayatlık kontrolü hem de
+    // BroadcastChannel olmayan tarayıcılarda 'storage' olayı için.
+    writeRevMarker(rev);
+    try {
+      if (typeof window.BroadcastChannel === 'function') {
+        const ch = new window.BroadcastChannel(SYNC_CHANNEL);
+        ch.postMessage({ rev });
+        ch.close();
+      }
+    } catch (e) {
+      /* haber verilemezse sürüm kontrolü yine koruyor */
+    }
+  }, []);
+
+  // Depodaki veri bizden yeniyse onu al (bayat anlık görüntüyü yazmadan).
+  // trustMarker: sık tetiklenen (odak/görünürlük) yolda ucuz localStorage
+  // işaretine güvenip büyük kaydı hiç okumayız. YAZMA yolunda ise buna
+  // güvenilmez — işaret geride kalmışsa yeni veriyi ezerdik ki düzeltmeye
+  // çalıştığımız hata tam olarak buydu.
+  const pullIfNewer = useCallback(async (trustMarker = true) => {
+    if (trustMarker) {
+      const marker = readRevMarker();
+      if (marker != null && marker <= revRef.current) return false;
+    }
+    try {
+      const raw = await storageGet(STORAGE_KEY);
+      const meta = metaOf(raw);
+      if (isNewer(meta.rev, meta.savedAt)) {
+        skipWriteRef.current = true;
+        pendingRef.current = null;
+        applyRaw(raw);
+        setRefreshedFromOther(true);
+        return true;
+      }
+    } catch (e) {
+      /* okunamadıysa mevcut durumla devam */
+    }
+    return false;
+  }, [applyRaw]);
+
+  // ÖNEMLİ: Yazmadan HEMEN ÖNCE depodaki sürüm kontrol edilir.
+  // Eskiden bu kontrol yoktu: uzun süre açık kalmış (ör. telefonda arka plana
+  // atılmış) bir pencerede küçük bir değişiklik yapmak, o pencerenin ELİNDEKİ
+  // ESKİ anlık görüntüyü tüm verinin üzerine yazıyordu. Bu yüzden başka bir
+  // pencerede/oturumda eklenen fotoğraflar ve güncellemeler sessizce yok
+  // oluyordu (testle birebir yeniden üretildi). Artık depo daha yeniyse
+  // yazma iptal edilir, pencere tazelenir ve kullanıcıya haber verilir.
+  const flushNow = useCallback(async () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
       timerRef.current = null;
@@ -287,22 +403,40 @@ export function JournalProvider({ children }) {
     const data = pendingRef.current;
     if (!data) return;
     pendingRef.current = null;
+    // Depodaki GERÇEK sürümü oku (işarete güvenmeden): daha yeniyse ezme.
+    if (await pullIfNewer(false)) return;
+    const rev = revRef.current + 1;
+    const savedAt = Date.now();
     try {
-      const p = storageSet(STORAGE_KEY, JSON.stringify(data));
+      const p = storageSet(STORAGE_KEY, JSON.stringify({ ...data, rev, savedAt }));
       if (p && typeof p.then === 'function') {
         p.then(
-          () => setWriteFailed(false),
+          () => {
+            revRef.current = rev;
+            savedAtRef.current = savedAt;
+            setWriteFailed(false);
+            notifyOthers(rev);
+          },
           () => setWriteFailed(true)
         );
+      } else {
+        revRef.current = rev;
+        savedAtRef.current = savedAt;
+        notifyOthers(rev);
       }
     } catch (e) {
       // JSON.stringify bile başarısız olduysa (veri çok büyük) da bildir.
       setWriteFailed(true);
     }
-  }, []);
+  }, [notifyOthers, pullIfNewer]);
 
   useEffect(() => {
     if (!state.loaded) return undefined;
+    if (skipWriteRef.current) {
+      // Bu değişiklik depodan gelen tazeleme; geri yazma gereksiz.
+      skipWriteRef.current = false;
+      return undefined;
+    }
     pendingRef.current = { trips: state.trips, settings: state.settings };
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(flushNow, 800);
@@ -311,20 +445,42 @@ export function JournalProvider({ children }) {
     };
   }, [state.trips, state.settings, state.loaded, flushNow]);
 
-  // Sekme kapanırken / gizlenirken bekleyen yazmayı kaybetme.
+  // Sekme kapanırken / gizlenirken bekleyen yazmayı kaybetme; geri
+  // dönüldüğünde ise başka pencerenin yazdığı veriyi al.
   useEffect(() => {
     if (Platform.OS !== 'web' || typeof window === 'undefined') return undefined;
     const onHide = () => flushNow();
+    const pullCheap = () => pullIfNewer(true);
+    const onVisible = () => {
+      if (document.visibilityState === 'hidden') flushNow();
+      else pullCheap();
+    };
     window.addEventListener('pagehide', onHide);
     window.addEventListener('beforeunload', onHide);
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') flushNow();
-    });
+    window.addEventListener('focus', pullCheap);
+    document.addEventListener('visibilitychange', onVisible);
+    let ch = null;
+    const onSync = (e) => {
+      if (!e || !e.data || (Number(e.data.rev) || 0) > revRef.current) pullCheap();
+    };
+    const onStorage = (e) => {
+      if (e && e.key === SYNC_KEY) pullCheap();
+    };
+    if (typeof window.BroadcastChannel === 'function') {
+      ch = new window.BroadcastChannel(SYNC_CHANNEL);
+      ch.addEventListener('message', onSync);
+    } else {
+      window.addEventListener('storage', onStorage);
+    }
     return () => {
       window.removeEventListener('pagehide', onHide);
       window.removeEventListener('beforeunload', onHide);
+      window.removeEventListener('focus', pullCheap);
+      document.removeEventListener('visibilitychange', onVisible);
+      window.removeEventListener('storage', onStorage);
+      if (ch) ch.close();
     };
-  }, [flushNow]);
+  }, [flushNow, pullIfNewer]);
 
   const value = useMemo(() => {
     const createTrip = ({ title, startDate, endDate, vehicle }) => {
@@ -355,6 +511,9 @@ export function JournalProvider({ children }) {
       settings: state.settings,
       // son kaydetme denemesi başarısız mı? (depolama dolu vb.)
       writeFailed,
+      // başka bir pencere veriyi güncellediği için bu pencere tazelendi mi?
+      refreshedFromOther,
+      ackRefreshed: () => setRefreshedFromOther(false),
       // trip
       createTrip,
       getTrip,
@@ -465,7 +624,7 @@ export function JournalProvider({ children }) {
         dispatch({ type: 'UPDATE_SETTINGS', patch: { expenseCatsInactive: next } });
       },
     };
-  }, [state, writeFailed]);
+  }, [state, writeFailed, refreshedFromOther]);
 
   return <JournalContext.Provider value={value}>{children}</JournalContext.Provider>;
 }
