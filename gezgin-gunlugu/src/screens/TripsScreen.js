@@ -6,6 +6,7 @@ import { getVehicle } from '../data/vehicles';
 import { checklistProgress } from '../data/checklist';
 import { formatShortDate, daysBetween } from '../logic/date';
 import { colors } from '../theme';
+import BackupReminder from '../components/BackupReminder';
 import { t } from '../i18n';
 import { Card, EmptyState, Pill, ProgressBar } from '../components/common';
 
@@ -57,6 +58,7 @@ export default function TripsScreen({ navigation }) {
       </View>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+        <BackupReminder />
         {!loaded ? null : trips.length === 0 ? (
           <EmptyState
             icon="✈️"

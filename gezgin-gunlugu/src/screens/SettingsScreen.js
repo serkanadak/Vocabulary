@@ -159,7 +159,12 @@ export default function SettingsScreen() {
       const text = buildBackup(trips, settings);
       const name = backupFileName();
       const ok = share ? await shareBackup(text, name) : downloadBackup(text, name);
-      if (ok) setBackupNote(t('backup.saved', { mb: (text.length / 1048576).toFixed(1) }));
+      if (ok) {
+        // Hatırlatıcı bu ikisine bakıyor: en son ne zaman ve hangi hacimde
+        // yedek alındı.
+        updateSettings({ lastBackupAt: Date.now(), lastBackupStats: mineStats });
+        setBackupNote(t('backup.saved', { mb: (text.length / 1048576).toFixed(1) }));
+      }
       else setBackupErr(t('backup.saveFailed'));
     } catch (e) {
       setBackupErr(t('backup.saveFailed'));

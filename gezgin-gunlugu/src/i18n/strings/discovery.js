@@ -415,6 +415,18 @@ export default {
     en: 'To move: save the backup where the data IS → open the new app → choose the file with “Restore”. If a trip exists on both sides, the file’s version wins; trips missing from the file are not deleted.',
     de: 'Übertragen: Backup dort speichern, wo die Daten SIND → neue App öffnen → Datei über „Wiederherstellen“ wählen. Bei doppelten Reisen gewinnt die Datei; fehlende Reisen werden nicht gelöscht.',
   },
+  'backup.remindTitle': { tr: '💾 Verilerini yedekle', en: '💾 Back up your data', de: '💾 Daten sichern' },
+  'backup.remindBody': {
+    tr: '{trips} seyahat · {disc} keşif · {photos} fotoğraf yalnızca bu tarayıcıda duruyor. Tek dosyaya kaydet: telefonu değiştirsen, tarayıcı verini silse ya da uygulamayı ana ekrana eklesen bile geri yükleyebilirsin.',
+    en: '{trips} trips · {disc} discoveries · {photos} photos live only in this browser. Save them to a file so you can restore them if you change phones, the browser clears your data, or you install the app to your home screen.',
+    de: '{trips} Reisen · {disc} Entdeckungen · {photos} Fotos liegen nur in diesem Browser. Speichere sie in eine Datei, damit du sie bei Handywechsel, gelöschten Browserdaten oder Installation auf dem Home-Bildschirm wiederherstellen kannst.',
+  },
+  'backup.remindPersist': {
+    tr: '⚠️ Kalıcı depolama kapalı: tarayıcı bu verileri kendiliğinden silebilir.',
+    en: '⚠️ Persistent storage is off: the browser may clear this data on its own.',
+    de: '⚠️ Dauerhafter Speicher ist aus: der Browser kann diese Daten selbst löschen.',
+  },
+  'backup.remindBtn': { tr: '💾 Yedek al', en: '💾 Back up now', de: '💾 Jetzt sichern' },
   'backup.confirmTitle': { tr: 'Yedeği geri yükle?', en: 'Restore backup?', de: 'Backup wiederherstellen?' },
   'backup.confirmMsg': {
     tr: 'Dosyada {trips} seyahat · {disc} keşif · {photos} fotoğraf var.\n\n{added} seyahat eklenecek, {updated} seyahat dosyadaki hâliyle güncellenecek. Dosyada olmayan seyahatlerin silinmez.',

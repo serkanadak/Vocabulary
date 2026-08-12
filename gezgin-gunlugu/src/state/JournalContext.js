@@ -69,6 +69,8 @@ const DEFAULT_SETTINGS = {
   expenseCatsCustom: [], // Ayarlar'dan eklenen harcama türleri: [{ value, label, icon }]
   expenseCatsInactive: [], // pasif türler (seyahatlerde seçilemez, geçmiş kayıtlarda görünür)
   expenseCatsOverrides: {}, // yeniden adlandırma: { [value]: { label, icon } } — anahtar sabit kalır
+  lastBackupAt: 0, // en son yedek dosyası alındığı an (yedek hatırlatıcısı için)
+  lastBackupStats: null, // o anki kayıt sayıları: { trips, discoveries, expenses, photos }
 };
 
 const initialState = {
