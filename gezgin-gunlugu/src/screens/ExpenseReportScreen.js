@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJournal } from '../state/JournalContext';
 import {
@@ -19,7 +19,8 @@ import { PAYMENT_METHODS, paymentLabel, paymentIcon } from '../data/paymentMetho
 import { formatShortDate } from '../logic/date';
 import { colors } from '../theme';
 import { t } from '../i18n';
-import { ChipPicker, EmptyState } from '../components/common';
+import { ChipPicker, EmptyState, SecondaryButton } from '../components/common';
+import { exportExpenseReportPdf } from '../logic/expenseDoc';
 
 function pct(part, whole) {
   if (!whole) return 0;
@@ -98,6 +99,26 @@ export default function ExpenseReportScreen({ route, navigation }) {
     navigation.setOptions({ title: t('nav.expenseReport') });
   }, [navigation]);
 
+  // Raporu olduğu gibi (ekrandaki tüm bölümlerle) yazdırılabilir hâle getirir.
+  const [pdfBusy, setPdfBusy] = useState(false);
+  const makePdf = async () => {
+    if (Platform.OS !== 'web') {
+      Alert.alert(t('pdf.webOnly'), t('disc.pdfWebOnlyMsg'));
+      return;
+    }
+    setPdfBusy(true);
+    try {
+      const res = await exportExpenseReportPdf(trip, trips, cur, settings);
+      if (res && !res.ok && res.reason === 'popup') {
+        Alert.alert(t('pdf.popupBlocked'), t('pdf.popupBlockedMsg'));
+      }
+    } catch (e) {
+      Alert.alert(t('pdf.failed'), t('common.unexpectedError'));
+    } finally {
+      setPdfBusy(false);
+    }
+  };
+
   if (!trip) {
     return (
       <SafeAreaView style={styles.container} edges={['bottom']}>
@@ -167,6 +188,13 @@ export default function ExpenseReportScreen({ route, navigation }) {
             renderLabel={(o) => `${currencySymbol(o.value)} ${o.value}`}
           />
         </View>
+
+        <SecondaryButton
+          title={pdfBusy ? t('common.preparing') : t('rep.pdf')}
+          onPress={makePdf}
+          disabled={pdfBusy}
+          style={{ marginTop: 12 }}
+        />
 
         {/* Bu seyahat toplamı */}
         <View style={styles.totalCard}>
