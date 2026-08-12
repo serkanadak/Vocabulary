@@ -340,6 +340,35 @@ export default {
     en: 'This data was updated in another window/tab, so the latest version was loaded. You may need to redo the last change you just made in this window.',
     de: 'Diese Daten wurden in einem anderen Fenster/Tab aktualisiert, daher wurde die neueste Version geladen. Die letzte Änderung in diesem Fenster musst du evtl. wiederholen.',
   },
+  // --- Veri yaşı ---
+  'age.title': { tr: '📅 Bu veriler ne zaman girildi?', en: '📅 When was this data entered?', de: '📅 Wann wurden diese Daten erfasst?' },
+  'age.sub': {
+    tr: 'Her kaydın kimliği, oluşturulduğu anı taşır. Böylece ekranda gördüklerinizin yeni girdikleriniz mi yoksa eski verileriniz mi olduğu kesin olarak anlaşılır (yedekten geri yüklenen kayıtlar da kendi tarihini korur).',
+    en: 'Every record’s id carries the moment it was created, so you can tell for certain whether what you see is newly entered or your older data (records restored from a backup keep their original date).',
+    de: 'Die ID jedes Datensatzes enthält den Erstellungszeitpunkt. So erkennst du sicher, ob das Sichtbare neu erfasst oder älter ist (aus einem Backup wiederhergestellte Datensätze behalten ihr Datum).',
+  },
+  'age.allNew': {
+    tr: 'Tüm kayıtlar BUGÜN oluşturulmuş ({n} kayıt). Yani ekranda gördükleriniz yeni girdikleriniz; eski veri geri gelmemiş.',
+    en: 'All records were created TODAY ({n} records). So what you see is what you just entered; the old data has not returned.',
+    de: 'Alle Datensätze wurden HEUTE erstellt ({n}). Das Sichtbare ist also neu erfasst; die alten Daten sind nicht zurück.',
+  },
+  'age.mixed': {
+    tr: '✅ ESKİ VERİ VAR: {old} kayıt bugünden önce oluşturulmuş (en eskisi {oldest}), {today} kayıt bugün girilmiş. Yani eski verinizin bir kısmı duruyor.',
+    en: '✅ OLD DATA IS PRESENT: {old} records were created before today (oldest {oldest}), {today} were entered today. So part of your older data is still here.',
+    de: '✅ ALTE DATEN VORHANDEN: {old} Datensätze wurden vor heute erstellt (ältester {oldest}), {today} heute erfasst. Ein Teil deiner alten Daten ist also noch da.',
+  },
+  'age.tripLine': {
+    tr: 'seyahat oluşturuldu: {created} · en eski kayıt: {first} · en yeni kayıt: {last}',
+    en: 'trip created: {created} · oldest record: {first} · newest record: {last}',
+    de: 'Reise erstellt: {created} · ältester Eintrag: {first} · neuester: {last}',
+  },
+  'age.tripCounts': {
+    tr: '{stops} durak · {disc} keşif · {exp} harcama · {notes} günlük not',
+    en: '{stops} stops · {disc} discoveries · {exp} expenses · {notes} day notes',
+    de: '{stops} Halte · {disc} Entdeckungen · {exp} Ausgaben · {notes} Tagesnotizen',
+  },
+  'age.unknown': { tr: ' · {n} kaydın zamanı okunamadı', en: ' · time unreadable for {n} records', de: ' · Zeit für {n} Einträge unlesbar' },
+
   // --- Veri kurtarma ---
   'rec.title': { tr: '🔧 Veri kurtarma', en: '🔧 Data recovery', de: '🔧 Datenrettung' },
   'rec.sub': {

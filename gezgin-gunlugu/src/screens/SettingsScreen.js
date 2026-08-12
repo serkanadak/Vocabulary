@@ -8,6 +8,7 @@ import { buildBackup, backupFileName, parseBackup, mergeTrips, backupStats } fro
 import { canShareFiles, shareBackup, downloadBackup, pickBackupFile } from '../logic/backupFile';
 import { scanSources, readSource } from '../logic/recovery';
 import { deepScan, reportText, candidates, readEntry } from '../logic/deepScan';
+import { tripAge, ageSummary } from '../logic/dataAge';
 import { readPhotos } from '../logic/photoStore';
 import { collectRefs, inlinePhotos } from '../logic/tripPhotos';
 import { resolveCategories } from '../data/expenseCategories';
@@ -212,6 +213,16 @@ export default function SettingsScreen() {
   const [scanning, setScanning] = useState(false);
   const [recoverNote, setRecoverNote] = useState('');
   const [pendingRecover, setPendingRecover] = useState(null);
+
+  // VERİ YAŞI: "bu gördüklerim yeni girdiklerim mi, eski verim mi?"
+  // Kayıt kimlikleri oluşturulma zamanını taşıyor (bkz. logic/dataAge.js).
+  const age = ageSummary(trips);
+  const fmtStamp = (ms) => {
+    if (!ms) return '—';
+    const d = new Date(ms);
+    const p = (n) => String(n).padStart(2, '0');
+    return `${p(d.getDate())}.${p(d.getMonth() + 1)}.${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`;
+  };
 
   // DERİN TARAMA: bu origin'deki her veritabanı, her depo, her anahtar.
   const [deep, setDeep] = useState(null);
@@ -567,6 +578,43 @@ export default function SettingsScreen() {
               <Text style={styles.warn}>
                 {t('set.keyWarn')}
               </Text>
+            </Card>
+          </>
+        ) : null}
+
+        {trips.length ? (
+          <>
+            <SectionHeader title={t('age.title')} subtitle={t('age.sub')} />
+            <Card>
+              <Text style={age.hasOld ? styles.okLine : styles.hint}>
+                {age.hasOld
+                  ? t('age.mixed', { old: age.oldCount, today: age.todayCount, oldest: fmtStamp(age.oldest) })
+                  : t('age.allNew', { n: age.todayCount })}
+              </Text>
+              {trips.map((tr) => {
+                const a = tripAge(tr);
+                return (
+                  <View key={tr.id} style={styles.recRow}>
+                    <Text style={styles.recLabel}>{tr.title || t('nav.trip')}</Text>
+                    <Text style={styles.recMeta}>
+                      {t('age.tripLine', {
+                        created: fmtStamp(a.created),
+                        first: fmtStamp(a.first),
+                        last: fmtStamp(a.last),
+                      })}
+                    </Text>
+                    <Text style={styles.recMeta}>
+                      {t('age.tripCounts', {
+                        stops: a.counts.stops,
+                        disc: a.counts.discoveries,
+                        exp: a.counts.expenses,
+                        notes: a.counts.dayNotes,
+                      })}
+                      {a.unknown ? t('age.unknown', { n: a.unknown }) : ''}
+                    </Text>
+                  </View>
+                );
+              })}
             </Card>
           </>
         ) : null}
