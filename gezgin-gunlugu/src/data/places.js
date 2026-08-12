@@ -2203,6 +2203,21 @@ export const PLACES = [
     ],
   },
   {
+    id: 'jajce',
+    name: 'Jajce',
+    city: 'Jajce',
+    country: 'Bosna-Hersek',
+    lat: 44.3419,
+    lng: 17.2708,
+    aliases: ['jajce', 'yayce', 'yayçe', 'pliva şelalesi', 'pliva selalesi'],
+    summary:
+      'Orta Bosna’da, Pliva Nehri’nin Vrbas’a kavuştuğu noktada kurulu Jajce, şehir merkezinin tam ortasında dökülen yaklaşık 20 metrelik Pliva Şelalesi ile Avrupa’da benzeri az bulunan bir manzaraya sahiptir. Kayalık bir tepeye yayılan surlar, sokakları basamak basamak yukarı çıkaran eski şehri kucaklar; kale kapısının üzerinde Hrvatinić hanedanının arması hâlâ görülebilir.\n\nJajce, ortaçağda Bosna Krallığı’nın başkenti ve kralların taç giydiği şehirdi; son Bosna kralı Stjepan Tomašević 1463’te burada Osmanlılar tarafından idam edildi. Şehir 1527’de kalıcı olarak Osmanlı hâkimiyetine girdi. 20. yüzyılda ise başka bir tarihe sahne oldu: 29 Kasım 1943’te toplanan ikinci AVNOJ oturumu, sosyalist Yugoslavya’nın temellerinin atıldığı yer olarak Jajce’yi ülkenin kuruluş şehri yaptı. Kentin doğal ve mimari bütünü UNESCO Dünya Mirası geçici listesinde yer alır.',
+    sources: [
+      'UNESCO World Heritage Tentative List — Natural and Architectural Ensemble of Jajce',
+      'Lonely Planet — Jajce',
+    ],
+  },
+  {
     id: 'uskup',
     name: 'Üsküp',
     city: 'Skopje',
