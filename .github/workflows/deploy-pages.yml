@@ -62,6 +62,24 @@ jobs:
           mkdir -p _site/gezgin-gunlugu
           cp -r gezgin-gunlugu/dist/. _site/gezgin-gunlugu/
 
+      # İbadetlerim'i kaynaktan derle ve /ibadet-takip altına yerleştir.
+      # Derleme BAŞARISIZ olursa mevcut yayın (gh-pages'ten kopyalanan hâli)
+      # olduğu gibi kalsın: veri/uygulama kaybı olmasın diye çıktı ancak
+      # başarılı derlemede kopyalanır.
+      - name: İbadetlerim (web export)
+        working-directory: ibadet-takip
+        run: |
+          npm install --no-audit --no-fund
+          npx expo export --platform web --output-dir dist
+      - run: |
+          if [ -f ibadet-takip/dist/index.html ]; then
+            rm -rf _site/ibadet-takip
+            mkdir -p _site/ibadet-takip
+            cp -r ibadet-takip/dist/. _site/ibadet-takip/
+          else
+            echo "İbadetlerim derlemesi bulunamadı; mevcut yayın korunuyor."
+          fi
+
       - run: touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
