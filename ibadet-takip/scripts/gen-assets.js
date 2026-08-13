@@ -11,6 +11,7 @@ const path = require('path');
 const zlib = require('zlib');
 
 const OUT = path.resolve(__dirname, '..', 'assets');
+const OUT_PWA_ICONS = path.resolve(__dirname, '..', 'public', 'icons');
 
 const BG = [217, 227, 208, 255]; // #d9e3d0
 const GOLD = [180, 143, 74, 255]; // #b48f4a
@@ -130,6 +131,12 @@ function write(name, c) {
   console.log(`+ assets/${name} (${c.w}x${c.h})`);
 }
 
+function writePwaIcon(name, c) {
+  fs.mkdirSync(OUT_PWA_ICONS, { recursive: true });
+  fs.writeFileSync(path.join(OUT_PWA_ICONS, name), encodePng(c));
+  console.log(`+ public/icons/${name} (${c.w}x${c.h})`);
+}
+
 function main() {
   fs.mkdirSync(OUT, { recursive: true });
 
@@ -148,6 +155,15 @@ function main() {
   const favicon = makeCanvas(96, 96, BG);
   drawMotif(favicon);
   write('favicon.png', favicon);
+
+  // PWA (ana ekrana ekleme) ikonları — iOS apple-touch-icon ve manifest.
+  const pwa180 = makeCanvas(180, 180, BG);
+  drawMotif(pwa180);
+  writePwaIcon('icon-180.png', pwa180);
+
+  const pwa512 = makeCanvas(512, 512, BG);
+  drawMotif(pwa512);
+  writePwaIcon('icon-512.png', pwa512);
 
   console.log('\nGörseller üretildi.');
 }

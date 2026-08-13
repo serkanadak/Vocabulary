@@ -6,6 +6,7 @@ import { getTodaySchedule, getDailyRequiredIdsForDate } from '../logic/schedule'
 import { currentStreak } from '../logic/stats';
 import { NAMAZ_GROUP_LABELS } from '../data/ibadetler';
 import { colors } from '../theme';
+import BackupReminder from '../components/BackupReminder';
 import { CheckRow, SectionHeader, Card } from '../components/common';
 
 const REKAT_LABEL = {
@@ -53,6 +54,7 @@ export default function TodayScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
+        <BackupReminder navigation={navigation} />
         <View style={styles.header}>
           <Text style={styles.title}>Bugün</Text>
           <Text style={styles.dateText}>{todayKey}</Text>
