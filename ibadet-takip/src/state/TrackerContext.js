@@ -68,8 +68,8 @@ const DEFAULT_SETTINGS = {
 const initialState = {
   loaded: false,
   byDate: {}, // { '2026-07-09': { itemId: true } }
-  byYear: {}, // { '2026': { itemId: true } }
-  lifetime: {}, // { itemId: true }
+  byYear: {}, // { '2026': { itemId: true | 'na' } }
+  lifetime: {}, // { itemId: true | 'na' }
   customItems: [], // kullanıcının eklediği ilave ibadetler
   settings: DEFAULT_SETTINGS,
 };
@@ -106,15 +106,20 @@ function reducer(state, action) {
       }
       return { ...state, byDate };
     }
-    case 'TOGGLE_YEAR': {
-      const { yKey, itemId } = action;
+    // status: true (yapıldı) | 'na' (bana uygulanmıyor) | undefined (bekliyor)
+    case 'SET_YEAR_STATUS': {
+      const { yKey, itemId, status } = action;
       const yMap = { ...(state.byYear[yKey] || {}) };
-      yMap[itemId] = !yMap[itemId];
+      if (status === undefined) delete yMap[itemId];
+      else yMap[itemId] = status;
       return { ...state, byYear: { ...state.byYear, [yKey]: yMap } };
     }
-    case 'TOGGLE_LIFETIME': {
-      const { itemId } = action;
-      return { ...state, lifetime: { ...state.lifetime, [itemId]: !state.lifetime[itemId] } };
+    case 'SET_LIFETIME_STATUS': {
+      const { itemId, status } = action;
+      const lifetime = { ...state.lifetime };
+      if (status === undefined) delete lifetime[itemId];
+      else lifetime[itemId] = status;
+      return { ...state, lifetime };
     }
     case 'UPDATE_SETTINGS':
       return { ...state, settings: { ...state.settings, ...action.patch } };
@@ -324,11 +329,20 @@ export function TrackerProvider({ children }) {
     const setCheckedOnDate = (dateKey, itemId, value) => dispatch({ type: 'SET_DATE', dateKey, itemId, value });
     const bulkSetChecked = (pairs, value) => dispatch({ type: 'BULK_SET', pairs, value });
 
-    const isCheckedYearly = (itemId) => !!state.byYear[yKey]?.[itemId];
-    const toggleYearly = (itemId) => dispatch({ type: 'TOGGLE_YEAR', yKey, itemId });
+    const yearlyStatus = (itemId) => state.byYear[yKey]?.[itemId]; // true | 'na' | undefined
+    const isCheckedYearly = (itemId) => yearlyStatus(itemId) === true;
+    const isNotApplicableYearly = (itemId) => yearlyStatus(itemId) === 'na';
+    const setYearlyStatus = (itemId, status) => dispatch({ type: 'SET_YEAR_STATUS', yKey, itemId, status });
+    const toggleYearly = (itemId) => setYearlyStatus(itemId, isCheckedYearly(itemId) ? undefined : true);
+    const toggleYearlyNotApplicable = (itemId) => setYearlyStatus(itemId, isNotApplicableYearly(itemId) ? undefined : 'na');
 
-    const isCheckedLifetime = (itemId) => !!state.lifetime[itemId];
-    const toggleLifetime = (itemId) => dispatch({ type: 'TOGGLE_LIFETIME', itemId });
+    const lifetimeStatus = (itemId) => state.lifetime[itemId]; // true | 'na' | undefined
+    const isCheckedLifetime = (itemId) => lifetimeStatus(itemId) === true;
+    const isNotApplicableLifetime = (itemId) => lifetimeStatus(itemId) === 'na';
+    const setLifetimeStatus = (itemId, status) => dispatch({ type: 'SET_LIFETIME_STATUS', itemId, status });
+    const toggleLifetime = (itemId) => setLifetimeStatus(itemId, isCheckedLifetime(itemId) ? undefined : true);
+    const toggleLifetimeNotApplicable = (itemId) =>
+      setLifetimeStatus(itemId, isNotApplicableLifetime(itemId) ? undefined : 'na');
 
     const updateSettings = (patch) => dispatch({ type: 'UPDATE_SETTINGS', patch });
     const addCustomItem = (item) => dispatch({ type: 'ADD_CUSTOM', item });
@@ -391,8 +405,12 @@ export function TrackerProvider({ children }) {
       bulkSetChecked,
       isCheckedYearly,
       toggleYearly,
+      isNotApplicableYearly,
+      toggleYearlyNotApplicable,
       isCheckedLifetime,
       toggleLifetime,
+      isNotApplicableLifetime,
+      toggleLifetimeNotApplicable,
       updateSettings,
       addCustomItem,
       removeCustomItem,

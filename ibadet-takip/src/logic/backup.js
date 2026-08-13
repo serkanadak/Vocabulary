@@ -61,11 +61,19 @@ export function parseBackup(text) {
 
 // İşaret haritalarını birleştirir: bir işaret İKİ tarafın herhangi birinde
 // varsa korunur. "İşaretlenmiş"i silmek geri yüklemenin işi değildir.
+// Değerler true | 'na' (bana uygulanmıyor) | false olabilir; "yapıldı" her
+// zaman "uygulanmıyor"dan üstündür, ikisi de boştan üstündür.
+function statusRank(v) {
+  if (v === true) return 2;
+  if (v === 'na') return 1;
+  return 0;
+}
 function mergeMarks(mine, theirs) {
   const out = { ...(mine || {}) };
   Object.keys(theirs || {}).forEach((k) => {
-    if (theirs[k]) out[k] = true;
-    else if (!(k in out)) out[k] = false;
+    const v = theirs[k];
+    if (statusRank(v) > statusRank(out[k])) out[k] = v;
+    else if (!(k in out)) out[k] = v || false;
   });
   return out;
 }

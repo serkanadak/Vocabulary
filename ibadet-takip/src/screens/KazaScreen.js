@@ -1,10 +1,21 @@
 import React, { useMemo, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Pressable, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
-import { enumerateDates, computeKazaSummary, getKazaItemsForDate, yesterdayKey, KAZA_SLOT_META } from '../logic/kaza';
-import { todayKey } from '../logic/date';
-import { colors } from '../theme';
+import {
+  enumerateDates,
+  computeKazaSummary,
+  getKazaItemsForDate,
+  yesterdayKey,
+  KAZA_SLOT_META,
+  monthKeyOf,
+  monthLabel,
+  monthShortLabel,
+  yearsInRange,
+  buildMonthKey,
+} from '../logic/kaza';
+import { todayKey, isValidDateKey } from '../logic/date';
+import { colors, ON_ACCENT } from '../theme';
 import { Card, DateField, PrimaryButton, ConfirmModal } from '../components/common';
 
 function daysAgoKey(n) {
@@ -53,6 +64,9 @@ export default function KazaScreen() {
   const [rangeStart, setRangeStart] = useState('');
   const [rangeEnd, setRangeEnd] = useState('');
   const [rangeConfirm, setRangeConfirm] = useState(false);
+  const [monthPickerOpen, setMonthPickerOpen] = useState(false);
+  const [monthFilter, setMonthFilter] = useState(null); // null = tüm dönem, aksi halde 'YYYY-MM'
+  const [pickerMonth, setPickerMonth] = useState(null); // seçici içindeki geçici gezinme ayı
 
   const endKey = yesterdayKey();
   const dates = useMemo(
@@ -62,7 +76,17 @@ export default function KazaScreen() {
 
   const summary = useMemo(() => computeKazaSummary(byDate, dates), [byDate, dates]);
 
-  const visibleDays = onlyIncomplete ? summary.days.filter((d) => !d.complete) : summary.days;
+  const startMonthKey = monthKeyOf(settings.kazaStartDate);
+  const endMonthKey = monthKeyOf(endKey);
+  const years = useMemo(() => yearsInRange(startMonthKey, endMonthKey), [startMonthKey, endMonthKey]);
+  const [pickerYear, pickerMonthNum] = pickerMonth ? pickerMonth.split('-').map(Number) : [null, null];
+
+  const visibleDays = useMemo(() => {
+    let days = summary.days;
+    if (monthFilter) days = days.filter((d) => monthKeyOf(d.dateKey) === monthFilter);
+    if (onlyIncomplete) days = days.filter((d) => !d.complete);
+    return days;
+  }, [summary.days, monthFilter, onlyIncomplete]);
 
   const applyPreset = (n) => {
     const start = daysAgoKey(n);
@@ -71,8 +95,10 @@ export default function KazaScreen() {
     setEditingStart(false);
   };
 
+  const draftStartValid = isValidDateKey(draftStart);
+
   const saveDraft = () => {
-    if (draftStart) {
+    if (draftStartValid) {
       updateSettings({ kazaStartDate: draftStart });
       setEditingStart(false);
     }
@@ -94,7 +120,7 @@ export default function KazaScreen() {
     setRangeToolOpen(false);
   };
 
-  if (!settings.kazaStartDate || editingStart) {
+  if (!isValidDateKey(settings.kazaStartDate) || editingStart) {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
         <View style={{ paddingBottom: 32 }}>
@@ -111,8 +137,13 @@ export default function KazaScreen() {
                 </Pressable>
               ))}
             </View>
-            <DateField label="Başlangıç tarihi (elle gir)" value={draftStart} onChange={setDraftStart} />
-            <PrimaryButton title="Kaydet" onPress={saveDraft} disabled={!draftStart} />
+            <DateField
+              label="Başlangıç tarihi (elle gir)"
+              value={draftStart}
+              onChange={setDraftStart}
+              error={draftStart && !draftStartValid ? 'Geçersiz tarih — YYYY-AA-GG biçiminde gir, örn: 2026-07-10' : ''}
+            />
+            <PrimaryButton title="Kaydet" onPress={saveDraft} disabled={!draftStartValid} />
             {settings.kazaStartDate ? (
               <Pressable style={{ marginTop: 10 }} onPress={() => setEditingStart(false)}>
                 <Text style={styles.cancelText}>Vazgeç</Text>
@@ -134,7 +165,7 @@ export default function KazaScreen() {
             <Text style={styles.title}>Geçmiş Namazlar</Text>
             <Text style={styles.subtitle}>
               {settings.kazaStartDate} → {endKey} arası, farz ve vacip namazlar (Cuma günleri Öğle yerine Cuma
-              namazı sayılır)
+              namazı sayılır){monthFilter ? ` — şu an yalnızca ${monthLabel(monthFilter)} gösteriliyor` : ''}
             </Text>
 
             <Card>
@@ -165,17 +196,102 @@ export default function KazaScreen() {
                   <Text style={styles.filterText}>Başlangıcı değiştir</Text>
                 </Pressable>
               </View>
+              <Pressable
+                style={styles.rangeToggle}
+                onPress={() => {
+                  setPickerMonth(monthFilter || endMonthKey);
+                  setMonthPickerOpen(!monthPickerOpen);
+                }}
+              >
+                <Text style={styles.rangeToggleText}>
+                  {monthPickerOpen
+                    ? '▾ Ay/yıl seçmeyi kapat'
+                    : `▸ Ay/yıl seç${monthFilter ? ` (${monthLabel(monthFilter)} gösteriliyor)` : ''}`}
+                </Text>
+              </Pressable>
+              {monthPickerOpen && (
+                <View style={styles.monthPickerBox}>
+                  <Text style={styles.monthPickerLabel}>{pickerMonth ? monthLabel(pickerMonth) : ''}</Text>
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.yearRow}>
+                    {years.map((y) => {
+                      const active = pickerYear === y;
+                      return (
+                        <Pressable
+                          key={y}
+                          style={[styles.yearChip, active && styles.yearChipActive]}
+                          onPress={() => setPickerMonth(buildMonthKey(y, pickerMonthNum, startMonthKey, endMonthKey))}
+                        >
+                          <Text style={[styles.yearChipText, active && styles.yearChipTextActive]}>{y}</Text>
+                        </Pressable>
+                      );
+                    })}
+                  </ScrollView>
+                  <View style={styles.monthGrid}>
+                    {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => {
+                      const key = `${pickerYear}-${String(m).padStart(2, '0')}`;
+                      const disabled = key < startMonthKey || key > endMonthKey;
+                      const active = pickerMonthNum === m && !disabled;
+                      return (
+                        <Pressable
+                          key={m}
+                          disabled={disabled}
+                          style={[styles.monthChip, active && styles.monthChipActive, disabled && styles.monthChipDisabled]}
+                          onPress={() => setPickerMonth(buildMonthKey(pickerYear, m, startMonthKey, endMonthKey))}
+                        >
+                          <Text
+                            style={[
+                              styles.monthChipText,
+                              active && styles.monthChipTextActive,
+                              disabled && styles.monthChipTextDisabled,
+                            ]}
+                          >
+                            {monthShortLabel(m)}
+                          </Text>
+                        </Pressable>
+                      );
+                    })}
+                  </View>
+                  <PrimaryButton
+                    title="Bu Ayı Göster"
+                    onPress={() => {
+                      setMonthFilter(pickerMonth);
+                      setMonthPickerOpen(false);
+                    }}
+                  />
+                  {monthFilter && (
+                    <Pressable
+                      style={{ marginTop: 10 }}
+                      onPress={() => {
+                        setMonthFilter(null);
+                        setMonthPickerOpen(false);
+                      }}
+                    >
+                      <Text style={styles.cancelText}>Tüm dönemi göster</Text>
+                    </Pressable>
+                  )}
+                </View>
+              )}
               <Pressable style={styles.rangeToggle} onPress={() => setRangeToolOpen(!rangeToolOpen)}>
                 <Text style={styles.rangeToggleText}>{rangeToolOpen ? '▾ Toplu işaretlemeyi kapat' : '▸ Bir aralığı toplu kıldım işaretle'}</Text>
               </Pressable>
               {rangeToolOpen && (
                 <View style={styles.rangeBox}>
-                  <DateField label="Aralık başlangıcı" value={rangeStart} onChange={setRangeStart} />
-                  <DateField label="Aralık bitişi" value={rangeEnd} onChange={setRangeEnd} />
+                  <DateField
+                    label="Aralık başlangıcı"
+                    value={rangeStart}
+                    onChange={setRangeStart}
+                    error={rangeStart && !isValidDateKey(rangeStart) ? 'Geçersiz tarih — YYYY-AA-GG' : ''}
+                  />
+                  <DateField
+                    label="Aralık bitişi"
+                    value={rangeEnd}
+                    onChange={setRangeEnd}
+                    error={rangeEnd && !isValidDateKey(rangeEnd) ? 'Geçersiz tarih — YYYY-AA-GG' : ''}
+                  />
                   <PrimaryButton
                     title="Aralığı Kıldım İşaretle"
                     onPress={() => setRangeConfirm(true)}
-                    disabled={!rangeStart || !rangeEnd || rangeStart > rangeEnd}
+                    disabled={!isValidDateKey(rangeStart) || !isValidDateKey(rangeEnd) || rangeStart > rangeEnd}
                   />
                 </View>
               )}
@@ -183,7 +299,11 @@ export default function KazaScreen() {
 
             {visibleDays.length === 0 && (
               <Text style={styles.emptyText}>
-                {onlyIncomplete ? 'Eksik gün yok — borç kalmadı 🎉' : 'Görüntülenecek gün yok.'}
+                {onlyIncomplete
+                  ? monthFilter
+                    ? `${monthLabel(monthFilter)} için eksik gün yok 🎉`
+                    : 'Eksik gün yok — borç kalmadı 🎉'
+                  : 'Görüntülenecek gün yok.'}
               </Text>
             )}
           </View>
@@ -241,6 +361,36 @@ const styles = StyleSheet.create({
   rangeToggle: { marginTop: 12, alignItems: 'center' },
   rangeToggleText: { color: colors.primary, fontSize: 12, fontWeight: '700' },
   rangeBox: { marginTop: 10 },
+  monthPickerBox: { marginTop: 10 },
+  monthPickerLabel: { color: colors.text, fontSize: 15, fontWeight: '700', textAlign: 'center', marginBottom: 10 },
+  yearRow: { marginBottom: 10 },
+  yearChip: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surfaceAlt,
+    marginRight: 8,
+  },
+  yearChipActive: { backgroundColor: colors.primary + '33', borderColor: colors.primary },
+  yearChipText: { color: colors.textMuted, fontSize: 13, fontWeight: '700' },
+  yearChipTextActive: { color: colors.primary },
+  monthGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 12 },
+  monthChip: {
+    width: '22%',
+    paddingVertical: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surfaceAlt,
+    alignItems: 'center',
+  },
+  monthChipActive: { backgroundColor: colors.primary + '33', borderColor: colors.primary },
+  monthChipDisabled: { opacity: 0.3 },
+  monthChipText: { color: colors.text, fontSize: 12, fontWeight: '700' },
+  monthChipTextActive: { color: colors.primary },
+  monthChipTextDisabled: { color: colors.textMuted },
   emptyText: { color: colors.textMuted, textAlign: 'center', marginTop: 16, fontSize: 13 },
   dayRow: {
     backgroundColor: colors.surface,
@@ -270,7 +420,7 @@ const styles = StyleSheet.create({
   },
   chipChecked: { backgroundColor: colors.success, borderColor: colors.success },
   chipText: { color: colors.textMuted, fontWeight: '800', fontSize: 12 },
-  chipTextChecked: { color: '#06281a' },
+  chipTextChecked: { color: ON_ACCENT },
   markAllChip: {
     height: 32,
     paddingHorizontal: 10,

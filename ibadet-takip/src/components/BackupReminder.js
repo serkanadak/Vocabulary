@@ -16,7 +16,7 @@ import { useTracker } from '../state/TrackerContext';
 import { buildBackup, backupFileName, backupStats } from '../logic/backup';
 import { canShareFiles, shareBackup, downloadBackup } from '../logic/backupFile';
 import { isStoragePersisted, requestPersistentStorage } from '../logic/storage';
-import { colors } from '../theme';
+import { colors, ON_ACCENT, DANGER } from '../theme';
 
 const DAY = 86400000;
 const REMIND_AFTER = 3 * DAY;
@@ -151,12 +151,12 @@ const styles = StyleSheet.create({
   title: { color: colors.text, fontSize: 14, fontWeight: '800', flex: 1 },
   close: { color: colors.textMuted, fontSize: 14, fontWeight: '800' },
   text: { color: colors.textMuted, fontSize: 12, lineHeight: 17, marginTop: 4 },
-  warn: { color: '#fca5a5', fontSize: 12, lineHeight: 17, marginTop: 8 },
+  warn: { color: DANGER, fontSize: 12, lineHeight: 17, marginTop: 8 },
   actions: { flexDirection: 'row', alignItems: 'center', gap: 14, marginTop: 12, flexWrap: 'wrap' },
   btn: { backgroundColor: colors.primary, borderRadius: 10, paddingVertical: 10, paddingHorizontal: 14 },
-  btnText: { color: '#0b1f17', fontSize: 13, fontWeight: '800' },
+  btnText: { color: ON_ACCENT, fontSize: 13, fontWeight: '800' },
   link: { color: colors.primary, fontSize: 12, fontWeight: '700' },
   done: { color: colors.success, fontSize: 12, lineHeight: 17, marginTop: 10 },
-  alarm: { borderColor: '#ef4444' },
-  alarmTitle: { color: '#fca5a5', fontSize: 14, fontWeight: '800' },
+  alarm: { borderColor: DANGER },
+  alarmTitle: { color: DANGER, fontSize: 14, fontWeight: '800' },
 });

@@ -2,22 +2,45 @@ import React, { useMemo } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
-import { getDailyRequiredIds, currentStreak, averageCompletion, dailyHistory } from '../logic/stats';
-import { getLifetimeItems, getYearlyOnceItems } from '../logic/schedule';
+import { currentStreak, averageCompletion, dailyHistory, itemCountInLastDays, expectedOccurrences } from '../logic/stats';
+import { getLifetimeItems, getYearlyOnceItems, getDailyRequiredIdsForDate, getRecurringTrackableItems } from '../logic/schedule';
+import { FREQUENCY } from '../data/ibadetler';
 import { colors } from '../theme';
-import { Card, SectionHeader } from '../components/common';
+import { Card, SectionHeader, HukumBadge } from '../components/common';
+
+const REQUIRED_RECURRING_FREQS = [FREQUENCY.DAILY, FREQUENCY.WEEKLY_FRIDAY];
+const NAFILE_RECURRING_FREQS = [FREQUENCY.OPTIONAL_DAILY, FREQUENCY.OPTIONAL_WEEKLY_MON_THU, FREQUENCY.OPTIONAL_MONTHLY];
+const STAT_WINDOW_DAYS = 30;
 
 export default function StatsScreen({ navigation }) {
-  const { byDate, isCheckedLifetime, isCheckedYearly, yearKeyStr, customItems } = useTracker();
+  const {
+    byDate,
+    isCheckedLifetime,
+    isNotApplicableLifetime,
+    isCheckedYearly,
+    isNotApplicableYearly,
+    yearKeyStr,
+    customItems,
+  } = useTracker();
 
-  const dailyIds = useMemo(() => getDailyRequiredIds(), []);
-  const streak = useMemo(() => currentStreak(byDate, dailyIds), [byDate, dailyIds]);
-  const avg7 = useMemo(() => averageCompletion(byDate, dailyIds, 7), [byDate, dailyIds]);
-  const avg30 = useMemo(() => averageCompletion(byDate, dailyIds, 30), [byDate, dailyIds]);
-  const history = useMemo(() => dailyHistory(byDate, dailyIds, 14), [byDate, dailyIds]);
+  const streak = useMemo(() => currentStreak(byDate, getDailyRequiredIdsForDate), [byDate]);
+  const avg7 = useMemo(() => averageCompletion(byDate, getDailyRequiredIdsForDate, 7), [byDate]);
+  const avg30 = useMemo(() => averageCompletion(byDate, getDailyRequiredIdsForDate, 30), [byDate]);
+  const history = useMemo(() => dailyHistory(byDate, getDailyRequiredIdsForDate, 14), [byDate]);
 
   const lifetimeItems = useMemo(() => getLifetimeItems(customItems), [customItems]);
   const yearlyItems = useMemo(() => getYearlyOnceItems(customItems), [customItems]);
+
+  const recurringStats = useMemo(() => {
+    return getRecurringTrackableItems(customItems).map((item) => ({
+      item,
+      count: itemCountInLastDays(byDate, item.id, STAT_WINDOW_DAYS),
+      expected: expectedOccurrences(item, STAT_WINDOW_DAYS),
+    }));
+  }, [customItems, byDate]);
+
+  const requiredStats = recurringStats.filter((s) => REQUIRED_RECURRING_FREQS.includes(s.item.frequency));
+  const nafileStats = recurringStats.filter((s) => NAFILE_RECURRING_FREQS.includes(s.item.frequency));
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -44,12 +67,34 @@ export default function StatsScreen({ navigation }) {
           <Text style={styles.barCaption}>eskiden bugüne →</Text>
         </Card>
 
+        <SectionHeader
+          title="Farz/Vacip/Sünnet-i Müekkede — İbadet Bazında"
+          subtitle="Son 30 günde uygulanabildiği gün sayısına göre kaç kez kılındı/tutuldu"
+        />
+        {requiredStats.map(({ item, count, expected }) => (
+          <ItemStatRow key={item.id} item={item} count={count} expected={expected} onPress={() => navigation.navigate('ItemDetail', { id: item.id })} />
+        ))}
+
+        <SectionHeader
+          title="Nafile İbadetler — İbadet Bazında"
+          subtitle="Son 30 günde kaç kez işaretlendi (Ayarlar'dan gösterilmesi gerekmez)"
+        />
+        {nafileStats.map(({ item, count, expected }) => (
+          <ItemStatRow key={item.id} item={item} count={count} expected={expected} onPress={() => navigation.navigate('ItemDetail', { id: item.id })} />
+        ))}
+
         <SectionHeader title="Ömürde Bir" subtitle="Hac, umre gibi bir kez yapılan ibadetler" />
         {lifetimeItems.map((item) => (
           <Pressable key={item.id} style={styles.simpleRow} onPress={() => navigation.navigate('ItemDetail', { id: item.id })}>
             <Text style={styles.rowTitle}>{item.title}</Text>
-            <Text style={[styles.status, isCheckedLifetime(item.id) && styles.statusDone]}>
-              {isCheckedLifetime(item.id) ? '✓ Yapıldı' : 'Bekliyor'}
+            <Text
+              style={[
+                styles.status,
+                isCheckedLifetime(item.id) && styles.statusDone,
+                isNotApplicableLifetime(item.id) && styles.statusNA,
+              ]}
+            >
+              {isCheckedLifetime(item.id) ? '✓ Yapıldı' : isNotApplicableLifetime(item.id) ? 'Uygulanmıyor' : 'Bekliyor'}
             </Text>
           </Pressable>
         ))}
@@ -58,8 +103,14 @@ export default function StatsScreen({ navigation }) {
         {yearlyItems.map((item) => (
           <Pressable key={item.id} style={styles.simpleRow} onPress={() => navigation.navigate('ItemDetail', { id: item.id })}>
             <Text style={styles.rowTitle}>{item.title}</Text>
-            <Text style={[styles.status, isCheckedYearly(item.id) && styles.statusDone]}>
-              {isCheckedYearly(item.id) ? '✓ Yapıldı' : 'Bekliyor'}
+            <Text
+              style={[
+                styles.status,
+                isCheckedYearly(item.id) && styles.statusDone,
+                isNotApplicableYearly(item.id) && styles.statusNA,
+              ]}
+            >
+              {isCheckedYearly(item.id) ? '✓ Yapıldı' : isNotApplicableYearly(item.id) ? 'Uygulanmıyor' : 'Bekliyor'}
             </Text>
           </Pressable>
         ))}
@@ -74,6 +125,18 @@ function Stat({ label, value }) {
       <Text style={styles.statValue}>{value}</Text>
       <Text style={styles.statLabel}>{label}</Text>
     </View>
+  );
+}
+
+function ItemStatRow({ item, count, expected, onPress }) {
+  return (
+    <Pressable style={styles.simpleRow} onPress={onPress}>
+      <Text style={styles.rowTitle}>{item.title}</Text>
+      <View style={styles.itemStatRight}>
+        <HukumBadge hukum={item.hukum} />
+        <Text style={styles.itemStatValue}>{expected != null ? `${count}/${expected}` : `${count}×`}</Text>
+      </View>
+    </Pressable>
   );
 }
 
@@ -104,4 +167,7 @@ const styles = StyleSheet.create({
   rowTitle: { color: colors.text, fontSize: 14, fontWeight: '600', flex: 1 },
   status: { color: colors.textMuted, fontSize: 12, fontWeight: '700' },
   statusDone: { color: colors.success },
+  statusNA: { color: colors.textMuted, fontStyle: 'italic' },
+  itemStatRight: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  itemStatValue: { color: colors.text, fontSize: 13, fontWeight: '800' },
 });

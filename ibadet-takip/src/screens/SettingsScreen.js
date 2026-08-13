@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Switch, Pressable, ActivityIndicato
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
 import { fetchIslamicCalendarDates } from '../logic/hijriApi';
-import { colors } from '../theme';
+import { colors, ON_ACCENT, DANGER } from '../theme';
 import { Card, SectionHeader, DateField, ConfirmModal, PrimaryButton } from '../components/common';
 
 export default function SettingsScreen({ navigation }) {
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   genderBtnActive: { backgroundColor: colors.primary, borderColor: colors.primary },
   genderText: { color: colors.textMuted, fontWeight: '700' },
-  genderTextActive: { color: '#1c1305' },
+  genderTextActive: { color: ON_ACCENT },
   switchRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   switchLabel: { color: colors.text, fontSize: 14, flex: 1, marginRight: 12, lineHeight: 19 },
   resetBtn: {
@@ -168,13 +168,13 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#ef4444',
+    borderColor: DANGER,
   },
-  resetText: { color: '#ef4444', fontWeight: '700' },
+  resetText: { color: DANGER, fontWeight: '700' },
   footnote: { color: colors.textMuted, fontSize: 11, marginHorizontal: 16, marginTop: 16, lineHeight: 16 },
   fetchingRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingVertical: 12 },
   fetchingText: { color: colors.textMuted, fontSize: 13 },
-  error: { color: '#ef4444', fontSize: 12, marginTop: 8, textAlign: 'center' },
+  error: { color: DANGER, fontSize: 12, marginTop: 8, textAlign: 'center' },
   fetchedNote: { color: colors.success, fontSize: 12, marginTop: 8, textAlign: 'center' },
   hint: { color: colors.textMuted, fontSize: 11, marginTop: 10, marginBottom: 6, lineHeight: 16 },
 });

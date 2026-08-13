@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Pressable, TextInput, Modal, StyleSheet } from 'react-native';
-import { colors, HUKUM_COLORS } from '../theme';
+import { colors, HUKUM_COLORS, ON_ACCENT, DANGER } from '../theme';
 import { HUKUM_META } from '../data/ibadetler';
 
 export function HukumBadge({ hukum }) {
@@ -23,7 +23,19 @@ export function SectionHeader({ title, subtitle }) {
   );
 }
 
-export function CheckRow({ title, subtitle, hukum, hukumList, rekat, rekatText, checked, onPress, onLongPress }) {
+export function CheckRow({
+  title,
+  subtitle,
+  hukum,
+  hukumList,
+  rekat,
+  rekatText,
+  checked,
+  onPress,
+  onLongPress,
+  secondaryLabel,
+  onSecondaryPress,
+}) {
   const rekatSuffix = rekatText ? ` (${rekatText})` : rekat ? ` (${rekat} rekât)` : '';
   return (
     <Pressable
@@ -40,6 +52,11 @@ export function CheckRow({ title, subtitle, hukum, hukumList, rekat, rekatText, 
           {rekatSuffix}
         </Text>
         {subtitle ? <Text style={styles.rowSubtitle}>{subtitle}</Text> : null}
+        {secondaryLabel ? (
+          <Pressable onPress={onSecondaryPress} hitSlop={8} style={styles.secondaryLinkWrap}>
+            <Text style={styles.secondaryLink}>{secondaryLabel}</Text>
+          </Pressable>
+        ) : null}
       </View>
       {hukumList ? (
         <View style={styles.badgeStack}>
@@ -58,12 +75,12 @@ export function Card({ children, style }) {
   return <View style={[styles.card, style]}>{children}</View>;
 }
 
-export function DateField({ label, value, onChange }) {
+export function DateField({ label, value, onChange, error }) {
   return (
     <View style={styles.dateField}>
       <Text style={styles.dateLabel}>{label}</Text>
       <TextInput
-        style={styles.dateInput}
+        style={[styles.dateInput, error && styles.dateInputError]}
         value={value}
         onChangeText={onChange}
         placeholder="YYYY-AA-GG"
@@ -71,6 +88,7 @@ export function DateField({ label, value, onChange }) {
         autoCapitalize="none"
         autoCorrect={false}
       />
+      {error ? <Text style={styles.dateError}>{error}</Text> : null}
     </View>
   );
 }
@@ -154,10 +172,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   checkboxChecked: { backgroundColor: colors.success, borderColor: colors.success },
-  checkmark: { color: '#06281a', fontWeight: '900', fontSize: 14 },
+  checkmark: { color: ON_ACCENT, fontWeight: '900', fontSize: 14 },
   rowTitle: { color: colors.text, fontSize: 15, fontWeight: '600' },
   rowTitleChecked: { textDecorationLine: 'line-through', color: colors.textMuted },
   rowSubtitle: { color: colors.textMuted, fontSize: 12, marginTop: 2 },
+  secondaryLinkWrap: { marginTop: 4, alignSelf: 'flex-start' },
+  secondaryLink: { color: colors.primary, fontSize: 11, fontWeight: '700', textDecorationLine: 'underline' },
   card: {
     backgroundColor: colors.surface,
     borderRadius: 14,
@@ -175,7 +195,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 8,
   },
-  buttonText: { color: '#1c1305', fontWeight: '800', fontSize: 15 },
+  buttonText: { color: ON_ACCENT, fontWeight: '800', fontSize: 15 },
   dateField: { marginBottom: 10 },
   dateLabel: { color: colors.textMuted, fontSize: 12, marginBottom: 4 },
   dateInput: {
@@ -185,7 +205,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 8,
     fontSize: 14,
+    borderWidth: 1,
+    borderColor: 'transparent',
   },
+  dateInputError: { borderColor: DANGER },
+  dateError: { color: DANGER, fontSize: 11, marginTop: 4 },
   modalBackdrop: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.6)',
@@ -221,7 +245,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.primary,
   },
-  modalConfirmBtnDestructive: { backgroundColor: '#ef4444' },
-  modalConfirmText: { color: '#1c1305', fontWeight: '800' },
+  modalConfirmBtnDestructive: { backgroundColor: DANGER },
+  modalConfirmText: { color: ON_ACCENT, fontWeight: '800' },
   modalConfirmTextDestructive: { color: '#fff' },
 });

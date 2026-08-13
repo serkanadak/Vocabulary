@@ -4,7 +4,14 @@
 // haftanın gününe göre değişir.
 
 import { getById } from '../data/ibadetler';
-import { todayKey, weekday } from './date';
+import { todayKey, weekday, isValidDateKey } from './date';
+
+// 'YYYY-MM-DD' anahtarını, ISO dize ayrıştırmasının saat dilimine/AA-GG
+// sırasına bağlı belirsizliğine düşmeden yerel bir Date'e çevirir.
+function parseDateKey(key) {
+  const [y, m, d] = key.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
 
 const SLOT_ITEM_IDS = {
   sabah: 'namaz-sabah-farz',
@@ -34,15 +41,16 @@ export function getKazaItemsForDate(dateKey) {
   });
 }
 
-// endKey dahil, startKey'e kadar (dahil) günleri en yeniden en eskiye sıralar.
+// startKey'den endKey'e (ikisi de dahil) günleri en eskiden en yeniye
+// (geçmişten bugüne) sıralar.
 export function enumerateDates(startKey, endKey) {
-  if (!startKey || !endKey || startKey > endKey) return [];
+  if (!isValidDateKey(startKey) || !isValidDateKey(endKey) || startKey > endKey) return [];
   const dates = [];
-  const cur = new Date(endKey);
-  const start = new Date(startKey);
-  while (cur >= start) {
+  const cur = parseDateKey(startKey);
+  const end = parseDateKey(endKey);
+  while (cur <= end) {
     dates.push(todayKey(cur));
-    cur.setDate(cur.getDate() - 1);
+    cur.setDate(cur.getDate() + 1);
   }
   return dates;
 }
@@ -51,6 +59,48 @@ export function yesterdayKey() {
   const d = new Date();
   d.setDate(d.getDate() - 1);
   return todayKey(d);
+}
+
+const TR_MONTHS = [
+  'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+  'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık',
+];
+
+// 'YYYY-MM-DD' -> 'YYYY-MM'
+export function monthKeyOf(dateKey) {
+  return typeof dateKey === 'string' ? dateKey.slice(0, 7) : '';
+}
+
+// 'YYYY-MM' -> 'Temmuz 2026'
+export function monthLabel(monthKeyStr) {
+  const [y, m] = monthKeyStr.split('-').map(Number);
+  return `${TR_MONTHS[m - 1]} ${y}`;
+}
+
+const TR_MONTHS_SHORT = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
+
+// m: 1-12 -> 'Oca'..'Ara'
+export function monthShortLabel(m) {
+  return TR_MONTHS_SHORT[m - 1];
+}
+
+// 'YYYY-MM' başlangıç ve bitiş ayları arasındaki tüm yılları artan sırada döner.
+export function yearsInRange(startMonthKeyStr, endMonthKeyStr) {
+  if (!startMonthKeyStr || !endMonthKeyStr) return [];
+  const startYear = Number(startMonthKeyStr.slice(0, 4));
+  const endYear = Number(endMonthKeyStr.slice(0, 4));
+  const years = [];
+  for (let y = startYear; y <= endYear; y++) years.push(y);
+  return years;
+}
+
+// year (sayı) ve month (1-12) verilip startMonthKeyStr/endMonthKeyStr aralığına
+// sığdırılmış 'YYYY-MM' üretir (aralık dışına taşarsa en yakın uca kenetlenir).
+export function buildMonthKey(year, month, startMonthKeyStr, endMonthKeyStr) {
+  const key = `${year}-${String(month).padStart(2, '0')}`;
+  if (startMonthKeyStr && key < startMonthKeyStr) return startMonthKeyStr;
+  if (endMonthKeyStr && key > endMonthKeyStr) return endMonthKeyStr;
+  return key;
 }
 
 // Her gün için tamamlanma durumu + slot bazlı (Sabah/Öğle-Cuma/İkindi/Akşam/Yatsı/Vitir)

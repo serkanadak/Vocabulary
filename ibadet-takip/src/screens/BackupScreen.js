@@ -13,7 +13,7 @@ import {
   requestPersistentStorage,
   storageEstimate,
 } from '../logic/storage';
-import { colors } from '../theme';
+import { colors, DANGER } from '../theme';
 import { Card, SectionHeader, PrimaryButton, ConfirmModal } from '../components/common';
 
 const fmtBytes = (n) => (n == null ? '?' : n < 1048576 ? `${(n / 1024).toFixed(0)} KB` : `${(n / 1048576).toFixed(1)} MB`);
@@ -383,11 +383,11 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg },
   status: { color: colors.success, fontWeight: '700', marginTop: 10, fontSize: 12, lineHeight: 17 },
   ok: { color: colors.success, fontSize: 12, lineHeight: 17 },
-  warn: { color: '#f59e0b', fontSize: 12, lineHeight: 17 },
+  warn: { color: DANGER, fontSize: 12, lineHeight: 17 },
   hint: { color: colors.textMuted, fontSize: 12, marginTop: 10, lineHeight: 17 },
   stat: { color: colors.text, fontSize: 13, fontWeight: '700', marginBottom: 10 },
-  alarm: { borderWidth: 1, borderColor: '#ef4444' },
-  alarmText: { color: '#fca5a5', fontSize: 12, lineHeight: 18 },
+  alarm: { borderWidth: 1, borderColor: DANGER },
+  alarmText: { color: DANGER, fontSize: 12, lineHeight: 18 },
   row: { borderTopWidth: 1, borderTopColor: colors.border, paddingVertical: 10 },
   rowLabel: { color: colors.text, fontSize: 12, fontWeight: '700' },
   rowMeta: { color: colors.textMuted, fontSize: 11, marginTop: 3, lineHeight: 16 },
@@ -418,5 +418,5 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   pasteText: { color: colors.textMuted, fontWeight: '700', fontSize: 12 },
-  error: { color: '#ef4444', fontSize: 12, marginTop: 8 },
+  error: { color: DANGER, fontSize: 12, marginTop: 8 },
 });

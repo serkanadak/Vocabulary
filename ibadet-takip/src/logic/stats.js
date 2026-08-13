@@ -1,5 +1,6 @@
 import { IBADETLER, FREQUENCY } from '../data/ibadetler';
-import { todayKey } from './date';
+import { todayKey, weekday } from './date';
+import { OGLE_DAILY_IDS } from './schedule';
 
 export function getDailyRequiredIds() {
   return IBADETLER.filter((i) => i.frequency === FREQUENCY.DAILY).map((i) => i.id);
@@ -11,11 +12,15 @@ function dateKeyOffset(daysAgo) {
   return todayKey(d);
 }
 
+// itemIds: sabit bir id dizisi veya (dateKey) => id dizisi döner bir fonksiyon
+// olabilir (ör. Cuma günleri öğle yerine Cuma namazı öğelerinin gerekmesi
+// gibi güne bağlı zorunlu listeler için).
 function dayCompletionRatio(byDate, dateKey, itemIds) {
   const dayMap = byDate[dateKey] || {};
-  if (itemIds.length === 0) return 0;
-  const done = itemIds.filter((id) => dayMap[id]).length;
-  return done / itemIds.length;
+  const ids = typeof itemIds === 'function' ? itemIds(dateKey) : itemIds;
+  if (ids.length === 0) return 0;
+  const done = ids.filter((id) => dayMap[id]).length;
+  return done / ids.length;
 }
 
 // Bugünden geriye doğru, tüm günlük zorunlu ibadetlerin (%100) tamamlandığı
@@ -57,4 +62,35 @@ export function itemCountInLastDays(byDate, itemId, days = 30) {
     if (byDate[dateKeyOffset(i)]?.[itemId]) count++;
   }
   return count;
+}
+
+function countWeekdayOccurrences(days, weekdays) {
+  let count = 0;
+  for (let i = 0; i < days; i++) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    if (weekdays.includes(weekday(d))) count++;
+  }
+  return count;
+}
+
+// item'ın son `days` gün içinde takvimce kaç kez "uygulanabilir" olduğunu
+// (haftanın hangi günlerine denk geldiğine göre) hesaplar; ibadet bazında
+// istatistikte "X/Y gün" oranının paydasıdır. Kamerî takvime bağlı
+// (OPTIONAL_MONTHLY) sıklıklar için sabit hesaplanamaz, null döner.
+export function expectedOccurrences(item, days) {
+  switch (item.frequency) {
+    case FREQUENCY.WEEKLY_FRIDAY:
+      return countWeekdayOccurrences(days, [5]);
+    case FREQUENCY.OPTIONAL_WEEKLY_MON_THU:
+      return countWeekdayOccurrences(days, [1, 4]);
+    case FREQUENCY.DAILY:
+    case FREQUENCY.OPTIONAL_DAILY:
+      // Öğle namazı öğeleri Cuma günleri Cuma namazıyla yer değiştirir,
+      // o günlerde "uygulanabilir" değildir.
+      if (OGLE_DAILY_IDS.includes(item.id)) return days - countWeekdayOccurrences(days, [5]);
+      return days;
+    default:
+      return null;
+  }
 }

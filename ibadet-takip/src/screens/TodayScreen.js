@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTracker } from '../state/TrackerContext';
-import { getTodaySchedule } from '../logic/schedule';
-import { getDailyRequiredIds, currentStreak } from '../logic/stats';
+import { getTodaySchedule, getDailyRequiredIdsForDate } from '../logic/schedule';
+import { currentStreak } from '../logic/stats';
 import { NAMAZ_GROUP_LABELS } from '../data/ibadetler';
 import { colors } from '../theme';
 import BackupReminder from '../components/BackupReminder';
@@ -35,6 +35,8 @@ export default function TodayScreen({ navigation }) {
     setCheckedToday,
     isCheckedYearly,
     toggleYearly,
+    isNotApplicableYearly,
+    toggleYearlyNotApplicable,
     byDate,
     customItems,
   } = useTracker();
@@ -44,8 +46,7 @@ export default function TodayScreen({ navigation }) {
     [todayKey, settings, customItems]
   );
 
-  const dailyIds = useMemo(() => getDailyRequiredIds(), []);
-  const streak = useMemo(() => currentStreak(byDate, dailyIds), [byDate, dailyIds]);
+  const streak = useMemo(() => currentStreak(byDate, getDailyRequiredIdsForDate), [byDate]);
 
   const requiredIds = flattenIds(required);
   const doneCount = requiredIds.filter((id) => isCheckedToday(id)).length;
@@ -74,10 +75,12 @@ export default function TodayScreen({ navigation }) {
             const hukumList = [...new Set(entry.items.map((i) => i.hukum))];
             const rekatText = entry.items.map((i) => `${REKAT_LABEL[i.hukum]} ${i.rekat}`).join(' + ');
             const detailTarget = entry.items.find((i) => i.hukum === 'farz_ayn') || entry.items[0];
+            const isCumaGroup = entry.items.some((i) => i.id === 'namaz-cuma-farz');
+            const groupTitle = isCumaGroup ? 'Cuma Namazı' : NAMAZ_GROUP_LABELS[entry.groupKey] || entry.items[0].title;
             return (
               <CheckRow
                 key={entry.groupKey}
-                title={NAMAZ_GROUP_LABELS[entry.groupKey] || entry.items[0].title}
+                title={groupTitle}
                 hukumList={hukumList}
                 rekatText={rekatText}
                 checked={allChecked}
@@ -99,11 +102,14 @@ export default function TodayScreen({ navigation }) {
           );
         })}
 
-        {yearlyReminders.filter((i) => !isCheckedYearly(i.id)).length > 0 && (
+        {yearlyReminders.filter((i) => !isCheckedYearly(i.id) && !isNotApplicableYearly(i.id)).length > 0 && (
           <>
-            <SectionHeader title="Bu Yıl İçin Hatırlatma" subtitle="Takvime bağlı olmayan, yılda bir işaretlenen ibadetler" />
+            <SectionHeader
+              title="Bu Yıl İçin Hatırlatma"
+              subtitle="Takvime bağlı olmayan, yılda bir işaretlenen ibadetler"
+            />
             {yearlyReminders
-              .filter((i) => !isCheckedYearly(i.id))
+              .filter((i) => !isCheckedYearly(i.id) && !isNotApplicableYearly(i.id))
               .map((item) => (
                 <CheckRow
                   key={item.id}
@@ -112,6 +118,8 @@ export default function TodayScreen({ navigation }) {
                   checked={isCheckedYearly(item.id)}
                   onPress={() => toggleYearly(item.id)}
                   onLongPress={() => navigation.navigate('ItemDetail', { id: item.id })}
+                  secondaryLabel="Bana uygulanmıyor"
+                  onSecondaryPress={() => toggleYearlyNotApplicable(item.id)}
                 />
               ))}
           </>
@@ -123,7 +131,7 @@ export default function TodayScreen({ navigation }) {
             {optional.map((item) => (
               <CheckRow
                 key={item.id}
-                title={item.title}
+                title={item.timingLabel ? `${item.title} (${item.timingLabel})` : item.title}
                 hukum={item.hukum}
                 rekat={item.rekat}
                 checked={isCheckedToday(item.id)}
