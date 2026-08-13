@@ -147,10 +147,23 @@ export async function buildAlbumHtml(trip) {
       const o = orient.get(src) || 'land';
       return `<div class="prow ${o} solo"><figure class="ph"><img src="${src}" /></figure></div>`;
     };
+    // Küçük (ikişerli) satırlar. KULLANICININ SIRASI KORUNUR: eskiden tüm
+    // yatay fotoğraflar öne, dikeyler sona alınıyordu; kullanıcı albümdeki
+    // sırayı elle düzenleyebildiği için bu, verdiği sırayı bozuyordu.
+    // Artık sıra hiç değişmez; yalnızca YAN YANA gelecek iki fotoğrafın yönü
+    // aynıysa eşleştirilir (karışık satır çirkin durur ve satırı gereksiz
+    // yükseltir), değilse fotoğraf kendi satırında kalır.
     const gridRows = (list) => {
-      const land = list.filter((p) => (orient.get(p) || 'land') === 'land');
-      const port = list.filter((p) => orient.get(p) === 'port');
-      return [...rowsArr(land, 'land'), ...rowsArr(port, 'port')];
+      const out = [];
+      let i = 0;
+      while (i < list.length) {
+        const o = orient.get(list[i]) || 'land';
+        const next = list[i + 1];
+        const sameOrient = next && (orient.get(next) || 'land') === o;
+        out.push(...rowsArr(sameOrient ? [list[i], next] : [list[i]], o));
+        i += sameOrient ? 2 : 1;
+      }
+      return out;
     };
     let rows = [];
     if (photos.length === 1) {
@@ -163,11 +176,16 @@ export async function buildAlbumHtml(trip) {
       rows = gridRows(photos);
     }
 
-    // Mekan bilgisi + İLK fotoğraf satırı bölünmez bir gruptur → başlık asla
-    // fotoğraflarından ayrı, tek başına önceki sayfada kalmaz.
-    const lead = `<div class="place-lead">${head}${rows[0] || ''}</div>`;
-    const rest = rows.slice(1).join('');
-    return `<div class="place">${lead}${rest}</div>`;
+    // ÖNEMLİ (sayfa bölünmesi): mekan bilgisi ile İLK fotoğraf satırı eskiden
+    // TEK bir "bölünmez" öbeğe konuyordu. Uzun bir arşiv özeti + büyük (solo)
+    // bir fotoğraf bir araya geldiğinde bu öbek A4'in basılabilir yüksekliğini
+    // (273mm) aşıyor, motor da mecburen ortasından bölüyordu — kesik tam
+    // fotoğrafın üzerine düşüyordu (ölçüm: 292,8mm).
+    // Çözüm: başlık metni kendi başına bölünmez kalır ve `break-after: avoid`
+    // ile mümkünse fotoğrafıyla aynı sayfada tutulur; her fotoğraf satırı ise
+    // BAĞIMSIZ bölünmez bir öbektir. Böylece hiçbir öbek sayfadan uzun olmaz.
+    const lead = `<div class="place-lead">${head}</div>`;
+    return `<div class="place">${lead}${rows.join('')}</div>`;
   };
 
   // Her durak (güzergah) YENİ SAYFADAN başlar → ayrı .page section.
@@ -298,8 +316,9 @@ export async function buildAlbumHtml(trip) {
   .stop-head { font-size: 20px; font-weight: 800; color: #0b3a5b; border-bottom: 2px solid #0b3a5b;
     padding-bottom: 5px; margin: 0 0 14px; page-break-after: avoid; break-after: avoid; }
   .place { margin-bottom: 16px; }
-  /* Mekan bilgisi + ilk fotoğraf satırı birlikte kalır (başlık öksüz kalmasın). */
-  .place-lead { break-inside: avoid; page-break-inside: avoid; }
+  /* Başlık metni bölünmez ve mümkünse fotoğrafıyla AYNI sayfada kalır. */
+  .place-lead { break-inside: avoid; page-break-inside: avoid;
+    break-after: avoid; page-break-after: avoid; }
   .place-title { font-size: 17px; font-weight: 700; }
   .place-title .place-date { font-weight: 400; color: #7a8791; font-size: 13px; }
   .place-loc { font-size: 13px; color: #7a8791; margin-top: 1px; }
@@ -313,16 +332,24 @@ export async function buildAlbumHtml(trip) {
   /* Fotoğraflar: satırda EN FAZLA 2 foto (bölünmez satır; sığmazsa komple sonraki
      sayfaya iner). Fotoğraflar KENDİ ORANINDA gösterilir (max-width/max-height +
      width/height:auto) → ne kırpma ne de yandan/üstten bant/çerçeve oluşur; yalnızca
-     sığmazsa orantılı küçültülür ve ortalanır. */
-  .prow { display: flex; gap: 8px; margin-top: 10px; align-items: flex-start;
-    justify-content: center; break-inside: avoid; page-break-inside: avoid; }
-  .prow figure.ph { flex: 0 1 calc(50% - 4px); margin: 0; text-align: center; }
-  .prow.solo figure.ph { flex-basis: 100%; }
+     sığmazsa orantılı küçültülür ve ortalanır.
+     DİKKAT: burada FLEX KULLANILMAZ. Chromium/WebKit, flex kaplarında
+     "break-inside: avoid" kuralını yok sayıyor; satır flex olduğu sürece
+     fotoğraflar sayfa sonunda ikiye bölünebiliyordu. Blok + inline-block
+     yerleşimde kural gerçekten uygulanıyor. */
+  .prow { display: block; text-align: center; font-size: 0; margin-top: 10px;
+    break-inside: avoid; page-break-inside: avoid; }
+  .prow figure.ph { display: inline-block; width: calc(50% - 5px); margin: 0; vertical-align: top;
+    text-align: center; }
+  .prow figure.ph + figure.ph { margin-left: 8px; }
+  .prow.solo figure.ph { width: 100%; margin-left: 0; }
   .prow img { max-width: 100%; width: auto; height: auto; border-radius: 4px; display: block; margin: 0 auto; }
-  .prow.land img { max-height: 130mm; }
-  .prow.port img { max-height: 175mm; }
-  .prow.solo.land img { max-height: 185mm; }
-  .prow.solo.port img { max-height: 235mm; }
+  /* Yükseklikler, satır + boşluklar TEK sayfaya (273mm) rahatça sığacak
+     biçimde sınırlandı. */
+  .prow.land img { max-height: 128mm; }
+  .prow.port img { max-height: 168mm; }
+  .prow.solo.land img { max-height: 178mm; }
+  .prow.solo.port img { max-height: 215mm; }
   .mapbox { width: 100%; margin-bottom: 14px; }
   .mapbox svg { width: 100%; height: auto; border: 1px solid #e6ebf0; border-radius: 8px; }
   .route { font-size: 15px; font-weight: 600; line-height: 1.6; }

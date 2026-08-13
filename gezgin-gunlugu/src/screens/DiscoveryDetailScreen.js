@@ -125,6 +125,19 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
       featuredPhoto: null,
     });
   };
+  // Fotoğraf sırasını değiştir. Albüm/PDF fotoğrafları `photos` dizisinin
+  // sırasıyla dizdiği için buradaki sıra doğrudan çıktıya yansır.
+  // "Büyük göster" seçimleri URI ile tutulduğu için sıradan etkilenmez.
+  const movePhoto = (uri, delta) => {
+    const i = photos.indexOf(uri);
+    const j = i + delta;
+    if (i < 0 || j < 0 || j >= photos.length) return;
+    const next = [...photos];
+    next[i] = next[j];
+    next[j] = uri;
+    updateDiscovery(tripId, discoveryId, { photos: next, photoUri: null });
+  };
+
   // Albümde BÜYÜK gösterilecek fotoğrafları seç/kaldır (çoklu seçim mümkün).
   const toggleFeatured = (uri) => {
     const next = featured.includes(uri) ? featured.filter((u) => u !== uri) : [...featured, uri];
@@ -148,7 +161,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} keyboardShouldPersistTaps="handled">
         {photos.length ? (
           <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
-            {photos.map((uri) => {
+            {photos.map((uri, idx) => {
               const single = photos.length === 1;
               const isBig = single ? !disc.soloSmall : featured.includes(uri);
               return (
@@ -157,6 +170,27 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
                   <Pressable style={styles.removePhotoBtn} onPress={() => removePhotoAt(uri)} hitSlop={8}>
                     <Text style={styles.removePhotoText}>✕</Text>
                   </Pressable>
+                  {photos.length > 1 ? (
+                    <View style={styles.orderBar}>
+                      <Pressable
+                        onPress={() => movePhoto(uri, -1)}
+                        disabled={idx === 0}
+                        hitSlop={8}
+                        style={[styles.orderBtn, idx === 0 && styles.orderBtnOff]}
+                      >
+                        <Text style={styles.orderText}>◀</Text>
+                      </Pressable>
+                      <Text style={styles.orderNo}>{idx + 1}/{photos.length}</Text>
+                      <Pressable
+                        onPress={() => movePhoto(uri, 1)}
+                        disabled={idx === photos.length - 1}
+                        hitSlop={8}
+                        style={[styles.orderBtn, idx === photos.length - 1 && styles.orderBtnOff]}
+                      >
+                        <Text style={styles.orderText}>▶</Text>
+                      </Pressable>
+                    </View>
+                  ) : null}
                   <Pressable
                     style={[styles.featureBtn, isBig && styles.featureBtnOn]}
                     onPress={single ? toggleSoloSmall : () => toggleFeatured(uri)}
@@ -197,6 +231,7 @@ export default function DiscoveryDetailScreen({ route, navigation }) {
                   <Text style={styles.featAllBtn}>{allBig ? t('disc.noneBig') : t('disc.allBig')}</Text>
                 </Pressable>
               </View>
+              <Text style={styles.photoHint}>{t('disc.orderHint')}</Text>
             </>
           ) : photos.length === 1 ? (
             <Text style={styles.photoHint}>
@@ -335,6 +370,25 @@ const styles = StyleSheet.create({
   },
   featureBtnOn: { backgroundColor: colors.primary },
   featureText: { color: '#fff', fontWeight: '800', fontSize: 12 },
+  // Sıra çubuğu SAĞ-ALT köşede: sol-altta "büyük göster", sağ-üstte ✕ var.
+  // (İlk denemede sol-alta konmuş ve "büyük göster" düğmesiyle çakışmıştı;
+  // dokunuş sırayı değiştirmek yerine fotoğrafı büyük yapıyordu.)
+  orderBar: {
+    position: 'absolute',
+    right: 8,
+    bottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: 'rgba(0,0,0,0.55)',
+    borderRadius: 14,
+    paddingHorizontal: 4,
+    paddingVertical: 2,
+  },
+  orderBtn: { paddingHorizontal: 7, paddingVertical: 3 },
+  orderBtnOff: { opacity: 0.35 },
+  orderText: { color: '#fff', fontSize: 13, fontWeight: '800' },
+  orderNo: { color: '#fff', fontSize: 11, fontWeight: '700', minWidth: 30, textAlign: 'center' },
   pickingRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 },
   pickingText: { color: colors.textMuted, fontSize: 13 },
   photoWarn: { color: colors.danger, fontSize: 12, marginBottom: 12, lineHeight: 17 },

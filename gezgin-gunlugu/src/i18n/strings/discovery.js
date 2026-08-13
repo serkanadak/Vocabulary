@@ -170,6 +170,11 @@ export default {
     de: '← Wischen · {n} Fotos · mit ★ im Album groß zeigen',
   },
   'disc.bigCount': { tr: ' ({n} büyük)', en: ' ({n} large)', de: ' ({n} groß)' },
+  'disc.orderHint': {
+    tr: 'Fotoğrafların üzerindeki ◀ ▶ ile sırayı değiştir; albüm ve PDF bu sırayı kullanır.',
+    en: 'Use ◀ ▶ on a photo to change the order; the album and PDF follow this order.',
+    de: 'Mit ◀ ▶ auf einem Foto die Reihenfolge ändern; Album und PDF folgen dieser Reihenfolge.',
+  },
   'disc.soloHint': {
     tr: '★ ile bu fotoğrafın albümde (PDF) büyük mü küçük mü çıkacağını seç',
     en: 'Use ★ to choose whether this photo appears large or small in the album (PDF)',
